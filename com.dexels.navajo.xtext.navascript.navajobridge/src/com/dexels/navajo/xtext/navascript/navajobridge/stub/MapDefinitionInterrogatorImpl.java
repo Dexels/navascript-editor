@@ -11,14 +11,17 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
 
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+
 import com.dexels.navajo.document.nanoimpl.CaseSensitiveXMLElement;
 import com.dexels.navajo.document.nanoimpl.XMLElement;
+import com.dexels.navajo.expression.api.FunctionDefinition;
 import com.dexels.navajo.mapping.compiler.meta.KeywordException;
 import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
 import com.dexels.navajo.mapping.compiler.meta.MapMetaData;
-import com.dexels.navajo.xtext.navascript.navajobridge.FunctionDefinition;
-
-import navajo.ExtensionDefinition;
+import com.dexels.navajo.xtext.navascript.navajobridge.EclipseLogger;
+import com.dexels.navajo.xtext.navascript.navajobridge.OSGIRuntime;
 
 @SuppressWarnings("unused")
 public class MapDefinitionInterrogatorImpl  {
@@ -27,79 +30,35 @@ public class MapDefinitionInterrogatorImpl  {
 	MapMetaData mapMetaData = null;
 	private Map<String,FunctionDefinition> functions = new TreeMap<>();
 
-	public MapDefinitionInterrogatorImpl() throws Exception {
-		mapMetaData = MapMetaData.getInstance();
-	}
+	@SuppressWarnings("unchecked")
+	public MapDefinitionInterrogatorImpl()  {
 
-
-	public void readExtentionDefinition(ExtensionDefinition ed, MapMetaData md) throws IOException, ClassNotFoundException, KeywordException {
-
-		System.err.println("In MapMetaData. ExtensionDefinition: " + ed);
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(ed.getDefinitionAsStream(),StandardCharsets.UTF_8));
-
-		XMLElement config = new CaseSensitiveXMLElement();
-		config.parseFromReader(br);
-		br.close();
-
-
-		if ( config.getName().equals("adapterdef")) {
-			Vector<XMLElement> allmaps = config.getElementsByTagName("map");
-			for ( int i = 0; i < allmaps.size(); i++ ) {
-				XMLElement map = allmaps.get(i);
-				md.addMapDefinition(map);
+		EclipseLogger.log("InMapDefinitionInterrogatorImpl() constructor ");
+		
+		try {
+			mapMetaData = MapMetaData.getInstance();
+			Set<String> adapters = mapMetaData.getMapDefinitions();
+			for ( String a : adapters ) {
+				EclipseLogger.log(">>>>>>>>>>>>>>>>>>>>>>>>>>> Adapters: " + a);
 			}
-		}
-	}
+			BundleContext context;
 
-	public void readFunctionDefinition(ExtensionDefinition ed) throws IOException, ClassNotFoundException, KeywordException {
+			context = OSGIRuntime.getDefaultBundleContext();
 
-		System.err.println("In MapMetaData. ExtensionDefinition: " + ed);
+			ServiceReference<?> [] services = context.getAllServiceReferences(FunctionDefinition.class.getName(), null);
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(ed.getDefinitionAsStream(),StandardCharsets.UTF_8));
+			EclipseLogger.log("Found " + services.length + " services...");
 
-		XMLElement config = new CaseSensitiveXMLElement();
-		config.parseFromReader(br);
-		br.close();
+			for ( ServiceReference sr : services ) {
+				String functionName = (String) sr.getProperty("functionName");
+				FunctionDefinition fd = (FunctionDefinition) context.getService(sr);
+				EclipseLogger.log("Adding function " + functionName + ": " + fd);
+				functions.put(functionName, fd);
 
-
-		if ( config.getName().equals("functiondef")) {
-			Vector<XMLElement> allmaps = config.getElementsByTagName("function");
-			for ( int i = 0; i < allmaps.size(); i++ ) {
-				XMLElement map = allmaps.get(i);
-				String name = (String) map.getAttribute("name");
-				FunctionDefinition f = new FunctionDefinition(name);
-				XMLElement descElt =  map.getChildByTagName("description");
-				if ( descElt != null ) {
-					f.setDescription(descElt.getContent());
-				}
-				List<String> inputs = new ArrayList<>();
-				XMLElement inputElt = map.getChildByTagName("input");
-				if ( inputElt != null ) {
-					String [] options = inputElt.getContent().split("\\|");
-					for ( String o : options ) {
-						o = o.replace(',', ';');
-						inputs.add(o);
-					}
-				}
-				f.setInput(inputs);
-				XMLElement resultElt = map.getChildByTagName("result");
-				if ( descElt != null ) {
-					f.setResult(resultElt.getContent());
-				}
-				functions.put(name, f);
-				System.err.println(name + ": " + f);
 			}
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
 		}
-	}
-	
-	public void addExtentionDefinition(String extension) throws Exception {
-
-		Class<ExtensionDefinition> c = (Class<ExtensionDefinition>) Class.forName(extension);
-		ExtensionDefinition ed = c.getDeclaredConstructor().newInstance();
-		MapMetaData md = MapMetaData.getInstance();
-		readExtentionDefinition(ed, md);
-		readFunctionDefinition(ed);
 
 	}
 
@@ -164,19 +123,19 @@ public class MapDefinitionInterrogatorImpl  {
 	public Map<String,FunctionDefinition> getFunctions() throws Exception {
 		return functions;
 	}
-	
+
 	public List<MapDefinition> getAdapters() throws Exception{
-		
+
 		ArrayList<MapDefinition> allMaps = new ArrayList<>();
-		
+
 		Set<String> definitions = mapMetaData.getMapDefinitions();
 		for ( String s : definitions ) {
 			allMaps.add(mapMetaData.getMapDefinition(s));
 		}
-		
+
 		return allMaps;
 	}
-	
+
 	public void describeAdapter(String adapter) throws Exception {
 
 		MapDefinition md = mapMetaData.getMapDefinition(adapter);

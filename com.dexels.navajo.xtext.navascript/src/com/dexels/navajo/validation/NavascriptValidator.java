@@ -14,7 +14,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
-
+import com.dexels.navajo.expression.api.FunctionDefinition;
 import com.dexels.navajo.navascript.Expression;
 import com.dexels.navajo.navascript.KeyValueArgument;
 import com.dexels.navajo.navascript.KeyValueArguments;
@@ -26,7 +26,6 @@ import com.dexels.navajo.navascript.impl.MappableIdentifierImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
 import com.dexels.navajo.navigation.NavigationUtils;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterInterrogator;
-import com.dexels.navajo.xtext.navascript.navajobridge.FunctionDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.OSGIRuntime;
 
@@ -67,9 +66,12 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 			return;
 		}
 
-		List<String> inputs = functionDef.getInput();
-		for ( String alt : inputs ) {
-			int argSize = alt.split(",").length;
+		String[][] altInputs = functionDef.getInputParams();
+		for ( String [] alt : altInputs ) {
+			int argSize = 0;
+			for ( String input : alt ) {
+				argSize++;
+			}
 			if ( argSize == arguments.size() ) {
 				return;
 			}
@@ -107,7 +109,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		EObject parent = NavigationUtils.findFirstMapOrMappedField(mai.eContainer(), level);
 		AdapterClassDefinition mapdef = NavigationUtils.findAdapterClass(adapters,parent);
 		System.err.println("MAPDEF: " + mapdef + ", FIELD: " + fieldName + ", LEVEL: " + level);
-		
+
 		if ( mapdef != null ) {
 
 			boolean isValid = mapdef.isGetter(fieldName);
@@ -138,7 +140,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		EObject eObject = NavigationUtils.findFirstMapOrMappedField(maf.eContainer(), level);
 		AdapterClassDefinition map = NavigationUtils.findAdapterClass(adapters, eObject);
 		if ( map != null ) {
-			
+
 			boolean isValid = map.isGetter(field);
 			if ( !isValid ) {
 				error("Cannot find field: " + field, NavascriptPackage.Literals.MAPPED_ARRAY_FIELD__FIELD );
@@ -147,7 +149,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 			warning("Cannot find adapter for field: " + raw, NavascriptPackage.Literals.MAPPED_ARRAY_FIELD__FIELD );
 		}
 	}
-	
+
 	@Check
 	public void checkAdapterMethodParameters(AdapterMethodImpl am) {
 

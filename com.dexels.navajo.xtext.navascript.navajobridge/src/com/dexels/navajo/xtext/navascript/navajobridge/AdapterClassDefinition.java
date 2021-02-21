@@ -18,17 +18,21 @@ import com.dexels.navajo.mapping.compiler.meta.ValueDefinition;
 public class AdapterClassDefinition implements MappableObject {
 
 	private MapDefinition myDefinition;
-	private final Class classDefinition;
+	private Class classDefinition;
 
 	public AdapterClassDefinition(MapDefinition m) throws Exception {
 		myDefinition = m;
-		classDefinition = Class.forName(m.objectName);
+		try {
+			classDefinition = Class.forName(m.objectName);
+		} catch (Exception e) {
+			System.err.println("Could not find class for adapter: " + m.tagName);
+		}
 	}
 
 	public AdapterClassDefinition(String m) throws Exception {
 		classDefinition = Class.forName(m);
 	}
-	
+
 	public AdapterClassDefinition(Class m) throws Exception {
 		classDefinition = m;
 	}
@@ -37,6 +41,14 @@ public class AdapterClassDefinition implements MappableObject {
 		return myDefinition;
 	}
 
+	private boolean checkClassDefinition() {
+		if ( classDefinition == null ) {
+			System.err.println("Could not find class for tag: " + myDefinition.tagName);
+			return false;
+		}
+		return true;
+	}
+	
 	public String getObjectName() {
 		if ( myDefinition != null ) {
 			return myDefinition.objectName;
@@ -45,23 +57,23 @@ public class AdapterClassDefinition implements MappableObject {
 		}
 	}
 	public List<ValueDefinition> getDeclaredValues() {
-		
+
 		List<ValueDefinition> valuesDefinitions = new ArrayList<>();
-		
+
 		Set<String> values = myDefinition.getValueDefinitions();
 		for ( String v : values ) {
 			ValueDefinition vd = myDefinition.getValueDefinition(v);
 			valuesDefinitions.add(vd);
 		}
-		
+
 		return valuesDefinitions;
 	}
 
 	public ValueDefinition getDeclaredValue(String name) {
-	
-			return myDefinition.getValueDefinition(name);
+
+		return myDefinition.getValueDefinition(name);
 	}
-	
+
 	public Set<MethodDefinition> getMethods() {
 		if ( myDefinition != null ) {
 			Set<MethodDefinition> methods = new HashSet<>();
@@ -101,6 +113,9 @@ public class AdapterClassDefinition implements MappableObject {
 	}
 
 	public String getType(String field) throws Exception {
+		if ( !checkClassDefinition()) {
+			return null;
+		}
 		Field f = classDefinition.getDeclaredField(field);
 		if ( !f.getType().isPrimitive() ) {
 			return getType(f.getType());
@@ -110,15 +125,22 @@ public class AdapterClassDefinition implements MappableObject {
 	}
 
 	public AdapterClassDefinition getAdapterClass(String field) throws Exception {
+		if ( !checkClassDefinition()) {
+			return null;
+		}
 		Field f = classDefinition.getDeclaredField(field);
 		if ( f.getType().isPrimitive()) {
 			throw new Exception("Cannot create AdapterClassDefinition for primitive type");
 		}
 		return new AdapterClassDefinition(f.getType());
 	}
-	
+
 	public boolean isSetter(String field)  {
 
+		if ( !checkClassDefinition()) {
+			return false;
+		}
+		
 		String method = "set" + (field.charAt(0)+"").toUpperCase() + field.substring(1);
 		try {
 			Field f = classDefinition.getDeclaredField(field);
@@ -136,6 +158,10 @@ public class AdapterClassDefinition implements MappableObject {
 
 	public boolean isGetter(String field)  {
 
+		if ( !checkClassDefinition()) {
+			return false;
+		}
+		
 		String method = "get" + (field.charAt(0)+"").toUpperCase() + field.substring(1);
 		try {
 			Method m = classDefinition.getMethod(method);
@@ -158,8 +184,20 @@ public class AdapterClassDefinition implements MappableObject {
 		return false;
 	}
 
-	public Set<String> getGetters() {
+	public Set<String> getGetters() { // Use definition not object.
 
+		if ( !checkClassDefinition()) { 
+			Set<String> result = new HashSet<>();
+			Set<String> values = myDefinition.getValueDefinitions();
+			for ( String v : values ) {
+				ValueDefinition vd = myDefinition.getValueDefinition(v);
+				if ( "out".equals(vd.getDirection()) ){
+					result.add(v);
+				}
+			}
+			return result;
+		}
+		
 		Set<String> set = new HashSet<>();
 
 		Method [] methods = classDefinition.getMethods();
@@ -175,6 +213,18 @@ public class AdapterClassDefinition implements MappableObject {
 
 	public Set<String> getSetters() {
 
+		if ( !checkClassDefinition()) { // Use definition not object.
+			Set<String> result = new HashSet<>();
+			Set<String> values = myDefinition.getValueDefinitions();
+			for ( String v : values ) {
+				ValueDefinition vd = myDefinition.getValueDefinition(v);
+				if ( "in".equals(vd.getDirection()) ){
+					result.add(v);
+				}
+			}
+			return result;
+		}
+		
 		Set<String> set = new HashSet<>();
 
 		Method [] methods = classDefinition.getMethods();
@@ -229,6 +279,11 @@ public class AdapterClassDefinition implements MappableObject {
 	}
 
 	public List<List<String>> getGetterTypeSignatures(String field) {
+		
+		if ( !checkClassDefinition()) {
+			return null;
+		}
+		
 		String method = "get" + (field.charAt(0)+"").toUpperCase() + field.substring(1);
 		List<List<String>> signatures = new ArrayList<>();
 		try {

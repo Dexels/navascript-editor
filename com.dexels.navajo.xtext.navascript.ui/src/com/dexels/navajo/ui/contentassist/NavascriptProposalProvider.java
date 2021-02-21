@@ -15,15 +15,13 @@ import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
 import com.dexels.navajo.mapping.compiler.meta.MethodDefinition;
 import com.dexels.navajo.mapping.compiler.meta.ParameterDefinition;
@@ -35,8 +33,8 @@ import com.dexels.navajo.navascript.impl.KeyValueArgumentsImpl;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
 import com.dexels.navajo.navigation.NavigationUtils;
-import com.dexels.navajo.xtext.navascript.navajobridge.AdapterInterrogator;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
+import com.dexels.navajo.xtext.navascript.navajobridge.AdapterInterrogator;
 import com.dexels.navajo.xtext.navascript.navajobridge.OSGIRuntime;
 
 /**
@@ -48,17 +46,16 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	AdapterInterrogator adapters = null;
 	BundleContext context;
 
-	private static final Logger logger = LoggerFactory.getLogger(NavascriptProposalProvider.class);
 
 	public NavascriptProposalProvider() {
 		context = OSGIRuntime.getDefaultBundleContext();
 		if ( context != null ) {
 			context.addServiceListener(this);
 		} else {
-			logger.warn("No OSGI environment found");
+			System.err.println("No OSGI environment found");
 		}
 	}
-	
+
 	public synchronized void init() {
 		if ( adapters == null ) {
 			ServiceReference<AdapterInterrogator> ref = context.getServiceReference(AdapterInterrogator.class);
@@ -250,10 +247,17 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	public void completeMap_AdapterName(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 
 		String [] list =  adapters.getAdapters();
+
+		System.err.println("list = " + list);
+
 		for ( String a : list) {
-			MapDefinition md = adapters.getAdapter(a).getMapDefinition();
-			String description = ( md.description != null ? md.description.replaceAll("\n", "") : null);
-			acceptor.accept(createCompletionProposalFormatted(md.tagName, description, 1, context));
+			if ( adapters.getAdapter(a) != null ) {
+				MapDefinition md = adapters.getAdapter(a).getMapDefinition();
+				String description = ( md.description != null ? md.description.replaceAll("\n", "") : null);
+				acceptor.accept(createCompletionProposalFormatted(md.tagName, description, 1, context));
+			} else {
+				acceptor.accept(createCompletionProposalFormatted(a, "-", 1, context));
+			}
 		}
 	}
 
@@ -268,7 +272,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 		String prefix = NavigationUtils.getParentPrefix(context.getPrefix(), new StringBuffer());
 		int level = NavigationUtils.countMappableParentLevel(prefix);
-		
+
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
 		if ( map != null ) {
 			AdapterClassDefinition md = NavigationUtils.findAdapterClass(adapters, map);
@@ -284,7 +288,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 						System.err.println("Could not determine type for field: " + a);
 					}
 					System.err.println(a + " has type " + type);
-					acceptor.accept(createCompletionProposalFormatted(prefix + a, type.toString(), 1, context));
+					acceptor.accept(createCompletionProposalFormatted(prefix + a, ( type != null ? type.toString() : ""), 1, context));
 				}
 			} else {
 				System.err.println("Could not find parent adapter for " + model);
@@ -307,10 +311,10 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		String prefix = NavigationUtils.getParentPrefix(context.getPrefix(), new StringBuffer());
 		System.err.println("Prefix is: " + prefix);
 		int level = NavigationUtils.countMappableParentLevel(prefix);
-		
+
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
 		System.err.println("In completeMappedArrayField_Field.findFirstMapOrMappedField() map: " + map);
-		
+
 		if ( map != null ) {
 			AdapterClassDefinition md = NavigationUtils.findAdapterClass(adapters, map);
 			if ( md != null ) {
@@ -350,12 +354,18 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		if ( model instanceof FunctionIdentifierImpl ) {
 
 			FunctionIdentifierImpl fil = (FunctionIdentifierImpl) model;
-			List<String> inputs = adapters.getFunction(fil.getFunc()).getInput();
-			for ( String i : inputs ) {
-				i = i.replace(',', '|');
-				i = i.replace(';', ',');
-				acceptor.accept(createCompletionProposalFormatted( "", i, 10, context));
+
+
+			String[][] altInputs = adapters.getFunction(fil.getFunc()).getInputParams();
+			for ( String [] alt : altInputs ) {
+				StringBuffer sb = new StringBuffer();
+				for ( String input : alt ) {
+					sb.append(input);
+					sb.append(",");
+				}
+				acceptor.accept(createCompletionProposalFormatted( "", sb.toString(), 10, context));
 			}
+
 		}
 	}
 
