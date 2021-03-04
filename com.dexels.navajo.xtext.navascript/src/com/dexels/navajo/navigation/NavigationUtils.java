@@ -7,7 +7,8 @@ import com.dexels.navajo.mapping.compiler.meta.ValueDefinition;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
-import com.dexels.navajo.xtext.navascript.navajobridge.AdapterInterrogator;
+import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
+import com.dexels.navajo.xtext.navascript.navajobridge.ProxyValueDefinition;
 
 public final class NavigationUtils {
 
@@ -15,7 +16,7 @@ public final class NavigationUtils {
 		
 	}
 	
-	public static AdapterClassDefinition findAdapterClass(AdapterInterrogator adapters, EObject model) {
+	public static AdapterClassDefinition findAdapterClass(NavajoProxyStub adapters, EObject model) {
 
 		System.err.println("In findAdapterClass: " + model);
 		
@@ -31,7 +32,7 @@ public final class NavigationUtils {
 			if ( parent instanceof MapImpl ) {
 				MapImpl parentMap = (MapImpl) parent;
 				AdapterClassDefinition mde = adapters.getAdapter(parentMap.getAdapterName());
-				ValueDefinition vdef = mde.getMapDefinition().getValueDefinition(fieldName);
+				ProxyValueDefinition vdef = mde.getMapDefinition().getValueDefinition(fieldName);
 				return adapters.getAdapter(vdef.getMapType());
 			} else if ( parent instanceof MappedArrayFieldImpl ) {
 				return findAdapterClass(adapters, parent.eContainer());

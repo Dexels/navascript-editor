@@ -25,8 +25,8 @@ import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappableIdentifierImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
 import com.dexels.navajo.navigation.NavigationUtils;
-import com.dexels.navajo.xtext.navascript.navajobridge.AdapterInterrogator;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
+import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
 import com.dexels.navajo.xtext.navascript.navajobridge.OSGIRuntime;
 
 /**
@@ -36,7 +36,7 @@ import com.dexels.navajo.xtext.navascript.navajobridge.OSGIRuntime;
  */
 public class NavascriptValidator extends AbstractNavascriptValidator implements ServiceListener {
 
-	AdapterInterrogator adapters = null;
+	NavajoProxyStub adapters = null;
 	BundleContext context;
 
 	public NavascriptValidator() {
@@ -47,19 +47,24 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 
 	public synchronized void init() {
 		if ( adapters == null ) {
-			ServiceReference<AdapterInterrogator> ref = context.getServiceReference(AdapterInterrogator.class);
+			ServiceReference<NavajoProxyStub> ref = context.getServiceReference(NavajoProxyStub.class);
 			adapters = context.getService(ref);
 			System.err.println("In NavascriptValidator.init(): " + ref);
 		}
 	}
 
+	private NavajoProxyStub getNavajoProxyStub() {
+		init();
+		return adapters;
+	}
+	
 	@Check
 	public void checkFunction(FunctionIdentifierImpl function) {
 
 		String functionName = function.getFunc();
 		EList<Expression> arguments = function.getArgs();
 
-		FunctionDefinition functionDef = adapters.getFunction(functionName);
+		FunctionDefinition functionDef = getNavajoProxyStub().getFunction(functionName);
 
 		if ( functionDef == null ) {
 			warning("Unknown function: " + functionName, NavascriptPackage.Literals.FUNCTION_IDENTIFIER__FUNC);
@@ -94,7 +99,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		}
 
 		if ( adapterName != null && !"".equals(adapterName)) {
-			if ( adapters.getAdapter(adapterName) == null ) {
+			if ( getNavajoProxyStub().getAdapter(adapterName) == null ) {
 				warning("Unknown adapter: " + adapterName, NavascriptPackage.Literals.MAP__ADAPTER_NAME);
 			}
 		}
@@ -107,7 +112,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		String fieldName = NavigationUtils.getFieldFromMappableIdentifier(mai.getField());
 		int level = NavigationUtils.countMappableParentLevel(prefix);
 		EObject parent = NavigationUtils.findFirstMapOrMappedField(mai.eContainer(), level);
-		AdapterClassDefinition mapdef = NavigationUtils.findAdapterClass(adapters,parent);
+		AdapterClassDefinition mapdef = NavigationUtils.findAdapterClass(getNavajoProxyStub(),parent);
 		System.err.println("MAPDEF: " + mapdef + ", FIELD: " + fieldName + ", LEVEL: " + level);
 
 		if ( mapdef != null ) {
@@ -138,7 +143,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		int level = NavigationUtils.countMappableParentLevel(raw);
 		String field = NavigationUtils.getFieldFromMappableIdentifier(raw);
 		EObject eObject = NavigationUtils.findFirstMapOrMappedField(maf.eContainer(), level);
-		AdapterClassDefinition map = NavigationUtils.findAdapterClass(adapters, eObject);
+		AdapterClassDefinition map = NavigationUtils.findAdapterClass(getNavajoProxyStub(), eObject);
 		if ( map != null ) {
 
 			boolean isValid = map.isGetter(field);
@@ -166,7 +171,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 
 				KeyValueArguments kvas =  am.getArguments();
 
-				AdapterClassDefinition mapdef = adapters.getAdapter(adapterName);
+				AdapterClassDefinition mapdef = getNavajoProxyStub().getAdapter(adapterName);
 
 				if ( mapdef == null ) {
 					return;
@@ -204,18 +209,6 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		}
 
 	}
-
-
-	//	public static final String INVALID_NAME = "invalidName";
-	//
-	//	@Check
-	//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-	//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-	//			warning("Name should start with a capital",
-	//					NavascriptPackage.Literals.GREETING__NAME,
-	//					INVALID_NAME);
-	//		}
-	//	}
 
 	@Override
 	public void serviceChanged(ServiceEvent event) {

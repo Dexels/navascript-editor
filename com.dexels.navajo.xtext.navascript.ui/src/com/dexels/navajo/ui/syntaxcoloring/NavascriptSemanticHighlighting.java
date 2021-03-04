@@ -15,12 +15,12 @@ import org.osgi.framework.ServiceReference;
 
 import com.dexels.navajo.navascript.NavascriptPackage;
 import com.dexels.navajo.navascript.impl.OptionImpl;
-import com.dexels.navajo.xtext.navascript.navajobridge.AdapterInterrogator;
+import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
 import com.dexels.navajo.xtext.navascript.navajobridge.OSGIRuntime;
 
 public class NavascriptSemanticHighlighting extends DefaultSemanticHighlightingCalculator implements ServiceListener {
 
-	AdapterInterrogator adapters = null;
+	NavajoProxyStub adapters = null;
 	BundleContext context;
 
 	public NavascriptSemanticHighlighting() {
@@ -31,10 +31,15 @@ public class NavascriptSemanticHighlighting extends DefaultSemanticHighlightingC
 
 	public synchronized void init() {
 		if ( adapters == null ) {
-			ServiceReference<AdapterInterrogator> ref = context.getServiceReference(AdapterInterrogator.class);
+			ServiceReference<NavajoProxyStub> ref = context.getServiceReference(NavajoProxyStub.class);
 			adapters = context.getService(ref);
 			System.err.println("In NavascriptSemanticHighlighting.init(): " + ref);
 		}
+	}
+	
+	private NavajoProxyStub getNavajoProxyStub() {
+		init();
+		return adapters;
 	}
 
 	@Override

@@ -3,7 +3,7 @@ Automatic-Module-Name: com.dexels.navajo.xtext.navascript.ui
 Bundle-ManifestVersion: 2
 Bundle-Name: com.dexels.navajo.xtext.navascript.ui
 Bundle-Vendor: Dexels BV
-Bundle-Version: 0.9.6
+Bundle-Version: 0.9.9
 Bundle-SymbolicName: com.dexels.navajo.xtext.navascript.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.ui,
@@ -17,9 +17,7 @@ Require-Bundle: org.eclipse.xtext.ui,
  org.eclipse.emf.common,
  com.dexels.navajo.xtext.navascript.ide;bundle-version="0.9.2",
  com.dexels.navajo.xtext.navascript,
- com.dexels.navajo.api,
  com.dexels.navajo.xtext.navascript.navajobridge;bundle-version="0.9.2",
- com.dexels.navajo.core,
  org.eclipse.xtext.xbase.ui;bundle-version="2.24.0"
 Export-Package: com.dexels.navajo.ui,
  com.dexels.navajo.ui.contentassist,
@@ -31,3 +29,5 @@ Export-Package: com.dexels.navajo.ui,
  com.dexels.navajo.xtext.navascript.ui.internal
 Bundle-Activator: com.dexels.navajo.xtext.navascript.ui.internal.NavascriptActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-11
+Import-Package: com.dexels.navajo.expression.api,
+ com.dexels.navajo.mapping.compiler.meta

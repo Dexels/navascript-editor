@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.osgi.framework.Bundle;
+
 import com.dexels.navajo.document.NavajoFactory;
 import com.dexels.navajo.document.Property;
 import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
@@ -15,40 +17,40 @@ import com.dexels.navajo.mapping.compiler.meta.MethodDefinition;
 import com.dexels.navajo.mapping.compiler.meta.ParameterDefinition;
 import com.dexels.navajo.mapping.compiler.meta.ValueDefinition;
 
-public class AdapterClassDefinition implements MappableObject {
+public class AdapterClassDefinition  {
 
-	private MapDefinition myDefinition;
+	private ProxyMapDefinition myDefinition;
 	private Class classDefinition;
+	private ClassLoader classLoader;
 
-	public AdapterClassDefinition(MapDefinition m) throws Exception {
+	public AdapterClassDefinition(ProxyMapDefinition m, ClassLoader cl) throws Exception {
 		myDefinition = m;
 		try {
-			classDefinition = Class.forName(m.objectName);
-		} catch (Exception e) {
-			System.err.println("Could not find class for adapter: " + m.tagName);
+			classLoader = cl;
+			if ( cl != null ) {
+				classDefinition = Class.forName(m.objectName, true, classLoader);
+			}
+		} catch (Throwable e) {
+			System.err.println("Could not find class for adapter: " + m.tagName + " (" + e.getLocalizedMessage() + ")");
 		}
 	}
 
-	public AdapterClassDefinition(String m) throws Exception {
-		classDefinition = Class.forName(m);
-	}
-
-	public AdapterClassDefinition(Class m) throws Exception {
+	public AdapterClassDefinition(Class m, ClassLoader cl) throws Exception {
+		classLoader = cl;
 		classDefinition = m;
 	}
 
-	public MapDefinition getMapDefinition() {
+	public ProxyMapDefinition getMapDefinition() {
 		return myDefinition;
 	}
 
 	private boolean checkClassDefinition() {
 		if ( classDefinition == null ) {
-			System.err.println("Could not find class for tag: " + myDefinition.tagName);
 			return false;
 		}
 		return true;
 	}
-	
+
 	public String getObjectName() {
 		if ( myDefinition != null ) {
 			return myDefinition.objectName;
@@ -56,29 +58,29 @@ public class AdapterClassDefinition implements MappableObject {
 			return null;
 		}
 	}
-	public List<ValueDefinition> getDeclaredValues() {
+	public List<ProxyValueDefinition> getDeclaredValues() {
 
-		List<ValueDefinition> valuesDefinitions = new ArrayList<>();
+		List<ProxyValueDefinition> valuesDefinitions = new ArrayList<>();
 
 		Set<String> values = myDefinition.getValueDefinitions();
 		for ( String v : values ) {
-			ValueDefinition vd = myDefinition.getValueDefinition(v);
+			ProxyValueDefinition vd = myDefinition.getValueDefinition(v);
 			valuesDefinitions.add(vd);
 		}
 
 		return valuesDefinitions;
 	}
 
-	public ValueDefinition getDeclaredValue(String name) {
+	public ProxyValueDefinition getDeclaredValue(String name) {
 
 		return myDefinition.getValueDefinition(name);
 	}
 
-	public Set<MethodDefinition> getMethods() {
+	public Set<ProxyMethodDefinition> getMethods() {
 		if ( myDefinition != null ) {
-			Set<MethodDefinition> methods = new HashSet<>();
+			Set<ProxyMethodDefinition> methods = new HashSet<>();
 			for ( String m : myDefinition.getMethodDefinitions() ) {
-				MethodDefinition md = myDefinition.getMethodDefinition(m);
+				ProxyMethodDefinition md = myDefinition.getMethodDefinition(m);
 				methods.add(md);
 			}
 			return methods;
@@ -98,8 +100,8 @@ public class AdapterClassDefinition implements MappableObject {
 			return Property.BOOLEAN_PROPERTY;
 		}
 
-		if ( type.getTypeName().indexOf(".") != -1 ) { // object
-			return getType(Class.forName(type.getTypeName()));
+		if ( type.getTypeName().indexOf(".") != -1 && classLoader != null) { // object
+			return getType(Class.forName(type.getTypeName(), true, classLoader));
 		}
 
 		return type.getTypeName();
@@ -132,15 +134,19 @@ public class AdapterClassDefinition implements MappableObject {
 		if ( f.getType().isPrimitive()) {
 			throw new Exception("Cannot create AdapterClassDefinition for primitive type");
 		}
-		return new AdapterClassDefinition(f.getType());
+		if ( classLoader != null ) {
+			return new AdapterClassDefinition(f.getType(), classLoader);
+		} else {
+			return null;
+		}
 	}
 
 	public boolean isSetter(String field)  {
 
 		if ( !checkClassDefinition()) {
-			return false;
+			return getSetters().contains(field);
 		}
-		
+
 		String method = "set" + (field.charAt(0)+"").toUpperCase() + field.substring(1);
 		try {
 			Field f = classDefinition.getDeclaredField(field);
@@ -159,9 +165,9 @@ public class AdapterClassDefinition implements MappableObject {
 	public boolean isGetter(String field)  {
 
 		if ( !checkClassDefinition()) {
-			return false;
+			return getGetters().contains(field);
 		}
-		
+
 		String method = "get" + (field.charAt(0)+"").toUpperCase() + field.substring(1);
 		try {
 			Method m = classDefinition.getMethod(method);
@@ -190,14 +196,14 @@ public class AdapterClassDefinition implements MappableObject {
 			Set<String> result = new HashSet<>();
 			Set<String> values = myDefinition.getValueDefinitions();
 			for ( String v : values ) {
-				ValueDefinition vd = myDefinition.getValueDefinition(v);
+				ProxyValueDefinition vd = myDefinition.getValueDefinition(v);
 				if ( "out".equals(vd.getDirection()) ){
 					result.add(v);
 				}
 			}
 			return result;
 		}
-		
+
 		Set<String> set = new HashSet<>();
 
 		Method [] methods = classDefinition.getMethods();
@@ -217,14 +223,14 @@ public class AdapterClassDefinition implements MappableObject {
 			Set<String> result = new HashSet<>();
 			Set<String> values = myDefinition.getValueDefinitions();
 			for ( String v : values ) {
-				ValueDefinition vd = myDefinition.getValueDefinition(v);
+				ProxyValueDefinition vd = myDefinition.getValueDefinition(v);
 				if ( "in".equals(vd.getDirection()) ){
 					result.add(v);
 				}
 			}
 			return result;
 		}
-		
+
 		Set<String> set = new HashSet<>();
 
 		Method [] methods = classDefinition.getMethods();
@@ -250,7 +256,7 @@ public class AdapterClassDefinition implements MappableObject {
 
 		// Check for required
 		for ( String dp : definedParameters ) {
-			ParameterDefinition pd = myDefinition.getMethodDefinition(method).getParameterDefinition(dp);
+			ProxyParameterDefinition pd = myDefinition.getMethodDefinition(method).getParameterDefinition(dp);
 			if ( "true".equals(pd.getRequired()) && !arguments.contains(dp) ) {
 				missing.add(dp);
 			}
@@ -271,19 +277,21 @@ public class AdapterClassDefinition implements MappableObject {
 
 		// Check for unknown parameters
 		for (String a : arguments ) {
-			if ( !definedParameters.contains(a)) {
-				missing.add(a);
+			if ( a != null ) {
+				if ( !definedParameters.contains(a)) {
+					missing.add(a);
+				}
 			}
 		}
 		return missing;
 	}
 
 	public List<List<String>> getGetterTypeSignatures(String field) {
-		
+
 		if ( !checkClassDefinition()) {
 			return null;
 		}
-		
+
 		String method = "get" + (field.charAt(0)+"").toUpperCase() + field.substring(1);
 		List<List<String>> signatures = new ArrayList<>();
 		try {
@@ -309,17 +317,6 @@ public class AdapterClassDefinition implements MappableObject {
 	private void printSignature(String field) {
 		List<List<String>> signatures  = getGetterTypeSignatures(field);
 		System.err.println(field + ": " + signatures);
-	}
-
-	public static void main(String [] args) throws Exception {
-
-		AdapterClassDefinition m = new AdapterClassDefinition("com.dexels.navajo.xtext.navascript.navajobridge.stub.TestBean");
-		System.err.println( m.isSetter("mies") + "->" + m.getType("mies"));
-		System.err.println( m.isGetter("vuur") + "->" + m.getType("vuur") );
-		System.err.println( m.isGetter("kibbeling") + "->" + m.getType("kibbeling") );
-
-		m.printSignature("vuur");
-		m.printSignature("kibbeling");
 	}
 
 }

@@ -34,8 +34,12 @@ import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
 import com.dexels.navajo.navigation.NavigationUtils;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
-import com.dexels.navajo.xtext.navascript.navajobridge.AdapterInterrogator;
+import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
 import com.dexels.navajo.xtext.navascript.navajobridge.OSGIRuntime;
+import com.dexels.navajo.xtext.navascript.navajobridge.ProxyMapDefinition;
+import com.dexels.navajo.xtext.navascript.navajobridge.ProxyMethodDefinition;
+import com.dexels.navajo.xtext.navascript.navajobridge.ProxyParameterDefinition;
+import com.dexels.navajo.xtext.navascript.navajobridge.ProxyValueDefinition;
 
 /**
  * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#content-assist
@@ -43,9 +47,8 @@ import com.dexels.navajo.xtext.navascript.navajobridge.OSGIRuntime;
  */
 public class NavascriptProposalProvider extends AbstractNavascriptProposalProvider implements ServiceListener {
 
-	AdapterInterrogator adapters = null;
+	NavajoProxyStub adapters = null;
 	BundleContext context;
-
 
 	public NavascriptProposalProvider() {
 		context = OSGIRuntime.getDefaultBundleContext();
@@ -58,11 +61,17 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 	public synchronized void init() {
 		if ( adapters == null ) {
-			ServiceReference<AdapterInterrogator> ref = context.getServiceReference(AdapterInterrogator.class);
+			ServiceReference<NavajoProxyStub> ref = context.getServiceReference(NavajoProxyStub.class);
 			adapters = context.getService(ref);
+			//adapters = NavajoProxyStub.getInstance();
 		}
 	}
 
+	private NavajoProxyStub getNavajoProxyStub() {
+		init();
+		return adapters;
+	}
+	
 	protected ICompletionProposal createCompletionProposalFormatted(String proposal, String extra, int priority, ContentAssistContext contentAssistContext) {
 
 
@@ -100,10 +109,10 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 			createParameterList(context, acceptor, map, method, null);
 		} else if ( model instanceof MapImpl ) {
 			MapImpl map = (MapImpl) model;
-			MapDefinition md = adapters.getAdapter(map.getAdapterName()).getMapDefinition();
+			ProxyMapDefinition md = getNavajoProxyStub().getAdapter(map.getAdapterName()).getMapDefinition();
 			Set<String> values = new TreeSet<>(md.getValueDefinitions());
 			for ( String value : values) {
-				ValueDefinition vd = md.getValueDefinition(value);
+				ProxyValueDefinition vd = md.getValueDefinition(value);
 				System.err.println("vd: " + vd.getName() + "/" + vd.getRequired());
 				if ( vd != null && ( vd.getRequired() == null || !"automatic".equals(vd.getRequired()))) {
 					acceptor.accept(createCompletionProposalFormatted(vd.getName() + "=", vd.getMapType(), 1, context));
@@ -123,14 +132,14 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 			String field = maf.getField();
 
 		}
-		AdapterClassDefinition md = adapters.getAdapter(adapterName);
-		MethodDefinition mdm = md.getMapDefinition().getMethodDefinition(method.getMethod().substring(1));
+		AdapterClassDefinition md = getNavajoProxyStub().getAdapter(adapterName);
+		ProxyMethodDefinition mdm = md.getMapDefinition().getMethodDefinition(method.getMethod().substring(1));
 		Set<String> parameters = new TreeSet<>( mdm.getParameters() );
 		if ( currentParameters == null ) {
 			currentParameters =  new HashSet<>();
 		}
 		for ( String param : parameters ) { // First add all required params
-			ParameterDefinition vd = mdm.getParameterDefinition(param);
+			ProxyParameterDefinition vd = mdm.getParameterDefinition(param);
 			if ( vd != null && !currentParameters.contains(param) && "true".equals(vd.getRequired())) {
 				currentParameters.add(param);
 				String type = "unknown";
@@ -144,7 +153,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 			}
 		}
 		for ( String param : parameters ) {
-			ParameterDefinition vd = mdm.getParameterDefinition(param);
+			ProxyParameterDefinition vd = mdm.getParameterDefinition(param);
 			if (  vd != null && !currentParameters.contains(param) && ( vd.getRequired() == null || !"automatic".equals(vd.getRequired()))) {
 				String type = "unknown";
 				try {
@@ -190,7 +199,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 			Set<String> fields;
 			if ( map instanceof MapImpl ) {
 				adapterName = ((MapImpl) map).getAdapterName();
-				AdapterClassDefinition md = adapters.getAdapter(adapterName);
+				AdapterClassDefinition md = getNavajoProxyStub().getAdapter(adapterName);
 				fields = md.getSetters();
 				for ( String a : fields ) {
 					String type = "unknown";
@@ -231,10 +240,10 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				// Methods are not supported in MappedArrayField
 				return;
 			}
-			Set<MethodDefinition> methods = adapters.getAdapter(adapterName).getMethods();
-			MapDefinition md = adapters.getAdapter(adapterName).getMapDefinition();
+			Set<ProxyMethodDefinition> methods = getNavajoProxyStub().getAdapter(adapterName).getMethods();
+			ProxyMapDefinition md = getNavajoProxyStub().getAdapter(adapterName).getMapDefinition();
 			System.err.println(adapterName + " -> " + md);
-			for ( MethodDefinition a : methods) {
+			for ( ProxyMethodDefinition a : methods) {
 				Set<String> parameters = a.getParameters();
 				acceptor.accept(createCompletionProposalFormatted("." + a.getName(), parameters+"", 1, context));
 			}
@@ -246,13 +255,13 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	@Override
 	public void completeMap_AdapterName(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 
-		String [] list =  adapters.getAdapters();
+		String [] list =  getNavajoProxyStub().getAdapters();
 
 		System.err.println("list = " + list);
 
 		for ( String a : list) {
-			if ( adapters.getAdapter(a) != null ) {
-				MapDefinition md = adapters.getAdapter(a).getMapDefinition();
+			if ( getNavajoProxyStub().getAdapter(a) != null ) {
+				ProxyMapDefinition md = getNavajoProxyStub().getAdapter(a).getMapDefinition();
 				String description = ( md.description != null ? md.description.replaceAll("\n", "") : null);
 				acceptor.accept(createCompletionProposalFormatted(md.tagName, description, 1, context));
 			} else {
@@ -275,7 +284,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
 		if ( map != null ) {
-			AdapterClassDefinition md = NavigationUtils.findAdapterClass(adapters, map);
+			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
 			if ( md != null ) {
 				System.err.println("In completeMappableIdentifier_Field. adapter: " + md);
 				Set<String> fields = md.getGetters();
@@ -308,6 +317,8 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	@Override
 	public void completeMappedArrayField_Field(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 
+		System.err.println("In completeMappedArrayField_Field!!!!!");
+
 		String prefix = NavigationUtils.getParentPrefix(context.getPrefix(), new StringBuffer());
 		System.err.println("Prefix is: " + prefix);
 		int level = NavigationUtils.countMappableParentLevel(prefix);
@@ -316,12 +327,12 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		System.err.println("In completeMappedArrayField_Field.findFirstMapOrMappedField() map: " + map);
 
 		if ( map != null ) {
-			AdapterClassDefinition md = NavigationUtils.findAdapterClass(adapters, map);
+			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
 			if ( md != null ) {
 				System.err.println("Found AdapterClassDefinition: " + md.getObjectName());
-				List<ValueDefinition> valuedDefs = md.getDeclaredValues();
+				List<ProxyValueDefinition> valuedDefs = md.getDeclaredValues();
 				System.err.println("In completeMappedArrayField_Field: " + valuedDefs);
-				for ( ValueDefinition a : valuedDefs ) {
+				for ( ProxyValueDefinition a : valuedDefs ) {
 					System.err.println("ValueDefinition " + a.getName() + " [" + a.getMap() + "]");
 					if ( a.getMap() != null && !"".equals(a.getMap() )) {
 						acceptor.accept(createCompletionProposalFormatted(prefix + a.getName(), a.getMapType(), 10, context));
@@ -336,11 +347,11 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 	@Override
 	public void completeFunctionIdentifier_Func(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		String [] functions = adapters.getFunctions();
+		String [] functions = getNavajoProxyStub().getFunctions();
 		for ( String a : functions ) {
 			String description = "";
 			try {
-				description = adapters.getFunction(a).getDescription();
+				description = getNavajoProxyStub().getFunction(a).getDescription();
 			} catch (Exception e) {
 				System.err.println("Could not determine type for field: " + a);
 			}
@@ -356,7 +367,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 			FunctionIdentifierImpl fil = (FunctionIdentifierImpl) model;
 
 
-			String[][] altInputs = adapters.getFunction(fil.getFunc()).getInputParams();
+			String[][] altInputs = getNavajoProxyStub().getFunction(fil.getFunc()).getInputParams();
 			for ( String [] alt : altInputs ) {
 				StringBuffer sb = new StringBuffer();
 				for ( String input : alt ) {

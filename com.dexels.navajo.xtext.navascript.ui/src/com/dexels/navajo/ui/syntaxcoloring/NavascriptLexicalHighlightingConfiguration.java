@@ -1,12 +1,13 @@
 package com.dexels.navajo.ui.syntaxcoloring;
 
-import com.dexels.navajo.xtext.navascript.navajobridge.AdapterInterrogator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.xtext.ide.editor.syntaxcoloring.HighlightingStyles;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcceptor;
 import org.eclipse.xtext.ui.editor.utils.TextStyle;
+
+import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
 
 public class NavascriptLexicalHighlightingConfiguration implements IHighlightingConfiguration {
 
@@ -32,7 +33,7 @@ public class NavascriptLexicalHighlightingConfiguration implements IHighlighting
 	@Override
 	public void configure(IHighlightingConfigurationAcceptor acceptor) {
 		
-		AdapterInterrogator i = new AdapterInterrogator();
+		NavajoProxyStub i = NavajoProxyStub.getInstance();
 
 		System.err.println("In NavascriptLexicalHighlightingConfiguration.configure: " + i);
 		
