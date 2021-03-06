@@ -30,7 +30,7 @@ public class ProxyMetaData {
 						Class cMapDefinition = rMapDefinition.getClass();
 						ProxyMapDefinition pmd = new ProxyMapDefinition(rMapDefinition, cMapDefinition);
 						mapDefinitions.put(s, pmd);
-						System.err.println("@@@@@@@@@@ Added adapter " + s + " with ProxyMapDefinition: " + pmd);
+						//System.err.println("@@@@@@@@@@ Added adapter " + s + " with ProxyMapDefinition: " + pmd);
 					} catch (Throwable e) {
 						e.printStackTrace(System.err);
 						System.err.println("Could not add adapter " + s + ": " + e.getMessage());

@@ -91,7 +91,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		String adapterName = map.getAdapterName();
 		String objectName = map.getObjectName();
 
-		System.err.println("In checkMapDefinition. adapterName: " + adapterName + ", objectName: " + objectName);
+		//System.err.println("In checkMapDefinition. adapterName: " + adapterName + ", objectName: " + objectName);
 
 		// If an objectName (old style) is used, ignore check.
 		if ( objectName != null && !"".equals(objectName)) {

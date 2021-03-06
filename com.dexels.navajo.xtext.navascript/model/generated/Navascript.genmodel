@@ -195,6 +195,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//PropertyArguments/arguments"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//PropertyArgument"/>
+    <genClasses ecoreClass="Navascript.ecore#//LengthArgument">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//LengthArgument/value"/>
+    </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//DirectionArgument">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//DirectionArgument/value"/>
     </genClasses>

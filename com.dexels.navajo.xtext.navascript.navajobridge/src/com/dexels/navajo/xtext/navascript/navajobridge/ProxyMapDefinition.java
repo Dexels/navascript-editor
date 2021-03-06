@@ -60,7 +60,7 @@ public class ProxyMapDefinition {
 					Class mdClass = mdObject.getClass();
 					ProxyMethodDefinition pmd = new ProxyMethodDefinition(mdObject, mdClass);
 					methodDefinitions.put(mString, pmd);
-					System.err.println("&&&&& added method " + mString + ": " + pmd);
+					//System.err.println("&&&&& added method " + mString + ": " + pmd);
 				} catch (Exception e) {
 					System.err.println("Could not call getMethodDefinition(" + mString + "): " + e);
 				}
@@ -108,7 +108,7 @@ public class ProxyMapDefinition {
 		} catch (Throwable t) {
 			System.err.println("Could not instantiate class: " + objectName + ": " + t.getMessage());
 		}
-		System.err.println(">>>>>>>>>>>>>>" + tagName + " has object " + objectClass);
+		//System.err.println(">>>>>>>>>>>>>>" + tagName + " has object " + objectClass);
 
 	}
 

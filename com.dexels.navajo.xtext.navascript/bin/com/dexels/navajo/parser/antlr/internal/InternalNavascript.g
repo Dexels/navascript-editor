@@ -4751,6 +4751,60 @@ rulePropertyArgument returns [EObject current=null]
 			$current = $this_CardinalityArgument_4.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getLengthArgumentParserRuleCall_5());
+		}
+		this_LengthArgument_5=ruleLengthArgument
+		{
+			$current = $this_LengthArgument_5.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleLengthArgument
+entryRuleLengthArgument returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLengthArgumentRule()); }
+	iv_ruleLengthArgument=ruleLengthArgument
+	{ $current=$iv_ruleLengthArgument.current; }
+	EOF;
+
+// Rule LengthArgument
+ruleLengthArgument returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_LENGTH_DEF_0=RULE_LENGTH_DEF
+		{
+			newLeafNode(this_LENGTH_DEF_0, grammarAccess.getLengthArgumentAccess().getLENGTH_DEFTerminalRuleCall_0());
+		}
+		this_ASSIGNMENT_1=RULE_ASSIGNMENT
+		{
+			newLeafNode(this_ASSIGNMENT_1, grammarAccess.getLengthArgumentAccess().getASSIGNMENTTerminalRuleCall_1());
+		}
+		(
+			(
+				lv_value_2_0=RULE_INTEGER
+				{
+					newLeafNode(lv_value_2_0, grammarAccess.getLengthArgumentAccess().getValueINTEGERTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getLengthArgumentRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"value",
+						lv_value_2_0,
+						"com.dexels.navajo.Navascript.INTEGER");
+				}
+			)
+		)
 	)
 ;
 
@@ -6807,6 +6861,8 @@ RULE_SUBTYPE_DEF : 'subtype';
 RULE_MODE_DEF : 'mode';
 
 RULE_DIRECTION_DEF : 'direction';
+
+RULE_LENGTH_DEF : 'length';
 
 RULE_CARDINALITY_DEF : 'cardinality';
 

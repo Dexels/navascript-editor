@@ -164,6 +164,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getOptionAccess().getGroup(), "rule__Option__Group__0");
 			builder.put(grammarAccess.getPropertyArgumentsAccess().getGroup(), "rule__PropertyArguments__Group__0");
 			builder.put(grammarAccess.getPropertyArgumentsAccess().getGroup_3(), "rule__PropertyArguments__Group_3__0");
+			builder.put(grammarAccess.getLengthArgumentAccess().getGroup(), "rule__LengthArgument__Group__0");
 			builder.put(grammarAccess.getDirectionArgumentAccess().getGroup(), "rule__DirectionArgument__Group__0");
 			builder.put(grammarAccess.getDescriptionArgumentAccess().getGroup(), "rule__DescriptionArgument__Group__0");
 			builder.put(grammarAccess.getCardinalityArgumentAccess().getGroup(), "rule__CardinalityArgument__Group__0");
@@ -326,6 +327,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getOptionAccess().getExpressionListAssignment_3(), "rule__Option__ExpressionListAssignment_3");
 			builder.put(grammarAccess.getPropertyArgumentsAccess().getArgumentsAssignment_2(), "rule__PropertyArguments__ArgumentsAssignment_2");
 			builder.put(grammarAccess.getPropertyArgumentsAccess().getArgumentsAssignment_3_1(), "rule__PropertyArguments__ArgumentsAssignment_3_1");
+			builder.put(grammarAccess.getLengthArgumentAccess().getValueAssignment_2(), "rule__LengthArgument__ValueAssignment_2");
 			builder.put(grammarAccess.getDirectionArgumentAccess().getValueAssignment_2(), "rule__DirectionArgument__ValueAssignment_2");
 			builder.put(grammarAccess.getDescriptionArgumentAccess().getValueAssignment_2(), "rule__DescriptionArgument__ValueAssignment_2");
 			builder.put(grammarAccess.getCardinalityArgumentAccess().getValueAssignment_2(), "rule__CardinalityArgument__ValueAssignment_2");

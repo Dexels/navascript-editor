@@ -165,7 +165,9 @@ Option : OPTION_DEF option=OPTION_TYPE  ASSIGNMENT expressionList=ConditionalExp
 
 PropertyArguments : {PropertyArguments} ARGS_START (arguments+=PropertyArgument) (ARG_SEP (arguments+=PropertyArgument))* ARGS_END;
 
-PropertyArgument : DirectionArgument | TypeArgument | SubTypeArgument | DescriptionArgument | CardinalityArgument;
+PropertyArgument : DirectionArgument | TypeArgument | SubTypeArgument | DescriptionArgument | CardinalityArgument | LengthArgument ; 
+
+LengthArgument :  LENGTH_DEF ASSIGNMENT (value=INTEGER);
 
 DirectionArgument : DIRECTION_DEF ASSIGNMENT (value=( IN_DEF | OUT_DEF | INOUT_DEF ) );
 
@@ -306,6 +308,7 @@ terminal TYPE_DEF : "type";
 terminal SUBTYPE_DEF : "subtype";
 terminal MODE_DEF : "mode";
 terminal DIRECTION_DEF : "direction";
+terminal LENGTH_DEF : "length";
 terminal CARDINALITY_DEF : "cardinality";
 terminal MESSAGE_DEF : 'message';
 terminal PROPERTY_DEF : 'property';

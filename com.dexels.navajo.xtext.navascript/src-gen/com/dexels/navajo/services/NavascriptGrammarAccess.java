@@ -2756,12 +2756,13 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final RuleCall cSubTypeArgumentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cDescriptionArgumentParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cCardinalityArgumentParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cLengthArgumentParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//PropertyArgument:
-		//	DirectionArgument | TypeArgument | SubTypeArgument | DescriptionArgument | CardinalityArgument;
+		//	DirectionArgument | TypeArgument | SubTypeArgument | DescriptionArgument | CardinalityArgument | LengthArgument;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//DirectionArgument | TypeArgument | SubTypeArgument | DescriptionArgument | CardinalityArgument
+		//DirectionArgument | TypeArgument | SubTypeArgument | DescriptionArgument | CardinalityArgument | LengthArgument
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//DirectionArgument
@@ -2778,6 +2779,36 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		
 		//CardinalityArgument
 		public RuleCall getCardinalityArgumentParserRuleCall_4() { return cCardinalityArgumentParserRuleCall_4; }
+		
+		//LengthArgument
+		public RuleCall getLengthArgumentParserRuleCall_5() { return cLengthArgumentParserRuleCall_5; }
+	}
+	public class LengthArgumentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.LengthArgument");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cLENGTH_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cASSIGNMENTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueINTEGERTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		
+		//LengthArgument:
+		//	LENGTH_DEF ASSIGNMENT value=INTEGER;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//LENGTH_DEF ASSIGNMENT value=INTEGER
+		public Group getGroup() { return cGroup; }
+		
+		//LENGTH_DEF
+		public RuleCall getLENGTH_DEFTerminalRuleCall_0() { return cLENGTH_DEFTerminalRuleCall_0; }
+		
+		//ASSIGNMENT
+		public RuleCall getASSIGNMENTTerminalRuleCall_1() { return cASSIGNMENTTerminalRuleCall_1; }
+		
+		//value=INTEGER
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		
+		//INTEGER
+		public RuleCall getValueINTEGERTerminalRuleCall_2_0() { return cValueINTEGERTerminalRuleCall_2_0; }
 	}
 	public class DirectionArgumentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.DirectionArgument");
@@ -4063,6 +4094,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	private final OptionElements pOption;
 	private final PropertyArgumentsElements pPropertyArguments;
 	private final PropertyArgumentElements pPropertyArgument;
+	private final LengthArgumentElements pLengthArgument;
 	private final DirectionArgumentElements pDirectionArgument;
 	private final DescriptionArgumentElements pDescriptionArgument;
 	private final CardinalityArgumentElements pCardinalityArgument;
@@ -4127,6 +4159,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	private final TerminalRule tSUBTYPE_DEF;
 	private final TerminalRule tMODE_DEF;
 	private final TerminalRule tDIRECTION_DEF;
+	private final TerminalRule tLENGTH_DEF;
 	private final TerminalRule tCARDINALITY_DEF;
 	private final TerminalRule tMESSAGE_DEF;
 	private final TerminalRule tPROPERTY_DEF;
@@ -4215,6 +4248,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		this.pOption = new OptionElements();
 		this.pPropertyArguments = new PropertyArgumentsElements();
 		this.pPropertyArgument = new PropertyArgumentElements();
+		this.pLengthArgument = new LengthArgumentElements();
 		this.pDirectionArgument = new DirectionArgumentElements();
 		this.pDescriptionArgument = new DescriptionArgumentElements();
 		this.pCardinalityArgument = new CardinalityArgumentElements();
@@ -4279,6 +4313,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		this.tSUBTYPE_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.SUBTYPE_DEF");
 		this.tMODE_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.MODE_DEF");
 		this.tDIRECTION_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.DIRECTION_DEF");
+		this.tLENGTH_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.LENGTH_DEF");
 		this.tCARDINALITY_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.CARDINALITY_DEF");
 		this.tMESSAGE_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.MESSAGE_DEF");
 		this.tPROPERTY_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.PROPERTY_DEF");
@@ -4908,13 +4943,23 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//PropertyArgument:
-	//	DirectionArgument | TypeArgument | SubTypeArgument | DescriptionArgument | CardinalityArgument;
+	//	DirectionArgument | TypeArgument | SubTypeArgument | DescriptionArgument | CardinalityArgument | LengthArgument;
 	public PropertyArgumentElements getPropertyArgumentAccess() {
 		return pPropertyArgument;
 	}
 	
 	public ParserRule getPropertyArgumentRule() {
 		return getPropertyArgumentAccess().getRule();
+	}
+	
+	//LengthArgument:
+	//	LENGTH_DEF ASSIGNMENT value=INTEGER;
+	public LengthArgumentElements getLengthArgumentAccess() {
+		return pLengthArgument;
+	}
+	
+	public ParserRule getLengthArgumentRule() {
+		return getLengthArgumentAccess().getRule();
 	}
 	
 	//DirectionArgument:
@@ -5398,6 +5443,12 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	//	"direction";
 	public TerminalRule getDIRECTION_DEFRule() {
 		return tDIRECTION_DEF;
+	}
+	
+	//terminal LENGTH_DEF:
+	//	"length";
+	public TerminalRule getLENGTH_DEFRule() {
+		return tLENGTH_DEF;
 	}
 	
 	//terminal CARDINALITY_DEF:

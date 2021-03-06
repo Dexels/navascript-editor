@@ -341,6 +341,11 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
         return createPropertyArgumentAdapter();
       }
       @Override
+      public Adapter caseLengthArgument(LengthArgument object)
+      {
+        return createLengthArgumentAdapter();
+      }
+      @Override
       public Adapter caseDirectionArgument(DirectionArgument object)
       {
         return createDirectionArgumentAdapter();
@@ -1393,6 +1398,21 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPropertyArgumentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.LengthArgument <em>Length Argument</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.LengthArgument
+   * @generated
+   */
+  public Adapter createLengthArgumentAdapter()
   {
     return null;
   }

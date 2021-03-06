@@ -88,6 +88,8 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getINCLUDE_DEFToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getKEY_DEFRule())
 			return getKEY_DEFToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getLENGTH_DEFRule())
+			return getLENGTH_DEFToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getLOG_DEFRule())
 			return getLOG_DEFToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getLOOP_DEFRule())
@@ -338,6 +340,15 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 		if (node != null)
 			return getTokenText(node);
 		return "key";
+	}
+	
+	/**
+	 * terminal LENGTH_DEF : "length";
+	 */
+	protected String getLENGTH_DEFToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "length";
 	}
 	
 	/**

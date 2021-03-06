@@ -43,6 +43,7 @@ import com.dexels.navajo.navascript.InnerBody;
 import com.dexels.navajo.navascript.IntType;
 import com.dexels.navajo.navascript.KeyValueArgument;
 import com.dexels.navajo.navascript.KeyValueArguments;
+import com.dexels.navajo.navascript.LengthArgument;
 import com.dexels.navajo.navascript.LiteralOrExpression;
 import com.dexels.navajo.navascript.Log;
 import com.dexels.navajo.navascript.Loop;
@@ -492,6 +493,13 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   private EClass propertyArgumentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass lengthArgumentEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -2460,6 +2468,28 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
+  public EClass getLengthArgument()
+  {
+    return lengthArgumentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLengthArgument_Value()
+  {
+    return (EAttribute)lengthArgumentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getDirectionArgument()
   {
     return directionArgumentEClass;
@@ -3714,6 +3744,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     propertyArgumentEClass = createEClass(PROPERTY_ARGUMENT);
 
+    lengthArgumentEClass = createEClass(LENGTH_ARGUMENT);
+    createEAttribute(lengthArgumentEClass, LENGTH_ARGUMENT__VALUE);
+
     directionArgumentEClass = createEClass(DIRECTION_ARGUMENT);
     createEAttribute(directionArgumentEClass, DIRECTION_ARGUMENT__VALUE);
 
@@ -3893,6 +3926,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     literalOrExpressionEClass.getESuperTypes().add(this.getBreakParameter());
     adapterMethodEClass.getESuperTypes().add(this.getMethodOrSetter());
     setterFieldEClass.getESuperTypes().add(this.getMethodOrSetter());
+    lengthArgumentEClass.getESuperTypes().add(this.getPropertyArgument());
     directionArgumentEClass.getESuperTypes().add(this.getPropertyArgument());
     descriptionArgumentEClass.getESuperTypes().add(this.getPropertyArgument());
     cardinalityArgumentEClass.getESuperTypes().add(this.getPropertyArgument());
@@ -4131,6 +4165,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     initEReference(getPropertyArguments_Arguments(), this.getPropertyArgument(), null, "arguments", null, 0, -1, PropertyArguments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyArgumentEClass, PropertyArgument.class, "PropertyArgument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(lengthArgumentEClass, LengthArgument.class, "LengthArgument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLengthArgument_Value(), ecorePackage.getEString(), "value", null, 0, 1, LengthArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(directionArgumentEClass, DirectionArgument.class, "DirectionArgument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDirectionArgument_Value(), ecorePackage.getEString(), "value", null, 0, 1, DirectionArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

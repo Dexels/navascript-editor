@@ -501,6 +501,15 @@ public interface NavascriptFactory extends EFactory
   PropertyArgument createPropertyArgument();
 
   /**
+   * Returns a new object of class '<em>Length Argument</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Length Argument</em>'.
+   * @generated
+   */
+  LengthArgument createLengthArgument();
+
+  /**
    * Returns a new object of class '<em>Direction Argument</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

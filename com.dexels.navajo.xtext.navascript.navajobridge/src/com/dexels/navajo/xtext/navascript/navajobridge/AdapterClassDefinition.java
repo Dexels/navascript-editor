@@ -29,6 +29,7 @@ public class AdapterClassDefinition  {
 			classLoader = cl;
 			if ( cl != null ) {
 				classDefinition = Class.forName(m.objectName, true, classLoader);
+				System.err.println("FOUND CLASS. " + m.tagName + " HAS CLASS " + classDefinition);
 			}
 		} catch (Throwable e) {
 			System.err.println("Could not find class for adapter: " + m.tagName + " (" + e.getLocalizedMessage() + ")");

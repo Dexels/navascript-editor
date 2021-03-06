@@ -42,6 +42,7 @@ import com.dexels.navajo.navascript.InnerBody;
 import com.dexels.navajo.navascript.IntType;
 import com.dexels.navajo.navascript.KeyValueArgument;
 import com.dexels.navajo.navascript.KeyValueArguments;
+import com.dexels.navajo.navascript.LengthArgument;
 import com.dexels.navajo.navascript.LiteralOrExpression;
 import com.dexels.navajo.navascript.Log;
 import com.dexels.navajo.navascript.Loop;
@@ -238,6 +239,9 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				return; 
 			case NavascriptPackage.KEY_VALUE_ARGUMENTS:
 				sequence_KeyValueArguments(context, (KeyValueArguments) semanticObject); 
+				return; 
+			case NavascriptPackage.LENGTH_ARGUMENT:
+				sequence_LengthArgument(context, (LengthArgument) semanticObject); 
 				return; 
 			case NavascriptPackage.LITERAL_OR_EXPRESSION:
 				sequence_LiteralOrExpression(context, (LiteralOrExpression) semanticObject); 
@@ -1131,6 +1135,25 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 */
 	protected void sequence_KeyValueArguments(ISerializationContext context, KeyValueArguments semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     PropertyArgument returns LengthArgument
+	 *     LengthArgument returns LengthArgument
+	 *
+	 * Constraint:
+	 *     value=INTEGER
+	 */
+	protected void sequence_LengthArgument(ISerializationContext context, LengthArgument semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.LENGTH_ARGUMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.LENGTH_ARGUMENT__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLengthArgumentAccess().getValueINTEGERTerminalRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	

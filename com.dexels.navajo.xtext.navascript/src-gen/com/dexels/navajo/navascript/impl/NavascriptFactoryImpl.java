@@ -118,6 +118,7 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
       case NavascriptPackage.OPTION: return createOption();
       case NavascriptPackage.PROPERTY_ARGUMENTS: return createPropertyArguments();
       case NavascriptPackage.PROPERTY_ARGUMENT: return createPropertyArgument();
+      case NavascriptPackage.LENGTH_ARGUMENT: return createLengthArgument();
       case NavascriptPackage.DIRECTION_ARGUMENT: return createDirectionArgument();
       case NavascriptPackage.DESCRIPTION_ARGUMENT: return createDescriptionArgument();
       case NavascriptPackage.CARDINALITY_ARGUMENT: return createCardinalityArgument();
@@ -805,6 +806,18 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
   {
     PropertyArgumentImpl propertyArgument = new PropertyArgumentImpl();
     return propertyArgument;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public LengthArgument createLengthArgument()
+  {
+    LengthArgumentImpl lengthArgument = new LengthArgumentImpl();
+    return lengthArgument;
   }
 
   /**

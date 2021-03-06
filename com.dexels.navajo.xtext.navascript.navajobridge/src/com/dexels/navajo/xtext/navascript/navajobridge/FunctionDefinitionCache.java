@@ -1,0 +1,32 @@
+package com.dexels.navajo.xtext.navascript.navajobridge;
+
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+import com.dexels.navajo.expression.api.FunctionDefinition;
+
+public class FunctionDefinitionCache {
+
+	static FunctionDefinitionCache instance = new FunctionDefinitionCache();
+
+	Map<String, FunctionDefinition> cache = new TreeMap<>();
+
+
+	public static FunctionDefinitionCache getInstance() {
+		return instance;
+	}
+
+	public void addFunctionDefinition(String name, FunctionDefinition fd) {
+		//System.err.println(">>>> adding function " + name + ": " + fd);
+		cache.put(name, fd);
+	}
+
+	public FunctionDefinition getFunction(String s) {
+		return cache.get(s);
+	}
+	
+	public Set<String> getFunctions() {
+		return cache.keySet();
+	}
+}

@@ -3,7 +3,7 @@ Automatic-Module-Name: com.dexels.navajo.xtext.navascript
 Bundle-ManifestVersion: 2
 Bundle-Name: com.dexels.navajo.xtext.navascript
 Bundle-Vendor: Dexels BV
-Bundle-Version: 0.9.9
+Bundle-Version: 0.9.10
 Bundle-SymbolicName: com.dexels.navajo.xtext.navascript; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
@@ -31,4 +31,5 @@ Export-Package: com.dexels.navajo,
  com.dexels.navajo.validation
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Import-Package: com.dexels.navajo.expression.api,
- com.dexels.navajo.mapping.compiler.meta
+ com.dexels.navajo.mapping.compiler.meta,
+ org.apache.log4j

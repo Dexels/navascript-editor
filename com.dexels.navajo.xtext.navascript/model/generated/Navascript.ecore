@@ -264,6 +264,9 @@
         eType="#//PropertyArgument" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyArgument"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LengthArgument" eSuperTypes="#//PropertyArgument">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DirectionArgument" eSuperTypes="#//PropertyArgument">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

@@ -42,6 +42,7 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 				"RULE_INOUT_DEF",
 				"RULE_DESCRIPTION_DEF",
 				"RULE_DIRECTION_DEF",
+				"RULE_LENGTH_DEF",
 				"RULE_TYPE_DEF",
 				"RULE_SUBTYPE_DEF",
 				"RULE_CARDINALITY_DEF",

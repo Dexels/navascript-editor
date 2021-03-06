@@ -452,6 +452,14 @@ public class NavascriptSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case NavascriptPackage.LENGTH_ARGUMENT:
+      {
+        LengthArgument lengthArgument = (LengthArgument)theEObject;
+        T result = caseLengthArgument(lengthArgument);
+        if (result == null) result = casePropertyArgument(lengthArgument);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case NavascriptPackage.DIRECTION_ARGUMENT:
       {
         DirectionArgument directionArgument = (DirectionArgument)theEObject;
@@ -1735,6 +1743,22 @@ public class NavascriptSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePropertyArgument(PropertyArgument object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Length Argument</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Length Argument</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLengthArgument(LengthArgument object)
   {
     return null;
   }
