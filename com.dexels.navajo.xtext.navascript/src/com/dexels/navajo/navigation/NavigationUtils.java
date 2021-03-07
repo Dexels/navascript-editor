@@ -3,7 +3,6 @@ package com.dexels.navajo.navigation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.INode;
 
-import com.dexels.navajo.mapping.compiler.meta.ValueDefinition;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
@@ -17,8 +16,6 @@ public final class NavigationUtils {
 	}
 	
 	public static AdapterClassDefinition findAdapterClass(NavajoProxyStub adapters, EObject model) {
-
-		System.err.println("In findAdapterClass: " + model);
 		
 		if ( model instanceof MapImpl ) {
 			return adapters.getAdapter(((MapImpl) model).getAdapterName());
@@ -115,14 +112,6 @@ public final class NavigationUtils {
 		raw = raw.replaceAll("\\.\\.\\/", "");
 		return raw;
 		
-	}
-	
-	public static void main(String [] args ) {
-		
-		String map = "$../../resultSet";
-		System.err.println("level: " + countMappableParentLevel(map));
-		System.err.println("parent prefix: " + getParentPrefix(map, new StringBuffer()));
-		System.err.println("clean field: " + getFieldFromMappableIdentifier(map));
 	}
 	
 }

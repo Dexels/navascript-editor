@@ -33,16 +33,13 @@ public class NavajoProxyStub implements IResourceChangeListener {
 			@Override
 			public void run() {
 
+				adapters.clear();
+				
 				try {
 					JavaProjectIntrospection.findVersionClasses();
 				} catch (Exception e) {
 
 				}
-
-				System.err.println("**********************************************************************************");
-				System.err.println("**********************************************************************************");
-				System.err.println("**********************************************************************************");
-				System.err.println("**********************************************************************************");
 
 				try {
 					Set<String> allAdapters = ProxyMetaData.getInstance().getMapDefinitions();
@@ -54,7 +51,6 @@ public class NavajoProxyStub implements IResourceChangeListener {
 							if ( pmd != null && pmd.tagName != null  ) {
 								AdapterClassDefinition acd = new AdapterClassDefinition(pmd, ( pmd.mapDefinitionClass != null? pmd.mapDefinitionClass.getClassLoader() : null));
 								adapters.put(md, acd);
-								System.err.println(">>>>>>>>>> Stored adapter " + md + ", with AdapterClassDefinition: " + acd);
 							} else {
 								System.err.println("Could not find " + md + " in ProxyMetaData");
 							}
@@ -106,9 +102,6 @@ public class NavajoProxyStub implements IResourceChangeListener {
 	}
 
 	public String [] getFunctions() {
-
-		System.err.println("In getFunctions()....");
-
 		Set<String> all = FunctionDefinitionCache.getInstance().getFunctions();
 		String [] fArray = new String[all.size()];
 		fArray = all.toArray(fArray);
@@ -131,6 +124,9 @@ public class NavajoProxyStub implements IResourceChangeListener {
 
 	@Override
 	public void resourceChanged(IResourceChangeEvent event) {
+		if ( tpe.getQueue().size() > 0 ) { // Existing init() is running. Skip this one.
+			return;
+		}
 		IResourceDelta delta = event.getDelta();
 		List<IFile> changedFiles = findChangedFiles(delta);
 		boolean hasJavaFile = false;
@@ -139,12 +135,10 @@ public class NavajoProxyStub implements IResourceChangeListener {
 			if ( f.getFileExtension().equals("java")) {
 				hasJavaFile = true;
 				System.err.println("THIS JAVA FILE HAS CHANGED: " + f.getName());
+				break;
 			}
 		}
 		if ( hasJavaFile ) {
-			if ( tpe.getQueue().size() > 0 ) { // Existing init() is running. Skip this one.
-				return;
-			}
 			System.err.println("CHANGED JAVA FILE. CALL INIT() AGAIN!!!!!!!!!!");
 			init();
 		}

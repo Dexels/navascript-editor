@@ -4,14 +4,17 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.osgi.framework.Bundle;
 
 import com.dexels.navajo.document.NavajoFactory;
 import com.dexels.navajo.document.Property;
+import com.dexels.navajo.document.PropertyTypeChecker;
 import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
 import com.dexels.navajo.mapping.compiler.meta.MethodDefinition;
 import com.dexels.navajo.mapping.compiler.meta.ParameterDefinition;
@@ -22,6 +25,10 @@ public class AdapterClassDefinition  {
 	private ProxyMapDefinition myDefinition;
 	private Class classDefinition;
 	private ClassLoader classLoader;
+	private Map<String,String> setterTypes = new HashMap<>();
+	private Set<String> setters = new HashSet<>();
+	private Set<String> getters = new HashSet<>();
+	private Map<String,String> getterTypes = new HashMap<>();
 
 	public AdapterClassDefinition(ProxyMapDefinition m, ClassLoader cl) throws Exception {
 		myDefinition = m;
@@ -29,7 +36,6 @@ public class AdapterClassDefinition  {
 			classLoader = cl;
 			if ( cl != null ) {
 				classDefinition = Class.forName(m.objectName, true, classLoader);
-				System.err.println("FOUND CLASS. " + m.tagName + " HAS CLASS " + classDefinition);
 			}
 		} catch (Throwable e) {
 			System.err.println("Could not find class for adapter: " + m.tagName + " (" + e.getLocalizedMessage() + ")");
@@ -100,12 +106,38 @@ public class AdapterClassDefinition  {
 		if ( type.getTypeName().equals("boolean")|| type.getTypeName().equals("java.lang.Boolean") ) {
 			return Property.BOOLEAN_PROPERTY;
 		}
-
-		if ( type.getTypeName().indexOf(".") != -1 && classLoader != null) { // object
-			return getType(Class.forName(type.getTypeName(), true, classLoader));
+		if ( type.getTypeName().endsWith("Binary")) {
+			return Property.BINARY_PROPERTY;
+		}
+		if ( type.getTypeName().equals("java.lang.String") ) {
+			return "string";
+		}
+		if ( type.getTypeName().equals("java.util.Date") ) {
+			return "date";
+		}
+		if ( type.getTypeName().equals("com.dexels.navajo.document.types.ClockTime") ) {
+			return "clocktime";
+		}
+		if ( type.getTypeName().equals("java.lang.Object")) {
+			return "any";
+		}
+		if ( type.getTypeName().endsWith("Percentage")) {
+			return "percentage";
+		}
+		if ( type.getTypeName().endsWith("Money")) {
+			return "money";
+		}
+		if ( type.getTypeName().endsWith("Memo")) {
+			return "memo";
 		}
 
-		return type.getTypeName();
+		throw new Exception("Unknown navajo type for: " + type);
+
+		//		if ( type.getTypeName().indexOf(".") != -1 && classLoader != null) { // object
+		//			return getType(Class.forName(type.getTypeName(), true, classLoader));
+		//		}
+		//
+		//		return type.getTypeName();
 	}
 
 	private String getType(Class c) throws Exception {
@@ -119,7 +151,10 @@ public class AdapterClassDefinition  {
 		if ( !checkClassDefinition()) {
 			return null;
 		}
-		Field f = classDefinition.getDeclaredField(field);
+		if ( setterTypes.get(field) != null ) {
+			return setterTypes.get(field);
+		}
+		Field f = classDefinition.getField(field);
 		if ( !f.getType().isPrimitive() ) {
 			return getType(f.getType());
 		} else {
@@ -131,7 +166,7 @@ public class AdapterClassDefinition  {
 		if ( !checkClassDefinition()) {
 			return null;
 		}
-		Field f = classDefinition.getDeclaredField(field);
+		Field f = classDefinition.getField(field);
 		if ( f.getType().isPrimitive()) {
 			throw new Exception("Cannot create AdapterClassDefinition for primitive type");
 		}
@@ -150,7 +185,7 @@ public class AdapterClassDefinition  {
 
 		String method = "set" + (field.charAt(0)+"").toUpperCase() + field.substring(1);
 		try {
-			Field f = classDefinition.getDeclaredField(field);
+			Field f = classDefinition.getField(field);
 			Method m = classDefinition.getMethod(method, f.getType());
 			if ( m != null ) {
 				return true;
@@ -193,56 +228,83 @@ public class AdapterClassDefinition  {
 
 	public Set<String> getGetters() { // Use definition not object.
 
+		if ( getters.size() > 0 ) {
+			return getters;
+		}
+
 		if ( !checkClassDefinition()) { 
-			Set<String> result = new HashSet<>();
 			Set<String> values = myDefinition.getValueDefinitions();
 			for ( String v : values ) {
 				ProxyValueDefinition vd = myDefinition.getValueDefinition(v);
 				if ( "out".equals(vd.getDirection()) ){
-					result.add(v);
+					getters.add(v);
 				}
 			}
-			return result;
+			return getters;
 		}
-
-		Set<String> set = new HashSet<>();
 
 		Method [] methods = classDefinition.getMethods();
 		for ( Method m : methods ) {
 			if ( m.getName().startsWith("get")) {
 				String name = m.getName().substring(3);
 				name = (name.charAt(0)+"").toLowerCase() + name.substring(1);
-				set.add(name);
+				// getterTypes
+				Type rtType = m.getGenericReturnType();
+				try {
+					String rtString = getType(rtType);
+					getters.add(name);
+					getterTypes.put(name, rtString);
+				} catch (Exception e) {
+					System.err.println("Could not determine return type for: " + name);
+				}	
 			}
 		}
-		return set;
+		return getters;
+	}
+
+	public String getSetterType(String field) {
+		getSetters();
+		return setterTypes.get(field);
+	}
+
+	public String getGetterType(String field) {
+		getGetters();
+		return getterTypes.get(field);
 	}
 
 	public Set<String> getSetters() {
 
+		if ( setters.size() > 0 ) {
+			return setters;
+		}
+
 		if ( !checkClassDefinition()) { // Use definition not object.
-			Set<String> result = new HashSet<>();
 			Set<String> values = myDefinition.getValueDefinitions();
 			for ( String v : values ) {
 				ProxyValueDefinition vd = myDefinition.getValueDefinition(v);
 				if ( "in".equals(vd.getDirection()) ){
-					result.add(v);
+					setters.add(v);
 				}
 			}
-			return result;
+			return setters;
 		}
-
-		Set<String> set = new HashSet<>();
 
 		Method [] methods = classDefinition.getMethods();
 		for ( Method m : methods ) {
-			if ( m.getName().startsWith("set")) {
+			if ( m.getName().startsWith("set") && m.getGenericParameterTypes().length == 1 ) {
 				String name = m.getName().substring(3);
 				name = (name.charAt(0)+"").toLowerCase() + name.substring(1);
-				set.add(name);
+				Type type = m.getGenericParameterTypes()[0];
+				try {
+					String tStr = getType(type);
+					setterTypes.put(name, tStr);
+					setters.add(name);
+				} catch (Exception e) {
+					System.err.println("Could not find type for " + type + ": " + e);
+				}
 			}
 		}
-		return set;
+		return setters;
 	}
 
 	public Set<String> missingRequiredParameters(String method, List<String> arguments) {
@@ -294,6 +356,7 @@ public class AdapterClassDefinition  {
 		}
 
 		String method = "get" + (field.charAt(0)+"").toUpperCase() + field.substring(1);
+
 		List<List<String>> signatures = new ArrayList<>();
 		try {
 			Method [] methods = classDefinition.getMethods();

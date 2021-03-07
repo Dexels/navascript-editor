@@ -113,7 +113,6 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		int level = NavigationUtils.countMappableParentLevel(prefix);
 		EObject parent = NavigationUtils.findFirstMapOrMappedField(mai.eContainer(), level);
 		AdapterClassDefinition mapdef = NavigationUtils.findAdapterClass(getNavajoProxyStub(),parent);
-		System.err.println("MAPDEF: " + mapdef + ", FIELD: " + fieldName + ", LEVEL: " + level);
 
 		if ( mapdef != null ) {
 

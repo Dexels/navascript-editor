@@ -212,9 +212,9 @@ ruleTopLevelStatement returns [EObject current=null]
 			}
 		)
 		(
-			this_IF_1=RULE_IF
+			otherlv_1='if'
 			{
-				newLeafNode(this_IF_1, grammarAccess.getTopLevelStatementAccess().getIFTerminalRuleCall_1_0());
+				newLeafNode(otherlv_1, grammarAccess.getTopLevelStatementAccess().getIfKeyword_1_0());
 			}
 			(
 				(
@@ -235,9 +235,9 @@ ruleTopLevelStatement returns [EObject current=null]
 					}
 				)
 			)
-			this_THEN_3=RULE_THEN
+			otherlv_3='then'
 			{
-				newLeafNode(this_THEN_3, grammarAccess.getTopLevelStatementAccess().getTHENTerminalRuleCall_1_2());
+				newLeafNode(otherlv_3, grammarAccess.getTopLevelStatementAccess().getThenKeyword_1_2());
 			}
 		)?
 		(
@@ -480,9 +480,9 @@ ruleInnerBody returns [EObject current=null]
 			}
 		)
 		(
-			this_IF_1=RULE_IF
+			otherlv_1='if'
 			{
-				newLeafNode(this_IF_1, grammarAccess.getInnerBodyAccess().getIFTerminalRuleCall_1_0());
+				newLeafNode(otherlv_1, grammarAccess.getInnerBodyAccess().getIfKeyword_1_0());
 			}
 			(
 				(
@@ -503,9 +503,9 @@ ruleInnerBody returns [EObject current=null]
 					}
 				)
 			)
-			this_THEN_3=RULE_THEN
+			otherlv_3='then'
 			{
-				newLeafNode(this_THEN_3, grammarAccess.getInnerBodyAccess().getTHENTerminalRuleCall_1_2());
+				newLeafNode(otherlv_3, grammarAccess.getInnerBodyAccess().getThenKeyword_1_2());
 			}
 		)?
 		(
@@ -779,9 +779,9 @@ ruleBlockStatements returns [EObject current=null]
 					$current);
 			}
 		)
-		this_BLOCK_START_1=RULE_BLOCK_START
+		otherlv_1='{'
 		{
-			newLeafNode(this_BLOCK_START_1, grammarAccess.getBlockStatementsAccess().getBLOCK_STARTTerminalRuleCall_1());
+			newLeafNode(otherlv_1, grammarAccess.getBlockStatementsAccess().getLeftCurlyBracketKeyword_1());
 		}
 		(
 			(
@@ -802,9 +802,9 @@ ruleBlockStatements returns [EObject current=null]
 				}
 			)
 		)*
-		this_BLOCK_END_3=RULE_BLOCK_END
+		otherlv_3='}'
 		{
-			newLeafNode(this_BLOCK_END_3, grammarAccess.getBlockStatementsAccess().getBLOCK_ENDTerminalRuleCall_3());
+			newLeafNode(otherlv_3, grammarAccess.getBlockStatementsAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;
@@ -856,9 +856,9 @@ ruleSynchronized returns [EObject current=null]
 		{
 			newLeafNode(this_ARGS_END_3, grammarAccess.getSynchronizedAccess().getARGS_ENDTerminalRuleCall_3());
 		}
-		this_BLOCK_START_4=RULE_BLOCK_START
+		otherlv_4='{'
 		{
-			newLeafNode(this_BLOCK_START_4, grammarAccess.getSynchronizedAccess().getBLOCK_STARTTerminalRuleCall_4());
+			newLeafNode(otherlv_4, grammarAccess.getSynchronizedAccess().getLeftCurlyBracketKeyword_4());
 		}
 		(
 			(
@@ -879,9 +879,9 @@ ruleSynchronized returns [EObject current=null]
 				}
 			)
 		)*
-		this_BLOCK_END_6=RULE_BLOCK_END
+		otherlv_6='}'
 		{
-			newLeafNode(this_BLOCK_END_6, grammarAccess.getSynchronizedAccess().getBLOCK_ENDTerminalRuleCall_6());
+			newLeafNode(otherlv_6, grammarAccess.getSynchronizedAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;
@@ -1034,19 +1034,25 @@ ruleSContext returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 		{
 			newLeafNode(this_CONTEXT_DEF_0, grammarAccess.getSContextAccess().getCONTEXT_DEFTerminalRuleCall_0());
 		}
-		this_ASSIGNMENT_1=RULE_ASSIGNMENT
-		{
-			$current.merge(this_ASSIGNMENT_1);
-		}
-		{
-			newLeafNode(this_ASSIGNMENT_1, grammarAccess.getSContextAccess().getASSIGNMENTTerminalRuleCall_1());
-		}
+		(
+			kw='='
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getSContextAccess().getEqualsSignKeyword_1_0());
+			}
+			    |
+			kw=':'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getSContextAccess().getColonKeyword_1_1());
+			}
+		)
 		{
 			newCompositeNode(grammarAccess.getSContextAccess().getSContextTypeParserRuleCall_2());
 		}
-		this_SContextType_2=ruleSContextType
+		this_SContextType_3=ruleSContextType
 		{
-			$current.merge(this_SContextType_2);
+			$current.merge(this_SContextType_3);
 		}
 		{
 			afterParserOrEnumRuleCall();
@@ -1105,16 +1111,23 @@ ruleSTimeout returns [EObject current=null]
 		{
 			newLeafNode(this_TIMEOUT_DEF_0, grammarAccess.getSTimeoutAccess().getTIMEOUT_DEFTerminalRuleCall_0());
 		}
-		this_ASSIGNMENT_1=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_1, grammarAccess.getSTimeoutAccess().getASSIGNMENTTerminalRuleCall_1());
-		}
+		(
+			otherlv_1='='
+			{
+				newLeafNode(otherlv_1, grammarAccess.getSTimeoutAccess().getEqualsSignKeyword_1_0());
+			}
+			    |
+			otherlv_2=':'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getSTimeoutAccess().getColonKeyword_1_1());
+			}
+		)
 		{
 			newCompositeNode(grammarAccess.getSTimeoutAccess().getExpressionParserRuleCall_2());
 		}
-		this_Expression_2=ruleExpression
+		this_Expression_3=ruleExpression
 		{
-			$current = $this_Expression_2.current;
+			$current = $this_Expression_3.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -1140,16 +1153,23 @@ ruleSBreakOnNoLock returns [EObject current=null]
 		{
 			newLeafNode(this_BREAKONNOLOCK_DEF_0, grammarAccess.getSBreakOnNoLockAccess().getBREAKONNOLOCK_DEFTerminalRuleCall_0());
 		}
-		this_ASSIGNMENT_1=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_1, grammarAccess.getSBreakOnNoLockAccess().getASSIGNMENTTerminalRuleCall_1());
-		}
+		(
+			otherlv_1='='
+			{
+				newLeafNode(otherlv_1, grammarAccess.getSBreakOnNoLockAccess().getEqualsSignKeyword_1_0());
+			}
+			    |
+			otherlv_2=':'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getSBreakOnNoLockAccess().getColonKeyword_1_1());
+			}
+		)
 		{
 			newCompositeNode(grammarAccess.getSBreakOnNoLockAccess().getExpressionParserRuleCall_2());
 		}
-		this_Expression_2=ruleExpression
+		this_Expression_3=ruleExpression
 		{
-			$current = $this_Expression_2.current;
+			$current = $this_Expression_3.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -1241,9 +1261,9 @@ ruleBreak returns [EObject current=null]
 				newLeafNode(this_ARGS_END_4, grammarAccess.getBreakAccess().getARGS_ENDTerminalRuleCall_2_2());
 			}
 		)?
-		this_EOL_5=RULE_EOL
+		otherlv_5=';'
 		{
-			newLeafNode(this_EOL_5, grammarAccess.getBreakAccess().getEOLTerminalRuleCall_3());
+			newLeafNode(otherlv_5, grammarAccess.getBreakAccess().getSemicolonKeyword_3());
 		}
 	)
 ;
@@ -1269,16 +1289,23 @@ ruleBreakParameter returns [EObject current=null]
 			{
 				newLeafNode(this_CODE_DEF_0, grammarAccess.getBreakParameterAccess().getCODE_DEFTerminalRuleCall_0_0());
 			}
-			this_ASSIGNMENT_1=RULE_ASSIGNMENT
-			{
-				newLeafNode(this_ASSIGNMENT_1, grammarAccess.getBreakParameterAccess().getASSIGNMENTTerminalRuleCall_0_1());
-			}
+			(
+				otherlv_1='='
+				{
+					newLeafNode(otherlv_1, grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_0_1_0());
+				}
+				    |
+				otherlv_2=':'
+				{
+					newLeafNode(otherlv_2, grammarAccess.getBreakParameterAccess().getColonKeyword_0_1_1());
+				}
+			)
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getBreakParameterAccess().getCodeLiteralOrExpressionParserRuleCall_0_2_0());
 					}
-					lv_code_2_0=ruleLiteralOrExpression
+					lv_code_3_0=ruleLiteralOrExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBreakParameterRule());
@@ -1286,7 +1313,7 @@ ruleBreakParameter returns [EObject current=null]
 						set(
 							$current,
 							"code",
-							lv_code_2_0,
+							lv_code_3_0,
 							"com.dexels.navajo.Navascript.LiteralOrExpression");
 						afterParserOrEnumRuleCall();
 					}
@@ -1295,20 +1322,27 @@ ruleBreakParameter returns [EObject current=null]
 		)
 		    |
 		(
-			this_DESCRIPTION_DEF_3=RULE_DESCRIPTION_DEF
+			this_DESCRIPTION_DEF_4=RULE_DESCRIPTION_DEF
 			{
-				newLeafNode(this_DESCRIPTION_DEF_3, grammarAccess.getBreakParameterAccess().getDESCRIPTION_DEFTerminalRuleCall_1_0());
+				newLeafNode(this_DESCRIPTION_DEF_4, grammarAccess.getBreakParameterAccess().getDESCRIPTION_DEFTerminalRuleCall_1_0());
 			}
-			this_ASSIGNMENT_4=RULE_ASSIGNMENT
-			{
-				newLeafNode(this_ASSIGNMENT_4, grammarAccess.getBreakParameterAccess().getASSIGNMENTTerminalRuleCall_1_1());
-			}
+			(
+				otherlv_5='='
+				{
+					newLeafNode(otherlv_5, grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_1_1_0());
+				}
+				    |
+				otherlv_6=':'
+				{
+					newLeafNode(otherlv_6, grammarAccess.getBreakParameterAccess().getColonKeyword_1_1_1());
+				}
+			)
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getBreakParameterAccess().getDescriptionLiteralOrExpressionParserRuleCall_1_2_0());
 					}
-					lv_description_5_0=ruleLiteralOrExpression
+					lv_description_7_0=ruleLiteralOrExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBreakParameterRule());
@@ -1316,7 +1350,7 @@ ruleBreakParameter returns [EObject current=null]
 						set(
 							$current,
 							"description",
-							lv_description_5_0,
+							lv_description_7_0,
 							"com.dexels.navajo.Navascript.LiteralOrExpression");
 						afterParserOrEnumRuleCall();
 					}
@@ -1325,20 +1359,27 @@ ruleBreakParameter returns [EObject current=null]
 		)
 		    |
 		(
-			this_ERROR_DEF_6=RULE_ERROR_DEF
+			this_ERROR_DEF_8=RULE_ERROR_DEF
 			{
-				newLeafNode(this_ERROR_DEF_6, grammarAccess.getBreakParameterAccess().getERROR_DEFTerminalRuleCall_2_0());
+				newLeafNode(this_ERROR_DEF_8, grammarAccess.getBreakParameterAccess().getERROR_DEFTerminalRuleCall_2_0());
 			}
-			this_ASSIGNMENT_7=RULE_ASSIGNMENT
-			{
-				newLeafNode(this_ASSIGNMENT_7, grammarAccess.getBreakParameterAccess().getASSIGNMENTTerminalRuleCall_2_1());
-			}
+			(
+				otherlv_9='='
+				{
+					newLeafNode(otherlv_9, grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_2_1_0());
+				}
+				    |
+				otherlv_10=':'
+				{
+					newLeafNode(otherlv_10, grammarAccess.getBreakParameterAccess().getColonKeyword_2_1_1());
+				}
+			)
 			{
 				newCompositeNode(grammarAccess.getBreakParameterAccess().getLiteralOrExpressionParserRuleCall_2_2());
 			}
-			this_LiteralOrExpression_8=ruleLiteralOrExpression
+			this_LiteralOrExpression_11=ruleLiteralOrExpression
 			{
-				$current = $this_LiteralOrExpression_8.current;
+				$current = $this_LiteralOrExpression_11.current;
 				afterParserOrEnumRuleCall();
 			}
 		)
@@ -1435,9 +1476,9 @@ ruleValidations returns [EObject current=null]
 		{
 			newLeafNode(this_VALIDATIONS_DEF_1, grammarAccess.getValidationsAccess().getVALIDATIONS_DEFTerminalRuleCall_1());
 		}
-		this_BLOCK_START_2=RULE_BLOCK_START
+		otherlv_2='{'
 		{
-			newLeafNode(this_BLOCK_START_2, grammarAccess.getValidationsAccess().getBLOCK_STARTTerminalRuleCall_2());
+			newLeafNode(otherlv_2, grammarAccess.getValidationsAccess().getLeftCurlyBracketKeyword_2());
 		}
 		(
 			(
@@ -1458,9 +1499,9 @@ ruleValidations returns [EObject current=null]
 				}
 			)
 		)*
-		this_BLOCK_END_4=RULE_BLOCK_END
+		otherlv_4='}'
 		{
-			newLeafNode(this_BLOCK_END_4, grammarAccess.getValidationsAccess().getBLOCK_ENDTerminalRuleCall_4());
+			newLeafNode(otherlv_4, grammarAccess.getValidationsAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;
@@ -1510,16 +1551,23 @@ ruleDefine returns [EObject current=null]
 				}
 			)
 		)
-		this_ASSIGNMENT_3=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_3, grammarAccess.getDefineAccess().getASSIGNMENTTerminalRuleCall_3());
-		}
+		(
+			otherlv_3='='
+			{
+				newLeafNode(otherlv_3, grammarAccess.getDefineAccess().getEqualsSignKeyword_3_0());
+			}
+			    |
+			otherlv_4=':'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getDefineAccess().getColonKeyword_3_1());
+			}
+		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getDefineAccess().getExpressionExpressionParserRuleCall_4_0());
 				}
-				lv_expression_4_0=ruleExpression
+				lv_expression_5_0=ruleExpression
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDefineRule());
@@ -1527,15 +1575,15 @@ ruleDefine returns [EObject current=null]
 					set(
 						$current,
 						"expression",
-						lv_expression_4_0,
+						lv_expression_5_0,
 						"com.dexels.navajo.Navascript.Expression");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		this_EOL_5=RULE_EOL
+		otherlv_6=';'
 		{
-			newLeafNode(this_EOL_5, grammarAccess.getDefineAccess().getEOLTerminalRuleCall_5());
+			newLeafNode(otherlv_6, grammarAccess.getDefineAccess().getSemicolonKeyword_5());
 		}
 	)
 ;
@@ -1564,9 +1612,9 @@ ruleCheck returns [EObject current=null]
 			}
 		)
 		(
-			this_IF_1=RULE_IF
+			otherlv_1='if'
 			{
-				newLeafNode(this_IF_1, grammarAccess.getCheckAccess().getIFTerminalRuleCall_1_0());
+				newLeafNode(otherlv_1, grammarAccess.getCheckAccess().getIfKeyword_1_0());
 			}
 			(
 				(
@@ -1587,9 +1635,9 @@ ruleCheck returns [EObject current=null]
 					}
 				)
 			)
-			this_THEN_3=RULE_THEN
+			otherlv_3='then'
 			{
-				newLeafNode(this_THEN_3, grammarAccess.getCheckAccess().getTHENTerminalRuleCall_1_2());
+				newLeafNode(otherlv_3, grammarAccess.getCheckAccess().getThenKeyword_1_2());
 			}
 		)?
 		this_CHECK_DEF_4=RULE_CHECK_DEF
@@ -1648,16 +1696,23 @@ ruleCheck returns [EObject current=null]
 		{
 			newLeafNode(this_ARGS_END_9, grammarAccess.getCheckAccess().getARGS_ENDTerminalRuleCall_6());
 		}
-		this_ASSIGNMENT_10=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_10, grammarAccess.getCheckAccess().getASSIGNMENTTerminalRuleCall_7());
-		}
+		(
+			otherlv_10='='
+			{
+				newLeafNode(otherlv_10, grammarAccess.getCheckAccess().getEqualsSignKeyword_7_0());
+			}
+			    |
+			otherlv_11=':'
+			{
+				newLeafNode(otherlv_11, grammarAccess.getCheckAccess().getColonKeyword_7_1());
+			}
+		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getCheckAccess().getExpressionExpressionParserRuleCall_8_0());
 				}
-				lv_expression_11_0=ruleExpression
+				lv_expression_12_0=ruleExpression
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getCheckRule());
@@ -1665,15 +1720,15 @@ ruleCheck returns [EObject current=null]
 					set(
 						$current,
 						"expression",
-						lv_expression_11_0,
+						lv_expression_12_0,
 						"com.dexels.navajo.Navascript.Expression");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		this_EOL_12=RULE_EOL
+		otherlv_13=';'
 		{
-			newLeafNode(this_EOL_12, grammarAccess.getCheckAccess().getEOLTerminalRuleCall_9());
+			newLeafNode(otherlv_13, grammarAccess.getCheckAccess().getSemicolonKeyword_9());
 		}
 	)
 ;
@@ -1707,16 +1762,23 @@ ruleCheckAttribute returns [EObject current=null]
 				{
 					newLeafNode(this_CODE_DEF_1, grammarAccess.getCheckAttributeAccess().getCODE_DEFTerminalRuleCall_0_1_0());
 				}
-				this_ASSIGNMENT_2=RULE_ASSIGNMENT
-				{
-					newLeafNode(this_ASSIGNMENT_2, grammarAccess.getCheckAttributeAccess().getASSIGNMENTTerminalRuleCall_0_1_1());
-				}
+				(
+					otherlv_2='='
+					{
+						newLeafNode(otherlv_2, grammarAccess.getCheckAttributeAccess().getEqualsSignKeyword_0_1_1_0());
+					}
+					    |
+					otherlv_3=':'
+					{
+						newLeafNode(otherlv_3, grammarAccess.getCheckAttributeAccess().getColonKeyword_0_1_1_1());
+					}
+				)
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getCheckAttributeAccess().getValueLiteralOrExpressionParserRuleCall_0_1_2_0());
 						}
-						lv_value_3_0=ruleLiteralOrExpression
+						lv_value_4_0=ruleLiteralOrExpression
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getCheckAttributeRule());
@@ -1724,7 +1786,7 @@ ruleCheckAttribute returns [EObject current=null]
 							set(
 								$current,
 								"value",
-								lv_value_3_0,
+								lv_value_4_0,
 								"com.dexels.navajo.Navascript.LiteralOrExpression");
 							afterParserOrEnumRuleCall();
 						}
@@ -1734,20 +1796,27 @@ ruleCheckAttribute returns [EObject current=null]
 		)
 		    |
 		(
-			this_DESCRIPTION_DEF_4=RULE_DESCRIPTION_DEF
+			this_DESCRIPTION_DEF_5=RULE_DESCRIPTION_DEF
 			{
-				newLeafNode(this_DESCRIPTION_DEF_4, grammarAccess.getCheckAttributeAccess().getDESCRIPTION_DEFTerminalRuleCall_1_0());
+				newLeafNode(this_DESCRIPTION_DEF_5, grammarAccess.getCheckAttributeAccess().getDESCRIPTION_DEFTerminalRuleCall_1_0());
 			}
-			this_ASSIGNMENT_5=RULE_ASSIGNMENT
-			{
-				newLeafNode(this_ASSIGNMENT_5, grammarAccess.getCheckAttributeAccess().getASSIGNMENTTerminalRuleCall_1_1());
-			}
+			(
+				otherlv_6='='
+				{
+					newLeafNode(otherlv_6, grammarAccess.getCheckAttributeAccess().getEqualsSignKeyword_1_1_0());
+				}
+				    |
+				otherlv_7=':'
+				{
+					newLeafNode(otherlv_7, grammarAccess.getCheckAttributeAccess().getColonKeyword_1_1_1());
+				}
+			)
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getCheckAttributeAccess().getValueLiteralOrExpressionParserRuleCall_1_2_0());
 					}
-					lv_value_6_0=ruleLiteralOrExpression
+					lv_value_8_0=ruleLiteralOrExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getCheckAttributeRule());
@@ -1755,7 +1824,7 @@ ruleCheckAttribute returns [EObject current=null]
 						set(
 							$current,
 							"value",
-							lv_value_6_0,
+							lv_value_8_0,
 							"com.dexels.navajo.Navascript.LiteralOrExpression");
 						afterParserOrEnumRuleCall();
 					}
@@ -1902,9 +1971,9 @@ rulePrint returns [EObject current=null]
 		{
 			newLeafNode(this_ARGS_END_4, grammarAccess.getPrintAccess().getARGS_ENDTerminalRuleCall_4());
 		}
-		this_EOL_5=RULE_EOL
+		otherlv_5=';'
 		{
-			newLeafNode(this_EOL_5, grammarAccess.getPrintAccess().getEOLTerminalRuleCall_5());
+			newLeafNode(otherlv_5, grammarAccess.getPrintAccess().getSemicolonKeyword_5());
 		}
 	)
 ;
@@ -1963,9 +2032,9 @@ ruleLog returns [EObject current=null]
 		{
 			newLeafNode(this_ARGS_END_4, grammarAccess.getLogAccess().getARGS_ENDTerminalRuleCall_4());
 		}
-		this_EOL_5=RULE_EOL
+		otherlv_5=';'
 		{
-			newLeafNode(this_EOL_5, grammarAccess.getLogAccess().getEOLTerminalRuleCall_5());
+			newLeafNode(otherlv_5, grammarAccess.getLogAccess().getSemicolonKeyword_5());
 		}
 	)
 ;
@@ -1997,9 +2066,9 @@ ruleFinally returns [EObject current=null]
 		{
 			newLeafNode(this_FINALLY_DEF_1, grammarAccess.getFinallyAccess().getFINALLY_DEFTerminalRuleCall_1());
 		}
-		this_BLOCK_START_2=RULE_BLOCK_START
+		otherlv_2='{'
 		{
-			newLeafNode(this_BLOCK_START_2, grammarAccess.getFinallyAccess().getBLOCK_STARTTerminalRuleCall_2());
+			newLeafNode(otherlv_2, grammarAccess.getFinallyAccess().getLeftCurlyBracketKeyword_2());
 		}
 		(
 			(
@@ -2020,9 +2089,9 @@ ruleFinally returns [EObject current=null]
 				}
 			)
 		)
-		this_BLOCK_END_4=RULE_BLOCK_END
+		otherlv_4='}'
 		{
-			newLeafNode(this_BLOCK_END_4, grammarAccess.getFinallyAccess().getBLOCK_ENDTerminalRuleCall_4());
+			newLeafNode(otherlv_4, grammarAccess.getFinallyAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;
@@ -2054,37 +2123,80 @@ ruleMethods returns [EObject current=null]
 		{
 			newLeafNode(this_METHODS_DEF_1, grammarAccess.getMethodsAccess().getMETHODS_DEFTerminalRuleCall_1());
 		}
-		this_BLOCK_START_2=RULE_BLOCK_START
+		otherlv_2='{'
 		{
-			newLeafNode(this_BLOCK_START_2, grammarAccess.getMethodsAccess().getBLOCK_STARTTerminalRuleCall_2());
+			newLeafNode(otherlv_2, grammarAccess.getMethodsAccess().getLeftCurlyBracketKeyword_2());
 		}
 		(
 			(
-				(
-					lv_methods_3_0=RULE_QUOTED_IDENTIFIER
-					{
-						newLeafNode(lv_methods_3_0, grammarAccess.getMethodsAccess().getMethodsQUOTED_IDENTIFIERTerminalRuleCall_3_0_0());
+				{
+					newCompositeNode(grammarAccess.getMethodsAccess().getMethodsMethodParserRuleCall_3_0());
+				}
+				lv_methods_3_0=ruleMethod
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMethodsRule());
 					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getMethodsRule());
-						}
-						addWithLastConsumed(
-							$current,
-							"methods",
-							lv_methods_3_0,
-							"com.dexels.navajo.Navascript.QUOTED_IDENTIFIER");
-					}
-				)
+					add(
+						$current,
+						"methods",
+						lv_methods_3_0,
+						"com.dexels.navajo.Navascript.Method");
+					afterParserOrEnumRuleCall();
+				}
 			)
-			this_EOL_4=RULE_EOL
-			{
-				newLeafNode(this_EOL_4, grammarAccess.getMethodsAccess().getEOLTerminalRuleCall_3_1());
-			}
 		)*
-		this_BLOCK_END_5=RULE_BLOCK_END
+		otherlv_4='}'
 		{
-			newLeafNode(this_BLOCK_END_5, grammarAccess.getMethodsAccess().getBLOCK_ENDTerminalRuleCall_4());
+			newLeafNode(otherlv_4, grammarAccess.getMethodsAccess().getRightCurlyBracketKeyword_4());
+		}
+	)
+;
+
+// Entry rule entryRuleMethod
+entryRuleMethod returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMethodRule()); }
+	iv_ruleMethod=ruleMethod
+	{ $current=$iv_ruleMethod.current; }
+	EOF;
+
+// Rule Method
+ruleMethod returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getMethodAccess().getMethodAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				lv_methodName_1_0=RULE_QUOTED_IDENTIFIER
+				{
+					newLeafNode(lv_methodName_1_0, grammarAccess.getMethodAccess().getMethodNameQUOTED_IDENTIFIERTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMethodRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"methodName",
+						lv_methodName_1_0,
+						"com.dexels.navajo.Navascript.QUOTED_IDENTIFIER");
+				}
+			)
+		)
+		otherlv_2=';'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getMethodAccess().getSemicolonKeyword_2());
 		}
 	)
 ;
@@ -2166,16 +2278,23 @@ ruleLoop returns [EObject current=null]
 			{
 				newLeafNode(this_FILTER_DEF_5, grammarAccess.getLoopAccess().getFILTER_DEFTerminalRuleCall_3_1());
 			}
-			this_ASSIGNMENT_6=RULE_ASSIGNMENT
-			{
-				newLeafNode(this_ASSIGNMENT_6, grammarAccess.getLoopAccess().getASSIGNMENTTerminalRuleCall_3_2());
-			}
+			(
+				otherlv_6='='
+				{
+					newLeafNode(otherlv_6, grammarAccess.getLoopAccess().getEqualsSignKeyword_3_2_0());
+				}
+				    |
+				otherlv_7=':'
+				{
+					newLeafNode(otherlv_7, grammarAccess.getLoopAccess().getColonKeyword_3_2_1());
+				}
+			)
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getLoopAccess().getFilterExpressionParserRuleCall_3_3_0());
 					}
-					lv_filter_7_0=ruleExpression
+					lv_filter_8_0=ruleExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getLoopRule());
@@ -2183,27 +2302,27 @@ ruleLoop returns [EObject current=null]
 						set(
 							$current,
 							"filter",
-							lv_filter_7_0,
+							lv_filter_8_0,
 							"com.dexels.navajo.Navascript.Expression");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			this_ARGS_END_8=RULE_ARGS_END
+			this_ARGS_END_9=RULE_ARGS_END
 			{
-				newLeafNode(this_ARGS_END_8, grammarAccess.getLoopAccess().getARGS_ENDTerminalRuleCall_3_4());
+				newLeafNode(this_ARGS_END_9, grammarAccess.getLoopAccess().getARGS_ENDTerminalRuleCall_3_4());
 			}
 		)?
-		this_BLOCK_START_9=RULE_BLOCK_START
+		otherlv_10='{'
 		{
-			newLeafNode(this_BLOCK_START_9, grammarAccess.getLoopAccess().getBLOCK_STARTTerminalRuleCall_4());
+			newLeafNode(otherlv_10, grammarAccess.getLoopAccess().getLeftCurlyBracketKeyword_4());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getLoopAccess().getStatementsInnerBodyParserRuleCall_5_0());
 				}
-				lv_statements_10_0=ruleInnerBody
+				lv_statements_11_0=ruleInnerBody
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getLoopRule());
@@ -2211,15 +2330,15 @@ ruleLoop returns [EObject current=null]
 					add(
 						$current,
 						"statements",
-						lv_statements_10_0,
+						lv_statements_11_0,
 						"com.dexels.navajo.Navascript.InnerBody");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		this_BLOCK_END_11=RULE_BLOCK_END
+		otherlv_12='}'
 		{
-			newLeafNode(this_BLOCK_END_11, grammarAccess.getLoopAccess().getBLOCK_ENDTerminalRuleCall_6());
+			newLeafNode(otherlv_12, grammarAccess.getLoopAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;
@@ -2269,9 +2388,9 @@ ruleInclude returns [EObject current=null]
 				}
 			)
 		)
-		this_EOL_3=RULE_EOL
+		otherlv_3=';'
 		{
-			newLeafNode(this_EOL_3, grammarAccess.getIncludeAccess().getEOLTerminalRuleCall_3());
+			newLeafNode(otherlv_3, grammarAccess.getIncludeAccess().getSemicolonKeyword_3());
 		}
 	)
 ;
@@ -2321,9 +2440,9 @@ ruleAntiMessage returns [EObject current=null]
 				}
 			)
 		)
-		this_EOL_3=RULE_EOL
+		otherlv_3=';'
 		{
-			newLeafNode(this_EOL_3, grammarAccess.getAntiMessageAccess().getEOLTerminalRuleCall_3());
+			newLeafNode(otherlv_3, grammarAccess.getAntiMessageAccess().getSemicolonKeyword_3());
 		}
 	)
 ;
@@ -2404,9 +2523,9 @@ ruleMessage returns [EObject current=null]
 		)?
 		(
 			(
-				this_BLOCK_START_6=RULE_BLOCK_START
+				otherlv_6='{'
 				{
-					newLeafNode(this_BLOCK_START_6, grammarAccess.getMessageAccess().getBLOCK_STARTTerminalRuleCall_4_0_0());
+					newLeafNode(otherlv_6, grammarAccess.getMessageAccess().getLeftCurlyBracketKeyword_4_0_0());
 				}
 				(
 					(
@@ -2469,21 +2588,21 @@ ruleMessage returns [EObject current=null]
 						)
 					)
 				)
-				this_BLOCK_END_10=RULE_BLOCK_END
+				otherlv_10='}'
 				{
-					newLeafNode(this_BLOCK_END_10, grammarAccess.getMessageAccess().getBLOCK_ENDTerminalRuleCall_4_0_2());
+					newLeafNode(otherlv_10, grammarAccess.getMessageAccess().getRightCurlyBracketKeyword_4_0_2());
 				}
 			)
 			    |
-			this_EOL_11=RULE_EOL
+			otherlv_11=';'
 			{
-				newLeafNode(this_EOL_11, grammarAccess.getMessageAccess().getEOLTerminalRuleCall_4_1());
+				newLeafNode(otherlv_11, grammarAccess.getMessageAccess().getSemicolonKeyword_4_1());
 			}
 			    |
 			(
-				this_TML_START_12=RULE_TML_START
+				otherlv_12='['
 				{
-					newLeafNode(this_TML_START_12, grammarAccess.getMessageAccess().getTML_STARTTerminalRuleCall_4_2_0());
+					newLeafNode(otherlv_12, grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0());
 				}
 				(
 					(
@@ -2504,9 +2623,9 @@ ruleMessage returns [EObject current=null]
 						}
 					)
 				)
-				this_TML_END_14=RULE_TML_END
+				otherlv_14=']'
 				{
-					newLeafNode(this_TML_END_14, grammarAccess.getMessageAccess().getTML_ENDTerminalRuleCall_4_2_2());
+					newLeafNode(otherlv_14, grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2());
 				}
 			)
 		)
@@ -2599,9 +2718,9 @@ ruleMessageArrayElement returns [EObject current=null]
 					$current);
 			}
 		)
-		this_BLOCK_START_1=RULE_BLOCK_START
+		otherlv_1='{'
 		{
-			newLeafNode(this_BLOCK_START_1, grammarAccess.getMessageArrayElementAccess().getBLOCK_STARTTerminalRuleCall_1());
+			newLeafNode(otherlv_1, grammarAccess.getMessageArrayElementAccess().getLeftCurlyBracketKeyword_1());
 		}
 		(
 			(
@@ -2622,9 +2741,9 @@ ruleMessageArrayElement returns [EObject current=null]
 				}
 			)
 		)*
-		this_BLOCK_END_3=RULE_BLOCK_END
+		otherlv_3='}'
 		{
-			newLeafNode(this_BLOCK_END_3, grammarAccess.getMessageArrayElementAccess().getBLOCK_ENDTerminalRuleCall_3());
+			newLeafNode(otherlv_3, grammarAccess.getMessageArrayElementAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;
@@ -2650,35 +2769,49 @@ ruleMessageArgument returns [EObject current=null]
 			{
 				newLeafNode(this_TYPE_DEF_0, grammarAccess.getMessageArgumentAccess().getTYPE_DEFTerminalRuleCall_0_0());
 			}
-			this_ASSIGNMENT_1=RULE_ASSIGNMENT
-			{
-				newLeafNode(this_ASSIGNMENT_1, grammarAccess.getMessageArgumentAccess().getASSIGNMENTTerminalRuleCall_0_1());
-			}
+			(
+				otherlv_1='='
+				{
+					newLeafNode(otherlv_1, grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_0_1_0());
+				}
+				    |
+				otherlv_2=':'
+				{
+					newLeafNode(otherlv_2, grammarAccess.getMessageArgumentAccess().getColonKeyword_0_1_1());
+				}
+			)
 			{
 				newCompositeNode(grammarAccess.getMessageArgumentAccess().getMessageTypeParserRuleCall_0_2());
 			}
-			this_MessageType_2=ruleMessageType
+			this_MessageType_3=ruleMessageType
 			{
-				$current = $this_MessageType_2.current;
+				$current = $this_MessageType_3.current;
 				afterParserOrEnumRuleCall();
 			}
 		)
 		    |
 		(
-			this_MODE_DEF_3=RULE_MODE_DEF
+			this_MODE_DEF_4=RULE_MODE_DEF
 			{
-				newLeafNode(this_MODE_DEF_3, grammarAccess.getMessageArgumentAccess().getMODE_DEFTerminalRuleCall_1_0());
+				newLeafNode(this_MODE_DEF_4, grammarAccess.getMessageArgumentAccess().getMODE_DEFTerminalRuleCall_1_0());
 			}
-			this_ASSIGNMENT_4=RULE_ASSIGNMENT
-			{
-				newLeafNode(this_ASSIGNMENT_4, grammarAccess.getMessageArgumentAccess().getASSIGNMENTTerminalRuleCall_1_1());
-			}
+			(
+				otherlv_5='='
+				{
+					newLeafNode(otherlv_5, grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_1_1_0());
+				}
+				    |
+				otherlv_6=':'
+				{
+					newLeafNode(otherlv_6, grammarAccess.getMessageArgumentAccess().getColonKeyword_1_1_1());
+				}
+			)
 			{
 				newCompositeNode(grammarAccess.getMessageArgumentAccess().getMessageModeParserRuleCall_1_2());
 			}
-			this_MessageMode_5=ruleMessageMode
+			this_MessageMode_7=ruleMessageMode
 			{
-				$current = $this_MessageMode_5.current;
+				$current = $this_MessageMode_7.current;
 				afterParserOrEnumRuleCall();
 			}
 		)
@@ -2839,15 +2972,22 @@ ruleMap returns [EObject current=null]
 				{
 					newLeafNode(this_OBJECT_OLDSKOOL_DEF_8, grammarAccess.getMapAccess().getOBJECT_OLDSKOOL_DEFTerminalRuleCall_1_1_2());
 				}
-				this_ASSIGNMENT_9=RULE_ASSIGNMENT
-				{
-					newLeafNode(this_ASSIGNMENT_9, grammarAccess.getMapAccess().getASSIGNMENTTerminalRuleCall_1_1_3());
-				}
+				(
+					otherlv_9='='
+					{
+						newLeafNode(otherlv_9, grammarAccess.getMapAccess().getEqualsSignKeyword_1_1_3_0());
+					}
+					    |
+					otherlv_10=':'
+					{
+						newLeafNode(otherlv_10, grammarAccess.getMapAccess().getColonKeyword_1_1_3_1());
+					}
+				)
 				(
 					(
-						lv_objectName_10_0=RULE_OBJECT_IDENTIFIER
+						lv_objectName_11_0=RULE_OBJECT_IDENTIFIER
 						{
-							newLeafNode(lv_objectName_10_0, grammarAccess.getMapAccess().getObjectNameOBJECT_IDENTIFIERTerminalRuleCall_1_1_4_0());
+							newLeafNode(lv_objectName_11_0, grammarAccess.getMapAccess().getObjectNameOBJECT_IDENTIFIERTerminalRuleCall_1_1_4_0());
 						}
 						{
 							if ($current==null) {
@@ -2856,22 +2996,22 @@ ruleMap returns [EObject current=null]
 							setWithLastConsumed(
 								$current,
 								"objectName",
-								lv_objectName_10_0,
+								lv_objectName_11_0,
 								"com.dexels.navajo.Navascript.OBJECT_IDENTIFIER");
 						}
 					)
 				)
 				(
-					this_ARG_SEP_11=RULE_ARG_SEP
+					this_ARG_SEP_12=RULE_ARG_SEP
 					{
-						newLeafNode(this_ARG_SEP_11, grammarAccess.getMapAccess().getARG_SEPTerminalRuleCall_1_1_5_0());
+						newLeafNode(this_ARG_SEP_12, grammarAccess.getMapAccess().getARG_SEPTerminalRuleCall_1_1_5_0());
 					}
 					(
 						(
 							{
 								newCompositeNode(grammarAccess.getMapAccess().getArgumentsKeyValueArgumentsParserRuleCall_1_1_5_1_0());
 							}
-							lv_arguments_12_0=ruleKeyValueArguments
+							lv_arguments_13_0=ruleKeyValueArguments
 							{
 								if ($current==null) {
 									$current = createModelElementForParent(grammarAccess.getMapRule());
@@ -2879,29 +3019,29 @@ ruleMap returns [EObject current=null]
 								set(
 									$current,
 									"arguments",
-									lv_arguments_12_0,
+									lv_arguments_13_0,
 									"com.dexels.navajo.Navascript.KeyValueArguments");
 								afterParserOrEnumRuleCall();
 							}
 						)
 					)
 				)?
-				this_ARGS_END_13=RULE_ARGS_END
+				this_ARGS_END_14=RULE_ARGS_END
 				{
-					newLeafNode(this_ARGS_END_13, grammarAccess.getMapAccess().getARGS_ENDTerminalRuleCall_1_1_6());
+					newLeafNode(this_ARGS_END_14, grammarAccess.getMapAccess().getARGS_ENDTerminalRuleCall_1_1_6());
 				}
 			)
 		)
-		this_BLOCK_START_14=RULE_BLOCK_START
+		otherlv_15='{'
 		{
-			newLeafNode(this_BLOCK_START_14, grammarAccess.getMapAccess().getBLOCK_STARTTerminalRuleCall_2());
+			newLeafNode(otherlv_15, grammarAccess.getMapAccess().getLeftCurlyBracketKeyword_2());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getMapAccess().getStatementsInnerBodyParserRuleCall_3_0());
 				}
-				lv_statements_15_0=ruleInnerBody
+				lv_statements_16_0=ruleInnerBody
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMapRule());
@@ -2909,15 +3049,15 @@ ruleMap returns [EObject current=null]
 					add(
 						$current,
 						"statements",
-						lv_statements_15_0,
+						lv_statements_16_0,
 						"com.dexels.navajo.Navascript.InnerBody");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		this_BLOCK_END_16=RULE_BLOCK_END
+		otherlv_17='}'
 		{
-			newLeafNode(this_BLOCK_END_16, grammarAccess.getMapAccess().getBLOCK_ENDTerminalRuleCall_4());
+			newLeafNode(otherlv_17, grammarAccess.getMapAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;
@@ -3026,9 +3166,9 @@ ruleAdapterMethod returns [EObject current=null]
 		{
 			newLeafNode(this_ARGS_END_4, grammarAccess.getAdapterMethodAccess().getARGS_ENDTerminalRuleCall_4());
 		}
-		this_EOL_5=RULE_EOL
+		otherlv_5=';'
 		{
-			newLeafNode(this_EOL_5, grammarAccess.getAdapterMethodAccess().getEOLTerminalRuleCall_5());
+			newLeafNode(otherlv_5, grammarAccess.getAdapterMethodAccess().getSemicolonKeyword_5());
 		}
 	)
 ;
@@ -3076,16 +3216,23 @@ ruleSetterField returns [EObject current=null]
 		)
 		(
 			(
-				this_ASSIGNMENT_2=RULE_ASSIGNMENT
-				{
-					newLeafNode(this_ASSIGNMENT_2, grammarAccess.getSetterFieldAccess().getASSIGNMENTTerminalRuleCall_2_0_0());
-				}
+				(
+					otherlv_2='='
+					{
+						newLeafNode(otherlv_2, grammarAccess.getSetterFieldAccess().getEqualsSignKeyword_2_0_0_0());
+					}
+					    |
+					otherlv_3=':'
+					{
+						newLeafNode(otherlv_3, grammarAccess.getSetterFieldAccess().getColonKeyword_2_0_0_1());
+					}
+				)
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getSetterFieldAccess().getExpressionListConditionalExpressionsParserRuleCall_2_0_1_0());
 						}
-						lv_expressionList_3_0=ruleConditionalExpressions
+						lv_expressionList_4_0=ruleConditionalExpressions
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getSetterFieldRule());
@@ -3093,30 +3240,30 @@ ruleSetterField returns [EObject current=null]
 							set(
 								$current,
 								"expressionList",
-								lv_expressionList_3_0,
+								lv_expressionList_4_0,
 								"com.dexels.navajo.Navascript.ConditionalExpressions");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				this_EOL_4=RULE_EOL
+				otherlv_5=';'
 				{
-					newLeafNode(this_EOL_4, grammarAccess.getSetterFieldAccess().getEOLTerminalRuleCall_2_0_2());
+					newLeafNode(otherlv_5, grammarAccess.getSetterFieldAccess().getSemicolonKeyword_2_0_2());
 				}
 			)
 			    |
 			(
 				(
-					this_ARGS_START_5=RULE_ARGS_START
+					this_ARGS_START_6=RULE_ARGS_START
 					{
-						newLeafNode(this_ARGS_START_5, grammarAccess.getSetterFieldAccess().getARGS_STARTTerminalRuleCall_2_1_0_0());
+						newLeafNode(this_ARGS_START_6, grammarAccess.getSetterFieldAccess().getARGS_STARTTerminalRuleCall_2_1_0_0());
 					}
 					(
 						(
 							{
 								newCompositeNode(grammarAccess.getSetterFieldAccess().getArgumentsKeyValueArgumentsParserRuleCall_2_1_0_1_0());
 							}
-							lv_arguments_6_0=ruleKeyValueArguments
+							lv_arguments_7_0=ruleKeyValueArguments
 							{
 								if ($current==null) {
 									$current = createModelElementForParent(grammarAccess.getSetterFieldRule());
@@ -3124,27 +3271,27 @@ ruleSetterField returns [EObject current=null]
 								set(
 									$current,
 									"arguments",
-									lv_arguments_6_0,
+									lv_arguments_7_0,
 									"com.dexels.navajo.Navascript.KeyValueArguments");
 								afterParserOrEnumRuleCall();
 							}
 						)
 					)
-					this_ARGS_END_7=RULE_ARGS_END
+					this_ARGS_END_8=RULE_ARGS_END
 					{
-						newLeafNode(this_ARGS_END_7, grammarAccess.getSetterFieldAccess().getARGS_ENDTerminalRuleCall_2_1_0_2());
+						newLeafNode(this_ARGS_END_8, grammarAccess.getSetterFieldAccess().getARGS_ENDTerminalRuleCall_2_1_0_2());
 					}
 				)?
-				this_BLOCK_START_8=RULE_BLOCK_START
+				otherlv_9='{'
 				{
-					newLeafNode(this_BLOCK_START_8, grammarAccess.getSetterFieldAccess().getBLOCK_STARTTerminalRuleCall_2_1_1());
+					newLeafNode(otherlv_9, grammarAccess.getSetterFieldAccess().getLeftCurlyBracketKeyword_2_1_1());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getSetterFieldAccess().getMappedArrayMappedArrayMessageParserRuleCall_2_1_2_0());
 						}
-						lv_mappedArray_9_0=ruleMappedArrayMessage
+						lv_mappedArray_10_0=ruleMappedArrayMessage
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getSetterFieldRule());
@@ -3152,15 +3299,15 @@ ruleSetterField returns [EObject current=null]
 							set(
 								$current,
 								"mappedArray",
-								lv_mappedArray_9_0,
+								lv_mappedArray_10_0,
 								"com.dexels.navajo.Navascript.MappedArrayMessage");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				this_BLOCK_END_10=RULE_BLOCK_END
+				otherlv_11='}'
 				{
-					newLeafNode(this_BLOCK_END_10, grammarAccess.getSetterFieldAccess().getBLOCK_ENDTerminalRuleCall_2_1_3());
+					newLeafNode(otherlv_11, grammarAccess.getSetterFieldAccess().getRightCurlyBracketKeyword_2_1_3());
 				}
 			)
 			    |
@@ -3169,7 +3316,7 @@ ruleSetterField returns [EObject current=null]
 					{
 						newCompositeNode(grammarAccess.getSetterFieldAccess().getMappedFieldMappedArrayFieldParserRuleCall_2_2_0());
 					}
-					lv_mappedField_11_0=ruleMappedArrayField
+					lv_mappedField_12_0=ruleMappedArrayField
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getSetterFieldRule());
@@ -3177,7 +3324,7 @@ ruleSetterField returns [EObject current=null]
 						set(
 							$current,
 							"mappedField",
-							lv_mappedField_11_0,
+							lv_mappedField_12_0,
 							"com.dexels.navajo.Navascript.MappedArrayField");
 						afterParserOrEnumRuleCall();
 					}
@@ -3237,16 +3384,23 @@ ruleMappedArrayField returns [EObject current=null]
 			{
 				newLeafNode(this_FILTER_DEF_3, grammarAccess.getMappedArrayFieldAccess().getFILTER_DEFTerminalRuleCall_2_1());
 			}
-			this_ASSIGNMENT_4=RULE_ASSIGNMENT
-			{
-				newLeafNode(this_ASSIGNMENT_4, grammarAccess.getMappedArrayFieldAccess().getASSIGNMENTTerminalRuleCall_2_2());
-			}
+			(
+				otherlv_4='='
+				{
+					newLeafNode(otherlv_4, grammarAccess.getMappedArrayFieldAccess().getEqualsSignKeyword_2_2_0());
+				}
+				    |
+				otherlv_5=':'
+				{
+					newLeafNode(otherlv_5, grammarAccess.getMappedArrayFieldAccess().getColonKeyword_2_2_1());
+				}
+			)
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getMappedArrayFieldAccess().getFilterExpressionParserRuleCall_2_3_0());
 					}
-					lv_filter_5_0=ruleExpression
+					lv_filter_6_0=ruleExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getMappedArrayFieldRule());
@@ -3254,27 +3408,27 @@ ruleMappedArrayField returns [EObject current=null]
 						set(
 							$current,
 							"filter",
-							lv_filter_5_0,
+							lv_filter_6_0,
 							"com.dexels.navajo.Navascript.Expression");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			this_ARGS_END_6=RULE_ARGS_END
+			this_ARGS_END_7=RULE_ARGS_END
 			{
-				newLeafNode(this_ARGS_END_6, grammarAccess.getMappedArrayFieldAccess().getARGS_ENDTerminalRuleCall_2_4());
+				newLeafNode(this_ARGS_END_7, grammarAccess.getMappedArrayFieldAccess().getARGS_ENDTerminalRuleCall_2_4());
 			}
 		)?
-		this_BLOCK_START_7=RULE_BLOCK_START
+		otherlv_8='{'
 		{
-			newLeafNode(this_BLOCK_START_7, grammarAccess.getMappedArrayFieldAccess().getBLOCK_STARTTerminalRuleCall_3());
+			newLeafNode(otherlv_8, grammarAccess.getMappedArrayFieldAccess().getLeftCurlyBracketKeyword_3());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getMappedArrayFieldAccess().getStatementsInnerBodyParserRuleCall_4_0());
 				}
-				lv_statements_8_0=ruleInnerBody
+				lv_statements_9_0=ruleInnerBody
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMappedArrayFieldRule());
@@ -3282,15 +3436,15 @@ ruleMappedArrayField returns [EObject current=null]
 					add(
 						$current,
 						"statements",
-						lv_statements_8_0,
+						lv_statements_9_0,
 						"com.dexels.navajo.Navascript.InnerBody");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		this_BLOCK_END_9=RULE_BLOCK_END
+		otherlv_10='}'
 		{
-			newLeafNode(this_BLOCK_END_9, grammarAccess.getMappedArrayFieldAccess().getBLOCK_ENDTerminalRuleCall_5());
+			newLeafNode(otherlv_10, grammarAccess.getMappedArrayFieldAccess().getRightCurlyBracketKeyword_5());
 		}
 	)
 ;
@@ -3345,16 +3499,23 @@ ruleMappedArrayMessage returns [EObject current=null]
 			{
 				newLeafNode(this_FILTER_DEF_3, grammarAccess.getMappedArrayMessageAccess().getFILTER_DEFTerminalRuleCall_2_1());
 			}
-			this_ASSIGNMENT_4=RULE_ASSIGNMENT
-			{
-				newLeafNode(this_ASSIGNMENT_4, grammarAccess.getMappedArrayMessageAccess().getASSIGNMENTTerminalRuleCall_2_2());
-			}
+			(
+				otherlv_4='='
+				{
+					newLeafNode(otherlv_4, grammarAccess.getMappedArrayMessageAccess().getEqualsSignKeyword_2_2_0());
+				}
+				    |
+				otherlv_5=':'
+				{
+					newLeafNode(otherlv_5, grammarAccess.getMappedArrayMessageAccess().getColonKeyword_2_2_1());
+				}
+			)
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getMappedArrayMessageAccess().getFilterExpressionParserRuleCall_2_3_0());
 					}
-					lv_filter_5_0=ruleExpression
+					lv_filter_6_0=ruleExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getMappedArrayMessageRule());
@@ -3362,27 +3523,27 @@ ruleMappedArrayMessage returns [EObject current=null]
 						set(
 							$current,
 							"filter",
-							lv_filter_5_0,
+							lv_filter_6_0,
 							"com.dexels.navajo.Navascript.Expression");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			this_ARGS_END_6=RULE_ARGS_END
+			this_ARGS_END_7=RULE_ARGS_END
 			{
-				newLeafNode(this_ARGS_END_6, grammarAccess.getMappedArrayMessageAccess().getARGS_ENDTerminalRuleCall_2_4());
+				newLeafNode(this_ARGS_END_7, grammarAccess.getMappedArrayMessageAccess().getARGS_ENDTerminalRuleCall_2_4());
 			}
 		)?
-		this_BLOCK_START_7=RULE_BLOCK_START
+		otherlv_8='{'
 		{
-			newLeafNode(this_BLOCK_START_7, grammarAccess.getMappedArrayMessageAccess().getBLOCK_STARTTerminalRuleCall_3());
+			newLeafNode(otherlv_8, grammarAccess.getMappedArrayMessageAccess().getLeftCurlyBracketKeyword_3());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getMappedArrayMessageAccess().getStatementsInnerBodyParserRuleCall_4_0());
 				}
-				lv_statements_8_0=ruleInnerBody
+				lv_statements_9_0=ruleInnerBody
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMappedArrayMessageRule());
@@ -3390,15 +3551,15 @@ ruleMappedArrayMessage returns [EObject current=null]
 					add(
 						$current,
 						"statements",
-						lv_statements_8_0,
+						lv_statements_9_0,
 						"com.dexels.navajo.Navascript.InnerBody");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		this_BLOCK_END_9=RULE_BLOCK_END
+		otherlv_10='}'
 		{
-			newLeafNode(this_BLOCK_END_9, grammarAccess.getMappedArrayMessageAccess().getBLOCK_ENDTerminalRuleCall_5());
+			newLeafNode(otherlv_10, grammarAccess.getMappedArrayMessageAccess().getRightCurlyBracketKeyword_5());
 		}
 	)
 ;
@@ -3532,16 +3693,23 @@ ruleKeyValueArgument returns [EObject current=null]
 				)
 			)
 		)
-		this_ASSIGNMENT_2=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_2, grammarAccess.getKeyValueArgumentAccess().getASSIGNMENTTerminalRuleCall_2());
-		}
+		(
+			otherlv_2='='
+			{
+				newLeafNode(otherlv_2, grammarAccess.getKeyValueArgumentAccess().getEqualsSignKeyword_2_0());
+			}
+			    |
+			otherlv_3=':'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getKeyValueArgumentAccess().getColonKeyword_2_1());
+			}
+		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getKeyValueArgumentAccess().getValueLiteralOrExpressionParserRuleCall_3_0());
 				}
-				lv_value_3_0=ruleLiteralOrExpression
+				lv_value_4_0=ruleLiteralOrExpression
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getKeyValueArgumentRule());
@@ -3549,7 +3717,7 @@ ruleKeyValueArgument returns [EObject current=null]
 					set(
 						$current,
 						"value",
-						lv_value_3_0,
+						lv_value_4_0,
 						"com.dexels.navajo.Navascript.LiteralOrExpression");
 					afterParserOrEnumRuleCall();
 				}
@@ -3624,16 +3792,23 @@ ruleVar returns [EObject current=null]
 		)?
 		(
 			(
-				this_ASSIGNMENT_4=RULE_ASSIGNMENT
-				{
-					newLeafNode(this_ASSIGNMENT_4, grammarAccess.getVarAccess().getASSIGNMENTTerminalRuleCall_4_0_0());
-				}
+				(
+					otherlv_4='='
+					{
+						newLeafNode(otherlv_4, grammarAccess.getVarAccess().getEqualsSignKeyword_4_0_0_0());
+					}
+					    |
+					otherlv_5=':'
+					{
+						newLeafNode(otherlv_5, grammarAccess.getVarAccess().getColonKeyword_4_0_0_1());
+					}
+				)
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getVarAccess().getExpressionListConditionalExpressionsParserRuleCall_4_0_1_0());
 						}
-						lv_expressionList_5_0=ruleConditionalExpressions
+						lv_expressionList_6_0=ruleConditionalExpressions
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getVarRule());
@@ -3641,29 +3816,29 @@ ruleVar returns [EObject current=null]
 							set(
 								$current,
 								"expressionList",
-								lv_expressionList_5_0,
+								lv_expressionList_6_0,
 								"com.dexels.navajo.Navascript.ConditionalExpressions");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				this_EOL_6=RULE_EOL
+				otherlv_7=';'
 				{
-					newLeafNode(this_EOL_6, grammarAccess.getVarAccess().getEOLTerminalRuleCall_4_0_2());
+					newLeafNode(otherlv_7, grammarAccess.getVarAccess().getSemicolonKeyword_4_0_2());
 				}
 			)
 			    |
 			(
-				this_TML_START_7=RULE_TML_START
+				otherlv_8='['
 				{
-					newLeafNode(this_TML_START_7, grammarAccess.getVarAccess().getTML_STARTTerminalRuleCall_4_1_0());
+					newLeafNode(otherlv_8, grammarAccess.getVarAccess().getLeftSquareBracketKeyword_4_1_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getVarAccess().getVarArrayVarArrayParserRuleCall_4_1_1_0());
 						}
-						lv_varArray_8_0=ruleVarArray
+						lv_varArray_9_0=ruleVarArray
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getVarRule());
@@ -3671,29 +3846,29 @@ ruleVar returns [EObject current=null]
 							set(
 								$current,
 								"varArray",
-								lv_varArray_8_0,
+								lv_varArray_9_0,
 								"com.dexels.navajo.Navascript.VarArray");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)?
-				this_TML_END_9=RULE_TML_END
+				otherlv_10=']'
 				{
-					newLeafNode(this_TML_END_9, grammarAccess.getVarAccess().getTML_ENDTerminalRuleCall_4_1_2());
+					newLeafNode(otherlv_10, grammarAccess.getVarAccess().getRightSquareBracketKeyword_4_1_2());
 				}
 			)
 			    |
 			(
-				this_BLOCK_START_10=RULE_BLOCK_START
+				otherlv_11='{'
 				{
-					newLeafNode(this_BLOCK_START_10, grammarAccess.getVarAccess().getBLOCK_STARTTerminalRuleCall_4_2_0());
+					newLeafNode(otherlv_11, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_2_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getVarAccess().getVarElementsVarElementParserRuleCall_4_2_1_0());
 						}
-						lv_varElements_11_0=ruleVarElement
+						lv_varElements_12_0=ruleVarElement
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getVarRule());
@@ -3701,29 +3876,29 @@ ruleVar returns [EObject current=null]
 							add(
 								$current,
 								"varElements",
-								lv_varElements_11_0,
+								lv_varElements_12_0,
 								"com.dexels.navajo.Navascript.VarElement");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)*
-				this_BLOCK_END_12=RULE_BLOCK_END
+				otherlv_13='}'
 				{
-					newLeafNode(this_BLOCK_END_12, grammarAccess.getVarAccess().getBLOCK_ENDTerminalRuleCall_4_2_2());
+					newLeafNode(otherlv_13, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_2_2());
 				}
 			)
 			    |
 			(
-				this_BLOCK_START_13=RULE_BLOCK_START
+				otherlv_14='{'
 				{
-					newLeafNode(this_BLOCK_START_13, grammarAccess.getVarAccess().getBLOCK_STARTTerminalRuleCall_4_3_0());
+					newLeafNode(otherlv_14, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_3_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getVarAccess().getMappedArrayFieldMappedArrayFieldParserRuleCall_4_3_1_0());
 						}
-						lv_mappedArrayField_14_0=ruleMappedArrayField
+						lv_mappedArrayField_15_0=ruleMappedArrayField
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getVarRule());
@@ -3731,29 +3906,29 @@ ruleVar returns [EObject current=null]
 							set(
 								$current,
 								"mappedArrayField",
-								lv_mappedArrayField_14_0,
+								lv_mappedArrayField_15_0,
 								"com.dexels.navajo.Navascript.MappedArrayField");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				this_BLOCK_END_15=RULE_BLOCK_END
+				otherlv_16='}'
 				{
-					newLeafNode(this_BLOCK_END_15, grammarAccess.getVarAccess().getBLOCK_ENDTerminalRuleCall_4_3_2());
+					newLeafNode(otherlv_16, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_3_2());
 				}
 			)
 			    |
 			(
-				this_BLOCK_START_16=RULE_BLOCK_START
+				otherlv_17='{'
 				{
-					newLeafNode(this_BLOCK_START_16, grammarAccess.getVarAccess().getBLOCK_STARTTerminalRuleCall_4_4_0());
+					newLeafNode(otherlv_17, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_4_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getVarAccess().getMappedArrayMessageMappedArrayMessageParserRuleCall_4_4_1_0());
 						}
-						lv_mappedArrayMessage_17_0=ruleMappedArrayMessage
+						lv_mappedArrayMessage_18_0=ruleMappedArrayMessage
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getVarRule());
@@ -3761,15 +3936,15 @@ ruleVar returns [EObject current=null]
 							set(
 								$current,
 								"mappedArrayMessage",
-								lv_mappedArrayMessage_17_0,
+								lv_mappedArrayMessage_18_0,
 								"com.dexels.navajo.Navascript.MappedArrayMessage");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				this_BLOCK_END_18=RULE_BLOCK_END
+				otherlv_19='}'
 				{
-					newLeafNode(this_BLOCK_END_18, grammarAccess.getVarAccess().getBLOCK_ENDTerminalRuleCall_4_4_2());
+					newLeafNode(otherlv_19, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_4_2());
 				}
 			)
 		)
@@ -3869,9 +4044,9 @@ ruleVarArrayElement returns [EObject current=null]
 					$current);
 			}
 		)
-		this_BLOCK_START_1=RULE_BLOCK_START
+		otherlv_1='{'
 		{
-			newLeafNode(this_BLOCK_START_1, grammarAccess.getVarArrayElementAccess().getBLOCK_STARTTerminalRuleCall_1());
+			newLeafNode(otherlv_1, grammarAccess.getVarArrayElementAccess().getLeftCurlyBracketKeyword_1());
 		}
 		(
 			(
@@ -3892,9 +4067,9 @@ ruleVarArrayElement returns [EObject current=null]
 				}
 			)
 		)*
-		this_BLOCK_END_3=RULE_BLOCK_END
+		otherlv_3='}'
 		{
-			newLeafNode(this_BLOCK_END_3, grammarAccess.getVarArrayElementAccess().getBLOCK_ENDTerminalRuleCall_3());
+			newLeafNode(otherlv_3, grammarAccess.getVarArrayElementAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;
@@ -3923,9 +4098,9 @@ ruleVarElement returns [EObject current=null]
 			}
 		)
 		(
-			this_IF_1=RULE_IF
+			otherlv_1='if'
 			{
-				newLeafNode(this_IF_1, grammarAccess.getVarElementAccess().getIFTerminalRuleCall_1_0());
+				newLeafNode(otherlv_1, grammarAccess.getVarElementAccess().getIfKeyword_1_0());
 			}
 			(
 				(
@@ -3946,9 +4121,9 @@ ruleVarElement returns [EObject current=null]
 					}
 				)
 			)
-			this_THEN_3=RULE_THEN
+			otherlv_3='then'
 			{
-				newLeafNode(this_THEN_3, grammarAccess.getVarElementAccess().getTHENTerminalRuleCall_1_2());
+				newLeafNode(otherlv_3, grammarAccess.getVarElementAccess().getThenKeyword_1_2());
 			}
 		)?
 		(
@@ -4141,17 +4316,24 @@ ruleVarType returns [EObject current=null]
 		{
 			newLeafNode(this_TYPE_DEF_1, grammarAccess.getVarTypeAccess().getTYPE_DEFTerminalRuleCall_1());
 		}
-		this_ASSIGNMENT_2=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_2, grammarAccess.getVarTypeAccess().getASSIGNMENTTerminalRuleCall_2());
-		}
+		(
+			otherlv_2='='
+			{
+				newLeafNode(otherlv_2, grammarAccess.getVarTypeAccess().getEqualsSignKeyword_2_0());
+			}
+			    |
+			otherlv_3=':'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getVarTypeAccess().getColonKeyword_2_1());
+			}
+		)
 		(
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getVarTypeAccess().getTypeMessageTypeParserRuleCall_3_0_0());
 					}
-					lv_type_3_1=ruleMessageType
+					lv_type_4_1=ruleMessageType
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getVarTypeRule());
@@ -4159,7 +4341,7 @@ ruleVarType returns [EObject current=null]
 						set(
 							$current,
 							"type",
-							lv_type_3_1,
+							lv_type_4_1,
 							"com.dexels.navajo.Navascript.MessageType");
 						afterParserOrEnumRuleCall();
 					}
@@ -4167,7 +4349,7 @@ ruleVarType returns [EObject current=null]
 					{
 						newCompositeNode(grammarAccess.getVarTypeAccess().getTypePropertyTypeParserRuleCall_3_0_1());
 					}
-					lv_type_3_2=rulePropertyType
+					lv_type_4_2=rulePropertyType
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getVarTypeRule());
@@ -4175,7 +4357,7 @@ ruleVarType returns [EObject current=null]
 						set(
 							$current,
 							"type",
-							lv_type_3_2,
+							lv_type_4_2,
 							"com.dexels.navajo.Navascript.PropertyType");
 						afterParserOrEnumRuleCall();
 					}
@@ -4212,16 +4394,23 @@ ruleVarMode returns [EObject current=null]
 		{
 			newLeafNode(this_MODE_DEF_1, grammarAccess.getVarModeAccess().getMODE_DEFTerminalRuleCall_1());
 		}
-		this_ASSIGNMENT_2=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_2, grammarAccess.getVarModeAccess().getASSIGNMENTTerminalRuleCall_2());
-		}
+		(
+			otherlv_2='='
+			{
+				newLeafNode(otherlv_2, grammarAccess.getVarModeAccess().getEqualsSignKeyword_2_0());
+			}
+			    |
+			otherlv_3=':'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getVarModeAccess().getColonKeyword_2_1());
+			}
+		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getVarModeAccess().getModeMessageModeParserRuleCall_3_0());
 				}
-				lv_mode_3_0=ruleMessageMode
+				lv_mode_4_0=ruleMessageMode
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getVarModeRule());
@@ -4229,7 +4418,7 @@ ruleVarMode returns [EObject current=null]
 					set(
 						$current,
 						"mode",
-						lv_mode_3_0,
+						lv_mode_4_0,
 						"com.dexels.navajo.Navascript.MessageMode");
 					afterParserOrEnumRuleCall();
 				}
@@ -4305,16 +4494,23 @@ ruleProperty returns [EObject current=null]
 		(
 			(
 				(
-					this_ASSIGNMENT_4=RULE_ASSIGNMENT
-					{
-						newLeafNode(this_ASSIGNMENT_4, grammarAccess.getPropertyAccess().getASSIGNMENTTerminalRuleCall_4_0_0_0());
-					}
+					(
+						otherlv_4='='
+						{
+							newLeafNode(otherlv_4, grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_0_0_0_0());
+						}
+						    |
+						otherlv_5=':'
+						{
+							newLeafNode(otherlv_5, grammarAccess.getPropertyAccess().getColonKeyword_4_0_0_0_1());
+						}
+					)
 					(
 						(
 							{
 								newCompositeNode(grammarAccess.getPropertyAccess().getExpressionListConditionalExpressionsParserRuleCall_4_0_0_1_0());
 							}
-							lv_expressionList_5_0=ruleConditionalExpressions
+							lv_expressionList_6_0=ruleConditionalExpressions
 							{
 								if ($current==null) {
 									$current = createModelElementForParent(grammarAccess.getPropertyRule());
@@ -4322,30 +4518,30 @@ ruleProperty returns [EObject current=null]
 								set(
 									$current,
 									"expressionList",
-									lv_expressionList_5_0,
+									lv_expressionList_6_0,
 									"com.dexels.navajo.Navascript.ConditionalExpressions");
 								afterParserOrEnumRuleCall();
 							}
 						)
 					)
 				)?
-				this_EOL_6=RULE_EOL
+				otherlv_7=';'
 				{
-					newLeafNode(this_EOL_6, grammarAccess.getPropertyAccess().getEOLTerminalRuleCall_4_0_1());
+					newLeafNode(otherlv_7, grammarAccess.getPropertyAccess().getSemicolonKeyword_4_0_1());
 				}
 			)
 			    |
 			(
-				this_TML_START_7=RULE_TML_START
+				otherlv_8='['
 				{
-					newLeafNode(this_TML_START_7, grammarAccess.getPropertyAccess().getTML_STARTTerminalRuleCall_4_1_0());
+					newLeafNode(otherlv_8, grammarAccess.getPropertyAccess().getLeftSquareBracketKeyword_4_1_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getPropertyAccess().getSelectionArraySelectionArrayParserRuleCall_4_1_1_0());
 						}
-						lv_selectionArray_8_0=ruleSelectionArray
+						lv_selectionArray_9_0=ruleSelectionArray
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getPropertyRule());
@@ -4353,29 +4549,29 @@ ruleProperty returns [EObject current=null]
 							set(
 								$current,
 								"selectionArray",
-								lv_selectionArray_8_0,
+								lv_selectionArray_9_0,
 								"com.dexels.navajo.Navascript.SelectionArray");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				this_TML_END_9=RULE_TML_END
+				otherlv_10=']'
 				{
-					newLeafNode(this_TML_END_9, grammarAccess.getPropertyAccess().getTML_ENDTerminalRuleCall_4_1_2());
+					newLeafNode(otherlv_10, grammarAccess.getPropertyAccess().getRightSquareBracketKeyword_4_1_2());
 				}
 			)
 			    |
 			(
-				this_BLOCK_START_10=RULE_BLOCK_START
+				otherlv_11='{'
 				{
-					newLeafNode(this_BLOCK_START_10, grammarAccess.getPropertyAccess().getBLOCK_STARTTerminalRuleCall_4_2_0());
+					newLeafNode(otherlv_11, grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_2_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getPropertyAccess().getArrayFieldMappedArrayFieldParserRuleCall_4_2_1_0());
 						}
-						lv_arrayField_11_0=ruleMappedArrayField
+						lv_arrayField_12_0=ruleMappedArrayField
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getPropertyRule());
@@ -4383,29 +4579,29 @@ ruleProperty returns [EObject current=null]
 							set(
 								$current,
 								"arrayField",
-								lv_arrayField_11_0,
+								lv_arrayField_12_0,
 								"com.dexels.navajo.Navascript.MappedArrayField");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				this_BLOCK_END_12=RULE_BLOCK_END
+				otherlv_13='}'
 				{
-					newLeafNode(this_BLOCK_END_12, grammarAccess.getPropertyAccess().getBLOCK_ENDTerminalRuleCall_4_2_2());
+					newLeafNode(otherlv_13, grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_2_2());
 				}
 			)
 			    |
 			(
-				this_BLOCK_START_13=RULE_BLOCK_START
+				otherlv_14='{'
 				{
-					newLeafNode(this_BLOCK_START_13, grammarAccess.getPropertyAccess().getBLOCK_STARTTerminalRuleCall_4_3_0());
+					newLeafNode(otherlv_14, grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_3_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getPropertyAccess().getArrayMessageMappedArrayMessageParserRuleCall_4_3_1_0());
 						}
-						lv_arrayMessage_14_0=ruleMappedArrayMessage
+						lv_arrayMessage_15_0=ruleMappedArrayMessage
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getPropertyRule());
@@ -4413,15 +4609,15 @@ ruleProperty returns [EObject current=null]
 							set(
 								$current,
 								"arrayMessage",
-								lv_arrayMessage_14_0,
+								lv_arrayMessage_15_0,
 								"com.dexels.navajo.Navascript.MappedArrayMessage");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				this_BLOCK_END_15=RULE_BLOCK_END
+				otherlv_16='}'
 				{
-					newLeafNode(this_BLOCK_END_15, grammarAccess.getPropertyAccess().getBLOCK_ENDTerminalRuleCall_4_3_2());
+					newLeafNode(otherlv_16, grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_3_2());
 				}
 			)
 		)
@@ -4514,9 +4710,9 @@ ruleSelectionArrayElement returns [EObject current=null]
 					$current);
 			}
 		)
-		this_BLOCK_START_1=RULE_BLOCK_START
+		otherlv_1='{'
 		{
-			newLeafNode(this_BLOCK_START_1, grammarAccess.getSelectionArrayElementAccess().getBLOCK_STARTTerminalRuleCall_1());
+			newLeafNode(otherlv_1, grammarAccess.getSelectionArrayElementAccess().getLeftCurlyBracketKeyword_1());
 		}
 		(
 			(
@@ -4537,9 +4733,9 @@ ruleSelectionArrayElement returns [EObject current=null]
 				}
 			)
 		)*
-		this_BLOCK_END_3=RULE_BLOCK_END
+		otherlv_3='}'
 		{
-			newLeafNode(this_BLOCK_END_3, grammarAccess.getSelectionArrayElementAccess().getBLOCK_ENDTerminalRuleCall_3());
+			newLeafNode(otherlv_3, grammarAccess.getSelectionArrayElementAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;
@@ -4583,16 +4779,23 @@ ruleOption returns [EObject current=null]
 				}
 			)
 		)
-		this_ASSIGNMENT_2=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_2, grammarAccess.getOptionAccess().getASSIGNMENTTerminalRuleCall_2());
-		}
+		(
+			otherlv_2='='
+			{
+				newLeafNode(otherlv_2, grammarAccess.getOptionAccess().getEqualsSignKeyword_2_0());
+			}
+			    |
+			otherlv_3=':'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getOptionAccess().getColonKeyword_2_1());
+			}
+		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getOptionAccess().getExpressionListConditionalExpressionsParserRuleCall_3_0());
 				}
-				lv_expressionList_3_0=ruleConditionalExpressions
+				lv_expressionList_4_0=ruleConditionalExpressions
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOptionRule());
@@ -4600,15 +4803,15 @@ ruleOption returns [EObject current=null]
 					set(
 						$current,
 						"expressionList",
-						lv_expressionList_3_0,
+						lv_expressionList_4_0,
 						"com.dexels.navajo.Navascript.ConditionalExpressions");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		this_EOL_4=RULE_EOL
+		otherlv_5=';'
 		{
-			newLeafNode(this_EOL_4, grammarAccess.getOptionAccess().getEOLTerminalRuleCall_4());
+			newLeafNode(otherlv_5, grammarAccess.getOptionAccess().getSemicolonKeyword_4());
 		}
 	)
 ;
@@ -4783,15 +4986,22 @@ ruleLengthArgument returns [EObject current=null]
 		{
 			newLeafNode(this_LENGTH_DEF_0, grammarAccess.getLengthArgumentAccess().getLENGTH_DEFTerminalRuleCall_0());
 		}
-		this_ASSIGNMENT_1=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_1, grammarAccess.getLengthArgumentAccess().getASSIGNMENTTerminalRuleCall_1());
-		}
+		(
+			otherlv_1='='
+			{
+				newLeafNode(otherlv_1, grammarAccess.getLengthArgumentAccess().getEqualsSignKeyword_1_0());
+			}
+			    |
+			otherlv_2=':'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getLengthArgumentAccess().getColonKeyword_1_1());
+			}
+		)
 		(
 			(
-				lv_value_2_0=RULE_INTEGER
+				lv_value_3_0=RULE_INTEGER
 				{
-					newLeafNode(lv_value_2_0, grammarAccess.getLengthArgumentAccess().getValueINTEGERTerminalRuleCall_2_0());
+					newLeafNode(lv_value_3_0, grammarAccess.getLengthArgumentAccess().getValueINTEGERTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -4800,7 +5010,7 @@ ruleLengthArgument returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"value",
-						lv_value_2_0,
+						lv_value_3_0,
 						"com.dexels.navajo.Navascript.INTEGER");
 				}
 			)
@@ -4828,16 +5038,23 @@ ruleDirectionArgument returns [EObject current=null]
 		{
 			newLeafNode(this_DIRECTION_DEF_0, grammarAccess.getDirectionArgumentAccess().getDIRECTION_DEFTerminalRuleCall_0());
 		}
-		this_ASSIGNMENT_1=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_1, grammarAccess.getDirectionArgumentAccess().getASSIGNMENTTerminalRuleCall_1());
-		}
+		(
+			otherlv_1='='
+			{
+				newLeafNode(otherlv_1, grammarAccess.getDirectionArgumentAccess().getEqualsSignKeyword_1_0());
+			}
+			    |
+			otherlv_2=':'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getDirectionArgumentAccess().getColonKeyword_1_1());
+			}
+		)
 		(
 			(
 				(
-					lv_value_2_1=RULE_IN_DEF
+					lv_value_3_1=RULE_IN_DEF
 					{
-						newLeafNode(lv_value_2_1, grammarAccess.getDirectionArgumentAccess().getValueIN_DEFTerminalRuleCall_2_0_0());
+						newLeafNode(lv_value_3_1, grammarAccess.getDirectionArgumentAccess().getValueIN_DEFTerminalRuleCall_2_0_0());
 					}
 					{
 						if ($current==null) {
@@ -4846,13 +5063,13 @@ ruleDirectionArgument returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"value",
-							lv_value_2_1,
+							lv_value_3_1,
 							"com.dexels.navajo.Navascript.IN_DEF");
 					}
 					    |
-					lv_value_2_2=RULE_OUT_DEF
+					lv_value_3_2=RULE_OUT_DEF
 					{
-						newLeafNode(lv_value_2_2, grammarAccess.getDirectionArgumentAccess().getValueOUT_DEFTerminalRuleCall_2_0_1());
+						newLeafNode(lv_value_3_2, grammarAccess.getDirectionArgumentAccess().getValueOUT_DEFTerminalRuleCall_2_0_1());
 					}
 					{
 						if ($current==null) {
@@ -4861,13 +5078,13 @@ ruleDirectionArgument returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"value",
-							lv_value_2_2,
+							lv_value_3_2,
 							"com.dexels.navajo.Navascript.OUT_DEF");
 					}
 					    |
-					lv_value_2_3=RULE_INOUT_DEF
+					lv_value_3_3=RULE_INOUT_DEF
 					{
-						newLeafNode(lv_value_2_3, grammarAccess.getDirectionArgumentAccess().getValueINOUT_DEFTerminalRuleCall_2_0_2());
+						newLeafNode(lv_value_3_3, grammarAccess.getDirectionArgumentAccess().getValueINOUT_DEFTerminalRuleCall_2_0_2());
 					}
 					{
 						if ($current==null) {
@@ -4876,7 +5093,7 @@ ruleDirectionArgument returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"value",
-							lv_value_2_3,
+							lv_value_3_3,
 							"com.dexels.navajo.Navascript.INOUT_DEF");
 					}
 				)
@@ -4905,16 +5122,23 @@ ruleDescriptionArgument returns [EObject current=null]
 		{
 			newLeafNode(this_DESCRIPTION_DEF_0, grammarAccess.getDescriptionArgumentAccess().getDESCRIPTION_DEFTerminalRuleCall_0());
 		}
-		this_ASSIGNMENT_1=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_1, grammarAccess.getDescriptionArgumentAccess().getASSIGNMENTTerminalRuleCall_1());
-		}
+		(
+			otherlv_1='='
+			{
+				newLeafNode(otherlv_1, grammarAccess.getDescriptionArgumentAccess().getEqualsSignKeyword_1_0());
+			}
+			    |
+			otherlv_2=':'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getDescriptionArgumentAccess().getColonKeyword_1_1());
+			}
+		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getDescriptionArgumentAccess().getValueLiteralOrExpressionParserRuleCall_2_0());
 				}
-				lv_value_2_0=ruleLiteralOrExpression
+				lv_value_3_0=ruleLiteralOrExpression
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDescriptionArgumentRule());
@@ -4922,7 +5146,7 @@ ruleDescriptionArgument returns [EObject current=null]
 					set(
 						$current,
 						"value",
-						lv_value_2_0,
+						lv_value_3_0,
 						"com.dexels.navajo.Navascript.LiteralOrExpression");
 					afterParserOrEnumRuleCall();
 				}
@@ -4951,33 +5175,40 @@ ruleCardinalityArgument returns [EObject current=null]
 		{
 			newLeafNode(this_CARDINALITY_DEF_0, grammarAccess.getCardinalityArgumentAccess().getCARDINALITY_DEFTerminalRuleCall_0());
 		}
-		this_ASSIGNMENT_1=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_1, grammarAccess.getCardinalityArgumentAccess().getASSIGNMENTTerminalRuleCall_1());
-		}
+		(
+			otherlv_1='='
+			{
+				newLeafNode(otherlv_1, grammarAccess.getCardinalityArgumentAccess().getEqualsSignKeyword_1_0());
+			}
+			    |
+			otherlv_2=':'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getCardinalityArgumentAccess().getColonKeyword_1_1());
+			}
+		)
 		(
 			(
 				(
-					lv_value_2_1='+'
+					lv_value_3_1='+'
 					{
-						newLeafNode(lv_value_2_1, grammarAccess.getCardinalityArgumentAccess().getValuePlusSignKeyword_2_0_0());
+						newLeafNode(lv_value_3_1, grammarAccess.getCardinalityArgumentAccess().getValuePlusSignKeyword_2_0_0());
 					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getCardinalityArgumentRule());
 						}
-						setWithLastConsumed($current, "value", lv_value_2_1, null);
+						setWithLastConsumed($current, "value", lv_value_3_1, null);
 					}
 					    |
-					lv_value_2_2='1'
+					lv_value_3_2='1'
 					{
-						newLeafNode(lv_value_2_2, grammarAccess.getCardinalityArgumentAccess().getValue1Keyword_2_0_1());
+						newLeafNode(lv_value_3_2, grammarAccess.getCardinalityArgumentAccess().getValue1Keyword_2_0_1());
 					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getCardinalityArgumentRule());
 						}
-						setWithLastConsumed($current, "value", lv_value_2_2, null);
+						setWithLastConsumed($current, "value", lv_value_3_2, null);
 					}
 				)
 			)
@@ -5005,16 +5236,23 @@ ruleTypeArgument returns [EObject current=null]
 		{
 			newLeafNode(this_TYPE_DEF_0, grammarAccess.getTypeArgumentAccess().getTYPE_DEFTerminalRuleCall_0());
 		}
-		this_ASSIGNMENT_1=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_1, grammarAccess.getTypeArgumentAccess().getASSIGNMENTTerminalRuleCall_1());
-		}
+		(
+			otherlv_1='='
+			{
+				newLeafNode(otherlv_1, grammarAccess.getTypeArgumentAccess().getEqualsSignKeyword_1_0());
+			}
+			    |
+			otherlv_2=':'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getTypeArgumentAccess().getColonKeyword_1_1());
+			}
+		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getTypeArgumentAccess().getValuePropertyTypeParserRuleCall_2_0());
 				}
-				lv_value_2_0=rulePropertyType
+				lv_value_3_0=rulePropertyType
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTypeArgumentRule());
@@ -5022,7 +5260,7 @@ ruleTypeArgument returns [EObject current=null]
 					set(
 						$current,
 						"value",
-						lv_value_2_0,
+						lv_value_3_0,
 						"com.dexels.navajo.Navascript.PropertyType");
 					afterParserOrEnumRuleCall();
 				}
@@ -5051,15 +5289,22 @@ ruleSubTypeArgument returns [EObject current=null]
 		{
 			newLeafNode(this_SUBTYPE_DEF_0, grammarAccess.getSubTypeArgumentAccess().getSUBTYPE_DEFTerminalRuleCall_0());
 		}
-		this_ASSIGNMENT_1=RULE_ASSIGNMENT
-		{
-			newLeafNode(this_ASSIGNMENT_1, grammarAccess.getSubTypeArgumentAccess().getASSIGNMENTTerminalRuleCall_1());
-		}
+		(
+			otherlv_1='='
+			{
+				newLeafNode(otherlv_1, grammarAccess.getSubTypeArgumentAccess().getEqualsSignKeyword_1_0());
+			}
+			    |
+			otherlv_2=':'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getSubTypeArgumentAccess().getColonKeyword_1_1());
+			}
+		)
 		(
 			(
-				lv_value_2_0=RULE_IDENTIFIER
+				lv_value_3_0=RULE_IDENTIFIER
 				{
-					newLeafNode(lv_value_2_0, grammarAccess.getSubTypeArgumentAccess().getValueIDENTIFIERTerminalRuleCall_2_0());
+					newLeafNode(lv_value_3_0, grammarAccess.getSubTypeArgumentAccess().getValueIDENTIFIERTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -5068,7 +5313,7 @@ ruleSubTypeArgument returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"value",
-						lv_value_2_0,
+						lv_value_3_0,
 						"com.dexels.navajo.Navascript.IDENTIFIER");
 				}
 			)
@@ -5119,9 +5364,9 @@ ruleConditionalExpressions returns [EObject current=null]
 					}
 				)
 			)+
-			this_ELSE_2=RULE_ELSE
+			otherlv_2='else'
 			{
-				newLeafNode(this_ELSE_2, grammarAccess.getConditionalExpressionsAccess().getELSETerminalRuleCall_0_2());
+				newLeafNode(otherlv_2, grammarAccess.getConditionalExpressionsAccess().getElseKeyword_0_2());
 			}
 			(
 				(
@@ -5182,9 +5427,9 @@ ruleConditionalExpression returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		this_IF_0=RULE_IF
+		otherlv_0='if'
 		{
-			newLeafNode(this_IF_0, grammarAccess.getConditionalExpressionAccess().getIFTerminalRuleCall_0());
+			newLeafNode(otherlv_0, grammarAccess.getConditionalExpressionAccess().getIfKeyword_0());
 		}
 		(
 			(
@@ -5205,9 +5450,9 @@ ruleConditionalExpression returns [EObject current=null]
 				}
 			)
 		)
-		this_THEN_2=RULE_THEN
+		otherlv_2='then'
 		{
-			newLeafNode(this_THEN_2, grammarAccess.getConditionalExpressionAccess().getTHENTerminalRuleCall_2());
+			newLeafNode(otherlv_2, grammarAccess.getConditionalExpressionAccess().getThenKeyword_2());
 		}
 		(
 			(
@@ -6780,16 +7025,6 @@ ruleMessageMode returns [EObject current=null]
 	)
 ;
 
-RULE_IF : 'if';
-
-RULE_THEN : 'then';
-
-RULE_ELSE : 'else';
-
-RULE_BLOCK_START : '{';
-
-RULE_BLOCK_END : '}';
-
 RULE_METHOD_IDENTIFIER : '.' RULE_IDENTIFIER;
 
 RULE_MAPPABLE_IDENTIFIER : RULE_MAPPABLE_ID '../'* RULE_IDENTIFIER;
@@ -6802,23 +7037,15 @@ RULE_FORALL : 'FORALL';
 
 RULE_EXISTS : 'EXISTS';
 
-RULE_ASSIGNMENT : ('='|':');
-
 RULE_TRUE : 'true';
 
 RULE_FALSE : 'false';
 
 fragment RULE_MAPPABLE_ID : '$';
 
-RULE_EOL : ';';
-
 RULE_ARGS_START : '(';
 
 RULE_ARGS_END : ')';
-
-RULE_TML_START : '[';
-
-RULE_TML_END : ']';
 
 RULE_NULL_DEF : 'null';
 

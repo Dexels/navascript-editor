@@ -26,15 +26,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface Methods extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Methods</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Methods</b></em>' containment reference list.
+   * The list contents are of type {@link com.dexels.navajo.navascript.Method}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Methods</em>' attribute list.
+   * @return the value of the '<em>Methods</em>' containment reference list.
    * @see com.dexels.navajo.navascript.NavascriptPackage#getMethods_Methods()
-   * @model unique="false"
+   * @model containment="true"
    * @generated
    */
-  EList<String> getMethods();
+  EList<Method> getMethods();
 
 } // Methods

@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.osgi,
  org.apache.felix.gogo.shell,
  org.eclipse.jdt.core,
  org.eclipse.pde.core;bundle-version="3.14.100",
- org.eclipse.equinox.frameworkadmin;bundle-version="2.1.400"
+ org.eclipse.equinox.frameworkadmin;bundle-version="2.1.400",
+ com.dexels.navajo.document
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/*.xml
 Import-Package: com.dexels.navajo.document;version="2.2.1",

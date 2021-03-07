@@ -168,7 +168,7 @@ public class JavaProjectIntrospection {
 
 	}
 
-	public static void findVersionClasses() throws Exception {
+	public static synchronized void findVersionClasses() throws Exception {
 
 
 		PlatformUI u;
@@ -211,9 +211,7 @@ public class JavaProjectIntrospection {
 					//System.err.println("found getInstance method: " + m);
 					Object o = m.invoke(null);
 					//System.err.println(">>>>>>>>> mmd: " + o);
-					Method m2 = foundClass.getDeclaredMethod("getMapDefinitions");
 					//System.err.println("found getMapDefinitions method: " + m2);
-					Object o2 = m2.invoke(o);
 					//System.err.println("Map definitions: " + o2);
 					//System.err.println("Found MapMetaData class in project: " + p.getName());
 					ProxyMetaData pmd = ProxyMetaData.getInstance();

@@ -37,11 +37,6 @@ public class NavascriptSemanticHighlighting extends DefaultSemanticHighlightingC
 		}
 	}
 	
-	private NavajoProxyStub getNavajoProxyStub() {
-		init();
-		return adapters;
-	}
-
 	@Override
 	public void provideHighlightingFor(XtextResource resource, IHighlightedPositionAcceptor acceptor, CancelIndicator cancelIndicator) {
 		EObject rootObject = resource.getParseResult().getRootASTElement();

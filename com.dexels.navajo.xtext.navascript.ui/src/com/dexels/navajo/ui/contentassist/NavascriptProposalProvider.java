@@ -22,10 +22,6 @@ import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
 
-import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
-import com.dexels.navajo.mapping.compiler.meta.MethodDefinition;
-import com.dexels.navajo.mapping.compiler.meta.ParameterDefinition;
-import com.dexels.navajo.mapping.compiler.meta.ValueDefinition;
 import com.dexels.navajo.navascript.KeyValueArgument;
 import com.dexels.navajo.navascript.impl.AdapterMethodImpl;
 import com.dexels.navajo.navascript.impl.FunctionIdentifierImpl;
@@ -71,7 +67,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		init();
 		return adapters;
 	}
-	
+
 	protected ICompletionProposal createCompletionProposalFormatted(String proposal, String extra, int priority, ContentAssistContext contentAssistContext) {
 
 
@@ -101,7 +97,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				}
 				createParameterList(context, acceptor, map, method, currentParameters);
 			} else {
-				System.err.println(">>>>>>>>>>>>>> Parent is: " + parent);
+				//System.err.println(">>>>>>>>>>>>>> Parent is: " + parent);
 			}
 		} else if ( model instanceof AdapterMethodImpl ) {
 			AdapterMethodImpl method = (AdapterMethodImpl) model;
@@ -113,7 +109,6 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 			Set<String> values = new TreeSet<>(md.getValueDefinitions());
 			for ( String value : values) {
 				ProxyValueDefinition vd = md.getValueDefinition(value);
-				System.err.println("vd: " + vd.getName() + "/" + vd.getRequired());
 				if ( vd != null && ( vd.getRequired() == null || !"automatic".equals(vd.getRequired()))) {
 					acceptor.accept(createCompletionProposalFormatted(vd.getName() + "=", vd.getMapType(), 1, context));
 				}
@@ -146,9 +141,8 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				try {
 					type = md.getType(vd.getField());
 				} catch (Exception e) {
-					System.err.println("Could not determine type for parameter: " + param);
+					//System.err.println("Could not determine type for parameter: " + param);
 				}
-				System.err.println("Adding required param: " + param);
 				acceptor.accept(createCompletionProposalFormatted(param + "=", type + " [" + vd.getRequired() + "]", 10, context));
 			}
 		}
@@ -159,9 +153,8 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				try {
 					type = md.getType(vd.getField());
 				} catch (Exception e) {
-					System.err.println("Could not determine type for parameter: " + param);
+					//System.err.println("Could not determine type for parameter: " + param);
 				}
-				System.err.println("Adding NON required param: " + param);
 				acceptor.accept(createCompletionProposalFormatted(param + "=", type, 1, context));
 			}
 		}
@@ -169,9 +162,6 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 	@Override
 	public void complete_KeyValueArguments(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		System.err.println("In complete_KeyValueArguments");
-		System.err.println("model: " + model);
-		System.err.println("RuleCall: " + ruleCall);
 		processKeyValueArguments(model, ruleCall, context, acceptor);
 	}
 
@@ -192,8 +182,6 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), 0);
 
-		System.err.println("Found adapter: " + map + ", assignment: " + assignment);
-
 		if ( map != null ) {
 			String adapterName;
 			Set<String> fields;
@@ -204,11 +192,10 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				for ( String a : fields ) {
 					String type = "unknown";
 					try {
-						type = md.getType(a);
+						type = md.getSetterType(a);
 					} catch (Exception e) {
-						System.err.println("Could not determine type for field: " + a);
+						System.err.println("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
 					}
-					System.err.println(a + " has type " + type);
 					acceptor.accept(createCompletionProposalFormatted("$" + a, type, 1, context));
 				}
 			} else if ( map instanceof MappedArrayFieldImpl ) {
@@ -242,7 +229,6 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 			}
 			Set<ProxyMethodDefinition> methods = getNavajoProxyStub().getAdapter(adapterName).getMethods();
 			ProxyMapDefinition md = getNavajoProxyStub().getAdapter(adapterName).getMapDefinition();
-			System.err.println(adapterName + " -> " + md);
 			for ( ProxyMethodDefinition a : methods) {
 				Set<String> parameters = a.getParameters();
 				acceptor.accept(createCompletionProposalFormatted("." + a.getName(), parameters+"", 1, context));
@@ -256,8 +242,6 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	public void completeMap_AdapterName(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 
 		String [] list =  getNavajoProxyStub().getAdapters();
-
-		System.err.println("list = " + list);
 
 		for ( String a : list) {
 			if ( getNavajoProxyStub().getAdapter(a) != null ) {
@@ -286,18 +270,16 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		if ( map != null ) {
 			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
 			if ( md != null ) {
-				System.err.println("In completeMappableIdentifier_Field. adapter: " + md);
 				Set<String> fields = md.getGetters();
-				System.err.println("In completeMappableIdentifier_Field: " + fields);
 				for ( String a : fields ) {
 					List<List<String>> type = new ArrayList<>();
 					try {
 						type = md.getGetterTypeSignatures(a);
 					} catch (Exception e) {
-						System.err.println("Could not determine type for field: " + a);
+						System.err.println("(2) Could not determine type for field: " + a  + ": " + e);
 					}
-					System.err.println(a + " has type " + type);
-					acceptor.accept(createCompletionProposalFormatted(prefix + a, ( type != null ? type.toString() : ""), 1, context));
+					String typeStr = ( ( type != null ) ? type.toString() : "" ) + " -> " + md.getGetterType(a);
+					acceptor.accept(createCompletionProposalFormatted(prefix + a, typeStr, 1, context));
 				}
 			} else {
 				System.err.println("Could not find parent adapter for " + model);
@@ -317,23 +299,17 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	@Override
 	public void completeMappedArrayField_Field(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 
-		System.err.println("In completeMappedArrayField_Field!!!!!");
 
 		String prefix = NavigationUtils.getParentPrefix(context.getPrefix(), new StringBuffer());
-		System.err.println("Prefix is: " + prefix);
 		int level = NavigationUtils.countMappableParentLevel(prefix);
 
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
-		System.err.println("In completeMappedArrayField_Field.findFirstMapOrMappedField() map: " + map);
 
 		if ( map != null ) {
 			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
 			if ( md != null ) {
-				System.err.println("Found AdapterClassDefinition: " + md.getObjectName());
 				List<ProxyValueDefinition> valuedDefs = md.getDeclaredValues();
-				System.err.println("In completeMappedArrayField_Field: " + valuedDefs);
 				for ( ProxyValueDefinition a : valuedDefs ) {
-					System.err.println("ValueDefinition " + a.getName() + " [" + a.getMap() + "]");
 					if ( a.getMap() != null && !"".equals(a.getMap() )) {
 						acceptor.accept(createCompletionProposalFormatted(prefix + a.getName(), a.getMapType(), 10, context));
 					}
@@ -349,13 +325,15 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	public void completeFunctionIdentifier_Func(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		String [] functions = getNavajoProxyStub().getFunctions();
 		for ( String a : functions ) {
-			String description = "";
-			try {
-				description = getNavajoProxyStub().getFunction(a).getDescription();
-			} catch (Exception e) {
-				System.err.println("Could not determine type for field: " + a);
+			if ( a != null ) {
+				String description = "";
+				try {
+					description = getNavajoProxyStub().getFunction(a).getDescription();
+				} catch (Exception e) {
+					System.err.println("(3) Could not determine type for field: " + a + ": " + e);
+				}
+				acceptor.accept(createCompletionProposalFormatted( a + "(", description, 1, context));
 			}
-			acceptor.accept(createCompletionProposalFormatted( a + "(", description, 1, context));
 		}
 	}
 

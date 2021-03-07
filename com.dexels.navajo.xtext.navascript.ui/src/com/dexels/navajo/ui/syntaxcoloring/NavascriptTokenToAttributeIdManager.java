@@ -22,6 +22,9 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 	
 	static String [] keywordArray =
 		{
+				"'if'",
+				"'then'",
+				"'else'",
 				"RULE_IF",
 				"RULE_THEN",
 				"RULE_ELSE",

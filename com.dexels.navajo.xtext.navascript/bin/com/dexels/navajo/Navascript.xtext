@@ -12,19 +12,19 @@ Navascript: {Navascript} validations=Validations? toplevelStatements=TopLevelSta
 
 TopLevelStatements : {TopLevelStatements} statements+=TopLevelStatement*;
 
-TopLevelStatement : {TopLevelStatement}  (IF condition=Expression THEN)?
+TopLevelStatement : {TopLevelStatement}  ('if' condition=Expression 'then')?
 	statement=( Message | Var | Map | AntiMessage | Define | Print | Log | Loop | Methods | Include | Break | Synchronized | BlockStatements )
 ;
 
 InnerBody:
-	{InnerBody} (IF condition=Expression THEN)?
+	{InnerBody} ('if' condition=Expression 'then')?
 	statement=( Property |  Option | MethodOrSetter|  Message | AntiMessage | Include | Methods | Var | Print | Log | Define | Loop | Map | Break | BlockStatements )
 ;
 
 /*
  * if EXPRESSION THEN { [STATEMENTS }
  */
-BlockStatements : {BlockStatements} BLOCK_START statements+=InnerBody* BLOCK_END ;
+BlockStatements : {BlockStatements} '{' statements+=InnerBody* '}' ;
 
 /*
  * synchronized() {
@@ -32,157 +32,161 @@ BlockStatements : {BlockStatements} BLOCK_START statements+=InnerBody* BLOCK_END
  * }
  */
 
-Synchronized : SYNCHRONIZED_DEF ARGS_START arguments=SynchronizedArguments ARGS_END BLOCK_START statements+=TopLevelStatement* BLOCK_END;
+Synchronized : SYNCHRONIZED_DEF ARGS_START arguments=SynchronizedArguments ARGS_END '{' statements+=TopLevelStatement* '}';
 
 SynchronizedArguments : arguments+=SynchronizedArgument ( ARG_SEP arguments+= SynchronizedArgument )*;
 
 SynchronizedArgument : ( {SynchronizedArgument} SContext | SKey | STimeout | SBreakOnNoLock );
 
-SContext : CONTEXT_DEF ASSIGNMENT SContextType;
+SContext : CONTEXT_DEF ('=' | ':') SContextType;
 
 SKey : KEY_DEF LiteralOrExpression;
 
-STimeout : TIMEOUT_DEF ASSIGNMENT Expression;
+STimeout : TIMEOUT_DEF ('=' | ':') Expression;
 
-SBreakOnNoLock : BREAKONNOLOCK_DEF ASSIGNMENT Expression;
+SBreakOnNoLock : BREAKONNOLOCK_DEF ('=' | ':') Expression;
 
 SContextType : ( "user" | "service" );
 
 /*
  * break([code=VALUE,description=VALUE,error=VALUE])
  */
-Break : {Break} BREAK_DEF ( ARGS_START parameters=BreakParameters? ARGS_END )? EOL;
+Break : {Break} BREAK_DEF ( ARGS_START parameters=BreakParameters? ARGS_END )? ';';
 
-BreakParameter : ( CODE_DEF ASSIGNMENT code=LiteralOrExpression | DESCRIPTION_DEF ASSIGNMENT description=LiteralOrExpression | ERROR_DEF ASSIGNMENT LiteralOrExpression ) ;
+BreakParameter : ( CODE_DEF ('=' | ':') code=LiteralOrExpression | DESCRIPTION_DEF ('=' | ':') description=LiteralOrExpression | ERROR_DEF ('=' | ':') LiteralOrExpression ) ;
 
 BreakParameters : parameters+=BreakParameter ( ARG_SEP parameters+=BreakParameter )*;
 
-Validations : {Validations} VALIDATIONS_DEF BLOCK_START checks+=Check* BLOCK_END ;
+Validations : {Validations} VALIDATIONS_DEF '{' checks+=Check* '}' ;
 
 Define:
-	{Define} DEFINE_DEF defineKey=QUOTED_IDENTIFIER ASSIGNMENT expression=Expression EOL
+	{Define} DEFINE_DEF defineKey=QUOTED_IDENTIFIER ('=' | ':') expression=Expression ';'
 ;
 
-Check : {Check} (IF condition=Expression THEN)? CHECK_DEF ARGS_START checkAttributes+=CheckAttribute ( ARG_SEP checkAttributes+=CheckAttribute)? ARGS_END ASSIGNMENT expression=Expression EOL;
+Check : {Check} ('if' condition=Expression 'then')? CHECK_DEF ARGS_START checkAttributes+=CheckAttribute ( ARG_SEP checkAttributes+=CheckAttribute)? ARGS_END ('=' | ':') expression=Expression ';';
 
-CheckAttribute : {CheckAttribute} (CODE_DEF ASSIGNMENT value=LiteralOrExpression) | (DESCRIPTION_DEF ASSIGNMENT value=LiteralOrExpression);
+CheckAttribute : {CheckAttribute} (CODE_DEF ('=' | ':') value=LiteralOrExpression) | (DESCRIPTION_DEF ('=' | ':') value=LiteralOrExpression);
 
 LiteralOrExpression : {LiteralOrExpression} literal=(QUOTED_IDENTIFIER | STRING_CONSTANT) | expression=Expression ;
 
 Print:
-	{Print} PRINT_DEF ARGS_START expression=Expression ARGS_END EOL
+	{Print} PRINT_DEF ARGS_START expression=Expression ARGS_END ';'
 ;
 
 Log:
-	{Log} LOG_DEF ARGS_START expression=Expression ARGS_END EOL
+	{Log} LOG_DEF ARGS_START expression=Expression ARGS_END ';'
 ;
 
 Finally: 
-	{Finally} FINALLY_DEF BLOCK_START finallyStatements=TopLevelStatements BLOCK_END
+	{Finally} FINALLY_DEF '{' finallyStatements=TopLevelStatements '}'
 ;
 
 Methods:
-	{Methods} METHODS_DEF BLOCK_START ( methods+=QUOTED_IDENTIFIER EOL )* BLOCK_END
+	{Methods} METHODS_DEF '{' ( methods+=Method )* '}'
+;
+
+Method:
+	{Method} methodName=QUOTED_IDENTIFIER ';'
 ;
 
 Loop:
 	{Loop} LOOP_DEF ( mappable=MappableIdentifier | tml=TmlIdentifier ) 
-	   ( ARGS_START FILTER_DEF ASSIGNMENT filter=Expression ARGS_END )? BLOCK_START statements+=InnerBody* BLOCK_END 
+	   ( ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END )? '{' statements+=InnerBody* '}' 
 ;
 
 Include:
-	{Include} INCLUDE_DEF scriptName=QUOTED_IDENTIFIER EOL
+	{Include} INCLUDE_DEF scriptName=QUOTED_IDENTIFIER ';'
 ;
 
-AntiMessage : {AntiMessage} ANTIMESSAGE_DEF messageName=QUOTED_IDENTIFIER EOL;
+AntiMessage : {AntiMessage} ANTIMESSAGE_DEF messageName=QUOTED_IDENTIFIER ';';
 
 Message: 
-	{Message} MESSAGE_DEF messageName=QUOTED_IDENTIFIER ( ARGS_START arguments=MessageArguments ARGS_END )?  ( ( BLOCK_START ( statements+=InnerBody* |  arrayField=MappedArrayField | arrayMessage=MappedArrayMessage ) BLOCK_END ) | EOL 
-		| TML_START messageArray=MessageArray TML_END
+	{Message} MESSAGE_DEF messageName=QUOTED_IDENTIFIER ( ARGS_START arguments=MessageArguments ARGS_END )?  ( ( '{' ( statements+=InnerBody* |  arrayField=MappedArrayField | arrayMessage=MappedArrayMessage ) '}' ) | ';' 
+		| '[' messageArray=MessageArray ']'
 	)
 ;
 
 MessageArray : arrayMessageElements+=MessageArrayElement (ARG_SEP arrayMessageElements+=MessageArrayElement)*;
 
-MessageArrayElement : {MessageArrayElement} BLOCK_START statements+=InnerBody* BLOCK_END;
+MessageArrayElement : {MessageArrayElement} '{' statements+=InnerBody* '}';
 
-MessageArgument : ( TYPE_DEF ASSIGNMENT MessageType ) | ( MODE_DEF ASSIGNMENT MessageMode );
+MessageArgument : ( TYPE_DEF ('=' | ':') MessageType ) | ( MODE_DEF ('=' | ':') MessageMode );
 
 MessageArguments : arguments+=MessageArgument ( ARG_SEP arguments+=MessageArgument )*;
 
 Map : {Map} ( MAP_DEF adapterName=IDENTIFIER (ARGS_START arguments=KeyValueArguments? ARGS_END)? | 
-	   MAP_OLDSKOOL_DEF ARGS_START OBJECT_OLDSKOOL_DEF ASSIGNMENT objectName=OBJECT_IDENTIFIER ( ARG_SEP arguments=KeyValueArguments )? ARGS_END) BLOCK_START statements+=InnerBody* BLOCK_END
+	   MAP_OLDSKOOL_DEF ARGS_START OBJECT_OLDSKOOL_DEF ('=' | ':') objectName=OBJECT_IDENTIFIER ( ARG_SEP arguments=KeyValueArguments )? ARGS_END) '{' statements+=InnerBody* '}'
 ;
 
 MethodOrSetter : AdapterMethod | SetterField ;
 
-AdapterMethod: {AdapterMethod} method=METHOD_IDENTIFIER ARGS_START arguments=KeyValueArguments? ARGS_END EOL;
+AdapterMethod: {AdapterMethod} method=METHOD_IDENTIFIER ARGS_START arguments=KeyValueArguments? ARGS_END ';';
 
-SetterField: {SetterField} field=MAPPABLE_IDENTIFIER  ( ASSIGNMENT expressionList=ConditionalExpressions EOL 
-	  | (ARGS_START arguments=KeyValueArguments ARGS_END)? BLOCK_START mappedArray=MappedArrayMessage BLOCK_END | mappedField=MappedArrayField );
+SetterField: {SetterField} field=MAPPABLE_IDENTIFIER  ( ('=' | ':') expressionList=ConditionalExpressions ';' 
+	  | (ARGS_START arguments=KeyValueArguments ARGS_END)? '{' mappedArray=MappedArrayMessage '}' | mappedField=MappedArrayField );
 
-MappedArrayField : {MappedArrayField} field=MAPPABLE_IDENTIFIER ( ARGS_START FILTER_DEF ASSIGNMENT filter=Expression ARGS_END )? BLOCK_START statements+=InnerBody* BLOCK_END ;
+MappedArrayField : {MappedArrayField} field=MAPPABLE_IDENTIFIER ( ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END )? '{' statements+=InnerBody* '}' ;
 
-MappedArrayMessage : {MappedArrayMessage} message=TML_LITERAL ( ARGS_START FILTER_DEF ASSIGNMENT filter=Expression ARGS_END )? BLOCK_START statements+=InnerBody* BLOCK_END ;
+MappedArrayMessage : {MappedArrayMessage} message=TML_LITERAL ( ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END )? '{' statements+=InnerBody* '}' ;
 
 KeyValueArguments : {KeyValueArguments} keyValueArguments+=KeyValueArgument ( ARG_SEP keyValueArguments+=KeyValueArgument )*;
 
-KeyValueArgument : {KeyValueArgument} key=(IDENTIFIER | OPTION_TYPE) ASSIGNMENT value=LiteralOrExpression;
+KeyValueArgument : {KeyValueArgument} key=(IDENTIFIER | OPTION_TYPE) ('=' | ':') value=LiteralOrExpression;
 
-Var: {Var} VAR_DEF varName=IDENTIFIER (arguments=VarArguments)? ( ASSIGNMENT expressionList=ConditionalExpressions EOL |  TML_START varArray=VarArray? TML_END | 
-	BLOCK_START varElements+=VarElement* BLOCK_END  
- | BLOCK_START mappedArrayField=MappedArrayField BLOCK_END | BLOCK_START mappedArrayMessage=MappedArrayMessage BLOCK_END )
+Var: {Var} VAR_DEF varName=IDENTIFIER (arguments=VarArguments)? ( ('=' | ':') expressionList=ConditionalExpressions ';' |  '[' varArray=VarArray? ']' | 
+	'{' varElements+=VarElement* '}'  
+ | '{' mappedArrayField=MappedArrayField '}' | '{' mappedArrayMessage=MappedArrayMessage '}' )
 ;
 
 VarArray : {VarArray} vararrayelement+=VarArrayElement (ARG_SEP vararrayelement+=VarArrayElement)*;
 
-VarArrayElement : {VarArrayElement} BLOCK_START (varElements+=VarElement)* BLOCK_END;
+VarArrayElement : {VarArrayElement} '{' (varElements+=VarElement)* '}';
 
-VarElement : {VarElement} (IF condition=Expression THEN)? var=Var;
+VarElement : {VarElement} ('if' condition=Expression 'then')? var=Var;
 
 VarArguments: {VarArguments} ARGS_START varArguments+=VarArgument (ARG_SEP varArguments+=VarArgument )* ARGS_END;
 
 VarArgument : {VarArgument} argument=( VarType | VarMode);
 
-VarType: {VarType} TYPE_DEF ASSIGNMENT type=( MessageType | PropertyType ) ;
+VarType: {VarType} TYPE_DEF ('=' | ':') type=( MessageType | PropertyType ) ;
 
-VarMode : {VarMode} MODE_DEF  ASSIGNMENT mode=MessageMode;
+VarMode : {VarMode} MODE_DEF  ('=' | ':') mode=MessageMode;
 
 Property : {Property} PROPERTY_DEF propertyName=QUOTED_IDENTIFIER (arguments=PropertyArguments)? 
 	( 
-		   (ASSIGNMENT (expressionList=ConditionalExpressions))? EOL 
-		 | TML_START selectionArray=SelectionArray TML_END   
-		 | BLOCK_START arrayField=MappedArrayField BLOCK_END 
-		 | BLOCK_START arrayMessage=MappedArrayMessage BLOCK_END  
+		   (('=' | ':') (expressionList=ConditionalExpressions))? ';' 
+		 | '[' selectionArray=SelectionArray ']'   
+		 | '{' arrayField=MappedArrayField '}' 
+		 | '{' arrayMessage=MappedArrayMessage '}'  
 	)
 ;
 
 SelectionArray : arrayElements+=SelectionArrayElement (ARG_SEP arrayElements+=SelectionArrayElement)*;
 
-SelectionArrayElement : {SelectionArrayElement} BLOCK_START innerBody+=InnerBody* BLOCK_END;
+SelectionArrayElement : {SelectionArrayElement} '{' innerBody+=InnerBody* '}';
 
-Option : OPTION_DEF option=OPTION_TYPE  ASSIGNMENT expressionList=ConditionalExpressions EOL ;
+Option : OPTION_DEF option=OPTION_TYPE  ('=' | ':') expressionList=ConditionalExpressions ';' ;
 
 PropertyArguments : {PropertyArguments} ARGS_START (arguments+=PropertyArgument) (ARG_SEP (arguments+=PropertyArgument))* ARGS_END;
 
 PropertyArgument : DirectionArgument | TypeArgument | SubTypeArgument | DescriptionArgument | CardinalityArgument | LengthArgument ; 
 
-LengthArgument :  LENGTH_DEF ASSIGNMENT (value=INTEGER);
+LengthArgument :  LENGTH_DEF ('=' | ':') (value=INTEGER);
 
-DirectionArgument : DIRECTION_DEF ASSIGNMENT (value=( IN_DEF | OUT_DEF | INOUT_DEF ) );
+DirectionArgument : DIRECTION_DEF ('=' | ':') (value=( IN_DEF | OUT_DEF | INOUT_DEF ) );
 
-DescriptionArgument : DESCRIPTION_DEF ASSIGNMENT value=LiteralOrExpression;
+DescriptionArgument : DESCRIPTION_DEF ('=' | ':') value=LiteralOrExpression;
 
-CardinalityArgument : CARDINALITY_DEF ASSIGNMENT value=('+' | '1');
+CardinalityArgument : CARDINALITY_DEF ('=' | ':') value=('+' | '1');
 
-TypeArgument : TYPE_DEF ASSIGNMENT (value=PropertyType);
+TypeArgument : TYPE_DEF ('=' | ':') (value=PropertyType);
 
-SubTypeArgument : SUBTYPE_DEF ASSIGNMENT value=IDENTIFIER;
+SubTypeArgument : SUBTYPE_DEF ('=' | ':') value=IDENTIFIER;
 
-ConditionalExpressions : {ConditionalExpressions} conditionalExpressions+=ConditionalExpression+ ELSE elseExpresssion=LiteralOrExpression | singleExpression=LiteralOrExpression;
+ConditionalExpressions : {ConditionalExpressions} conditionalExpressions+=ConditionalExpression+ 'else' elseExpresssion=LiteralOrExpression | singleExpression=LiteralOrExpression;
 
 ConditionalExpression :
-	IF condition=Expression THEN expression=LiteralOrExpression;
+	'if' condition=Expression 'then' expression=LiteralOrExpression;
 
 Expression:
     BooleanExpression;
@@ -261,12 +265,6 @@ MessageType : {ArrayType} "array" | {SimpleType} "simple" | {ArrayElementType} "
 
 MessageMode : {Ignore} "ignore" | {Overwrite} "overwrite";
 
-terminal IF: 'if';
-terminal THEN: 'then';
-terminal ELSE: 'else';
-terminal BLOCK_START : '{';
-terminal BLOCK_END : '}';
-
 terminal METHOD_IDENTIFIER: '.' IDENTIFIER;
 
 terminal MAPPABLE_IDENTIFIER: MAPPABLE_ID '../'* IDENTIFIER;
@@ -277,16 +275,11 @@ terminal STRING_LITERAL:
 terminal ARG_SEP : ',';
 terminal FORALL : 'FORALL';
 terminal EXISTS : 'EXISTS';
-terminal ASSIGNMENT : ( "=" | ":" );
 terminal TRUE : 'true';
 terminal FALSE : 'false';
 terminal MAPPABLE_ID : '$';
-terminal EOL : ';';
 terminal ARGS_START : '(';
 terminal ARGS_END : ')';
-terminal TML_START : '[';
-terminal TML_END : ']';
-
 terminal NULL_DEF : 'null';
 terminal PRINT_DEF : 'print';
 terminal LOG_DEF : 'log';

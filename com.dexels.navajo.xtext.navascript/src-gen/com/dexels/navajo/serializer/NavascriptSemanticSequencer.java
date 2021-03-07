@@ -56,6 +56,7 @@ import com.dexels.navajo.navascript.Message;
 import com.dexels.navajo.navascript.MessageArguments;
 import com.dexels.navajo.navascript.MessageArray;
 import com.dexels.navajo.navascript.MessageArrayElement;
+import com.dexels.navajo.navascript.Method;
 import com.dexels.navajo.navascript.Methods;
 import com.dexels.navajo.navascript.Minus;
 import com.dexels.navajo.navascript.MultiOrDiv;
@@ -281,6 +282,9 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				return; 
 			case NavascriptPackage.MESSAGE_ARRAY_ELEMENT:
 				sequence_MessageArrayElement(context, (MessageArrayElement) semanticObject); 
+				return; 
+			case NavascriptPackage.METHOD:
+				sequence_Method(context, (Method) semanticObject); 
 				return; 
 			case NavascriptPackage.METHODS:
 				sequence_Methods(context, (Methods) semanticObject); 
@@ -1369,10 +1373,28 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     Method returns Method
+	 *
+	 * Constraint:
+	 *     methodName=QUOTED_IDENTIFIER
+	 */
+	protected void sequence_Method(ISerializationContext context, Method semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.METHOD__METHOD_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.METHOD__METHOD_NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMethodAccess().getMethodNameQUOTED_IDENTIFIERTerminalRuleCall_1_0(), semanticObject.getMethodName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Methods returns Methods
 	 *
 	 * Constraint:
-	 *     methods+=QUOTED_IDENTIFIER*
+	 *     methods+=Method*
 	 */
 	protected void sequence_Methods(ISerializationContext context, Methods semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

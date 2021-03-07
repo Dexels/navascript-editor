@@ -60,6 +60,7 @@ import com.dexels.navajo.navascript.MessageArray;
 import com.dexels.navajo.navascript.MessageArrayElement;
 import com.dexels.navajo.navascript.MessageMode;
 import com.dexels.navajo.navascript.MessageType;
+import com.dexels.navajo.navascript.Method;
 import com.dexels.navajo.navascript.MethodOrSetter;
 import com.dexels.navajo.navascript.Methods;
 import com.dexels.navajo.navascript.Minus;
@@ -283,6 +284,13 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   private EClass methodsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass methodEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1467,9 +1475,31 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
-  public EAttribute getMethods_Methods()
+  public EReference getMethods_Methods()
   {
-    return (EAttribute)methodsEClass.getEStructuralFeatures().get(0);
+    return (EReference)methodsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMethod()
+  {
+    return methodEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMethod_MethodName()
+  {
+    return (EAttribute)methodEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3622,7 +3652,10 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     createEReference(finallyEClass, FINALLY__FINALLY_STATEMENTS);
 
     methodsEClass = createEClass(METHODS);
-    createEAttribute(methodsEClass, METHODS__METHODS);
+    createEReference(methodsEClass, METHODS__METHODS);
+
+    methodEClass = createEClass(METHOD);
+    createEAttribute(methodEClass, METHOD__METHOD_NAME);
 
     loopEClass = createEClass(LOOP);
     createEReference(loopEClass, LOOP__MAPPABLE);
@@ -4044,7 +4077,10 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     initEReference(getFinally_FinallyStatements(), this.getTopLevelStatements(), null, "finallyStatements", null, 0, 1, Finally.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(methodsEClass, Methods.class, "Methods", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMethods_Methods(), ecorePackage.getEString(), "methods", null, 0, -1, Methods.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethods_Methods(), this.getMethod(), null, "methods", null, 0, -1, Methods.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(methodEClass, Method.class, "Method", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMethod_MethodName(), ecorePackage.getEString(), "methodName", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(loopEClass, Loop.class, "Loop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLoop_Mappable(), this.getMappableIdentifier(), null, "mappable", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

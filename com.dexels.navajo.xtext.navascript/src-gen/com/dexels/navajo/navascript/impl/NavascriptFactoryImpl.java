@@ -88,6 +88,7 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
       case NavascriptPackage.LOG: return createLog();
       case NavascriptPackage.FINALLY: return createFinally();
       case NavascriptPackage.METHODS: return createMethods();
+      case NavascriptPackage.METHOD: return createMethod();
       case NavascriptPackage.LOOP: return createLoop();
       case NavascriptPackage.INCLUDE: return createInclude();
       case NavascriptPackage.ANTI_MESSAGE: return createAntiMessage();
@@ -446,6 +447,18 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
   {
     MethodsImpl methods = new MethodsImpl();
     return methods;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Method createMethod()
+  {
+    MethodImpl method = new MethodImpl();
+    return method;
   }
 
   /**

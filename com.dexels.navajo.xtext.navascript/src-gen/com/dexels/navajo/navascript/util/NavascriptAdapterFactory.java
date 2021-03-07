@@ -191,6 +191,11 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
         return createMethodsAdapter();
       }
       @Override
+      public Adapter caseMethod(Method object)
+      {
+        return createMethodAdapter();
+      }
+      @Override
       public Adapter caseLoop(Loop object)
       {
         return createLoopAdapter();
@@ -948,6 +953,21 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMethodsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.Method <em>Method</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.Method
+   * @generated
+   */
+  public Adapter createMethodAdapter()
   {
     return null;
   }
