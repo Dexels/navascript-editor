@@ -23,77 +23,77 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalNavascriptParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_QUOTED_IDENTIFIER", "RULE_STRING_CONSTANT", "RULE_IDENTIFIER", "RULE_IN_DEF", "RULE_OUT_DEF", "RULE_INOUT_DEF", "RULE_TRUE", "RULE_FALSE", "RULE_FORALL", "RULE_EXISTS", "RULE_SYNCHRONIZED_DEF", "RULE_ARGS_START", "RULE_ARGS_END", "RULE_ARG_SEP", "RULE_CONTEXT_DEF", "RULE_KEY_DEF", "RULE_TIMEOUT_DEF", "RULE_BREAKONNOLOCK_DEF", "RULE_BREAK_DEF", "RULE_CODE_DEF", "RULE_DESCRIPTION_DEF", "RULE_ERROR_DEF", "RULE_VALIDATIONS_DEF", "RULE_DEFINE_DEF", "RULE_CHECK_DEF", "RULE_PRINT_DEF", "RULE_LOG_DEF", "RULE_FINALLY_DEF", "RULE_METHODS_DEF", "RULE_LOOP_DEF", "RULE_FILTER_DEF", "RULE_INCLUDE_DEF", "RULE_ANTIMESSAGE_DEF", "RULE_MESSAGE_DEF", "RULE_TYPE_DEF", "RULE_MODE_DEF", "RULE_MAP_DEF", "RULE_MAP_OLDSKOOL_DEF", "RULE_OBJECT_OLDSKOOL_DEF", "RULE_VAR_DEF", "RULE_PROPERTY_DEF", "RULE_OPTION_DEF", "RULE_LENGTH_DEF", "RULE_DIRECTION_DEF", "RULE_CARDINALITY_DEF", "RULE_SUBTYPE_DEF", "RULE_OBJECT_IDENTIFIER", "RULE_METHOD_IDENTIFIER", "RULE_MAPPABLE_IDENTIFIER", "RULE_TML_LITERAL", "RULE_INTEGER", "RULE_STRING_LITERAL", "RULE_NULL_DEF", "RULE_MAPPABLE_ID", "RULE_LETTER", "RULE_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_CHARACTER", "'='", "':'", "'user'", "'service'", "';'", "'+'", "'1'", "'OR'", "'AND'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'*'", "'/'", "'name'", "'value'", "'selected'", "'if'", "'then'", "'{'", "'}'", "'['", "']'", "'else'", "'-'", "'!'", "'`'", "'integer'", "'string'", "'boolean'", "'date'", "'float'", "'binary'", "'clocktime'", "'memo'", "'timestamp'", "'percentage'", "'selection'", "'array'", "'simple'", "'arrayelement'", "'ignore'", "'overwrite'", "'?'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_QUOTED_IDENTIFIER", "RULE_STRING_CONSTANT", "RULE_IDENTIFIER", "RULE_IN_DEF", "RULE_OUT_DEF", "RULE_INOUT_DEF", "RULE_TRUE", "RULE_FALSE", "RULE_FORALL", "RULE_EXISTS", "RULE_SYNCHRONIZED_DEF", "RULE_ARGS_START", "RULE_ARGS_END", "RULE_CONTEXT_DEF", "RULE_KEY_DEF", "RULE_TIMEOUT_DEF", "RULE_BREAKONNOLOCK_DEF", "RULE_BREAK_DEF", "RULE_CODE_DEF", "RULE_DESCRIPTION_DEF", "RULE_ERROR_DEF", "RULE_VALIDATIONS_DEF", "RULE_DEFINE_DEF", "RULE_CHECK_DEF", "RULE_PRINT_DEF", "RULE_LOG_DEF", "RULE_FINALLY_DEF", "RULE_LOOP_DEF", "RULE_FILTER_DEF", "RULE_INCLUDE_DEF", "RULE_TYPE_DEF", "RULE_MODE_DEF", "RULE_MAP_OLDSKOOL_DEF", "RULE_OBJECT_OLDSKOOL_DEF", "RULE_VAR_DEF", "RULE_PROPERTY_DEF", "RULE_OPTION_DEF", "RULE_LENGTH_DEF", "RULE_DIRECTION_DEF", "RULE_CARDINALITY_DEF", "RULE_SUBTYPE_DEF", "RULE_OBJECT_IDENTIFIER", "RULE_METHOD_IDENTIFIER", "RULE_MAPPABLE_IDENTIFIER", "RULE_TML_LITERAL", "RULE_INTEGER", "RULE_STRING_LITERAL", "RULE_NULL_DEF", "RULE_MAPPABLE_ID", "RULE_LETTER", "RULE_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_CHARACTER", "'='", "':'", "'user'", "'service'", "';'", "'+'", "'1'", "'OR'", "'AND'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'*'", "'/'", "'name'", "'value'", "'selected'", "'if'", "'then'", "'{'", "'}'", "','", "'methods'", "'antimessage'", "'message'", "'['", "']'", "'map.'", "'else'", "'-'", "'!'", "'`'", "'integer'", "'string'", "'boolean'", "'date'", "'float'", "'binary'", "'clocktime'", "'memo'", "'timestamp'", "'percentage'", "'selection'", "'array'", "'simple'", "'arrayelement'", "'ignore'", "'overwrite'", "'?'"
     };
-    public static final int RULE_FINALLY_DEF=31;
-    public static final int RULE_CHARACTER=63;
-    public static final int RULE_BREAKONNOLOCK_DEF=21;
-    public static final int RULE_DIRECTION_DEF=47;
-    public static final int RULE_DIGIT=59;
-    public static final int RULE_METHODS_DEF=32;
-    public static final int RULE_TYPE_DEF=38;
+    public static final int RULE_FINALLY_DEF=30;
+    public static final int RULE_CHARACTER=58;
+    public static final int T__59=59;
+    public static final int RULE_BREAKONNOLOCK_DEF=20;
+    public static final int RULE_DIRECTION_DEF=42;
+    public static final int T__60=60;
+    public static final int T__61=61;
+    public static final int RULE_DIGIT=54;
+    public static final int RULE_TYPE_DEF=34;
     public static final int RULE_EXISTS=13;
-    public static final int RULE_NULL_DEF=56;
-    public static final int RULE_MAPPABLE_IDENTIFIER=52;
-    public static final int RULE_METHOD_IDENTIFIER=51;
+    public static final int RULE_NULL_DEF=51;
+    public static final int RULE_MAPPABLE_IDENTIFIER=47;
+    public static final int RULE_METHOD_IDENTIFIER=46;
     public static final int T__66=66;
-    public static final int RULE_ML_COMMENT=60;
+    public static final int RULE_ML_COMMENT=55;
     public static final int T__67=67;
-    public static final int RULE_CARDINALITY_DEF=48;
+    public static final int RULE_CARDINALITY_DEF=43;
     public static final int T__68=68;
     public static final int T__69=69;
     public static final int RULE_FALSE=11;
-    public static final int RULE_BREAK_DEF=22;
-    public static final int RULE_FILTER_DEF=34;
+    public static final int RULE_BREAK_DEF=21;
+    public static final int T__62=62;
+    public static final int RULE_FILTER_DEF=32;
+    public static final int T__63=63;
     public static final int RULE_INOUT_DEF=9;
     public static final int T__64=64;
     public static final int T__65=65;
-    public static final int RULE_ANTIMESSAGE_DEF=36;
-    public static final int RULE_KEY_DEF=19;
-    public static final int RULE_OPTION_DEF=45;
-    public static final int RULE_DEFINE_DEF=27;
+    public static final int RULE_KEY_DEF=18;
+    public static final int RULE_OPTION_DEF=40;
+    public static final int RULE_DEFINE_DEF=26;
     public static final int RULE_QUOTED_IDENTIFIER=4;
-    public static final int RULE_ARG_SEP=17;
-    public static final int RULE_CODE_DEF=23;
-    public static final int RULE_LETTER=58;
+    public static final int RULE_CODE_DEF=22;
+    public static final int RULE_LETTER=53;
     public static final int RULE_IN_DEF=7;
-    public static final int RULE_MAPPABLE_ID=57;
-    public static final int RULE_ERROR_DEF=25;
-    public static final int RULE_MAP_DEF=40;
+    public static final int RULE_MAPPABLE_ID=52;
+    public static final int RULE_ERROR_DEF=24;
     public static final int T__91=91;
     public static final int T__100=100;
     public static final int T__92=92;
     public static final int T__93=93;
     public static final int T__102=102;
-    public static final int RULE_SUBTYPE_DEF=49;
+    public static final int RULE_SUBTYPE_DEF=44;
     public static final int T__94=94;
     public static final int T__101=101;
     public static final int T__90=90;
-    public static final int RULE_PRINT_DEF=29;
-    public static final int RULE_CHECK_DEF=28;
+    public static final int RULE_PRINT_DEF=28;
+    public static final int RULE_CHECK_DEF=27;
     public static final int RULE_ARGS_START=15;
     public static final int T__99=99;
     public static final int RULE_OUT_DEF=8;
     public static final int T__95=95;
     public static final int T__96=96;
     public static final int T__97=97;
-    public static final int RULE_INCLUDE_DEF=35;
+    public static final int RULE_INCLUDE_DEF=33;
     public static final int T__98=98;
-    public static final int RULE_CONTEXT_DEF=18;
+    public static final int RULE_CONTEXT_DEF=17;
     public static final int RULE_STRING_CONSTANT=5;
-    public static final int RULE_OBJECT_OLDSKOOL_DEF=42;
-    public static final int RULE_DESCRIPTION_DEF=24;
+    public static final int RULE_OBJECT_OLDSKOOL_DEF=37;
+    public static final int RULE_DESCRIPTION_DEF=23;
     public static final int RULE_SYNCHRONIZED_DEF=14;
     public static final int T__70=70;
     public static final int T__71=71;
     public static final int T__72=72;
     public static final int RULE_IDENTIFIER=6;
-    public static final int RULE_STRING_LITERAL=55;
-    public static final int RULE_MESSAGE_DEF=37;
-    public static final int RULE_SL_COMMENT=61;
+    public static final int RULE_STRING_LITERAL=50;
+    public static final int RULE_SL_COMMENT=56;
     public static final int RULE_FORALL=12;
-    public static final int RULE_PROPERTY_DEF=44;
-    public static final int RULE_TML_LITERAL=53;
+    public static final int RULE_PROPERTY_DEF=39;
+    public static final int RULE_TML_LITERAL=48;
     public static final int T__77=77;
     public static final int RULE_TRUE=10;
     public static final int T__78=78;
@@ -103,19 +103,19 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
     public static final int T__74=74;
     public static final int T__75=75;
     public static final int T__76=76;
-    public static final int RULE_MAP_OLDSKOOL_DEF=41;
+    public static final int RULE_MAP_OLDSKOOL_DEF=36;
     public static final int T__80=80;
     public static final int T__81=81;
     public static final int T__110=110;
     public static final int T__82=82;
     public static final int T__83=83;
-    public static final int RULE_LOG_DEF=30;
-    public static final int RULE_WS=62;
+    public static final int RULE_LOG_DEF=29;
+    public static final int RULE_WS=57;
     public static final int RULE_ARGS_END=16;
-    public static final int RULE_TIMEOUT_DEF=20;
-    public static final int RULE_LENGTH_DEF=46;
-    public static final int RULE_VAR_DEF=43;
-    public static final int RULE_VALIDATIONS_DEF=26;
+    public static final int RULE_TIMEOUT_DEF=19;
+    public static final int RULE_LENGTH_DEF=41;
+    public static final int RULE_VAR_DEF=38;
+    public static final int RULE_VALIDATIONS_DEF=25;
     public static final int T__88=88;
     public static final int T__108=108;
     public static final int T__89=89;
@@ -123,14 +123,14 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
     public static final int T__109=109;
     public static final int T__84=84;
     public static final int T__104=104;
-    public static final int RULE_LOOP_DEF=33;
-    public static final int RULE_OBJECT_IDENTIFIER=50;
+    public static final int RULE_LOOP_DEF=31;
+    public static final int RULE_OBJECT_IDENTIFIER=45;
     public static final int T__85=85;
     public static final int T__103=103;
-    public static final int RULE_INTEGER=54;
+    public static final int RULE_INTEGER=49;
     public static final int T__86=86;
     public static final int T__106=106;
-    public static final int RULE_MODE_DEF=39;
+    public static final int RULE_MODE_DEF=35;
     public static final int T__87=87;
     public static final int T__105=105;
 
@@ -6973,7 +6973,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             // InternalNavascript.g:2057:1: ( ( ruleMessage ) | ( ruleVar ) | ( ruleMap ) | ( ruleAntiMessage ) | ( ruleDefine ) | ( rulePrint ) | ( ruleLog ) | ( ruleLoop ) | ( ruleMethods ) | ( ruleInclude ) | ( ruleBreak ) | ( ruleSynchronized ) | ( ruleBlockStatements ) )
             int alt1=13;
             switch ( input.LA(1) ) {
-            case RULE_MESSAGE_DEF:
+            case 86:
                 {
                 alt1=1;
                 }
@@ -6983,13 +6983,13 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 alt1=2;
                 }
                 break;
-            case RULE_MAP_DEF:
             case RULE_MAP_OLDSKOOL_DEF:
+            case 89:
                 {
                 alt1=3;
                 }
                 break;
-            case RULE_ANTIMESSAGE_DEF:
+            case 85:
                 {
                 alt1=4;
                 }
@@ -7014,7 +7014,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 alt1=8;
                 }
                 break;
-            case RULE_METHODS_DEF:
+            case 84:
                 {
                 alt1=9;
                 }
@@ -7034,7 +7034,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 alt1=12;
                 }
                 break;
-            case 86:
+            case 81:
                 {
                 alt1=13;
                 }
@@ -7390,12 +7390,12 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 alt2=3;
                 }
                 break;
-            case RULE_MESSAGE_DEF:
+            case 86:
                 {
                 alt2=4;
                 }
                 break;
-            case RULE_ANTIMESSAGE_DEF:
+            case 85:
                 {
                 alt2=5;
                 }
@@ -7405,7 +7405,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 alt2=6;
                 }
                 break;
-            case RULE_METHODS_DEF:
+            case 84:
                 {
                 alt2=7;
                 }
@@ -7435,8 +7435,8 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 alt2=12;
                 }
                 break;
-            case RULE_MAP_DEF:
             case RULE_MAP_OLDSKOOL_DEF:
+            case 89:
                 {
                 alt2=13;
                 }
@@ -7446,7 +7446,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 alt2=14;
                 }
                 break;
-            case 86:
+            case 81:
                 {
                 alt2=15;
                 }
@@ -7987,10 +7987,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==64) ) {
+            if ( (LA4_0==59) ) {
                 alt4=1;
             }
-            else if ( (LA4_0==65) ) {
+            else if ( (LA4_0==60) ) {
                 alt4=2;
             }
             else {
@@ -8010,7 +8010,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSContextAccess().getEqualsSignKeyword_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSContextAccess().getEqualsSignKeyword_1_0()); 
                     }
@@ -8029,7 +8029,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSContextAccess().getColonKeyword_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSContextAccess().getColonKeyword_1_1()); 
                     }
@@ -8067,10 +8067,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt5=2;
             int LA5_0 = input.LA(1);
 
-            if ( (LA5_0==64) ) {
+            if ( (LA5_0==59) ) {
                 alt5=1;
             }
-            else if ( (LA5_0==65) ) {
+            else if ( (LA5_0==60) ) {
                 alt5=2;
             }
             else {
@@ -8090,7 +8090,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSTimeoutAccess().getEqualsSignKeyword_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSTimeoutAccess().getEqualsSignKeyword_1_0()); 
                     }
@@ -8109,7 +8109,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSTimeoutAccess().getColonKeyword_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSTimeoutAccess().getColonKeyword_1_1()); 
                     }
@@ -8147,10 +8147,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==64) ) {
+            if ( (LA6_0==59) ) {
                 alt6=1;
             }
-            else if ( (LA6_0==65) ) {
+            else if ( (LA6_0==60) ) {
                 alt6=2;
             }
             else {
@@ -8170,7 +8170,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSBreakOnNoLockAccess().getEqualsSignKeyword_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSBreakOnNoLockAccess().getEqualsSignKeyword_1_0()); 
                     }
@@ -8189,7 +8189,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSBreakOnNoLockAccess().getColonKeyword_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSBreakOnNoLockAccess().getColonKeyword_1_1()); 
                     }
@@ -8227,10 +8227,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt7=2;
             int LA7_0 = input.LA(1);
 
-            if ( (LA7_0==66) ) {
+            if ( (LA7_0==61) ) {
                 alt7=1;
             }
-            else if ( (LA7_0==67) ) {
+            else if ( (LA7_0==62) ) {
                 alt7=2;
             }
             else {
@@ -8250,7 +8250,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSContextTypeAccess().getUserKeyword_0()); 
                     }
-                    match(input,66,FOLLOW_2); if (state.failed) return ;
+                    match(input,61,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSContextTypeAccess().getUserKeyword_0()); 
                     }
@@ -8269,7 +8269,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSContextTypeAccess().getServiceKeyword_1()); 
                     }
-                    match(input,67,FOLLOW_2); if (state.failed) return ;
+                    match(input,62,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSContextTypeAccess().getServiceKeyword_1()); 
                     }
@@ -8445,10 +8445,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt9=2;
             int LA9_0 = input.LA(1);
 
-            if ( (LA9_0==64) ) {
+            if ( (LA9_0==59) ) {
                 alt9=1;
             }
-            else if ( (LA9_0==65) ) {
+            else if ( (LA9_0==60) ) {
                 alt9=2;
             }
             else {
@@ -8468,7 +8468,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_0_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_0_1_0()); 
                     }
@@ -8487,7 +8487,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getBreakParameterAccess().getColonKeyword_0_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getBreakParameterAccess().getColonKeyword_0_1_1()); 
                     }
@@ -8525,10 +8525,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt10=2;
             int LA10_0 = input.LA(1);
 
-            if ( (LA10_0==64) ) {
+            if ( (LA10_0==59) ) {
                 alt10=1;
             }
-            else if ( (LA10_0==65) ) {
+            else if ( (LA10_0==60) ) {
                 alt10=2;
             }
             else {
@@ -8548,7 +8548,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_1_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_1_1_0()); 
                     }
@@ -8567,7 +8567,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getBreakParameterAccess().getColonKeyword_1_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getBreakParameterAccess().getColonKeyword_1_1_1()); 
                     }
@@ -8605,10 +8605,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( (LA11_0==64) ) {
+            if ( (LA11_0==59) ) {
                 alt11=1;
             }
-            else if ( (LA11_0==65) ) {
+            else if ( (LA11_0==60) ) {
                 alt11=2;
             }
             else {
@@ -8628,7 +8628,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_2_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_2_1_0()); 
                     }
@@ -8647,7 +8647,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getBreakParameterAccess().getColonKeyword_2_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getBreakParameterAccess().getColonKeyword_2_1_1()); 
                     }
@@ -8685,10 +8685,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt12=2;
             int LA12_0 = input.LA(1);
 
-            if ( (LA12_0==64) ) {
+            if ( (LA12_0==59) ) {
                 alt12=1;
             }
-            else if ( (LA12_0==65) ) {
+            else if ( (LA12_0==60) ) {
                 alt12=2;
             }
             else {
@@ -8708,7 +8708,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getDefineAccess().getEqualsSignKeyword_3_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getDefineAccess().getEqualsSignKeyword_3_0()); 
                     }
@@ -8727,7 +8727,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getDefineAccess().getColonKeyword_3_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getDefineAccess().getColonKeyword_3_1()); 
                     }
@@ -8765,10 +8765,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt13=2;
             int LA13_0 = input.LA(1);
 
-            if ( (LA13_0==64) ) {
+            if ( (LA13_0==59) ) {
                 alt13=1;
             }
-            else if ( (LA13_0==65) ) {
+            else if ( (LA13_0==60) ) {
                 alt13=2;
             }
             else {
@@ -8788,7 +8788,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCheckAccess().getEqualsSignKeyword_7_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getCheckAccess().getEqualsSignKeyword_7_0()); 
                     }
@@ -8807,7 +8807,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCheckAccess().getColonKeyword_7_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getCheckAccess().getColonKeyword_7_1()); 
                     }
@@ -8945,10 +8945,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt15=2;
             int LA15_0 = input.LA(1);
 
-            if ( (LA15_0==64) ) {
+            if ( (LA15_0==59) ) {
                 alt15=1;
             }
-            else if ( (LA15_0==65) ) {
+            else if ( (LA15_0==60) ) {
                 alt15=2;
             }
             else {
@@ -8968,7 +8968,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCheckAttributeAccess().getEqualsSignKeyword_0_1_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getCheckAttributeAccess().getEqualsSignKeyword_0_1_1_0()); 
                     }
@@ -8987,7 +8987,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCheckAttributeAccess().getColonKeyword_0_1_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getCheckAttributeAccess().getColonKeyword_0_1_1_1()); 
                     }
@@ -9025,10 +9025,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt16=2;
             int LA16_0 = input.LA(1);
 
-            if ( (LA16_0==64) ) {
+            if ( (LA16_0==59) ) {
                 alt16=1;
             }
-            else if ( (LA16_0==65) ) {
+            else if ( (LA16_0==60) ) {
                 alt16=2;
             }
             else {
@@ -9048,7 +9048,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCheckAttributeAccess().getEqualsSignKeyword_1_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getCheckAttributeAccess().getEqualsSignKeyword_1_1_0()); 
                     }
@@ -9067,7 +9067,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCheckAttributeAccess().getColonKeyword_1_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getCheckAttributeAccess().getColonKeyword_1_1_1()); 
                     }
@@ -9385,10 +9385,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt20=2;
             int LA20_0 = input.LA(1);
 
-            if ( (LA20_0==64) ) {
+            if ( (LA20_0==59) ) {
                 alt20=1;
             }
-            else if ( (LA20_0==65) ) {
+            else if ( (LA20_0==60) ) {
                 alt20=2;
             }
             else {
@@ -9408,7 +9408,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLoopAccess().getEqualsSignKeyword_3_2_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getLoopAccess().getEqualsSignKeyword_3_2_0()); 
                     }
@@ -9427,7 +9427,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLoopAccess().getColonKeyword_3_2_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getLoopAccess().getColonKeyword_3_2_1()); 
                     }
@@ -9464,17 +9464,17 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             // InternalNavascript.g:2639:1: ( ( ( rule__Message__Group_4_0__0 ) ) | ( ';' ) | ( ( rule__Message__Group_4_2__0 ) ) )
             int alt21=3;
             switch ( input.LA(1) ) {
-            case 86:
+            case 81:
                 {
                 alt21=1;
                 }
                 break;
-            case 68:
+            case 63:
                 {
                 alt21=2;
                 }
                 break;
-            case 88:
+            case 87:
                 {
                 alt21=3;
                 }
@@ -9526,7 +9526,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMessageAccess().getSemicolonKeyword_4_1()); 
                     }
-                    match(input,68,FOLLOW_2); if (state.failed) return ;
+                    match(input,63,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMessageAccess().getSemicolonKeyword_4_1()); 
                     }
@@ -9596,20 +9596,20 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             case RULE_DEFINE_DEF:
             case RULE_PRINT_DEF:
             case RULE_LOG_DEF:
-            case RULE_METHODS_DEF:
             case RULE_LOOP_DEF:
             case RULE_INCLUDE_DEF:
-            case RULE_ANTIMESSAGE_DEF:
-            case RULE_MESSAGE_DEF:
-            case RULE_MAP_DEF:
             case RULE_MAP_OLDSKOOL_DEF:
             case RULE_VAR_DEF:
             case RULE_PROPERTY_DEF:
             case RULE_OPTION_DEF:
             case RULE_METHOD_IDENTIFIER:
+            case 79:
+            case 81:
+            case 82:
             case 84:
+            case 85:
             case 86:
-            case 87:
+            case 89:
                 {
                 alt23=1;
                 }
@@ -9618,8 +9618,8 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 {
                 switch ( input.LA(2) ) {
                 case RULE_MAPPABLE_IDENTIFIER:
-                case 64:
-                case 65:
+                case 59:
+                case 60:
                     {
                     alt23=1;
                     }
@@ -9631,7 +9631,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( (LA23_4==RULE_FILTER_DEF) ) {
                         alt23=2;
                     }
-                    else if ( (LA23_4==RULE_IDENTIFIER||(LA23_4>=81 && LA23_4<=83)) ) {
+                    else if ( (LA23_4==RULE_IDENTIFIER||(LA23_4>=76 && LA23_4<=78)) ) {
                         alt23=1;
                     }
                     else {
@@ -9643,11 +9643,11 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     }
                     }
                     break;
-                case 86:
+                case 81:
                     {
                     int LA23_5 = input.LA(3);
 
-                    if ( (LA23_5==RULE_BREAK_DEF||LA23_5==RULE_DEFINE_DEF||(LA23_5>=RULE_PRINT_DEF && LA23_5<=RULE_LOG_DEF)||(LA23_5>=RULE_METHODS_DEF && LA23_5<=RULE_LOOP_DEF)||(LA23_5>=RULE_INCLUDE_DEF && LA23_5<=RULE_MESSAGE_DEF)||(LA23_5>=RULE_MAP_DEF && LA23_5<=RULE_MAP_OLDSKOOL_DEF)||(LA23_5>=RULE_VAR_DEF && LA23_5<=RULE_OPTION_DEF)||(LA23_5>=RULE_METHOD_IDENTIFIER && LA23_5<=RULE_MAPPABLE_IDENTIFIER)||LA23_5==84||(LA23_5>=86 && LA23_5<=87)) ) {
+                    if ( (LA23_5==RULE_BREAK_DEF||LA23_5==RULE_DEFINE_DEF||(LA23_5>=RULE_PRINT_DEF && LA23_5<=RULE_LOG_DEF)||LA23_5==RULE_LOOP_DEF||LA23_5==RULE_INCLUDE_DEF||LA23_5==RULE_MAP_OLDSKOOL_DEF||(LA23_5>=RULE_VAR_DEF && LA23_5<=RULE_OPTION_DEF)||(LA23_5>=RULE_METHOD_IDENTIFIER && LA23_5<=RULE_MAPPABLE_IDENTIFIER)||LA23_5==79||(LA23_5>=81 && LA23_5<=82)||(LA23_5>=84 && LA23_5<=86)||LA23_5==89) ) {
                         alt23=2;
                     }
                     else if ( (LA23_5==RULE_TML_LITERAL) ) {
@@ -9701,7 +9701,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                         int alt22=2;
                         int LA22_0 = input.LA(1);
 
-                        if ( (LA22_0==RULE_BREAK_DEF||LA22_0==RULE_DEFINE_DEF||(LA22_0>=RULE_PRINT_DEF && LA22_0<=RULE_LOG_DEF)||(LA22_0>=RULE_METHODS_DEF && LA22_0<=RULE_LOOP_DEF)||(LA22_0>=RULE_INCLUDE_DEF && LA22_0<=RULE_MESSAGE_DEF)||(LA22_0>=RULE_MAP_DEF && LA22_0<=RULE_MAP_OLDSKOOL_DEF)||(LA22_0>=RULE_VAR_DEF && LA22_0<=RULE_OPTION_DEF)||(LA22_0>=RULE_METHOD_IDENTIFIER && LA22_0<=RULE_MAPPABLE_IDENTIFIER)||LA22_0==84||LA22_0==86) ) {
+                        if ( (LA22_0==RULE_BREAK_DEF||LA22_0==RULE_DEFINE_DEF||(LA22_0>=RULE_PRINT_DEF && LA22_0<=RULE_LOG_DEF)||LA22_0==RULE_LOOP_DEF||LA22_0==RULE_INCLUDE_DEF||LA22_0==RULE_MAP_OLDSKOOL_DEF||(LA22_0>=RULE_VAR_DEF && LA22_0<=RULE_OPTION_DEF)||(LA22_0>=RULE_METHOD_IDENTIFIER && LA22_0<=RULE_MAPPABLE_IDENTIFIER)||LA22_0==79||LA22_0==81||(LA22_0>=84 && LA22_0<=86)||LA22_0==89) ) {
                             alt22=1;
                         }
 
@@ -9919,10 +9919,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt25=2;
             int LA25_0 = input.LA(1);
 
-            if ( (LA25_0==64) ) {
+            if ( (LA25_0==59) ) {
                 alt25=1;
             }
-            else if ( (LA25_0==65) ) {
+            else if ( (LA25_0==60) ) {
                 alt25=2;
             }
             else {
@@ -9942,7 +9942,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_0_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_0_1_0()); 
                     }
@@ -9961,7 +9961,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMessageArgumentAccess().getColonKeyword_0_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMessageArgumentAccess().getColonKeyword_0_1_1()); 
                     }
@@ -9999,10 +9999,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt26=2;
             int LA26_0 = input.LA(1);
 
-            if ( (LA26_0==64) ) {
+            if ( (LA26_0==59) ) {
                 alt26=1;
             }
-            else if ( (LA26_0==65) ) {
+            else if ( (LA26_0==60) ) {
                 alt26=2;
             }
             else {
@@ -10022,7 +10022,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_1_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_1_1_0()); 
                     }
@@ -10041,7 +10041,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMessageArgumentAccess().getColonKeyword_1_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMessageArgumentAccess().getColonKeyword_1_1_1()); 
                     }
@@ -10079,7 +10079,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt27=2;
             int LA27_0 = input.LA(1);
 
-            if ( (LA27_0==RULE_MAP_DEF) ) {
+            if ( (LA27_0==89) ) {
                 alt27=1;
             }
             else if ( (LA27_0==RULE_MAP_OLDSKOOL_DEF) ) {
@@ -10179,10 +10179,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt28=2;
             int LA28_0 = input.LA(1);
 
-            if ( (LA28_0==64) ) {
+            if ( (LA28_0==59) ) {
                 alt28=1;
             }
-            else if ( (LA28_0==65) ) {
+            else if ( (LA28_0==60) ) {
                 alt28=2;
             }
             else {
@@ -10202,7 +10202,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMapAccess().getEqualsSignKeyword_1_1_3_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMapAccess().getEqualsSignKeyword_1_1_3_0()); 
                     }
@@ -10221,7 +10221,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMapAccess().getColonKeyword_1_1_3_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMapAccess().getColonKeyword_1_1_3_1()); 
                     }
@@ -10346,14 +10346,14 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             // InternalNavascript.g:2819:1: ( ( ( rule__SetterField__Group_2_0__0 ) ) | ( ( rule__SetterField__Group_2_1__0 ) ) | ( ( rule__SetterField__MappedFieldAssignment_2_2 ) ) )
             int alt30=3;
             switch ( input.LA(1) ) {
-            case 64:
-            case 65:
+            case 59:
+            case 60:
                 {
                 alt30=1;
                 }
                 break;
             case RULE_ARGS_START:
-            case 86:
+            case 81:
                 {
                 alt30=2;
                 }
@@ -10487,10 +10487,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt31=2;
             int LA31_0 = input.LA(1);
 
-            if ( (LA31_0==64) ) {
+            if ( (LA31_0==59) ) {
                 alt31=1;
             }
-            else if ( (LA31_0==65) ) {
+            else if ( (LA31_0==60) ) {
                 alt31=2;
             }
             else {
@@ -10510,7 +10510,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSetterFieldAccess().getEqualsSignKeyword_2_0_0_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSetterFieldAccess().getEqualsSignKeyword_2_0_0_0()); 
                     }
@@ -10529,7 +10529,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSetterFieldAccess().getColonKeyword_2_0_0_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSetterFieldAccess().getColonKeyword_2_0_0_1()); 
                     }
@@ -10567,10 +10567,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt32=2;
             int LA32_0 = input.LA(1);
 
-            if ( (LA32_0==64) ) {
+            if ( (LA32_0==59) ) {
                 alt32=1;
             }
-            else if ( (LA32_0==65) ) {
+            else if ( (LA32_0==60) ) {
                 alt32=2;
             }
             else {
@@ -10590,7 +10590,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMappedArrayFieldAccess().getEqualsSignKeyword_2_2_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMappedArrayFieldAccess().getEqualsSignKeyword_2_2_0()); 
                     }
@@ -10609,7 +10609,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMappedArrayFieldAccess().getColonKeyword_2_2_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMappedArrayFieldAccess().getColonKeyword_2_2_1()); 
                     }
@@ -10647,10 +10647,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt33=2;
             int LA33_0 = input.LA(1);
 
-            if ( (LA33_0==64) ) {
+            if ( (LA33_0==59) ) {
                 alt33=1;
             }
-            else if ( (LA33_0==65) ) {
+            else if ( (LA33_0==60) ) {
                 alt33=2;
             }
             else {
@@ -10670,7 +10670,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMappedArrayMessageAccess().getEqualsSignKeyword_2_2_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMappedArrayMessageAccess().getEqualsSignKeyword_2_2_0()); 
                     }
@@ -10689,7 +10689,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMappedArrayMessageAccess().getColonKeyword_2_2_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMappedArrayMessageAccess().getColonKeyword_2_2_1()); 
                     }
@@ -10730,7 +10730,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( (LA34_0==RULE_IDENTIFIER) ) {
                 alt34=1;
             }
-            else if ( ((LA34_0>=81 && LA34_0<=83)) ) {
+            else if ( ((LA34_0>=76 && LA34_0<=78)) ) {
                 alt34=2;
             }
             else {
@@ -10811,10 +10811,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt35=2;
             int LA35_0 = input.LA(1);
 
-            if ( (LA35_0==64) ) {
+            if ( (LA35_0==59) ) {
                 alt35=1;
             }
-            else if ( (LA35_0==65) ) {
+            else if ( (LA35_0==60) ) {
                 alt35=2;
             }
             else {
@@ -10834,7 +10834,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getKeyValueArgumentAccess().getEqualsSignKeyword_2_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getKeyValueArgumentAccess().getEqualsSignKeyword_2_0()); 
                     }
@@ -10853,7 +10853,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getKeyValueArgumentAccess().getColonKeyword_2_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getKeyValueArgumentAccess().getColonKeyword_2_1()); 
                     }
@@ -10890,18 +10890,18 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             // InternalNavascript.g:2951:1: ( ( ( rule__Var__Group_4_0__0 ) ) | ( ( rule__Var__Group_4_1__0 ) ) | ( ( rule__Var__Group_4_2__0 ) ) | ( ( rule__Var__Group_4_3__0 ) ) | ( ( rule__Var__Group_4_4__0 ) ) )
             int alt36=5;
             switch ( input.LA(1) ) {
-            case 64:
-            case 65:
+            case 59:
+            case 60:
                 {
                 alt36=1;
                 }
                 break;
-            case 88:
+            case 87:
                 {
                 alt36=2;
                 }
                 break;
-            case 86:
+            case 81:
                 {
                 switch ( input.LA(2) ) {
                 case RULE_MAPPABLE_IDENTIFIER:
@@ -10915,8 +10915,8 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case RULE_VAR_DEF:
-                case 84:
-                case 87:
+                case 79:
+                case 82:
                     {
                     alt36=3;
                     }
@@ -11113,10 +11113,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt37=2;
             int LA37_0 = input.LA(1);
 
-            if ( (LA37_0==64) ) {
+            if ( (LA37_0==59) ) {
                 alt37=1;
             }
-            else if ( (LA37_0==65) ) {
+            else if ( (LA37_0==60) ) {
                 alt37=2;
             }
             else {
@@ -11136,7 +11136,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getVarAccess().getEqualsSignKeyword_4_0_0_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getVarAccess().getEqualsSignKeyword_4_0_0_0()); 
                     }
@@ -11155,7 +11155,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getVarAccess().getColonKeyword_4_0_0_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getVarAccess().getColonKeyword_4_0_0_1()); 
                     }
@@ -11281,10 +11281,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt39=2;
             int LA39_0 = input.LA(1);
 
-            if ( (LA39_0==64) ) {
+            if ( (LA39_0==59) ) {
                 alt39=1;
             }
-            else if ( (LA39_0==65) ) {
+            else if ( (LA39_0==60) ) {
                 alt39=2;
             }
             else {
@@ -11304,7 +11304,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getVarTypeAccess().getEqualsSignKeyword_2_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getVarTypeAccess().getEqualsSignKeyword_2_0()); 
                     }
@@ -11323,7 +11323,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getVarTypeAccess().getColonKeyword_2_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getVarTypeAccess().getColonKeyword_2_1()); 
                     }
@@ -11449,10 +11449,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt41=2;
             int LA41_0 = input.LA(1);
 
-            if ( (LA41_0==64) ) {
+            if ( (LA41_0==59) ) {
                 alt41=1;
             }
-            else if ( (LA41_0==65) ) {
+            else if ( (LA41_0==60) ) {
                 alt41=2;
             }
             else {
@@ -11472,7 +11472,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getVarModeAccess().getEqualsSignKeyword_2_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getVarModeAccess().getEqualsSignKeyword_2_0()); 
                     }
@@ -11491,7 +11491,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getVarModeAccess().getColonKeyword_2_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getVarModeAccess().getColonKeyword_2_1()); 
                     }
@@ -11528,19 +11528,19 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             // InternalNavascript.g:3095:1: ( ( ( rule__Property__Group_4_0__0 ) ) | ( ( rule__Property__Group_4_1__0 ) ) | ( ( rule__Property__Group_4_2__0 ) ) | ( ( rule__Property__Group_4_3__0 ) ) )
             int alt42=4;
             switch ( input.LA(1) ) {
-            case 64:
-            case 65:
-            case 68:
+            case 59:
+            case 60:
+            case 63:
                 {
                 alt42=1;
                 }
                 break;
-            case 88:
+            case 87:
                 {
                 alt42=2;
                 }
                 break;
-            case 86:
+            case 81:
                 {
                 int LA42_3 = input.LA(2);
 
@@ -11712,10 +11712,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt43=2;
             int LA43_0 = input.LA(1);
 
-            if ( (LA43_0==64) ) {
+            if ( (LA43_0==59) ) {
                 alt43=1;
             }
-            else if ( (LA43_0==65) ) {
+            else if ( (LA43_0==60) ) {
                 alt43=2;
             }
             else {
@@ -11735,7 +11735,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_0_0_0_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_0_0_0_0()); 
                     }
@@ -11754,7 +11754,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getPropertyAccess().getColonKeyword_4_0_0_0_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getPropertyAccess().getColonKeyword_4_0_0_0_1()); 
                     }
@@ -11792,10 +11792,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt44=2;
             int LA44_0 = input.LA(1);
 
-            if ( (LA44_0==64) ) {
+            if ( (LA44_0==59) ) {
                 alt44=1;
             }
-            else if ( (LA44_0==65) ) {
+            else if ( (LA44_0==60) ) {
                 alt44=2;
             }
             else {
@@ -11815,7 +11815,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getOptionAccess().getEqualsSignKeyword_2_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getOptionAccess().getEqualsSignKeyword_2_0()); 
                     }
@@ -11834,7 +11834,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getOptionAccess().getColonKeyword_2_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getOptionAccess().getColonKeyword_2_1()); 
                     }
@@ -12076,10 +12076,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt46=2;
             int LA46_0 = input.LA(1);
 
-            if ( (LA46_0==64) ) {
+            if ( (LA46_0==59) ) {
                 alt46=1;
             }
-            else if ( (LA46_0==65) ) {
+            else if ( (LA46_0==60) ) {
                 alt46=2;
             }
             else {
@@ -12099,7 +12099,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLengthArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getLengthArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
@@ -12118,7 +12118,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLengthArgumentAccess().getColonKeyword_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getLengthArgumentAccess().getColonKeyword_1_1()); 
                     }
@@ -12156,10 +12156,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt47=2;
             int LA47_0 = input.LA(1);
 
-            if ( (LA47_0==64) ) {
+            if ( (LA47_0==59) ) {
                 alt47=1;
             }
-            else if ( (LA47_0==65) ) {
+            else if ( (LA47_0==60) ) {
                 alt47=2;
             }
             else {
@@ -12179,7 +12179,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getDirectionArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getDirectionArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
@@ -12198,7 +12198,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getDirectionArgumentAccess().getColonKeyword_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getDirectionArgumentAccess().getColonKeyword_1_1()); 
                     }
@@ -12344,10 +12344,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt49=2;
             int LA49_0 = input.LA(1);
 
-            if ( (LA49_0==64) ) {
+            if ( (LA49_0==59) ) {
                 alt49=1;
             }
-            else if ( (LA49_0==65) ) {
+            else if ( (LA49_0==60) ) {
                 alt49=2;
             }
             else {
@@ -12367,7 +12367,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getDescriptionArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getDescriptionArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
@@ -12386,7 +12386,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getDescriptionArgumentAccess().getColonKeyword_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getDescriptionArgumentAccess().getColonKeyword_1_1()); 
                     }
@@ -12424,10 +12424,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt50=2;
             int LA50_0 = input.LA(1);
 
-            if ( (LA50_0==64) ) {
+            if ( (LA50_0==59) ) {
                 alt50=1;
             }
-            else if ( (LA50_0==65) ) {
+            else if ( (LA50_0==60) ) {
                 alt50=2;
             }
             else {
@@ -12447,7 +12447,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCardinalityArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getCardinalityArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
@@ -12466,7 +12466,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCardinalityArgumentAccess().getColonKeyword_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getCardinalityArgumentAccess().getColonKeyword_1_1()); 
                     }
@@ -12504,10 +12504,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt51=2;
             int LA51_0 = input.LA(1);
 
-            if ( (LA51_0==69) ) {
+            if ( (LA51_0==64) ) {
                 alt51=1;
             }
-            else if ( (LA51_0==70) ) {
+            else if ( (LA51_0==65) ) {
                 alt51=2;
             }
             else {
@@ -12527,7 +12527,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCardinalityArgumentAccess().getValuePlusSignKeyword_2_0_0()); 
                     }
-                    match(input,69,FOLLOW_2); if (state.failed) return ;
+                    match(input,64,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getCardinalityArgumentAccess().getValuePlusSignKeyword_2_0_0()); 
                     }
@@ -12546,7 +12546,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCardinalityArgumentAccess().getValue1Keyword_2_0_1()); 
                     }
-                    match(input,70,FOLLOW_2); if (state.failed) return ;
+                    match(input,65,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getCardinalityArgumentAccess().getValue1Keyword_2_0_1()); 
                     }
@@ -12584,10 +12584,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt52=2;
             int LA52_0 = input.LA(1);
 
-            if ( (LA52_0==64) ) {
+            if ( (LA52_0==59) ) {
                 alt52=1;
             }
-            else if ( (LA52_0==65) ) {
+            else if ( (LA52_0==60) ) {
                 alt52=2;
             }
             else {
@@ -12607,7 +12607,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getTypeArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getTypeArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
@@ -12626,7 +12626,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getTypeArgumentAccess().getColonKeyword_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getTypeArgumentAccess().getColonKeyword_1_1()); 
                     }
@@ -12664,10 +12664,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt53=2;
             int LA53_0 = input.LA(1);
 
-            if ( (LA53_0==64) ) {
+            if ( (LA53_0==59) ) {
                 alt53=1;
             }
-            else if ( (LA53_0==65) ) {
+            else if ( (LA53_0==60) ) {
                 alt53=2;
             }
             else {
@@ -12687,7 +12687,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSubTypeArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
-                    match(input,64,FOLLOW_2); if (state.failed) return ;
+                    match(input,59,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSubTypeArgumentAccess().getEqualsSignKeyword_1_0()); 
                     }
@@ -12706,7 +12706,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getSubTypeArgumentAccess().getColonKeyword_1_1()); 
                     }
-                    match(input,65,FOLLOW_2); if (state.failed) return ;
+                    match(input,60,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getSubTypeArgumentAccess().getColonKeyword_1_1()); 
                     }
@@ -12744,7 +12744,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt54=2;
             int LA54_0 = input.LA(1);
 
-            if ( (LA54_0==84) ) {
+            if ( (LA54_0==79) ) {
                 alt54=1;
             }
             else if ( ((LA54_0>=RULE_QUOTED_IDENTIFIER && LA54_0<=RULE_IDENTIFIER)||(LA54_0>=RULE_TRUE && LA54_0<=RULE_EXISTS)||LA54_0==RULE_ARGS_START||(LA54_0>=RULE_MAPPABLE_IDENTIFIER && LA54_0<=RULE_NULL_DEF)||(LA54_0>=91 && LA54_0<=92)||LA54_0==110) ) {
@@ -12844,10 +12844,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt55=2;
             int LA55_0 = input.LA(1);
 
-            if ( (LA55_0==71) ) {
+            if ( (LA55_0==66) ) {
                 alt55=1;
             }
-            else if ( (LA55_0==72) ) {
+            else if ( (LA55_0==67) ) {
                 alt55=2;
             }
             else {
@@ -12867,7 +12867,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getBooleanExpressionAccess().getOpORKeyword_1_0_1_0_0()); 
                     }
-                    match(input,71,FOLLOW_2); if (state.failed) return ;
+                    match(input,66,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getBooleanExpressionAccess().getOpORKeyword_1_0_1_0_0()); 
                     }
@@ -12886,7 +12886,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getBooleanExpressionAccess().getOpANDKeyword_1_0_1_0_1()); 
                     }
-                    match(input,72,FOLLOW_2); if (state.failed) return ;
+                    match(input,67,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getBooleanExpressionAccess().getOpANDKeyword_1_0_1_0_1()); 
                     }
@@ -12923,22 +12923,22 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             // InternalNavascript.g:3431:1: ( ( '<' ) | ( '>' ) | ( '<=' ) | ( '>=' ) )
             int alt56=4;
             switch ( input.LA(1) ) {
-            case 73:
+            case 68:
                 {
                 alt56=1;
                 }
                 break;
-            case 74:
+            case 69:
                 {
                 alt56=2;
                 }
                 break;
-            case 75:
+            case 70:
                 {
                 alt56=3;
                 }
                 break;
-            case 76:
+            case 71:
                 {
                 alt56=4;
                 }
@@ -12961,7 +12961,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getComparisonAccess().getOpLessThanSignKeyword_1_0_1_0_0()); 
                     }
-                    match(input,73,FOLLOW_2); if (state.failed) return ;
+                    match(input,68,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getComparisonAccess().getOpLessThanSignKeyword_1_0_1_0_0()); 
                     }
@@ -12980,7 +12980,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getComparisonAccess().getOpGreaterThanSignKeyword_1_0_1_0_1()); 
                     }
-                    match(input,74,FOLLOW_2); if (state.failed) return ;
+                    match(input,69,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getComparisonAccess().getOpGreaterThanSignKeyword_1_0_1_0_1()); 
                     }
@@ -12999,7 +12999,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getComparisonAccess().getOpLessThanSignEqualsSignKeyword_1_0_1_0_2()); 
                     }
-                    match(input,75,FOLLOW_2); if (state.failed) return ;
+                    match(input,70,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getComparisonAccess().getOpLessThanSignEqualsSignKeyword_1_0_1_0_2()); 
                     }
@@ -13018,7 +13018,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getComparisonAccess().getOpGreaterThanSignEqualsSignKeyword_1_0_1_0_3()); 
                     }
-                    match(input,76,FOLLOW_2); if (state.failed) return ;
+                    match(input,71,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getComparisonAccess().getOpGreaterThanSignEqualsSignKeyword_1_0_1_0_3()); 
                     }
@@ -13056,10 +13056,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt57=2;
             int LA57_0 = input.LA(1);
 
-            if ( (LA57_0==77) ) {
+            if ( (LA57_0==72) ) {
                 alt57=1;
             }
-            else if ( (LA57_0==78) ) {
+            else if ( (LA57_0==73) ) {
                 alt57=2;
             }
             else {
@@ -13079,7 +13079,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getEqualsAccess().getOpEqualsSignEqualsSignKeyword_1_0_1_0_0()); 
                     }
-                    match(input,77,FOLLOW_2); if (state.failed) return ;
+                    match(input,72,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getEqualsAccess().getOpEqualsSignEqualsSignKeyword_1_0_1_0_0()); 
                     }
@@ -13098,7 +13098,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getEqualsAccess().getOpExclamationMarkEqualsSignKeyword_1_0_1_0_1()); 
                     }
-                    match(input,78,FOLLOW_2); if (state.failed) return ;
+                    match(input,73,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getEqualsAccess().getOpExclamationMarkEqualsSignKeyword_1_0_1_0_1()); 
                     }
@@ -13136,7 +13136,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt58=2;
             int LA58_0 = input.LA(1);
 
-            if ( (LA58_0==69) ) {
+            if ( (LA58_0==64) ) {
                 alt58=1;
             }
             else if ( (LA58_0==91) ) {
@@ -13236,10 +13236,10 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt59=2;
             int LA59_0 = input.LA(1);
 
-            if ( (LA59_0==79) ) {
+            if ( (LA59_0==74) ) {
                 alt59=1;
             }
-            else if ( (LA59_0==80) ) {
+            else if ( (LA59_0==75) ) {
                 alt59=2;
             }
             else {
@@ -13259,7 +13259,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMultiplicationAccess().getOpAsteriskKeyword_1_0_1_0_0()); 
                     }
-                    match(input,79,FOLLOW_2); if (state.failed) return ;
+                    match(input,74,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMultiplicationAccess().getOpAsteriskKeyword_1_0_1_0_0()); 
                     }
@@ -13278,7 +13278,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getMultiplicationAccess().getOpSolidusKeyword_1_0_1_0_1()); 
                     }
-                    match(input,80,FOLLOW_2); if (state.failed) return ;
+                    match(input,75,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getMultiplicationAccess().getOpSolidusKeyword_1_0_1_0_1()); 
                     }
@@ -14373,17 +14373,17 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             // InternalNavascript.g:3734:1: ( ( 'name' ) | ( 'value' ) | ( 'selected' ) )
             int alt65=3;
             switch ( input.LA(1) ) {
-            case 81:
+            case 76:
                 {
                 alt65=1;
                 }
                 break;
-            case 82:
+            case 77:
                 {
                 alt65=2;
                 }
                 break;
-            case 83:
+            case 78:
                 {
                 alt65=3;
                 }
@@ -14406,7 +14406,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getOPTION_TYPEAccess().getNameKeyword_0()); 
                     }
-                    match(input,81,FOLLOW_2); if (state.failed) return ;
+                    match(input,76,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getOPTION_TYPEAccess().getNameKeyword_0()); 
                     }
@@ -14425,7 +14425,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getOPTION_TYPEAccess().getValueKeyword_1()); 
                     }
-                    match(input,82,FOLLOW_2); if (state.failed) return ;
+                    match(input,77,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getOPTION_TYPEAccess().getValueKeyword_1()); 
                     }
@@ -14444,7 +14444,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getOPTION_TYPEAccess().getSelectedKeyword_2()); 
                     }
-                    match(input,83,FOLLOW_2); if (state.failed) return ;
+                    match(input,78,FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getOPTION_TYPEAccess().getSelectedKeyword_2()); 
                     }
@@ -15206,7 +15206,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt70=2;
                 int LA70_0 = input.LA(1);
 
-                if ( (LA70_0==RULE_SYNCHRONIZED_DEF||LA70_0==RULE_BREAK_DEF||LA70_0==RULE_DEFINE_DEF||(LA70_0>=RULE_PRINT_DEF && LA70_0<=RULE_LOG_DEF)||(LA70_0>=RULE_METHODS_DEF && LA70_0<=RULE_LOOP_DEF)||(LA70_0>=RULE_INCLUDE_DEF && LA70_0<=RULE_MESSAGE_DEF)||(LA70_0>=RULE_MAP_DEF && LA70_0<=RULE_MAP_OLDSKOOL_DEF)||LA70_0==RULE_VAR_DEF||LA70_0==84||LA70_0==86) ) {
+                if ( (LA70_0==RULE_SYNCHRONIZED_DEF||LA70_0==RULE_BREAK_DEF||LA70_0==RULE_DEFINE_DEF||(LA70_0>=RULE_PRINT_DEF && LA70_0<=RULE_LOG_DEF)||LA70_0==RULE_LOOP_DEF||LA70_0==RULE_INCLUDE_DEF||LA70_0==RULE_MAP_OLDSKOOL_DEF||LA70_0==RULE_VAR_DEF||LA70_0==79||LA70_0==81||(LA70_0>=84 && LA70_0<=86)||LA70_0==89) ) {
                     alt70=1;
                 }
 
@@ -15390,7 +15390,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt71=2;
             int LA71_0 = input.LA(1);
 
-            if ( (LA71_0==84) ) {
+            if ( (LA71_0==79) ) {
                 alt71=1;
             }
             switch (alt71) {
@@ -15570,7 +15570,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTopLevelStatementAccess().getIfKeyword_1_0()); 
             }
-            match(input,84,FOLLOW_2); if (state.failed) return ;
+            match(input,79,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTopLevelStatementAccess().getIfKeyword_1_0()); 
             }
@@ -15733,7 +15733,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTopLevelStatementAccess().getThenKeyword_1_2()); 
             }
-            match(input,85,FOLLOW_2); if (state.failed) return ;
+            match(input,80,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTopLevelStatementAccess().getThenKeyword_1_2()); 
             }
@@ -15895,7 +15895,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt72=2;
             int LA72_0 = input.LA(1);
 
-            if ( (LA72_0==84) ) {
+            if ( (LA72_0==79) ) {
                 alt72=1;
             }
             switch (alt72) {
@@ -16075,7 +16075,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getInnerBodyAccess().getIfKeyword_1_0()); 
             }
-            match(input,84,FOLLOW_2); if (state.failed) return ;
+            match(input,79,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getInnerBodyAccess().getIfKeyword_1_0()); 
             }
@@ -16238,7 +16238,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getInnerBodyAccess().getThenKeyword_1_2()); 
             }
-            match(input,85,FOLLOW_2); if (state.failed) return ;
+            match(input,80,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getInnerBodyAccess().getThenKeyword_1_2()); 
             }
@@ -16396,7 +16396,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBlockStatementsAccess().getLeftCurlyBracketKeyword_1()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getBlockStatementsAccess().getLeftCurlyBracketKeyword_1()); 
             }
@@ -16481,7 +16481,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt73=2;
                 int LA73_0 = input.LA(1);
 
-                if ( (LA73_0==RULE_BREAK_DEF||LA73_0==RULE_DEFINE_DEF||(LA73_0>=RULE_PRINT_DEF && LA73_0<=RULE_LOG_DEF)||(LA73_0>=RULE_METHODS_DEF && LA73_0<=RULE_LOOP_DEF)||(LA73_0>=RULE_INCLUDE_DEF && LA73_0<=RULE_MESSAGE_DEF)||(LA73_0>=RULE_MAP_DEF && LA73_0<=RULE_MAP_OLDSKOOL_DEF)||(LA73_0>=RULE_VAR_DEF && LA73_0<=RULE_OPTION_DEF)||(LA73_0>=RULE_METHOD_IDENTIFIER && LA73_0<=RULE_MAPPABLE_IDENTIFIER)||LA73_0==84||LA73_0==86) ) {
+                if ( (LA73_0==RULE_BREAK_DEF||LA73_0==RULE_DEFINE_DEF||(LA73_0>=RULE_PRINT_DEF && LA73_0<=RULE_LOG_DEF)||LA73_0==RULE_LOOP_DEF||LA73_0==RULE_INCLUDE_DEF||LA73_0==RULE_MAP_OLDSKOOL_DEF||(LA73_0>=RULE_VAR_DEF && LA73_0<=RULE_OPTION_DEF)||(LA73_0>=RULE_METHOD_IDENTIFIER && LA73_0<=RULE_MAPPABLE_IDENTIFIER)||LA73_0==79||LA73_0==81||(LA73_0>=84 && LA73_0<=86)||LA73_0==89) ) {
                     alt73=1;
                 }
 
@@ -16577,7 +16577,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBlockStatementsAccess().getRightCurlyBracketKeyword_3()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getBlockStatementsAccess().getRightCurlyBracketKeyword_3()); 
             }
@@ -16982,7 +16982,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSynchronizedAccess().getLeftCurlyBracketKeyword_4()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getSynchronizedAccess().getLeftCurlyBracketKeyword_4()); 
             }
@@ -17067,7 +17067,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt74=2;
                 int LA74_0 = input.LA(1);
 
-                if ( (LA74_0==RULE_SYNCHRONIZED_DEF||LA74_0==RULE_BREAK_DEF||LA74_0==RULE_DEFINE_DEF||(LA74_0>=RULE_PRINT_DEF && LA74_0<=RULE_LOG_DEF)||(LA74_0>=RULE_METHODS_DEF && LA74_0<=RULE_LOOP_DEF)||(LA74_0>=RULE_INCLUDE_DEF && LA74_0<=RULE_MESSAGE_DEF)||(LA74_0>=RULE_MAP_DEF && LA74_0<=RULE_MAP_OLDSKOOL_DEF)||LA74_0==RULE_VAR_DEF||LA74_0==84||LA74_0==86) ) {
+                if ( (LA74_0==RULE_SYNCHRONIZED_DEF||LA74_0==RULE_BREAK_DEF||LA74_0==RULE_DEFINE_DEF||(LA74_0>=RULE_PRINT_DEF && LA74_0<=RULE_LOG_DEF)||LA74_0==RULE_LOOP_DEF||LA74_0==RULE_INCLUDE_DEF||LA74_0==RULE_MAP_OLDSKOOL_DEF||LA74_0==RULE_VAR_DEF||LA74_0==79||LA74_0==81||(LA74_0>=84 && LA74_0<=86)||LA74_0==89) ) {
                     alt74=1;
                 }
 
@@ -17163,7 +17163,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSynchronizedAccess().getRightCurlyBracketKeyword_6()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getSynchronizedAccess().getRightCurlyBracketKeyword_6()); 
             }
@@ -17332,7 +17332,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt75=2;
                 int LA75_0 = input.LA(1);
 
-                if ( (LA75_0==RULE_ARG_SEP) ) {
+                if ( (LA75_0==83) ) {
                     alt75=1;
                 }
 
@@ -17418,24 +17418,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__SynchronizedArguments__Group_1__0__Impl"
-    // InternalNavascript.g:4654:1: rule__SynchronizedArguments__Group_1__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:4654:1: rule__SynchronizedArguments__Group_1__0__Impl : ( ',' ) ;
     public final void rule__SynchronizedArguments__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:4658:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:4659:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:4658:1: ( ( ',' ) )
+            // InternalNavascript.g:4659:1: ( ',' )
             {
-            // InternalNavascript.g:4659:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:4660:2: RULE_ARG_SEP
+            // InternalNavascript.g:4659:1: ( ',' )
+            // InternalNavascript.g:4660:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSynchronizedArgumentsAccess().getARG_SEPTerminalRuleCall_1_0()); 
+               before(grammarAccess.getSynchronizedArgumentsAccess().getCommaKeyword_1_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSynchronizedArgumentsAccess().getARG_SEPTerminalRuleCall_1_0()); 
+               after(grammarAccess.getSynchronizedArgumentsAccess().getCommaKeyword_1_0()); 
             }
 
             }
@@ -18901,7 +18901,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBreakAccess().getSemicolonKeyword_3()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getBreakAccess().getSemicolonKeyword_3()); 
             }
@@ -20073,7 +20073,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt78=2;
                 int LA78_0 = input.LA(1);
 
-                if ( (LA78_0==RULE_ARG_SEP) ) {
+                if ( (LA78_0==83) ) {
                     alt78=1;
                 }
 
@@ -20159,24 +20159,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__BreakParameters__Group_1__0__Impl"
-    // InternalNavascript.g:5545:1: rule__BreakParameters__Group_1__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:5545:1: rule__BreakParameters__Group_1__0__Impl : ( ',' ) ;
     public final void rule__BreakParameters__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:5549:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:5550:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:5549:1: ( ( ',' ) )
+            // InternalNavascript.g:5550:1: ( ',' )
             {
-            // InternalNavascript.g:5550:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:5551:2: RULE_ARG_SEP
+            // InternalNavascript.g:5550:1: ( ',' )
+            // InternalNavascript.g:5551:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBreakParametersAccess().getARG_SEPTerminalRuleCall_1_0()); 
+               before(grammarAccess.getBreakParametersAccess().getCommaKeyword_1_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBreakParametersAccess().getARG_SEPTerminalRuleCall_1_0()); 
+               after(grammarAccess.getBreakParametersAccess().getCommaKeyword_1_0()); 
             }
 
             }
@@ -20495,7 +20495,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getValidationsAccess().getLeftCurlyBracketKeyword_2()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getValidationsAccess().getLeftCurlyBracketKeyword_2()); 
             }
@@ -20580,7 +20580,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt79=2;
                 int LA79_0 = input.LA(1);
 
-                if ( (LA79_0==RULE_CHECK_DEF||LA79_0==84) ) {
+                if ( (LA79_0==RULE_CHECK_DEF||LA79_0==79) ) {
                     alt79=1;
                 }
 
@@ -20676,7 +20676,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getValidationsAccess().getRightCurlyBracketKeyword_4()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getValidationsAccess().getRightCurlyBracketKeyword_4()); 
             }
@@ -21175,7 +21175,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getDefineAccess().getSemicolonKeyword_5()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getDefineAccess().getSemicolonKeyword_5()); 
             }
@@ -21337,7 +21337,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt80=2;
             int LA80_0 = input.LA(1);
 
-            if ( (LA80_0==84) ) {
+            if ( (LA80_0==79) ) {
                 alt80=1;
             }
             switch (alt80) {
@@ -21684,7 +21684,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt81=2;
             int LA81_0 = input.LA(1);
 
-            if ( (LA81_0==RULE_ARG_SEP) ) {
+            if ( (LA81_0==83) ) {
                 alt81=1;
             }
             switch (alt81) {
@@ -22032,7 +22032,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCheckAccess().getSemicolonKeyword_9()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCheckAccess().getSemicolonKeyword_9()); 
             }
@@ -22111,7 +22111,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCheckAccess().getIfKeyword_1_0()); 
             }
-            match(input,84,FOLLOW_2); if (state.failed) return ;
+            match(input,79,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCheckAccess().getIfKeyword_1_0()); 
             }
@@ -22274,7 +22274,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCheckAccess().getThenKeyword_1_2()); 
             }
-            match(input,85,FOLLOW_2); if (state.failed) return ;
+            match(input,80,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCheckAccess().getThenKeyword_1_2()); 
             }
@@ -22338,24 +22338,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Check__Group_5__0__Impl"
-    // InternalNavascript.g:6247:1: rule__Check__Group_5__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:6247:1: rule__Check__Group_5__0__Impl : ( ',' ) ;
     public final void rule__Check__Group_5__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:6251:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:6252:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:6251:1: ( ( ',' ) )
+            // InternalNavascript.g:6252:1: ( ',' )
             {
-            // InternalNavascript.g:6252:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:6253:2: RULE_ARG_SEP
+            // InternalNavascript.g:6252:1: ( ',' )
+            // InternalNavascript.g:6253:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getCheckAccess().getARG_SEPTerminalRuleCall_5_0()); 
+               before(grammarAccess.getCheckAccess().getCommaKeyword_5_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getCheckAccess().getARG_SEPTerminalRuleCall_5_0()); 
+               after(grammarAccess.getCheckAccess().getCommaKeyword_5_0()); 
             }
 
             }
@@ -23746,7 +23746,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPrintAccess().getSemicolonKeyword_5()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPrintAccess().getSemicolonKeyword_5()); 
             }
@@ -24225,7 +24225,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLogAccess().getSemicolonKeyword_5()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getLogAccess().getSemicolonKeyword_5()); 
             }
@@ -24462,7 +24462,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFinallyAccess().getLeftCurlyBracketKeyword_2()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getFinallyAccess().getLeftCurlyBracketKeyword_2()); 
             }
@@ -24625,7 +24625,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFinallyAccess().getRightCurlyBracketKeyword_4()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getFinallyAccess().getRightCurlyBracketKeyword_4()); 
             }
@@ -24768,24 +24768,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Methods__Group__1__Impl"
-    // InternalNavascript.g:7057:1: rule__Methods__Group__1__Impl : ( RULE_METHODS_DEF ) ;
+    // InternalNavascript.g:7057:1: rule__Methods__Group__1__Impl : ( 'methods' ) ;
     public final void rule__Methods__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:7061:1: ( ( RULE_METHODS_DEF ) )
-            // InternalNavascript.g:7062:1: ( RULE_METHODS_DEF )
+            // InternalNavascript.g:7061:1: ( ( 'methods' ) )
+            // InternalNavascript.g:7062:1: ( 'methods' )
             {
-            // InternalNavascript.g:7062:1: ( RULE_METHODS_DEF )
-            // InternalNavascript.g:7063:2: RULE_METHODS_DEF
+            // InternalNavascript.g:7062:1: ( 'methods' )
+            // InternalNavascript.g:7063:2: 'methods'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMethodsAccess().getMETHODS_DEFTerminalRuleCall_1()); 
+               before(grammarAccess.getMethodsAccess().getMethodsKeyword_1()); 
             }
-            match(input,RULE_METHODS_DEF,FOLLOW_2); if (state.failed) return ;
+            match(input,84,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMethodsAccess().getMETHODS_DEFTerminalRuleCall_1()); 
+               after(grammarAccess.getMethodsAccess().getMethodsKeyword_1()); 
             }
 
             }
@@ -24862,7 +24862,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMethodsAccess().getLeftCurlyBracketKeyword_2()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMethodsAccess().getLeftCurlyBracketKeyword_2()); 
             }
@@ -25043,7 +25043,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMethodsAccess().getRightCurlyBracketKeyword_4()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMethodsAccess().getRightCurlyBracketKeyword_4()); 
             }
@@ -25285,7 +25285,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMethodAccess().getSemicolonKeyword_2()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMethodAccess().getSemicolonKeyword_2()); 
             }
@@ -25711,7 +25711,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLoopAccess().getLeftCurlyBracketKeyword_4()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getLoopAccess().getLeftCurlyBracketKeyword_4()); 
             }
@@ -25796,7 +25796,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt84=2;
                 int LA84_0 = input.LA(1);
 
-                if ( (LA84_0==RULE_BREAK_DEF||LA84_0==RULE_DEFINE_DEF||(LA84_0>=RULE_PRINT_DEF && LA84_0<=RULE_LOG_DEF)||(LA84_0>=RULE_METHODS_DEF && LA84_0<=RULE_LOOP_DEF)||(LA84_0>=RULE_INCLUDE_DEF && LA84_0<=RULE_MESSAGE_DEF)||(LA84_0>=RULE_MAP_DEF && LA84_0<=RULE_MAP_OLDSKOOL_DEF)||(LA84_0>=RULE_VAR_DEF && LA84_0<=RULE_OPTION_DEF)||(LA84_0>=RULE_METHOD_IDENTIFIER && LA84_0<=RULE_MAPPABLE_IDENTIFIER)||LA84_0==84||LA84_0==86) ) {
+                if ( (LA84_0==RULE_BREAK_DEF||LA84_0==RULE_DEFINE_DEF||(LA84_0>=RULE_PRINT_DEF && LA84_0<=RULE_LOG_DEF)||LA84_0==RULE_LOOP_DEF||LA84_0==RULE_INCLUDE_DEF||LA84_0==RULE_MAP_OLDSKOOL_DEF||(LA84_0>=RULE_VAR_DEF && LA84_0<=RULE_OPTION_DEF)||(LA84_0>=RULE_METHOD_IDENTIFIER && LA84_0<=RULE_MAPPABLE_IDENTIFIER)||LA84_0==79||LA84_0==81||(LA84_0>=84 && LA84_0<=86)||LA84_0==89) ) {
                     alt84=1;
                 }
 
@@ -25892,7 +25892,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLoopAccess().getRightCurlyBracketKeyword_6()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getLoopAccess().getRightCurlyBracketKeyword_6()); 
             }
@@ -26623,7 +26623,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getIncludeAccess().getSemicolonKeyword_3()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getIncludeAccess().getSemicolonKeyword_3()); 
             }
@@ -26766,24 +26766,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AntiMessage__Group__1__Impl"
-    // InternalNavascript.g:7705:1: rule__AntiMessage__Group__1__Impl : ( RULE_ANTIMESSAGE_DEF ) ;
+    // InternalNavascript.g:7705:1: rule__AntiMessage__Group__1__Impl : ( 'antimessage' ) ;
     public final void rule__AntiMessage__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:7709:1: ( ( RULE_ANTIMESSAGE_DEF ) )
-            // InternalNavascript.g:7710:1: ( RULE_ANTIMESSAGE_DEF )
+            // InternalNavascript.g:7709:1: ( ( 'antimessage' ) )
+            // InternalNavascript.g:7710:1: ( 'antimessage' )
             {
-            // InternalNavascript.g:7710:1: ( RULE_ANTIMESSAGE_DEF )
-            // InternalNavascript.g:7711:2: RULE_ANTIMESSAGE_DEF
+            // InternalNavascript.g:7710:1: ( 'antimessage' )
+            // InternalNavascript.g:7711:2: 'antimessage'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAntiMessageAccess().getANTIMESSAGE_DEFTerminalRuleCall_1()); 
+               before(grammarAccess.getAntiMessageAccess().getAntimessageKeyword_1()); 
             }
-            match(input,RULE_ANTIMESSAGE_DEF,FOLLOW_2); if (state.failed) return ;
+            match(input,85,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAntiMessageAccess().getANTIMESSAGE_DEFTerminalRuleCall_1()); 
+               after(grammarAccess.getAntiMessageAccess().getAntimessageKeyword_1()); 
             }
 
             }
@@ -26944,7 +26944,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAntiMessageAccess().getSemicolonKeyword_3()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAntiMessageAccess().getSemicolonKeyword_3()); 
             }
@@ -27087,24 +27087,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Message__Group__1__Impl"
-    // InternalNavascript.g:7813:1: rule__Message__Group__1__Impl : ( RULE_MESSAGE_DEF ) ;
+    // InternalNavascript.g:7813:1: rule__Message__Group__1__Impl : ( 'message' ) ;
     public final void rule__Message__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:7817:1: ( ( RULE_MESSAGE_DEF ) )
-            // InternalNavascript.g:7818:1: ( RULE_MESSAGE_DEF )
+            // InternalNavascript.g:7817:1: ( ( 'message' ) )
+            // InternalNavascript.g:7818:1: ( 'message' )
             {
-            // InternalNavascript.g:7818:1: ( RULE_MESSAGE_DEF )
-            // InternalNavascript.g:7819:2: RULE_MESSAGE_DEF
+            // InternalNavascript.g:7818:1: ( 'message' )
+            // InternalNavascript.g:7819:2: 'message'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMessageAccess().getMESSAGE_DEFTerminalRuleCall_1()); 
+               before(grammarAccess.getMessageAccess().getMessageKeyword_1()); 
             }
-            match(input,RULE_MESSAGE_DEF,FOLLOW_2); if (state.failed) return ;
+            match(input,86,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMessageAccess().getMESSAGE_DEFTerminalRuleCall_1()); 
+               after(grammarAccess.getMessageAccess().getMessageKeyword_1()); 
             }
 
             }
@@ -27696,7 +27696,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMessageAccess().getLeftCurlyBracketKeyword_4_0_0()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMessageAccess().getLeftCurlyBracketKeyword_4_0_0()); 
             }
@@ -27859,7 +27859,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMessageAccess().getRightCurlyBracketKeyword_4_0_2()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMessageAccess().getRightCurlyBracketKeyword_4_0_2()); 
             }
@@ -27938,7 +27938,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0()); 
             }
-            match(input,88,FOLLOW_2); if (state.failed) return ;
+            match(input,87,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0()); 
             }
@@ -28101,7 +28101,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2()); 
             }
-            match(input,89,FOLLOW_2); if (state.failed) return ;
+            match(input,88,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2()); 
             }
@@ -28270,7 +28270,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt86=2;
                 int LA86_0 = input.LA(1);
 
-                if ( (LA86_0==RULE_ARG_SEP) ) {
+                if ( (LA86_0==83) ) {
                     alt86=1;
                 }
 
@@ -28356,24 +28356,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__MessageArray__Group_1__0__Impl"
-    // InternalNavascript.g:8218:1: rule__MessageArray__Group_1__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:8218:1: rule__MessageArray__Group_1__0__Impl : ( ',' ) ;
     public final void rule__MessageArray__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:8222:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:8223:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:8222:1: ( ( ',' ) )
+            // InternalNavascript.g:8223:1: ( ',' )
             {
-            // InternalNavascript.g:8223:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:8224:2: RULE_ARG_SEP
+            // InternalNavascript.g:8223:1: ( ',' )
+            // InternalNavascript.g:8224:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMessageArrayAccess().getARG_SEPTerminalRuleCall_1_0()); 
+               before(grammarAccess.getMessageArrayAccess().getCommaKeyword_1_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMessageArrayAccess().getARG_SEPTerminalRuleCall_1_0()); 
+               after(grammarAccess.getMessageArrayAccess().getCommaKeyword_1_0()); 
             }
 
             }
@@ -28613,7 +28613,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMessageArrayElementAccess().getLeftCurlyBracketKeyword_1()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMessageArrayElementAccess().getLeftCurlyBracketKeyword_1()); 
             }
@@ -28698,7 +28698,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt87=2;
                 int LA87_0 = input.LA(1);
 
-                if ( (LA87_0==RULE_BREAK_DEF||LA87_0==RULE_DEFINE_DEF||(LA87_0>=RULE_PRINT_DEF && LA87_0<=RULE_LOG_DEF)||(LA87_0>=RULE_METHODS_DEF && LA87_0<=RULE_LOOP_DEF)||(LA87_0>=RULE_INCLUDE_DEF && LA87_0<=RULE_MESSAGE_DEF)||(LA87_0>=RULE_MAP_DEF && LA87_0<=RULE_MAP_OLDSKOOL_DEF)||(LA87_0>=RULE_VAR_DEF && LA87_0<=RULE_OPTION_DEF)||(LA87_0>=RULE_METHOD_IDENTIFIER && LA87_0<=RULE_MAPPABLE_IDENTIFIER)||LA87_0==84||LA87_0==86) ) {
+                if ( (LA87_0==RULE_BREAK_DEF||LA87_0==RULE_DEFINE_DEF||(LA87_0>=RULE_PRINT_DEF && LA87_0<=RULE_LOG_DEF)||LA87_0==RULE_LOOP_DEF||LA87_0==RULE_INCLUDE_DEF||LA87_0==RULE_MAP_OLDSKOOL_DEF||(LA87_0>=RULE_VAR_DEF && LA87_0<=RULE_OPTION_DEF)||(LA87_0>=RULE_METHOD_IDENTIFIER && LA87_0<=RULE_MAPPABLE_IDENTIFIER)||LA87_0==79||LA87_0==81||(LA87_0>=84 && LA87_0<=86)||LA87_0==89) ) {
                     alt87=1;
                 }
 
@@ -28794,7 +28794,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMessageArrayElementAccess().getRightCurlyBracketKeyword_3()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMessageArrayElementAccess().getRightCurlyBracketKeyword_3()); 
             }
@@ -29455,7 +29455,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt88=2;
                 int LA88_0 = input.LA(1);
 
-                if ( (LA88_0==RULE_ARG_SEP) ) {
+                if ( (LA88_0==83) ) {
                     alt88=1;
                 }
 
@@ -29541,24 +29541,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__MessageArguments__Group_1__0__Impl"
-    // InternalNavascript.g:8596:1: rule__MessageArguments__Group_1__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:8596:1: rule__MessageArguments__Group_1__0__Impl : ( ',' ) ;
     public final void rule__MessageArguments__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:8600:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:8601:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:8600:1: ( ( ',' ) )
+            // InternalNavascript.g:8601:1: ( ',' )
             {
-            // InternalNavascript.g:8601:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:8602:2: RULE_ARG_SEP
+            // InternalNavascript.g:8601:1: ( ',' )
+            // InternalNavascript.g:8602:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMessageArgumentsAccess().getARG_SEPTerminalRuleCall_1_0()); 
+               before(grammarAccess.getMessageArgumentsAccess().getCommaKeyword_1_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMessageArgumentsAccess().getARG_SEPTerminalRuleCall_1_0()); 
+               after(grammarAccess.getMessageArgumentsAccess().getCommaKeyword_1_0()); 
             }
 
             }
@@ -29887,7 +29887,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMapAccess().getLeftCurlyBracketKeyword_2()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMapAccess().getLeftCurlyBracketKeyword_2()); 
             }
@@ -29972,7 +29972,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt89=2;
                 int LA89_0 = input.LA(1);
 
-                if ( (LA89_0==RULE_BREAK_DEF||LA89_0==RULE_DEFINE_DEF||(LA89_0>=RULE_PRINT_DEF && LA89_0<=RULE_LOG_DEF)||(LA89_0>=RULE_METHODS_DEF && LA89_0<=RULE_LOOP_DEF)||(LA89_0>=RULE_INCLUDE_DEF && LA89_0<=RULE_MESSAGE_DEF)||(LA89_0>=RULE_MAP_DEF && LA89_0<=RULE_MAP_OLDSKOOL_DEF)||(LA89_0>=RULE_VAR_DEF && LA89_0<=RULE_OPTION_DEF)||(LA89_0>=RULE_METHOD_IDENTIFIER && LA89_0<=RULE_MAPPABLE_IDENTIFIER)||LA89_0==84||LA89_0==86) ) {
+                if ( (LA89_0==RULE_BREAK_DEF||LA89_0==RULE_DEFINE_DEF||(LA89_0>=RULE_PRINT_DEF && LA89_0<=RULE_LOG_DEF)||LA89_0==RULE_LOOP_DEF||LA89_0==RULE_INCLUDE_DEF||LA89_0==RULE_MAP_OLDSKOOL_DEF||(LA89_0>=RULE_VAR_DEF && LA89_0<=RULE_OPTION_DEF)||(LA89_0>=RULE_METHOD_IDENTIFIER && LA89_0<=RULE_MAPPABLE_IDENTIFIER)||LA89_0==79||LA89_0==81||(LA89_0>=84 && LA89_0<=86)||LA89_0==89) ) {
                     alt89=1;
                 }
 
@@ -30068,7 +30068,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMapAccess().getRightCurlyBracketKeyword_4()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMapAccess().getRightCurlyBracketKeyword_4()); 
             }
@@ -30132,24 +30132,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Map__Group_1_0__0__Impl"
-    // InternalNavascript.g:8785:1: rule__Map__Group_1_0__0__Impl : ( RULE_MAP_DEF ) ;
+    // InternalNavascript.g:8785:1: rule__Map__Group_1_0__0__Impl : ( 'map.' ) ;
     public final void rule__Map__Group_1_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:8789:1: ( ( RULE_MAP_DEF ) )
-            // InternalNavascript.g:8790:1: ( RULE_MAP_DEF )
+            // InternalNavascript.g:8789:1: ( ( 'map.' ) )
+            // InternalNavascript.g:8790:1: ( 'map.' )
             {
-            // InternalNavascript.g:8790:1: ( RULE_MAP_DEF )
-            // InternalNavascript.g:8791:2: RULE_MAP_DEF
+            // InternalNavascript.g:8790:1: ( 'map.' )
+            // InternalNavascript.g:8791:2: 'map.'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMapAccess().getMAP_DEFTerminalRuleCall_1_0_0()); 
+               before(grammarAccess.getMapAccess().getMapKeyword_1_0_0()); 
             }
-            match(input,RULE_MAP_DEF,FOLLOW_2); if (state.failed) return ;
+            match(input,89,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMapAccess().getMAP_DEFTerminalRuleCall_1_0_0()); 
+               after(grammarAccess.getMapAccess().getMapKeyword_1_0_0()); 
             }
 
             }
@@ -30493,7 +30493,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt91=2;
             int LA91_0 = input.LA(1);
 
-            if ( (LA91_0==RULE_IDENTIFIER||(LA91_0>=81 && LA91_0<=83)) ) {
+            if ( (LA91_0==RULE_IDENTIFIER||(LA91_0>=76 && LA91_0<=78)) ) {
                 alt91=1;
             }
             switch (alt91) {
@@ -31082,7 +31082,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt92=2;
             int LA92_0 = input.LA(1);
 
-            if ( (LA92_0==RULE_ARG_SEP) ) {
+            if ( (LA92_0==83) ) {
                 alt92=1;
             }
             switch (alt92) {
@@ -31237,24 +31237,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Map__Group_1_1_5__0__Impl"
-    // InternalNavascript.g:9136:1: rule__Map__Group_1_1_5__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:9136:1: rule__Map__Group_1_1_5__0__Impl : ( ',' ) ;
     public final void rule__Map__Group_1_1_5__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:9140:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:9141:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:9140:1: ( ( ',' ) )
+            // InternalNavascript.g:9141:1: ( ',' )
             {
-            // InternalNavascript.g:9141:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:9142:2: RULE_ARG_SEP
+            // InternalNavascript.g:9141:1: ( ',' )
+            // InternalNavascript.g:9142:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMapAccess().getARG_SEPTerminalRuleCall_1_1_5_0()); 
+               before(grammarAccess.getMapAccess().getCommaKeyword_1_1_5_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMapAccess().getARG_SEPTerminalRuleCall_1_1_5_0()); 
+               after(grammarAccess.getMapAccess().getCommaKeyword_1_1_5_0()); 
             }
 
             }
@@ -31666,7 +31666,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt93=2;
             int LA93_0 = input.LA(1);
 
-            if ( (LA93_0==RULE_IDENTIFIER||(LA93_0>=81 && LA93_0<=83)) ) {
+            if ( (LA93_0==RULE_IDENTIFIER||(LA93_0>=76 && LA93_0<=78)) ) {
                 alt93=1;
             }
             switch (alt93) {
@@ -31836,7 +31836,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdapterMethodAccess().getSemicolonKeyword_5()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAdapterMethodAccess().getSemicolonKeyword_5()); 
             }
@@ -32340,7 +32340,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSetterFieldAccess().getSemicolonKeyword_2_0_2()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getSetterFieldAccess().getSemicolonKeyword_2_0_2()); 
             }
@@ -32519,7 +32519,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSetterFieldAccess().getLeftCurlyBracketKeyword_2_1_1()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getSetterFieldAccess().getLeftCurlyBracketKeyword_2_1_1()); 
             }
@@ -32682,7 +32682,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSetterFieldAccess().getRightCurlyBracketKeyword_2_1_3()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getSetterFieldAccess().getRightCurlyBracketKeyword_2_1_3()); 
             }
@@ -33271,7 +33271,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMappedArrayFieldAccess().getLeftCurlyBracketKeyword_3()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMappedArrayFieldAccess().getLeftCurlyBracketKeyword_3()); 
             }
@@ -33356,7 +33356,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt96=2;
                 int LA96_0 = input.LA(1);
 
-                if ( (LA96_0==RULE_BREAK_DEF||LA96_0==RULE_DEFINE_DEF||(LA96_0>=RULE_PRINT_DEF && LA96_0<=RULE_LOG_DEF)||(LA96_0>=RULE_METHODS_DEF && LA96_0<=RULE_LOOP_DEF)||(LA96_0>=RULE_INCLUDE_DEF && LA96_0<=RULE_MESSAGE_DEF)||(LA96_0>=RULE_MAP_DEF && LA96_0<=RULE_MAP_OLDSKOOL_DEF)||(LA96_0>=RULE_VAR_DEF && LA96_0<=RULE_OPTION_DEF)||(LA96_0>=RULE_METHOD_IDENTIFIER && LA96_0<=RULE_MAPPABLE_IDENTIFIER)||LA96_0==84||LA96_0==86) ) {
+                if ( (LA96_0==RULE_BREAK_DEF||LA96_0==RULE_DEFINE_DEF||(LA96_0>=RULE_PRINT_DEF && LA96_0<=RULE_LOG_DEF)||LA96_0==RULE_LOOP_DEF||LA96_0==RULE_INCLUDE_DEF||LA96_0==RULE_MAP_OLDSKOOL_DEF||(LA96_0>=RULE_VAR_DEF && LA96_0<=RULE_OPTION_DEF)||(LA96_0>=RULE_METHOD_IDENTIFIER && LA96_0<=RULE_MAPPABLE_IDENTIFIER)||LA96_0==79||LA96_0==81||(LA96_0>=84 && LA96_0<=86)||LA96_0==89) ) {
                     alt96=1;
                 }
 
@@ -33452,7 +33452,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMappedArrayFieldAccess().getRightCurlyBracketKeyword_5()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMappedArrayFieldAccess().getRightCurlyBracketKeyword_5()); 
             }
@@ -34209,7 +34209,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMappedArrayMessageAccess().getLeftCurlyBracketKeyword_3()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMappedArrayMessageAccess().getLeftCurlyBracketKeyword_3()); 
             }
@@ -34294,7 +34294,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt98=2;
                 int LA98_0 = input.LA(1);
 
-                if ( (LA98_0==RULE_BREAK_DEF||LA98_0==RULE_DEFINE_DEF||(LA98_0>=RULE_PRINT_DEF && LA98_0<=RULE_LOG_DEF)||(LA98_0>=RULE_METHODS_DEF && LA98_0<=RULE_LOOP_DEF)||(LA98_0>=RULE_INCLUDE_DEF && LA98_0<=RULE_MESSAGE_DEF)||(LA98_0>=RULE_MAP_DEF && LA98_0<=RULE_MAP_OLDSKOOL_DEF)||(LA98_0>=RULE_VAR_DEF && LA98_0<=RULE_OPTION_DEF)||(LA98_0>=RULE_METHOD_IDENTIFIER && LA98_0<=RULE_MAPPABLE_IDENTIFIER)||LA98_0==84||LA98_0==86) ) {
+                if ( (LA98_0==RULE_BREAK_DEF||LA98_0==RULE_DEFINE_DEF||(LA98_0>=RULE_PRINT_DEF && LA98_0<=RULE_LOG_DEF)||LA98_0==RULE_LOOP_DEF||LA98_0==RULE_INCLUDE_DEF||LA98_0==RULE_MAP_OLDSKOOL_DEF||(LA98_0>=RULE_VAR_DEF && LA98_0<=RULE_OPTION_DEF)||(LA98_0>=RULE_METHOD_IDENTIFIER && LA98_0<=RULE_MAPPABLE_IDENTIFIER)||LA98_0==79||LA98_0==81||(LA98_0>=84 && LA98_0<=86)||LA98_0==89) ) {
                     alt98=1;
                 }
 
@@ -34390,7 +34390,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMappedArrayMessageAccess().getRightCurlyBracketKeyword_5()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMappedArrayMessageAccess().getRightCurlyBracketKeyword_5()); 
             }
@@ -35048,7 +35048,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt99=2;
                 int LA99_0 = input.LA(1);
 
-                if ( (LA99_0==RULE_ARG_SEP) ) {
+                if ( (LA99_0==83) ) {
                     alt99=1;
                 }
 
@@ -35134,24 +35134,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__KeyValueArguments__Group_2__0__Impl"
-    // InternalNavascript.g:10378:1: rule__KeyValueArguments__Group_2__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:10378:1: rule__KeyValueArguments__Group_2__0__Impl : ( ',' ) ;
     public final void rule__KeyValueArguments__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:10382:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:10383:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:10382:1: ( ( ',' ) )
+            // InternalNavascript.g:10383:1: ( ',' )
             {
-            // InternalNavascript.g:10383:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:10384:2: RULE_ARG_SEP
+            // InternalNavascript.g:10383:1: ( ',' )
+            // InternalNavascript.g:10384:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getKeyValueArgumentsAccess().getARG_SEPTerminalRuleCall_2_0()); 
+               before(grammarAccess.getKeyValueArgumentsAccess().getCommaKeyword_2_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getKeyValueArgumentsAccess().getARG_SEPTerminalRuleCall_2_0()); 
+               after(grammarAccess.getKeyValueArgumentsAccess().getCommaKeyword_2_0()); 
             }
 
             }
@@ -36257,7 +36257,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarAccess().getSemicolonKeyword_4_0_2()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarAccess().getSemicolonKeyword_4_0_2()); 
             }
@@ -36336,7 +36336,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarAccess().getLeftSquareBracketKeyword_4_1_0()); 
             }
-            match(input,88,FOLLOW_2); if (state.failed) return ;
+            match(input,87,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarAccess().getLeftSquareBracketKeyword_4_1_0()); 
             }
@@ -36419,7 +36419,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt101=2;
             int LA101_0 = input.LA(1);
 
-            if ( (LA101_0==86) ) {
+            if ( (LA101_0==81) ) {
                 alt101=1;
             }
             switch (alt101) {
@@ -36510,7 +36510,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarAccess().getRightSquareBracketKeyword_4_1_2()); 
             }
-            match(input,89,FOLLOW_2); if (state.failed) return ;
+            match(input,88,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarAccess().getRightSquareBracketKeyword_4_1_2()); 
             }
@@ -36589,7 +36589,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_2_0()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_2_0()); 
             }
@@ -36674,7 +36674,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt102=2;
                 int LA102_0 = input.LA(1);
 
-                if ( (LA102_0==RULE_VAR_DEF||LA102_0==84) ) {
+                if ( (LA102_0==RULE_VAR_DEF||LA102_0==79) ) {
                     alt102=1;
                 }
 
@@ -36770,7 +36770,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_2_2()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_2_2()); 
             }
@@ -36849,7 +36849,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_3_0()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_3_0()); 
             }
@@ -37012,7 +37012,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_3_2()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_3_2()); 
             }
@@ -37091,7 +37091,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_4_0()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_4_0()); 
             }
@@ -37254,7 +37254,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_4_2()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_4_2()); 
             }
@@ -37502,7 +37502,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt103=2;
                 int LA103_0 = input.LA(1);
 
-                if ( (LA103_0==RULE_ARG_SEP) ) {
+                if ( (LA103_0==83) ) {
                     alt103=1;
                 }
 
@@ -37588,24 +37588,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__VarArray__Group_2__0__Impl"
-    // InternalNavascript.g:11161:1: rule__VarArray__Group_2__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:11161:1: rule__VarArray__Group_2__0__Impl : ( ',' ) ;
     public final void rule__VarArray__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:11165:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:11166:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:11165:1: ( ( ',' ) )
+            // InternalNavascript.g:11166:1: ( ',' )
             {
-            // InternalNavascript.g:11166:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:11167:2: RULE_ARG_SEP
+            // InternalNavascript.g:11166:1: ( ',' )
+            // InternalNavascript.g:11167:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getVarArrayAccess().getARG_SEPTerminalRuleCall_2_0()); 
+               before(grammarAccess.getVarArrayAccess().getCommaKeyword_2_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getVarArrayAccess().getARG_SEPTerminalRuleCall_2_0()); 
+               after(grammarAccess.getVarArrayAccess().getCommaKeyword_2_0()); 
             }
 
             }
@@ -37845,7 +37845,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarArrayElementAccess().getLeftCurlyBracketKeyword_1()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarArrayElementAccess().getLeftCurlyBracketKeyword_1()); 
             }
@@ -37930,7 +37930,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt104=2;
                 int LA104_0 = input.LA(1);
 
-                if ( (LA104_0==RULE_VAR_DEF||LA104_0==84) ) {
+                if ( (LA104_0==RULE_VAR_DEF||LA104_0==79) ) {
                     alt104=1;
                 }
 
@@ -38026,7 +38026,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarArrayElementAccess().getRightCurlyBracketKeyword_3()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarArrayElementAccess().getRightCurlyBracketKeyword_3()); 
             }
@@ -38188,7 +38188,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt105=2;
             int LA105_0 = input.LA(1);
 
-            if ( (LA105_0==84) ) {
+            if ( (LA105_0==79) ) {
                 alt105=1;
             }
             switch (alt105) {
@@ -38368,7 +38368,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarElementAccess().getIfKeyword_1_0()); 
             }
-            match(input,84,FOLLOW_2); if (state.failed) return ;
+            match(input,79,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarElementAccess().getIfKeyword_1_0()); 
             }
@@ -38531,7 +38531,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getVarElementAccess().getThenKeyword_1_2()); 
             }
-            match(input,85,FOLLOW_2); if (state.failed) return ;
+            match(input,80,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getVarElementAccess().getThenKeyword_1_2()); 
             }
@@ -38863,7 +38863,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt106=2;
                 int LA106_0 = input.LA(1);
 
-                if ( (LA106_0==RULE_ARG_SEP) ) {
+                if ( (LA106_0==83) ) {
                     alt106=1;
                 }
 
@@ -39023,24 +39023,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__VarArguments__Group_3__0__Impl"
-    // InternalNavascript.g:11620:1: rule__VarArguments__Group_3__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:11620:1: rule__VarArguments__Group_3__0__Impl : ( ',' ) ;
     public final void rule__VarArguments__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:11624:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:11625:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:11624:1: ( ( ',' ) )
+            // InternalNavascript.g:11625:1: ( ',' )
             {
-            // InternalNavascript.g:11625:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:11626:2: RULE_ARG_SEP
+            // InternalNavascript.g:11625:1: ( ',' )
+            // InternalNavascript.g:11626:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getVarArgumentsAccess().getARG_SEPTerminalRuleCall_3_0()); 
+               before(grammarAccess.getVarArgumentsAccess().getCommaKeyword_3_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getVarArgumentsAccess().getARG_SEPTerminalRuleCall_3_0()); 
+               after(grammarAccess.getVarArgumentsAccess().getCommaKeyword_3_0()); 
             }
 
             }
@@ -40461,7 +40461,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt108=2;
             int LA108_0 = input.LA(1);
 
-            if ( ((LA108_0>=64 && LA108_0<=65)) ) {
+            if ( ((LA108_0>=59 && LA108_0<=60)) ) {
                 alt108=1;
             }
             switch (alt108) {
@@ -40552,7 +40552,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getSemicolonKeyword_4_0_1()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyAccess().getSemicolonKeyword_4_0_1()); 
             }
@@ -40804,7 +40804,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getLeftSquareBracketKeyword_4_1_0()); 
             }
-            match(input,88,FOLLOW_2); if (state.failed) return ;
+            match(input,87,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyAccess().getLeftSquareBracketKeyword_4_1_0()); 
             }
@@ -40967,7 +40967,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getRightSquareBracketKeyword_4_1_2()); 
             }
-            match(input,89,FOLLOW_2); if (state.failed) return ;
+            match(input,88,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyAccess().getRightSquareBracketKeyword_4_1_2()); 
             }
@@ -41046,7 +41046,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_2_0()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_2_0()); 
             }
@@ -41209,7 +41209,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_2_2()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_2_2()); 
             }
@@ -41288,7 +41288,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_3_0()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_3_0()); 
             }
@@ -41451,7 +41451,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_3_2()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_3_2()); 
             }
@@ -41620,7 +41620,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt109=2;
                 int LA109_0 = input.LA(1);
 
-                if ( (LA109_0==RULE_ARG_SEP) ) {
+                if ( (LA109_0==83) ) {
                     alt109=1;
                 }
 
@@ -41706,24 +41706,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__SelectionArray__Group_1__0__Impl"
-    // InternalNavascript.g:12484:1: rule__SelectionArray__Group_1__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:12484:1: rule__SelectionArray__Group_1__0__Impl : ( ',' ) ;
     public final void rule__SelectionArray__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:12488:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:12489:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:12488:1: ( ( ',' ) )
+            // InternalNavascript.g:12489:1: ( ',' )
             {
-            // InternalNavascript.g:12489:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:12490:2: RULE_ARG_SEP
+            // InternalNavascript.g:12489:1: ( ',' )
+            // InternalNavascript.g:12490:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSelectionArrayAccess().getARG_SEPTerminalRuleCall_1_0()); 
+               before(grammarAccess.getSelectionArrayAccess().getCommaKeyword_1_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSelectionArrayAccess().getARG_SEPTerminalRuleCall_1_0()); 
+               after(grammarAccess.getSelectionArrayAccess().getCommaKeyword_1_0()); 
             }
 
             }
@@ -41963,7 +41963,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSelectionArrayElementAccess().getLeftCurlyBracketKeyword_1()); 
             }
-            match(input,86,FOLLOW_2); if (state.failed) return ;
+            match(input,81,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getSelectionArrayElementAccess().getLeftCurlyBracketKeyword_1()); 
             }
@@ -42048,7 +42048,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt110=2;
                 int LA110_0 = input.LA(1);
 
-                if ( (LA110_0==RULE_BREAK_DEF||LA110_0==RULE_DEFINE_DEF||(LA110_0>=RULE_PRINT_DEF && LA110_0<=RULE_LOG_DEF)||(LA110_0>=RULE_METHODS_DEF && LA110_0<=RULE_LOOP_DEF)||(LA110_0>=RULE_INCLUDE_DEF && LA110_0<=RULE_MESSAGE_DEF)||(LA110_0>=RULE_MAP_DEF && LA110_0<=RULE_MAP_OLDSKOOL_DEF)||(LA110_0>=RULE_VAR_DEF && LA110_0<=RULE_OPTION_DEF)||(LA110_0>=RULE_METHOD_IDENTIFIER && LA110_0<=RULE_MAPPABLE_IDENTIFIER)||LA110_0==84||LA110_0==86) ) {
+                if ( (LA110_0==RULE_BREAK_DEF||LA110_0==RULE_DEFINE_DEF||(LA110_0>=RULE_PRINT_DEF && LA110_0<=RULE_LOG_DEF)||LA110_0==RULE_LOOP_DEF||LA110_0==RULE_INCLUDE_DEF||LA110_0==RULE_MAP_OLDSKOOL_DEF||(LA110_0>=RULE_VAR_DEF && LA110_0<=RULE_OPTION_DEF)||(LA110_0>=RULE_METHOD_IDENTIFIER && LA110_0<=RULE_MAPPABLE_IDENTIFIER)||LA110_0==79||LA110_0==81||(LA110_0>=84 && LA110_0<=86)||LA110_0==89) ) {
                     alt110=1;
                 }
 
@@ -42144,7 +42144,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSelectionArrayElementAccess().getRightCurlyBracketKeyword_3()); 
             }
-            match(input,87,FOLLOW_2); if (state.failed) return ;
+            match(input,82,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getSelectionArrayElementAccess().getRightCurlyBracketKeyword_3()); 
             }
@@ -42564,7 +42564,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOptionAccess().getSemicolonKeyword_4()); 
             }
-            match(input,68,FOLLOW_2); if (state.failed) return ;
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getOptionAccess().getSemicolonKeyword_4()); 
             }
@@ -42896,7 +42896,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt111=2;
                 int LA111_0 = input.LA(1);
 
-                if ( (LA111_0==RULE_ARG_SEP) ) {
+                if ( (LA111_0==83) ) {
                     alt111=1;
                 }
 
@@ -43056,24 +43056,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyArguments__Group_3__0__Impl"
-    // InternalNavascript.g:12916:1: rule__PropertyArguments__Group_3__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:12916:1: rule__PropertyArguments__Group_3__0__Impl : ( ',' ) ;
     public final void rule__PropertyArguments__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:12920:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:12921:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:12920:1: ( ( ',' ) )
+            // InternalNavascript.g:12921:1: ( ',' )
             {
-            // InternalNavascript.g:12921:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:12922:2: RULE_ARG_SEP
+            // InternalNavascript.g:12921:1: ( ',' )
+            // InternalNavascript.g:12922:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyArgumentsAccess().getARG_SEPTerminalRuleCall_3_0()); 
+               before(grammarAccess.getPropertyArgumentsAccess().getCommaKeyword_3_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyArgumentsAccess().getARG_SEPTerminalRuleCall_3_0()); 
+               after(grammarAccess.getPropertyArgumentsAccess().getCommaKeyword_3_0()); 
             }
 
             }
@@ -44857,7 +44857,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt112=2;
                 int LA112_0 = input.LA(1);
 
-                if ( (LA112_0==84) ) {
+                if ( (LA112_0==79) ) {
                     alt112=1;
                 }
 
@@ -45124,7 +45124,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConditionalExpressionAccess().getIfKeyword_0()); 
             }
-            match(input,84,FOLLOW_2); if (state.failed) return ;
+            match(input,79,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConditionalExpressionAccess().getIfKeyword_0()); 
             }
@@ -45292,7 +45292,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConditionalExpressionAccess().getThenKeyword_2()); 
             }
-            match(input,85,FOLLOW_2); if (state.failed) return ;
+            match(input,80,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConditionalExpressionAccess().getThenKeyword_2()); 
             }
@@ -45539,7 +45539,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt113=2;
                 int LA113_0 = input.LA(1);
 
-                if ( ((LA113_0>=71 && LA113_0<=72)) ) {
+                if ( ((LA113_0>=66 && LA113_0<=67)) ) {
                     alt113=1;
                 }
 
@@ -46060,7 +46060,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt114=2;
                 int LA114_0 = input.LA(1);
 
-                if ( ((LA114_0>=73 && LA114_0<=76)) ) {
+                if ( ((LA114_0>=68 && LA114_0<=71)) ) {
                     alt114=1;
                 }
 
@@ -46581,7 +46581,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt115=2;
                 int LA115_0 = input.LA(1);
 
-                if ( ((LA115_0>=77 && LA115_0<=78)) ) {
+                if ( ((LA115_0>=72 && LA115_0<=73)) ) {
                     alt115=1;
                 }
 
@@ -47102,7 +47102,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt116=2;
                 int LA116_0 = input.LA(1);
 
-                if ( (LA116_0==69||LA116_0==91) ) {
+                if ( (LA116_0==64||LA116_0==91) ) {
                     alt116=1;
                 }
 
@@ -47450,7 +47450,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdditionAccess().getPlusSignKeyword_1_0_0_1()); 
             }
-            match(input,69,FOLLOW_2); if (state.failed) return ;
+            match(input,64,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAdditionAccess().getPlusSignKeyword_1_0_0_1()); 
             }
@@ -47766,7 +47766,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt117=2;
                 int LA117_0 = input.LA(1);
 
-                if ( ((LA117_0>=79 && LA117_0<=80)) ) {
+                if ( ((LA117_0>=74 && LA117_0<=75)) ) {
                     alt117=1;
                 }
 
@@ -50903,24 +50903,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ForAllIdentifier__Group__6__Impl"
-    // InternalNavascript.g:15434:1: rule__ForAllIdentifier__Group__6__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:15434:1: rule__ForAllIdentifier__Group__6__Impl : ( ',' ) ;
     public final void rule__ForAllIdentifier__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:15438:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:15439:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:15438:1: ( ( ',' ) )
+            // InternalNavascript.g:15439:1: ( ',' )
             {
-            // InternalNavascript.g:15439:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:15440:2: RULE_ARG_SEP
+            // InternalNavascript.g:15439:1: ( ',' )
+            // InternalNavascript.g:15440:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getForAllIdentifierAccess().getARG_SEPTerminalRuleCall_6()); 
+               before(grammarAccess.getForAllIdentifierAccess().getCommaKeyword_6()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getForAllIdentifierAccess().getARG_SEPTerminalRuleCall_6()); 
+               after(grammarAccess.getForAllIdentifierAccess().getCommaKeyword_6()); 
             }
 
             }
@@ -51755,7 +51755,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt120=2;
                 int LA120_0 = input.LA(1);
 
-                if ( (LA120_0==RULE_ARG_SEP) ) {
+                if ( (LA120_0==83) ) {
                     alt120=1;
                 }
 
@@ -51841,24 +51841,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__FunctionIdentifier__Group_2_1_1__0__Impl"
-    // InternalNavascript.g:15731:1: rule__FunctionIdentifier__Group_2_1_1__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:15731:1: rule__FunctionIdentifier__Group_2_1_1__0__Impl : ( ',' ) ;
     public final void rule__FunctionIdentifier__Group_2_1_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:15735:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:15736:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:15735:1: ( ( ',' ) )
+            // InternalNavascript.g:15736:1: ( ',' )
             {
-            // InternalNavascript.g:15736:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:15737:2: RULE_ARG_SEP
+            // InternalNavascript.g:15736:1: ( ',' )
+            // InternalNavascript.g:15737:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFunctionIdentifierAccess().getARG_SEPTerminalRuleCall_2_1_1_0()); 
+               before(grammarAccess.getFunctionIdentifierAccess().getCommaKeyword_2_1_1_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFunctionIdentifierAccess().getARG_SEPTerminalRuleCall_2_1_1_0()); 
+               after(grammarAccess.getFunctionIdentifierAccess().getCommaKeyword_2_1_1_0()); 
             }
 
             }
@@ -52629,7 +52629,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt123=2;
                 int LA123_0 = input.LA(1);
 
-                if ( (LA123_0==RULE_ARG_SEP) ) {
+                if ( (LA123_0==83) ) {
                     alt123=1;
                 }
 
@@ -52715,24 +52715,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__MappableIdentifier__Group_2_1_1__0__Impl"
-    // InternalNavascript.g:16001:1: rule__MappableIdentifier__Group_2_1_1__0__Impl : ( RULE_ARG_SEP ) ;
+    // InternalNavascript.g:16001:1: rule__MappableIdentifier__Group_2_1_1__0__Impl : ( ',' ) ;
     public final void rule__MappableIdentifier__Group_2_1_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:16005:1: ( ( RULE_ARG_SEP ) )
-            // InternalNavascript.g:16006:1: ( RULE_ARG_SEP )
+            // InternalNavascript.g:16005:1: ( ( ',' ) )
+            // InternalNavascript.g:16006:1: ( ',' )
             {
-            // InternalNavascript.g:16006:1: ( RULE_ARG_SEP )
-            // InternalNavascript.g:16007:2: RULE_ARG_SEP
+            // InternalNavascript.g:16006:1: ( ',' )
+            // InternalNavascript.g:16007:2: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMappableIdentifierAccess().getARG_SEPTerminalRuleCall_2_1_1_0()); 
+               before(grammarAccess.getMappableIdentifierAccess().getCommaKeyword_2_1_1_0()); 
             }
-            match(input,RULE_ARG_SEP,FOLLOW_2); if (state.failed) return ;
+            match(input,83,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMappableIdentifierAccess().getARG_SEPTerminalRuleCall_2_1_1_0()); 
+               after(grammarAccess.getMappableIdentifierAccess().getCommaKeyword_2_1_1_0()); 
             }
 
             }
@@ -61985,108 +61985,108 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x00183B3B68400002L,0x0000000000500000L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x00183B3B6C404000L,0x0000000000500000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x00183B3B68404002L,0x0000000000500000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x00183B3B68404000L,0x0000000000500000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x01F000000000BC40L,0x0000400018000000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x00183B3B68400000L,0x0000000000500000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x00183B3B68400000L,0x0000000000D00000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000C1D2B4200002L,0x0000000002728000L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000C1D2B6204000L,0x0000000002728000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000C1D2B4204002L,0x0000000002728000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000C1D2B4204000L,0x0000000002728000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x000F80000000BC40L,0x0000400018000000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000C1D2B4200000L,0x0000000002728000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000C1D2B4200000L,0x0000000002768000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x00000000003C0000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x00000000001E0000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x00183B3B68404000L,0x0000000000D00000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000003L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000000L,0x000000000000000CL});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x01F000000000BC70L,0x0000400018000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000008000L,0x0000000000000010L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000003810000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000003800000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000010000000L,0x0000000000900000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000010000002L,0x0000000000100000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000C1D2B4204000L,0x0000000002768000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000002L,0x0000000000080000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x1800000000000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x6000000000000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x000F80000000BC70L,0x0000400018000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x8000000000008000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000001C10000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000001C00000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000008000000L,0x0000000000048000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000008000002L,0x0000000000008000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000004000000L});
     public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000010000000L,0x0000000000100000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000030000L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x8000000000000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000008000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000C00000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000010000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000000400000L});
     public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000010L,0x0000000000800000L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000010L,0x0000000000040000L});
     public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0030000000000000L,0x0000400000000000L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000008000L,0x0000000000400000L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000008000L,0x0000000001400010L});
-    public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x000000C000000000L});
-    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x00383B3B68400000L,0x0000000000500000L});
-    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0001800000000000L,0x0000400000000000L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000008000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
+    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x8000000000008000L,0x0000000000820000L});
+    public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000000C00000000L});
+    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0001C1D2B4200000L,0x0000000002728000L});
+    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
     public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0000000000000000L,0x00000E0000000000L});
     public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0000000000000000L,0x0000300000000000L});
-    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0000030000000000L});
+    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0000001000000000L,0x0000000002000000L});
     public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000000010040L,0x00000000000E0000L});
-    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000040L,0x00000000000E0000L});
-    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0018000000000000L});
-    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0010000000008000L,0x0000000000400003L});
-    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x01F000000000BC70L,0x0000400018100000L});
-    public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000000008000L,0x0000000001400003L});
-    public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000000000L,0x0000000002400000L});
-    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x0000080000000000L,0x0000000000900000L});
-    public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000080000000002L,0x0000000000100000L});
-    public static final BitSet FOLLOW_73 = new BitSet(new long[]{0x0000080000000000L,0x0000000000100000L});
-    public static final BitSet FOLLOW_74 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000000010040L,0x0000000000007000L});
+    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000040L,0x0000000000007000L});
+    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000C00000000000L});
+    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x1800800000008000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x000F80000000BC70L,0x0000400018008000L});
+    public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x1800000000008000L,0x0000000000820000L});
+    public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000000000L,0x0000000001020000L});
+    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x0000004000000000L,0x0000000000048000L});
+    public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000004000000002L,0x0000000000008000L});
+    public static final BitSet FOLLOW_73 = new BitSet(new long[]{0x0000004000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_74 = new BitSet(new long[]{0x0000000400000000L});
     public static final BitSet FOLLOW_75 = new BitSet(new long[]{0x0000000000000000L,0x00000FFFC0000000L});
-    public static final BitSet FOLLOW_76 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_77 = new BitSet(new long[]{0x0000000000008000L,0x0000000001400013L});
-    public static final BitSet FOLLOW_78 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000013L});
-    public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x0003C04001000000L});
-    public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_76 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_77 = new BitSet(new long[]{0x9800000000008000L,0x0000000000820000L});
+    public static final BitSet FOLLOW_78 = new BitSet(new long[]{0x9800000000000000L});
+    public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x00001E0400800000L});
+    public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x0002000000000000L});
     public static final BitSet FOLLOW_81 = new BitSet(new long[]{0x0000000000000380L});
-    public static final BitSet FOLLOW_82 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000060L});
-    public static final BitSet FOLLOW_83 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
+    public static final BitSet FOLLOW_82 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_83 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
     public static final BitSet FOLLOW_84 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_85 = new BitSet(new long[]{0x0000000000000002L,0x0000000000100000L});
-    public static final BitSet FOLLOW_86 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000180L});
-    public static final BitSet FOLLOW_87 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000180L});
-    public static final BitSet FOLLOW_88 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001E00L});
-    public static final BitSet FOLLOW_89 = new BitSet(new long[]{0x0000000000000002L,0x0000000000001E00L});
-    public static final BitSet FOLLOW_90 = new BitSet(new long[]{0x0000000000000000L,0x0000000000006000L});
-    public static final BitSet FOLLOW_91 = new BitSet(new long[]{0x0000000000000002L,0x0000000000006000L});
-    public static final BitSet FOLLOW_92 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000020L});
-    public static final BitSet FOLLOW_93 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000020L});
-    public static final BitSet FOLLOW_94 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_95 = new BitSet(new long[]{0x0000000000000000L,0x0000000000018000L});
-    public static final BitSet FOLLOW_96 = new BitSet(new long[]{0x0000000000000002L,0x0000000000018000L});
+    public static final BitSet FOLLOW_85 = new BitSet(new long[]{0x0000000000000002L,0x0000000000008000L});
+    public static final BitSet FOLLOW_86 = new BitSet(new long[]{0x0000000000000000L,0x000000000000000CL});
+    public static final BitSet FOLLOW_87 = new BitSet(new long[]{0x0000000000000002L,0x000000000000000CL});
+    public static final BitSet FOLLOW_88 = new BitSet(new long[]{0x0000000000000000L,0x00000000000000F0L});
+    public static final BitSet FOLLOW_89 = new BitSet(new long[]{0x0000000000000002L,0x00000000000000F0L});
+    public static final BitSet FOLLOW_90 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000300L});
+    public static final BitSet FOLLOW_91 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000300L});
+    public static final BitSet FOLLOW_92 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000001L});
+    public static final BitSet FOLLOW_93 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000001L});
+    public static final BitSet FOLLOW_94 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_95 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000C00L});
+    public static final BitSet FOLLOW_96 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000C00L});
     public static final BitSet FOLLOW_97 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
     public static final BitSet FOLLOW_98 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-    public static final BitSet FOLLOW_99 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_99 = new BitSet(new long[]{0x0004000000000000L});
     public static final BitSet FOLLOW_100 = new BitSet(new long[]{0x0000000000000C00L});
-    public static final BitSet FOLLOW_101 = new BitSet(new long[]{0x0020000000000000L,0x0000400000000000L});
+    public static final BitSet FOLLOW_101 = new BitSet(new long[]{0x0001000000000000L,0x0000400000000000L});
     public static final BitSet FOLLOW_102 = new BitSet(new long[]{0x0000000000003000L});
     public static final BitSet FOLLOW_103 = new BitSet(new long[]{0x0000000000000000L,0x0000000020000000L});
-    public static final BitSet FOLLOW_104 = new BitSet(new long[]{0x01F000000001BC40L,0x0000400018000000L});
+    public static final BitSet FOLLOW_104 = new BitSet(new long[]{0x000F80000001BC40L,0x0000400018000000L});
     public static final BitSet FOLLOW_105 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
     public static final BitSet FOLLOW_106 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
     public static final BitSet FOLLOW_107 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});

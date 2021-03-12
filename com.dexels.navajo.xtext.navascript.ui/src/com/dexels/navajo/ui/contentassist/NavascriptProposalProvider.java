@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
@@ -22,6 +23,7 @@ import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
 
+import com.dexels.navajo.NavascriptStandaloneSetup;
 import com.dexels.navajo.navascript.KeyValueArgument;
 import com.dexels.navajo.navascript.impl.AdapterMethodImpl;
 import com.dexels.navajo.navascript.impl.FunctionIdentifierImpl;
@@ -29,6 +31,7 @@ import com.dexels.navajo.navascript.impl.KeyValueArgumentsImpl;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
 import com.dexels.navajo.navigation.NavigationUtils;
+import com.dexels.navajo.services.NavascriptGrammarAccess;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
 import com.dexels.navajo.xtext.navascript.navajobridge.OSGIRuntime;
@@ -36,6 +39,7 @@ import com.dexels.navajo.xtext.navascript.navajobridge.ProxyMapDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.ProxyMethodDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.ProxyParameterDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.ProxyValueDefinition;
+import com.google.inject.Injector;
 
 /**
  * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#content-assist
@@ -45,14 +49,23 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 	NavajoProxyStub adapters = null;
 	BundleContext context;
+	NavascriptGrammarAccess grammar;
 
 	public NavascriptProposalProvider() {
 		context = OSGIRuntime.getDefaultBundleContext();
+		initGrammar();
 		if ( context != null ) {
 			context.addServiceListener(this);
 		} else {
 			System.err.println("No OSGI environment found");
 		}
+	}
+
+	private void initGrammar() {
+
+		Injector injector = new NavascriptStandaloneSetup().createInjectorAndDoEMFRegistration();
+		grammar = injector.getInstance(NavascriptGrammarAccess.class);
+		
 	}
 
 	public synchronized void init() {
@@ -76,11 +89,14 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 		return createCompletionProposal(proposal, displayText, null, priority, contentAssistContext.getPrefix(), contentAssistContext);
 	}
-
+	
 	@Override
 	public void completeKeyword(Keyword keyword, ContentAssistContext contentAssistContext,
 			ICompletionProposalAcceptor acceptor) {
-		//System.err.println("In completeKeyword");
+		Set<String> keywords = GrammarUtil.getAllKeywords(grammar.getGrammar());
+		for ( String kw : keywords ) {
+			acceptor.accept(createCompletionProposalFormatted(kw, "", 1, contentAssistContext));
+		}
 	}
 
 	private void processKeyValueArguments(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
@@ -96,8 +112,15 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 					currentParameters.add(arg.getKey());
 				}
 				createParameterList(context, acceptor, map, method, currentParameters);
+			} else if ( parent instanceof MapImpl ) {
+				map = (MapImpl) parent;
+				Set<String> currentParameters = new HashSet<>();
+				for ( KeyValueArgument arg : kvai.getKeyValueArguments()) {
+					currentParameters.add(arg.getKey());
+				}
+				createParameterList(context, acceptor,  (MapImpl) map, currentParameters);
 			} else {
-				//System.err.println(">>>>>>>>>>>>>> Parent is: " + parent);
+				System.err.println(">>>>>>>>>>>>>> Parent is: " + parent);
 			}
 		} else if ( model instanceof AdapterMethodImpl ) {
 			AdapterMethodImpl method = (AdapterMethodImpl) model;
@@ -111,6 +134,30 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				ProxyValueDefinition vd = md.getValueDefinition(value);
 				if ( vd != null && ( vd.getRequired() == null || !"automatic".equals(vd.getRequired()))) {
 					acceptor.accept(createCompletionProposalFormatted(vd.getName() + "=", vd.getMapType(), 1, context));
+				}
+			}
+		}
+	}
+
+	private void createParameterList(ContentAssistContext context, ICompletionProposalAcceptor acceptor, MapImpl map, Set<String> currentParameters) {
+
+		String adapterName = map.getAdapterName();
+
+		AdapterClassDefinition md = getNavajoProxyStub().getAdapter(adapterName);
+		Set<String> parameters  = new TreeSet<>(md.getMapDefinition().getValueDefinitions());
+		for ( String value : parameters) {
+			if ( !currentParameters.contains(value)) {
+				ProxyValueDefinition vd = md.getMapDefinition().getValueDefinition(value);
+				String type = vd.getMapType();
+				if ( vd.getMapType() == null || "".equals(vd.getMapType())) {
+					try {
+						type = md.getType(value);
+					} catch (Exception e) {
+
+					}
+				}
+				if ( vd != null && ( vd.getRequired() == null || !"automatic".equals(vd.getRequired()))) {
+					acceptor.accept(createCompletionProposalFormatted(vd.getName() + "=", type, 1, context));
 				}
 			}
 		}

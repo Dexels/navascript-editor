@@ -98,14 +98,10 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getANTIMESSAGE_DEFRule())
-			return getANTIMESSAGE_DEFToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getARGS_ENDRule())
+		if (ruleCall.getRule() == grammarAccess.getARGS_ENDRule())
 			return getARGS_ENDToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getARGS_STARTRule())
 			return getARGS_STARTToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getARG_SEPRule())
-			return getARG_SEPToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getBREAKONNOLOCK_DEFRule())
 			return getBREAKONNOLOCK_DEFToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getBREAK_DEFRule())
@@ -138,14 +134,8 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getLOG_DEFToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getLOOP_DEFRule())
 			return getLOOP_DEFToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getMAP_DEFRule())
-			return getMAP_DEFToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getMAP_OLDSKOOL_DEFRule())
 			return getMAP_OLDSKOOL_DEFToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getMESSAGE_DEFRule())
-			return getMESSAGE_DEFToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getMETHODS_DEFRule())
-			return getMETHODS_DEFToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getMODE_DEFRule())
 			return getMODE_DEFToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getOBJECT_OLDSKOOL_DEFRule())
@@ -174,15 +164,6 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
-	 * terminal ANTIMESSAGE_DEF : "antimessage";
-	 */
-	protected String getANTIMESSAGE_DEFToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "antimessage";
-	}
-	
-	/**
 	 * terminal ARGS_END : ')';
 	 */
 	protected String getARGS_ENDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
@@ -198,15 +179,6 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 		if (node != null)
 			return getTokenText(node);
 		return "(";
-	}
-	
-	/**
-	 * terminal ARG_SEP : ',';
-	 */
-	protected String getARG_SEPToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return ",";
 	}
 	
 	/**
@@ -354,39 +326,12 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
-	 * terminal MAP_DEF : "map.";
-	 */
-	protected String getMAP_DEFToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "map.";
-	}
-	
-	/**
 	 * terminal MAP_OLDSKOOL_DEF : "map";
 	 */
 	protected String getMAP_OLDSKOOL_DEFToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "map";
-	}
-	
-	/**
-	 * terminal MESSAGE_DEF : 'message';
-	 */
-	protected String getMESSAGE_DEFToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "message";
-	}
-	
-	/**
-	 * terminal METHODS_DEF : 'methods';
-	 */
-	protected String getMETHODS_DEFToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "methods";
 	}
 	
 	/**

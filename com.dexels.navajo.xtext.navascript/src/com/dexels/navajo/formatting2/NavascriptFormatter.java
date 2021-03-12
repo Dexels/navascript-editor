@@ -3,11 +3,19 @@
  */
 package com.dexels.navajo.formatting2;
 
+import java.util.Set;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.Grammar;
+import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.formatting2.AbstractJavaFormatter;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
+import org.eclipse.xtext.ui.codetemplates.templates.Codetemplate;
+import org.eclipse.xtext.ui.codetemplates.templates.Codetemplates;
 
+import com.dexels.navajo.NavascriptStandaloneSetup;
 import com.dexels.navajo.navascript.AntiMessage;
 import com.dexels.navajo.navascript.BlockStatements;
 import com.dexels.navajo.navascript.Break;
@@ -36,11 +44,18 @@ import com.dexels.navajo.navascript.Synchronized;
 import com.dexels.navajo.navascript.TopLevelStatement;
 import com.dexels.navajo.navascript.TopLevelStatements;
 import com.dexels.navajo.navascript.Var;
+import com.dexels.navajo.services.NavascriptGrammarAccess;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 
 public class NavascriptFormatter extends AbstractJavaFormatter {
 
+	NavascriptGrammarAccess grammar;
+	
 	public NavascriptFormatter() {
-		System.err.println("NavascriptFormatter constructor called!");
+		grammar = getAllKeywords();
+		System.err.println("NavascriptFormatter constructor called: " + grammar);
+		//GrammarUtil.getAllKeywords(NavascriptGrammarAccess.class);
 	}
 
 	/**
@@ -62,7 +77,8 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 	protected void format(Navascript navascript, IFormattableDocument doc) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
 		doc.format(navascript.getValidations());
-		doc.append(regionFor(navascript.getValidations()).keyword("}"), it -> it.newLine());
+		//regionFor(navascript.getValidations());
+		//doc.append(regionFor(navascript.getValidations()).keyword("}"), it -> it.setNewLines(1, 2, 2));
 		doc.format(navascript.getToplevelStatements());
 		doc.format(navascript.getFinally());
 	}
@@ -76,16 +92,15 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 
 	// 	statement=( Message | Var | Map | AntiMessage | Define | Print | Log | Loop | Methods | Include | Break | Synchronized | BlockStatements )
 	protected void format(TopLevelStatement tls, IFormattableDocument doc) {
-		formatStatement(tls.getStatement(), doc, true);
+		try {
+			formatStatement(tls.getStatement(), doc, true);
+		} catch (org.eclipse.xtext.formatting2.internal.ConflictingRegionsException cre) {
+
+		}
 	}
 
 	protected void formatStatement(EObject statement, IFormattableDocument doc, boolean topLevel) {
 
-		if ( topLevel ) {
-			//doc.append(regionFor(statement).feature(NavascriptPackage.Literals.MAP__ADAPTER_NAME), it -> it.newLine());
-			doc.append(regionFor(statement).keyword("}"), it-> it.newLine());
-		}
-		
 		if ( statement instanceof Map ) {
 			Map map = (Map) statement;
 			formatMap(map, doc);
@@ -148,6 +163,25 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 		}
 	}
 
+	private void formatBalancedCharBlock(EObject eo, IFormattableDocument doc, String openChar, String closeChar) {
+
+		try {
+			doc.interior(regionFor(eo).keyword(openChar), regionFor(eo).keyword(closeChar), it -> it.indent());
+			doc.prepend(regionFor(eo).keyword(openChar), it -> it.oneSpace());
+			doc.append(regionFor(eo).keyword(openChar), it ->  it.setNewLines(1, 1, 2));
+			doc.prepend(regionFor(eo).keyword(closeChar), it -> it.setNewLines(1, 1, 2));
+		} catch (Throwable t) {
+
+		}
+	}
+
+	private void formatEOL(EObject eo, IFormattableDocument doc) {
+		try {
+			doc.append(regionFor(eo).keyword(";"), it -> it.setNewLines(1, 1, 2));
+		} catch (Throwable t) {
+
+		}
+	}
 	/**
 	 * InnerBody:
 	{InnerBody} (IF condition=Expression THEN)?
@@ -159,19 +193,26 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 	 */
 	protected void formatMap(Map map, IFormattableDocument doc) {
 
-		doc.interior(regionFor(map).keyword("{"), regionFor(map).keyword("}"), it -> it.indent());
-		doc.prepend(regionFor(map).keyword("{"), it -> it.oneSpace());
-		doc.append(regionFor(map).keyword("{"), it -> it.newLine());
-		doc.append(regionFor(map).keyword("}"), it -> it.newLine());
+		doc.prepend(regionFor(map).keyword("map."), it ->  it.setNewLines(1, 1, 2));
+		formatBalancedCharBlock(map, doc, "{", "}");
 		formatInnerBody( map.getStatements(), doc);
+	}
+
+	private NavascriptGrammarAccess getAllKeywords() {
+		
+		Injector injector = new NavascriptStandaloneSetup().createInjectorAndDoEMFRegistration();
+		NavascriptGrammarAccess ga = injector.getInstance(NavascriptGrammarAccess.class);
+		Set<String> keywords = GrammarUtil.getAllKeywords(ga.getGrammar());
+		System.err.println("keywords: " + keywords);
+		
+		return ga;
+
 	}
 
 	protected void formatMethods(Methods map, IFormattableDocument doc) {
 
-		doc.interior(regionFor(map).keyword("{"), regionFor(map).keyword("}"), it -> it.indent());
-		doc.prepend(regionFor(map).keyword("{"), it -> it.oneSpace());
-		doc.append(regionFor(map).keyword("{"), it -> it.newLine());
-		doc.append(regionFor(map).keyword("}"), it -> it.newLine());
+		doc.prepend(regionFor(map).keyword("methods"), it ->  it.setNewLines(1, 1, 2));
+		formatBalancedCharBlock(map, doc, "{", "}");
 		EList<Method> methods = map.getMethods();
 		for ( Method m : methods ) {
 			singleStatement(m, doc);
@@ -179,26 +220,17 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 	}
 
 	private void formatBlockStatement(BlockStatements var, IFormattableDocument doc) {
-		doc.interior(regionFor(var).keyword("{"), regionFor(var).keyword("}"), it -> it.indent());
-		doc.prepend(regionFor(var).keyword("{"), it -> it.oneSpace());
-		doc.append(regionFor(var).keyword("{"), it -> it.newLine());	
-		doc.append(regionFor(var).keyword("}"), it -> it.newLine());	
+		formatBalancedCharBlock(var, doc, "{", "}");
 		formatInnerBody(var.getStatements(), doc);
 	}
 
 	private void formatLoop(Loop var, IFormattableDocument doc) {
-		doc.interior(regionFor(var).keyword("{"), regionFor(var).keyword("}"), it -> it.indent());
-		doc.prepend(regionFor(var).keyword("{"), it -> it.oneSpace());
-		doc.append(regionFor(var).keyword("{"), it -> it.newLine());
-		doc.append(regionFor(var).keyword("}"), it -> it.newLine());
+		formatBalancedCharBlock(var, doc, "{", "}");
 		formatInnerBody(var.getStatements(), doc);
 	}
 
 	private void formatSynchronized(Synchronized var, IFormattableDocument doc) {
-		doc.interior(regionFor(var).keyword("{"), regionFor(var).keyword("}"), it -> it.indent());
-		doc.prepend(regionFor(var).keyword("{"), it -> it.oneSpace());
-		doc.append(regionFor(var).keyword("{"), it -> it.newLine());	
-		doc.append(regionFor(var).keyword("}"), it -> it.newLine());	
+		formatBalancedCharBlock(var, doc, "{", "}");
 		EList<TopLevelStatement> statements = var.getStatements();
 		for ( TopLevelStatement tls : statements ) {
 			format(tls, doc);
@@ -213,15 +245,10 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 
 	protected void formatMessage(Message map, IFormattableDocument doc) {
 
-		doc.interior(regionFor(map).keyword("{"), regionFor(map).keyword("}"), it -> it.indent());
-		doc.prepend(regionFor(map).keyword("{"), it -> it.oneSpace());
-		doc.append(regionFor(map).keyword("{"), it -> it.newLine());
-		doc.append(regionFor(map).keyword("}"), it -> it.newLine());
-
-		doc.interior(regionFor(map).keyword("["), regionFor(map).keyword("]"), it -> it.indent());
-		doc.prepend(regionFor(map).keyword("["), it -> it.oneSpace());
-		doc.append(regionFor(map).keyword("["), it -> it.newLine());
-		doc.append(regionFor(map).keyword("]"), it -> it.newLine());
+		doc.prepend(regionFor(map).keyword("message"), it ->  it.setNewLines(1, 1, 2));
+		
+		formatBalancedCharBlock(map, doc, "{", "}");
+		formatBalancedCharBlock(map, doc, "[", "]");
 
 		EList<InnerBody> children =  map.getStatements();
 		for ( InnerBody child : children ) {
@@ -230,14 +257,12 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 		if ( map.getArrayField() != null ) {
 			formatMappedArrayField(map.getArrayField(), doc);
 		}
+		formatEOL(map, doc);
 		if ( map.getMessageArray() != null ) {
 			MessageArray ma = map.getMessageArray();
 			EList<MessageArrayElement> sae = ma.getArrayMessageElements();
 			for ( MessageArrayElement elt : sae) {
-				doc.interior(regionFor(elt).keyword("{"), regionFor(elt).keyword("}"), it -> it.indent());
-				doc.prepend(regionFor(elt).keyword("{"), it -> it.oneSpace());
-				doc.append(regionFor(elt).keyword("{"), it -> it.newLine());
-				doc.append(regionFor(elt).keyword("}"), it -> it.newLine());
+				formatBalancedCharBlock(elt, doc, "{", "}");
 				EList<InnerBody> eltChildren =  elt.getStatements();
 				for ( InnerBody child : eltChildren ) {
 					formatStatement(child.getStatement(), doc, false);
@@ -250,10 +275,7 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 	}
 
 	protected void formatMappedArrayField(MappedArrayField maf, IFormattableDocument doc) {
-		doc.interior(regionFor(maf).keyword("{"), regionFor(maf).keyword("}"), it -> it.indent());
-		doc.prepend(regionFor(maf).keyword("{"), it -> it.oneSpace());
-		doc.append(regionFor(maf).keyword("{"), it -> it.newLine());
-		doc.append(regionFor(maf).keyword("}"), it -> it.newLine());
+		formatBalancedCharBlock(maf, doc, "{", "}");
 		EList<InnerBody> children =  maf.getStatements();
 		for ( InnerBody child : children ) {
 			formatStatement(child.getStatement(), doc, false);
@@ -261,10 +283,7 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 	}
 
 	private void formatMappedArrayMessage(MappedArrayMessage mam, IFormattableDocument doc) {
-		doc.interior(regionFor(mam).keyword("{"), regionFor(mam).keyword("}"), it -> it.indent());
-		doc.prepend(regionFor(mam).keyword("{"), it -> it.oneSpace());
-		doc.append(regionFor(mam).keyword("{"), it -> it.newLine());
-		doc.append(regionFor(mam).keyword("}"), it -> it.newLine());
+		formatBalancedCharBlock(mam, doc, "{", "}");
 		EList<InnerBody> children =  mam.getStatements();
 		for ( InnerBody child : children ) {
 			formatStatement(child.getStatement(), doc, false);
@@ -272,42 +291,37 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 	}
 
 	private void singleStatement(EObject single, IFormattableDocument doc) {
-		doc.append(regionFor(single).keyword(";"), it -> it.newLine());
+		formatEOL(single, doc);
 	}
 
 	protected void formatOption(Option map, IFormattableDocument doc) {
-		doc.append(regionFor(map).keyword(";"), it -> it.newLine());
+		formatEOL(map, doc);
 	}
 
 	protected void formatProperty(Property map, IFormattableDocument doc) {
 
-		doc.interior(regionFor(map).keyword("{"), regionFor(map).keyword("}"), it -> it.indent());
-		doc.prepend(regionFor(map).keyword("{"), it -> it.oneSpace());
-		doc.append(regionFor(map).keyword("{"), it -> it.newLine());
-		doc.append(regionFor(map).keyword("}"), it -> it.newLine());
+		formatBalancedCharBlock(map, doc, "{", "}");
 
-		doc.interior(regionFor(map).keyword("["), regionFor(map).keyword("]"), it -> it.indent());
-		doc.prepend(regionFor(map).keyword("["), it -> it.oneSpace());
-		doc.append(regionFor(map).keyword("["), it -> it.newLine());
-		doc.append(regionFor(map).keyword("]"), it -> it.newLine());
+		formatBalancedCharBlock(map, doc, "[", "]");
 
+		doc.surround(regionFor(map).keyword("="), it->it.oneSpace());
+		doc.surround(regionFor(map).feature(NavascriptPackage.Literals.PROPERTY__PROPERTY_NAME), it->it.oneSpace());
+
+		doc.append(regionFor(map.getArguments()).keyword(","), it->it.oneSpace());
 
 		if ( map.getExpressionList() != null && map.getExpressionList().getConditionalExpressions() != null ) {
 			doc.interior(regionFor(map).keyword("="), regionFor(map).keyword(";"), it -> it.indent());
 			EList<ConditionalExpression> ceList = map.getExpressionList().getConditionalExpressions();
-			doc.prepend(regionFor(map.getExpressionList()).keyword("else"), it -> it.newLine());
+			doc.prepend(regionFor(map.getExpressionList()).keyword("else"), it -> it.setNewLines(1, 2, 2));
 			for ( ConditionalExpression ce : ceList) {
 				doc.interior(regionFor(ce).keyword("if"), regionFor(ce).keyword(";"), it -> it.indent());
-				doc.prepend(regionFor(ce).keyword("if"), it -> it.newLine() );
+				doc.prepend(regionFor(ce).keyword("if"), it -> it.setNewLines(1, 2, 2) );
 			}
 		} 
-		doc.append(regionFor(map).keyword(";"), it -> it.newLine());
+		formatEOL(map, doc);
 		if ( map.getSelectionArray() != null ) {
 			SelectionArray sa = map.getSelectionArray();
-			doc.interior(regionFor(sa).keyword("["), regionFor(sa).keyword("]"), it -> it.indent());
-			doc.prepend(regionFor(sa).keyword("["), it -> it.oneSpace());
-			doc.append(regionFor(sa).keyword("["), it -> it.newLine());
-			doc.append(regionFor(sa).keyword("]"), it -> it.newLine());
+			formatBalancedCharBlock(sa, doc, "[", "]");
 			EList<SelectionArrayElement> sae = sa.getArrayElements();
 			for ( SelectionArrayElement elt : sae) {
 				formatSelectionArrayElt(elt, doc);
@@ -320,7 +334,7 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 	}
 
 	protected void formatMethodOrSetter(MethodOrSetter map, IFormattableDocument doc) {
-		doc.append(regionFor(map).keyword(";"), it -> it.newLine());
+		formatEOL(map, doc);
 	}
 
 	// TODO: implement for TopLevelStatement, InnerBody, BlockStatements, Synchronized, SynchronizedArguments, Break, BreakParameter, BreakParameters, Validations, Define, Check, CheckAttribute, LiteralOrExpression, Print, Log, Finally, Loop, Message, MessageArray, MessageArrayElement, MessageArguments, Map, AdapterMethod, SetterField, MappedArrayField, MappedArrayMessage, KeyValueArguments, KeyValueArgument, Var, VarArray, VarArrayElement, VarElement, VarArguments, VarArgument, VarType, VarMode, Property, SelectionArray, SelectionArrayElement, Option, PropertyArguments, DescriptionArgument, TypeArgument, ConditionalExpressions, ConditionalExpression, AndOrExpression, Comparison, Equals, MultiOrDiv, BooleanNegation, ArithmeticSigned, ExpressionLiteral, FunctionCallLiteral, MappableIdentifierLiteral, TmlIdentifierLiteral, ForAllLiteral, ForAllIdentifier, FunctionIdentifier, MappableIdentifier, Plus, Minus

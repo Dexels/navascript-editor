@@ -32,4 +32,5 @@ Export-Package: com.dexels.navajo,
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Import-Package: com.dexels.navajo.expression.api,
  com.dexels.navajo.mapping.compiler.meta,
- org.apache.log4j
+ org.apache.log4j,
+ org.eclipse.xtext.ui.codetemplates.templates
