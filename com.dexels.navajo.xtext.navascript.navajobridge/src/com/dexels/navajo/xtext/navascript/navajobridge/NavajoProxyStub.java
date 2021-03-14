@@ -49,7 +49,16 @@ public class NavajoProxyStub implements IResourceChangeListener {
 						if ( md != null ) {
 							ProxyMapDefinition pmd = ProxyMetaData.getInstance().getMapDefinition(md);
 							if ( pmd != null && pmd.tagName != null  ) {
-								AdapterClassDefinition acd = new AdapterClassDefinition(pmd, ( pmd.mapDefinitionClass != null? pmd.mapDefinitionClass.getClassLoader() : null));
+								System.err.println(pmd.tagName + ": " + pmd.objectName);
+								ClassLoader acl = null;
+								if ( pmd.objectClassLoader != null ) {
+									acl = pmd.objectClassLoader;
+								} else if ( pmd.mapDefinition != null ) {
+									acl = pmd.mapDefinitionClass.getClassLoader();
+								} else {
+									acl = null;
+								}
+								AdapterClassDefinition acd = new AdapterClassDefinition(pmd, acl);
 								adapters.put(md, acd);
 							} else {
 								System.err.println("Could not find " + md + " in ProxyMetaData");
@@ -86,7 +95,7 @@ public class NavajoProxyStub implements IResourceChangeListener {
 		return acd;
 	}
 
-	public FunctionDefinition getFunction(String s) {
+	public ProxyFunctionDefinition getFunction(String s) {
 		return FunctionDefinitionCache.getInstance().getFunction(s);
 	}
 

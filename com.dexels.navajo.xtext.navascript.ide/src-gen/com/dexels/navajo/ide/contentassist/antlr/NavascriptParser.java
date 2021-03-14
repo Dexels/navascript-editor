@@ -35,9 +35,10 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getInnerBodyAccess().getStatementAlternatives_2_0(), "rule__InnerBody__StatementAlternatives_2_0");
 			builder.put(grammarAccess.getSynchronizedArgumentAccess().getAlternatives(), "rule__SynchronizedArgument__Alternatives");
 			builder.put(grammarAccess.getSContextAccess().getAlternatives_1(), "rule__SContext__Alternatives_1");
+			builder.put(grammarAccess.getSContextAccess().getAlternatives_2(), "rule__SContext__Alternatives_2");
+			builder.put(grammarAccess.getSKeyAccess().getAlternatives_1(), "rule__SKey__Alternatives_1");
 			builder.put(grammarAccess.getSTimeoutAccess().getAlternatives_1(), "rule__STimeout__Alternatives_1");
 			builder.put(grammarAccess.getSBreakOnNoLockAccess().getAlternatives_1(), "rule__SBreakOnNoLock__Alternatives_1");
-			builder.put(grammarAccess.getSContextTypeAccess().getAlternatives(), "rule__SContextType__Alternatives");
 			builder.put(grammarAccess.getBreakParameterAccess().getAlternatives(), "rule__BreakParameter__Alternatives");
 			builder.put(grammarAccess.getBreakParameterAccess().getAlternatives_0_1(), "rule__BreakParameter__Alternatives_0_1");
 			builder.put(grammarAccess.getBreakParameterAccess().getAlternatives_1_1(), "rule__BreakParameter__Alternatives_1_1");
@@ -91,6 +92,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMultiplicationAccess().getOpAlternatives_1_0_1_0(), "rule__Multiplication__OpAlternatives_1_0_1_0");
 			builder.put(grammarAccess.getPrefixedAccess().getAlternatives(), "rule__Prefixed__Alternatives");
 			builder.put(grammarAccess.getAtomicAccess().getAlternatives(), "rule__Atomic__Alternatives");
+			builder.put(grammarAccess.getAtomicAccess().getValueAlternatives_1_1_0(), "rule__Atomic__ValueAlternatives_1_1_0");
 			builder.put(grammarAccess.getAtomicAccess().getValueAlternatives_3_1_0(), "rule__Atomic__ValueAlternatives_3_1_0");
 			builder.put(grammarAccess.getForAllIdentifierAccess().getOpAlternatives_1_0(), "rule__ForAllIdentifier__OpAlternatives_1_0");
 			builder.put(grammarAccess.getPropertyTypeAccess().getAlternatives(), "rule__PropertyType__Alternatives");

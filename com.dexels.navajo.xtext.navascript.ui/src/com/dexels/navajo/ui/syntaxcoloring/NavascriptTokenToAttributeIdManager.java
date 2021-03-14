@@ -26,11 +26,34 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 				"'then'",
 				"'else'",
 				"'map.'",
-				"'message'",
+				"'map'",
 				"'methods'",
 				"'includes'",
 				"'finally'",
 				"'synchronized'",
+				"'print'",
+				"'log'",
+				"'break'",
+				"'validations'",
+				"'methods'",
+				"'include'",
+				"'type'",
+				"'mode'",
+				"'direction'",
+				"'length'",
+				"'cardinality'",
+				"'var'",
+				"'code'",
+				"'description'",
+				"'error'",
+				"'check'",
+				"'filter'",
+				"'context'",
+				"'breakOnNoLock'",
+				"'timeout'",
+				"'breakOnNoLock'",
+				"'key'",
+				"'object'",
 				"RULE_IF",
 				"RULE_THEN",
 				"RULE_ELSE",
@@ -88,7 +111,7 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 		if("RULE_QUOTED_IDENTIFIER".equals(tokenName)) {
 			return NavascriptLexicalHighlightingConfiguration.QUOTED_IDENTIFIER_ID;
 		}
-		if ("RULE_MESSAGE_DEF".equals(tokenName) || "RULE_PROPERTY_DEF".equals(tokenName) || "RULE_OPTION_DEF".equals(tokenName)) {
+		if ("'message'".equals(tokenName) || "'property'".equals(tokenName) || "'option'".equals(tokenName)) {
 			return NavascriptLexicalHighlightingConfiguration.TML_KEYWORD;
 		}
 		if ("RULE_TML_LITERAL".equals(tokenName)) {

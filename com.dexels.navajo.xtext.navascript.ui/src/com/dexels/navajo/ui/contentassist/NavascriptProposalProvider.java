@@ -9,12 +9,17 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
+import org.eclipse.jface.viewers.StyledString.Styler;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.TextStyle;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.Assignment;
-import org.eclipse.xtext.GrammarUtil;
-import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
@@ -24,6 +29,7 @@ import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
 
 import com.dexels.navajo.NavascriptStandaloneSetup;
+import com.dexels.navajo.navascript.Expression;
 import com.dexels.navajo.navascript.KeyValueArgument;
 import com.dexels.navajo.navascript.impl.AdapterMethodImpl;
 import com.dexels.navajo.navascript.impl.FunctionIdentifierImpl;
@@ -45,6 +51,20 @@ import com.google.inject.Injector;
  * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#content-assist
  * on how to customize the content assistant.
  */
+
+class NavascriptKeyWord {
+
+	public String name;
+	public String description;
+	
+	public NavascriptKeyWord(String name, String description) {
+		this.name = name;
+		this.description = description;
+	}
+	
+	
+}
+
 public class NavascriptProposalProvider extends AbstractNavascriptProposalProvider implements ServiceListener {
 
 	NavajoProxyStub adapters = null;
@@ -65,7 +85,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 		Injector injector = new NavascriptStandaloneSetup().createInjectorAndDoEMFRegistration();
 		grammar = injector.getInstance(NavascriptGrammarAccess.class);
-		
+
 	}
 
 	public synchronized void init() {
@@ -81,6 +101,23 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		return adapters;
 	}
 
+	private StyledString.Styler createStyler(final Font font, final Color fgColor){
+		Styler result=new StyledString.Styler(){
+
+			@Override
+			public void applyStyles(TextStyle textStyle) {
+				if (fgColor != null) {
+					textStyle.foreground=fgColor;
+				}
+				if (font != null) {
+					textStyle.font=font;
+				}
+
+			}
+		};
+		return result;
+	}
+    
 	protected ICompletionProposal createCompletionProposalFormatted(String proposal, String extra, int priority, ContentAssistContext contentAssistContext) {
 
 
@@ -89,14 +126,26 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 		return createCompletionProposal(proposal, displayText, null, priority, contentAssistContext.getPrefix(), contentAssistContext);
 	}
-	
-	@Override
-	public void completeKeyword(Keyword keyword, ContentAssistContext contentAssistContext,
-			ICompletionProposalAcceptor acceptor) {
-		Set<String> keywords = GrammarUtil.getAllKeywords(grammar.getGrammar());
-		for ( String kw : keywords ) {
-			acceptor.accept(createCompletionProposalFormatted(kw, "", 1, contentAssistContext));
+
+	protected ICompletionProposal createCompletionProposalFormatted(String proposal, String done, String tbd, int priority, ContentAssistContext contentAssistContext) {
+
+
+		Display display = Display.getCurrent();
+		Color red = display.getSystemColor(SWT.COLOR_DARK_RED);
+
+		
+		StyledString displayText = ( done != null ? 
+				new StyledString(proposal).append(" - " + done, createStyler(null, red)) : null);
+
+		if ( tbd != null && displayText != null ) { 
+			displayText.append("" + tbd, StyledString.QUALIFIER_STYLER );
+		} else if ( tbd != null ) {
+			displayText = new StyledString(proposal).append(" - " + tbd, StyledString.QUALIFIER_STYLER );
+		} else {
+			displayText = new StyledString();
 		}
+
+		return createCompletionProposal(proposal, displayText, null, priority, contentAssistContext.getPrefix(), contentAssistContext);
 	}
 
 	private void processKeyValueArguments(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
@@ -379,7 +428,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				} catch (Exception e) {
 					System.err.println("(3) Could not determine type for field: " + a + ": " + e);
 				}
-				acceptor.accept(createCompletionProposalFormatted( a + "(", description, 1, context));
+				acceptor.accept(createCompletionProposalFormatted( a + "(", ": " + getNavajoProxyStub().getFunction(a).getResult() + " -- " + description, 1, context));
 			}
 		}
 	}
@@ -390,16 +439,23 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		if ( model instanceof FunctionIdentifierImpl ) {
 
 			FunctionIdentifierImpl fil = (FunctionIdentifierImpl) model;
-
-
-			String[][] altInputs = getNavajoProxyStub().getFunction(fil.getFunc()).getInputParams();
-			for ( String [] alt : altInputs ) {
-				StringBuffer sb = new StringBuffer();
-				for ( String input : alt ) {
-					sb.append(input);
-					sb.append(",");
+			EList<Expression> arguments = fil.getArgs();
+			int doneSize = arguments.size();
+			
+			List<String> altInputs = getNavajoProxyStub().getFunction(fil.getFunc()).getInput();
+		
+			for ( String alt : altInputs ) {
+				String [] allParams = alt.split(",");
+				StringBuffer done = new StringBuffer();
+				StringBuffer tbd = new StringBuffer();
+				for ( int i = 0; i < allParams.length; i++ ) {
+					if ( i < doneSize ) {
+						done.append(allParams[i]);
+					} else {
+						tbd.append(allParams[i]);
+					}
 				}
-				acceptor.accept(createCompletionProposalFormatted( "", sb.toString(), 10, context));
+				acceptor.accept(createCompletionProposalFormatted("", done.toString(), tbd.toString(), 10, context));
 			}
 
 		}

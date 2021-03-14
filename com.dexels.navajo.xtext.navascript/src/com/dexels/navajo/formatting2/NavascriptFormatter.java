@@ -19,6 +19,7 @@ import com.dexels.navajo.NavascriptStandaloneSetup;
 import com.dexels.navajo.navascript.AntiMessage;
 import com.dexels.navajo.navascript.BlockStatements;
 import com.dexels.navajo.navascript.Break;
+import com.dexels.navajo.navascript.Check;
 import com.dexels.navajo.navascript.ConditionalExpression;
 import com.dexels.navajo.navascript.Include;
 import com.dexels.navajo.navascript.InnerBody;
@@ -43,6 +44,7 @@ import com.dexels.navajo.navascript.SelectionArrayElement;
 import com.dexels.navajo.navascript.Synchronized;
 import com.dexels.navajo.navascript.TopLevelStatement;
 import com.dexels.navajo.navascript.TopLevelStatements;
+import com.dexels.navajo.navascript.Validations;
 import com.dexels.navajo.navascript.Var;
 import com.dexels.navajo.services.NavascriptGrammarAccess;
 import com.google.inject.Inject;
@@ -76,7 +78,8 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 	 */
 	protected void format(Navascript navascript, IFormattableDocument doc) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		doc.format(navascript.getValidations());
+		//doc.format(navascript.getValidations());
+		formatValidations(navascript.getValidations(), doc);
 		//regionFor(navascript.getValidations());
 		//doc.append(regionFor(navascript.getValidations()).keyword("}"), it -> it.setNewLines(1, 2, 2));
 		doc.format(navascript.getToplevelStatements());
@@ -112,6 +115,10 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 		if ( statement instanceof Message ) {
 			Message message = (Message) statement;
 			formatMessage(message, doc);
+		}
+		if ( statement instanceof Validations ) {
+			Validations message = (Validations) statement;
+			formatValidations(message, doc);
 		}
 		if ( statement instanceof Property ) {
 			Property property = (Property) statement;
@@ -227,6 +234,15 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 	private void formatLoop(Loop var, IFormattableDocument doc) {
 		formatBalancedCharBlock(var, doc, "{", "}");
 		formatInnerBody(var.getStatements(), doc);
+	}
+	
+	private void formatValidations(Validations var, IFormattableDocument doc) {
+		doc.prepend(regionFor(var).keyword("validations"), it ->  it.setNewLines(1, 1, 2));
+		formatBalancedCharBlock(var, doc, "{", "}");
+		EList<Check> checks = var.getChecks();
+		for ( Check m : checks ) {
+			singleStatement(m, doc);
+		}
 	}
 
 	private void formatSynchronized(Synchronized var, IFormattableDocument doc) {

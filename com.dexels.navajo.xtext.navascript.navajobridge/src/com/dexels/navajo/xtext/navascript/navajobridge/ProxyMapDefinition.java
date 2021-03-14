@@ -24,6 +24,12 @@ public class ProxyMapDefinition {
 	public String description;
 	public String tagName;
 	public boolean abstractMap;
+	public ClassLoader objectClassLoader;
+
+	
+	public void setObjectClassLoader(ClassLoader objectClassLoader) {
+		this.objectClassLoader = objectClassLoader;
+	}
 
 	public ProxyMapDefinition(Object actual, Class mapDefinitionClass) throws InstantiationException {
 		mapDefinition = actual;
@@ -103,7 +109,11 @@ public class ProxyMapDefinition {
 		try {
 			//ClassLoader currentCL = Thread.currentThread().getContextClassLoader();
 			//Thread.currentThread().setContextClassLoader(mapDefinitionClass.getClassLoader());
-			objectClass = Class.forName(objectName, true, mapDefinitionClass.getClassLoader());
+			if( objectClassLoader != null ) {
+				objectClass = Class.forName(objectName, true, objectClassLoader);
+			} else {
+				objectClass = Class.forName(objectName, true, mapDefinitionClass.getClassLoader());
+			}
 			//Thread.currentThread().setContextClassLoader(currentCL);
 		} catch (Throwable t) {
 			System.err.println("Could not instantiate class: " + objectName + ": " + t.getMessage());

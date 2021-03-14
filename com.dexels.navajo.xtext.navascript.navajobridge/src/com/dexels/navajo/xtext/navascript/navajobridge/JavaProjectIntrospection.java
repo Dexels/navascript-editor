@@ -28,6 +28,7 @@ import org.eclipse.ui.PlatformUI;
 import com.dexels.navajo.document.nanoimpl.CaseSensitiveXMLElement;
 import com.dexels.navajo.document.nanoimpl.XMLElement;
 import com.dexels.navajo.expression.api.FunctionDefinition;
+import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
 
 public class JavaProjectIntrospection {
 
@@ -96,7 +97,34 @@ public class JavaProjectIntrospection {
 		return classLoader;
 	}
 
-	private static void readDefinitionFile(Object fd) {
+
+	private static void readAdaptersFromDefinitionFile(Object fd, ClassLoader cl) {
+
+		CaseSensitiveXMLElement xml = new CaseSensitiveXMLElement();
+
+		try {
+			Method mStream = fd.getClass().getMethod("getDefinitionAsStream");
+			InputStream fis = (InputStream) mStream.invoke(fd);
+			xml.parseFromStream(fis);
+			fis.close();
+			Vector<XMLElement> children = xml.getChildren();
+			for (XMLElement element: children) {
+				addMapDefinition(element, cl);
+			}
+
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static MapDefinition addMapDefinition(XMLElement map, ClassLoader cl) throws Exception {
+		MapDefinition md = MapDefinition.parseDef(map);
+		ProxyMetaData pmd = ProxyMetaData.getInstance();
+		pmd.addMapDefinition(md, cl);
+		return md;
+	}
+
+	private static void readFunctionsFromDefinitionFile(Object fd) {
 		// Read config file.
 
 		CaseSensitiveXMLElement xml = new CaseSensitiveXMLElement();
@@ -142,9 +170,9 @@ public class JavaProjectIntrospection {
 				resultParam =  def.get(j).getContent();
 			}
 		}
-		if ( name != null ) {
-			FunctionDefinition functionDefinition = new FunctionDefinition(object, description, inputParams, resultParam);
-			functionDefinition.setXmlElement(element);
+		if ( name != null ) {			
+			ProxyFunctionDefinition functionDefinition = new ProxyFunctionDefinition(object, description, inputParams, resultParam);
+			//functionDefinition.setXmlElement(element);
 			FunctionDefinitionCache.getInstance().addFunctionDefinition(name, functionDefinition);
 		}
 	}
@@ -168,40 +196,58 @@ public class JavaProjectIntrospection {
 
 	}
 
+	private static void addAdditionalAdapters(String adapterClassName, ClassLoader cl) {
+		// getDefinitionAsStream
+
+		try {
+			Class foundClass = Class.forName(adapterClassName, true, cl);
+			Object adapterObject = foundClass.getDeclaredConstructor().newInstance();
+			System.err.println("LOADED " + adapterClassName + " OBJECT: " + adapterObject);
+			readAdaptersFromDefinitionFile(adapterObject, cl);
+		} catch (Throwable t) {
+			System.err.println("could not load MONGO lib: " + t);
+		}
+
+	}
+	
+	private static void addAdditionalFunctions(String adapterClassName, ClassLoader cl) {
+		// getDefinitionAsStream
+
+		try {
+			Class foundClass = Class.forName(adapterClassName, true, cl);
+			Object adapterObject = foundClass.getDeclaredConstructor().newInstance();
+			System.err.println("LOADED " + adapterClassName + " OBJECT: " + adapterObject);
+			readFunctionsFromDefinitionFile(adapterObject);
+		} catch (Throwable t) {
+			System.err.println("could not load MONGO lib: " + t);
+		}
+
+	}
+
 	public static synchronized void findVersionClasses() throws Exception {
 
 
 		PlatformUI u;
 
-		//System.err.println("*************************************************************");
-
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		
+
 		IProject [] ips = workspace.getRoot().getProjects();
 		for ( IProject p : ips) {
-			//System.err.println(">>>>>> Project: " + p + "(" + p.getClass().getName() + ")");
 			if ( JavaProject.hasJavaNature(p) ) {
 
 				IJavaProject jp = JavaCore.create(p);
 
 				//System.err.println("Java project: jp");
 				ClassLoader cl = getProjectClassLoader(jp);
-
-
-
+				
 				try {
-					Class slc = Class.forName("navajo.ExtensionDefinition", true, cl);
 
-					try {
-						ServiceLoader sl = ServiceLoader.load(slc, cl);
-						Iterator sli = sl.iterator();
-						while ( sli.hasNext() ) {
-							Object ed = sli.next();
-							//System.err.println(">>>>>> Found service: " + ed);
-							readDefinitionFile(ed);
-						}
-					} catch (Throwable e) {
-						System.err.println("Could not load extensiondefinition");
+					Class slc = Class.forName("navajo.ExtensionDefinition", true, cl);
+					ServiceLoader extensionLoaders = ServiceLoader.load(slc, cl);
+					for (Object loader : extensionLoaders ) {
+						System.err.println(">>>>>>>>>> Found service: " + loader);
+						readFunctionsFromDefinitionFile(loader);
+
 					}
 
 					Class.forName("com.dexels.navajo.mapping.compiler.meta.KeywordException", true, cl);
@@ -211,7 +257,9 @@ public class JavaProjectIntrospection {
 					//System.err.println("found getInstance method: " + m);
 					Object o = m.invoke(null);
 					//System.err.println(">>>>>>>>> mmd: " + o);
+					Method m2 = foundClass.getDeclaredMethod("getMapDefinitions");
 					//System.err.println("found getMapDefinitions method: " + m2);
+					Object o2 = m2.invoke(o, null);
 					//System.err.println("Map definitions: " + o2);
 					//System.err.println("Found MapMetaData class in project: " + p.getName());
 					ProxyMetaData pmd = ProxyMetaData.getInstance();
@@ -222,6 +270,9 @@ public class JavaProjectIntrospection {
 					//e.printStackTrace(System.err);
 					System.err.println("Could not find MapMetaData in project: " + p.getName() + ": " + e.getMessage());
 				}
+				
+				addAdditionalAdapters("com.dexels.navajo.mongo.adapter.MongoAdapterLibrary", cl);
+				addAdditionalFunctions("com.dexels.navajo.mongo.functions.MongoFunctionDefinitions", cl);
 
 			}
 

@@ -32,49 +32,47 @@ BlockStatements : {BlockStatements} '{' statements+=InnerBody* '}' ;
  * }
  */
 
-Synchronized : SYNCHRONIZED_DEF ARGS_START arguments=SynchronizedArguments ARGS_END '{' statements+=TopLevelStatement* '}';
+Synchronized : 'synchronized' '(' arguments=SynchronizedArguments ')' '{' statements+=TopLevelStatement* '}';
 
 SynchronizedArguments : arguments+=SynchronizedArgument ( ',' arguments+= SynchronizedArgument )*;
 
-SynchronizedArgument : ( {SynchronizedArgument} SContext | SKey | STimeout | SBreakOnNoLock );
+SynchronizedArgument :  {SynchronizedArgument} SContext | SKey | STimeout | SBreakOnNoLock ;
 
-SContext : CONTEXT_DEF ('=' | ':') SContextType;
+SContext : 'context' ('=' | ':') ('user' | 'service');
 
-SKey : KEY_DEF LiteralOrExpression;
+SKey : 'key' ('=' | ':') LiteralOrExpression;
 
-STimeout : TIMEOUT_DEF ('=' | ':') Expression;
+STimeout : 'timeout' ('=' | ':') Expression;
 
-SBreakOnNoLock : BREAKONNOLOCK_DEF ('=' | ':') Expression;
-
-SContextType : ( "user" | "service" );
+SBreakOnNoLock : 'breakOnNoLock' ('=' | ':') Expression;
 
 /*
  * break([code=VALUE,description=VALUE,error=VALUE])
  */
-Break : {Break} BREAK_DEF ( ARGS_START parameters=BreakParameters? ARGS_END )? ';';
+Break : {Break} 'break' ( '(' parameters=BreakParameters? ')' )? ';';
 
-BreakParameter : ( CODE_DEF ('=' | ':') code=LiteralOrExpression | DESCRIPTION_DEF ('=' | ':') description=LiteralOrExpression | ERROR_DEF ('=' | ':') LiteralOrExpression ) ;
+BreakParameter : ( 'code' ('=' | ':') code=LiteralOrExpression | 'description' ('=' | ':') description=LiteralOrExpression | 'error' ('=' | ':') LiteralOrExpression ) ;
 
 BreakParameters : parameters+=BreakParameter ( ',' parameters+=BreakParameter )*;
 
-Validations : {Validations} VALIDATIONS_DEF '{' checks+=Check* '}' ;
+Validations : {Validations} 'validations' '{' checks+=Check* '}' ;
 
 Define:
-	{Define} DEFINE_DEF defineKey=QUOTED_IDENTIFIER ('=' | ':') expression=Expression ';'
+	{Define} 'define' defineKey=QUOTED_IDENTIFIER ('=' | ':') expression=Expression ';'
 ;
 
-Check : {Check} ('if' condition=Expression 'then')? CHECK_DEF ARGS_START checkAttributes+=CheckAttribute ( ',' checkAttributes+=CheckAttribute)? ARGS_END ('=' | ':') expression=Expression ';';
+Check : {Check} ('if' condition=Expression 'then')? 'check' '(' checkAttributes+=CheckAttribute ( ',' checkAttributes+=CheckAttribute)? ')' ('=' | ':') expression=Expression ';';
 
-CheckAttribute : {CheckAttribute} (CODE_DEF ('=' | ':') value=LiteralOrExpression) | (DESCRIPTION_DEF ('=' | ':') value=LiteralOrExpression);
+CheckAttribute : {CheckAttribute} ('code' ('=' | ':') value=LiteralOrExpression) | ('description' ('=' | ':') value=LiteralOrExpression);
 
 LiteralOrExpression : {LiteralOrExpression} literal=(QUOTED_IDENTIFIER | STRING_CONSTANT) | expression=Expression ;
 
 Print:
-	{Print} PRINT_DEF ARGS_START expression=Expression ARGS_END ';'
+	{Print} 'print' '(' expression=Expression ')' ';'
 ;
 
 Log:
-	{Log} LOG_DEF ARGS_START expression=Expression ARGS_END ';'
+	{Log} 'log' '(' expression=Expression ')' ';'
 ;
 
 Finally: 
@@ -91,7 +89,7 @@ Method:
 
 Loop:
 	{Loop} 'loop' ( mappable=MappableIdentifier | tml=TmlIdentifier ) 
-	   ( ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END )? '{' statements+=InnerBody* '}' 
+	   ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' 
 ;
 
 Include:
@@ -101,7 +99,7 @@ Include:
 AntiMessage : {AntiMessage} 'antimessage' messageName=QUOTED_IDENTIFIER ';';
 
 Message: 
-	{Message} 'message' messageName=QUOTED_IDENTIFIER ( ARGS_START arguments=MessageArguments ARGS_END )?  ( ( '{' ( statements+=InnerBody* |  arrayField=MappedArrayField | arrayMessage=MappedArrayMessage ) '}' ) | ';' 
+	{Message} 'message' messageName=QUOTED_IDENTIFIER ( '(' arguments=MessageArguments ')' )?  ( ( '{' ( statements+=InnerBody* |  arrayField=MappedArrayField | arrayMessage=MappedArrayMessage ) '}' ) | ';' 
 		| '[' messageArray=MessageArray ']'
 	)
 ;
@@ -110,30 +108,30 @@ MessageArray : arrayMessageElements+=MessageArrayElement (',' arrayMessageElemen
 
 MessageArrayElement : {MessageArrayElement} '{' statements+=InnerBody* '}';
 
-MessageArgument : ( TYPE_DEF ('=' | ':') MessageType ) | ( MODE_DEF ('=' | ':') MessageMode );
+MessageArgument : ( 'type' ('=' | ':') MessageType ) | ( 'mode' ('=' | ':') MessageMode );
 
 MessageArguments : arguments+=MessageArgument ( ',' arguments+=MessageArgument )*;
 
-Map : {Map} ( 'map.' adapterName=IDENTIFIER (ARGS_START arguments=KeyValueArguments? ARGS_END)? | 
-	   MAP_OLDSKOOL_DEF ARGS_START OBJECT_OLDSKOOL_DEF ('=' | ':') objectName=OBJECT_IDENTIFIER ( ',' arguments=KeyValueArguments )? ARGS_END) '{' statements+=InnerBody* '}'
+Map : {Map} ( 'map.' adapterName=IDENTIFIER ('(' arguments=KeyValueArguments? ')')? | 
+	   'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER ( ',' arguments=KeyValueArguments )? ')') '{' statements+=InnerBody* '}'
 ;
 
 MethodOrSetter : AdapterMethod | SetterField ;
 
-AdapterMethod: {AdapterMethod} method=METHOD_IDENTIFIER ARGS_START arguments=KeyValueArguments? ARGS_END ';';
+AdapterMethod: {AdapterMethod} method=METHOD_IDENTIFIER '(' arguments=KeyValueArguments? ')' ';';
 
 SetterField: {SetterField} field=MAPPABLE_IDENTIFIER  ( ('=' | ':') expressionList=ConditionalExpressions ';' 
-	  | (ARGS_START arguments=KeyValueArguments ARGS_END)? '{' mappedArray=MappedArrayMessage '}' | mappedField=MappedArrayField );
+	  | ('(' arguments=KeyValueArguments ')')? '{' mappedArray=MappedArrayMessage '}' | mappedField=MappedArrayField );
 
-MappedArrayField : {MappedArrayField} field=MAPPABLE_IDENTIFIER ( ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END )? '{' statements+=InnerBody* '}' ;
+MappedArrayField : {MappedArrayField} field=MAPPABLE_IDENTIFIER ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
 
-MappedArrayMessage : {MappedArrayMessage} message=TML_LITERAL ( ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END )? '{' statements+=InnerBody* '}' ;
+MappedArrayMessage : {MappedArrayMessage} message=TML_LITERAL ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
 
 KeyValueArguments : {KeyValueArguments} keyValueArguments+=KeyValueArgument ( ',' keyValueArguments+=KeyValueArgument )*;
 
 KeyValueArgument : {KeyValueArgument} key=(IDENTIFIER | OPTION_TYPE) ('=' | ':') value=LiteralOrExpression;
 
-Var: {Var} VAR_DEF varName=IDENTIFIER (arguments=VarArguments)? ( ('=' | ':') expressionList=ConditionalExpressions ';' |  '[' varArray=VarArray? ']' | 
+Var: {Var} 'var' varName=IDENTIFIER (arguments=VarArguments)? ( ('=' | ':') expressionList=ConditionalExpressions ';' |  '[' varArray=VarArray? ']' | 
 	'{' varElements+=VarElement* '}'  
  | '{' mappedArrayField=MappedArrayField '}' | '{' mappedArrayMessage=MappedArrayMessage '}' )
 ;
@@ -144,15 +142,15 @@ VarArrayElement : {VarArrayElement} '{' (varElements+=VarElement)* '}';
 
 VarElement : {VarElement} ('if' condition=Expression 'then')? var=Var;
 
-VarArguments: {VarArguments} ARGS_START varArguments+=VarArgument (',' varArguments+=VarArgument )* ARGS_END;
+VarArguments: {VarArguments} '(' varArguments+=VarArgument (',' varArguments+=VarArgument )* ')';
 
 VarArgument : {VarArgument} argument=( VarType | VarMode);
 
-VarType: {VarType} TYPE_DEF ('=' | ':') type=( MessageType | PropertyType ) ;
+VarType: {VarType} 'type' ('=' | ':') type=( MessageType | PropertyType ) ;
 
-VarMode : {VarMode} MODE_DEF  ('=' | ':') mode=MessageMode;
+VarMode : {VarMode} 'mode'  ('=' | ':') mode=MessageMode;
 
-Property : {Property} PROPERTY_DEF propertyName=QUOTED_IDENTIFIER (arguments=PropertyArguments)? 
+Property : {Property} 'property' propertyName=QUOTED_IDENTIFIER (arguments=PropertyArguments)? 
 	( 
 		   (('=' | ':') (expressionList=ConditionalExpressions))? ';' 
 		 | '[' selectionArray=SelectionArray ']'   
@@ -165,23 +163,23 @@ SelectionArray : arrayElements+=SelectionArrayElement (',' arrayElements+=Select
 
 SelectionArrayElement : {SelectionArrayElement} '{' innerBody+=InnerBody* '}';
 
-Option : OPTION_DEF option=OPTION_TYPE  ('=' | ':') expressionList=ConditionalExpressions ';' ;
+Option : 'option' option=OPTION_TYPE  ('=' | ':') expressionList=ConditionalExpressions ';' ;
 
-PropertyArguments : {PropertyArguments} ARGS_START (arguments+=PropertyArgument) (',' (arguments+=PropertyArgument))* ARGS_END;
+PropertyArguments : {PropertyArguments} '(' (arguments+=PropertyArgument) (',' (arguments+=PropertyArgument))* ')';
 
 PropertyArgument : DirectionArgument | TypeArgument | SubTypeArgument | DescriptionArgument | CardinalityArgument | LengthArgument ; 
 
-LengthArgument :  LENGTH_DEF ('=' | ':') (value=INTEGER);
+LengthArgument :  'length' ('=' | ':') (value=INTEGER);
 
-DirectionArgument : DIRECTION_DEF ('=' | ':') (value=( IN_DEF | OUT_DEF | INOUT_DEF ) );
+DirectionArgument : 'direction' ('=' | ':') (value=( 'in' | 'out' | 'inout' ) );
 
-DescriptionArgument : DESCRIPTION_DEF ('=' | ':') value=LiteralOrExpression;
+DescriptionArgument : 'description' ('=' | ':') value=LiteralOrExpression;
 
-CardinalityArgument : CARDINALITY_DEF ('=' | ':') value=('+' | '1');
+CardinalityArgument : 'cardinality' ('=' | ':') value=('+' | ONE );
 
-TypeArgument : TYPE_DEF ('=' | ':') (value=PropertyType);
+TypeArgument : 'type' ('=' | ':') (value=PropertyType);
 
-SubTypeArgument : SUBTYPE_DEF ('=' | ':') value=IDENTIFIER;
+SubTypeArgument : 'subtype' ('=' | ':') value=IDENTIFIER;
 
 ConditionalExpressions : {ConditionalExpressions} conditionalExpressions+=ConditionalExpression+ 'else' elseExpresssion=LiteralOrExpression | singleExpression=LiteralOrExpression;
 
@@ -217,8 +215,8 @@ Prefixed returns Expression:
     Atomic;
 
 Atomic returns Expression:
-    {ExpressionLiteral} ARGS_START value=Expression ARGS_END |
-    {NumberLiteral} value=INTEGER |
+    {ExpressionLiteral} '(' value=Expression ')' |
+    {NumberLiteral} value=( INTEGER | ONE ) |
     {StringLiteral} value=STRING_LITERAL |
     {BooleanLiteral} value=( TRUE | FALSE) | 
     {FunctionCallLiteral} value=FunctionIdentifier |
@@ -229,15 +227,15 @@ Atomic returns Expression:
         ;
 
 ForAllIdentifier:
-	{ForAllIdentifier} op=( FORALL | EXISTS ) ARGS_START "`" (expression=Expression) "`" ',' (messagedefinition=STRING_LITERAL) ARGS_END 
+	{ForAllIdentifier} op=( FORALL | EXISTS ) '(' "`" (expression=Expression) "`" ',' (messagedefinition=STRING_LITERAL) ')' 
 ;
 
 FunctionIdentifier:
-	{FunctionIdentifier} func=IDENTIFIER (ARGS_START (args+=Expression (',' args+=Expression)*)? ARGS_END)
+	{FunctionIdentifier} func=IDENTIFIER ('(' (args+=Expression (',' args+=Expression)*)? ')')
 ;
 
 MappableIdentifier:
-	{MappableIdentifier} field=MAPPABLE_IDENTIFIER (ARGS_START (args+=Expression (',' args+=Expression)*)? ARGS_END)?
+	{MappableIdentifier} field=MAPPABLE_IDENTIFIER ('(' (args+=Expression (',' args+=Expression)*)? ')')?
 ;
 
 TmlIdentifier :
@@ -277,38 +275,7 @@ terminal EXISTS : 'EXISTS';
 terminal TRUE : 'true';
 terminal FALSE : 'false';
 terminal MAPPABLE_ID : '$';
-terminal ARGS_START : '(';
-terminal ARGS_END : ')';
 terminal NULL_DEF : 'null';
-terminal PRINT_DEF : 'print';
-terminal LOG_DEF : 'log';
-terminal DEFINE_DEF : 'define';
-terminal FILTER_DEF : 'filter';
-terminal SYNCHRONIZED_DEF : 'synchronized';
-terminal CODE_DEF : 'code';
-terminal VALIDATIONS_DEF : 'validations';
-terminal CHECK_DEF : "check";
-terminal INOUT_DEF : "inout";
-terminal IN_DEF : "in";
-terminal OUT_DEF : "out";
-terminal DESCRIPTION_DEF : "description";
-terminal TYPE_DEF : "type";
-terminal SUBTYPE_DEF : "subtype";
-terminal MODE_DEF : "mode";
-terminal DIRECTION_DEF : "direction";
-terminal LENGTH_DEF : "length";
-terminal CARDINALITY_DEF : "cardinality";
-terminal PROPERTY_DEF : 'property';
-terminal VAR_DEF : "var";
-terminal OPTION_DEF : "option";
-terminal MAP_OLDSKOOL_DEF : "map";
-terminal OBJECT_OLDSKOOL_DEF : "object";
-terminal BREAK_DEF : "break";
-terminal ERROR_DEF : "error";
-terminal CONTEXT_DEF : "context";
-terminal KEY_DEF : "key";
-terminal TIMEOUT_DEF : "timeout";
-terminal BREAKONNOLOCK_DEF : "breakOnNoLock";
 	
 terminal OBJECT_IDENTIFIER:
 	'"' IDENTIFIER ( '.' IDENTIFIER)+ '"'
@@ -324,9 +291,14 @@ terminal TML_LITERAL:
 	'[' ( IDENTIFIER | '/' | '../' | '/@' | '_' )+ ']'
 ;
 
-terminal IDENTIFIER : LETTER ( LETTER | DIGIT | "_" )+;
+terminal ONE:
+	'1'
+;
+
+terminal IDENTIFIER : LETTER ( LETTER | "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "_" )+;
 		
-terminal INTEGER : "0" | ( ( "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ) ( DIGIT )* );
+terminal INTEGER : "0" | ( ( ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ) ( "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" )* );
+
 		
 terminal LETTER : "A" | "B" | "C" | "D" | "E" | "F" | "G"
  | "H" | "I" | "J" | "K" | "L" | "M" | "N"
@@ -337,7 +309,6 @@ terminal LETTER : "A" | "B" | "C" | "D" | "E" | "F" | "G"
  | "q" | "r" | "s" | "t" | "u" | "v" | "w"
  | "x" | "y" | "z";
 
-terminal  DIGIT : "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
 
 terminal ML_COMMENT : '/*' -> '*/';
 
@@ -349,4 +320,3 @@ terminal WS         : (' '|'\t'|'\r'|'\n')+;
 //    "\n" | "!" | "@" | "$" | "#" | "%" | "^" | "&" | "*" | "(" | ")" | "-" | "_" | 
 //    "=" | "+" | "{" | "}" | "[" | "]" | ":" | ";" | "|" |  "," | "." | "?" | "§" | "±" | "~" | "`" | '"' | '>' | '<'  ;
 
-terminal CHARACTER : LETTER | DIGIT ;

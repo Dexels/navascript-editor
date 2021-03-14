@@ -724,16 +724,10 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Atomic returns NumberLiteral
 	 *
 	 * Constraint:
-	 *     value=INTEGER
+	 *     (value=INTEGER | value=ONE)
 	 */
 	protected void sequence_Atomic(ISerializationContext context, NumberLiteral semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.NUMBER_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.NUMBER_LITERAL__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueINTEGERTerminalRuleCall_1_1_0(), semanticObject.getValue());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -870,7 +864,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     CardinalityArgument returns CardinalityArgument
 	 *
 	 * Constraint:
-	 *     (value='+' | value='1')
+	 *     (value='+' | value=ONE)
 	 */
 	protected void sequence_CardinalityArgument(ISerializationContext context, CardinalityArgument semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -999,7 +993,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     DirectionArgument returns DirectionArgument
 	 *
 	 * Constraint:
-	 *     (value=IN_DEF | value=OUT_DEF | value=INOUT_DEF)
+	 *     (value='in' | value='out' | value='inout')
 	 */
 	protected void sequence_DirectionArgument(ISerializationContext context, DirectionArgument semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

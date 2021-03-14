@@ -10,19 +10,19 @@ public class FunctionDefinitionCache {
 
 	static FunctionDefinitionCache instance = new FunctionDefinitionCache();
 
-	Map<String, FunctionDefinition> cache = new TreeMap<>();
+	Map<String, ProxyFunctionDefinition> cache = new TreeMap<>();
 
 
 	public static FunctionDefinitionCache getInstance() {
 		return instance;
 	}
 
-	public void addFunctionDefinition(String name, FunctionDefinition fd) {
+	public void addFunctionDefinition(String name, ProxyFunctionDefinition fd) {
 		//System.err.println(">>>> adding function " + name + ": " + fd);
 		cache.put(name, fd);
 	}
 
-	public FunctionDefinition getFunction(String s) {
+	public ProxyFunctionDefinition getFunction(String s) {
 		return cache.get(s);
 	}
 	

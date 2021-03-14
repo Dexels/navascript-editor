@@ -3,8 +3,11 @@ package com.dexels.navajo.navigation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.INode;
 
+import com.dexels.navajo.navascript.InnerBody;
+import com.dexels.navajo.navascript.Message;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
+import com.dexels.navajo.navascript.impl.PropertyImpl;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
 import com.dexels.navajo.xtext.navascript.navajobridge.ProxyValueDefinition;
@@ -12,15 +15,15 @@ import com.dexels.navajo.xtext.navascript.navajobridge.ProxyValueDefinition;
 public final class NavigationUtils {
 
 	public NavigationUtils() {
-		
+
 	}
-	
+
 	public static AdapterClassDefinition findAdapterClass(NavajoProxyStub adapters, EObject model) {
-		
+
 		if ( model instanceof MapImpl ) {
 			return adapters.getAdapter(((MapImpl) model).getAdapterName());
 		} 
-		
+
 		if ( model instanceof MappedArrayFieldImpl ) {
 			MappedArrayFieldImpl maf = (MappedArrayFieldImpl) model;
 			String fieldName = getFieldFromMappableIdentifier(maf.getField());
@@ -38,7 +41,33 @@ public final class NavigationUtils {
 
 		return null;
 	}
-	
+
+	public static InnerBody findInnerBody(EObject node) {
+
+		if ( node == null ) {
+			return null;
+		}
+
+		if ( node instanceof InnerBody ) {
+			return (InnerBody) node;
+		}
+
+		return findInnerBody(node.eContainer());
+	}
+
+	public static Message findMessage(EObject node) {
+
+		if ( node == null ) {
+			return null;
+		}
+
+		if ( node instanceof Message ) {
+			return (Message) node;
+		}
+
+		return findMessage(node.eContainer());
+	}
+
 	public static EObject findFirstMapOrMappedField(EObject node, int level) {
 
 		if ( level < 0 ) {
@@ -92,26 +121,26 @@ public final class NavigationUtils {
 		}
 
 	}
-	
+
 	public static String getParentPrefix(String raw, StringBuffer cleaned) {
-		
+
 		if ( cleaned.toString().equals("") ) {
 			cleaned.append("$");
 		}
-		
+
 		if ( raw.indexOf("../") != -1 ) {
 			cleaned.append("../");
 			return getParentPrefix(raw.replaceFirst("\\.\\.\\/", ""), cleaned);
 		}
 		return cleaned.toString();
 	}
-	
+
 	public static String getFieldFromMappableIdentifier(String raw) {
-		
+
 		raw = raw.replaceAll("\\$", "");
 		raw = raw.replaceAll("\\.\\.\\/", "");
 		return raw;
-		
+
 	}
-	
+
 }

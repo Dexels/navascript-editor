@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Automatic-Module-Name: com.dexels.navajo.xtext.navascript.ide
 Bundle-ManifestVersion: 2
 Bundle-Name: com.dexels.navajo.xtext.navascript.ide
-Bundle-Vendor: My Company
-Bundle-Version: 0.9.12
+Bundle-Vendor: Dexels BV
+Bundle-Version: 0.9.14
 Bundle-SymbolicName: com.dexels.navajo.xtext.navascript.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.ide,

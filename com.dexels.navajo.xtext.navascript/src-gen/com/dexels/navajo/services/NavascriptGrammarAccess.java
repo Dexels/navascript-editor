@@ -332,11 +332,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	public class SynchronizedElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Synchronized");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cSYNCHRONIZED_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final RuleCall cARGS_STARTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cSynchronizedKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cArgumentsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cArgumentsSynchronizedArgumentsParserRuleCall_2_0 = (RuleCall)cArgumentsAssignment_2.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cStatementsAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cStatementsTopLevelStatementParserRuleCall_5_0 = (RuleCall)cStatementsAssignment_5.eContents().get(0);
@@ -348,17 +348,17 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		// * }
 		// */
 		//Synchronized:
-		//	SYNCHRONIZED_DEF ARGS_START arguments=SynchronizedArguments ARGS_END '{' statements+=TopLevelStatement* '}';
+		//	'synchronized' '(' arguments=SynchronizedArguments ')' '{' statements+=TopLevelStatement* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//SYNCHRONIZED_DEF ARGS_START arguments=SynchronizedArguments ARGS_END '{' statements+=TopLevelStatement* '}'
+		//'synchronized' '(' arguments=SynchronizedArguments ')' '{' statements+=TopLevelStatement* '}'
 		public Group getGroup() { return cGroup; }
 		
-		//SYNCHRONIZED_DEF
-		public RuleCall getSYNCHRONIZED_DEFTerminalRuleCall_0() { return cSYNCHRONIZED_DEFTerminalRuleCall_0; }
+		//'synchronized'
+		public Keyword getSynchronizedKeyword_0() { return cSynchronizedKeyword_0; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_1() { return cARGS_STARTTerminalRuleCall_1; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
 		//arguments=SynchronizedArguments
 		public Assignment getArgumentsAssignment_2() { return cArgumentsAssignment_2; }
@@ -366,8 +366,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//SynchronizedArguments
 		public RuleCall getArgumentsSynchronizedArgumentsParserRuleCall_2_0() { return cArgumentsSynchronizedArgumentsParserRuleCall_2_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_3() { return cARGS_ENDTerminalRuleCall_3; }
+		//')'
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
@@ -454,21 +454,23 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	public class SContextElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.SContext");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cCONTEXT_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cContextKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
-		private final RuleCall cSContextTypeParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Keyword cUserKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
+		private final Keyword cServiceKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
 		
 		//SContext:
-		//	CONTEXT_DEF ('=' | ':') SContextType;
+		//	'context' ('=' | ':') ('user' | 'service');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//CONTEXT_DEF ('=' | ':') SContextType
+		//'context' ('=' | ':') ('user' | 'service')
 		public Group getGroup() { return cGroup; }
 		
-		//CONTEXT_DEF
-		public RuleCall getCONTEXT_DEFTerminalRuleCall_0() { return cCONTEXT_DEFTerminalRuleCall_0; }
+		//'context'
+		public Keyword getContextKeyword_0() { return cContextKeyword_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
@@ -479,46 +481,64 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//':'
 		public Keyword getColonKeyword_1_1() { return cColonKeyword_1_1; }
 		
-		//SContextType
-		public RuleCall getSContextTypeParserRuleCall_2() { return cSContextTypeParserRuleCall_2; }
+		//('user' | 'service')
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//'user'
+		public Keyword getUserKeyword_2_0() { return cUserKeyword_2_0; }
+		
+		//'service'
+		public Keyword getServiceKeyword_2_1() { return cServiceKeyword_2_1; }
 	}
 	public class SKeyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.SKey");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cKEY_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final RuleCall cLiteralOrExpressionParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cKeyKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
+		private final Keyword cColonKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
+		private final RuleCall cLiteralOrExpressionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//SKey:
-		//	KEY_DEF LiteralOrExpression;
+		//	'key' ('=' | ':') LiteralOrExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//KEY_DEF LiteralOrExpression
+		//'key' ('=' | ':') LiteralOrExpression
 		public Group getGroup() { return cGroup; }
 		
-		//KEY_DEF
-		public RuleCall getKEY_DEFTerminalRuleCall_0() { return cKEY_DEFTerminalRuleCall_0; }
+		//'key'
+		public Keyword getKeyKeyword_0() { return cKeyKeyword_0; }
+		
+		//('=' | ':')
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_1_0() { return cEqualsSignKeyword_1_0; }
+		
+		//':'
+		public Keyword getColonKeyword_1_1() { return cColonKeyword_1_1; }
 		
 		//LiteralOrExpression
-		public RuleCall getLiteralOrExpressionParserRuleCall_1() { return cLiteralOrExpressionParserRuleCall_1; }
+		public RuleCall getLiteralOrExpressionParserRuleCall_2() { return cLiteralOrExpressionParserRuleCall_2; }
 	}
 	public class STimeoutElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.STimeout");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cTIMEOUT_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cTimeoutKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
 		private final RuleCall cExpressionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//STimeout:
-		//	TIMEOUT_DEF ('=' | ':') Expression;
+		//	'timeout' ('=' | ':') Expression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//TIMEOUT_DEF ('=' | ':') Expression
+		//'timeout' ('=' | ':') Expression
 		public Group getGroup() { return cGroup; }
 		
-		//TIMEOUT_DEF
-		public RuleCall getTIMEOUT_DEFTerminalRuleCall_0() { return cTIMEOUT_DEFTerminalRuleCall_0; }
+		//'timeout'
+		public Keyword getTimeoutKeyword_0() { return cTimeoutKeyword_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
@@ -535,21 +555,21 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	public class SBreakOnNoLockElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.SBreakOnNoLock");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cBREAKONNOLOCK_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cBreakOnNoLockKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
 		private final RuleCall cExpressionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//SBreakOnNoLock:
-		//	BREAKONNOLOCK_DEF ('=' | ':') Expression;
+		//	'breakOnNoLock' ('=' | ':') Expression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//BREAKONNOLOCK_DEF ('=' | ':') Expression
+		//'breakOnNoLock' ('=' | ':') Expression
 		public Group getGroup() { return cGroup; }
 		
-		//BREAKONNOLOCK_DEF
-		public RuleCall getBREAKONNOLOCK_DEFTerminalRuleCall_0() { return cBREAKONNOLOCK_DEFTerminalRuleCall_0; }
+		//'breakOnNoLock'
+		public Keyword getBreakOnNoLockKeyword_0() { return cBreakOnNoLockKeyword_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
@@ -563,58 +583,39 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//Expression
 		public RuleCall getExpressionParserRuleCall_2() { return cExpressionParserRuleCall_2; }
 	}
-	public class SContextTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.SContextType");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cUserKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cServiceKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		
-		//SContextType:
-		//	"user" | "service";
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"user" | "service"
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//"user"
-		public Keyword getUserKeyword_0() { return cUserKeyword_0; }
-		
-		//"service"
-		public Keyword getServiceKeyword_1() { return cServiceKeyword_1; }
-	}
 	public class BreakElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Break");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cBreakAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cBREAK_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cBreakKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final RuleCall cARGS_STARTTerminalRuleCall_2_0 = (RuleCall)cGroup_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cParametersAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cParametersBreakParametersParserRuleCall_2_1_0 = (RuleCall)cParametersAssignment_2_1.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
+		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		///*
 		// * break([code=VALUE,description=VALUE,error=VALUE])
 		// */
 		//Break:
-		//	{Break} BREAK_DEF (ARGS_START parameters=BreakParameters? ARGS_END)? ';';
+		//	{Break} 'break' ('(' parameters=BreakParameters? ')')? ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Break} BREAK_DEF (ARGS_START parameters=BreakParameters? ARGS_END)? ';'
+		//{Break} 'break' ('(' parameters=BreakParameters? ')')? ';'
 		public Group getGroup() { return cGroup; }
 		
 		//{Break}
 		public Action getBreakAction_0() { return cBreakAction_0; }
 		
-		//BREAK_DEF
-		public RuleCall getBREAK_DEFTerminalRuleCall_1() { return cBREAK_DEFTerminalRuleCall_1; }
+		//'break'
+		public Keyword getBreakKeyword_1() { return cBreakKeyword_1; }
 		
-		//(ARGS_START parameters=BreakParameters? ARGS_END)?
+		//('(' parameters=BreakParameters? ')')?
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_2_0() { return cARGS_STARTTerminalRuleCall_2_0; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 		
 		//parameters=BreakParameters?
 		public Assignment getParametersAssignment_2_1() { return cParametersAssignment_2_1; }
@@ -622,8 +623,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//BreakParameters
 		public RuleCall getParametersBreakParametersParserRuleCall_2_1_0() { return cParametersBreakParametersParserRuleCall_2_1_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_2_2() { return cARGS_ENDTerminalRuleCall_2_2; }
+		//')'
+		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
@@ -632,40 +633,40 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.BreakParameter");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final RuleCall cCODE_DEFTerminalRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
+		private final Keyword cCodeKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final Alternatives cAlternatives_0_1 = (Alternatives)cGroup_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_0_1_0 = (Keyword)cAlternatives_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_0_1_1 = (Keyword)cAlternatives_0_1.eContents().get(1);
 		private final Assignment cCodeAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
 		private final RuleCall cCodeLiteralOrExpressionParserRuleCall_0_2_0 = (RuleCall)cCodeAssignment_0_2.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final RuleCall cDESCRIPTION_DEFTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Keyword cDescriptionKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_1_0 = (Keyword)cAlternatives_1_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
 		private final Assignment cDescriptionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cDescriptionLiteralOrExpressionParserRuleCall_1_2_0 = (RuleCall)cDescriptionAssignment_1_2.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final RuleCall cERROR_DEFTerminalRuleCall_2_0 = (RuleCall)cGroup_2.eContents().get(0);
+		private final Keyword cErrorKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Alternatives cAlternatives_2_1 = (Alternatives)cGroup_2.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_2_1_0 = (Keyword)cAlternatives_2_1.eContents().get(0);
 		private final Keyword cColonKeyword_2_1_1 = (Keyword)cAlternatives_2_1.eContents().get(1);
 		private final RuleCall cLiteralOrExpressionParserRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
 		
 		//BreakParameter:
-		//	CODE_DEF ('=' | ':') code=LiteralOrExpression | DESCRIPTION_DEF ('=' | ':') description=LiteralOrExpression |
-		//	ERROR_DEF ('=' | ':') LiteralOrExpression;
+		//	'code' ('=' | ':') code=LiteralOrExpression | 'description' ('=' | ':') description=LiteralOrExpression | 'error' (
+		//	'=' | ':') LiteralOrExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//CODE_DEF ('=' | ':') code=LiteralOrExpression | DESCRIPTION_DEF ('=' | ':') description=LiteralOrExpression | ERROR_DEF
-		//('=' | ':') LiteralOrExpression
+		//'code' ('=' | ':') code=LiteralOrExpression | 'description' ('=' | ':') description=LiteralOrExpression | 'error' ('='
+		//| ':') LiteralOrExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//CODE_DEF ('=' | ':') code=LiteralOrExpression
+		//'code' ('=' | ':') code=LiteralOrExpression
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//CODE_DEF
-		public RuleCall getCODE_DEFTerminalRuleCall_0_0() { return cCODE_DEFTerminalRuleCall_0_0; }
+		//'code'
+		public Keyword getCodeKeyword_0_0() { return cCodeKeyword_0_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_0_1() { return cAlternatives_0_1; }
@@ -682,11 +683,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//LiteralOrExpression
 		public RuleCall getCodeLiteralOrExpressionParserRuleCall_0_2_0() { return cCodeLiteralOrExpressionParserRuleCall_0_2_0; }
 		
-		//DESCRIPTION_DEF ('=' | ':') description=LiteralOrExpression
+		//'description' ('=' | ':') description=LiteralOrExpression
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//DESCRIPTION_DEF
-		public RuleCall getDESCRIPTION_DEFTerminalRuleCall_1_0() { return cDESCRIPTION_DEFTerminalRuleCall_1_0; }
+		//'description'
+		public Keyword getDescriptionKeyword_1_0() { return cDescriptionKeyword_1_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
@@ -703,11 +704,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//LiteralOrExpression
 		public RuleCall getDescriptionLiteralOrExpressionParserRuleCall_1_2_0() { return cDescriptionLiteralOrExpressionParserRuleCall_1_2_0; }
 		
-		//ERROR_DEF ('=' | ':') LiteralOrExpression
+		//'error' ('=' | ':') LiteralOrExpression
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//ERROR_DEF
-		public RuleCall getERROR_DEFTerminalRuleCall_2_0() { return cERROR_DEFTerminalRuleCall_2_0; }
+		//'error'
+		public Keyword getErrorKeyword_2_0() { return cErrorKeyword_2_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_2_1() { return cAlternatives_2_1; }
@@ -760,24 +761,24 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Validations");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cValidationsAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cVALIDATIONS_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cValidationsKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cChecksAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cChecksCheckParserRuleCall_3_0 = (RuleCall)cChecksAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Validations:
-		//	{Validations} VALIDATIONS_DEF '{' checks+=Check* '}';
+		//	{Validations} 'validations' '{' checks+=Check* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Validations} VALIDATIONS_DEF '{' checks+=Check* '}'
+		//{Validations} 'validations' '{' checks+=Check* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//{Validations}
 		public Action getValidationsAction_0() { return cValidationsAction_0; }
 		
-		//VALIDATIONS_DEF
-		public RuleCall getVALIDATIONS_DEFTerminalRuleCall_1() { return cVALIDATIONS_DEFTerminalRuleCall_1; }
+		//'validations'
+		public Keyword getValidationsKeyword_1() { return cValidationsKeyword_1; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
@@ -795,7 +796,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Define");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cDefineAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cDEFINE_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cDefineKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cDefineKeyAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cDefineKeyQUOTED_IDENTIFIERTerminalRuleCall_2_0 = (RuleCall)cDefineKeyAssignment_2.eContents().get(0);
 		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
@@ -806,17 +807,17 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Define:
-		//	{Define} DEFINE_DEF defineKey=QUOTED_IDENTIFIER ('=' | ':') expression=Expression ';';
+		//	{Define} 'define' defineKey=QUOTED_IDENTIFIER ('=' | ':') expression=Expression ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Define} DEFINE_DEF defineKey=QUOTED_IDENTIFIER ('=' | ':') expression=Expression ';'
+		//{Define} 'define' defineKey=QUOTED_IDENTIFIER ('=' | ':') expression=Expression ';'
 		public Group getGroup() { return cGroup; }
 		
 		//{Define}
 		public Action getDefineAction_0() { return cDefineAction_0; }
 		
-		//DEFINE_DEF
-		public RuleCall getDEFINE_DEFTerminalRuleCall_1() { return cDEFINE_DEFTerminalRuleCall_1; }
+		//'define'
+		public Keyword getDefineKeyword_1() { return cDefineKeyword_1; }
 		
 		//defineKey=QUOTED_IDENTIFIER
 		public Assignment getDefineKeyAssignment_2() { return cDefineKeyAssignment_2; }
@@ -851,15 +852,15 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Assignment cConditionAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cConditionExpressionParserRuleCall_1_1_0 = (RuleCall)cConditionAssignment_1_1.eContents().get(0);
 		private final Keyword cThenKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final RuleCall cCHECK_DEFTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final RuleCall cARGS_STARTTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		private final Keyword cCheckKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cCheckAttributesAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cCheckAttributesCheckAttributeParserRuleCall_4_0 = (RuleCall)cCheckAttributesAssignment_4.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
 		private final Keyword cCommaKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
 		private final Assignment cCheckAttributesAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
 		private final RuleCall cCheckAttributesCheckAttributeParserRuleCall_5_1_0 = (RuleCall)cCheckAttributesAssignment_5_1.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
+		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Alternatives cAlternatives_7 = (Alternatives)cGroup.eContents().get(7);
 		private final Keyword cEqualsSignKeyword_7_0 = (Keyword)cAlternatives_7.eContents().get(0);
 		private final Keyword cColonKeyword_7_1 = (Keyword)cAlternatives_7.eContents().get(1);
@@ -868,12 +869,12 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cSemicolonKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
 		//Check:
-		//	{Check} ('if' condition=Expression 'then')? CHECK_DEF ARGS_START checkAttributes+=CheckAttribute (','
-		//	checkAttributes+=CheckAttribute)? ARGS_END ('=' | ':') expression=Expression ';';
+		//	{Check} ('if' condition=Expression 'then')? 'check' '(' checkAttributes+=CheckAttribute (','
+		//	checkAttributes+=CheckAttribute)? ')' ('=' | ':') expression=Expression ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Check} ('if' condition=Expression 'then')? CHECK_DEF ARGS_START checkAttributes+=CheckAttribute (','
-		//checkAttributes+=CheckAttribute)? ARGS_END ('=' | ':') expression=Expression ';'
+		//{Check} ('if' condition=Expression 'then')? 'check' '(' checkAttributes+=CheckAttribute (','
+		//checkAttributes+=CheckAttribute)? ')' ('=' | ':') expression=Expression ';'
 		public Group getGroup() { return cGroup; }
 		
 		//{Check}
@@ -894,11 +895,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//'then'
 		public Keyword getThenKeyword_1_2() { return cThenKeyword_1_2; }
 		
-		//CHECK_DEF
-		public RuleCall getCHECK_DEFTerminalRuleCall_2() { return cCHECK_DEFTerminalRuleCall_2; }
+		//'check'
+		public Keyword getCheckKeyword_2() { return cCheckKeyword_2; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_3() { return cARGS_STARTTerminalRuleCall_3; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_3() { return cLeftParenthesisKeyword_3; }
 		
 		//checkAttributes+=CheckAttribute
 		public Assignment getCheckAttributesAssignment_4() { return cCheckAttributesAssignment_4; }
@@ -918,8 +919,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//CheckAttribute
 		public RuleCall getCheckAttributesCheckAttributeParserRuleCall_5_1_0() { return cCheckAttributesCheckAttributeParserRuleCall_5_1_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_6() { return cARGS_ENDTerminalRuleCall_6; }
+		//')'
+		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_7() { return cAlternatives_7; }
@@ -945,14 +946,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cCheckAttributeAction_0_0 = (Action)cGroup_0.eContents().get(0);
 		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final RuleCall cCODE_DEFTerminalRuleCall_0_1_0 = (RuleCall)cGroup_0_1.eContents().get(0);
+		private final Keyword cCodeKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
 		private final Alternatives cAlternatives_0_1_1 = (Alternatives)cGroup_0_1.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_0_1_1_0 = (Keyword)cAlternatives_0_1_1.eContents().get(0);
 		private final Keyword cColonKeyword_0_1_1_1 = (Keyword)cAlternatives_0_1_1.eContents().get(1);
 		private final Assignment cValueAssignment_0_1_2 = (Assignment)cGroup_0_1.eContents().get(2);
 		private final RuleCall cValueLiteralOrExpressionParserRuleCall_0_1_2_0 = (RuleCall)cValueAssignment_0_1_2.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final RuleCall cDESCRIPTION_DEFTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Keyword cDescriptionKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_1_0 = (Keyword)cAlternatives_1_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
@@ -960,24 +961,24 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final RuleCall cValueLiteralOrExpressionParserRuleCall_1_2_0 = (RuleCall)cValueAssignment_1_2.eContents().get(0);
 		
 		//CheckAttribute:
-		//	{CheckAttribute} (CODE_DEF ('=' | ':') value=LiteralOrExpression) | DESCRIPTION_DEF ('=' | ':')
-		//	value=LiteralOrExpression;
+		//	{CheckAttribute} ('code' ('=' | ':') value=LiteralOrExpression) | 'description' ('=' | ':') value=LiteralOrExpression
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{CheckAttribute} (CODE_DEF ('=' | ':') value=LiteralOrExpression) | DESCRIPTION_DEF ('=' | ':') value=LiteralOrExpression
+		//{CheckAttribute} ('code' ('=' | ':') value=LiteralOrExpression) | 'description' ('=' | ':') value=LiteralOrExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{CheckAttribute} (CODE_DEF ('=' | ':') value=LiteralOrExpression)
+		//{CheckAttribute} ('code' ('=' | ':') value=LiteralOrExpression)
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//{CheckAttribute}
 		public Action getCheckAttributeAction_0_0() { return cCheckAttributeAction_0_0; }
 		
-		//(CODE_DEF ('=' | ':') value=LiteralOrExpression)
+		//('code' ('=' | ':') value=LiteralOrExpression)
 		public Group getGroup_0_1() { return cGroup_0_1; }
 		
-		//CODE_DEF
-		public RuleCall getCODE_DEFTerminalRuleCall_0_1_0() { return cCODE_DEFTerminalRuleCall_0_1_0; }
+		//'code'
+		public Keyword getCodeKeyword_0_1_0() { return cCodeKeyword_0_1_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_0_1_1() { return cAlternatives_0_1_1; }
@@ -994,11 +995,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//LiteralOrExpression
 		public RuleCall getValueLiteralOrExpressionParserRuleCall_0_1_2_0() { return cValueLiteralOrExpressionParserRuleCall_0_1_2_0; }
 		
-		//DESCRIPTION_DEF ('=' | ':') value=LiteralOrExpression
+		//'description' ('=' | ':') value=LiteralOrExpression
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//DESCRIPTION_DEF
-		public RuleCall getDESCRIPTION_DEFTerminalRuleCall_1_0() { return cDESCRIPTION_DEFTerminalRuleCall_1_0; }
+		//'description'
+		public Keyword getDescriptionKeyword_1_0() { return cDescriptionKeyword_1_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
@@ -1062,28 +1063,28 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Print");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cPrintAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cPRINT_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		private final RuleCall cARGS_STARTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Keyword cPrintKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cExpressionAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cExpressionExpressionParserRuleCall_3_0 = (RuleCall)cExpressionAssignment_3.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Print:
-		//	{Print} PRINT_DEF ARGS_START expression=Expression ARGS_END ';';
+		//	{Print} 'print' '(' expression=Expression ')' ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Print} PRINT_DEF ARGS_START expression=Expression ARGS_END ';'
+		//{Print} 'print' '(' expression=Expression ')' ';'
 		public Group getGroup() { return cGroup; }
 		
 		//{Print}
 		public Action getPrintAction_0() { return cPrintAction_0; }
 		
-		//PRINT_DEF
-		public RuleCall getPRINT_DEFTerminalRuleCall_1() { return cPRINT_DEFTerminalRuleCall_1; }
+		//'print'
+		public Keyword getPrintKeyword_1() { return cPrintKeyword_1; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_2() { return cARGS_STARTTerminalRuleCall_2; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
 		//expression=Expression
 		public Assignment getExpressionAssignment_3() { return cExpressionAssignment_3; }
@@ -1091,8 +1092,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//Expression
 		public RuleCall getExpressionExpressionParserRuleCall_3_0() { return cExpressionExpressionParserRuleCall_3_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_4() { return cARGS_ENDTerminalRuleCall_4; }
+		//')'
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
@@ -1101,28 +1102,28 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Log");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cLogAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cLOG_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		private final RuleCall cARGS_STARTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Keyword cLogKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cExpressionAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cExpressionExpressionParserRuleCall_3_0 = (RuleCall)cExpressionAssignment_3.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Log:
-		//	{Log} LOG_DEF ARGS_START expression=Expression ARGS_END ';';
+		//	{Log} 'log' '(' expression=Expression ')' ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Log} LOG_DEF ARGS_START expression=Expression ARGS_END ';'
+		//{Log} 'log' '(' expression=Expression ')' ';'
 		public Group getGroup() { return cGroup; }
 		
 		//{Log}
 		public Action getLogAction_0() { return cLogAction_0; }
 		
-		//LOG_DEF
-		public RuleCall getLOG_DEFTerminalRuleCall_1() { return cLOG_DEFTerminalRuleCall_1; }
+		//'log'
+		public Keyword getLogKeyword_1() { return cLogKeyword_1; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_2() { return cARGS_STARTTerminalRuleCall_2; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
 		//expression=Expression
 		public Assignment getExpressionAssignment_3() { return cExpressionAssignment_3; }
@@ -1130,8 +1131,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//Expression
 		public RuleCall getExpressionExpressionParserRuleCall_3_0() { return cExpressionExpressionParserRuleCall_3_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_4() { return cARGS_ENDTerminalRuleCall_4; }
+		//')'
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
@@ -1140,24 +1141,24 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Finally");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cFinallyAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cFINALLY_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cFinallyKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cFinallyStatementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cFinallyStatementsTopLevelStatementsParserRuleCall_3_0 = (RuleCall)cFinallyStatementsAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Finally:
-		//	{Finally} FINALLY_DEF '{' finallyStatements=TopLevelStatements '}';
+		//	{Finally} 'finally' '{' finallyStatements=TopLevelStatements '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Finally} FINALLY_DEF '{' finallyStatements=TopLevelStatements '}'
+		//{Finally} 'finally' '{' finallyStatements=TopLevelStatements '}'
 		public Group getGroup() { return cGroup; }
 		
 		//{Finally}
 		public Action getFinallyAction_0() { return cFinallyAction_0; }
 		
-		//FINALLY_DEF
-		public RuleCall getFINALLY_DEFTerminalRuleCall_1() { return cFINALLY_DEFTerminalRuleCall_1; }
+		//'finally'
+		public Keyword getFinallyKeyword_1() { return cFinallyKeyword_1; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
@@ -1237,40 +1238,40 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Loop");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cLoopAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cLOOP_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cLoopKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Assignment cMappableAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
 		private final RuleCall cMappableMappableIdentifierParserRuleCall_2_0_0 = (RuleCall)cMappableAssignment_2_0.eContents().get(0);
 		private final Assignment cTmlAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
 		private final RuleCall cTmlTmlIdentifierParserRuleCall_2_1_0 = (RuleCall)cTmlAssignment_2_1.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final RuleCall cARGS_STARTTerminalRuleCall_3_0 = (RuleCall)cGroup_3.eContents().get(0);
-		private final RuleCall cFILTER_DEFTerminalRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Keyword cFilterKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		private final Alternatives cAlternatives_3_2 = (Alternatives)cGroup_3.eContents().get(2);
 		private final Keyword cEqualsSignKeyword_3_2_0 = (Keyword)cAlternatives_3_2.eContents().get(0);
 		private final Keyword cColonKeyword_3_2_1 = (Keyword)cAlternatives_3_2.eContents().get(1);
 		private final Assignment cFilterAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
 		private final RuleCall cFilterExpressionParserRuleCall_3_3_0 = (RuleCall)cFilterAssignment_3_3.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_3_4 = (RuleCall)cGroup_3.eContents().get(4);
+		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cStatementsAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cStatementsInnerBodyParserRuleCall_5_0 = (RuleCall)cStatementsAssignment_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Loop:
-		//	{Loop} LOOP_DEF (mappable=MappableIdentifier | tml=TmlIdentifier) (ARGS_START FILTER_DEF ('=' | ':')
-		//	filter=Expression ARGS_END)? '{' statements+=InnerBody* '}';
+		//	{Loop} 'loop' (mappable=MappableIdentifier | tml=TmlIdentifier) ('(' 'filter' ('=' | ':') filter=Expression ')')?
+		//	'{' statements+=InnerBody* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Loop} LOOP_DEF (mappable=MappableIdentifier | tml=TmlIdentifier) (ARGS_START FILTER_DEF ('=' | ':') filter=Expression
-		//ARGS_END)? '{' statements+=InnerBody* '}'
+		//{Loop} 'loop' (mappable=MappableIdentifier | tml=TmlIdentifier) ('(' 'filter' ('=' | ':') filter=Expression ')')? '{'
+		//statements+=InnerBody* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//{Loop}
 		public Action getLoopAction_0() { return cLoopAction_0; }
 		
-		//LOOP_DEF
-		public RuleCall getLOOP_DEFTerminalRuleCall_1() { return cLOOP_DEFTerminalRuleCall_1; }
+		//'loop'
+		public Keyword getLoopKeyword_1() { return cLoopKeyword_1; }
 		
 		//(mappable=MappableIdentifier | tml=TmlIdentifier)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
@@ -1287,14 +1288,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//TmlIdentifier
 		public RuleCall getTmlTmlIdentifierParserRuleCall_2_1_0() { return cTmlTmlIdentifierParserRuleCall_2_1_0; }
 		
-		//(ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END)?
+		//('(' 'filter' ('=' | ':') filter=Expression ')')?
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_3_0() { return cARGS_STARTTerminalRuleCall_3_0; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
 		
-		//FILTER_DEF
-		public RuleCall getFILTER_DEFTerminalRuleCall_3_1() { return cFILTER_DEFTerminalRuleCall_3_1; }
+		//'filter'
+		public Keyword getFilterKeyword_3_1() { return cFilterKeyword_3_1; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_3_2() { return cAlternatives_3_2; }
@@ -1311,8 +1312,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//Expression
 		public RuleCall getFilterExpressionParserRuleCall_3_3_0() { return cFilterExpressionParserRuleCall_3_3_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_3_4() { return cARGS_ENDTerminalRuleCall_3_4; }
+		//')'
+		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
@@ -1330,23 +1331,23 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Include");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cIncludeAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cINCLUDE_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cIncludeKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cScriptNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cScriptNameQUOTED_IDENTIFIERTerminalRuleCall_2_0 = (RuleCall)cScriptNameAssignment_2.eContents().get(0);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Include:
-		//	{Include} INCLUDE_DEF scriptName=QUOTED_IDENTIFIER ';';
+		//	{Include} 'include' scriptName=QUOTED_IDENTIFIER ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Include} INCLUDE_DEF scriptName=QUOTED_IDENTIFIER ';'
+		//{Include} 'include' scriptName=QUOTED_IDENTIFIER ';'
 		public Group getGroup() { return cGroup; }
 		
 		//{Include}
 		public Action getIncludeAction_0() { return cIncludeAction_0; }
 		
-		//INCLUDE_DEF
-		public RuleCall getINCLUDE_DEFTerminalRuleCall_1() { return cINCLUDE_DEFTerminalRuleCall_1; }
+		//'include'
+		public Keyword getIncludeKeyword_1() { return cIncludeKeyword_1; }
 		
 		//scriptName=QUOTED_IDENTIFIER
 		public Assignment getScriptNameAssignment_2() { return cScriptNameAssignment_2; }
@@ -1396,10 +1397,10 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Assignment cMessageNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cMessageNameQUOTED_IDENTIFIERTerminalRuleCall_2_0 = (RuleCall)cMessageNameAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final RuleCall cARGS_STARTTerminalRuleCall_3_0 = (RuleCall)cGroup_3.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cArgumentsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cArgumentsMessageArgumentsParserRuleCall_3_1_0 = (RuleCall)cArgumentsAssignment_3_1.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_3_2 = (RuleCall)cGroup_3.eContents().get(2);
+		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
 		private final Group cGroup_4_0 = (Group)cAlternatives_4.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
@@ -1419,13 +1420,13 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cRightSquareBracketKeyword_4_2_2 = (Keyword)cGroup_4_2.eContents().get(2);
 		
 		//Message:
-		//	{Message} 'message' messageName=QUOTED_IDENTIFIER (ARGS_START arguments=MessageArguments ARGS_END)? ('{'
-		//	(statements+=InnerBody* | arrayField=MappedArrayField | arrayMessage=MappedArrayMessage) '}' | ';'
+		//	{Message} 'message' messageName=QUOTED_IDENTIFIER ('(' arguments=MessageArguments ')')? ('{' (statements+=InnerBody*
+		//	| arrayField=MappedArrayField | arrayMessage=MappedArrayMessage) '}' | ';'
 		//	| '[' messageArray=MessageArray ']');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Message} 'message' messageName=QUOTED_IDENTIFIER (ARGS_START arguments=MessageArguments ARGS_END)? ('{'
-		//(statements+=InnerBody* | arrayField=MappedArrayField | arrayMessage=MappedArrayMessage) '}' | ';'
+		//{Message} 'message' messageName=QUOTED_IDENTIFIER ('(' arguments=MessageArguments ')')? ('{' (statements+=InnerBody* |
+		//arrayField=MappedArrayField | arrayMessage=MappedArrayMessage) '}' | ';'
 		//| '[' messageArray=MessageArray ']')
 		public Group getGroup() { return cGroup; }
 		
@@ -1441,11 +1442,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//QUOTED_IDENTIFIER
 		public RuleCall getMessageNameQUOTED_IDENTIFIERTerminalRuleCall_2_0() { return cMessageNameQUOTED_IDENTIFIERTerminalRuleCall_2_0; }
 		
-		//(ARGS_START arguments=MessageArguments ARGS_END)?
+		//('(' arguments=MessageArguments ')')?
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_3_0() { return cARGS_STARTTerminalRuleCall_3_0; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
 		
 		//arguments=MessageArguments
 		public Assignment getArgumentsAssignment_3_1() { return cArgumentsAssignment_3_1; }
@@ -1453,8 +1454,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//MessageArguments
 		public RuleCall getArgumentsMessageArgumentsParserRuleCall_3_1_0() { return cArgumentsMessageArgumentsParserRuleCall_3_1_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_3_2() { return cARGS_ENDTerminalRuleCall_3_2; }
+		//')'
+		public Keyword getRightParenthesisKeyword_3_2() { return cRightParenthesisKeyword_3_2; }
 		
 		//('{' (statements+=InnerBody* | arrayField=MappedArrayField | arrayMessage=MappedArrayMessage) '}' | ';'
 		//| '[' messageArray=MessageArray ']')
@@ -1578,30 +1579,30 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.MessageArgument");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final RuleCall cTYPE_DEFTerminalRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
+		private final Keyword cTypeKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final Alternatives cAlternatives_0_1 = (Alternatives)cGroup_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_0_1_0 = (Keyword)cAlternatives_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_0_1_1 = (Keyword)cAlternatives_0_1.eContents().get(1);
 		private final RuleCall cMessageTypeParserRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final RuleCall cMODE_DEFTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Keyword cModeKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_1_0 = (Keyword)cAlternatives_1_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
 		private final RuleCall cMessageModeParserRuleCall_1_2 = (RuleCall)cGroup_1.eContents().get(2);
 		
 		//MessageArgument:
-		//	TYPE_DEF ('=' | ':') MessageType | MODE_DEF ('=' | ':') MessageMode;
+		//	'type' ('=' | ':') MessageType | 'mode' ('=' | ':') MessageMode;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//TYPE_DEF ('=' | ':') MessageType | MODE_DEF ('=' | ':') MessageMode
+		//'type' ('=' | ':') MessageType | 'mode' ('=' | ':') MessageMode
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//TYPE_DEF ('=' | ':') MessageType
+		//'type' ('=' | ':') MessageType
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//TYPE_DEF
-		public RuleCall getTYPE_DEFTerminalRuleCall_0_0() { return cTYPE_DEFTerminalRuleCall_0_0; }
+		//'type'
+		public Keyword getTypeKeyword_0_0() { return cTypeKeyword_0_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_0_1() { return cAlternatives_0_1; }
@@ -1615,11 +1616,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//MessageType
 		public RuleCall getMessageTypeParserRuleCall_0_2() { return cMessageTypeParserRuleCall_0_2; }
 		
-		//MODE_DEF ('=' | ':') MessageMode
+		//'mode' ('=' | ':') MessageMode
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//MODE_DEF
-		public RuleCall getMODE_DEFTerminalRuleCall_1_0() { return cMODE_DEFTerminalRuleCall_1_0; }
+		//'mode'
+		public Keyword getModeKeyword_1_0() { return cModeKeyword_1_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
@@ -1678,14 +1679,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Assignment cAdapterNameAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
 		private final RuleCall cAdapterNameIDENTIFIERTerminalRuleCall_1_0_1_0 = (RuleCall)cAdapterNameAssignment_1_0_1.eContents().get(0);
 		private final Group cGroup_1_0_2 = (Group)cGroup_1_0.eContents().get(2);
-		private final RuleCall cARGS_STARTTerminalRuleCall_1_0_2_0 = (RuleCall)cGroup_1_0_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1_0_2_0 = (Keyword)cGroup_1_0_2.eContents().get(0);
 		private final Assignment cArgumentsAssignment_1_0_2_1 = (Assignment)cGroup_1_0_2.eContents().get(1);
 		private final RuleCall cArgumentsKeyValueArgumentsParserRuleCall_1_0_2_1_0 = (RuleCall)cArgumentsAssignment_1_0_2_1.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_1_0_2_2 = (RuleCall)cGroup_1_0_2.eContents().get(2);
+		private final Keyword cRightParenthesisKeyword_1_0_2_2 = (Keyword)cGroup_1_0_2.eContents().get(2);
 		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
-		private final RuleCall cMAP_OLDSKOOL_DEFTerminalRuleCall_1_1_0 = (RuleCall)cGroup_1_1.eContents().get(0);
-		private final RuleCall cARGS_STARTTerminalRuleCall_1_1_1 = (RuleCall)cGroup_1_1.eContents().get(1);
-		private final RuleCall cOBJECT_OLDSKOOL_DEFTerminalRuleCall_1_1_2 = (RuleCall)cGroup_1_1.eContents().get(2);
+		private final Keyword cMapKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		private final Keyword cObjectKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
 		private final Alternatives cAlternatives_1_1_3 = (Alternatives)cGroup_1_1.eContents().get(3);
 		private final Keyword cEqualsSignKeyword_1_1_3_0 = (Keyword)cAlternatives_1_1_3.eContents().get(0);
 		private final Keyword cColonKeyword_1_1_3_1 = (Keyword)cAlternatives_1_1_3.eContents().get(1);
@@ -1695,31 +1696,31 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cCommaKeyword_1_1_5_0 = (Keyword)cGroup_1_1_5.eContents().get(0);
 		private final Assignment cArgumentsAssignment_1_1_5_1 = (Assignment)cGroup_1_1_5.eContents().get(1);
 		private final RuleCall cArgumentsKeyValueArgumentsParserRuleCall_1_1_5_1_0 = (RuleCall)cArgumentsAssignment_1_1_5_1.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_1_1_6 = (RuleCall)cGroup_1_1.eContents().get(6);
+		private final Keyword cRightParenthesisKeyword_1_1_6 = (Keyword)cGroup_1_1.eContents().get(6);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cStatementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cStatementsInnerBodyParserRuleCall_3_0 = (RuleCall)cStatementsAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Map:
-		//	{Map} ('map.' adapterName=IDENTIFIER (ARGS_START arguments=KeyValueArguments? ARGS_END)? | MAP_OLDSKOOL_DEF
-		//	ARGS_START OBJECT_OLDSKOOL_DEF ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ARGS_END)
-		//	'{' statements+=InnerBody* '}';
+		//	{Map} ('map.' adapterName=IDENTIFIER ('(' arguments=KeyValueArguments? ')')? |
+		//	'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ')') '{'
+		//	statements+=InnerBody* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Map} ('map.' adapterName=IDENTIFIER (ARGS_START arguments=KeyValueArguments? ARGS_END)? | MAP_OLDSKOOL_DEF ARGS_START
-		//OBJECT_OLDSKOOL_DEF ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ARGS_END) '{'
+		//{Map} ('map.' adapterName=IDENTIFIER ('(' arguments=KeyValueArguments? ')')? |
+		//'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ')') '{'
 		//statements+=InnerBody* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//{Map}
 		public Action getMapAction_0() { return cMapAction_0; }
 		
-		//('map.' adapterName=IDENTIFIER (ARGS_START arguments=KeyValueArguments? ARGS_END)? | MAP_OLDSKOOL_DEF ARGS_START
-		//OBJECT_OLDSKOOL_DEF ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ARGS_END)
+		//('map.' adapterName=IDENTIFIER ('(' arguments=KeyValueArguments? ')')? |
+		//'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ')')
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
-		//'map.' adapterName=IDENTIFIER (ARGS_START arguments=KeyValueArguments? ARGS_END)?
+		//'map.' adapterName=IDENTIFIER ('(' arguments=KeyValueArguments? ')')?
 		public Group getGroup_1_0() { return cGroup_1_0; }
 		
 		//'map.'
@@ -1731,11 +1732,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//IDENTIFIER
 		public RuleCall getAdapterNameIDENTIFIERTerminalRuleCall_1_0_1_0() { return cAdapterNameIDENTIFIERTerminalRuleCall_1_0_1_0; }
 		
-		//(ARGS_START arguments=KeyValueArguments? ARGS_END)?
+		//('(' arguments=KeyValueArguments? ')')?
 		public Group getGroup_1_0_2() { return cGroup_1_0_2; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_1_0_2_0() { return cARGS_STARTTerminalRuleCall_1_0_2_0; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_1_0_2_0() { return cLeftParenthesisKeyword_1_0_2_0; }
 		
 		//arguments=KeyValueArguments?
 		public Assignment getArgumentsAssignment_1_0_2_1() { return cArgumentsAssignment_1_0_2_1; }
@@ -1743,21 +1744,20 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//KeyValueArguments
 		public RuleCall getArgumentsKeyValueArgumentsParserRuleCall_1_0_2_1_0() { return cArgumentsKeyValueArgumentsParserRuleCall_1_0_2_1_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_1_0_2_2() { return cARGS_ENDTerminalRuleCall_1_0_2_2; }
+		//')'
+		public Keyword getRightParenthesisKeyword_1_0_2_2() { return cRightParenthesisKeyword_1_0_2_2; }
 		
-		//MAP_OLDSKOOL_DEF ARGS_START OBJECT_OLDSKOOL_DEF ('=' | ':') objectName=OBJECT_IDENTIFIER (','
-		//arguments=KeyValueArguments)? ARGS_END
+		//'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ')'
 		public Group getGroup_1_1() { return cGroup_1_1; }
 		
-		//MAP_OLDSKOOL_DEF
-		public RuleCall getMAP_OLDSKOOL_DEFTerminalRuleCall_1_1_0() { return cMAP_OLDSKOOL_DEFTerminalRuleCall_1_1_0; }
+		//'map'
+		public Keyword getMapKeyword_1_1_0() { return cMapKeyword_1_1_0; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_1_1_1() { return cARGS_STARTTerminalRuleCall_1_1_1; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_1_1_1() { return cLeftParenthesisKeyword_1_1_1; }
 		
-		//OBJECT_OLDSKOOL_DEF
-		public RuleCall getOBJECT_OLDSKOOL_DEFTerminalRuleCall_1_1_2() { return cOBJECT_OLDSKOOL_DEFTerminalRuleCall_1_1_2; }
+		//'object'
+		public Keyword getObjectKeyword_1_1_2() { return cObjectKeyword_1_1_2; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1_1_3() { return cAlternatives_1_1_3; }
@@ -1786,8 +1786,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//KeyValueArguments
 		public RuleCall getArgumentsKeyValueArgumentsParserRuleCall_1_1_5_1_0() { return cArgumentsKeyValueArgumentsParserRuleCall_1_1_5_1_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_1_1_6() { return cARGS_ENDTerminalRuleCall_1_1_6; }
+		//')'
+		public Keyword getRightParenthesisKeyword_1_1_6() { return cRightParenthesisKeyword_1_1_6; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
@@ -1826,17 +1826,17 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Action cAdapterMethodAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cMethodAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cMethodMETHOD_IDENTIFIERTerminalRuleCall_1_0 = (RuleCall)cMethodAssignment_1.eContents().get(0);
-		private final RuleCall cARGS_STARTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cArgumentsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cArgumentsKeyValueArgumentsParserRuleCall_3_0 = (RuleCall)cArgumentsAssignment_3.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//AdapterMethod:
-		//	{AdapterMethod} method=METHOD_IDENTIFIER ARGS_START arguments=KeyValueArguments? ARGS_END ';';
+		//	{AdapterMethod} method=METHOD_IDENTIFIER '(' arguments=KeyValueArguments? ')' ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{AdapterMethod} method=METHOD_IDENTIFIER ARGS_START arguments=KeyValueArguments? ARGS_END ';'
+		//{AdapterMethod} method=METHOD_IDENTIFIER '(' arguments=KeyValueArguments? ')' ';'
 		public Group getGroup() { return cGroup; }
 		
 		//{AdapterMethod}
@@ -1848,8 +1848,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//METHOD_IDENTIFIER
 		public RuleCall getMethodMETHOD_IDENTIFIERTerminalRuleCall_1_0() { return cMethodMETHOD_IDENTIFIERTerminalRuleCall_1_0; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_2() { return cARGS_STARTTerminalRuleCall_2; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
 		//arguments=KeyValueArguments?
 		public Assignment getArgumentsAssignment_3() { return cArgumentsAssignment_3; }
@@ -1857,8 +1857,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//KeyValueArguments
 		public RuleCall getArgumentsKeyValueArgumentsParserRuleCall_3_0() { return cArgumentsKeyValueArgumentsParserRuleCall_3_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_4() { return cARGS_ENDTerminalRuleCall_4; }
+		//')'
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
@@ -1879,10 +1879,10 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cSemicolonKeyword_2_0_2 = (Keyword)cGroup_2_0.eContents().get(2);
 		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
 		private final Group cGroup_2_1_0 = (Group)cGroup_2_1.eContents().get(0);
-		private final RuleCall cARGS_STARTTerminalRuleCall_2_1_0_0 = (RuleCall)cGroup_2_1_0.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_1_0_0 = (Keyword)cGroup_2_1_0.eContents().get(0);
 		private final Assignment cArgumentsAssignment_2_1_0_1 = (Assignment)cGroup_2_1_0.eContents().get(1);
 		private final RuleCall cArgumentsKeyValueArgumentsParserRuleCall_2_1_0_1_0 = (RuleCall)cArgumentsAssignment_2_1_0_1.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_2_1_0_2 = (RuleCall)cGroup_2_1_0.eContents().get(2);
+		private final Keyword cRightParenthesisKeyword_2_1_0_2 = (Keyword)cGroup_2_1_0.eContents().get(2);
 		private final Keyword cLeftCurlyBracketKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
 		private final Assignment cMappedArrayAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
 		private final RuleCall cMappedArrayMappedArrayMessageParserRuleCall_2_1_2_0 = (RuleCall)cMappedArrayAssignment_2_1_2.eContents().get(0);
@@ -1892,13 +1892,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		
 		//SetterField:
 		//	{SetterField} field=MAPPABLE_IDENTIFIER (('=' | ':') expressionList=ConditionalExpressions ';'
-		//	| (ARGS_START arguments=KeyValueArguments ARGS_END)? '{' mappedArray=MappedArrayMessage '}' |
-		//	mappedField=MappedArrayField);
+		//	| ('(' arguments=KeyValueArguments ')')? '{' mappedArray=MappedArrayMessage '}' | mappedField=MappedArrayField);
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{SetterField} field=MAPPABLE_IDENTIFIER (('=' | ':') expressionList=ConditionalExpressions ';'
-		//| (ARGS_START arguments=KeyValueArguments ARGS_END)? '{' mappedArray=MappedArrayMessage '}' |
-		//mappedField=MappedArrayField)
+		//| ('(' arguments=KeyValueArguments ')')? '{' mappedArray=MappedArrayMessage '}' | mappedField=MappedArrayField)
 		public Group getGroup() { return cGroup; }
 		
 		//{SetterField}
@@ -1911,8 +1909,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		public RuleCall getFieldMAPPABLE_IDENTIFIERTerminalRuleCall_1_0() { return cFieldMAPPABLE_IDENTIFIERTerminalRuleCall_1_0; }
 		
 		//(('=' | ':') expressionList=ConditionalExpressions ';'
-		//| (ARGS_START arguments=KeyValueArguments ARGS_END)? '{' mappedArray=MappedArrayMessage '}' |
-		//mappedField=MappedArrayField)
+		//| ('(' arguments=KeyValueArguments ')')? '{' mappedArray=MappedArrayMessage '}' | mappedField=MappedArrayField)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
 		//('=' | ':') expressionList=ConditionalExpressions ';'
@@ -1936,14 +1933,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//';'
 		public Keyword getSemicolonKeyword_2_0_2() { return cSemicolonKeyword_2_0_2; }
 		
-		//(ARGS_START arguments=KeyValueArguments ARGS_END)? '{' mappedArray=MappedArrayMessage '}'
+		//('(' arguments=KeyValueArguments ')')? '{' mappedArray=MappedArrayMessage '}'
 		public Group getGroup_2_1() { return cGroup_2_1; }
 		
-		//(ARGS_START arguments=KeyValueArguments ARGS_END)?
+		//('(' arguments=KeyValueArguments ')')?
 		public Group getGroup_2_1_0() { return cGroup_2_1_0; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_2_1_0_0() { return cARGS_STARTTerminalRuleCall_2_1_0_0; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_2_1_0_0() { return cLeftParenthesisKeyword_2_1_0_0; }
 		
 		//arguments=KeyValueArguments
 		public Assignment getArgumentsAssignment_2_1_0_1() { return cArgumentsAssignment_2_1_0_1; }
@@ -1951,8 +1948,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//KeyValueArguments
 		public RuleCall getArgumentsKeyValueArgumentsParserRuleCall_2_1_0_1_0() { return cArgumentsKeyValueArgumentsParserRuleCall_2_1_0_1_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_2_1_0_2() { return cARGS_ENDTerminalRuleCall_2_1_0_2; }
+		//')'
+		public Keyword getRightParenthesisKeyword_2_1_0_2() { return cRightParenthesisKeyword_2_1_0_2; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2_1_1() { return cLeftCurlyBracketKeyword_2_1_1; }
@@ -1979,26 +1976,26 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Assignment cFieldAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cFieldMAPPABLE_IDENTIFIERTerminalRuleCall_1_0 = (RuleCall)cFieldAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final RuleCall cARGS_STARTTerminalRuleCall_2_0 = (RuleCall)cGroup_2.eContents().get(0);
-		private final RuleCall cFILTER_DEFTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cFilterKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final Alternatives cAlternatives_2_2 = (Alternatives)cGroup_2.eContents().get(2);
 		private final Keyword cEqualsSignKeyword_2_2_0 = (Keyword)cAlternatives_2_2.eContents().get(0);
 		private final Keyword cColonKeyword_2_2_1 = (Keyword)cAlternatives_2_2.eContents().get(1);
 		private final Assignment cFilterAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
 		private final RuleCall cFilterExpressionParserRuleCall_2_3_0 = (RuleCall)cFilterAssignment_2_3.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_2_4 = (RuleCall)cGroup_2.eContents().get(4);
+		private final Keyword cRightParenthesisKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cStatementsAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cStatementsInnerBodyParserRuleCall_4_0 = (RuleCall)cStatementsAssignment_4.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MappedArrayField:
-		//	{MappedArrayField} field=MAPPABLE_IDENTIFIER (ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END)? '{'
+		//	{MappedArrayField} field=MAPPABLE_IDENTIFIER ('(' 'filter' ('=' | ':') filter=Expression ')')? '{'
 		//	statements+=InnerBody* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{MappedArrayField} field=MAPPABLE_IDENTIFIER (ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END)? '{'
-		//statements+=InnerBody* '}'
+		//{MappedArrayField} field=MAPPABLE_IDENTIFIER ('(' 'filter' ('=' | ':') filter=Expression ')')? '{' statements+=InnerBody
+		//* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//{MappedArrayField}
@@ -2010,14 +2007,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//MAPPABLE_IDENTIFIER
 		public RuleCall getFieldMAPPABLE_IDENTIFIERTerminalRuleCall_1_0() { return cFieldMAPPABLE_IDENTIFIERTerminalRuleCall_1_0; }
 		
-		//(ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END)?
+		//('(' 'filter' ('=' | ':') filter=Expression ')')?
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_2_0() { return cARGS_STARTTerminalRuleCall_2_0; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 		
-		//FILTER_DEF
-		public RuleCall getFILTER_DEFTerminalRuleCall_2_1() { return cFILTER_DEFTerminalRuleCall_2_1; }
+		//'filter'
+		public Keyword getFilterKeyword_2_1() { return cFilterKeyword_2_1; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_2_2() { return cAlternatives_2_2; }
@@ -2034,8 +2031,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//Expression
 		public RuleCall getFilterExpressionParserRuleCall_2_3_0() { return cFilterExpressionParserRuleCall_2_3_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_2_4() { return cARGS_ENDTerminalRuleCall_2_4; }
+		//')'
+		public Keyword getRightParenthesisKeyword_2_4() { return cRightParenthesisKeyword_2_4; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
@@ -2056,26 +2053,26 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Assignment cMessageAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cMessageTML_LITERALTerminalRuleCall_1_0 = (RuleCall)cMessageAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final RuleCall cARGS_STARTTerminalRuleCall_2_0 = (RuleCall)cGroup_2.eContents().get(0);
-		private final RuleCall cFILTER_DEFTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cFilterKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final Alternatives cAlternatives_2_2 = (Alternatives)cGroup_2.eContents().get(2);
 		private final Keyword cEqualsSignKeyword_2_2_0 = (Keyword)cAlternatives_2_2.eContents().get(0);
 		private final Keyword cColonKeyword_2_2_1 = (Keyword)cAlternatives_2_2.eContents().get(1);
 		private final Assignment cFilterAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
 		private final RuleCall cFilterExpressionParserRuleCall_2_3_0 = (RuleCall)cFilterAssignment_2_3.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_2_4 = (RuleCall)cGroup_2.eContents().get(4);
+		private final Keyword cRightParenthesisKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cStatementsAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cStatementsInnerBodyParserRuleCall_4_0 = (RuleCall)cStatementsAssignment_4.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MappedArrayMessage:
-		//	{MappedArrayMessage} message=TML_LITERAL (ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END)? '{'
-		//	statements+=InnerBody* '}';
+		//	{MappedArrayMessage} message=TML_LITERAL ('(' 'filter' ('=' | ':') filter=Expression ')')? '{' statements+=InnerBody
+		//	* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{MappedArrayMessage} message=TML_LITERAL (ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END)? '{'
-		//statements+=InnerBody* '}'
+		//{MappedArrayMessage} message=TML_LITERAL ('(' 'filter' ('=' | ':') filter=Expression ')')? '{' statements+=InnerBody*
+		//'}'
 		public Group getGroup() { return cGroup; }
 		
 		//{MappedArrayMessage}
@@ -2087,14 +2084,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//TML_LITERAL
 		public RuleCall getMessageTML_LITERALTerminalRuleCall_1_0() { return cMessageTML_LITERALTerminalRuleCall_1_0; }
 		
-		//(ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END)?
+		//('(' 'filter' ('=' | ':') filter=Expression ')')?
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_2_0() { return cARGS_STARTTerminalRuleCall_2_0; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 		
-		//FILTER_DEF
-		public RuleCall getFILTER_DEFTerminalRuleCall_2_1() { return cFILTER_DEFTerminalRuleCall_2_1; }
+		//'filter'
+		public Keyword getFilterKeyword_2_1() { return cFilterKeyword_2_1; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_2_2() { return cAlternatives_2_2; }
@@ -2111,8 +2108,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//Expression
 		public RuleCall getFilterExpressionParserRuleCall_2_3_0() { return cFilterExpressionParserRuleCall_2_3_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_2_4() { return cARGS_ENDTerminalRuleCall_2_4; }
+		//')'
+		public Keyword getRightParenthesisKeyword_2_4() { return cRightParenthesisKeyword_2_4; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
@@ -2220,7 +2217,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Var");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cVarAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cVAR_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cVarKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cVarNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cVarNameIDENTIFIERTerminalRuleCall_2_0 = (RuleCall)cVarNameAssignment_2.eContents().get(0);
 		private final Assignment cArgumentsAssignment_3 = (Assignment)cGroup.eContents().get(3);
@@ -2255,13 +2252,13 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cRightCurlyBracketKeyword_4_4_2 = (Keyword)cGroup_4_4.eContents().get(2);
 		
 		//Var:
-		//	{Var} VAR_DEF varName=IDENTIFIER arguments=VarArguments? (('=' | ':') expressionList=ConditionalExpressions ';' |
-		//	'[' varArray=VarArray? ']' |
+		//	{Var} 'var' varName=IDENTIFIER arguments=VarArguments? (('=' | ':') expressionList=ConditionalExpressions ';' | '['
+		//	varArray=VarArray? ']' |
 		//	'{' varElements+=VarElement* '}'
 		//	| '{' mappedArrayField=MappedArrayField '}' | '{' mappedArrayMessage=MappedArrayMessage '}');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Var} VAR_DEF varName=IDENTIFIER arguments=VarArguments? (('=' | ':') expressionList=ConditionalExpressions ';' | '['
+		//{Var} 'var' varName=IDENTIFIER arguments=VarArguments? (('=' | ':') expressionList=ConditionalExpressions ';' | '['
 		//varArray=VarArray? ']' |
 		//'{' varElements+=VarElement* '}'
 		//| '{' mappedArrayField=MappedArrayField '}' | '{' mappedArrayMessage=MappedArrayMessage '}')
@@ -2270,8 +2267,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//{Var}
 		public Action getVarAction_0() { return cVarAction_0; }
 		
-		//VAR_DEF
-		public RuleCall getVAR_DEFTerminalRuleCall_1() { return cVAR_DEFTerminalRuleCall_1; }
+		//'var'
+		public Keyword getVarKeyword_1() { return cVarKeyword_1; }
 		
 		//varName=IDENTIFIER
 		public Assignment getVarNameAssignment_2() { return cVarNameAssignment_2; }
@@ -2488,27 +2485,27 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.VarArguments");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cVarArgumentsAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cARGS_STARTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cVarArgumentsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cVarArgumentsVarArgumentParserRuleCall_2_0 = (RuleCall)cVarArgumentsAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cVarArgumentsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cVarArgumentsVarArgumentParserRuleCall_3_1_0 = (RuleCall)cVarArgumentsAssignment_3_1.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//VarArguments:
-		//	{VarArguments} ARGS_START varArguments+=VarArgument (',' varArguments+=VarArgument)* ARGS_END;
+		//	{VarArguments} '(' varArguments+=VarArgument (',' varArguments+=VarArgument)* ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{VarArguments} ARGS_START varArguments+=VarArgument (',' varArguments+=VarArgument)* ARGS_END
+		//{VarArguments} '(' varArguments+=VarArgument (',' varArguments+=VarArgument)* ')'
 		public Group getGroup() { return cGroup; }
 		
 		//{VarArguments}
 		public Action getVarArgumentsAction_0() { return cVarArgumentsAction_0; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_1() { return cARGS_STARTTerminalRuleCall_1; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
 		//varArguments+=VarArgument
 		public Assignment getVarArgumentsAssignment_2() { return cVarArgumentsAssignment_2; }
@@ -2528,8 +2525,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//VarArgument
 		public RuleCall getVarArgumentsVarArgumentParserRuleCall_3_1_0() { return cVarArgumentsVarArgumentParserRuleCall_3_1_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_4() { return cARGS_ENDTerminalRuleCall_4; }
+		//')'
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 	public class VarArgumentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.VarArgument");
@@ -2566,7 +2563,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.VarType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cVarTypeAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cTYPE_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cTypeKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Keyword cEqualsSignKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
 		private final Keyword cColonKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
@@ -2576,17 +2573,17 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final RuleCall cTypePropertyTypeParserRuleCall_3_0_1 = (RuleCall)cTypeAlternatives_3_0.eContents().get(1);
 		
 		//VarType:
-		//	{VarType} TYPE_DEF ('=' | ':') type=(MessageType | PropertyType);
+		//	{VarType} 'type' ('=' | ':') type=(MessageType | PropertyType);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{VarType} TYPE_DEF ('=' | ':') type=(MessageType | PropertyType)
+		//{VarType} 'type' ('=' | ':') type=(MessageType | PropertyType)
 		public Group getGroup() { return cGroup; }
 		
 		//{VarType}
 		public Action getVarTypeAction_0() { return cVarTypeAction_0; }
 		
-		//TYPE_DEF
-		public RuleCall getTYPE_DEFTerminalRuleCall_1() { return cTYPE_DEFTerminalRuleCall_1; }
+		//'type'
+		public Keyword getTypeKeyword_1() { return cTypeKeyword_1; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
@@ -2613,7 +2610,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.VarMode");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cVarModeAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cMODE_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cModeKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Keyword cEqualsSignKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
 		private final Keyword cColonKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
@@ -2621,17 +2618,17 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final RuleCall cModeMessageModeParserRuleCall_3_0 = (RuleCall)cModeAssignment_3.eContents().get(0);
 		
 		//VarMode:
-		//	{VarMode} MODE_DEF ('=' | ':') mode=MessageMode;
+		//	{VarMode} 'mode' ('=' | ':') mode=MessageMode;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{VarMode} MODE_DEF ('=' | ':') mode=MessageMode
+		//{VarMode} 'mode' ('=' | ':') mode=MessageMode
 		public Group getGroup() { return cGroup; }
 		
 		//{VarMode}
 		public Action getVarModeAction_0() { return cVarModeAction_0; }
 		
-		//MODE_DEF
-		public RuleCall getMODE_DEFTerminalRuleCall_1() { return cMODE_DEFTerminalRuleCall_1; }
+		//'mode'
+		public Keyword getModeKeyword_1() { return cModeKeyword_1; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
@@ -2652,7 +2649,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Property");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cPropertyAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cPROPERTY_DEFTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cPropertyKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cPropertyNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cPropertyNameQUOTED_IDENTIFIERTerminalRuleCall_2_0 = (RuleCall)cPropertyNameAssignment_2.eContents().get(0);
 		private final Assignment cArgumentsAssignment_3 = (Assignment)cGroup.eContents().get(3);
@@ -2683,14 +2680,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cRightCurlyBracketKeyword_4_3_2 = (Keyword)cGroup_4_3.eContents().get(2);
 		
 		//Property:
-		//	{Property} PROPERTY_DEF propertyName=QUOTED_IDENTIFIER arguments=PropertyArguments? ((('=' | ':')
+		//	{Property} 'property' propertyName=QUOTED_IDENTIFIER arguments=PropertyArguments? ((('=' | ':')
 		//	expressionList=ConditionalExpressions)? ';'
 		//	| '[' selectionArray=SelectionArray ']'
 		//	| '{' arrayField=MappedArrayField '}'
 		//	| '{' arrayMessage=MappedArrayMessage '}');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Property} PROPERTY_DEF propertyName=QUOTED_IDENTIFIER arguments=PropertyArguments? ((('=' | ':')
+		//{Property} 'property' propertyName=QUOTED_IDENTIFIER arguments=PropertyArguments? ((('=' | ':')
 		//expressionList=ConditionalExpressions)? ';'
 		//| '[' selectionArray=SelectionArray ']'
 		//| '{' arrayField=MappedArrayField '}'
@@ -2700,8 +2697,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//{Property}
 		public Action getPropertyAction_0() { return cPropertyAction_0; }
 		
-		//PROPERTY_DEF
-		public RuleCall getPROPERTY_DEFTerminalRuleCall_1() { return cPROPERTY_DEFTerminalRuleCall_1; }
+		//'property'
+		public Keyword getPropertyKeyword_1() { return cPropertyKeyword_1; }
 		
 		//propertyName=QUOTED_IDENTIFIER
 		public Assignment getPropertyNameAssignment_2() { return cPropertyNameAssignment_2; }
@@ -2859,7 +2856,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	public class OptionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Option");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cOPTION_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cOptionKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cOptionAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cOptionOPTION_TYPEParserRuleCall_1_0 = (RuleCall)cOptionAssignment_1.eContents().get(0);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
@@ -2870,14 +2867,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Option:
-		//	OPTION_DEF option=OPTION_TYPE ('=' | ':') expressionList=ConditionalExpressions ';';
+		//	'option' option=OPTION_TYPE ('=' | ':') expressionList=ConditionalExpressions ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//OPTION_DEF option=OPTION_TYPE ('=' | ':') expressionList=ConditionalExpressions ';'
+		//'option' option=OPTION_TYPE ('=' | ':') expressionList=ConditionalExpressions ';'
 		public Group getGroup() { return cGroup; }
 		
-		//OPTION_DEF
-		public RuleCall getOPTION_DEFTerminalRuleCall_0() { return cOPTION_DEFTerminalRuleCall_0; }
+		//'option'
+		public Keyword getOptionKeyword_0() { return cOptionKeyword_0; }
 		
 		//option=OPTION_TYPE
 		public Assignment getOptionAssignment_1() { return cOptionAssignment_1; }
@@ -2907,27 +2904,27 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.PropertyArguments");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cPropertyArgumentsAction_0 = (Action)cGroup.eContents().get(0);
-		private final RuleCall cARGS_STARTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cArgumentsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cArgumentsPropertyArgumentParserRuleCall_2_0 = (RuleCall)cArgumentsAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cArgumentsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cArgumentsPropertyArgumentParserRuleCall_3_1_0 = (RuleCall)cArgumentsAssignment_3_1.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//PropertyArguments:
-		//	{PropertyArguments} ARGS_START arguments+=PropertyArgument (',' arguments+=PropertyArgument)* ARGS_END;
+		//	{PropertyArguments} '(' arguments+=PropertyArgument (',' arguments+=PropertyArgument)* ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{PropertyArguments} ARGS_START arguments+=PropertyArgument (',' arguments+=PropertyArgument)* ARGS_END
+		//{PropertyArguments} '(' arguments+=PropertyArgument (',' arguments+=PropertyArgument)* ')'
 		public Group getGroup() { return cGroup; }
 		
 		//{PropertyArguments}
 		public Action getPropertyArgumentsAction_0() { return cPropertyArgumentsAction_0; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_1() { return cARGS_STARTTerminalRuleCall_1; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
 		//arguments+=PropertyArgument
 		public Assignment getArgumentsAssignment_2() { return cArgumentsAssignment_2; }
@@ -2947,8 +2944,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//PropertyArgument
 		public RuleCall getArgumentsPropertyArgumentParserRuleCall_3_1_0() { return cArgumentsPropertyArgumentParserRuleCall_3_1_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_4() { return cARGS_ENDTerminalRuleCall_4; }
+		//')'
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 	public class PropertyArgumentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.PropertyArgument");
@@ -2988,7 +2985,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	public class LengthArgumentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.LengthArgument");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cLENGTH_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cLengthKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
@@ -2996,14 +2993,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final RuleCall cValueINTEGERTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//LengthArgument:
-		//	LENGTH_DEF ('=' | ':') value=INTEGER;
+		//	'length' ('=' | ':') value=INTEGER;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//LENGTH_DEF ('=' | ':') value=INTEGER
+		//'length' ('=' | ':') value=INTEGER
 		public Group getGroup() { return cGroup; }
 		
-		//LENGTH_DEF
-		public RuleCall getLENGTH_DEFTerminalRuleCall_0() { return cLENGTH_DEFTerminalRuleCall_0; }
+		//'length'
+		public Keyword getLengthKeyword_0() { return cLengthKeyword_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
@@ -3023,25 +3020,25 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	public class DirectionArgumentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.DirectionArgument");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cDIRECTION_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cDirectionKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final Alternatives cValueAlternatives_2_0 = (Alternatives)cValueAssignment_2.eContents().get(0);
-		private final RuleCall cValueIN_DEFTerminalRuleCall_2_0_0 = (RuleCall)cValueAlternatives_2_0.eContents().get(0);
-		private final RuleCall cValueOUT_DEFTerminalRuleCall_2_0_1 = (RuleCall)cValueAlternatives_2_0.eContents().get(1);
-		private final RuleCall cValueINOUT_DEFTerminalRuleCall_2_0_2 = (RuleCall)cValueAlternatives_2_0.eContents().get(2);
+		private final Keyword cValueInKeyword_2_0_0 = (Keyword)cValueAlternatives_2_0.eContents().get(0);
+		private final Keyword cValueOutKeyword_2_0_1 = (Keyword)cValueAlternatives_2_0.eContents().get(1);
+		private final Keyword cValueInoutKeyword_2_0_2 = (Keyword)cValueAlternatives_2_0.eContents().get(2);
 		
 		//DirectionArgument:
-		//	DIRECTION_DEF ('=' | ':') value=(IN_DEF | OUT_DEF | INOUT_DEF);
+		//	'direction' ('=' | ':') value=('in' | 'out' | 'inout');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//DIRECTION_DEF ('=' | ':') value=(IN_DEF | OUT_DEF | INOUT_DEF)
+		//'direction' ('=' | ':') value=('in' | 'out' | 'inout')
 		public Group getGroup() { return cGroup; }
 		
-		//DIRECTION_DEF
-		public RuleCall getDIRECTION_DEFTerminalRuleCall_0() { return cDIRECTION_DEFTerminalRuleCall_0; }
+		//'direction'
+		public Keyword getDirectionKeyword_0() { return cDirectionKeyword_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
@@ -3052,25 +3049,25 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//':'
 		public Keyword getColonKeyword_1_1() { return cColonKeyword_1_1; }
 		
-		//value=(IN_DEF | OUT_DEF | INOUT_DEF)
+		//value=('in' | 'out' | 'inout')
 		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 		
-		//(IN_DEF | OUT_DEF | INOUT_DEF)
+		//('in' | 'out' | 'inout')
 		public Alternatives getValueAlternatives_2_0() { return cValueAlternatives_2_0; }
 		
-		//IN_DEF
-		public RuleCall getValueIN_DEFTerminalRuleCall_2_0_0() { return cValueIN_DEFTerminalRuleCall_2_0_0; }
+		//'in'
+		public Keyword getValueInKeyword_2_0_0() { return cValueInKeyword_2_0_0; }
 		
-		//OUT_DEF
-		public RuleCall getValueOUT_DEFTerminalRuleCall_2_0_1() { return cValueOUT_DEFTerminalRuleCall_2_0_1; }
+		//'out'
+		public Keyword getValueOutKeyword_2_0_1() { return cValueOutKeyword_2_0_1; }
 		
-		//INOUT_DEF
-		public RuleCall getValueINOUT_DEFTerminalRuleCall_2_0_2() { return cValueINOUT_DEFTerminalRuleCall_2_0_2; }
+		//'inout'
+		public Keyword getValueInoutKeyword_2_0_2() { return cValueInoutKeyword_2_0_2; }
 	}
 	public class DescriptionArgumentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.DescriptionArgument");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cDESCRIPTION_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cDescriptionKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
@@ -3078,14 +3075,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final RuleCall cValueLiteralOrExpressionParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//DescriptionArgument:
-		//	DESCRIPTION_DEF ('=' | ':') value=LiteralOrExpression;
+		//	'description' ('=' | ':') value=LiteralOrExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//DESCRIPTION_DEF ('=' | ':') value=LiteralOrExpression
+		//'description' ('=' | ':') value=LiteralOrExpression
 		public Group getGroup() { return cGroup; }
 		
-		//DESCRIPTION_DEF
-		public RuleCall getDESCRIPTION_DEFTerminalRuleCall_0() { return cDESCRIPTION_DEFTerminalRuleCall_0; }
+		//'description'
+		public Keyword getDescriptionKeyword_0() { return cDescriptionKeyword_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
@@ -3105,24 +3102,24 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	public class CardinalityArgumentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.CardinalityArgument");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cCARDINALITY_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cCardinalityKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final Alternatives cValueAlternatives_2_0 = (Alternatives)cValueAssignment_2.eContents().get(0);
 		private final Keyword cValuePlusSignKeyword_2_0_0 = (Keyword)cValueAlternatives_2_0.eContents().get(0);
-		private final Keyword cValue1Keyword_2_0_1 = (Keyword)cValueAlternatives_2_0.eContents().get(1);
+		private final RuleCall cValueONETerminalRuleCall_2_0_1 = (RuleCall)cValueAlternatives_2_0.eContents().get(1);
 		
 		//CardinalityArgument:
-		//	CARDINALITY_DEF ('=' | ':') value=('+' | '1');
+		//	'cardinality' ('=' | ':') value=('+' | ONE);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//CARDINALITY_DEF ('=' | ':') value=('+' | '1')
+		//'cardinality' ('=' | ':') value=('+' | ONE)
 		public Group getGroup() { return cGroup; }
 		
-		//CARDINALITY_DEF
-		public RuleCall getCARDINALITY_DEFTerminalRuleCall_0() { return cCARDINALITY_DEFTerminalRuleCall_0; }
+		//'cardinality'
+		public Keyword getCardinalityKeyword_0() { return cCardinalityKeyword_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
@@ -3133,22 +3130,22 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//':'
 		public Keyword getColonKeyword_1_1() { return cColonKeyword_1_1; }
 		
-		//value=('+' | '1')
+		//value=('+' | ONE)
 		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 		
-		//('+' | '1')
+		//('+' | ONE)
 		public Alternatives getValueAlternatives_2_0() { return cValueAlternatives_2_0; }
 		
 		//'+'
 		public Keyword getValuePlusSignKeyword_2_0_0() { return cValuePlusSignKeyword_2_0_0; }
 		
-		//'1'
-		public Keyword getValue1Keyword_2_0_1() { return cValue1Keyword_2_0_1; }
+		//ONE
+		public RuleCall getValueONETerminalRuleCall_2_0_1() { return cValueONETerminalRuleCall_2_0_1; }
 	}
 	public class TypeArgumentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.TypeArgument");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cTYPE_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cTypeKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
@@ -3156,14 +3153,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final RuleCall cValuePropertyTypeParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//TypeArgument:
-		//	TYPE_DEF ('=' | ':') value=PropertyType;
+		//	'type' ('=' | ':') value=PropertyType;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//TYPE_DEF ('=' | ':') value=PropertyType
+		//'type' ('=' | ':') value=PropertyType
 		public Group getGroup() { return cGroup; }
 		
-		//TYPE_DEF
-		public RuleCall getTYPE_DEFTerminalRuleCall_0() { return cTYPE_DEFTerminalRuleCall_0; }
+		//'type'
+		public Keyword getTypeKeyword_0() { return cTypeKeyword_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
@@ -3183,7 +3180,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	public class SubTypeArgumentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.SubTypeArgument");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cSUBTYPE_DEFTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cSubtypeKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
@@ -3191,14 +3188,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final RuleCall cValueIDENTIFIERTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//SubTypeArgument:
-		//	SUBTYPE_DEF ('=' | ':') value=IDENTIFIER;
+		//	'subtype' ('=' | ':') value=IDENTIFIER;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//SUBTYPE_DEF ('=' | ':') value=IDENTIFIER
+		//'subtype' ('=' | ':') value=IDENTIFIER
 		public Group getGroup() { return cGroup; }
 		
-		//SUBTYPE_DEF
-		public RuleCall getSUBTYPE_DEFTerminalRuleCall_0() { return cSUBTYPE_DEFTerminalRuleCall_0; }
+		//'subtype'
+		public Keyword getSubtypeKeyword_0() { return cSubtypeKeyword_0; }
 		
 		//('=' | ':')
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
@@ -3637,14 +3634,16 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cExpressionLiteralAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final RuleCall cARGS_STARTTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Assignment cValueAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
 		private final RuleCall cValueExpressionParserRuleCall_0_2_0 = (RuleCall)cValueAssignment_0_2.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
+		private final Keyword cRightParenthesisKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cNumberLiteralAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cValueINTEGERTerminalRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
+		private final Alternatives cValueAlternatives_1_1_0 = (Alternatives)cValueAssignment_1_1.eContents().get(0);
+		private final RuleCall cValueINTEGERTerminalRuleCall_1_1_0_0 = (RuleCall)cValueAlternatives_1_1_0.eContents().get(0);
+		private final RuleCall cValueONETerminalRuleCall_1_1_0_1 = (RuleCall)cValueAlternatives_1_1_0.eContents().get(1);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Action cStringLiteralAction_2_0 = (Action)cGroup_2.eContents().get(0);
 		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
@@ -3679,26 +3678,26 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final RuleCall cValueNULL_DEFTerminalRuleCall_8_1_0 = (RuleCall)cValueAssignment_8_1.eContents().get(0);
 		
 		//Atomic Expression:
-		//	{ExpressionLiteral} ARGS_START value=Expression ARGS_END | {NumberLiteral} value=INTEGER | {StringLiteral}
+		//	{ExpressionLiteral} '(' value=Expression ')' | {NumberLiteral} value=(INTEGER | ONE) | {StringLiteral}
 		//	value=STRING_LITERAL | {BooleanLiteral} value=(TRUE | FALSE) | {FunctionCallLiteral} value=FunctionIdentifier |
 		//	{MappableIdentifierLiteral} value=MappableIdentifier | {TmlIdentifierLiteral} hasExists?='?'? value=TmlIdentifier |
 		//	{ForAllLiteral} value=ForAllIdentifier | {NullLiteral} value=NULL_DEF;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{ExpressionLiteral} ARGS_START value=Expression ARGS_END | {NumberLiteral} value=INTEGER | {StringLiteral}
+		//{ExpressionLiteral} '(' value=Expression ')' | {NumberLiteral} value=(INTEGER | ONE) | {StringLiteral}
 		//value=STRING_LITERAL | {BooleanLiteral} value=(TRUE | FALSE) | {FunctionCallLiteral} value=FunctionIdentifier |
 		//{MappableIdentifierLiteral} value=MappableIdentifier | {TmlIdentifierLiteral} hasExists?='?'? value=TmlIdentifier |
 		//{ForAllLiteral} value=ForAllIdentifier | {NullLiteral} value=NULL_DEF
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{ExpressionLiteral} ARGS_START value=Expression ARGS_END
+		//{ExpressionLiteral} '(' value=Expression ')'
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//{ExpressionLiteral}
 		public Action getExpressionLiteralAction_0_0() { return cExpressionLiteralAction_0_0; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_0_1() { return cARGS_STARTTerminalRuleCall_0_1; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_0_1() { return cLeftParenthesisKeyword_0_1; }
 		
 		//value=Expression
 		public Assignment getValueAssignment_0_2() { return cValueAssignment_0_2; }
@@ -3706,20 +3705,26 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//Expression
 		public RuleCall getValueExpressionParserRuleCall_0_2_0() { return cValueExpressionParserRuleCall_0_2_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_0_3() { return cARGS_ENDTerminalRuleCall_0_3; }
+		//')'
+		public Keyword getRightParenthesisKeyword_0_3() { return cRightParenthesisKeyword_0_3; }
 		
-		//{NumberLiteral} value=INTEGER
+		//{NumberLiteral} value=(INTEGER | ONE)
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{NumberLiteral}
 		public Action getNumberLiteralAction_1_0() { return cNumberLiteralAction_1_0; }
 		
-		//value=INTEGER
+		//value=(INTEGER | ONE)
 		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
 		
+		//(INTEGER | ONE)
+		public Alternatives getValueAlternatives_1_1_0() { return cValueAlternatives_1_1_0; }
+		
 		//INTEGER
-		public RuleCall getValueINTEGERTerminalRuleCall_1_1_0() { return cValueINTEGERTerminalRuleCall_1_1_0; }
+		public RuleCall getValueINTEGERTerminalRuleCall_1_1_0_0() { return cValueINTEGERTerminalRuleCall_1_1_0_0; }
+		
+		//ONE
+		public RuleCall getValueONETerminalRuleCall_1_1_0_1() { return cValueONETerminalRuleCall_1_1_0_1; }
 		
 		//{StringLiteral} value=STRING_LITERAL
 		public Group getGroup_2() { return cGroup_2; }
@@ -3825,7 +3830,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Alternatives cOpAlternatives_1_0 = (Alternatives)cOpAssignment_1.eContents().get(0);
 		private final RuleCall cOpFORALLTerminalRuleCall_1_0_0 = (RuleCall)cOpAlternatives_1_0.eContents().get(0);
 		private final RuleCall cOpEXISTSTerminalRuleCall_1_0_1 = (RuleCall)cOpAlternatives_1_0.eContents().get(1);
-		private final RuleCall cARGS_STARTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cGraveAccentKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cExpressionAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cExpressionExpressionParserRuleCall_4_0 = (RuleCall)cExpressionAssignment_4.eContents().get(0);
@@ -3833,15 +3838,13 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cCommaKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Assignment cMessagedefinitionAssignment_7 = (Assignment)cGroup.eContents().get(7);
 		private final RuleCall cMessagedefinitionSTRING_LITERALTerminalRuleCall_7_0 = (RuleCall)cMessagedefinitionAssignment_7.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_8 = (RuleCall)cGroup.eContents().get(8);
+		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//ForAllIdentifier:
-		//	{ForAllIdentifier} op=(FORALL | EXISTS) ARGS_START "`" expression=Expression "`" ','
-		//	messagedefinition=STRING_LITERAL ARGS_END;
+		//	{ForAllIdentifier} op=(FORALL | EXISTS) '(' "`" expression=Expression "`" ',' messagedefinition=STRING_LITERAL ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{ForAllIdentifier} op=(FORALL | EXISTS) ARGS_START "`" expression=Expression "`" ',' messagedefinition=STRING_LITERAL
-		//ARGS_END
+		//{ForAllIdentifier} op=(FORALL | EXISTS) '(' "`" expression=Expression "`" ',' messagedefinition=STRING_LITERAL ')'
 		public Group getGroup() { return cGroup; }
 		
 		//{ForAllIdentifier}
@@ -3859,8 +3862,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//EXISTS
 		public RuleCall getOpEXISTSTerminalRuleCall_1_0_1() { return cOpEXISTSTerminalRuleCall_1_0_1; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_2() { return cARGS_STARTTerminalRuleCall_2; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
 		//"`"
 		public Keyword getGraveAccentKeyword_3() { return cGraveAccentKeyword_3; }
@@ -3883,8 +3886,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//STRING_LITERAL
 		public RuleCall getMessagedefinitionSTRING_LITERALTerminalRuleCall_7_0() { return cMessagedefinitionSTRING_LITERALTerminalRuleCall_7_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_8() { return cARGS_ENDTerminalRuleCall_8; }
+		//')'
+		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
 	}
 	public class FunctionIdentifierElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.FunctionIdentifier");
@@ -3893,7 +3896,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Assignment cFuncAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cFuncIDENTIFIERTerminalRuleCall_1_0 = (RuleCall)cFuncAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final RuleCall cARGS_STARTTerminalRuleCall_2_0 = (RuleCall)cGroup_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Group cGroup_2_1 = (Group)cGroup_2.eContents().get(1);
 		private final Assignment cArgsAssignment_2_1_0 = (Assignment)cGroup_2_1.eContents().get(0);
 		private final RuleCall cArgsExpressionParserRuleCall_2_1_0_0 = (RuleCall)cArgsAssignment_2_1_0.eContents().get(0);
@@ -3901,13 +3904,13 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cCommaKeyword_2_1_1_0 = (Keyword)cGroup_2_1_1.eContents().get(0);
 		private final Assignment cArgsAssignment_2_1_1_1 = (Assignment)cGroup_2_1_1.eContents().get(1);
 		private final RuleCall cArgsExpressionParserRuleCall_2_1_1_1_0 = (RuleCall)cArgsAssignment_2_1_1_1.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
+		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		
 		//FunctionIdentifier:
-		//	{FunctionIdentifier} func=IDENTIFIER (ARGS_START (args+=Expression (',' args+=Expression)*)? ARGS_END);
+		//	{FunctionIdentifier} func=IDENTIFIER ('(' (args+=Expression (',' args+=Expression)*)? ')');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{FunctionIdentifier} func=IDENTIFIER (ARGS_START (args+=Expression (',' args+=Expression)*)? ARGS_END)
+		//{FunctionIdentifier} func=IDENTIFIER ('(' (args+=Expression (',' args+=Expression)*)? ')')
 		public Group getGroup() { return cGroup; }
 		
 		//{FunctionIdentifier}
@@ -3919,11 +3922,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//IDENTIFIER
 		public RuleCall getFuncIDENTIFIERTerminalRuleCall_1_0() { return cFuncIDENTIFIERTerminalRuleCall_1_0; }
 		
-		//(ARGS_START (args+=Expression (',' args+=Expression)*)? ARGS_END)
+		//('(' (args+=Expression (',' args+=Expression)*)? ')')
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_2_0() { return cARGS_STARTTerminalRuleCall_2_0; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 		
 		//(args+=Expression (',' args+=Expression)*)?
 		public Group getGroup_2_1() { return cGroup_2_1; }
@@ -3946,8 +3949,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//Expression
 		public RuleCall getArgsExpressionParserRuleCall_2_1_1_1_0() { return cArgsExpressionParserRuleCall_2_1_1_1_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_2_2() { return cARGS_ENDTerminalRuleCall_2_2; }
+		//')'
+		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
 	}
 	public class MappableIdentifierElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.MappableIdentifier");
@@ -3956,7 +3959,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Assignment cFieldAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cFieldMAPPABLE_IDENTIFIERTerminalRuleCall_1_0 = (RuleCall)cFieldAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final RuleCall cARGS_STARTTerminalRuleCall_2_0 = (RuleCall)cGroup_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Group cGroup_2_1 = (Group)cGroup_2.eContents().get(1);
 		private final Assignment cArgsAssignment_2_1_0 = (Assignment)cGroup_2_1.eContents().get(0);
 		private final RuleCall cArgsExpressionParserRuleCall_2_1_0_0 = (RuleCall)cArgsAssignment_2_1_0.eContents().get(0);
@@ -3964,13 +3967,13 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cCommaKeyword_2_1_1_0 = (Keyword)cGroup_2_1_1.eContents().get(0);
 		private final Assignment cArgsAssignment_2_1_1_1 = (Assignment)cGroup_2_1_1.eContents().get(1);
 		private final RuleCall cArgsExpressionParserRuleCall_2_1_1_1_0 = (RuleCall)cArgsAssignment_2_1_1_1.eContents().get(0);
-		private final RuleCall cARGS_ENDTerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
+		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		
 		//MappableIdentifier:
-		//	{MappableIdentifier} field=MAPPABLE_IDENTIFIER (ARGS_START (args+=Expression (',' args+=Expression)*)? ARGS_END)?;
+		//	{MappableIdentifier} field=MAPPABLE_IDENTIFIER ('(' (args+=Expression (',' args+=Expression)*)? ')')?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{MappableIdentifier} field=MAPPABLE_IDENTIFIER (ARGS_START (args+=Expression (',' args+=Expression)*)? ARGS_END)?
+		//{MappableIdentifier} field=MAPPABLE_IDENTIFIER ('(' (args+=Expression (',' args+=Expression)*)? ')')?
 		public Group getGroup() { return cGroup; }
 		
 		//{MappableIdentifier}
@@ -3982,11 +3985,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//MAPPABLE_IDENTIFIER
 		public RuleCall getFieldMAPPABLE_IDENTIFIERTerminalRuleCall_1_0() { return cFieldMAPPABLE_IDENTIFIERTerminalRuleCall_1_0; }
 		
-		//(ARGS_START (args+=Expression (',' args+=Expression)*)? ARGS_END)?
+		//('(' (args+=Expression (',' args+=Expression)*)? ')')?
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//ARGS_START
-		public RuleCall getARGS_STARTTerminalRuleCall_2_0() { return cARGS_STARTTerminalRuleCall_2_0; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 		
 		//(args+=Expression (',' args+=Expression)*)?
 		public Group getGroup_2_1() { return cGroup_2_1; }
@@ -4009,8 +4012,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//Expression
 		public RuleCall getArgsExpressionParserRuleCall_2_1_1_1_0() { return cArgsExpressionParserRuleCall_2_1_1_1_0; }
 		
-		//ARGS_END
-		public RuleCall getARGS_ENDTerminalRuleCall_2_2() { return cARGS_ENDTerminalRuleCall_2_2; }
+		//')'
+		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
 	}
 	public class TmlIdentifierElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.TmlIdentifier");
@@ -4301,7 +4304,6 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	private final SKeyElements pSKey;
 	private final STimeoutElements pSTimeout;
 	private final SBreakOnNoLockElements pSBreakOnNoLock;
-	private final SContextTypeElements pSContextType;
 	private final BreakElements pBreak;
 	private final BreakParameterElements pBreakParameter;
 	private final BreakParametersElements pBreakParameters;
@@ -4377,53 +4379,18 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	private final TerminalRule tTRUE;
 	private final TerminalRule tFALSE;
 	private final TerminalRule tMAPPABLE_ID;
-	private final TerminalRule tARGS_START;
-	private final TerminalRule tARGS_END;
 	private final TerminalRule tNULL_DEF;
-	private final TerminalRule tPRINT_DEF;
-	private final TerminalRule tLOG_DEF;
-	private final TerminalRule tFINALLY_DEF;
-	private final TerminalRule tDEFINE_DEF;
-	private final TerminalRule tFILTER_DEF;
-	private final TerminalRule tSYNCHRONIZED_DEF;
-	private final TerminalRule tLOOP_DEF;
-	private final TerminalRule tCODE_DEF;
-	private final TerminalRule tVALIDATIONS_DEF;
-	private final TerminalRule tCHECK_DEF;
-	private final TerminalRule tINCLUDE_DEF;
-	private final TerminalRule tINOUT_DEF;
-	private final TerminalRule tIN_DEF;
-	private final TerminalRule tOUT_DEF;
-	private final TerminalRule tDESCRIPTION_DEF;
-	private final TerminalRule tTYPE_DEF;
-	private final TerminalRule tSUBTYPE_DEF;
-	private final TerminalRule tMODE_DEF;
-	private final TerminalRule tDIRECTION_DEF;
-	private final TerminalRule tLENGTH_DEF;
-	private final TerminalRule tCARDINALITY_DEF;
-	private final TerminalRule tPROPERTY_DEF;
-	private final TerminalRule tVAR_DEF;
-	private final TerminalRule tOPTION_DEF;
-	private final TerminalRule tMAP_OLDSKOOL_DEF;
-	private final TerminalRule tOBJECT_OLDSKOOL_DEF;
-	private final TerminalRule tBREAK_DEF;
-	private final TerminalRule tERROR_DEF;
-	private final TerminalRule tCONTEXT_DEF;
-	private final TerminalRule tKEY_DEF;
-	private final TerminalRule tTIMEOUT_DEF;
-	private final TerminalRule tBREAKONNOLOCK_DEF;
 	private final TerminalRule tOBJECT_IDENTIFIER;
 	private final TerminalRule tQUOTED_IDENTIFIER;
 	private final TerminalRule tSTRING_CONSTANT;
 	private final TerminalRule tTML_LITERAL;
+	private final TerminalRule tONE;
 	private final TerminalRule tIDENTIFIER;
 	private final TerminalRule tINTEGER;
 	private final TerminalRule tLETTER;
-	private final TerminalRule tDIGIT;
 	private final TerminalRule tML_COMMENT;
 	private final TerminalRule tSL_COMMENT;
 	private final TerminalRule tWS;
-	private final TerminalRule tCHARACTER;
 	
 	private final Grammar grammar;
 
@@ -4442,7 +4409,6 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		this.pSKey = new SKeyElements();
 		this.pSTimeout = new STimeoutElements();
 		this.pSBreakOnNoLock = new SBreakOnNoLockElements();
-		this.pSContextType = new SContextTypeElements();
 		this.pBreak = new BreakElements();
 		this.pBreakParameter = new BreakParameterElements();
 		this.pBreakParameters = new BreakParametersElements();
@@ -4518,53 +4484,18 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		this.tTRUE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.TRUE");
 		this.tFALSE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.FALSE");
 		this.tMAPPABLE_ID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.MAPPABLE_ID");
-		this.tARGS_START = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.ARGS_START");
-		this.tARGS_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.ARGS_END");
 		this.tNULL_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.NULL_DEF");
-		this.tPRINT_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.PRINT_DEF");
-		this.tLOG_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.LOG_DEF");
-		this.tFINALLY_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.FINALLY_DEF");
-		this.tDEFINE_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.DEFINE_DEF");
-		this.tFILTER_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.FILTER_DEF");
-		this.tSYNCHRONIZED_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.SYNCHRONIZED_DEF");
-		this.tLOOP_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.LOOP_DEF");
-		this.tCODE_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.CODE_DEF");
-		this.tVALIDATIONS_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.VALIDATIONS_DEF");
-		this.tCHECK_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.CHECK_DEF");
-		this.tINCLUDE_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.INCLUDE_DEF");
-		this.tINOUT_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.INOUT_DEF");
-		this.tIN_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.IN_DEF");
-		this.tOUT_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.OUT_DEF");
-		this.tDESCRIPTION_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.DESCRIPTION_DEF");
-		this.tTYPE_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.TYPE_DEF");
-		this.tSUBTYPE_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.SUBTYPE_DEF");
-		this.tMODE_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.MODE_DEF");
-		this.tDIRECTION_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.DIRECTION_DEF");
-		this.tLENGTH_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.LENGTH_DEF");
-		this.tCARDINALITY_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.CARDINALITY_DEF");
-		this.tPROPERTY_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.PROPERTY_DEF");
-		this.tVAR_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.VAR_DEF");
-		this.tOPTION_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.OPTION_DEF");
-		this.tMAP_OLDSKOOL_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.MAP_OLDSKOOL_DEF");
-		this.tOBJECT_OLDSKOOL_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.OBJECT_OLDSKOOL_DEF");
-		this.tBREAK_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.BREAK_DEF");
-		this.tERROR_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.ERROR_DEF");
-		this.tCONTEXT_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.CONTEXT_DEF");
-		this.tKEY_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.KEY_DEF");
-		this.tTIMEOUT_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.TIMEOUT_DEF");
-		this.tBREAKONNOLOCK_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.BREAKONNOLOCK_DEF");
 		this.tOBJECT_IDENTIFIER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.OBJECT_IDENTIFIER");
 		this.tQUOTED_IDENTIFIER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.QUOTED_IDENTIFIER");
 		this.tSTRING_CONSTANT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.STRING_CONSTANT");
 		this.tTML_LITERAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.TML_LITERAL");
+		this.tONE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.ONE");
 		this.tIDENTIFIER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.IDENTIFIER");
 		this.tINTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.INTEGER");
 		this.tLETTER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.LETTER");
-		this.tDIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.DIGIT");
 		this.tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.ML_COMMENT");
 		this.tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.SL_COMMENT");
 		this.tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.WS");
-		this.tCHARACTER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.CHARACTER");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -4654,7 +4585,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	// * }
 	// */
 	//Synchronized:
-	//	SYNCHRONIZED_DEF ARGS_START arguments=SynchronizedArguments ARGS_END '{' statements+=TopLevelStatement* '}';
+	//	'synchronized' '(' arguments=SynchronizedArguments ')' '{' statements+=TopLevelStatement* '}';
 	public SynchronizedElements getSynchronizedAccess() {
 		return pSynchronized;
 	}
@@ -4684,7 +4615,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//SContext:
-	//	CONTEXT_DEF ('=' | ':') SContextType;
+	//	'context' ('=' | ':') ('user' | 'service');
 	public SContextElements getSContextAccess() {
 		return pSContext;
 	}
@@ -4694,7 +4625,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//SKey:
-	//	KEY_DEF LiteralOrExpression;
+	//	'key' ('=' | ':') LiteralOrExpression;
 	public SKeyElements getSKeyAccess() {
 		return pSKey;
 	}
@@ -4704,7 +4635,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//STimeout:
-	//	TIMEOUT_DEF ('=' | ':') Expression;
+	//	'timeout' ('=' | ':') Expression;
 	public STimeoutElements getSTimeoutAccess() {
 		return pSTimeout;
 	}
@@ -4714,7 +4645,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//SBreakOnNoLock:
-	//	BREAKONNOLOCK_DEF ('=' | ':') Expression;
+	//	'breakOnNoLock' ('=' | ':') Expression;
 	public SBreakOnNoLockElements getSBreakOnNoLockAccess() {
 		return pSBreakOnNoLock;
 	}
@@ -4723,21 +4654,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		return getSBreakOnNoLockAccess().getRule();
 	}
 	
-	//SContextType:
-	//	"user" | "service";
-	public SContextTypeElements getSContextTypeAccess() {
-		return pSContextType;
-	}
-	
-	public ParserRule getSContextTypeRule() {
-		return getSContextTypeAccess().getRule();
-	}
-	
 	///*
 	// * break([code=VALUE,description=VALUE,error=VALUE])
 	// */
 	//Break:
-	//	{Break} BREAK_DEF (ARGS_START parameters=BreakParameters? ARGS_END)? ';';
+	//	{Break} 'break' ('(' parameters=BreakParameters? ')')? ';';
 	public BreakElements getBreakAccess() {
 		return pBreak;
 	}
@@ -4747,8 +4668,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//BreakParameter:
-	//	CODE_DEF ('=' | ':') code=LiteralOrExpression | DESCRIPTION_DEF ('=' | ':') description=LiteralOrExpression |
-	//	ERROR_DEF ('=' | ':') LiteralOrExpression;
+	//	'code' ('=' | ':') code=LiteralOrExpression | 'description' ('=' | ':') description=LiteralOrExpression | 'error' (
+	//	'=' | ':') LiteralOrExpression;
 	public BreakParameterElements getBreakParameterAccess() {
 		return pBreakParameter;
 	}
@@ -4768,7 +4689,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Validations:
-	//	{Validations} VALIDATIONS_DEF '{' checks+=Check* '}';
+	//	{Validations} 'validations' '{' checks+=Check* '}';
 	public ValidationsElements getValidationsAccess() {
 		return pValidations;
 	}
@@ -4778,7 +4699,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Define:
-	//	{Define} DEFINE_DEF defineKey=QUOTED_IDENTIFIER ('=' | ':') expression=Expression ';';
+	//	{Define} 'define' defineKey=QUOTED_IDENTIFIER ('=' | ':') expression=Expression ';';
 	public DefineElements getDefineAccess() {
 		return pDefine;
 	}
@@ -4788,8 +4709,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Check:
-	//	{Check} ('if' condition=Expression 'then')? CHECK_DEF ARGS_START checkAttributes+=CheckAttribute (','
-	//	checkAttributes+=CheckAttribute)? ARGS_END ('=' | ':') expression=Expression ';';
+	//	{Check} ('if' condition=Expression 'then')? 'check' '(' checkAttributes+=CheckAttribute (','
+	//	checkAttributes+=CheckAttribute)? ')' ('=' | ':') expression=Expression ';';
 	public CheckElements getCheckAccess() {
 		return pCheck;
 	}
@@ -4799,8 +4720,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//CheckAttribute:
-	//	{CheckAttribute} (CODE_DEF ('=' | ':') value=LiteralOrExpression) | DESCRIPTION_DEF ('=' | ':')
-	//	value=LiteralOrExpression;
+	//	{CheckAttribute} ('code' ('=' | ':') value=LiteralOrExpression) | 'description' ('=' | ':') value=LiteralOrExpression
+	//;
 	public CheckAttributeElements getCheckAttributeAccess() {
 		return pCheckAttribute;
 	}
@@ -4820,7 +4741,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Print:
-	//	{Print} PRINT_DEF ARGS_START expression=Expression ARGS_END ';';
+	//	{Print} 'print' '(' expression=Expression ')' ';';
 	public PrintElements getPrintAccess() {
 		return pPrint;
 	}
@@ -4830,7 +4751,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Log:
-	//	{Log} LOG_DEF ARGS_START expression=Expression ARGS_END ';';
+	//	{Log} 'log' '(' expression=Expression ')' ';';
 	public LogElements getLogAccess() {
 		return pLog;
 	}
@@ -4840,7 +4761,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Finally:
-	//	{Finally} FINALLY_DEF '{' finallyStatements=TopLevelStatements '}';
+	//	{Finally} 'finally' '{' finallyStatements=TopLevelStatements '}';
 	public FinallyElements getFinallyAccess() {
 		return pFinally;
 	}
@@ -4870,8 +4791,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Loop:
-	//	{Loop} LOOP_DEF (mappable=MappableIdentifier | tml=TmlIdentifier) (ARGS_START FILTER_DEF ('=' | ':')
-	//	filter=Expression ARGS_END)? '{' statements+=InnerBody* '}';
+	//	{Loop} 'loop' (mappable=MappableIdentifier | tml=TmlIdentifier) ('(' 'filter' ('=' | ':') filter=Expression ')')?
+	//	'{' statements+=InnerBody* '}';
 	public LoopElements getLoopAccess() {
 		return pLoop;
 	}
@@ -4881,7 +4802,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Include:
-	//	{Include} INCLUDE_DEF scriptName=QUOTED_IDENTIFIER ';';
+	//	{Include} 'include' scriptName=QUOTED_IDENTIFIER ';';
 	public IncludeElements getIncludeAccess() {
 		return pInclude;
 	}
@@ -4901,8 +4822,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Message:
-	//	{Message} 'message' messageName=QUOTED_IDENTIFIER (ARGS_START arguments=MessageArguments ARGS_END)? ('{'
-	//	(statements+=InnerBody* | arrayField=MappedArrayField | arrayMessage=MappedArrayMessage) '}' | ';'
+	//	{Message} 'message' messageName=QUOTED_IDENTIFIER ('(' arguments=MessageArguments ')')? ('{' (statements+=InnerBody*
+	//	| arrayField=MappedArrayField | arrayMessage=MappedArrayMessage) '}' | ';'
 	//	| '[' messageArray=MessageArray ']');
 	public MessageElements getMessageAccess() {
 		return pMessage;
@@ -4933,7 +4854,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//MessageArgument:
-	//	TYPE_DEF ('=' | ':') MessageType | MODE_DEF ('=' | ':') MessageMode;
+	//	'type' ('=' | ':') MessageType | 'mode' ('=' | ':') MessageMode;
 	public MessageArgumentElements getMessageArgumentAccess() {
 		return pMessageArgument;
 	}
@@ -4953,9 +4874,9 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Map:
-	//	{Map} ('map.' adapterName=IDENTIFIER (ARGS_START arguments=KeyValueArguments? ARGS_END)? | MAP_OLDSKOOL_DEF
-	//	ARGS_START OBJECT_OLDSKOOL_DEF ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ARGS_END)
-	//	'{' statements+=InnerBody* '}';
+	//	{Map} ('map.' adapterName=IDENTIFIER ('(' arguments=KeyValueArguments? ')')? |
+	//	'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ')') '{'
+	//	statements+=InnerBody* '}';
 	public MapElements getMapAccess() {
 		return pMap;
 	}
@@ -4975,7 +4896,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//AdapterMethod:
-	//	{AdapterMethod} method=METHOD_IDENTIFIER ARGS_START arguments=KeyValueArguments? ARGS_END ';';
+	//	{AdapterMethod} method=METHOD_IDENTIFIER '(' arguments=KeyValueArguments? ')' ';';
 	public AdapterMethodElements getAdapterMethodAccess() {
 		return pAdapterMethod;
 	}
@@ -4986,8 +4907,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	
 	//SetterField:
 	//	{SetterField} field=MAPPABLE_IDENTIFIER (('=' | ':') expressionList=ConditionalExpressions ';'
-	//	| (ARGS_START arguments=KeyValueArguments ARGS_END)? '{' mappedArray=MappedArrayMessage '}' |
-	//	mappedField=MappedArrayField);
+	//	| ('(' arguments=KeyValueArguments ')')? '{' mappedArray=MappedArrayMessage '}' | mappedField=MappedArrayField);
 	public SetterFieldElements getSetterFieldAccess() {
 		return pSetterField;
 	}
@@ -4997,7 +4917,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//MappedArrayField:
-	//	{MappedArrayField} field=MAPPABLE_IDENTIFIER (ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END)? '{'
+	//	{MappedArrayField} field=MAPPABLE_IDENTIFIER ('(' 'filter' ('=' | ':') filter=Expression ')')? '{'
 	//	statements+=InnerBody* '}';
 	public MappedArrayFieldElements getMappedArrayFieldAccess() {
 		return pMappedArrayField;
@@ -5008,8 +4928,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//MappedArrayMessage:
-	//	{MappedArrayMessage} message=TML_LITERAL (ARGS_START FILTER_DEF ('=' | ':') filter=Expression ARGS_END)? '{'
-	//	statements+=InnerBody* '}';
+	//	{MappedArrayMessage} message=TML_LITERAL ('(' 'filter' ('=' | ':') filter=Expression ')')? '{' statements+=InnerBody
+	//	* '}';
 	public MappedArrayMessageElements getMappedArrayMessageAccess() {
 		return pMappedArrayMessage;
 	}
@@ -5039,8 +4959,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Var:
-	//	{Var} VAR_DEF varName=IDENTIFIER arguments=VarArguments? (('=' | ':') expressionList=ConditionalExpressions ';' |
-	//	'[' varArray=VarArray? ']' |
+	//	{Var} 'var' varName=IDENTIFIER arguments=VarArguments? (('=' | ':') expressionList=ConditionalExpressions ';' | '['
+	//	varArray=VarArray? ']' |
 	//	'{' varElements+=VarElement* '}'
 	//	| '{' mappedArrayField=MappedArrayField '}' | '{' mappedArrayMessage=MappedArrayMessage '}');
 	public VarElements getVarAccess() {
@@ -5082,7 +5002,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//VarArguments:
-	//	{VarArguments} ARGS_START varArguments+=VarArgument (',' varArguments+=VarArgument)* ARGS_END;
+	//	{VarArguments} '(' varArguments+=VarArgument (',' varArguments+=VarArgument)* ')';
 	public VarArgumentsElements getVarArgumentsAccess() {
 		return pVarArguments;
 	}
@@ -5102,7 +5022,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//VarType:
-	//	{VarType} TYPE_DEF ('=' | ':') type=(MessageType | PropertyType);
+	//	{VarType} 'type' ('=' | ':') type=(MessageType | PropertyType);
 	public VarTypeElements getVarTypeAccess() {
 		return pVarType;
 	}
@@ -5112,7 +5032,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//VarMode:
-	//	{VarMode} MODE_DEF ('=' | ':') mode=MessageMode;
+	//	{VarMode} 'mode' ('=' | ':') mode=MessageMode;
 	public VarModeElements getVarModeAccess() {
 		return pVarMode;
 	}
@@ -5122,7 +5042,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Property:
-	//	{Property} PROPERTY_DEF propertyName=QUOTED_IDENTIFIER arguments=PropertyArguments? ((('=' | ':')
+	//	{Property} 'property' propertyName=QUOTED_IDENTIFIER arguments=PropertyArguments? ((('=' | ':')
 	//	expressionList=ConditionalExpressions)? ';'
 	//	| '[' selectionArray=SelectionArray ']'
 	//	| '{' arrayField=MappedArrayField '}'
@@ -5156,7 +5076,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Option:
-	//	OPTION_DEF option=OPTION_TYPE ('=' | ':') expressionList=ConditionalExpressions ';';
+	//	'option' option=OPTION_TYPE ('=' | ':') expressionList=ConditionalExpressions ';';
 	public OptionElements getOptionAccess() {
 		return pOption;
 	}
@@ -5166,7 +5086,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//PropertyArguments:
-	//	{PropertyArguments} ARGS_START arguments+=PropertyArgument (',' arguments+=PropertyArgument)* ARGS_END;
+	//	{PropertyArguments} '(' arguments+=PropertyArgument (',' arguments+=PropertyArgument)* ')';
 	public PropertyArgumentsElements getPropertyArgumentsAccess() {
 		return pPropertyArguments;
 	}
@@ -5186,7 +5106,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//LengthArgument:
-	//	LENGTH_DEF ('=' | ':') value=INTEGER;
+	//	'length' ('=' | ':') value=INTEGER;
 	public LengthArgumentElements getLengthArgumentAccess() {
 		return pLengthArgument;
 	}
@@ -5196,7 +5116,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//DirectionArgument:
-	//	DIRECTION_DEF ('=' | ':') value=(IN_DEF | OUT_DEF | INOUT_DEF);
+	//	'direction' ('=' | ':') value=('in' | 'out' | 'inout');
 	public DirectionArgumentElements getDirectionArgumentAccess() {
 		return pDirectionArgument;
 	}
@@ -5206,7 +5126,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//DescriptionArgument:
-	//	DESCRIPTION_DEF ('=' | ':') value=LiteralOrExpression;
+	//	'description' ('=' | ':') value=LiteralOrExpression;
 	public DescriptionArgumentElements getDescriptionArgumentAccess() {
 		return pDescriptionArgument;
 	}
@@ -5216,7 +5136,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//CardinalityArgument:
-	//	CARDINALITY_DEF ('=' | ':') value=('+' | '1');
+	//	'cardinality' ('=' | ':') value=('+' | ONE);
 	public CardinalityArgumentElements getCardinalityArgumentAccess() {
 		return pCardinalityArgument;
 	}
@@ -5226,7 +5146,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//TypeArgument:
-	//	TYPE_DEF ('=' | ':') value=PropertyType;
+	//	'type' ('=' | ':') value=PropertyType;
 	public TypeArgumentElements getTypeArgumentAccess() {
 		return pTypeArgument;
 	}
@@ -5236,7 +5156,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//SubTypeArgument:
-	//	SUBTYPE_DEF ('=' | ':') value=IDENTIFIER;
+	//	'subtype' ('=' | ':') value=IDENTIFIER;
 	public SubTypeArgumentElements getSubTypeArgumentAccess() {
 		return pSubTypeArgument;
 	}
@@ -5337,7 +5257,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Atomic Expression:
-	//	{ExpressionLiteral} ARGS_START value=Expression ARGS_END | {NumberLiteral} value=INTEGER | {StringLiteral}
+	//	{ExpressionLiteral} '(' value=Expression ')' | {NumberLiteral} value=(INTEGER | ONE) | {StringLiteral}
 	//	value=STRING_LITERAL | {BooleanLiteral} value=(TRUE | FALSE) | {FunctionCallLiteral} value=FunctionIdentifier |
 	//	{MappableIdentifierLiteral} value=MappableIdentifier | {TmlIdentifierLiteral} hasExists?='?'? value=TmlIdentifier |
 	//	{ForAllLiteral} value=ForAllIdentifier | {NullLiteral} value=NULL_DEF;
@@ -5350,8 +5270,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//ForAllIdentifier:
-	//	{ForAllIdentifier} op=(FORALL | EXISTS) ARGS_START "`" expression=Expression "`" ','
-	//	messagedefinition=STRING_LITERAL ARGS_END;
+	//	{ForAllIdentifier} op=(FORALL | EXISTS) '(' "`" expression=Expression "`" ',' messagedefinition=STRING_LITERAL ')';
 	public ForAllIdentifierElements getForAllIdentifierAccess() {
 		return pForAllIdentifier;
 	}
@@ -5361,7 +5280,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//FunctionIdentifier:
-	//	{FunctionIdentifier} func=IDENTIFIER (ARGS_START (args+=Expression (',' args+=Expression)*)? ARGS_END);
+	//	{FunctionIdentifier} func=IDENTIFIER ('(' (args+=Expression (',' args+=Expression)*)? ')');
 	public FunctionIdentifierElements getFunctionIdentifierAccess() {
 		return pFunctionIdentifier;
 	}
@@ -5371,7 +5290,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//MappableIdentifier:
-	//	{MappableIdentifier} field=MAPPABLE_IDENTIFIER (ARGS_START (args+=Expression (',' args+=Expression)*)? ARGS_END)?;
+	//	{MappableIdentifier} field=MAPPABLE_IDENTIFIER ('(' (args+=Expression (',' args+=Expression)*)? ')')?;
 	public MappableIdentifierElements getMappableIdentifierAccess() {
 		return pMappableIdentifier;
 	}
@@ -5480,214 +5399,10 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		return tMAPPABLE_ID;
 	}
 	
-	//terminal ARGS_START:
-	//	'(';
-	public TerminalRule getARGS_STARTRule() {
-		return tARGS_START;
-	}
-	
-	//terminal ARGS_END:
-	//	')';
-	public TerminalRule getARGS_ENDRule() {
-		return tARGS_END;
-	}
-	
 	//terminal NULL_DEF:
 	//	'null';
 	public TerminalRule getNULL_DEFRule() {
 		return tNULL_DEF;
-	}
-	
-	//terminal PRINT_DEF:
-	//	'print';
-	public TerminalRule getPRINT_DEFRule() {
-		return tPRINT_DEF;
-	}
-	
-	//terminal LOG_DEF:
-	//	'log';
-	public TerminalRule getLOG_DEFRule() {
-		return tLOG_DEF;
-	}
-	
-	//terminal FINALLY_DEF:
-	//	'finally';
-	public TerminalRule getFINALLY_DEFRule() {
-		return tFINALLY_DEF;
-	}
-	
-	//terminal DEFINE_DEF:
-	//	'define';
-	public TerminalRule getDEFINE_DEFRule() {
-		return tDEFINE_DEF;
-	}
-	
-	//terminal FILTER_DEF:
-	//	'filter';
-	public TerminalRule getFILTER_DEFRule() {
-		return tFILTER_DEF;
-	}
-	
-	//terminal SYNCHRONIZED_DEF:
-	//	'synchronized';
-	public TerminalRule getSYNCHRONIZED_DEFRule() {
-		return tSYNCHRONIZED_DEF;
-	}
-	
-	//terminal LOOP_DEF:
-	//	'loop';
-	public TerminalRule getLOOP_DEFRule() {
-		return tLOOP_DEF;
-	}
-	
-	//terminal CODE_DEF:
-	//	'code';
-	public TerminalRule getCODE_DEFRule() {
-		return tCODE_DEF;
-	}
-	
-	//terminal VALIDATIONS_DEF:
-	//	'validations';
-	public TerminalRule getVALIDATIONS_DEFRule() {
-		return tVALIDATIONS_DEF;
-	}
-	
-	//terminal CHECK_DEF:
-	//	"check";
-	public TerminalRule getCHECK_DEFRule() {
-		return tCHECK_DEF;
-	}
-	
-	//terminal INCLUDE_DEF:
-	//	'include';
-	public TerminalRule getINCLUDE_DEFRule() {
-		return tINCLUDE_DEF;
-	}
-	
-	//terminal INOUT_DEF:
-	//	"inout";
-	public TerminalRule getINOUT_DEFRule() {
-		return tINOUT_DEF;
-	}
-	
-	//terminal IN_DEF:
-	//	"in";
-	public TerminalRule getIN_DEFRule() {
-		return tIN_DEF;
-	}
-	
-	//terminal OUT_DEF:
-	//	"out";
-	public TerminalRule getOUT_DEFRule() {
-		return tOUT_DEF;
-	}
-	
-	//terminal DESCRIPTION_DEF:
-	//	"description";
-	public TerminalRule getDESCRIPTION_DEFRule() {
-		return tDESCRIPTION_DEF;
-	}
-	
-	//terminal TYPE_DEF:
-	//	"type";
-	public TerminalRule getTYPE_DEFRule() {
-		return tTYPE_DEF;
-	}
-	
-	//terminal SUBTYPE_DEF:
-	//	"subtype";
-	public TerminalRule getSUBTYPE_DEFRule() {
-		return tSUBTYPE_DEF;
-	}
-	
-	//terminal MODE_DEF:
-	//	"mode";
-	public TerminalRule getMODE_DEFRule() {
-		return tMODE_DEF;
-	}
-	
-	//terminal DIRECTION_DEF:
-	//	"direction";
-	public TerminalRule getDIRECTION_DEFRule() {
-		return tDIRECTION_DEF;
-	}
-	
-	//terminal LENGTH_DEF:
-	//	"length";
-	public TerminalRule getLENGTH_DEFRule() {
-		return tLENGTH_DEF;
-	}
-	
-	//terminal CARDINALITY_DEF:
-	//	"cardinality";
-	public TerminalRule getCARDINALITY_DEFRule() {
-		return tCARDINALITY_DEF;
-	}
-	
-	//terminal PROPERTY_DEF:
-	//	'property';
-	public TerminalRule getPROPERTY_DEFRule() {
-		return tPROPERTY_DEF;
-	}
-	
-	//terminal VAR_DEF:
-	//	"var";
-	public TerminalRule getVAR_DEFRule() {
-		return tVAR_DEF;
-	}
-	
-	//terminal OPTION_DEF:
-	//	"option";
-	public TerminalRule getOPTION_DEFRule() {
-		return tOPTION_DEF;
-	}
-	
-	//terminal MAP_OLDSKOOL_DEF:
-	//	"map";
-	public TerminalRule getMAP_OLDSKOOL_DEFRule() {
-		return tMAP_OLDSKOOL_DEF;
-	}
-	
-	//terminal OBJECT_OLDSKOOL_DEF:
-	//	"object";
-	public TerminalRule getOBJECT_OLDSKOOL_DEFRule() {
-		return tOBJECT_OLDSKOOL_DEF;
-	}
-	
-	//terminal BREAK_DEF:
-	//	"break";
-	public TerminalRule getBREAK_DEFRule() {
-		return tBREAK_DEF;
-	}
-	
-	//terminal ERROR_DEF:
-	//	"error";
-	public TerminalRule getERROR_DEFRule() {
-		return tERROR_DEF;
-	}
-	
-	//terminal CONTEXT_DEF:
-	//	"context";
-	public TerminalRule getCONTEXT_DEFRule() {
-		return tCONTEXT_DEF;
-	}
-	
-	//terminal KEY_DEF:
-	//	"key";
-	public TerminalRule getKEY_DEFRule() {
-		return tKEY_DEF;
-	}
-	
-	//terminal TIMEOUT_DEF:
-	//	"timeout";
-	public TerminalRule getTIMEOUT_DEFRule() {
-		return tTIMEOUT_DEF;
-	}
-	
-	//terminal BREAKONNOLOCK_DEF:
-	//	"breakOnNoLock";
-	public TerminalRule getBREAKONNOLOCK_DEFRule() {
-		return tBREAKONNOLOCK_DEF;
 	}
 	
 	//terminal OBJECT_IDENTIFIER:
@@ -5714,14 +5429,21 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		return tTML_LITERAL;
 	}
 	
+	//terminal ONE:
+	//	'1';
+	public TerminalRule getONERule() {
+		return tONE;
+	}
+	
 	//terminal IDENTIFIER:
-	//	LETTER (LETTER | DIGIT | "_")+;
+	//	LETTER (LETTER | "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "_")+;
 	public TerminalRule getIDENTIFIERRule() {
 		return tIDENTIFIER;
 	}
 	
 	//terminal INTEGER:
-	//	"0" | ("1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9") DIGIT*;
+	//	"0" | (ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9") ("0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" |
+	//	"9")*;
 	public TerminalRule getINTEGERRule() {
 		return tINTEGER;
 	}
@@ -5737,12 +5459,6 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	//	| "x" | "y" | "z";
 	public TerminalRule getLETTERRule() {
 		return tLETTER;
-	}
-	
-	//terminal DIGIT:
-	//	"0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
-	public TerminalRule getDIGITRule() {
-		return tDIGIT;
 	}
 	
 	//terminal ML_COMMENT:
@@ -5761,11 +5477,5 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	//	' ' | '\t' | '\r' | '\n'+;
 	public TerminalRule getWSRule() {
 		return tWS;
-	}
-	
-	//terminal CHARACTER:
-	//	LETTER | DIGIT;
-	public TerminalRule getCHARACTERRule() {
-		return tCHARACTER;
 	}
 }

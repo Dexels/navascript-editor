@@ -6,6 +6,8 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
+
 public class ProxyMetaData {
 
 	private static ProxyMetaData instance = new ProxyMetaData();
@@ -17,12 +19,26 @@ public class ProxyMetaData {
 		return instance;
 	}
 
+	public void addMapDefinition(MapDefinition md, ClassLoader cl) {
+		try {
+			if ( !mapDefinitions.containsKey(md.tagName)) {
+				ProxyMapDefinition pmd = new ProxyMapDefinition(md, md.getClass());
+				pmd.setObjectClassLoader(cl);
+				mapDefinitions.put(md.tagName, pmd);
+				maps.add(md.tagName);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public void addMapMetaData(Object o, Class c) {
 		try {			
 			Method m = c.getDeclaredMethod("getMapDefinitions");
 			Set<String> rMapDefinitions = (Set<String>) m.invoke(o);
-			maps = new TreeSet(rMapDefinitions);
-			for ( String s : maps ) {
+			Set<String> newMaps = new TreeSet(rMapDefinitions);
+			for ( String s : newMaps ) {
 				if ( !mapDefinitions.containsKey(s)) {
 					try {
 						Method m2 = c.getDeclaredMethod("getMapDefinition", String.class);
@@ -37,6 +53,7 @@ public class ProxyMetaData {
 					}
 				}
 			}
+			maps.addAll(newMaps);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
