@@ -116,6 +116,10 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 			Message message = (Message) statement;
 			formatMessage(message, doc);
 		}
+		if ( statement instanceof BlockStatements ) {
+			BlockStatements var = (BlockStatements) statement;
+			formatBlockStatements(var, doc);
+		}
 		if ( statement instanceof Validations ) {
 			Validations message = (Validations) statement;
 			formatValidations(message, doc);
@@ -202,6 +206,7 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 
 		doc.prepend(regionFor(map).keyword("map."), it ->  it.setNewLines(1, 1, 2));
 		formatBalancedCharBlock(map, doc, "{", "}");
+		doc.append(regionFor(map).keyword("}"), it ->  it.setNewLines(1, 1, 2));
 		formatInnerBody( map.getStatements(), doc);
 	}
 
@@ -224,33 +229,53 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 		for ( Method m : methods ) {
 			singleStatement(m, doc);
 		}
+		doc.append(regionFor(map).keyword("}"), it ->  it.setNewLines(1, 1, 2));
 	}
 
 	private void formatBlockStatement(BlockStatements var, IFormattableDocument doc) {
 		formatBalancedCharBlock(var, doc, "{", "}");
 		formatInnerBody(var.getStatements(), doc);
+		doc.append(regionFor(var).keyword("}"), it ->  it.setNewLines(1, 1, 2));
 	}
 
 	private void formatLoop(Loop var, IFormattableDocument doc) {
 		formatBalancedCharBlock(var, doc, "{", "}");
 		formatInnerBody(var.getStatements(), doc);
+		doc.append(regionFor(var).keyword("}"), it ->  it.setNewLines(1, 1, 2));
+	}
+	
+	private void formatBlockStatements(BlockStatements var, IFormattableDocument doc) {
+		formatBalancedCharBlock(var, doc, "{", "}");
+		formatInnerBody(var.getStatements(), doc);
+		doc.append(regionFor(var).keyword("}"), it ->  it.setNewLines(1, 1, 2));
 	}
 	
 	private void formatValidations(Validations var, IFormattableDocument doc) {
+		if ( var == null ) {
+			return;
+		}
 		doc.prepend(regionFor(var).keyword("validations"), it ->  it.setNewLines(1, 1, 2));
 		formatBalancedCharBlock(var, doc, "{", "}");
 		EList<Check> checks = var.getChecks();
+		if ( checks == null ) {
+			return;
+		}
 		for ( Check m : checks ) {
 			singleStatement(m, doc);
 		}
+		doc.append(regionFor(var).keyword("}"), it ->  it.setNewLines(1, 1, 2));
 	}
 
 	private void formatSynchronized(Synchronized var, IFormattableDocument doc) {
+		if ( var == null ) {
+			return;
+		}
 		formatBalancedCharBlock(var, doc, "{", "}");
 		EList<TopLevelStatement> statements = var.getStatements();
 		for ( TopLevelStatement tls : statements ) {
 			format(tls, doc);
 		}
+		doc.append(regionFor(var).keyword("}"), it ->  it.setNewLines(1, 1, 2));
 	}
 
 	private void formatInnerBody(EList<InnerBody> ib, IFormattableDocument doc) {
@@ -288,6 +313,7 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 		if ( map.getArrayMessage() != null ) {
 			formatMappedArrayMessage(map.getArrayMessage(), doc);
 		}
+		doc.append(regionFor(map).keyword("}"), it ->  it.setNewLines(1, 1, 2));
 	}
 
 	protected void formatMappedArrayField(MappedArrayField maf, IFormattableDocument doc) {
@@ -296,6 +322,7 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 		for ( InnerBody child : children ) {
 			formatStatement(child.getStatement(), doc, false);
 		}
+		doc.append(regionFor(maf).keyword("}"), it ->  it.setNewLines(1, 1, 2));
 	}
 
 	private void formatMappedArrayMessage(MappedArrayMessage mam, IFormattableDocument doc) {
@@ -304,6 +331,7 @@ public class NavascriptFormatter extends AbstractJavaFormatter {
 		for ( InnerBody child : children ) {
 			formatStatement(child.getStatement(), doc, false);
 		}
+		doc.append(regionFor(mam).keyword("}"), it ->  it.setNewLines(1, 1, 2));
 	}
 
 	private void singleStatement(EObject single, IFormattableDocument doc) {
