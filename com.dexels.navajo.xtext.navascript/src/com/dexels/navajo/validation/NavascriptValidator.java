@@ -174,7 +174,8 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 	public void checkUniquePropertyName(PropertyImpl property) {
 		// Get message.
 		Message parent = NavigationUtils.findMessage(property);
-		if (checkForPropertyName(property, parent)) {
+		boolean isConstantArrayMessage = parent.getMessageArray() != null && parent.getMessageArray().getArrayMessageElements().size() > 0;
+		if ( !isConstantArrayMessage && checkForPropertyName(property, parent)) {
 			warning("Duplicate property name in message", NavascriptPackage.Literals.PROPERTY__PROPERTY_NAME);
 		}
 	}
