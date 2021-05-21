@@ -15,8 +15,6 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 
-import com.dexels.navajo.expression.api.FunctionDefinition;
-
 public class NavajoProxyStub implements IResourceChangeListener {
 
 	private static volatile NavajoProxyStub instance = null;
@@ -141,7 +139,7 @@ public class NavajoProxyStub implements IResourceChangeListener {
 		boolean hasJavaFile = false;
 		for ( IFile f : changedFiles ) {
 			//System.err.println(">>>> changed file: " + f.getName() + " / " + f.getFileExtension());
-			if ( f.getFileExtension().equals("java")) {
+			if ( f != null && f.getFileExtension() != null && f.getFileExtension().equals("java")) {
 				hasJavaFile = true;
 				System.err.println("THIS JAVA FILE HAS CHANGED: " + f.getName());
 				break;

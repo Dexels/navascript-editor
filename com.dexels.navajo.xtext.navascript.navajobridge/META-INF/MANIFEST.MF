@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Navajobridge
 Bundle-SymbolicName: com.dexels.navajo.xtext.navascript.navajobridge;singleton:=true
-Bundle-Version: 0.9.25
+Bundle-Version: 0.9.28
 Bundle-Vendor: Dexels BV
 Automatic-Module-Name: com.dexels.navajo.xtext.navascript.navajobridge
 Bundle-RequiredExecutionEnvironment: JavaSE-11
@@ -11,10 +11,19 @@ Export-Package: com.dexels.navajo.xtext.navascript.navajobridge
 Require-Bundle: org.eclipse.osgi,
  org.eclipse.osgi.services,
  org.eclipse.core.runtime,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.core.filesystem,
  org.eclipse.equinox.console,
  org.apache.felix.gogo.command,
  org.apache.felix.gogo.runtime,
  org.apache.felix.gogo.shell,
+ org.eclipse.ui.workbench,
+ org.eclipse.ui.ide,
+ org.eclipse.ui,
+ org.eclipse.e4.ui.model.workbench,
+ org.eclipse.e4.core.di,
+ org.eclipse.e4.ui.services,
  org.eclipse.jdt.core,
  org.eclipse.pde.core;bundle-version="3.14.100",
  org.eclipse.equinox.frameworkadmin;bundle-version="2.1.400",
