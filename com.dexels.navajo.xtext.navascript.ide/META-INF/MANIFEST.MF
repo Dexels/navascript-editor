@@ -8,8 +8,8 @@ Bundle-SymbolicName: com.dexels.navajo.xtext.navascript.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide,
- org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
- com.dexels.navajo.xtext.navascript;bundle-version="0.9.2"
+ org.antlr.runtime,
+ com.dexels.navajo.xtext.navascript
 Export-Package: com.dexels.navajo.ide,
  com.dexels.navajo.ide.contentassist.antlr,
  com.dexels.navajo.ide.contentassist.antlr.internal
