@@ -19205,11 +19205,13 @@ RULE_QUOTED_IDENTIFIER : '"' (RULE_IDENTIFIER|'/'|'../')+ '"';
 
 RULE_STRING_CONSTANT : '"' ('\\' .|~(('\\'|'"')))* '"';
 
-RULE_TML_LITERAL : '[' (RULE_IDENTIFIER|'/'|'../'|'/@'|'_')+ ']';
+RULE_TML_LITERAL : '[' (RULE_IDENTIFIER|'/'|'../'|'/@')+ ']';
 
 RULE_ONE : '1';
 
-RULE_IDENTIFIER : RULE_LETTER (RULE_LETTER|'0'|RULE_ONE|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|'_')+;
+fragment RULE_UNDERSCORE : '_';
+
+RULE_IDENTIFIER : (RULE_LETTER|RULE_UNDERSCORE) (RULE_LETTER|'0'|RULE_ONE|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|RULE_UNDERSCORE)*;
 
 RULE_INTEGER : ('0'|(RULE_ONE|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9') ('0'|RULE_ONE|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9')*);
 

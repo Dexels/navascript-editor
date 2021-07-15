@@ -22,7 +22,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_QUOTED_IDENTIFIER", "RULE_STRING_CONSTANT", "RULE_IDENTIFIER", "RULE_OBJECT_IDENTIFIER", "RULE_METHOD_IDENTIFIER", "RULE_MAPPABLE_IDENTIFIER", "RULE_TML_LITERAL", "RULE_INTEGER", "RULE_ONE", "RULE_STRING_LITERAL", "RULE_TRUE", "RULE_FALSE", "RULE_NULL_DEF", "RULE_FORALL", "RULE_EXISTS", "RULE_MAPPABLE_ID", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'if'", "'then'", "'{'", "'}'", "'synchronized'", "'('", "')'", "','", "'context'", "'='", "':'", "'user'", "'service'", "'key'", "'timeout'", "'breakOnNoLock'", "'break'", "';'", "'code'", "'description'", "'error'", "'validations'", "'define'", "'check'", "'print'", "'log'", "'finally'", "'methods'", "'loop'", "'filter'", "'include'", "'antimessage'", "'message'", "'['", "']'", "'type'", "'mode'", "'map.'", "'map'", "'object'", "'var'", "'property'", "'option'", "'length'", "'direction'", "'in'", "'out'", "'inout'", "'cardinality'", "'+'", "'subtype'", "'else'", "'OR'", "'AND'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'-'", "'*'", "'/'", "'!'", "'?'", "'`'", "'integer'", "'string'", "'boolean'", "'date'", "'float'", "'binary'", "'clocktime'", "'memo'", "'timestamp'", "'percentage'", "'selection'", "'name'", "'value'", "'selected'", "'array'", "'simple'", "'arrayelement'", "'ignore'", "'overwrite'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_QUOTED_IDENTIFIER", "RULE_STRING_CONSTANT", "RULE_IDENTIFIER", "RULE_OBJECT_IDENTIFIER", "RULE_METHOD_IDENTIFIER", "RULE_MAPPABLE_IDENTIFIER", "RULE_TML_LITERAL", "RULE_INTEGER", "RULE_ONE", "RULE_STRING_LITERAL", "RULE_TRUE", "RULE_FALSE", "RULE_NULL_DEF", "RULE_FORALL", "RULE_EXISTS", "RULE_MAPPABLE_ID", "RULE_UNDERSCORE", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'if'", "'then'", "'{'", "'}'", "'synchronized'", "'('", "')'", "','", "'context'", "'='", "':'", "'user'", "'service'", "'key'", "'timeout'", "'breakOnNoLock'", "'break'", "';'", "'code'", "'description'", "'error'", "'validations'", "'define'", "'check'", "'print'", "'log'", "'finally'", "'methods'", "'loop'", "'filter'", "'include'", "'antimessage'", "'message'", "'['", "']'", "'type'", "'mode'", "'map.'", "'map'", "'object'", "'var'", "'property'", "'option'", "'length'", "'direction'", "'in'", "'out'", "'inout'", "'cardinality'", "'+'", "'subtype'", "'else'", "'OR'", "'AND'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'-'", "'*'", "'/'", "'!'", "'?'", "'`'", "'integer'", "'string'", "'boolean'", "'date'", "'float'", "'binary'", "'clocktime'", "'memo'", "'timestamp'", "'percentage'", "'selection'", "'name'", "'value'", "'selected'", "'array'", "'simple'", "'arrayelement'", "'ignore'", "'overwrite'"
     };
     public static final int T__50=50;
     public static final int T__59=59;
@@ -41,7 +41,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final int RULE_MAPPABLE_IDENTIFIER=9;
     public static final int RULE_METHOD_IDENTIFIER=8;
     public static final int T__66=66;
-    public static final int RULE_ML_COMMENT=21;
+    public static final int RULE_ML_COMMENT=22;
     public static final int T__67=67;
     public static final int T__68=68;
     public static final int T__69=69;
@@ -61,7 +61,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final int T__31=31;
     public static final int T__32=32;
     public static final int RULE_QUOTED_IDENTIFIER=4;
-    public static final int RULE_LETTER=20;
+    public static final int RULE_LETTER=21;
     public static final int T__48=48;
     public static final int RULE_MAPPABLE_ID=19;
     public static final int T__49=49;
@@ -81,6 +81,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final int T__94=94;
     public static final int T__101=101;
     public static final int T__90=90;
+    public static final int RULE_UNDERSCORE=20;
     public static final int T__99=99;
     public static final int T__95=95;
     public static final int T__96=96;
@@ -92,14 +93,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final int T__28=28;
     public static final int T__29=29;
     public static final int RULE_ONE=12;
-    public static final int T__24=24;
     public static final int T__25=25;
     public static final int T__70=70;
     public static final int T__71=71;
     public static final int T__72=72;
     public static final int RULE_IDENTIFIER=6;
     public static final int RULE_STRING_LITERAL=13;
-    public static final int RULE_SL_COMMENT=22;
+    public static final int RULE_SL_COMMENT=23;
     public static final int RULE_FORALL=17;
     public static final int RULE_TML_LITERAL=10;
     public static final int T__77=77;
@@ -115,11 +115,12 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final int T__81=81;
     public static final int T__82=82;
     public static final int T__83=83;
-    public static final int RULE_WS=23;
+    public static final int RULE_WS=24;
     public static final int T__88=88;
     public static final int T__108=108;
     public static final int T__89=89;
     public static final int T__107=107;
+    public static final int T__109=109;
     public static final int T__84=84;
     public static final int T__104=104;
     public static final int RULE_OBJECT_IDENTIFIER=7;
@@ -249,7 +250,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt1=2;
             int LA1_0 = input.LA(1);
 
-            if ( (LA1_0==45) ) {
+            if ( (LA1_0==46) ) {
                 alt1=1;
             }
             switch (alt1) {
@@ -330,7 +331,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==50) ) {
+            if ( (LA2_0==51) ) {
                 alt2=1;
             }
             switch (alt2) {
@@ -473,7 +474,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( (LA3_0==24||LA3_0==26||LA3_0==28||LA3_0==40||LA3_0==46||(LA3_0>=48 && LA3_0<=49)||(LA3_0>=51 && LA3_0<=52)||(LA3_0>=54 && LA3_0<=56)||(LA3_0>=61 && LA3_0<=62)||LA3_0==64) ) {
+                if ( (LA3_0==25||LA3_0==27||LA3_0==29||LA3_0==41||LA3_0==47||(LA3_0>=49 && LA3_0<=50)||(LA3_0>=52 && LA3_0<=53)||(LA3_0>=55 && LA3_0<=57)||(LA3_0>=62 && LA3_0<=63)||LA3_0==65) ) {
                     alt3=1;
                 }
 
@@ -647,14 +648,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==24) ) {
+            if ( (LA4_0==25) ) {
                 alt4=1;
             }
             switch (alt4) {
                 case 1 :
                     // InternalNavascript.g:215:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
                     {
-                    otherlv_1=(Token)match(input,24,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,25,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getTopLevelStatementAccess().getIfKeyword_1_0());
@@ -695,7 +696,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,25,FOLLOW_8); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,26,FOLLOW_8); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getTopLevelStatementAccess().getThenKeyword_1_2());
@@ -716,68 +717,68 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:245:5: (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements )
             int alt5=13;
             switch ( input.LA(1) ) {
-            case 56:
+            case 57:
                 {
                 alt5=1;
                 }
                 break;
-            case 64:
+            case 65:
                 {
                 alt5=2;
                 }
                 break;
-            case 61:
             case 62:
+            case 63:
                 {
                 alt5=3;
                 }
                 break;
-            case 55:
+            case 56:
                 {
                 alt5=4;
                 }
                 break;
-            case 46:
+            case 47:
                 {
                 alt5=5;
                 }
                 break;
-            case 48:
+            case 49:
                 {
                 alt5=6;
                 }
                 break;
-            case 49:
+            case 50:
                 {
                 alt5=7;
                 }
                 break;
-            case 52:
+            case 53:
                 {
                 alt5=8;
                 }
                 break;
-            case 51:
+            case 52:
                 {
                 alt5=9;
                 }
                 break;
-            case 54:
+            case 55:
                 {
                 alt5=10;
                 }
                 break;
-            case 40:
+            case 41:
                 {
                 alt5=11;
                 }
                 break;
-            case 28:
+            case 29:
                 {
                 alt5=12;
                 }
                 break;
-            case 26:
+            case 27:
                 {
                 alt5=13;
                 }
@@ -1308,14 +1309,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==24) ) {
+            if ( (LA6_0==25) ) {
                 alt6=1;
             }
             switch (alt6) {
                 case 1 :
                     // InternalNavascript.g:483:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
                     {
-                    otherlv_1=(Token)match(input,24,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,25,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getInnerBodyAccess().getIfKeyword_1_0());
@@ -1356,7 +1357,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,25,FOLLOW_9); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,26,FOLLOW_9); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getInnerBodyAccess().getThenKeyword_1_2());
@@ -1377,12 +1378,12 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:513:5: (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements )
             int alt7=15;
             switch ( input.LA(1) ) {
-            case 65:
+            case 66:
                 {
                 alt7=1;
                 }
                 break;
-            case 66:
+            case 67:
                 {
                 alt7=2;
                 }
@@ -1393,63 +1394,63 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 alt7=3;
                 }
                 break;
-            case 56:
+            case 57:
                 {
                 alt7=4;
                 }
                 break;
-            case 55:
+            case 56:
                 {
                 alt7=5;
                 }
                 break;
-            case 54:
+            case 55:
                 {
                 alt7=6;
                 }
                 break;
-            case 51:
+            case 52:
                 {
                 alt7=7;
                 }
                 break;
-            case 64:
+            case 65:
                 {
                 alt7=8;
                 }
                 break;
-            case 48:
+            case 49:
                 {
                 alt7=9;
                 }
                 break;
-            case 49:
+            case 50:
                 {
                 alt7=10;
                 }
                 break;
-            case 46:
+            case 47:
                 {
                 alt7=11;
                 }
                 break;
-            case 52:
+            case 53:
                 {
                 alt7=12;
                 }
                 break;
-            case 61:
             case 62:
+            case 63:
                 {
                 alt7=13;
                 }
                 break;
-            case 40:
+            case 41:
                 {
                 alt7=14;
                 }
                 break;
-            case 26:
+            case 27:
                 {
                 alt7=15;
                 }
@@ -2004,7 +2005,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,26,FOLLOW_10); if (state.failed) return current;
+            otherlv_1=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getBlockStatementsAccess().getLeftCurlyBracketKeyword_1());
@@ -2016,7 +2017,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt8=2;
                 int LA8_0 = input.LA(1);
 
-                if ( ((LA8_0>=RULE_METHOD_IDENTIFIER && LA8_0<=RULE_MAPPABLE_IDENTIFIER)||LA8_0==24||LA8_0==26||LA8_0==40||LA8_0==46||(LA8_0>=48 && LA8_0<=49)||(LA8_0>=51 && LA8_0<=52)||(LA8_0>=54 && LA8_0<=56)||(LA8_0>=61 && LA8_0<=62)||(LA8_0>=64 && LA8_0<=66)) ) {
+                if ( ((LA8_0>=RULE_METHOD_IDENTIFIER && LA8_0<=RULE_MAPPABLE_IDENTIFIER)||LA8_0==25||LA8_0==27||LA8_0==41||LA8_0==47||(LA8_0>=49 && LA8_0<=50)||(LA8_0>=52 && LA8_0<=53)||(LA8_0>=55 && LA8_0<=57)||(LA8_0>=62 && LA8_0<=63)||(LA8_0>=65 && LA8_0<=67)) ) {
                     alt8=1;
                 }
 
@@ -2063,7 +2064,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_3=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getBlockStatementsAccess().getRightCurlyBracketKeyword_3());
@@ -2158,13 +2159,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:827:2: (otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}' )
             // InternalNavascript.g:828:3: otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}'
             {
-            otherlv_0=(Token)match(input,28,FOLLOW_11); if (state.failed) return current;
+            otherlv_0=(Token)match(input,29,FOLLOW_11); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getSynchronizedAccess().getSynchronizedKeyword_0());
               		
             }
-            otherlv_1=(Token)match(input,29,FOLLOW_12); if (state.failed) return current;
+            otherlv_1=(Token)match(input,30,FOLLOW_12); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getSynchronizedAccess().getLeftParenthesisKeyword_1());
@@ -2205,13 +2206,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,30,FOLLOW_14); if (state.failed) return current;
+            otherlv_3=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getSynchronizedAccess().getRightParenthesisKeyword_3());
               		
             }
-            otherlv_4=(Token)match(input,26,FOLLOW_15); if (state.failed) return current;
+            otherlv_4=(Token)match(input,27,FOLLOW_15); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getSynchronizedAccess().getLeftCurlyBracketKeyword_4());
@@ -2223,7 +2224,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt9=2;
                 int LA9_0 = input.LA(1);
 
-                if ( (LA9_0==24||LA9_0==26||LA9_0==28||LA9_0==40||LA9_0==46||(LA9_0>=48 && LA9_0<=49)||(LA9_0>=51 && LA9_0<=52)||(LA9_0>=54 && LA9_0<=56)||(LA9_0>=61 && LA9_0<=62)||LA9_0==64) ) {
+                if ( (LA9_0==25||LA9_0==27||LA9_0==29||LA9_0==41||LA9_0==47||(LA9_0>=49 && LA9_0<=50)||(LA9_0>=52 && LA9_0<=53)||(LA9_0>=55 && LA9_0<=57)||(LA9_0>=62 && LA9_0<=63)||LA9_0==65) ) {
                     alt9=1;
                 }
 
@@ -2270,7 +2271,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_6=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_6=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_6, grammarAccess.getSynchronizedAccess().getRightCurlyBracketKeyword_6());
@@ -2402,7 +2403,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( (LA10_0==31) ) {
+                if ( (LA10_0==32) ) {
                     alt10=1;
                 }
 
@@ -2411,7 +2412,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalNavascript.g:925:4: otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) )
             	    {
-            	    otherlv_1=(Token)match(input,31,FOLLOW_12); if (state.failed) return current;
+            	    otherlv_1=(Token)match(input,32,FOLLOW_12); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_1, grammarAccess.getSynchronizedArgumentsAccess().getCommaKeyword_1_0());
@@ -2547,22 +2548,22 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:967:2: ( ( () ruleSContext ) | this_SKey_2= ruleSKey | this_STimeout_3= ruleSTimeout | this_SBreakOnNoLock_4= ruleSBreakOnNoLock )
             int alt11=4;
             switch ( input.LA(1) ) {
-            case 32:
+            case 33:
                 {
                 alt11=1;
                 }
                 break;
-            case 37:
+            case 38:
                 {
                 alt11=2;
                 }
                 break;
-            case 38:
+            case 39:
                 {
                 alt11=3;
                 }
                 break;
-            case 39:
+            case 40:
                 {
                 alt11=4;
                 }
@@ -2763,7 +2764,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:1029:2: (kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' ) )
             // InternalNavascript.g:1030:3: kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' )
             {
-            kw=(Token)match(input,32,FOLLOW_17); if (state.failed) return current;
+            kw=(Token)match(input,33,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			current.merge(kw);
@@ -2774,10 +2775,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt12=2;
             int LA12_0 = input.LA(1);
 
-            if ( (LA12_0==33) ) {
+            if ( (LA12_0==34) ) {
                 alt12=1;
             }
-            else if ( (LA12_0==34) ) {
+            else if ( (LA12_0==35) ) {
                 alt12=2;
             }
             else {
@@ -2791,7 +2792,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:1036:4: kw= '='
                     {
-                    kw=(Token)match(input,33,FOLLOW_18); if (state.failed) return current;
+                    kw=(Token)match(input,34,FOLLOW_18); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current.merge(kw);
@@ -2804,7 +2805,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:1042:4: kw= ':'
                     {
-                    kw=(Token)match(input,34,FOLLOW_18); if (state.failed) return current;
+                    kw=(Token)match(input,35,FOLLOW_18); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current.merge(kw);
@@ -2821,10 +2822,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt13=2;
             int LA13_0 = input.LA(1);
 
-            if ( (LA13_0==35) ) {
+            if ( (LA13_0==36) ) {
                 alt13=1;
             }
-            else if ( (LA13_0==36) ) {
+            else if ( (LA13_0==37) ) {
                 alt13=2;
             }
             else {
@@ -2838,7 +2839,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:1049:4: kw= 'user'
                     {
-                    kw=(Token)match(input,35,FOLLOW_2); if (state.failed) return current;
+                    kw=(Token)match(input,36,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current.merge(kw);
@@ -2851,7 +2852,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:1055:4: kw= 'service'
                     {
-                    kw=(Token)match(input,36,FOLLOW_2); if (state.failed) return current;
+                    kw=(Token)match(input,37,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current.merge(kw);
@@ -2949,7 +2950,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:1079:2: (otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression )
             // InternalNavascript.g:1080:3: otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression
             {
-            otherlv_0=(Token)match(input,37,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,38,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getSKeyAccess().getKeyKeyword_0());
@@ -2959,10 +2960,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt14=2;
             int LA14_0 = input.LA(1);
 
-            if ( (LA14_0==33) ) {
+            if ( (LA14_0==34) ) {
                 alt14=1;
             }
-            else if ( (LA14_0==34) ) {
+            else if ( (LA14_0==35) ) {
                 alt14=2;
             }
             else {
@@ -2976,7 +2977,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:1085:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,33,FOLLOW_19); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getSKeyAccess().getEqualsSignKeyword_1_0());
@@ -2988,7 +2989,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:1090:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getSKeyAccess().getColonKeyword_1_1());
@@ -3101,7 +3102,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:1121:2: (otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression )
             // InternalNavascript.g:1122:3: otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression
             {
-            otherlv_0=(Token)match(input,38,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,39,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getSTimeoutAccess().getTimeoutKeyword_0());
@@ -3111,10 +3112,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt15=2;
             int LA15_0 = input.LA(1);
 
-            if ( (LA15_0==33) ) {
+            if ( (LA15_0==34) ) {
                 alt15=1;
             }
-            else if ( (LA15_0==34) ) {
+            else if ( (LA15_0==35) ) {
                 alt15=2;
             }
             else {
@@ -3128,7 +3129,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:1127:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,33,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getSTimeoutAccess().getEqualsSignKeyword_1_0());
@@ -3140,7 +3141,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:1132:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getSTimeoutAccess().getColonKeyword_1_1());
@@ -3253,7 +3254,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:1163:2: (otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression )
             // InternalNavascript.g:1164:3: otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression
             {
-            otherlv_0=(Token)match(input,39,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,40,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getSBreakOnNoLockAccess().getBreakOnNoLockKeyword_0());
@@ -3263,10 +3264,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt16=2;
             int LA16_0 = input.LA(1);
 
-            if ( (LA16_0==33) ) {
+            if ( (LA16_0==34) ) {
                 alt16=1;
             }
-            else if ( (LA16_0==34) ) {
+            else if ( (LA16_0==35) ) {
                 alt16=2;
             }
             else {
@@ -3280,7 +3281,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:1169:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,33,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getSBreakOnNoLockAccess().getEqualsSignKeyword_1_0());
@@ -3292,7 +3293,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:1174:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getSBreakOnNoLockAccess().getColonKeyword_1_1());
@@ -3419,7 +3420,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,40,FOLLOW_20); if (state.failed) return current;
+            otherlv_1=(Token)match(input,41,FOLLOW_20); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getBreakAccess().getBreakKeyword_1());
@@ -3429,14 +3430,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt18=2;
             int LA18_0 = input.LA(1);
 
-            if ( (LA18_0==29) ) {
+            if ( (LA18_0==30) ) {
                 alt18=1;
             }
             switch (alt18) {
                 case 1 :
                     // InternalNavascript.g:1218:4: otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')'
                     {
-                    otherlv_2=(Token)match(input,29,FOLLOW_21); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,30,FOLLOW_21); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getBreakAccess().getLeftParenthesisKeyword_2_0());
@@ -3446,7 +3447,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt17=2;
                     int LA17_0 = input.LA(1);
 
-                    if ( ((LA17_0>=42 && LA17_0<=44)) ) {
+                    if ( ((LA17_0>=43 && LA17_0<=45)) ) {
                         alt17=1;
                     }
                     switch (alt17) {
@@ -3488,7 +3489,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,30,FOLLOW_22); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,31,FOLLOW_22); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getBreakAccess().getRightParenthesisKeyword_2_2());
@@ -3500,7 +3501,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getBreakAccess().getSemicolonKeyword_3());
@@ -3601,17 +3602,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:1268:2: ( (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) ) | (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) ) | (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression ) )
             int alt22=3;
             switch ( input.LA(1) ) {
-            case 42:
+            case 43:
                 {
                 alt22=1;
                 }
                 break;
-            case 43:
+            case 44:
                 {
                 alt22=2;
                 }
                 break;
-            case 44:
+            case 45:
                 {
                 alt22=3;
                 }
@@ -3631,7 +3632,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:1269:3: (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) )
                     // InternalNavascript.g:1270:4: otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) )
                     {
-                    otherlv_0=(Token)match(input,42,FOLLOW_17); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,43,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_0, grammarAccess.getBreakParameterAccess().getCodeKeyword_0_0());
@@ -3641,10 +3642,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt19=2;
                     int LA19_0 = input.LA(1);
 
-                    if ( (LA19_0==33) ) {
+                    if ( (LA19_0==34) ) {
                         alt19=1;
                     }
-                    else if ( (LA19_0==34) ) {
+                    else if ( (LA19_0==35) ) {
                         alt19=2;
                     }
                     else {
@@ -3658,7 +3659,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:1275:5: otherlv_1= '='
                             {
-                            otherlv_1=(Token)match(input,33,FOLLOW_19); if (state.failed) return current;
+                            otherlv_1=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_1, grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_0_1_0());
@@ -3670,7 +3671,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:1280:5: otherlv_2= ':'
                             {
-                            otherlv_2=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                            otherlv_2=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_2, grammarAccess.getBreakParameterAccess().getColonKeyword_0_1_1());
@@ -3729,7 +3730,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:1306:3: (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) )
                     // InternalNavascript.g:1307:4: otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) )
                     {
-                    otherlv_4=(Token)match(input,43,FOLLOW_17); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,44,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getBreakParameterAccess().getDescriptionKeyword_1_0());
@@ -3739,10 +3740,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt20=2;
                     int LA20_0 = input.LA(1);
 
-                    if ( (LA20_0==33) ) {
+                    if ( (LA20_0==34) ) {
                         alt20=1;
                     }
-                    else if ( (LA20_0==34) ) {
+                    else if ( (LA20_0==35) ) {
                         alt20=2;
                     }
                     else {
@@ -3756,7 +3757,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:1312:5: otherlv_5= '='
                             {
-                            otherlv_5=(Token)match(input,33,FOLLOW_19); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_5, grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_1_1_0());
@@ -3768,7 +3769,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:1317:5: otherlv_6= ':'
                             {
-                            otherlv_6=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_6, grammarAccess.getBreakParameterAccess().getColonKeyword_1_1_1());
@@ -3827,7 +3828,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:1343:3: (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression )
                     // InternalNavascript.g:1344:4: otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression
                     {
-                    otherlv_8=(Token)match(input,44,FOLLOW_17); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,45,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_8, grammarAccess.getBreakParameterAccess().getErrorKeyword_2_0());
@@ -3837,10 +3838,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt21=2;
                     int LA21_0 = input.LA(1);
 
-                    if ( (LA21_0==33) ) {
+                    if ( (LA21_0==34) ) {
                         alt21=1;
                     }
-                    else if ( (LA21_0==34) ) {
+                    else if ( (LA21_0==35) ) {
                         alt21=2;
                     }
                     else {
@@ -3854,7 +3855,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:1349:5: otherlv_9= '='
                             {
-                            otherlv_9=(Token)match(input,33,FOLLOW_19); if (state.failed) return current;
+                            otherlv_9=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_9, grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_2_1_0());
@@ -3866,7 +3867,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:1354:5: otherlv_10= ':'
                             {
-                            otherlv_10=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                            otherlv_10=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_10, grammarAccess.getBreakParameterAccess().getColonKeyword_2_1_1());
@@ -4026,7 +4027,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt23=2;
                 int LA23_0 = input.LA(1);
 
-                if ( (LA23_0==31) ) {
+                if ( (LA23_0==32) ) {
                     alt23=1;
                 }
 
@@ -4035,7 +4036,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalNavascript.g:1407:4: otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) )
             	    {
-            	    otherlv_1=(Token)match(input,31,FOLLOW_23); if (state.failed) return current;
+            	    otherlv_1=(Token)match(input,32,FOLLOW_23); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_1, grammarAccess.getBreakParametersAccess().getCommaKeyword_1_0());
@@ -4183,13 +4184,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,45,FOLLOW_14); if (state.failed) return current;
+            otherlv_1=(Token)match(input,46,FOLLOW_14); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getValidationsAccess().getValidationsKeyword_1());
               		
             }
-            otherlv_2=(Token)match(input,26,FOLLOW_24); if (state.failed) return current;
+            otherlv_2=(Token)match(input,27,FOLLOW_24); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getValidationsAccess().getLeftCurlyBracketKeyword_2());
@@ -4201,7 +4202,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt24=2;
                 int LA24_0 = input.LA(1);
 
-                if ( (LA24_0==24||LA24_0==47) ) {
+                if ( (LA24_0==25||LA24_0==48) ) {
                     alt24=1;
                 }
 
@@ -4248,7 +4249,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_4=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getValidationsAccess().getRightCurlyBracketKeyword_4());
@@ -4354,7 +4355,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,46,FOLLOW_25); if (state.failed) return current;
+            otherlv_1=(Token)match(input,47,FOLLOW_25); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getDefineAccess().getDefineKeyword_1());
@@ -4394,10 +4395,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt25=2;
             int LA25_0 = input.LA(1);
 
-            if ( (LA25_0==33) ) {
+            if ( (LA25_0==34) ) {
                 alt25=1;
             }
-            else if ( (LA25_0==34) ) {
+            else if ( (LA25_0==35) ) {
                 alt25=2;
             }
             else {
@@ -4411,7 +4412,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:1537:4: otherlv_3= '='
                     {
-                    otherlv_3=(Token)match(input,33,FOLLOW_6); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getDefineAccess().getEqualsSignKeyword_3_0());
@@ -4423,7 +4424,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:1542:4: otherlv_4= ':'
                     {
-                    otherlv_4=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getDefineAccess().getColonKeyword_3_1());
@@ -4470,7 +4471,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+            otherlv_6=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_6, grammarAccess.getDefineAccess().getSemicolonKeyword_5());
@@ -4590,14 +4591,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt26=2;
             int LA26_0 = input.LA(1);
 
-            if ( (LA26_0==24) ) {
+            if ( (LA26_0==25) ) {
                 alt26=1;
             }
             switch (alt26) {
                 case 1 :
                     // InternalNavascript.g:1597:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
                     {
-                    otherlv_1=(Token)match(input,24,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,25,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getCheckAccess().getIfKeyword_1_0());
@@ -4638,7 +4639,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,25,FOLLOW_26); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,26,FOLLOW_26); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getCheckAccess().getThenKeyword_1_2());
@@ -4650,13 +4651,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,47,FOLLOW_11); if (state.failed) return current;
+            otherlv_4=(Token)match(input,48,FOLLOW_11); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getCheckAccess().getCheckKeyword_2());
               		
             }
-            otherlv_5=(Token)match(input,29,FOLLOW_27); if (state.failed) return current;
+            otherlv_5=(Token)match(input,30,FOLLOW_27); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getCheckAccess().getLeftParenthesisKeyword_3());
@@ -4701,14 +4702,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt27=2;
             int LA27_0 = input.LA(1);
 
-            if ( (LA27_0==31) ) {
+            if ( (LA27_0==32) ) {
                 alt27=1;
             }
             switch (alt27) {
                 case 1 :
                     // InternalNavascript.g:1653:4: otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) )
                     {
-                    otherlv_7=(Token)match(input,31,FOLLOW_27); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,32,FOLLOW_27); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_7, grammarAccess.getCheckAccess().getCommaKeyword_5_0());
@@ -4755,7 +4756,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,30,FOLLOW_17); if (state.failed) return current;
+            otherlv_9=(Token)match(input,31,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_9, grammarAccess.getCheckAccess().getRightParenthesisKeyword_6());
@@ -4765,10 +4766,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt28=2;
             int LA28_0 = input.LA(1);
 
-            if ( (LA28_0==33) ) {
+            if ( (LA28_0==34) ) {
                 alt28=1;
             }
-            else if ( (LA28_0==34) ) {
+            else if ( (LA28_0==35) ) {
                 alt28=2;
             }
             else {
@@ -4782,7 +4783,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:1682:4: otherlv_10= '='
                     {
-                    otherlv_10=(Token)match(input,33,FOLLOW_6); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_10, grammarAccess.getCheckAccess().getEqualsSignKeyword_7_0());
@@ -4794,7 +4795,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:1687:4: otherlv_11= ':'
                     {
-                    otherlv_11=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_11, grammarAccess.getCheckAccess().getColonKeyword_7_1());
@@ -4841,7 +4842,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_13=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+            otherlv_13=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_13, grammarAccess.getCheckAccess().getSemicolonKeyword_9());
@@ -4938,10 +4939,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt31=2;
             int LA31_0 = input.LA(1);
 
-            if ( (LA31_0==42) ) {
+            if ( (LA31_0==43) ) {
                 alt31=1;
             }
-            else if ( (LA31_0==43) ) {
+            else if ( (LA31_0==44) ) {
                 alt31=2;
             }
             else {
@@ -4974,7 +4975,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:1742:4: (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) )
                     // InternalNavascript.g:1743:5: otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) )
                     {
-                    otherlv_1=(Token)match(input,42,FOLLOW_17); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,43,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_1, grammarAccess.getCheckAttributeAccess().getCodeKeyword_0_1_0());
@@ -4984,10 +4985,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt29=2;
                     int LA29_0 = input.LA(1);
 
-                    if ( (LA29_0==33) ) {
+                    if ( (LA29_0==34) ) {
                         alt29=1;
                     }
-                    else if ( (LA29_0==34) ) {
+                    else if ( (LA29_0==35) ) {
                         alt29=2;
                     }
                     else {
@@ -5001,7 +5002,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:1748:6: otherlv_2= '='
                             {
-                            otherlv_2=(Token)match(input,33,FOLLOW_19); if (state.failed) return current;
+                            otherlv_2=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_2, grammarAccess.getCheckAttributeAccess().getEqualsSignKeyword_0_1_1_0());
@@ -5013,7 +5014,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:1753:6: otherlv_3= ':'
                             {
-                            otherlv_3=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                            otherlv_3=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_3, grammarAccess.getCheckAttributeAccess().getColonKeyword_0_1_1_1());
@@ -5075,7 +5076,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:1780:3: (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) )
                     // InternalNavascript.g:1781:4: otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) )
                     {
-                    otherlv_5=(Token)match(input,43,FOLLOW_17); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,44,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_5, grammarAccess.getCheckAttributeAccess().getDescriptionKeyword_1_0());
@@ -5085,10 +5086,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt30=2;
                     int LA30_0 = input.LA(1);
 
-                    if ( (LA30_0==33) ) {
+                    if ( (LA30_0==34) ) {
                         alt30=1;
                     }
-                    else if ( (LA30_0==34) ) {
+                    else if ( (LA30_0==35) ) {
                         alt30=2;
                     }
                     else {
@@ -5102,7 +5103,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:1786:5: otherlv_6= '='
                             {
-                            otherlv_6=(Token)match(input,33,FOLLOW_19); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_6, grammarAccess.getCheckAttributeAccess().getEqualsSignKeyword_1_1_0());
@@ -5114,7 +5115,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:1791:5: otherlv_7= ':'
                             {
-                            otherlv_7=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                            otherlv_7=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_7, grammarAccess.getCheckAttributeAccess().getColonKeyword_1_1_1());
@@ -5255,7 +5256,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             if ( ((LA33_0>=RULE_QUOTED_IDENTIFIER && LA33_0<=RULE_STRING_CONSTANT)) ) {
                 alt33=1;
             }
-            else if ( (LA33_0==RULE_IDENTIFIER||(LA33_0>=RULE_MAPPABLE_IDENTIFIER && LA33_0<=RULE_EXISTS)||LA33_0==29||LA33_0==84||(LA33_0>=87 && LA33_0<=88)) ) {
+            else if ( (LA33_0==RULE_IDENTIFIER||(LA33_0>=RULE_MAPPABLE_IDENTIFIER && LA33_0<=RULE_EXISTS)||LA33_0==30||LA33_0==85||(LA33_0>=88 && LA33_0<=89)) ) {
                 alt33=2;
             }
             else {
@@ -5512,13 +5513,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,48,FOLLOW_11); if (state.failed) return current;
+            otherlv_1=(Token)match(input,49,FOLLOW_11); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getPrintAccess().getPrintKeyword_1());
               		
             }
-            otherlv_2=(Token)match(input,29,FOLLOW_6); if (state.failed) return current;
+            otherlv_2=(Token)match(input,30,FOLLOW_6); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getPrintAccess().getLeftParenthesisKeyword_2());
@@ -5559,13 +5560,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,30,FOLLOW_22); if (state.failed) return current;
+            otherlv_4=(Token)match(input,31,FOLLOW_22); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getPrintAccess().getRightParenthesisKeyword_4());
               		
             }
-            otherlv_5=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getPrintAccess().getSemicolonKeyword_5());
@@ -5670,13 +5671,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,49,FOLLOW_11); if (state.failed) return current;
+            otherlv_1=(Token)match(input,50,FOLLOW_11); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getLogAccess().getLogKeyword_1());
               		
             }
-            otherlv_2=(Token)match(input,29,FOLLOW_6); if (state.failed) return current;
+            otherlv_2=(Token)match(input,30,FOLLOW_6); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getLogAccess().getLeftParenthesisKeyword_2());
@@ -5717,13 +5718,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,30,FOLLOW_22); if (state.failed) return current;
+            otherlv_4=(Token)match(input,31,FOLLOW_22); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getLogAccess().getRightParenthesisKeyword_4());
               		
             }
-            otherlv_5=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getLogAccess().getSemicolonKeyword_5());
@@ -5827,13 +5828,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,50,FOLLOW_14); if (state.failed) return current;
+            otherlv_1=(Token)match(input,51,FOLLOW_14); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getFinallyAccess().getFinallyKeyword_1());
               		
             }
-            otherlv_2=(Token)match(input,26,FOLLOW_15); if (state.failed) return current;
+            otherlv_2=(Token)match(input,27,FOLLOW_15); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getFinallyAccess().getLeftCurlyBracketKeyword_2());
@@ -5874,7 +5875,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_4=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getFinallyAccess().getRightCurlyBracketKeyword_4());
@@ -5978,13 +5979,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,51,FOLLOW_14); if (state.failed) return current;
+            otherlv_1=(Token)match(input,52,FOLLOW_14); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getMethodsAccess().getMethodsKeyword_1());
               		
             }
-            otherlv_2=(Token)match(input,26,FOLLOW_30); if (state.failed) return current;
+            otherlv_2=(Token)match(input,27,FOLLOW_30); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getMethodsAccess().getLeftCurlyBracketKeyword_2());
@@ -6043,7 +6044,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_4=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getMethodsAccess().getRightCurlyBracketKeyword_4());
@@ -6174,7 +6175,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+            otherlv_2=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getMethodAccess().getSemicolonKeyword_2());
@@ -6289,7 +6290,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,52,FOLLOW_31); if (state.failed) return current;
+            otherlv_1=(Token)match(input,53,FOLLOW_31); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getLoopAccess().getLoopKeyword_1());
@@ -6402,20 +6403,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt37=2;
             int LA37_0 = input.LA(1);
 
-            if ( (LA37_0==29) ) {
+            if ( (LA37_0==30) ) {
                 alt37=1;
             }
             switch (alt37) {
                 case 1 :
                     // InternalNavascript.g:2255:4: otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')'
                     {
-                    otherlv_4=(Token)match(input,29,FOLLOW_33); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,30,FOLLOW_33); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getLoopAccess().getLeftParenthesisKeyword_3_0());
                       			
                     }
-                    otherlv_5=(Token)match(input,53,FOLLOW_17); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,54,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_5, grammarAccess.getLoopAccess().getFilterKeyword_3_1());
@@ -6425,10 +6426,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt36=2;
                     int LA36_0 = input.LA(1);
 
-                    if ( (LA36_0==33) ) {
+                    if ( (LA36_0==34) ) {
                         alt36=1;
                     }
-                    else if ( (LA36_0==34) ) {
+                    else if ( (LA36_0==35) ) {
                         alt36=2;
                     }
                     else {
@@ -6442,7 +6443,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:2264:5: otherlv_6= '='
                             {
-                            otherlv_6=(Token)match(input,33,FOLLOW_6); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_6, grammarAccess.getLoopAccess().getEqualsSignKeyword_3_2_0());
@@ -6454,7 +6455,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:2269:5: otherlv_7= ':'
                             {
-                            otherlv_7=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                            otherlv_7=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_7, grammarAccess.getLoopAccess().getColonKeyword_3_2_1());
@@ -6501,7 +6502,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_9=(Token)match(input,30,FOLLOW_14); if (state.failed) return current;
+                    otherlv_9=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_9, grammarAccess.getLoopAccess().getRightParenthesisKeyword_3_4());
@@ -6513,7 +6514,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_10=(Token)match(input,26,FOLLOW_10); if (state.failed) return current;
+            otherlv_10=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_10, grammarAccess.getLoopAccess().getLeftCurlyBracketKeyword_4());
@@ -6525,7 +6526,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt38=2;
                 int LA38_0 = input.LA(1);
 
-                if ( ((LA38_0>=RULE_METHOD_IDENTIFIER && LA38_0<=RULE_MAPPABLE_IDENTIFIER)||LA38_0==24||LA38_0==26||LA38_0==40||LA38_0==46||(LA38_0>=48 && LA38_0<=49)||(LA38_0>=51 && LA38_0<=52)||(LA38_0>=54 && LA38_0<=56)||(LA38_0>=61 && LA38_0<=62)||(LA38_0>=64 && LA38_0<=66)) ) {
+                if ( ((LA38_0>=RULE_METHOD_IDENTIFIER && LA38_0<=RULE_MAPPABLE_IDENTIFIER)||LA38_0==25||LA38_0==27||LA38_0==41||LA38_0==47||(LA38_0>=49 && LA38_0<=50)||(LA38_0>=52 && LA38_0<=53)||(LA38_0>=55 && LA38_0<=57)||(LA38_0>=62 && LA38_0<=63)||(LA38_0>=65 && LA38_0<=67)) ) {
                     alt38=1;
                 }
 
@@ -6572,7 +6573,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_12=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_12=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_12, grammarAccess.getLoopAccess().getRightCurlyBracketKeyword_6());
@@ -6674,7 +6675,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,54,FOLLOW_25); if (state.failed) return current;
+            otherlv_1=(Token)match(input,55,FOLLOW_25); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getIncludeAccess().getIncludeKeyword_1());
@@ -6710,7 +6711,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getIncludeAccess().getSemicolonKeyword_3());
@@ -6812,7 +6813,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,55,FOLLOW_25); if (state.failed) return current;
+            otherlv_1=(Token)match(input,56,FOLLOW_25); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getAntiMessageAccess().getAntimessageKeyword_1());
@@ -6848,7 +6849,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getAntiMessageAccess().getSemicolonKeyword_3());
@@ -6966,7 +6967,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,56,FOLLOW_25); if (state.failed) return current;
+            otherlv_1=(Token)match(input,57,FOLLOW_25); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getMessageAccess().getMessageKeyword_1());
@@ -7006,14 +7007,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt39=2;
             int LA39_0 = input.LA(1);
 
-            if ( (LA39_0==29) ) {
+            if ( (LA39_0==30) ) {
                 alt39=1;
             }
             switch (alt39) {
                 case 1 :
                     // InternalNavascript.g:2478:4: otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')'
                     {
-                    otherlv_3=(Token)match(input,29,FOLLOW_35); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,30,FOLLOW_35); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getMessageAccess().getLeftParenthesisKeyword_3_0());
@@ -7054,7 +7055,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,30,FOLLOW_36); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,31,FOLLOW_36); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_5, grammarAccess.getMessageAccess().getRightParenthesisKeyword_3_2());
@@ -7069,17 +7070,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:2506:3: ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']' ) )
             int alt42=3;
             switch ( input.LA(1) ) {
-            case 26:
+            case 27:
                 {
                 alt42=1;
                 }
                 break;
-            case 41:
+            case 42:
                 {
                 alt42=2;
                 }
                 break;
-            case 57:
+            case 58:
                 {
                 alt42=3;
                 }
@@ -7099,7 +7100,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:2507:4: (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' )
                     // InternalNavascript.g:2508:5: otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}'
                     {
-                    otherlv_6=(Token)match(input,26,FOLLOW_37); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,27,FOLLOW_37); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_6, grammarAccess.getMessageAccess().getLeftCurlyBracketKeyword_4_0_0());
@@ -7109,23 +7110,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt41=3;
                     switch ( input.LA(1) ) {
                     case RULE_METHOD_IDENTIFIER:
-                    case 24:
-                    case 26:
+                    case 25:
                     case 27:
-                    case 40:
-                    case 46:
-                    case 48:
+                    case 28:
+                    case 41:
+                    case 47:
                     case 49:
-                    case 51:
+                    case 50:
                     case 52:
-                    case 54:
+                    case 53:
                     case 55:
                     case 56:
-                    case 61:
+                    case 57:
                     case 62:
-                    case 64:
+                    case 63:
                     case 65:
                     case 66:
+                    case 67:
                         {
                         alt41=1;
                         }
@@ -7134,20 +7135,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         {
                         switch ( input.LA(2) ) {
                         case RULE_MAPPABLE_IDENTIFIER:
-                        case 33:
                         case 34:
+                        case 35:
                             {
                             alt41=1;
                             }
                             break;
-                        case 29:
+                        case 30:
                             {
                             int LA41_4 = input.LA(3);
 
-                            if ( (LA41_4==RULE_IDENTIFIER||(LA41_4>=101 && LA41_4<=103)) ) {
+                            if ( (LA41_4==RULE_IDENTIFIER||(LA41_4>=102 && LA41_4<=104)) ) {
                                 alt41=1;
                             }
-                            else if ( (LA41_4==53) ) {
+                            else if ( (LA41_4==54) ) {
                                 alt41=2;
                             }
                             else {
@@ -7159,11 +7160,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             }
                             break;
-                        case 26:
+                        case 27:
                             {
                             int LA41_5 = input.LA(3);
 
-                            if ( ((LA41_5>=RULE_METHOD_IDENTIFIER && LA41_5<=RULE_MAPPABLE_IDENTIFIER)||LA41_5==24||(LA41_5>=26 && LA41_5<=27)||LA41_5==40||LA41_5==46||(LA41_5>=48 && LA41_5<=49)||(LA41_5>=51 && LA41_5<=52)||(LA41_5>=54 && LA41_5<=56)||(LA41_5>=61 && LA41_5<=62)||(LA41_5>=64 && LA41_5<=66)) ) {
+                            if ( ((LA41_5>=RULE_METHOD_IDENTIFIER && LA41_5<=RULE_MAPPABLE_IDENTIFIER)||LA41_5==25||(LA41_5>=27 && LA41_5<=28)||LA41_5==41||LA41_5==47||(LA41_5>=49 && LA41_5<=50)||(LA41_5>=52 && LA41_5<=53)||(LA41_5>=55 && LA41_5<=57)||(LA41_5>=62 && LA41_5<=63)||(LA41_5>=65 && LA41_5<=67)) ) {
                                 alt41=2;
                             }
                             else if ( (LA41_5==RULE_TML_LITERAL) ) {
@@ -7211,7 +7212,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                                 int alt40=2;
                                 int LA40_0 = input.LA(1);
 
-                                if ( ((LA40_0>=RULE_METHOD_IDENTIFIER && LA40_0<=RULE_MAPPABLE_IDENTIFIER)||LA40_0==24||LA40_0==26||LA40_0==40||LA40_0==46||(LA40_0>=48 && LA40_0<=49)||(LA40_0>=51 && LA40_0<=52)||(LA40_0>=54 && LA40_0<=56)||(LA40_0>=61 && LA40_0<=62)||(LA40_0>=64 && LA40_0<=66)) ) {
+                                if ( ((LA40_0>=RULE_METHOD_IDENTIFIER && LA40_0<=RULE_MAPPABLE_IDENTIFIER)||LA40_0==25||LA40_0==27||LA40_0==41||LA40_0==47||(LA40_0>=49 && LA40_0<=50)||(LA40_0>=52 && LA40_0<=53)||(LA40_0>=55 && LA40_0<=57)||(LA40_0>=62 && LA40_0<=63)||(LA40_0>=65 && LA40_0<=67)) ) {
                                     alt40=1;
                                 }
 
@@ -7346,7 +7347,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_10, grammarAccess.getMessageAccess().getRightCurlyBracketKeyword_4_0_2());
@@ -7361,7 +7362,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:2579:4: otherlv_11= ';'
                     {
-                    otherlv_11=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_11, grammarAccess.getMessageAccess().getSemicolonKeyword_4_1());
@@ -7376,7 +7377,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:2584:4: (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']' )
                     // InternalNavascript.g:2585:5: otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']'
                     {
-                    otherlv_12=(Token)match(input,57,FOLLOW_14); if (state.failed) return current;
+                    otherlv_12=(Token)match(input,58,FOLLOW_14); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_12, grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0());
@@ -7417,7 +7418,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_14=(Token)match(input,58,FOLLOW_2); if (state.failed) return current;
+                    otherlv_14=(Token)match(input,59,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_14, grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2());
@@ -7558,7 +7559,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt43=2;
                 int LA43_0 = input.LA(1);
 
-                if ( (LA43_0==31) ) {
+                if ( (LA43_0==32) ) {
                     alt43=1;
                 }
 
@@ -7567,7 +7568,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalNavascript.g:2653:4: otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) )
             	    {
-            	    otherlv_1=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
+            	    otherlv_1=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_1, grammarAccess.getMessageArrayAccess().getCommaKeyword_1_0());
@@ -7714,7 +7715,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,26,FOLLOW_10); if (state.failed) return current;
+            otherlv_1=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getMessageArrayElementAccess().getLeftCurlyBracketKeyword_1());
@@ -7726,7 +7727,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt44=2;
                 int LA44_0 = input.LA(1);
 
-                if ( ((LA44_0>=RULE_METHOD_IDENTIFIER && LA44_0<=RULE_MAPPABLE_IDENTIFIER)||LA44_0==24||LA44_0==26||LA44_0==40||LA44_0==46||(LA44_0>=48 && LA44_0<=49)||(LA44_0>=51 && LA44_0<=52)||(LA44_0>=54 && LA44_0<=56)||(LA44_0>=61 && LA44_0<=62)||(LA44_0>=64 && LA44_0<=66)) ) {
+                if ( ((LA44_0>=RULE_METHOD_IDENTIFIER && LA44_0<=RULE_MAPPABLE_IDENTIFIER)||LA44_0==25||LA44_0==27||LA44_0==41||LA44_0==47||(LA44_0>=49 && LA44_0<=50)||(LA44_0>=52 && LA44_0<=53)||(LA44_0>=55 && LA44_0<=57)||(LA44_0>=62 && LA44_0<=63)||(LA44_0>=65 && LA44_0<=67)) ) {
                     alt44=1;
                 }
 
@@ -7773,7 +7774,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_3=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getMessageArrayElementAccess().getRightCurlyBracketKeyword_3());
@@ -7870,10 +7871,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt47=2;
             int LA47_0 = input.LA(1);
 
-            if ( (LA47_0==59) ) {
+            if ( (LA47_0==60) ) {
                 alt47=1;
             }
-            else if ( (LA47_0==60) ) {
+            else if ( (LA47_0==61) ) {
                 alt47=2;
             }
             else {
@@ -7890,7 +7891,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:2749:3: (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType )
                     // InternalNavascript.g:2750:4: otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType
                     {
-                    otherlv_0=(Token)match(input,59,FOLLOW_17); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,60,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_0, grammarAccess.getMessageArgumentAccess().getTypeKeyword_0_0());
@@ -7900,10 +7901,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt45=2;
                     int LA45_0 = input.LA(1);
 
-                    if ( (LA45_0==33) ) {
+                    if ( (LA45_0==34) ) {
                         alt45=1;
                     }
-                    else if ( (LA45_0==34) ) {
+                    else if ( (LA45_0==35) ) {
                         alt45=2;
                     }
                     else {
@@ -7917,7 +7918,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:2755:5: otherlv_1= '='
                             {
-                            otherlv_1=(Token)match(input,33,FOLLOW_39); if (state.failed) return current;
+                            otherlv_1=(Token)match(input,34,FOLLOW_39); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_1, grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_0_1_0());
@@ -7929,7 +7930,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:2760:5: otherlv_2= ':'
                             {
-                            otherlv_2=(Token)match(input,34,FOLLOW_39); if (state.failed) return current;
+                            otherlv_2=(Token)match(input,35,FOLLOW_39); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_2, grammarAccess.getMessageArgumentAccess().getColonKeyword_0_1_1());
@@ -7969,7 +7970,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:2775:3: (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode )
                     // InternalNavascript.g:2776:4: otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode
                     {
-                    otherlv_4=(Token)match(input,60,FOLLOW_17); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,61,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getMessageArgumentAccess().getModeKeyword_1_0());
@@ -7979,10 +7980,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt46=2;
                     int LA46_0 = input.LA(1);
 
-                    if ( (LA46_0==33) ) {
+                    if ( (LA46_0==34) ) {
                         alt46=1;
                     }
-                    else if ( (LA46_0==34) ) {
+                    else if ( (LA46_0==35) ) {
                         alt46=2;
                     }
                     else {
@@ -7996,7 +7997,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:2781:5: otherlv_5= '='
                             {
-                            otherlv_5=(Token)match(input,33,FOLLOW_40); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,34,FOLLOW_40); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_5, grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_1_1_0());
@@ -8008,7 +8009,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:2786:5: otherlv_6= ':'
                             {
-                            otherlv_6=(Token)match(input,34,FOLLOW_40); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,35,FOLLOW_40); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_6, grammarAccess.getMessageArgumentAccess().getColonKeyword_1_1_1());
@@ -8168,7 +8169,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt48=2;
                 int LA48_0 = input.LA(1);
 
-                if ( (LA48_0==31) ) {
+                if ( (LA48_0==32) ) {
                     alt48=1;
                 }
 
@@ -8177,7 +8178,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalNavascript.g:2839:4: otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) )
             	    {
-            	    otherlv_1=(Token)match(input,31,FOLLOW_35); if (state.failed) return current;
+            	    otherlv_1=(Token)match(input,32,FOLLOW_35); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_1, grammarAccess.getMessageArgumentsAccess().getCommaKeyword_1_0());
@@ -8344,10 +8345,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt53=2;
             int LA53_0 = input.LA(1);
 
-            if ( (LA53_0==61) ) {
+            if ( (LA53_0==62) ) {
                 alt53=1;
             }
-            else if ( (LA53_0==62) ) {
+            else if ( (LA53_0==63) ) {
                 alt53=2;
             }
             else {
@@ -8364,7 +8365,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:2890:4: (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? )
                     // InternalNavascript.g:2891:5: otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )?
                     {
-                    otherlv_1=(Token)match(input,61,FOLLOW_41); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,62,FOLLOW_41); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_1, grammarAccess.getMapAccess().getMapKeyword_1_0_0());
@@ -8404,14 +8405,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt50=2;
                     int LA50_0 = input.LA(1);
 
-                    if ( (LA50_0==29) ) {
+                    if ( (LA50_0==30) ) {
                         alt50=1;
                     }
                     switch (alt50) {
                         case 1 :
                             // InternalNavascript.g:2914:6: otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')'
                             {
-                            otherlv_3=(Token)match(input,29,FOLLOW_42); if (state.failed) return current;
+                            otherlv_3=(Token)match(input,30,FOLLOW_42); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_3, grammarAccess.getMapAccess().getLeftParenthesisKeyword_1_0_2_0());
@@ -8421,7 +8422,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             int alt49=2;
                             int LA49_0 = input.LA(1);
 
-                            if ( (LA49_0==RULE_IDENTIFIER||(LA49_0>=101 && LA49_0<=103)) ) {
+                            if ( (LA49_0==RULE_IDENTIFIER||(LA49_0>=102 && LA49_0<=104)) ) {
                                 alt49=1;
                             }
                             switch (alt49) {
@@ -8463,7 +8464,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_5=(Token)match(input,30,FOLLOW_14); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_5, grammarAccess.getMapAccess().getRightParenthesisKeyword_1_0_2_2());
@@ -8487,19 +8488,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:2944:4: (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' )
                     // InternalNavascript.g:2945:5: otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')'
                     {
-                    otherlv_6=(Token)match(input,62,FOLLOW_11); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,63,FOLLOW_11); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_6, grammarAccess.getMapAccess().getMapKeyword_1_1_0());
                       				
                     }
-                    otherlv_7=(Token)match(input,29,FOLLOW_43); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,30,FOLLOW_43); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_7, grammarAccess.getMapAccess().getLeftParenthesisKeyword_1_1_1());
                       				
                     }
-                    otherlv_8=(Token)match(input,63,FOLLOW_17); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,64,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_8, grammarAccess.getMapAccess().getObjectKeyword_1_1_2());
@@ -8509,10 +8510,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt51=2;
                     int LA51_0 = input.LA(1);
 
-                    if ( (LA51_0==33) ) {
+                    if ( (LA51_0==34) ) {
                         alt51=1;
                     }
-                    else if ( (LA51_0==34) ) {
+                    else if ( (LA51_0==35) ) {
                         alt51=2;
                     }
                     else {
@@ -8526,7 +8527,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:2958:6: otherlv_9= '='
                             {
-                            otherlv_9=(Token)match(input,33,FOLLOW_44); if (state.failed) return current;
+                            otherlv_9=(Token)match(input,34,FOLLOW_44); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_9, grammarAccess.getMapAccess().getEqualsSignKeyword_1_1_3_0());
@@ -8538,7 +8539,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:2963:6: otherlv_10= ':'
                             {
-                            otherlv_10=(Token)match(input,34,FOLLOW_44); if (state.failed) return current;
+                            otherlv_10=(Token)match(input,35,FOLLOW_44); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_10, grammarAccess.getMapAccess().getColonKeyword_1_1_3_1());
@@ -8584,14 +8585,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt52=2;
                     int LA52_0 = input.LA(1);
 
-                    if ( (LA52_0==31) ) {
+                    if ( (LA52_0==32) ) {
                         alt52=1;
                     }
                     switch (alt52) {
                         case 1 :
                             // InternalNavascript.g:2987:6: otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) )
                             {
-                            otherlv_12=(Token)match(input,31,FOLLOW_45); if (state.failed) return current;
+                            otherlv_12=(Token)match(input,32,FOLLOW_45); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_12, grammarAccess.getMapAccess().getCommaKeyword_1_1_5_0());
@@ -8638,7 +8639,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_14=(Token)match(input,30,FOLLOW_14); if (state.failed) return current;
+                    otherlv_14=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_14, grammarAccess.getMapAccess().getRightParenthesisKeyword_1_1_6());
@@ -8653,7 +8654,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_15=(Token)match(input,26,FOLLOW_10); if (state.failed) return current;
+            otherlv_15=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_15, grammarAccess.getMapAccess().getLeftCurlyBracketKeyword_2());
@@ -8665,7 +8666,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt54=2;
                 int LA54_0 = input.LA(1);
 
-                if ( ((LA54_0>=RULE_METHOD_IDENTIFIER && LA54_0<=RULE_MAPPABLE_IDENTIFIER)||LA54_0==24||LA54_0==26||LA54_0==40||LA54_0==46||(LA54_0>=48 && LA54_0<=49)||(LA54_0>=51 && LA54_0<=52)||(LA54_0>=54 && LA54_0<=56)||(LA54_0>=61 && LA54_0<=62)||(LA54_0>=64 && LA54_0<=66)) ) {
+                if ( ((LA54_0>=RULE_METHOD_IDENTIFIER && LA54_0<=RULE_MAPPABLE_IDENTIFIER)||LA54_0==25||LA54_0==27||LA54_0==41||LA54_0==47||(LA54_0>=49 && LA54_0<=50)||(LA54_0>=52 && LA54_0<=53)||(LA54_0>=55 && LA54_0<=57)||(LA54_0>=62 && LA54_0<=63)||(LA54_0>=65 && LA54_0<=67)) ) {
                     alt54=1;
                 }
 
@@ -8712,7 +8713,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_17=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_17=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_17, grammarAccess.getMapAccess().getRightCurlyBracketKeyword_4());
@@ -8990,7 +8991,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,29,FOLLOW_42); if (state.failed) return current;
+            otherlv_2=(Token)match(input,30,FOLLOW_42); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getAdapterMethodAccess().getLeftParenthesisKeyword_2());
@@ -9000,7 +9001,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt56=2;
             int LA56_0 = input.LA(1);
 
-            if ( (LA56_0==RULE_IDENTIFIER||(LA56_0>=101 && LA56_0<=103)) ) {
+            if ( (LA56_0==RULE_IDENTIFIER||(LA56_0>=102 && LA56_0<=104)) ) {
                 alt56=1;
             }
             switch (alt56) {
@@ -9042,13 +9043,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,30,FOLLOW_22); if (state.failed) return current;
+            otherlv_4=(Token)match(input,31,FOLLOW_22); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getAdapterMethodAccess().getRightParenthesisKeyword_4());
               		
             }
-            otherlv_5=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getAdapterMethodAccess().getSemicolonKeyword_5());
@@ -9196,14 +9197,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:3199:3: ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) )
             int alt59=3;
             switch ( input.LA(1) ) {
-            case 33:
             case 34:
+            case 35:
                 {
                 alt59=1;
                 }
                 break;
-            case 26:
-            case 29:
+            case 27:
+            case 30:
                 {
                 alt59=2;
                 }
@@ -9232,10 +9233,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt57=2;
                     int LA57_0 = input.LA(1);
 
-                    if ( (LA57_0==33) ) {
+                    if ( (LA57_0==34) ) {
                         alt57=1;
                     }
-                    else if ( (LA57_0==34) ) {
+                    else if ( (LA57_0==35) ) {
                         alt57=2;
                     }
                     else {
@@ -9249,7 +9250,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:3202:6: otherlv_2= '='
                             {
-                            otherlv_2=(Token)match(input,33,FOLLOW_47); if (state.failed) return current;
+                            otherlv_2=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_2, grammarAccess.getSetterFieldAccess().getEqualsSignKeyword_2_0_0_0());
@@ -9261,7 +9262,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:3207:6: otherlv_3= ':'
                             {
-                            otherlv_3=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
+                            otherlv_3=(Token)match(input,35,FOLLOW_47); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_3, grammarAccess.getSetterFieldAccess().getColonKeyword_2_0_0_1());
@@ -9308,7 +9309,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_5, grammarAccess.getSetterFieldAccess().getSemicolonKeyword_2_0_2());
@@ -9330,14 +9331,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt58=2;
                     int LA58_0 = input.LA(1);
 
-                    if ( (LA58_0==29) ) {
+                    if ( (LA58_0==30) ) {
                         alt58=1;
                     }
                     switch (alt58) {
                         case 1 :
                             // InternalNavascript.g:3239:6: otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')'
                             {
-                            otherlv_6=(Token)match(input,29,FOLLOW_45); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,30,FOLLOW_45); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_6, grammarAccess.getSetterFieldAccess().getLeftParenthesisKeyword_2_1_0_0());
@@ -9378,7 +9379,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_8=(Token)match(input,30,FOLLOW_14); if (state.failed) return current;
+                            otherlv_8=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_8, grammarAccess.getSetterFieldAccess().getRightParenthesisKeyword_2_1_0_2());
@@ -9390,7 +9391,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_9=(Token)match(input,26,FOLLOW_37); if (state.failed) return current;
+                    otherlv_9=(Token)match(input,27,FOLLOW_37); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_9, grammarAccess.getSetterFieldAccess().getLeftCurlyBracketKeyword_2_1_1());
@@ -9431,7 +9432,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_11=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_11, grammarAccess.getSetterFieldAccess().getRightCurlyBracketKeyword_2_1_3());
@@ -9626,20 +9627,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt61=2;
             int LA61_0 = input.LA(1);
 
-            if ( (LA61_0==29) ) {
+            if ( (LA61_0==30) ) {
                 alt61=1;
             }
             switch (alt61) {
                 case 1 :
                     // InternalNavascript.g:3361:4: otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')'
                     {
-                    otherlv_2=(Token)match(input,29,FOLLOW_33); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,30,FOLLOW_33); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getMappedArrayFieldAccess().getLeftParenthesisKeyword_2_0());
                       			
                     }
-                    otherlv_3=(Token)match(input,53,FOLLOW_17); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,54,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getMappedArrayFieldAccess().getFilterKeyword_2_1());
@@ -9649,10 +9650,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt60=2;
                     int LA60_0 = input.LA(1);
 
-                    if ( (LA60_0==33) ) {
+                    if ( (LA60_0==34) ) {
                         alt60=1;
                     }
-                    else if ( (LA60_0==34) ) {
+                    else if ( (LA60_0==35) ) {
                         alt60=2;
                     }
                     else {
@@ -9666,7 +9667,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:3370:5: otherlv_4= '='
                             {
-                            otherlv_4=(Token)match(input,33,FOLLOW_6); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_4, grammarAccess.getMappedArrayFieldAccess().getEqualsSignKeyword_2_2_0());
@@ -9678,7 +9679,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:3375:5: otherlv_5= ':'
                             {
-                            otherlv_5=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_5, grammarAccess.getMappedArrayFieldAccess().getColonKeyword_2_2_1());
@@ -9725,7 +9726,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,30,FOLLOW_14); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_7, grammarAccess.getMappedArrayFieldAccess().getRightParenthesisKeyword_2_4());
@@ -9737,7 +9738,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,26,FOLLOW_10); if (state.failed) return current;
+            otherlv_8=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_8, grammarAccess.getMappedArrayFieldAccess().getLeftCurlyBracketKeyword_3());
@@ -9749,7 +9750,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt62=2;
                 int LA62_0 = input.LA(1);
 
-                if ( ((LA62_0>=RULE_METHOD_IDENTIFIER && LA62_0<=RULE_MAPPABLE_IDENTIFIER)||LA62_0==24||LA62_0==26||LA62_0==40||LA62_0==46||(LA62_0>=48 && LA62_0<=49)||(LA62_0>=51 && LA62_0<=52)||(LA62_0>=54 && LA62_0<=56)||(LA62_0>=61 && LA62_0<=62)||(LA62_0>=64 && LA62_0<=66)) ) {
+                if ( ((LA62_0>=RULE_METHOD_IDENTIFIER && LA62_0<=RULE_MAPPABLE_IDENTIFIER)||LA62_0==25||LA62_0==27||LA62_0==41||LA62_0==47||(LA62_0>=49 && LA62_0<=50)||(LA62_0>=52 && LA62_0<=53)||(LA62_0>=55 && LA62_0<=57)||(LA62_0>=62 && LA62_0<=63)||(LA62_0>=65 && LA62_0<=67)) ) {
                     alt62=1;
                 }
 
@@ -9796,7 +9797,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_10=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_10=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_10, grammarAccess.getMappedArrayFieldAccess().getRightCurlyBracketKeyword_5());
@@ -9941,20 +9942,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt64=2;
             int LA64_0 = input.LA(1);
 
-            if ( (LA64_0==29) ) {
+            if ( (LA64_0==30) ) {
                 alt64=1;
             }
             switch (alt64) {
                 case 1 :
                     // InternalNavascript.g:3476:4: otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')'
                     {
-                    otherlv_2=(Token)match(input,29,FOLLOW_33); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,30,FOLLOW_33); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getMappedArrayMessageAccess().getLeftParenthesisKeyword_2_0());
                       			
                     }
-                    otherlv_3=(Token)match(input,53,FOLLOW_17); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,54,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getMappedArrayMessageAccess().getFilterKeyword_2_1());
@@ -9964,10 +9965,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt63=2;
                     int LA63_0 = input.LA(1);
 
-                    if ( (LA63_0==33) ) {
+                    if ( (LA63_0==34) ) {
                         alt63=1;
                     }
-                    else if ( (LA63_0==34) ) {
+                    else if ( (LA63_0==35) ) {
                         alt63=2;
                     }
                     else {
@@ -9981,7 +9982,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:3485:5: otherlv_4= '='
                             {
-                            otherlv_4=(Token)match(input,33,FOLLOW_6); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_4, grammarAccess.getMappedArrayMessageAccess().getEqualsSignKeyword_2_2_0());
@@ -9993,7 +9994,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:3490:5: otherlv_5= ':'
                             {
-                            otherlv_5=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_5, grammarAccess.getMappedArrayMessageAccess().getColonKeyword_2_2_1());
@@ -10040,7 +10041,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,30,FOLLOW_14); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_7, grammarAccess.getMappedArrayMessageAccess().getRightParenthesisKeyword_2_4());
@@ -10052,7 +10053,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,26,FOLLOW_10); if (state.failed) return current;
+            otherlv_8=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_8, grammarAccess.getMappedArrayMessageAccess().getLeftCurlyBracketKeyword_3());
@@ -10064,7 +10065,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt65=2;
                 int LA65_0 = input.LA(1);
 
-                if ( ((LA65_0>=RULE_METHOD_IDENTIFIER && LA65_0<=RULE_MAPPABLE_IDENTIFIER)||LA65_0==24||LA65_0==26||LA65_0==40||LA65_0==46||(LA65_0>=48 && LA65_0<=49)||(LA65_0>=51 && LA65_0<=52)||(LA65_0>=54 && LA65_0<=56)||(LA65_0>=61 && LA65_0<=62)||(LA65_0>=64 && LA65_0<=66)) ) {
+                if ( ((LA65_0>=RULE_METHOD_IDENTIFIER && LA65_0<=RULE_MAPPABLE_IDENTIFIER)||LA65_0==25||LA65_0==27||LA65_0==41||LA65_0==47||(LA65_0>=49 && LA65_0<=50)||(LA65_0>=52 && LA65_0<=53)||(LA65_0>=55 && LA65_0<=57)||(LA65_0>=62 && LA65_0<=63)||(LA65_0>=65 && LA65_0<=67)) ) {
                     alt65=1;
                 }
 
@@ -10111,7 +10112,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_10=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_10=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_10, grammarAccess.getMappedArrayMessageAccess().getRightCurlyBracketKeyword_5());
@@ -10256,7 +10257,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt66=2;
                 int LA66_0 = input.LA(1);
 
-                if ( (LA66_0==31) ) {
+                if ( (LA66_0==32) ) {
                     alt66=1;
                 }
 
@@ -10265,7 +10266,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalNavascript.g:3592:4: otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) )
             	    {
-            	    otherlv_2=(Token)match(input,31,FOLLOW_45); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,32,FOLLOW_45); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_2, grammarAccess.getKeyValueArgumentsAccess().getCommaKeyword_2_0());
@@ -10428,7 +10429,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             if ( (LA67_0==RULE_IDENTIFIER) ) {
                 alt67=1;
             }
-            else if ( ((LA67_0>=101 && LA67_0<=103)) ) {
+            else if ( ((LA67_0>=102 && LA67_0<=104)) ) {
                 alt67=2;
             }
             else {
@@ -10505,10 +10506,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt68=2;
             int LA68_0 = input.LA(1);
 
-            if ( (LA68_0==33) ) {
+            if ( (LA68_0==34) ) {
                 alt68=1;
             }
-            else if ( (LA68_0==34) ) {
+            else if ( (LA68_0==35) ) {
                 alt68=2;
             }
             else {
@@ -10522,7 +10523,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:3679:4: otherlv_2= '='
                     {
-                    otherlv_2=(Token)match(input,33,FOLLOW_19); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getKeyValueArgumentAccess().getEqualsSignKeyword_2_0());
@@ -10534,7 +10535,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:3684:4: otherlv_3= ':'
                     {
-                    otherlv_3=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getKeyValueArgumentAccess().getColonKeyword_2_1());
@@ -10699,7 +10700,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,64,FOLLOW_41); if (state.failed) return current;
+            otherlv_1=(Token)match(input,65,FOLLOW_41); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getVarAccess().getVarKeyword_1());
@@ -10739,7 +10740,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt69=2;
             int LA69_0 = input.LA(1);
 
-            if ( (LA69_0==29) ) {
+            if ( (LA69_0==30) ) {
                 alt69=1;
             }
             switch (alt69) {
@@ -10784,18 +10785,18 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:3775:3: ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) )
             int alt73=5;
             switch ( input.LA(1) ) {
-            case 33:
             case 34:
+            case 35:
                 {
                 alt73=1;
                 }
                 break;
-            case 57:
+            case 58:
                 {
                 alt73=2;
                 }
                 break;
-            case 26:
+            case 27:
                 {
                 switch ( input.LA(2) ) {
                 case RULE_TML_LITERAL:
@@ -10803,9 +10804,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     alt73=5;
                     }
                     break;
-                case 24:
-                case 27:
-                case 64:
+                case 25:
+                case 28:
+                case 65:
                     {
                     alt73=3;
                     }
@@ -10844,10 +10845,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt70=2;
                     int LA70_0 = input.LA(1);
 
-                    if ( (LA70_0==33) ) {
+                    if ( (LA70_0==34) ) {
                         alt70=1;
                     }
-                    else if ( (LA70_0==34) ) {
+                    else if ( (LA70_0==35) ) {
                         alt70=2;
                     }
                     else {
@@ -10861,7 +10862,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // InternalNavascript.g:3778:6: otherlv_4= '='
                             {
-                            otherlv_4=(Token)match(input,33,FOLLOW_47); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_4, grammarAccess.getVarAccess().getEqualsSignKeyword_4_0_0_0());
@@ -10873,7 +10874,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // InternalNavascript.g:3783:6: otherlv_5= ':'
                             {
-                            otherlv_5=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,35,FOLLOW_47); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_5, grammarAccess.getVarAccess().getColonKeyword_4_0_0_1());
@@ -10920,7 +10921,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_7, grammarAccess.getVarAccess().getSemicolonKeyword_4_0_2());
@@ -10938,7 +10939,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:3813:4: (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' )
                     // InternalNavascript.g:3814:5: otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']'
                     {
-                    otherlv_8=(Token)match(input,57,FOLLOW_50); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,58,FOLLOW_50); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_8, grammarAccess.getVarAccess().getLeftSquareBracketKeyword_4_1_0());
@@ -10948,7 +10949,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt71=2;
                     int LA71_0 = input.LA(1);
 
-                    if ( (LA71_0==26) ) {
+                    if ( (LA71_0==27) ) {
                         alt71=1;
                     }
                     switch (alt71) {
@@ -10990,7 +10991,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,58,FOLLOW_2); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,59,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_10, grammarAccess.getVarAccess().getRightSquareBracketKeyword_4_1_2());
@@ -11008,7 +11009,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:3843:4: (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' )
                     // InternalNavascript.g:3844:5: otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}'
                     {
-                    otherlv_11=(Token)match(input,26,FOLLOW_51); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,27,FOLLOW_51); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_11, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_2_0());
@@ -11020,7 +11021,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         int alt72=2;
                         int LA72_0 = input.LA(1);
 
-                        if ( (LA72_0==24||LA72_0==64) ) {
+                        if ( (LA72_0==25||LA72_0==65) ) {
                             alt72=1;
                         }
 
@@ -11067,7 +11068,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_13=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+                    otherlv_13=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_13, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_2_2());
@@ -11085,7 +11086,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:3873:4: (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' )
                     // InternalNavascript.g:3874:5: otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}'
                     {
-                    otherlv_14=(Token)match(input,26,FOLLOW_52); if (state.failed) return current;
+                    otherlv_14=(Token)match(input,27,FOLLOW_52); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_14, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_3_0());
@@ -11126,7 +11127,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_16=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+                    otherlv_16=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_16, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_3_2());
@@ -11144,7 +11145,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:3903:4: (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' )
                     // InternalNavascript.g:3904:5: otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}'
                     {
-                    otherlv_17=(Token)match(input,26,FOLLOW_37); if (state.failed) return current;
+                    otherlv_17=(Token)match(input,27,FOLLOW_37); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_17, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_4_0());
@@ -11185,7 +11186,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_19=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+                    otherlv_19=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_19, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_4_2());
@@ -11339,7 +11340,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt74=2;
                 int LA74_0 = input.LA(1);
 
-                if ( (LA74_0==31) ) {
+                if ( (LA74_0==32) ) {
                     alt74=1;
                 }
 
@@ -11348,7 +11349,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalNavascript.g:3979:4: otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) )
             	    {
-            	    otherlv_2=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_2, grammarAccess.getVarArrayAccess().getCommaKeyword_2_0());
@@ -11495,7 +11496,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,26,FOLLOW_51); if (state.failed) return current;
+            otherlv_1=(Token)match(input,27,FOLLOW_51); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getVarArrayElementAccess().getLeftCurlyBracketKeyword_1());
@@ -11507,7 +11508,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt75=2;
                 int LA75_0 = input.LA(1);
 
-                if ( (LA75_0==24||LA75_0==64) ) {
+                if ( (LA75_0==25||LA75_0==65) ) {
                     alt75=1;
                 }
 
@@ -11554,7 +11555,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_3=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getVarArrayElementAccess().getRightCurlyBracketKeyword_3());
@@ -11663,14 +11664,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt76=2;
             int LA76_0 = input.LA(1);
 
-            if ( (LA76_0==24) ) {
+            if ( (LA76_0==25) ) {
                 alt76=1;
             }
             switch (alt76) {
                 case 1 :
                     // InternalNavascript.g:4083:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
                     {
-                    otherlv_1=(Token)match(input,24,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,25,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getVarElementAccess().getIfKeyword_1_0());
@@ -11711,7 +11712,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,25,FOLLOW_53); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,26,FOLLOW_53); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getVarElementAccess().getThenKeyword_1_2());
@@ -11858,7 +11859,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,29,FOLLOW_35); if (state.failed) return current;
+            otherlv_1=(Token)match(input,30,FOLLOW_35); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getVarArgumentsAccess().getLeftParenthesisKeyword_1());
@@ -11905,7 +11906,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt77=2;
                 int LA77_0 = input.LA(1);
 
-                if ( (LA77_0==31) ) {
+                if ( (LA77_0==32) ) {
                     alt77=1;
                 }
 
@@ -11914,7 +11915,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalNavascript.g:4180:4: otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) )
             	    {
-            	    otherlv_3=(Token)match(input,31,FOLLOW_35); if (state.failed) return current;
+            	    otherlv_3=(Token)match(input,32,FOLLOW_35); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_3, grammarAccess.getVarArgumentsAccess().getCommaKeyword_3_0());
@@ -11964,7 +11965,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,30,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getVarArgumentsAccess().getRightParenthesisKeyword_4());
@@ -12077,10 +12078,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt78=2;
             int LA78_0 = input.LA(1);
 
-            if ( (LA78_0==59) ) {
+            if ( (LA78_0==60) ) {
                 alt78=1;
             }
-            else if ( (LA78_0==60) ) {
+            else if ( (LA78_0==61) ) {
                 alt78=2;
             }
             else {
@@ -12258,7 +12259,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,59,FOLLOW_17); if (state.failed) return current;
+            otherlv_1=(Token)match(input,60,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getVarTypeAccess().getTypeKeyword_1());
@@ -12268,10 +12269,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt79=2;
             int LA79_0 = input.LA(1);
 
-            if ( (LA79_0==33) ) {
+            if ( (LA79_0==34) ) {
                 alt79=1;
             }
-            else if ( (LA79_0==34) ) {
+            else if ( (LA79_0==35) ) {
                 alt79=2;
             }
             else {
@@ -12285,7 +12286,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:4302:4: otherlv_2= '='
                     {
-                    otherlv_2=(Token)match(input,33,FOLLOW_54); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,34,FOLLOW_54); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getVarTypeAccess().getEqualsSignKeyword_2_0());
@@ -12297,7 +12298,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:4307:4: otherlv_3= ':'
                     {
-                    otherlv_3=(Token)match(input,34,FOLLOW_54); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,35,FOLLOW_54); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getVarTypeAccess().getColonKeyword_2_1());
@@ -12319,10 +12320,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt80=2;
             int LA80_0 = input.LA(1);
 
-            if ( ((LA80_0>=104 && LA80_0<=106)) ) {
+            if ( ((LA80_0>=105 && LA80_0<=107)) ) {
                 alt80=1;
             }
-            else if ( ((LA80_0>=90 && LA80_0<=100)) ) {
+            else if ( ((LA80_0>=91 && LA80_0<=101)) ) {
                 alt80=2;
             }
             else {
@@ -12498,7 +12499,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,60,FOLLOW_17); if (state.failed) return current;
+            otherlv_1=(Token)match(input,61,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getVarModeAccess().getModeKeyword_1());
@@ -12508,10 +12509,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt81=2;
             int LA81_0 = input.LA(1);
 
-            if ( (LA81_0==33) ) {
+            if ( (LA81_0==34) ) {
                 alt81=1;
             }
-            else if ( (LA81_0==34) ) {
+            else if ( (LA81_0==35) ) {
                 alt81=2;
             }
             else {
@@ -12525,7 +12526,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:4380:4: otherlv_2= '='
                     {
-                    otherlv_2=(Token)match(input,33,FOLLOW_40); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,34,FOLLOW_40); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getVarModeAccess().getEqualsSignKeyword_2_0());
@@ -12537,7 +12538,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:4385:4: otherlv_3= ':'
                     {
-                    otherlv_3=(Token)match(input,34,FOLLOW_40); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,35,FOLLOW_40); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getVarModeAccess().getColonKeyword_2_1());
@@ -12698,7 +12699,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,65,FOLLOW_25); if (state.failed) return current;
+            otherlv_1=(Token)match(input,66,FOLLOW_25); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getPropertyAccess().getPropertyKeyword_1());
@@ -12738,7 +12739,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt82=2;
             int LA82_0 = input.LA(1);
 
-            if ( (LA82_0==29) ) {
+            if ( (LA82_0==30) ) {
                 alt82=1;
             }
             switch (alt82) {
@@ -12783,19 +12784,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:4476:3: ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) )
             int alt85=4;
             switch ( input.LA(1) ) {
-            case 33:
             case 34:
-            case 41:
+            case 35:
+            case 42:
                 {
                 alt85=1;
                 }
                 break;
-            case 57:
+            case 58:
                 {
                 alt85=2;
                 }
                 break;
-            case 26:
+            case 27:
                 {
                 int LA85_3 = input.LA(2);
 
@@ -12833,7 +12834,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt84=2;
                     int LA84_0 = input.LA(1);
 
-                    if ( ((LA84_0>=33 && LA84_0<=34)) ) {
+                    if ( ((LA84_0>=34 && LA84_0<=35)) ) {
                         alt84=1;
                     }
                     switch (alt84) {
@@ -12844,10 +12845,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             int alt83=2;
                             int LA83_0 = input.LA(1);
 
-                            if ( (LA83_0==33) ) {
+                            if ( (LA83_0==34) ) {
                                 alt83=1;
                             }
-                            else if ( (LA83_0==34) ) {
+                            else if ( (LA83_0==35) ) {
                                 alt83=2;
                             }
                             else {
@@ -12861,7 +12862,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                                 case 1 :
                                     // InternalNavascript.g:4480:7: otherlv_4= '='
                                     {
-                                    otherlv_4=(Token)match(input,33,FOLLOW_47); if (state.failed) return current;
+                                    otherlv_4=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                       							newLeafNode(otherlv_4, grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_0_0_0_0());
@@ -12873,7 +12874,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                                 case 2 :
                                     // InternalNavascript.g:4485:7: otherlv_5= ':'
                                     {
-                                    otherlv_5=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
+                                    otherlv_5=(Token)match(input,35,FOLLOW_47); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                       							newLeafNode(otherlv_5, grammarAccess.getPropertyAccess().getColonKeyword_4_0_0_0_1());
@@ -12926,7 +12927,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_7, grammarAccess.getPropertyAccess().getSemicolonKeyword_4_0_1());
@@ -12944,7 +12945,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:4516:4: (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' )
                     // InternalNavascript.g:4517:5: otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']'
                     {
-                    otherlv_8=(Token)match(input,57,FOLLOW_14); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,58,FOLLOW_14); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_8, grammarAccess.getPropertyAccess().getLeftSquareBracketKeyword_4_1_0());
@@ -12985,7 +12986,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,58,FOLLOW_2); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,59,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_10, grammarAccess.getPropertyAccess().getRightSquareBracketKeyword_4_1_2());
@@ -13003,7 +13004,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:4546:4: (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' )
                     // InternalNavascript.g:4547:5: otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}'
                     {
-                    otherlv_11=(Token)match(input,26,FOLLOW_52); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,27,FOLLOW_52); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_11, grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_2_0());
@@ -13044,7 +13045,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_13=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+                    otherlv_13=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_13, grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_2_2());
@@ -13062,7 +13063,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:4576:4: (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' )
                     // InternalNavascript.g:4577:5: otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}'
                     {
-                    otherlv_14=(Token)match(input,26,FOLLOW_37); if (state.failed) return current;
+                    otherlv_14=(Token)match(input,27,FOLLOW_37); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_14, grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_3_0());
@@ -13103,7 +13104,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_16=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+                    otherlv_16=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_16, grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_3_2());
@@ -13244,7 +13245,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt86=2;
                 int LA86_0 = input.LA(1);
 
-                if ( (LA86_0==31) ) {
+                if ( (LA86_0==32) ) {
                     alt86=1;
                 }
 
@@ -13253,7 +13254,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalNavascript.g:4645:4: otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) )
             	    {
-            	    otherlv_1=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
+            	    otherlv_1=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_1, grammarAccess.getSelectionArrayAccess().getCommaKeyword_1_0());
@@ -13400,7 +13401,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,26,FOLLOW_10); if (state.failed) return current;
+            otherlv_1=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getSelectionArrayElementAccess().getLeftCurlyBracketKeyword_1());
@@ -13412,7 +13413,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt87=2;
                 int LA87_0 = input.LA(1);
 
-                if ( ((LA87_0>=RULE_METHOD_IDENTIFIER && LA87_0<=RULE_MAPPABLE_IDENTIFIER)||LA87_0==24||LA87_0==26||LA87_0==40||LA87_0==46||(LA87_0>=48 && LA87_0<=49)||(LA87_0>=51 && LA87_0<=52)||(LA87_0>=54 && LA87_0<=56)||(LA87_0>=61 && LA87_0<=62)||(LA87_0>=64 && LA87_0<=66)) ) {
+                if ( ((LA87_0>=RULE_METHOD_IDENTIFIER && LA87_0<=RULE_MAPPABLE_IDENTIFIER)||LA87_0==25||LA87_0==27||LA87_0==41||LA87_0==47||(LA87_0>=49 && LA87_0<=50)||(LA87_0>=52 && LA87_0<=53)||(LA87_0>=55 && LA87_0<=57)||(LA87_0>=62 && LA87_0<=63)||(LA87_0>=65 && LA87_0<=67)) ) {
                     alt87=1;
                 }
 
@@ -13459,7 +13460,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_3=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getSelectionArrayElementAccess().getRightCurlyBracketKeyword_3());
@@ -13553,7 +13554,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:4740:2: (otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' )
             // InternalNavascript.g:4741:3: otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';'
             {
-            otherlv_0=(Token)match(input,66,FOLLOW_45); if (state.failed) return current;
+            otherlv_0=(Token)match(input,67,FOLLOW_45); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getOptionAccess().getOptionKeyword_0());
@@ -13598,10 +13599,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt88=2;
             int LA88_0 = input.LA(1);
 
-            if ( (LA88_0==33) ) {
+            if ( (LA88_0==34) ) {
                 alt88=1;
             }
-            else if ( (LA88_0==34) ) {
+            else if ( (LA88_0==35) ) {
                 alt88=2;
             }
             else {
@@ -13615,7 +13616,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:4765:4: otherlv_2= '='
                     {
-                    otherlv_2=(Token)match(input,33,FOLLOW_47); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getOptionAccess().getEqualsSignKeyword_2_0());
@@ -13627,7 +13628,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:4770:4: otherlv_3= ':'
                     {
-                    otherlv_3=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,35,FOLLOW_47); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getOptionAccess().getColonKeyword_2_1());
@@ -13674,7 +13675,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getOptionAccess().getSemicolonKeyword_4());
@@ -13780,7 +13781,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,29,FOLLOW_57); if (state.failed) return current;
+            otherlv_1=(Token)match(input,30,FOLLOW_57); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getPropertyArgumentsAccess().getLeftParenthesisKeyword_1());
@@ -13827,7 +13828,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt89=2;
                 int LA89_0 = input.LA(1);
 
-                if ( (LA89_0==31) ) {
+                if ( (LA89_0==32) ) {
                     alt89=1;
                 }
 
@@ -13836,7 +13837,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalNavascript.g:4848:4: otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) )
             	    {
-            	    otherlv_3=(Token)match(input,31,FOLLOW_57); if (state.failed) return current;
+            	    otherlv_3=(Token)match(input,32,FOLLOW_57); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_3, grammarAccess.getPropertyArgumentsAccess().getCommaKeyword_3_0());
@@ -13886,7 +13887,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,30,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getPropertyArgumentsAccess().getRightParenthesisKeyword_4());
@@ -13984,32 +13985,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:4894:2: (this_DirectionArgument_0= ruleDirectionArgument | this_TypeArgument_1= ruleTypeArgument | this_SubTypeArgument_2= ruleSubTypeArgument | this_DescriptionArgument_3= ruleDescriptionArgument | this_CardinalityArgument_4= ruleCardinalityArgument | this_LengthArgument_5= ruleLengthArgument )
             int alt90=6;
             switch ( input.LA(1) ) {
-            case 68:
+            case 69:
                 {
                 alt90=1;
                 }
                 break;
-            case 59:
+            case 60:
                 {
                 alt90=2;
                 }
                 break;
-            case 74:
+            case 75:
                 {
                 alt90=3;
                 }
                 break;
-            case 43:
+            case 44:
                 {
                 alt90=4;
                 }
                 break;
-            case 72:
+            case 73:
                 {
                 alt90=5;
                 }
                 break;
-            case 67:
+            case 68:
                 {
                 alt90=6;
                 }
@@ -14239,7 +14240,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:4966:2: (otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) ) )
             // InternalNavascript.g:4967:3: otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) )
             {
-            otherlv_0=(Token)match(input,67,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,68,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getLengthArgumentAccess().getLengthKeyword_0());
@@ -14249,10 +14250,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt91=2;
             int LA91_0 = input.LA(1);
 
-            if ( (LA91_0==33) ) {
+            if ( (LA91_0==34) ) {
                 alt91=1;
             }
-            else if ( (LA91_0==34) ) {
+            else if ( (LA91_0==35) ) {
                 alt91=2;
             }
             else {
@@ -14266,7 +14267,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:4972:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,33,FOLLOW_58); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,34,FOLLOW_58); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getLengthArgumentAccess().getEqualsSignKeyword_1_0());
@@ -14278,7 +14279,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:4977:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_58); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_58); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getLengthArgumentAccess().getColonKeyword_1_1());
@@ -14406,7 +14407,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:5018:2: (otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) ) )
             // InternalNavascript.g:5019:3: otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) )
             {
-            otherlv_0=(Token)match(input,68,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,69,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getDirectionArgumentAccess().getDirectionKeyword_0());
@@ -14416,10 +14417,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt92=2;
             int LA92_0 = input.LA(1);
 
-            if ( (LA92_0==33) ) {
+            if ( (LA92_0==34) ) {
                 alt92=1;
             }
-            else if ( (LA92_0==34) ) {
+            else if ( (LA92_0==35) ) {
                 alt92=2;
             }
             else {
@@ -14433,7 +14434,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:5024:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,33,FOLLOW_59); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,34,FOLLOW_59); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getDirectionArgumentAccess().getEqualsSignKeyword_1_0());
@@ -14445,7 +14446,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:5029:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_59); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_59); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getDirectionArgumentAccess().getColonKeyword_1_1());
@@ -14466,17 +14467,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:5036:5: (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' )
             int alt93=3;
             switch ( input.LA(1) ) {
-            case 69:
+            case 70:
                 {
                 alt93=1;
                 }
                 break;
-            case 70:
+            case 71:
                 {
                 alt93=2;
                 }
                 break;
-            case 71:
+            case 72:
                 {
                 alt93=3;
                 }
@@ -14493,7 +14494,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:5037:6: lv_value_3_1= 'in'
                     {
-                    lv_value_3_1=(Token)match(input,69,FOLLOW_2); if (state.failed) return current;
+                    lv_value_3_1=(Token)match(input,70,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       						newLeafNode(lv_value_3_1, grammarAccess.getDirectionArgumentAccess().getValueInKeyword_2_0_0());
@@ -14513,7 +14514,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:5048:6: lv_value_3_2= 'out'
                     {
-                    lv_value_3_2=(Token)match(input,70,FOLLOW_2); if (state.failed) return current;
+                    lv_value_3_2=(Token)match(input,71,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       						newLeafNode(lv_value_3_2, grammarAccess.getDirectionArgumentAccess().getValueOutKeyword_2_0_1());
@@ -14533,7 +14534,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // InternalNavascript.g:5059:6: lv_value_3_3= 'inout'
                     {
-                    lv_value_3_3=(Token)match(input,71,FOLLOW_2); if (state.failed) return current;
+                    lv_value_3_3=(Token)match(input,72,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       						newLeafNode(lv_value_3_3, grammarAccess.getDirectionArgumentAccess().getValueInoutKeyword_2_0_2());
@@ -14644,7 +14645,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:5090:2: (otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) ) )
             // InternalNavascript.g:5091:3: otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) )
             {
-            otherlv_0=(Token)match(input,43,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,44,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getDescriptionArgumentAccess().getDescriptionKeyword_0());
@@ -14654,10 +14655,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt94=2;
             int LA94_0 = input.LA(1);
 
-            if ( (LA94_0==33) ) {
+            if ( (LA94_0==34) ) {
                 alt94=1;
             }
-            else if ( (LA94_0==34) ) {
+            else if ( (LA94_0==35) ) {
                 alt94=2;
             }
             else {
@@ -14671,7 +14672,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:5096:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,33,FOLLOW_19); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getDescriptionArgumentAccess().getEqualsSignKeyword_1_0());
@@ -14683,7 +14684,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:5101:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getDescriptionArgumentAccess().getColonKeyword_1_1());
@@ -14815,7 +14816,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:5143:2: (otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) ) )
             // InternalNavascript.g:5144:3: otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) )
             {
-            otherlv_0=(Token)match(input,72,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,73,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getCardinalityArgumentAccess().getCardinalityKeyword_0());
@@ -14825,10 +14826,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt95=2;
             int LA95_0 = input.LA(1);
 
-            if ( (LA95_0==33) ) {
+            if ( (LA95_0==34) ) {
                 alt95=1;
             }
-            else if ( (LA95_0==34) ) {
+            else if ( (LA95_0==35) ) {
                 alt95=2;
             }
             else {
@@ -14842,7 +14843,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:5149:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,33,FOLLOW_60); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,34,FOLLOW_60); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getCardinalityArgumentAccess().getEqualsSignKeyword_1_0());
@@ -14854,7 +14855,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:5154:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_60); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_60); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getCardinalityArgumentAccess().getColonKeyword_1_1());
@@ -14876,7 +14877,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt96=2;
             int LA96_0 = input.LA(1);
 
-            if ( (LA96_0==73) ) {
+            if ( (LA96_0==74) ) {
                 alt96=1;
             }
             else if ( (LA96_0==RULE_ONE) ) {
@@ -14893,7 +14894,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:5162:6: lv_value_3_1= '+'
                     {
-                    lv_value_3_1=(Token)match(input,73,FOLLOW_2); if (state.failed) return current;
+                    lv_value_3_1=(Token)match(input,74,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       						newLeafNode(lv_value_3_1, grammarAccess.getCardinalityArgumentAccess().getValuePlusSignKeyword_2_0_0());
@@ -15028,7 +15029,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:5208:2: (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) ) )
             // InternalNavascript.g:5209:3: otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) )
             {
-            otherlv_0=(Token)match(input,59,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,60,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getTypeArgumentAccess().getTypeKeyword_0());
@@ -15038,10 +15039,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt97=2;
             int LA97_0 = input.LA(1);
 
-            if ( (LA97_0==33) ) {
+            if ( (LA97_0==34) ) {
                 alt97=1;
             }
-            else if ( (LA97_0==34) ) {
+            else if ( (LA97_0==35) ) {
                 alt97=2;
             }
             else {
@@ -15055,7 +15056,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:5214:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,33,FOLLOW_54); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,34,FOLLOW_54); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getTypeArgumentAccess().getEqualsSignKeyword_1_0());
@@ -15067,7 +15068,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:5219:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_54); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_54); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getTypeArgumentAccess().getColonKeyword_1_1());
@@ -15198,7 +15199,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:5261:2: (otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) ) )
             // InternalNavascript.g:5262:3: otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) )
             {
-            otherlv_0=(Token)match(input,74,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,75,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getSubTypeArgumentAccess().getSubtypeKeyword_0());
@@ -15208,10 +15209,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt98=2;
             int LA98_0 = input.LA(1);
 
-            if ( (LA98_0==33) ) {
+            if ( (LA98_0==34) ) {
                 alt98=1;
             }
-            else if ( (LA98_0==34) ) {
+            else if ( (LA98_0==35) ) {
                 alt98=2;
             }
             else {
@@ -15225,7 +15226,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:5267:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,33,FOLLOW_41); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,34,FOLLOW_41); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getSubTypeArgumentAccess().getEqualsSignKeyword_1_0());
@@ -15237,7 +15238,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:5272:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_41); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_41); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getSubTypeArgumentAccess().getColonKeyword_1_1());
@@ -15367,10 +15368,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt100=2;
             int LA100_0 = input.LA(1);
 
-            if ( (LA100_0==24) ) {
+            if ( (LA100_0==25) ) {
                 alt100=1;
             }
-            else if ( ((LA100_0>=RULE_QUOTED_IDENTIFIER && LA100_0<=RULE_IDENTIFIER)||(LA100_0>=RULE_MAPPABLE_IDENTIFIER && LA100_0<=RULE_EXISTS)||LA100_0==29||LA100_0==84||(LA100_0>=87 && LA100_0<=88)) ) {
+            else if ( ((LA100_0>=RULE_QUOTED_IDENTIFIER && LA100_0<=RULE_IDENTIFIER)||(LA100_0>=RULE_MAPPABLE_IDENTIFIER && LA100_0<=RULE_EXISTS)||LA100_0==30||LA100_0==85||(LA100_0>=88 && LA100_0<=89)) ) {
                 alt100=2;
             }
             else {
@@ -15407,7 +15408,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         int alt99=2;
                         int LA99_0 = input.LA(1);
 
-                        if ( (LA99_0==24) ) {
+                        if ( (LA99_0==25) ) {
                             alt99=1;
                         }
 
@@ -15459,7 +15460,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         cnt99++;
                     } while (true);
 
-                    otherlv_2=(Token)match(input,75,FOLLOW_19); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,76,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getConditionalExpressionsAccess().getElseKeyword_0_2());
@@ -15633,7 +15634,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:5403:2: (otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) ) )
             // InternalNavascript.g:5404:3: otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) )
             {
-            otherlv_0=(Token)match(input,24,FOLLOW_6); if (state.failed) return current;
+            otherlv_0=(Token)match(input,25,FOLLOW_6); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getConditionalExpressionAccess().getIfKeyword_0());
@@ -15674,7 +15675,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,25,FOLLOW_19); if (state.failed) return current;
+            otherlv_2=(Token)match(input,26,FOLLOW_19); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getConditionalExpressionAccess().getThenKeyword_2());
@@ -15915,7 +15916,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt102=2;
                 int LA102_0 = input.LA(1);
 
-                if ( ((LA102_0>=76 && LA102_0<=77)) ) {
+                if ( ((LA102_0>=77 && LA102_0<=78)) ) {
                     alt102=1;
                 }
 
@@ -15950,10 +15951,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    int alt101=2;
             	    int LA101_0 = input.LA(1);
 
-            	    if ( (LA101_0==76) ) {
+            	    if ( (LA101_0==77) ) {
             	        alt101=1;
             	    }
-            	    else if ( (LA101_0==77) ) {
+            	    else if ( (LA101_0==78) ) {
             	        alt101=2;
             	    }
             	    else {
@@ -15967,7 +15968,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	        case 1 :
             	            // InternalNavascript.g:5514:8: lv_op_2_1= 'OR'
             	            {
-            	            lv_op_2_1=(Token)match(input,76,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_1=(Token)match(input,77,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_1, grammarAccess.getBooleanExpressionAccess().getOpORKeyword_1_0_1_0_0());
@@ -15987,7 +15988,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	        case 2 :
             	            // InternalNavascript.g:5525:8: lv_op_2_2= 'AND'
             	            {
-            	            lv_op_2_2=(Token)match(input,77,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_2=(Token)match(input,78,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_2, grammarAccess.getBooleanExpressionAccess().getOpANDKeyword_1_0_1_0_1());
@@ -16170,7 +16171,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt104=2;
                 int LA104_0 = input.LA(1);
 
-                if ( ((LA104_0>=78 && LA104_0<=81)) ) {
+                if ( ((LA104_0>=79 && LA104_0<=82)) ) {
                     alt104=1;
                 }
 
@@ -16204,22 +16205,22 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    // InternalNavascript.g:5597:7: (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' )
             	    int alt103=4;
             	    switch ( input.LA(1) ) {
-            	    case 78:
+            	    case 79:
             	        {
             	        alt103=1;
             	        }
             	        break;
-            	    case 79:
+            	    case 80:
             	        {
             	        alt103=2;
             	        }
             	        break;
-            	    case 80:
+            	    case 81:
             	        {
             	        alt103=3;
             	        }
             	        break;
-            	    case 81:
+            	    case 82:
             	        {
             	        alt103=4;
             	        }
@@ -16236,7 +16237,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	        case 1 :
             	            // InternalNavascript.g:5598:8: lv_op_2_1= '<'
             	            {
-            	            lv_op_2_1=(Token)match(input,78,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_1=(Token)match(input,79,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_1, grammarAccess.getComparisonAccess().getOpLessThanSignKeyword_1_0_1_0_0());
@@ -16256,7 +16257,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	        case 2 :
             	            // InternalNavascript.g:5609:8: lv_op_2_2= '>'
             	            {
-            	            lv_op_2_2=(Token)match(input,79,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_2=(Token)match(input,80,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_2, grammarAccess.getComparisonAccess().getOpGreaterThanSignKeyword_1_0_1_0_1());
@@ -16276,7 +16277,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	        case 3 :
             	            // InternalNavascript.g:5620:8: lv_op_2_3= '<='
             	            {
-            	            lv_op_2_3=(Token)match(input,80,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_3=(Token)match(input,81,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_3, grammarAccess.getComparisonAccess().getOpLessThanSignEqualsSignKeyword_1_0_1_0_2());
@@ -16296,7 +16297,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	        case 4 :
             	            // InternalNavascript.g:5631:8: lv_op_2_4= '>='
             	            {
-            	            lv_op_2_4=(Token)match(input,81,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_4=(Token)match(input,82,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_4, grammarAccess.getComparisonAccess().getOpGreaterThanSignEqualsSignKeyword_1_0_1_0_3());
@@ -16477,7 +16478,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt106=2;
                 int LA106_0 = input.LA(1);
 
-                if ( ((LA106_0>=82 && LA106_0<=83)) ) {
+                if ( ((LA106_0>=83 && LA106_0<=84)) ) {
                     alt106=1;
                 }
 
@@ -16512,10 +16513,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    int alt105=2;
             	    int LA105_0 = input.LA(1);
 
-            	    if ( (LA105_0==82) ) {
+            	    if ( (LA105_0==83) ) {
             	        alt105=1;
             	    }
-            	    else if ( (LA105_0==83) ) {
+            	    else if ( (LA105_0==84) ) {
             	        alt105=2;
             	    }
             	    else {
@@ -16529,7 +16530,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	        case 1 :
             	            // InternalNavascript.g:5704:8: lv_op_2_1= '=='
             	            {
-            	            lv_op_2_1=(Token)match(input,82,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_1=(Token)match(input,83,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_1, grammarAccess.getEqualsAccess().getOpEqualsSignEqualsSignKeyword_1_0_1_0_0());
@@ -16549,7 +16550,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	        case 2 :
             	            // InternalNavascript.g:5715:8: lv_op_2_2= '!='
             	            {
-            	            lv_op_2_2=(Token)match(input,83,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_2=(Token)match(input,84,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_2, grammarAccess.getEqualsAccess().getOpExclamationMarkEqualsSignKeyword_1_0_1_0_1());
@@ -16730,7 +16731,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt108=2;
                 int LA108_0 = input.LA(1);
 
-                if ( (LA108_0==73||LA108_0==84) ) {
+                if ( (LA108_0==74||LA108_0==85) ) {
                     alt108=1;
                 }
 
@@ -16743,10 +16744,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    int alt107=2;
             	    int LA107_0 = input.LA(1);
 
-            	    if ( (LA107_0==73) ) {
+            	    if ( (LA107_0==74) ) {
             	        alt107=1;
             	    }
-            	    else if ( (LA107_0==84) ) {
+            	    else if ( (LA107_0==85) ) {
             	        alt107=2;
             	    }
             	    else {
@@ -16776,7 +16777,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             	            }
 
-            	            otherlv_2=(Token)match(input,73,FOLLOW_6); if (state.failed) return current;
+            	            otherlv_2=(Token)match(input,74,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              						newLeafNode(otherlv_2, grammarAccess.getAdditionAccess().getPlusSignKeyword_1_0_0_1());
@@ -16807,7 +16808,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             	            }
 
-            	            otherlv_4=(Token)match(input,84,FOLLOW_6); if (state.failed) return current;
+            	            otherlv_4=(Token)match(input,85,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              						newLeafNode(otherlv_4, grammarAccess.getAdditionAccess().getHyphenMinusKeyword_1_0_1_1());
@@ -16974,7 +16975,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 int alt110=2;
                 int LA110_0 = input.LA(1);
 
-                if ( ((LA110_0>=85 && LA110_0<=86)) ) {
+                if ( ((LA110_0>=86 && LA110_0<=87)) ) {
                     alt110=1;
                 }
 
@@ -17009,10 +17010,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    int alt109=2;
             	    int LA109_0 = input.LA(1);
 
-            	    if ( (LA109_0==85) ) {
+            	    if ( (LA109_0==86) ) {
             	        alt109=1;
             	    }
-            	    else if ( (LA109_0==86) ) {
+            	    else if ( (LA109_0==87) ) {
             	        alt109=2;
             	    }
             	    else {
@@ -17026,7 +17027,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	        case 1 :
             	            // InternalNavascript.g:5865:8: lv_op_2_1= '*'
             	            {
-            	            lv_op_2_1=(Token)match(input,85,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_1=(Token)match(input,86,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_1, grammarAccess.getMultiplicationAccess().getOpAsteriskKeyword_1_0_1_0_0());
@@ -17046,7 +17047,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	        case 2 :
             	            // InternalNavascript.g:5876:8: lv_op_2_2= '/'
             	            {
-            	            lv_op_2_2=(Token)match(input,86,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_2=(Token)match(input,87,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_2, grammarAccess.getMultiplicationAccess().getOpSolidusKeyword_1_0_1_0_1());
@@ -17207,12 +17208,12 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:5928:2: ( ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic )
             int alt111=3;
             switch ( input.LA(1) ) {
-            case 87:
+            case 88:
                 {
                 alt111=1;
                 }
                 break;
-            case 84:
+            case 85:
                 {
                 alt111=2;
                 }
@@ -17228,8 +17229,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             case RULE_NULL_DEF:
             case RULE_FORALL:
             case RULE_EXISTS:
-            case 29:
-            case 88:
+            case 30:
+            case 89:
                 {
                 alt111=3;
                 }
@@ -17265,7 +17266,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:5937:4: ( ( '!' )=>otherlv_1= '!' )
                     // InternalNavascript.g:5938:5: ( '!' )=>otherlv_1= '!'
                     {
-                    otherlv_1=(Token)match(input,87,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,88,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_1, grammarAccess.getPrefixedAccess().getExclamationMarkKeyword_0_1());
@@ -17337,7 +17338,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     // InternalNavascript.g:5973:4: ( ( '-' )=>otherlv_4= '-' )
                     // InternalNavascript.g:5974:5: ( '-' )=>otherlv_4= '-'
                     {
-                    otherlv_4=(Token)match(input,84,FOLLOW_6); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,85,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_4, grammarAccess.getPrefixedAccess().getHyphenMinusKeyword_1_1());
@@ -17508,7 +17509,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:6027:2: ( ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) | ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE ) ) ) ) | ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) ) | ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) ) | ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) ) | ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) ) | ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) ) | ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) ) | ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) ) )
             int alt115=9;
             switch ( input.LA(1) ) {
-            case 29:
+            case 30:
                 {
                 alt115=1;
                 }
@@ -17541,7 +17542,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
                 break;
             case RULE_TML_LITERAL:
-            case 88:
+            case 89:
                 {
                 alt115=7;
                 }
@@ -17585,7 +17586,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,29,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,30,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getAtomicAccess().getLeftParenthesisKeyword_0_1());
@@ -17626,7 +17627,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,30,FOLLOW_2); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getAtomicAccess().getRightParenthesisKeyword_0_3());
@@ -18048,7 +18049,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt114=2;
                     int LA114_0 = input.LA(1);
 
-                    if ( (LA114_0==88) ) {
+                    if ( (LA114_0==89) ) {
                         alt114=1;
                     }
                     switch (alt114) {
@@ -18058,7 +18059,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             // InternalNavascript.g:6250:5: (lv_hasExists_15_0= '?' )
                             // InternalNavascript.g:6251:6: lv_hasExists_15_0= '?'
                             {
-                            lv_hasExists_15_0=(Token)match(input,88,FOLLOW_67); if (state.failed) return current;
+                            lv_hasExists_15_0=(Token)match(input,89,FOLLOW_67); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(lv_hasExists_15_0, grammarAccess.getAtomicAccess().getHasExistsQuestionMarkKeyword_6_1_0());
@@ -18421,13 +18422,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,29,FOLLOW_68); if (state.failed) return current;
+            otherlv_2=(Token)match(input,30,FOLLOW_68); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getForAllIdentifierAccess().getLeftParenthesisKeyword_2());
               		
             }
-            otherlv_3=(Token)match(input,89,FOLLOW_6); if (state.failed) return current;
+            otherlv_3=(Token)match(input,90,FOLLOW_6); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getForAllIdentifierAccess().getGraveAccentKeyword_3());
@@ -18468,13 +18469,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,89,FOLLOW_69); if (state.failed) return current;
+            otherlv_5=(Token)match(input,90,FOLLOW_69); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getForAllIdentifierAccess().getGraveAccentKeyword_5());
               		
             }
-            otherlv_6=(Token)match(input,31,FOLLOW_70); if (state.failed) return current;
+            otherlv_6=(Token)match(input,32,FOLLOW_70); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_6, grammarAccess.getForAllIdentifierAccess().getCommaKeyword_6());
@@ -18510,7 +18511,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,30,FOLLOW_2); if (state.failed) return current;
+            otherlv_8=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_8, grammarAccess.getForAllIdentifierAccess().getRightParenthesisKeyword_8());
@@ -18650,7 +18651,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:6502:3: (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )
             // InternalNavascript.g:6503:4: otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')'
             {
-            otherlv_2=(Token)match(input,29,FOLLOW_71); if (state.failed) return current;
+            otherlv_2=(Token)match(input,30,FOLLOW_71); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               				newLeafNode(otherlv_2, grammarAccess.getFunctionIdentifierAccess().getLeftParenthesisKeyword_2_0());
@@ -18660,7 +18661,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt118=2;
             int LA118_0 = input.LA(1);
 
-            if ( (LA118_0==RULE_IDENTIFIER||(LA118_0>=RULE_MAPPABLE_IDENTIFIER && LA118_0<=RULE_EXISTS)||LA118_0==29||LA118_0==84||(LA118_0>=87 && LA118_0<=88)) ) {
+            if ( (LA118_0==RULE_IDENTIFIER||(LA118_0>=RULE_MAPPABLE_IDENTIFIER && LA118_0<=RULE_EXISTS)||LA118_0==30||LA118_0==85||(LA118_0>=88 && LA118_0<=89)) ) {
                 alt118=1;
             }
             switch (alt118) {
@@ -18708,7 +18709,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                         int alt117=2;
                         int LA117_0 = input.LA(1);
 
-                        if ( (LA117_0==31) ) {
+                        if ( (LA117_0==32) ) {
                             alt117=1;
                         }
 
@@ -18717,7 +18718,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     	case 1 :
                     	    // InternalNavascript.g:6528:6: otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,31,FOLLOW_6); if (state.failed) return current;
+                    	    otherlv_4=(Token)match(input,32,FOLLOW_6); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	      						newLeafNode(otherlv_4, grammarAccess.getFunctionIdentifierAccess().getCommaKeyword_2_1_1_0());
@@ -18773,7 +18774,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,30,FOLLOW_2); if (state.failed) return current;
+            otherlv_6=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               				newLeafNode(otherlv_6, grammarAccess.getFunctionIdentifierAccess().getRightParenthesisKeyword_2_2());
@@ -18917,10 +18918,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt121=2;
             int LA121_0 = input.LA(1);
 
-            if ( (LA121_0==29) ) {
+            if ( (LA121_0==30) ) {
                 int LA121_1 = input.LA(2);
 
-                if ( (LA121_1==RULE_IDENTIFIER||(LA121_1>=RULE_MAPPABLE_IDENTIFIER && LA121_1<=RULE_EXISTS)||(LA121_1>=29 && LA121_1<=30)||LA121_1==84||(LA121_1>=87 && LA121_1<=88)) ) {
+                if ( (LA121_1==RULE_IDENTIFIER||(LA121_1>=RULE_MAPPABLE_IDENTIFIER && LA121_1<=RULE_EXISTS)||(LA121_1>=30 && LA121_1<=31)||LA121_1==85||(LA121_1>=88 && LA121_1<=89)) ) {
                     alt121=1;
                 }
             }
@@ -18928,7 +18929,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:6603:4: otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')'
                     {
-                    otherlv_2=(Token)match(input,29,FOLLOW_71); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,30,FOLLOW_71); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getMappableIdentifierAccess().getLeftParenthesisKeyword_2_0());
@@ -18938,7 +18939,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     int alt120=2;
                     int LA120_0 = input.LA(1);
 
-                    if ( (LA120_0==RULE_IDENTIFIER||(LA120_0>=RULE_MAPPABLE_IDENTIFIER && LA120_0<=RULE_EXISTS)||LA120_0==29||LA120_0==84||(LA120_0>=87 && LA120_0<=88)) ) {
+                    if ( (LA120_0==RULE_IDENTIFIER||(LA120_0>=RULE_MAPPABLE_IDENTIFIER && LA120_0<=RULE_EXISTS)||LA120_0==30||LA120_0==85||(LA120_0>=88 && LA120_0<=89)) ) {
                         alt120=1;
                     }
                     switch (alt120) {
@@ -18986,7 +18987,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                                 int alt119=2;
                                 int LA119_0 = input.LA(1);
 
-                                if ( (LA119_0==31) ) {
+                                if ( (LA119_0==32) ) {
                                     alt119=1;
                                 }
 
@@ -18995,7 +18996,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             	case 1 :
                             	    // InternalNavascript.g:6628:6: otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) )
                             	    {
-                            	    otherlv_4=(Token)match(input,31,FOLLOW_6); if (state.failed) return current;
+                            	    otherlv_4=(Token)match(input,32,FOLLOW_6); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	      						newLeafNode(otherlv_4, grammarAccess.getMappableIdentifierAccess().getCommaKeyword_2_1_1_0());
@@ -19051,7 +19052,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_6=(Token)match(input,30,FOLLOW_2); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_6, grammarAccess.getMappableIdentifierAccess().getRightParenthesisKeyword_2_2());
@@ -19278,57 +19279,57 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:6720:2: ( ( () otherlv_1= 'integer' ) | ( () otherlv_3= 'string' ) | ( () otherlv_5= 'boolean' ) | ( () otherlv_7= 'date' ) | ( () otherlv_9= 'float' ) | ( () otherlv_11= 'binary' ) | ( () otherlv_13= 'clocktime' ) | ( () otherlv_15= 'memo' ) | ( () otherlv_17= 'timestamp' ) | ( () otherlv_19= 'percentage' ) | ( () otherlv_21= 'selection' ) )
             int alt122=11;
             switch ( input.LA(1) ) {
-            case 90:
+            case 91:
                 {
                 alt122=1;
                 }
                 break;
-            case 91:
+            case 92:
                 {
                 alt122=2;
                 }
                 break;
-            case 92:
+            case 93:
                 {
                 alt122=3;
                 }
                 break;
-            case 93:
+            case 94:
                 {
                 alt122=4;
                 }
                 break;
-            case 94:
+            case 95:
                 {
                 alt122=5;
                 }
                 break;
-            case 95:
+            case 96:
                 {
                 alt122=6;
                 }
                 break;
-            case 96:
+            case 97:
                 {
                 alt122=7;
                 }
                 break;
-            case 97:
+            case 98:
                 {
                 alt122=8;
                 }
                 break;
-            case 98:
+            case 99:
                 {
                 alt122=9;
                 }
                 break;
-            case 99:
+            case 100:
                 {
                 alt122=10;
                 }
                 break;
-            case 100:
+            case 101:
                 {
                 alt122=11;
                 }
@@ -19361,7 +19362,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,90,FOLLOW_2); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,91,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getPropertyTypeAccess().getIntegerKeyword_0_1());
@@ -19392,7 +19393,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,91,FOLLOW_2); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,92,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getPropertyTypeAccess().getStringKeyword_1_1());
@@ -19423,7 +19424,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,92,FOLLOW_2); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,93,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_5, grammarAccess.getPropertyTypeAccess().getBooleanKeyword_2_1());
@@ -19454,7 +19455,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,93,FOLLOW_2); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,94,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_7, grammarAccess.getPropertyTypeAccess().getDateKeyword_3_1());
@@ -19485,7 +19486,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_9=(Token)match(input,94,FOLLOW_2); if (state.failed) return current;
+                    otherlv_9=(Token)match(input,95,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_9, grammarAccess.getPropertyTypeAccess().getFloatKeyword_4_1());
@@ -19516,7 +19517,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_11=(Token)match(input,95,FOLLOW_2); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,96,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_11, grammarAccess.getPropertyTypeAccess().getBinaryKeyword_5_1());
@@ -19547,7 +19548,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_13=(Token)match(input,96,FOLLOW_2); if (state.failed) return current;
+                    otherlv_13=(Token)match(input,97,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_13, grammarAccess.getPropertyTypeAccess().getClocktimeKeyword_6_1());
@@ -19578,7 +19579,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_15=(Token)match(input,97,FOLLOW_2); if (state.failed) return current;
+                    otherlv_15=(Token)match(input,98,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_15, grammarAccess.getPropertyTypeAccess().getMemoKeyword_7_1());
@@ -19609,7 +19610,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_17=(Token)match(input,98,FOLLOW_2); if (state.failed) return current;
+                    otherlv_17=(Token)match(input,99,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_17, grammarAccess.getPropertyTypeAccess().getTimestampKeyword_8_1());
@@ -19640,7 +19641,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_19=(Token)match(input,99,FOLLOW_2); if (state.failed) return current;
+                    otherlv_19=(Token)match(input,100,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_19, grammarAccess.getPropertyTypeAccess().getPercentageKeyword_9_1());
@@ -19671,7 +19672,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_21=(Token)match(input,100,FOLLOW_2); if (state.failed) return current;
+                    otherlv_21=(Token)match(input,101,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_21, grammarAccess.getPropertyTypeAccess().getSelectionKeyword_10_1());
@@ -19764,17 +19765,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:6892:2: (kw= 'name' | kw= 'value' | kw= 'selected' )
             int alt123=3;
             switch ( input.LA(1) ) {
-            case 101:
+            case 102:
                 {
                 alt123=1;
                 }
                 break;
-            case 102:
+            case 103:
                 {
                 alt123=2;
                 }
                 break;
-            case 103:
+            case 104:
                 {
                 alt123=3;
                 }
@@ -19791,7 +19792,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalNavascript.g:6893:3: kw= 'name'
                     {
-                    kw=(Token)match(input,101,FOLLOW_2); if (state.failed) return current;
+                    kw=(Token)match(input,102,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			current.merge(kw);
@@ -19804,7 +19805,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // InternalNavascript.g:6899:3: kw= 'value'
                     {
-                    kw=(Token)match(input,102,FOLLOW_2); if (state.failed) return current;
+                    kw=(Token)match(input,103,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			current.merge(kw);
@@ -19817,7 +19818,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // InternalNavascript.g:6905:3: kw= 'selected'
                     {
-                    kw=(Token)match(input,103,FOLLOW_2); if (state.failed) return current;
+                    kw=(Token)match(input,104,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			current.merge(kw);
@@ -19910,17 +19911,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             // InternalNavascript.g:6928:2: ( ( () otherlv_1= 'array' ) | ( () otherlv_3= 'simple' ) | ( () otherlv_5= 'arrayelement' ) )
             int alt124=3;
             switch ( input.LA(1) ) {
-            case 104:
+            case 105:
                 {
                 alt124=1;
                 }
                 break;
-            case 105:
+            case 106:
                 {
                 alt124=2;
                 }
                 break;
-            case 106:
+            case 107:
                 {
                 alt124=3;
                 }
@@ -19953,7 +19954,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,104,FOLLOW_2); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,105,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getMessageTypeAccess().getArrayKeyword_0_1());
@@ -19984,7 +19985,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,105,FOLLOW_2); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,106,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getMessageTypeAccess().getSimpleKeyword_1_1());
@@ -20015,7 +20016,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,106,FOLLOW_2); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,107,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_5, grammarAccess.getMessageTypeAccess().getArrayelementKeyword_2_1());
@@ -20110,10 +20111,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             int alt125=2;
             int LA125_0 = input.LA(1);
 
-            if ( (LA125_0==107) ) {
+            if ( (LA125_0==108) ) {
                 alt125=1;
             }
-            else if ( (LA125_0==108) ) {
+            else if ( (LA125_0==109) ) {
                 alt125=2;
             }
             else {
@@ -20143,7 +20144,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,107,FOLLOW_2); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,108,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getMessageModeAccess().getIgnoreKeyword_0_1());
@@ -20174,7 +20175,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,108,FOLLOW_2); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,109,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getMessageModeAccess().getOverwriteKeyword_1_1());
@@ -20216,75 +20217,75 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x61DF410015000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0004000000000002L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x61DB410015000002L,0x0000000000000001L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x000000002007FE40L,0x0000000001900000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x61DB410015000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x61DB410015000300L,0x0000000000000007L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x61DB41001D000300L,0x0000000000000007L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x000000E100000000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x61DB41001D000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000600000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000001800000000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x000000002007FE70L,0x0000000001900000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000020020000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x00001C0040000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x00001C0000000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000800009000000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0xC3BE82002A000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0xC3B682002A000002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x000000004007FE40L,0x0000000003200000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0xC3B682002A000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0xC3B682002A000300L,0x000000000000000EL});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0xC3B682003A000300L,0x000000000000000EL});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x000001C200000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0xC3B682003A000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000100000002L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000C00000000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000003000000000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x000000004007FE70L,0x0000000003200000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000040040000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000380080000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000380000000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0001000012000000L});
     public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x00000C0000000000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x00000000C0000000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000008000010L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000600L,0x0000000001000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000024000000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0200020024000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x1800000000000000L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0200020004000000L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x61DB41001D000700L,0x0000000000000007L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000000L,0x0000070000000000L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000180000000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000180000000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000180000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000010000010L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000600L,0x0000000002000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000048000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0400040048000000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x3000000000000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0400040008000000L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0xC3B682003A000700L,0x000000000000000EL});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0800000000000000L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000000L,0x00000E0000000000L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000300000000000L});
     public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000040000040L,0x000000E000000000L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x8000000000000000L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000080000040L,0x000001C000000000L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
     public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000040L,0x000000E000000000L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000624000200L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x000000002107FE70L,0x0000000001900000L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0200000624000000L});
-    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0200000604000000L});
-    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0400000004000000L});
-    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000009000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000040L,0x000001C000000000L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000C48000200L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x000000004207FE70L,0x0000000003200000L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0400000C48000000L});
+    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0400000C08000000L});
+    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0800000008000000L});
+    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000012000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000000L,0x0000071FFC000000L});
-    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0200020624000000L});
-    public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0200020604000000L});
-    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0800080000000000L,0x0000000000000518L});
+    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000000L,0x00000E3FF8000000L});
+    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0400040C48000000L});
+    public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0400040C08000000L});
+    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x1000100000000000L,0x0000000000000A30L});
     public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000000000000L,0x00000000000000E0L});
-    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000001000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000001000000L,0x0000000000000800L});
-    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000002L,0x0000000000003000L});
-    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000000000000002L,0x000000000003C000L});
-    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000000002L,0x00000000000C0000L});
-    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000000002L,0x0000000000100200L});
-    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000000002L,0x0000000000600000L});
-    public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000000400L,0x0000000001000000L});
-    public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000000000000L,0x00000000000001C0L});
+    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000001000L,0x0000000000000400L});
+    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000002000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000002L,0x0000000000006000L});
+    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000000000000002L,0x0000000000078000L});
+    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000000002L,0x0000000000180000L});
+    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200400L});
+    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000000002L,0x0000000000C00000L});
+    public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000000400L,0x0000000002000000L});
+    public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000100000000L});
     public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x000000006007FE40L,0x0000000001900000L});
-    public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x00000000C007FE40L,0x0000000003200000L});
+    public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000040000002L});
 
 }

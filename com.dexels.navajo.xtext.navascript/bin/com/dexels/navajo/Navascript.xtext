@@ -288,14 +288,18 @@ terminal STRING_CONSTANT:
 			'"' ( '\\' . | !('\\'|'"') )* '"';
 
 terminal TML_LITERAL:
-	'[' ( IDENTIFIER | '/' | '../' | '/@' | '_' )+ ']'
+	'[' ( IDENTIFIER | '/' | '../' | '/@' )+ ']'
 ;
 
 terminal ONE:
 	'1'
 ;
 
-terminal IDENTIFIER : LETTER ( LETTER | "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "_" )+;
+terminal UNDERSCORE:
+	'_'
+;
+
+terminal IDENTIFIER : ( LETTER  | UNDERSCORE ) ( LETTER | "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | UNDERSCORE )*;
 		
 terminal INTEGER : "0" | ( ( ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ) ( "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" )* );
 
@@ -307,7 +311,7 @@ terminal LETTER : "A" | "B" | "C" | "D" | "E" | "F" | "G"
  | "c" | "d" | "e" | "f" | "g" | "h" | "i"
  | "j" | "k" | "l" | "m" | "n" | "o" | "p"
  | "q" | "r" | "s" | "t" | "u" | "v" | "w"
- | "x" | "y" | "z";
+ | "x" | "y" | "z" ;
 
 
 terminal ML_COMMENT : '/*' -> '*/';

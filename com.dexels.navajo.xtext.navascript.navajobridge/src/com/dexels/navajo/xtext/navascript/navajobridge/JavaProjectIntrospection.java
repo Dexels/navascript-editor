@@ -271,8 +271,8 @@ public class JavaProjectIntrospection {
 					System.err.println("Could not find MapMetaData in project: " + p.getName() + ": " + e.getMessage());
 				}
 				
-				addAdditionalAdapters("com.dexels.navajo.mongo.adapter.MongoAdapterLibrary", cl);
-				addAdditionalFunctions("com.dexels.navajo.mongo.functions.MongoFunctionDefinitions", cl);
+				//addAdditionalAdapters("com.dexels.navajo.mongo.adapter.MongoAdapterLibrary", cl);
+				//addAdditionalFunctions("com.dexels.navajo.mongo.functions.MongoFunctionDefinitions", cl);
 
 			}
 

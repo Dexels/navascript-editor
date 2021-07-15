@@ -4385,6 +4385,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	private final TerminalRule tSTRING_CONSTANT;
 	private final TerminalRule tTML_LITERAL;
 	private final TerminalRule tONE;
+	private final TerminalRule tUNDERSCORE;
 	private final TerminalRule tIDENTIFIER;
 	private final TerminalRule tINTEGER;
 	private final TerminalRule tLETTER;
@@ -4490,6 +4491,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		this.tSTRING_CONSTANT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.STRING_CONSTANT");
 		this.tTML_LITERAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.TML_LITERAL");
 		this.tONE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.ONE");
+		this.tUNDERSCORE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.UNDERSCORE");
 		this.tIDENTIFIER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.IDENTIFIER");
 		this.tINTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.INTEGER");
 		this.tLETTER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.LETTER");
@@ -5424,7 +5426,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//terminal TML_LITERAL:
-	//	'[' (IDENTIFIER | '/' | '../' | '/@' | '_')+ ']';
+	//	'[' (IDENTIFIER | '/' | '../' | '/@')+ ']';
 	public TerminalRule getTML_LITERALRule() {
 		return tTML_LITERAL;
 	}
@@ -5435,8 +5437,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		return tONE;
 	}
 	
+	//terminal UNDERSCORE:
+	//	'_';
+	public TerminalRule getUNDERSCORERule() {
+		return tUNDERSCORE;
+	}
+	
 	//terminal IDENTIFIER:
-	//	LETTER (LETTER | "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "_")+;
+	//	(LETTER | UNDERSCORE) (LETTER | "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | UNDERSCORE)*;
 	public TerminalRule getIDENTIFIERRule() {
 		return tIDENTIFIER;
 	}
