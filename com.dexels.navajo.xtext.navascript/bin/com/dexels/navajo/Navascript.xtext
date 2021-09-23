@@ -100,7 +100,7 @@ AntiMessage : {AntiMessage} 'antimessage' messageName=QUOTED_IDENTIFIER ';';
 
 Message: 
 	{Message} 'message' messageName=QUOTED_IDENTIFIER ( '(' arguments=MessageArguments ')' )?  ( ( '{' ( statements+=InnerBody* |  arrayField=MappedArrayField | arrayMessage=MappedArrayMessage ) '}' ) | ';' 
-		| '[' messageArray=MessageArray ']'
+		| '[' messageArray=MessageArray? ']'
 	)
 ;
 
@@ -121,8 +121,10 @@ MethodOrSetter : AdapterMethod | SetterField ;
 AdapterMethod: {AdapterMethod} method=METHOD_IDENTIFIER '(' arguments=KeyValueArguments? ')' ';';
 
 SetterField: {SetterField} field=MAPPABLE_IDENTIFIER  ( ('=' | ':') expressionList=ConditionalExpressions ';' 
-	  | ('(' arguments=KeyValueArguments ')')? '{' mappedArray=MappedArrayMessage '}' | mappedField=MappedArrayField );
+	  | ('(' arguments=KeyValueArguments ')')? '{' mappedArray=MappedArrayMessage '}' | mappedField=MappedArrayField | mappedMessage=MappedMessage );
 
+MappedMessage : {MappedMessage} '{' statements += InnerBody* '}';
+	
 MappedArrayField : {MappedArrayField} field=MAPPABLE_IDENTIFIER ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
 
 MappedArrayMessage : {MappedArrayMessage} message=TML_LITERAL ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
@@ -216,7 +218,7 @@ Prefixed returns Expression:
 
 Atomic returns Expression:
     {ExpressionLiteral} '(' value=Expression ')' |
-    {NumberLiteral} value=( INTEGER | ONE ) |
+    {NumberLiteral} value=( INTEGER | ONE | FLOAT ) |
     {StringLiteral} value=STRING_LITERAL |
     {BooleanLiteral} value=( TRUE | FALSE) | 
     {FunctionCallLiteral} value=FunctionIdentifier |
@@ -302,6 +304,8 @@ terminal UNDERSCORE:
 terminal IDENTIFIER : ( LETTER  | UNDERSCORE ) ( LETTER | "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | UNDERSCORE )*;
 		
 terminal INTEGER : "0" | ( ( ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ) ( "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" )* );
+
+terminal FLOAT : INTEGER? "." INTEGER;
 
 		
 terminal LETTER : "A" | "B" | "C" | "D" | "E" | "F" | "G"

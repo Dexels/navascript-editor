@@ -43,7 +43,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_MappedArrayMessage_ColonKeyword_2_2_1_or_EqualsSignKeyword_2_2_0;
 	protected AbstractElementAlias match_MessageArgument_ColonKeyword_0_1_1_or_EqualsSignKeyword_0_1_0;
 	protected AbstractElementAlias match_MessageArgument_ColonKeyword_1_1_1_or_EqualsSignKeyword_1_1_0;
-	protected AbstractElementAlias match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2__;
+	protected AbstractElementAlias match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2___or___LeftSquareBracketKeyword_4_2_0_RightSquareBracketKeyword_4_2_2__;
 	protected AbstractElementAlias match_Option_ColonKeyword_2_1_or_EqualsSignKeyword_2_0;
 	protected AbstractElementAlias match_Property_ColonKeyword_4_0_0_0_1_or_EqualsSignKeyword_4_0_0_0_0;
 	protected AbstractElementAlias match_SBreakOnNoLock_ColonKeyword_1_1_or_EqualsSignKeyword_1_0;
@@ -82,7 +82,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_MappedArrayMessage_ColonKeyword_2_2_1_or_EqualsSignKeyword_2_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMappedArrayMessageAccess().getColonKeyword_2_2_1()), new TokenAlias(false, false, grammarAccess.getMappedArrayMessageAccess().getEqualsSignKeyword_2_2_0()));
 		match_MessageArgument_ColonKeyword_0_1_1_or_EqualsSignKeyword_0_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageArgumentAccess().getColonKeyword_0_1_1()), new TokenAlias(false, false, grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_0_1_0()));
 		match_MessageArgument_ColonKeyword_1_1_1_or_EqualsSignKeyword_1_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageArgumentAccess().getColonKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_1_1_0()));
-		match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageAccess().getLeftCurlyBracketKeyword_4_0_0()), new TokenAlias(false, false, grammarAccess.getMessageAccess().getRightCurlyBracketKeyword_4_0_2())), new TokenAlias(false, false, grammarAccess.getMessageAccess().getSemicolonKeyword_4_1()));
+		match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2___or___LeftSquareBracketKeyword_4_2_0_RightSquareBracketKeyword_4_2_2__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageAccess().getLeftCurlyBracketKeyword_4_0_0()), new TokenAlias(false, false, grammarAccess.getMessageAccess().getRightCurlyBracketKeyword_4_0_2())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0()), new TokenAlias(false, false, grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2())), new TokenAlias(false, false, grammarAccess.getMessageAccess().getSemicolonKeyword_4_1()));
 		match_Option_ColonKeyword_2_1_or_EqualsSignKeyword_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getOptionAccess().getColonKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getOptionAccess().getEqualsSignKeyword_2_0()));
 		match_Property_ColonKeyword_4_0_0_0_1_or_EqualsSignKeyword_4_0_0_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPropertyAccess().getColonKeyword_4_0_0_0_1()), new TokenAlias(false, false, grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_0_0_0_0()));
 		match_SBreakOnNoLock_ColonKeyword_1_1_or_EqualsSignKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getSBreakOnNoLockAccess().getColonKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getSBreakOnNoLockAccess().getEqualsSignKeyword_1_0()));
@@ -162,8 +162,8 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_MessageArgument_ColonKeyword_0_1_1_or_EqualsSignKeyword_0_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_MessageArgument_ColonKeyword_1_1_1_or_EqualsSignKeyword_1_1_0.equals(syntax))
 				emit_MessageArgument_ColonKeyword_1_1_1_or_EqualsSignKeyword_1_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2__.equals(syntax))
-				emit_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2__(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2___or___LeftSquareBracketKeyword_4_2_0_RightSquareBracketKeyword_4_2_2__.equals(syntax))
+				emit_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2___or___LeftSquareBracketKeyword_4_2_0_RightSquareBracketKeyword_4_2_2__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Option_ColonKeyword_2_1_or_EqualsSignKeyword_2_0.equals(syntax))
 				emit_Option_ColonKeyword_2_1_or_EqualsSignKeyword_2_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Property_ColonKeyword_4_0_0_0_1_or_EqualsSignKeyword_4_0_0_0_0.equals(syntax))
@@ -438,13 +438,13 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     ('{' '}') | ';'
+	 *     ('{' '}') | ';' | ('[' ']')
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     arguments=MessageArguments ')' (ambiguity) (rule end)
 	 *     messageName=QUOTED_IDENTIFIER (ambiguity) (rule end)
 	 */
-	protected void emit_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2___or___LeftSquareBracketKeyword_4_2_0_RightSquareBracketKeyword_4_2_2__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -481,6 +481,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) 'breakOnNoLock' (ambiguity) '-' expression=Atomic
 	 *     (rule start) 'breakOnNoLock' (ambiguity) hasExists?='?'
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=FALSE
+	 *     (rule start) 'breakOnNoLock' (ambiguity) value=FLOAT
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=ForAllIdentifier
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=FunctionIdentifier
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=INTEGER
@@ -511,6 +512,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) '-' expression=Atomic
 	 *     (rule start) (ambiguity) hasExists?='?'
 	 *     (rule start) (ambiguity) value=FALSE
+	 *     (rule start) (ambiguity) value=FLOAT
 	 *     (rule start) (ambiguity) value=ForAllIdentifier
 	 *     (rule start) (ambiguity) value=FunctionIdentifier
 	 *     (rule start) (ambiguity) value=INTEGER
@@ -554,6 +556,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) 'timeout' (ambiguity) '-' expression=Atomic
 	 *     (rule start) 'timeout' (ambiguity) hasExists?='?'
 	 *     (rule start) 'timeout' (ambiguity) value=FALSE
+	 *     (rule start) 'timeout' (ambiguity) value=FLOAT
 	 *     (rule start) 'timeout' (ambiguity) value=ForAllIdentifier
 	 *     (rule start) 'timeout' (ambiguity) value=FunctionIdentifier
 	 *     (rule start) 'timeout' (ambiguity) value=INTEGER

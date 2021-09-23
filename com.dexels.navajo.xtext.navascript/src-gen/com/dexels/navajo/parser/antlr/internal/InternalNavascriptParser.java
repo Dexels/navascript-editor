@@ -22,7 +22,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_QUOTED_IDENTIFIER", "RULE_STRING_CONSTANT", "RULE_IDENTIFIER", "RULE_OBJECT_IDENTIFIER", "RULE_METHOD_IDENTIFIER", "RULE_MAPPABLE_IDENTIFIER", "RULE_TML_LITERAL", "RULE_INTEGER", "RULE_ONE", "RULE_STRING_LITERAL", "RULE_TRUE", "RULE_FALSE", "RULE_NULL_DEF", "RULE_FORALL", "RULE_EXISTS", "RULE_MAPPABLE_ID", "RULE_UNDERSCORE", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'if'", "'then'", "'{'", "'}'", "'synchronized'", "'('", "')'", "','", "'context'", "'='", "':'", "'user'", "'service'", "'key'", "'timeout'", "'breakOnNoLock'", "'break'", "';'", "'code'", "'description'", "'error'", "'validations'", "'define'", "'check'", "'print'", "'log'", "'finally'", "'methods'", "'loop'", "'filter'", "'include'", "'antimessage'", "'message'", "'['", "']'", "'type'", "'mode'", "'map.'", "'map'", "'object'", "'var'", "'property'", "'option'", "'length'", "'direction'", "'in'", "'out'", "'inout'", "'cardinality'", "'+'", "'subtype'", "'else'", "'OR'", "'AND'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'-'", "'*'", "'/'", "'!'", "'?'", "'`'", "'integer'", "'string'", "'boolean'", "'date'", "'float'", "'binary'", "'clocktime'", "'memo'", "'timestamp'", "'percentage'", "'selection'", "'name'", "'value'", "'selected'", "'array'", "'simple'", "'arrayelement'", "'ignore'", "'overwrite'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_QUOTED_IDENTIFIER", "RULE_STRING_CONSTANT", "RULE_IDENTIFIER", "RULE_OBJECT_IDENTIFIER", "RULE_METHOD_IDENTIFIER", "RULE_MAPPABLE_IDENTIFIER", "RULE_TML_LITERAL", "RULE_INTEGER", "RULE_ONE", "RULE_FLOAT", "RULE_STRING_LITERAL", "RULE_TRUE", "RULE_FALSE", "RULE_NULL_DEF", "RULE_FORALL", "RULE_EXISTS", "RULE_MAPPABLE_ID", "RULE_UNDERSCORE", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'if'", "'then'", "'{'", "'}'", "'synchronized'", "'('", "')'", "','", "'context'", "'='", "':'", "'user'", "'service'", "'key'", "'timeout'", "'breakOnNoLock'", "'break'", "';'", "'code'", "'description'", "'error'", "'validations'", "'define'", "'check'", "'print'", "'log'", "'finally'", "'methods'", "'loop'", "'filter'", "'include'", "'antimessage'", "'message'", "'['", "']'", "'type'", "'mode'", "'map.'", "'map'", "'object'", "'var'", "'property'", "'option'", "'length'", "'direction'", "'in'", "'out'", "'inout'", "'cardinality'", "'+'", "'subtype'", "'else'", "'OR'", "'AND'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'-'", "'*'", "'/'", "'!'", "'?'", "'`'", "'integer'", "'string'", "'boolean'", "'date'", "'float'", "'binary'", "'clocktime'", "'memo'", "'timestamp'", "'percentage'", "'selection'", "'name'", "'value'", "'selected'", "'array'", "'simple'", "'arrayelement'", "'ignore'", "'overwrite'"
     };
     public static final int T__50=50;
     public static final int T__59=59;
@@ -36,16 +36,16 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final int T__54=54;
     public static final int T__60=60;
     public static final int T__61=61;
-    public static final int RULE_EXISTS=18;
-    public static final int RULE_NULL_DEF=16;
+    public static final int RULE_EXISTS=19;
+    public static final int RULE_NULL_DEF=17;
     public static final int RULE_MAPPABLE_IDENTIFIER=9;
     public static final int RULE_METHOD_IDENTIFIER=8;
     public static final int T__66=66;
-    public static final int RULE_ML_COMMENT=22;
+    public static final int RULE_ML_COMMENT=23;
     public static final int T__67=67;
     public static final int T__68=68;
     public static final int T__69=69;
-    public static final int RULE_FALSE=15;
+    public static final int RULE_FALSE=16;
     public static final int T__62=62;
     public static final int T__63=63;
     public static final int T__64=64;
@@ -61,12 +61,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final int T__31=31;
     public static final int T__32=32;
     public static final int RULE_QUOTED_IDENTIFIER=4;
-    public static final int RULE_LETTER=21;
+    public static final int RULE_LETTER=22;
     public static final int T__48=48;
-    public static final int RULE_MAPPABLE_ID=19;
+    public static final int RULE_MAPPABLE_ID=20;
     public static final int T__49=49;
     public static final int T__44=44;
     public static final int T__45=45;
+    public static final int RULE_FLOAT=13;
     public static final int T__46=46;
     public static final int T__47=47;
     public static final int T__40=40;
@@ -81,7 +82,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final int T__94=94;
     public static final int T__101=101;
     public static final int T__90=90;
-    public static final int RULE_UNDERSCORE=20;
+    public static final int RULE_UNDERSCORE=21;
     public static final int T__99=99;
     public static final int T__95=95;
     public static final int T__96=96;
@@ -93,17 +94,16 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final int T__28=28;
     public static final int T__29=29;
     public static final int RULE_ONE=12;
-    public static final int T__25=25;
     public static final int T__70=70;
     public static final int T__71=71;
     public static final int T__72=72;
     public static final int RULE_IDENTIFIER=6;
-    public static final int RULE_STRING_LITERAL=13;
-    public static final int RULE_SL_COMMENT=23;
-    public static final int RULE_FORALL=17;
+    public static final int RULE_STRING_LITERAL=14;
+    public static final int RULE_SL_COMMENT=24;
+    public static final int RULE_FORALL=18;
     public static final int RULE_TML_LITERAL=10;
     public static final int T__77=77;
-    public static final int RULE_TRUE=14;
+    public static final int RULE_TRUE=15;
     public static final int T__78=78;
     public static final int T__79=79;
     public static final int T__73=73;
@@ -113,9 +113,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     public static final int T__76=76;
     public static final int T__80=80;
     public static final int T__81=81;
+    public static final int T__110=110;
     public static final int T__82=82;
     public static final int T__83=83;
-    public static final int RULE_WS=24;
+    public static final int RULE_WS=25;
     public static final int T__88=88;
     public static final int T__108=108;
     public static final int T__89=89;
@@ -150,6 +151,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
 
+    /*
+      This grammar contains a lot of empty actions to work around a bug in ANTLR.
+      Otherwise the ANTLR tool will create synpreds that cannot be compiled in some rare cases.
+    */
+
      	private NavascriptGrammarAccess grammarAccess;
 
         public InternalNavascriptParser(TokenStream input, NavascriptGrammarAccess grammarAccess) {
@@ -172,7 +178,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNavascript"
-    // InternalNavascript.g:64:1: entryRuleNavascript returns [EObject current=null] : iv_ruleNavascript= ruleNavascript EOF ;
+    // InternalNavascript.g:70:1: entryRuleNavascript returns [EObject current=null] : iv_ruleNavascript= ruleNavascript EOF ;
     public final EObject entryRuleNavascript() throws RecognitionException {
         EObject current = null;
 
@@ -180,8 +186,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:64:51: (iv_ruleNavascript= ruleNavascript EOF )
-            // InternalNavascript.g:65:2: iv_ruleNavascript= ruleNavascript EOF
+            // InternalNavascript.g:70:51: (iv_ruleNavascript= ruleNavascript EOF )
+            // InternalNavascript.g:71:2: iv_ruleNavascript= ruleNavascript EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNavascriptRule()); 
@@ -212,7 +218,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNavascript"
-    // InternalNavascript.g:71:1: ruleNavascript returns [EObject current=null] : ( () ( (lv_validations_1_0= ruleValidations ) )? ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) ) ( (lv_finally_3_0= ruleFinally ) )? ) ;
+    // InternalNavascript.g:77:1: ruleNavascript returns [EObject current=null] : ( () ( (lv_validations_1_0= ruleValidations ) )? ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) ) ( (lv_finally_3_0= ruleFinally ) )? ) ;
     public final EObject ruleNavascript() throws RecognitionException {
         EObject current = null;
 
@@ -227,15 +233,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:77:2: ( ( () ( (lv_validations_1_0= ruleValidations ) )? ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) ) ( (lv_finally_3_0= ruleFinally ) )? ) )
-            // InternalNavascript.g:78:2: ( () ( (lv_validations_1_0= ruleValidations ) )? ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) ) ( (lv_finally_3_0= ruleFinally ) )? )
+            // InternalNavascript.g:83:2: ( ( () ( (lv_validations_1_0= ruleValidations ) )? ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) ) ( (lv_finally_3_0= ruleFinally ) )? ) )
+            // InternalNavascript.g:84:2: ( () ( (lv_validations_1_0= ruleValidations ) )? ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) ) ( (lv_finally_3_0= ruleFinally ) )? )
             {
-            // InternalNavascript.g:78:2: ( () ( (lv_validations_1_0= ruleValidations ) )? ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) ) ( (lv_finally_3_0= ruleFinally ) )? )
-            // InternalNavascript.g:79:3: () ( (lv_validations_1_0= ruleValidations ) )? ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) ) ( (lv_finally_3_0= ruleFinally ) )?
+            // InternalNavascript.g:84:2: ( () ( (lv_validations_1_0= ruleValidations ) )? ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) ) ( (lv_finally_3_0= ruleFinally ) )? )
+            // InternalNavascript.g:85:3: () ( (lv_validations_1_0= ruleValidations ) )? ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) ) ( (lv_finally_3_0= ruleFinally ) )?
             {
-            // InternalNavascript.g:79:3: ()
-            // InternalNavascript.g:80:4: 
+            // InternalNavascript.g:85:3: ()
+            // InternalNavascript.g:86:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -246,19 +257,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:86:3: ( (lv_validations_1_0= ruleValidations ) )?
+            // InternalNavascript.g:95:3: ( (lv_validations_1_0= ruleValidations ) )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
-            if ( (LA1_0==46) ) {
+            if ( (LA1_0==47) ) {
                 alt1=1;
             }
             switch (alt1) {
                 case 1 :
-                    // InternalNavascript.g:87:4: (lv_validations_1_0= ruleValidations )
+                    // InternalNavascript.g:96:4: (lv_validations_1_0= ruleValidations )
                     {
-                    // InternalNavascript.g:87:4: (lv_validations_1_0= ruleValidations )
-                    // InternalNavascript.g:88:5: lv_validations_1_0= ruleValidations
+                    // InternalNavascript.g:96:4: (lv_validations_1_0= ruleValidations )
+                    // InternalNavascript.g:97:5: lv_validations_1_0= ruleValidations
                     {
                     if ( state.backtracking==0 ) {
 
@@ -292,11 +303,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:105:3: ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) )
-            // InternalNavascript.g:106:4: (lv_toplevelStatements_2_0= ruleTopLevelStatements )
+            // InternalNavascript.g:114:3: ( (lv_toplevelStatements_2_0= ruleTopLevelStatements ) )
+            // InternalNavascript.g:115:4: (lv_toplevelStatements_2_0= ruleTopLevelStatements )
             {
-            // InternalNavascript.g:106:4: (lv_toplevelStatements_2_0= ruleTopLevelStatements )
-            // InternalNavascript.g:107:5: lv_toplevelStatements_2_0= ruleTopLevelStatements
+            // InternalNavascript.g:115:4: (lv_toplevelStatements_2_0= ruleTopLevelStatements )
+            // InternalNavascript.g:116:5: lv_toplevelStatements_2_0= ruleTopLevelStatements
             {
             if ( state.backtracking==0 ) {
 
@@ -327,19 +338,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:124:3: ( (lv_finally_3_0= ruleFinally ) )?
+            // InternalNavascript.g:133:3: ( (lv_finally_3_0= ruleFinally ) )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==51) ) {
+            if ( (LA2_0==52) ) {
                 alt2=1;
             }
             switch (alt2) {
                 case 1 :
-                    // InternalNavascript.g:125:4: (lv_finally_3_0= ruleFinally )
+                    // InternalNavascript.g:134:4: (lv_finally_3_0= ruleFinally )
                     {
-                    // InternalNavascript.g:125:4: (lv_finally_3_0= ruleFinally )
-                    // InternalNavascript.g:126:5: lv_finally_3_0= ruleFinally
+                    // InternalNavascript.g:134:4: (lv_finally_3_0= ruleFinally )
+                    // InternalNavascript.g:135:5: lv_finally_3_0= ruleFinally
                     {
                     if ( state.backtracking==0 ) {
 
@@ -398,7 +409,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTopLevelStatements"
-    // InternalNavascript.g:147:1: entryRuleTopLevelStatements returns [EObject current=null] : iv_ruleTopLevelStatements= ruleTopLevelStatements EOF ;
+    // InternalNavascript.g:156:1: entryRuleTopLevelStatements returns [EObject current=null] : iv_ruleTopLevelStatements= ruleTopLevelStatements EOF ;
     public final EObject entryRuleTopLevelStatements() throws RecognitionException {
         EObject current = null;
 
@@ -406,8 +417,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:147:59: (iv_ruleTopLevelStatements= ruleTopLevelStatements EOF )
-            // InternalNavascript.g:148:2: iv_ruleTopLevelStatements= ruleTopLevelStatements EOF
+            // InternalNavascript.g:156:59: (iv_ruleTopLevelStatements= ruleTopLevelStatements EOF )
+            // InternalNavascript.g:157:2: iv_ruleTopLevelStatements= ruleTopLevelStatements EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTopLevelStatementsRule()); 
@@ -438,7 +449,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTopLevelStatements"
-    // InternalNavascript.g:154:1: ruleTopLevelStatements returns [EObject current=null] : ( () ( (lv_statements_1_0= ruleTopLevelStatement ) )* ) ;
+    // InternalNavascript.g:163:1: ruleTopLevelStatements returns [EObject current=null] : ( () ( (lv_statements_1_0= ruleTopLevelStatement ) )* ) ;
     public final EObject ruleTopLevelStatements() throws RecognitionException {
         EObject current = null;
 
@@ -449,15 +460,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:160:2: ( ( () ( (lv_statements_1_0= ruleTopLevelStatement ) )* ) )
-            // InternalNavascript.g:161:2: ( () ( (lv_statements_1_0= ruleTopLevelStatement ) )* )
+            // InternalNavascript.g:169:2: ( ( () ( (lv_statements_1_0= ruleTopLevelStatement ) )* ) )
+            // InternalNavascript.g:170:2: ( () ( (lv_statements_1_0= ruleTopLevelStatement ) )* )
             {
-            // InternalNavascript.g:161:2: ( () ( (lv_statements_1_0= ruleTopLevelStatement ) )* )
-            // InternalNavascript.g:162:3: () ( (lv_statements_1_0= ruleTopLevelStatement ) )*
+            // InternalNavascript.g:170:2: ( () ( (lv_statements_1_0= ruleTopLevelStatement ) )* )
+            // InternalNavascript.g:171:3: () ( (lv_statements_1_0= ruleTopLevelStatement ) )*
             {
-            // InternalNavascript.g:162:3: ()
-            // InternalNavascript.g:163:4: 
+            // InternalNavascript.g:171:3: ()
+            // InternalNavascript.g:172:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -468,23 +484,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:169:3: ( (lv_statements_1_0= ruleTopLevelStatement ) )*
+            // InternalNavascript.g:181:3: ( (lv_statements_1_0= ruleTopLevelStatement ) )*
             loop3:
             do {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( (LA3_0==25||LA3_0==27||LA3_0==29||LA3_0==41||LA3_0==47||(LA3_0>=49 && LA3_0<=50)||(LA3_0>=52 && LA3_0<=53)||(LA3_0>=55 && LA3_0<=57)||(LA3_0>=62 && LA3_0<=63)||LA3_0==65) ) {
+                if ( (LA3_0==26||LA3_0==28||LA3_0==30||LA3_0==42||LA3_0==48||(LA3_0>=50 && LA3_0<=51)||(LA3_0>=53 && LA3_0<=54)||(LA3_0>=56 && LA3_0<=58)||(LA3_0>=63 && LA3_0<=64)||LA3_0==66) ) {
                     alt3=1;
                 }
 
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalNavascript.g:170:4: (lv_statements_1_0= ruleTopLevelStatement )
+            	    // InternalNavascript.g:182:4: (lv_statements_1_0= ruleTopLevelStatement )
             	    {
-            	    // InternalNavascript.g:170:4: (lv_statements_1_0= ruleTopLevelStatement )
-            	    // InternalNavascript.g:171:5: lv_statements_1_0= ruleTopLevelStatement
+            	    // InternalNavascript.g:182:4: (lv_statements_1_0= ruleTopLevelStatement )
+            	    // InternalNavascript.g:183:5: lv_statements_1_0= ruleTopLevelStatement
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -546,7 +562,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTopLevelStatement"
-    // InternalNavascript.g:192:1: entryRuleTopLevelStatement returns [EObject current=null] : iv_ruleTopLevelStatement= ruleTopLevelStatement EOF ;
+    // InternalNavascript.g:204:1: entryRuleTopLevelStatement returns [EObject current=null] : iv_ruleTopLevelStatement= ruleTopLevelStatement EOF ;
     public final EObject entryRuleTopLevelStatement() throws RecognitionException {
         EObject current = null;
 
@@ -554,8 +570,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:192:58: (iv_ruleTopLevelStatement= ruleTopLevelStatement EOF )
-            // InternalNavascript.g:193:2: iv_ruleTopLevelStatement= ruleTopLevelStatement EOF
+            // InternalNavascript.g:204:58: (iv_ruleTopLevelStatement= ruleTopLevelStatement EOF )
+            // InternalNavascript.g:205:2: iv_ruleTopLevelStatement= ruleTopLevelStatement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTopLevelStatementRule()); 
@@ -586,7 +602,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTopLevelStatement"
-    // InternalNavascript.g:199:1: ruleTopLevelStatement returns [EObject current=null] : ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) ) ) ;
+    // InternalNavascript.g:211:1: ruleTopLevelStatement returns [EObject current=null] : ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) ) ) ;
     public final EObject ruleTopLevelStatement() throws RecognitionException {
         EObject current = null;
 
@@ -625,15 +641,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:205:2: ( ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) ) ) )
-            // InternalNavascript.g:206:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) ) )
+            // InternalNavascript.g:217:2: ( ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) ) ) )
+            // InternalNavascript.g:218:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) ) )
             {
-            // InternalNavascript.g:206:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) ) )
-            // InternalNavascript.g:207:3: () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) )
+            // InternalNavascript.g:218:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) ) )
+            // InternalNavascript.g:219:3: () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) )
             {
-            // InternalNavascript.g:207:3: ()
-            // InternalNavascript.g:208:4: 
+            // InternalNavascript.g:219:3: ()
+            // InternalNavascript.g:220:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -644,28 +665,28 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:214:3: (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )?
+            // InternalNavascript.g:229:3: (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==25) ) {
+            if ( (LA4_0==26) ) {
                 alt4=1;
             }
             switch (alt4) {
                 case 1 :
-                    // InternalNavascript.g:215:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
+                    // InternalNavascript.g:230:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
                     {
-                    otherlv_1=(Token)match(input,25,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,26,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getTopLevelStatementAccess().getIfKeyword_1_0());
                       			
                     }
-                    // InternalNavascript.g:219:4: ( (lv_condition_2_0= ruleExpression ) )
-                    // InternalNavascript.g:220:5: (lv_condition_2_0= ruleExpression )
+                    // InternalNavascript.g:234:4: ( (lv_condition_2_0= ruleExpression ) )
+                    // InternalNavascript.g:235:5: (lv_condition_2_0= ruleExpression )
                     {
-                    // InternalNavascript.g:220:5: (lv_condition_2_0= ruleExpression )
-                    // InternalNavascript.g:221:6: lv_condition_2_0= ruleExpression
+                    // InternalNavascript.g:235:5: (lv_condition_2_0= ruleExpression )
+                    // InternalNavascript.g:236:6: lv_condition_2_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -696,7 +717,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,26,FOLLOW_8); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,27,FOLLOW_8); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getTopLevelStatementAccess().getThenKeyword_1_2());
@@ -708,77 +729,77 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:243:3: ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) )
-            // InternalNavascript.g:244:4: ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) )
+            // InternalNavascript.g:258:3: ( ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) ) )
+            // InternalNavascript.g:259:4: ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) )
             {
-            // InternalNavascript.g:244:4: ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) )
-            // InternalNavascript.g:245:5: (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements )
+            // InternalNavascript.g:259:4: ( (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements ) )
+            // InternalNavascript.g:260:5: (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements )
             {
-            // InternalNavascript.g:245:5: (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements )
+            // InternalNavascript.g:260:5: (lv_statement_4_1= ruleMessage | lv_statement_4_2= ruleVar | lv_statement_4_3= ruleMap | lv_statement_4_4= ruleAntiMessage | lv_statement_4_5= ruleDefine | lv_statement_4_6= rulePrint | lv_statement_4_7= ruleLog | lv_statement_4_8= ruleLoop | lv_statement_4_9= ruleMethods | lv_statement_4_10= ruleInclude | lv_statement_4_11= ruleBreak | lv_statement_4_12= ruleSynchronized | lv_statement_4_13= ruleBlockStatements )
             int alt5=13;
             switch ( input.LA(1) ) {
-            case 57:
+            case 58:
                 {
                 alt5=1;
                 }
                 break;
-            case 65:
+            case 66:
                 {
                 alt5=2;
                 }
                 break;
-            case 62:
             case 63:
+            case 64:
                 {
                 alt5=3;
                 }
                 break;
-            case 56:
+            case 57:
                 {
                 alt5=4;
                 }
                 break;
-            case 47:
+            case 48:
                 {
                 alt5=5;
                 }
                 break;
-            case 49:
+            case 50:
                 {
                 alt5=6;
                 }
                 break;
-            case 50:
+            case 51:
                 {
                 alt5=7;
                 }
                 break;
-            case 53:
+            case 54:
                 {
                 alt5=8;
                 }
                 break;
-            case 52:
+            case 53:
                 {
                 alt5=9;
                 }
                 break;
-            case 55:
+            case 56:
                 {
                 alt5=10;
                 }
                 break;
-            case 41:
+            case 42:
                 {
                 alt5=11;
                 }
                 break;
-            case 29:
+            case 30:
                 {
                 alt5=12;
                 }
                 break;
-            case 27:
+            case 28:
                 {
                 alt5=13;
                 }
@@ -793,7 +814,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             switch (alt5) {
                 case 1 :
-                    // InternalNavascript.g:246:6: lv_statement_4_1= ruleMessage
+                    // InternalNavascript.g:261:6: lv_statement_4_1= ruleMessage
                     {
                     if ( state.backtracking==0 ) {
 
@@ -822,7 +843,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:262:6: lv_statement_4_2= ruleVar
+                    // InternalNavascript.g:277:6: lv_statement_4_2= ruleVar
                     {
                     if ( state.backtracking==0 ) {
 
@@ -851,7 +872,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:278:6: lv_statement_4_3= ruleMap
+                    // InternalNavascript.g:293:6: lv_statement_4_3= ruleMap
                     {
                     if ( state.backtracking==0 ) {
 
@@ -880,7 +901,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalNavascript.g:294:6: lv_statement_4_4= ruleAntiMessage
+                    // InternalNavascript.g:309:6: lv_statement_4_4= ruleAntiMessage
                     {
                     if ( state.backtracking==0 ) {
 
@@ -909,7 +930,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalNavascript.g:310:6: lv_statement_4_5= ruleDefine
+                    // InternalNavascript.g:325:6: lv_statement_4_5= ruleDefine
                     {
                     if ( state.backtracking==0 ) {
 
@@ -938,7 +959,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalNavascript.g:326:6: lv_statement_4_6= rulePrint
+                    // InternalNavascript.g:341:6: lv_statement_4_6= rulePrint
                     {
                     if ( state.backtracking==0 ) {
 
@@ -967,7 +988,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalNavascript.g:342:6: lv_statement_4_7= ruleLog
+                    // InternalNavascript.g:357:6: lv_statement_4_7= ruleLog
                     {
                     if ( state.backtracking==0 ) {
 
@@ -996,7 +1017,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalNavascript.g:358:6: lv_statement_4_8= ruleLoop
+                    // InternalNavascript.g:373:6: lv_statement_4_8= ruleLoop
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1025,7 +1046,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // InternalNavascript.g:374:6: lv_statement_4_9= ruleMethods
+                    // InternalNavascript.g:389:6: lv_statement_4_9= ruleMethods
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1054,7 +1075,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // InternalNavascript.g:390:6: lv_statement_4_10= ruleInclude
+                    // InternalNavascript.g:405:6: lv_statement_4_10= ruleInclude
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1083,7 +1104,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // InternalNavascript.g:406:6: lv_statement_4_11= ruleBreak
+                    // InternalNavascript.g:421:6: lv_statement_4_11= ruleBreak
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1112,7 +1133,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 12 :
-                    // InternalNavascript.g:422:6: lv_statement_4_12= ruleSynchronized
+                    // InternalNavascript.g:437:6: lv_statement_4_12= ruleSynchronized
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1141,7 +1162,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 13 :
-                    // InternalNavascript.g:438:6: lv_statement_4_13= ruleBlockStatements
+                    // InternalNavascript.g:453:6: lv_statement_4_13= ruleBlockStatements
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1203,7 +1224,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInnerBody"
-    // InternalNavascript.g:460:1: entryRuleInnerBody returns [EObject current=null] : iv_ruleInnerBody= ruleInnerBody EOF ;
+    // InternalNavascript.g:475:1: entryRuleInnerBody returns [EObject current=null] : iv_ruleInnerBody= ruleInnerBody EOF ;
     public final EObject entryRuleInnerBody() throws RecognitionException {
         EObject current = null;
 
@@ -1211,8 +1232,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:460:50: (iv_ruleInnerBody= ruleInnerBody EOF )
-            // InternalNavascript.g:461:2: iv_ruleInnerBody= ruleInnerBody EOF
+            // InternalNavascript.g:475:50: (iv_ruleInnerBody= ruleInnerBody EOF )
+            // InternalNavascript.g:476:2: iv_ruleInnerBody= ruleInnerBody EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInnerBodyRule()); 
@@ -1243,7 +1264,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInnerBody"
-    // InternalNavascript.g:467:1: ruleInnerBody returns [EObject current=null] : ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) ) ) ;
+    // InternalNavascript.g:482:1: ruleInnerBody returns [EObject current=null] : ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) ) ) ;
     public final EObject ruleInnerBody() throws RecognitionException {
         EObject current = null;
 
@@ -1286,15 +1307,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:473:2: ( ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) ) ) )
-            // InternalNavascript.g:474:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) ) )
+            // InternalNavascript.g:488:2: ( ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) ) ) )
+            // InternalNavascript.g:489:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) ) )
             {
-            // InternalNavascript.g:474:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) ) )
-            // InternalNavascript.g:475:3: () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) )
+            // InternalNavascript.g:489:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) ) )
+            // InternalNavascript.g:490:3: () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) )
             {
-            // InternalNavascript.g:475:3: ()
-            // InternalNavascript.g:476:4: 
+            // InternalNavascript.g:490:3: ()
+            // InternalNavascript.g:491:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -1305,28 +1331,28 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:482:3: (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )?
+            // InternalNavascript.g:500:3: (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==25) ) {
+            if ( (LA6_0==26) ) {
                 alt6=1;
             }
             switch (alt6) {
                 case 1 :
-                    // InternalNavascript.g:483:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
+                    // InternalNavascript.g:501:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
                     {
-                    otherlv_1=(Token)match(input,25,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,26,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getInnerBodyAccess().getIfKeyword_1_0());
                       			
                     }
-                    // InternalNavascript.g:487:4: ( (lv_condition_2_0= ruleExpression ) )
-                    // InternalNavascript.g:488:5: (lv_condition_2_0= ruleExpression )
+                    // InternalNavascript.g:505:4: ( (lv_condition_2_0= ruleExpression ) )
+                    // InternalNavascript.g:506:5: (lv_condition_2_0= ruleExpression )
                     {
-                    // InternalNavascript.g:488:5: (lv_condition_2_0= ruleExpression )
-                    // InternalNavascript.g:489:6: lv_condition_2_0= ruleExpression
+                    // InternalNavascript.g:506:5: (lv_condition_2_0= ruleExpression )
+                    // InternalNavascript.g:507:6: lv_condition_2_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1357,7 +1383,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,26,FOLLOW_9); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,27,FOLLOW_9); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getInnerBodyAccess().getThenKeyword_1_2());
@@ -1369,21 +1395,21 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:511:3: ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) )
-            // InternalNavascript.g:512:4: ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) )
+            // InternalNavascript.g:529:3: ( ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) ) )
+            // InternalNavascript.g:530:4: ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) )
             {
-            // InternalNavascript.g:512:4: ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) )
-            // InternalNavascript.g:513:5: (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements )
+            // InternalNavascript.g:530:4: ( (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements ) )
+            // InternalNavascript.g:531:5: (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements )
             {
-            // InternalNavascript.g:513:5: (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements )
+            // InternalNavascript.g:531:5: (lv_statement_4_1= ruleProperty | lv_statement_4_2= ruleOption | lv_statement_4_3= ruleMethodOrSetter | lv_statement_4_4= ruleMessage | lv_statement_4_5= ruleAntiMessage | lv_statement_4_6= ruleInclude | lv_statement_4_7= ruleMethods | lv_statement_4_8= ruleVar | lv_statement_4_9= rulePrint | lv_statement_4_10= ruleLog | lv_statement_4_11= ruleDefine | lv_statement_4_12= ruleLoop | lv_statement_4_13= ruleMap | lv_statement_4_14= ruleBreak | lv_statement_4_15= ruleBlockStatements )
             int alt7=15;
             switch ( input.LA(1) ) {
-            case 66:
+            case 67:
                 {
                 alt7=1;
                 }
                 break;
-            case 67:
+            case 68:
                 {
                 alt7=2;
                 }
@@ -1394,63 +1420,63 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 alt7=3;
                 }
                 break;
-            case 57:
+            case 58:
                 {
                 alt7=4;
                 }
                 break;
-            case 56:
+            case 57:
                 {
                 alt7=5;
                 }
                 break;
-            case 55:
+            case 56:
                 {
                 alt7=6;
                 }
                 break;
-            case 52:
+            case 53:
                 {
                 alt7=7;
                 }
                 break;
-            case 65:
+            case 66:
                 {
                 alt7=8;
                 }
                 break;
-            case 49:
+            case 50:
                 {
                 alt7=9;
                 }
                 break;
-            case 50:
+            case 51:
                 {
                 alt7=10;
                 }
                 break;
-            case 47:
+            case 48:
                 {
                 alt7=11;
                 }
                 break;
-            case 53:
+            case 54:
                 {
                 alt7=12;
                 }
                 break;
-            case 62:
             case 63:
+            case 64:
                 {
                 alt7=13;
                 }
                 break;
-            case 41:
+            case 42:
                 {
                 alt7=14;
                 }
                 break;
-            case 27:
+            case 28:
                 {
                 alt7=15;
                 }
@@ -1465,7 +1491,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             switch (alt7) {
                 case 1 :
-                    // InternalNavascript.g:514:6: lv_statement_4_1= ruleProperty
+                    // InternalNavascript.g:532:6: lv_statement_4_1= ruleProperty
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1494,7 +1520,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:530:6: lv_statement_4_2= ruleOption
+                    // InternalNavascript.g:548:6: lv_statement_4_2= ruleOption
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1523,7 +1549,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:546:6: lv_statement_4_3= ruleMethodOrSetter
+                    // InternalNavascript.g:564:6: lv_statement_4_3= ruleMethodOrSetter
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1552,7 +1578,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalNavascript.g:562:6: lv_statement_4_4= ruleMessage
+                    // InternalNavascript.g:580:6: lv_statement_4_4= ruleMessage
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1581,7 +1607,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalNavascript.g:578:6: lv_statement_4_5= ruleAntiMessage
+                    // InternalNavascript.g:596:6: lv_statement_4_5= ruleAntiMessage
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1610,7 +1636,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalNavascript.g:594:6: lv_statement_4_6= ruleInclude
+                    // InternalNavascript.g:612:6: lv_statement_4_6= ruleInclude
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1639,7 +1665,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalNavascript.g:610:6: lv_statement_4_7= ruleMethods
+                    // InternalNavascript.g:628:6: lv_statement_4_7= ruleMethods
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1668,7 +1694,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalNavascript.g:626:6: lv_statement_4_8= ruleVar
+                    // InternalNavascript.g:644:6: lv_statement_4_8= ruleVar
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1697,7 +1723,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // InternalNavascript.g:642:6: lv_statement_4_9= rulePrint
+                    // InternalNavascript.g:660:6: lv_statement_4_9= rulePrint
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1726,7 +1752,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // InternalNavascript.g:658:6: lv_statement_4_10= ruleLog
+                    // InternalNavascript.g:676:6: lv_statement_4_10= ruleLog
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1755,7 +1781,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // InternalNavascript.g:674:6: lv_statement_4_11= ruleDefine
+                    // InternalNavascript.g:692:6: lv_statement_4_11= ruleDefine
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1784,7 +1810,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 12 :
-                    // InternalNavascript.g:690:6: lv_statement_4_12= ruleLoop
+                    // InternalNavascript.g:708:6: lv_statement_4_12= ruleLoop
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1813,7 +1839,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 13 :
-                    // InternalNavascript.g:706:6: lv_statement_4_13= ruleMap
+                    // InternalNavascript.g:724:6: lv_statement_4_13= ruleMap
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1842,7 +1868,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 14 :
-                    // InternalNavascript.g:722:6: lv_statement_4_14= ruleBreak
+                    // InternalNavascript.g:740:6: lv_statement_4_14= ruleBreak
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1871,7 +1897,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 15 :
-                    // InternalNavascript.g:738:6: lv_statement_4_15= ruleBlockStatements
+                    // InternalNavascript.g:756:6: lv_statement_4_15= ruleBlockStatements
                     {
                     if ( state.backtracking==0 ) {
 
@@ -1933,7 +1959,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBlockStatements"
-    // InternalNavascript.g:760:1: entryRuleBlockStatements returns [EObject current=null] : iv_ruleBlockStatements= ruleBlockStatements EOF ;
+    // InternalNavascript.g:778:1: entryRuleBlockStatements returns [EObject current=null] : iv_ruleBlockStatements= ruleBlockStatements EOF ;
     public final EObject entryRuleBlockStatements() throws RecognitionException {
         EObject current = null;
 
@@ -1941,8 +1967,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:760:56: (iv_ruleBlockStatements= ruleBlockStatements EOF )
-            // InternalNavascript.g:761:2: iv_ruleBlockStatements= ruleBlockStatements EOF
+            // InternalNavascript.g:778:56: (iv_ruleBlockStatements= ruleBlockStatements EOF )
+            // InternalNavascript.g:779:2: iv_ruleBlockStatements= ruleBlockStatements EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBlockStatementsRule()); 
@@ -1973,7 +1999,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBlockStatements"
-    // InternalNavascript.g:767:1: ruleBlockStatements returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' ) ;
+    // InternalNavascript.g:785:1: ruleBlockStatements returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' ) ;
     public final EObject ruleBlockStatements() throws RecognitionException {
         EObject current = null;
 
@@ -1986,15 +2012,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:773:2: ( ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' ) )
-            // InternalNavascript.g:774:2: ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' )
+            // InternalNavascript.g:791:2: ( ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' ) )
+            // InternalNavascript.g:792:2: ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' )
             {
-            // InternalNavascript.g:774:2: ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' )
-            // InternalNavascript.g:775:3: () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}'
+            // InternalNavascript.g:792:2: ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' )
+            // InternalNavascript.g:793:3: () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}'
             {
-            // InternalNavascript.g:775:3: ()
-            // InternalNavascript.g:776:4: 
+            // InternalNavascript.g:793:3: ()
+            // InternalNavascript.g:794:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -2005,29 +2036,29 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
+            otherlv_1=(Token)match(input,28,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getBlockStatementsAccess().getLeftCurlyBracketKeyword_1());
               		
             }
-            // InternalNavascript.g:786:3: ( (lv_statements_2_0= ruleInnerBody ) )*
+            // InternalNavascript.g:807:3: ( (lv_statements_2_0= ruleInnerBody ) )*
             loop8:
             do {
                 int alt8=2;
                 int LA8_0 = input.LA(1);
 
-                if ( ((LA8_0>=RULE_METHOD_IDENTIFIER && LA8_0<=RULE_MAPPABLE_IDENTIFIER)||LA8_0==25||LA8_0==27||LA8_0==41||LA8_0==47||(LA8_0>=49 && LA8_0<=50)||(LA8_0>=52 && LA8_0<=53)||(LA8_0>=55 && LA8_0<=57)||(LA8_0>=62 && LA8_0<=63)||(LA8_0>=65 && LA8_0<=67)) ) {
+                if ( ((LA8_0>=RULE_METHOD_IDENTIFIER && LA8_0<=RULE_MAPPABLE_IDENTIFIER)||LA8_0==26||LA8_0==28||LA8_0==42||LA8_0==48||(LA8_0>=50 && LA8_0<=51)||(LA8_0>=53 && LA8_0<=54)||(LA8_0>=56 && LA8_0<=58)||(LA8_0>=63 && LA8_0<=64)||(LA8_0>=66 && LA8_0<=68)) ) {
                     alt8=1;
                 }
 
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalNavascript.g:787:4: (lv_statements_2_0= ruleInnerBody )
+            	    // InternalNavascript.g:808:4: (lv_statements_2_0= ruleInnerBody )
             	    {
-            	    // InternalNavascript.g:787:4: (lv_statements_2_0= ruleInnerBody )
-            	    // InternalNavascript.g:788:5: lv_statements_2_0= ruleInnerBody
+            	    // InternalNavascript.g:808:4: (lv_statements_2_0= ruleInnerBody )
+            	    // InternalNavascript.g:809:5: lv_statements_2_0= ruleInnerBody
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -2064,7 +2095,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_3=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getBlockStatementsAccess().getRightCurlyBracketKeyword_3());
@@ -2095,7 +2126,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSynchronized"
-    // InternalNavascript.g:813:1: entryRuleSynchronized returns [EObject current=null] : iv_ruleSynchronized= ruleSynchronized EOF ;
+    // InternalNavascript.g:834:1: entryRuleSynchronized returns [EObject current=null] : iv_ruleSynchronized= ruleSynchronized EOF ;
     public final EObject entryRuleSynchronized() throws RecognitionException {
         EObject current = null;
 
@@ -2103,8 +2134,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:813:53: (iv_ruleSynchronized= ruleSynchronized EOF )
-            // InternalNavascript.g:814:2: iv_ruleSynchronized= ruleSynchronized EOF
+            // InternalNavascript.g:834:53: (iv_ruleSynchronized= ruleSynchronized EOF )
+            // InternalNavascript.g:835:2: iv_ruleSynchronized= ruleSynchronized EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSynchronizedRule()); 
@@ -2135,7 +2166,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSynchronized"
-    // InternalNavascript.g:820:1: ruleSynchronized returns [EObject current=null] : (otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}' ) ;
+    // InternalNavascript.g:841:1: ruleSynchronized returns [EObject current=null] : (otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}' ) ;
     public final EObject ruleSynchronized() throws RecognitionException {
         EObject current = null;
 
@@ -2153,29 +2184,29 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:826:2: ( (otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}' ) )
-            // InternalNavascript.g:827:2: (otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}' )
+            // InternalNavascript.g:847:2: ( (otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}' ) )
+            // InternalNavascript.g:848:2: (otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}' )
             {
-            // InternalNavascript.g:827:2: (otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}' )
-            // InternalNavascript.g:828:3: otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}'
+            // InternalNavascript.g:848:2: (otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}' )
+            // InternalNavascript.g:849:3: otherlv_0= 'synchronized' otherlv_1= '(' ( (lv_arguments_2_0= ruleSynchronizedArguments ) ) otherlv_3= ')' otherlv_4= '{' ( (lv_statements_5_0= ruleTopLevelStatement ) )* otherlv_6= '}'
             {
-            otherlv_0=(Token)match(input,29,FOLLOW_11); if (state.failed) return current;
+            otherlv_0=(Token)match(input,30,FOLLOW_11); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getSynchronizedAccess().getSynchronizedKeyword_0());
               		
             }
-            otherlv_1=(Token)match(input,30,FOLLOW_12); if (state.failed) return current;
+            otherlv_1=(Token)match(input,31,FOLLOW_12); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getSynchronizedAccess().getLeftParenthesisKeyword_1());
               		
             }
-            // InternalNavascript.g:836:3: ( (lv_arguments_2_0= ruleSynchronizedArguments ) )
-            // InternalNavascript.g:837:4: (lv_arguments_2_0= ruleSynchronizedArguments )
+            // InternalNavascript.g:857:3: ( (lv_arguments_2_0= ruleSynchronizedArguments ) )
+            // InternalNavascript.g:858:4: (lv_arguments_2_0= ruleSynchronizedArguments )
             {
-            // InternalNavascript.g:837:4: (lv_arguments_2_0= ruleSynchronizedArguments )
-            // InternalNavascript.g:838:5: lv_arguments_2_0= ruleSynchronizedArguments
+            // InternalNavascript.g:858:4: (lv_arguments_2_0= ruleSynchronizedArguments )
+            // InternalNavascript.g:859:5: lv_arguments_2_0= ruleSynchronizedArguments
             {
             if ( state.backtracking==0 ) {
 
@@ -2206,35 +2237,35 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
+            otherlv_3=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getSynchronizedAccess().getRightParenthesisKeyword_3());
               		
             }
-            otherlv_4=(Token)match(input,27,FOLLOW_15); if (state.failed) return current;
+            otherlv_4=(Token)match(input,28,FOLLOW_15); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getSynchronizedAccess().getLeftCurlyBracketKeyword_4());
               		
             }
-            // InternalNavascript.g:863:3: ( (lv_statements_5_0= ruleTopLevelStatement ) )*
+            // InternalNavascript.g:884:3: ( (lv_statements_5_0= ruleTopLevelStatement ) )*
             loop9:
             do {
                 int alt9=2;
                 int LA9_0 = input.LA(1);
 
-                if ( (LA9_0==25||LA9_0==27||LA9_0==29||LA9_0==41||LA9_0==47||(LA9_0>=49 && LA9_0<=50)||(LA9_0>=52 && LA9_0<=53)||(LA9_0>=55 && LA9_0<=57)||(LA9_0>=62 && LA9_0<=63)||LA9_0==65) ) {
+                if ( (LA9_0==26||LA9_0==28||LA9_0==30||LA9_0==42||LA9_0==48||(LA9_0>=50 && LA9_0<=51)||(LA9_0>=53 && LA9_0<=54)||(LA9_0>=56 && LA9_0<=58)||(LA9_0>=63 && LA9_0<=64)||LA9_0==66) ) {
                     alt9=1;
                 }
 
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalNavascript.g:864:4: (lv_statements_5_0= ruleTopLevelStatement )
+            	    // InternalNavascript.g:885:4: (lv_statements_5_0= ruleTopLevelStatement )
             	    {
-            	    // InternalNavascript.g:864:4: (lv_statements_5_0= ruleTopLevelStatement )
-            	    // InternalNavascript.g:865:5: lv_statements_5_0= ruleTopLevelStatement
+            	    // InternalNavascript.g:885:4: (lv_statements_5_0= ruleTopLevelStatement )
+            	    // InternalNavascript.g:886:5: lv_statements_5_0= ruleTopLevelStatement
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -2271,7 +2302,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_6=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_6=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_6, grammarAccess.getSynchronizedAccess().getRightCurlyBracketKeyword_6());
@@ -2302,7 +2333,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSynchronizedArguments"
-    // InternalNavascript.g:890:1: entryRuleSynchronizedArguments returns [EObject current=null] : iv_ruleSynchronizedArguments= ruleSynchronizedArguments EOF ;
+    // InternalNavascript.g:911:1: entryRuleSynchronizedArguments returns [EObject current=null] : iv_ruleSynchronizedArguments= ruleSynchronizedArguments EOF ;
     public final EObject entryRuleSynchronizedArguments() throws RecognitionException {
         EObject current = null;
 
@@ -2310,8 +2341,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:890:62: (iv_ruleSynchronizedArguments= ruleSynchronizedArguments EOF )
-            // InternalNavascript.g:891:2: iv_ruleSynchronizedArguments= ruleSynchronizedArguments EOF
+            // InternalNavascript.g:911:62: (iv_ruleSynchronizedArguments= ruleSynchronizedArguments EOF )
+            // InternalNavascript.g:912:2: iv_ruleSynchronizedArguments= ruleSynchronizedArguments EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSynchronizedArgumentsRule()); 
@@ -2342,7 +2373,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSynchronizedArguments"
-    // InternalNavascript.g:897:1: ruleSynchronizedArguments returns [EObject current=null] : ( ( (lv_arguments_0_0= ruleSynchronizedArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )* ) ;
+    // InternalNavascript.g:918:1: ruleSynchronizedArguments returns [EObject current=null] : ( ( (lv_arguments_0_0= ruleSynchronizedArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )* ) ;
     public final EObject ruleSynchronizedArguments() throws RecognitionException {
         EObject current = null;
 
@@ -2356,17 +2387,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:903:2: ( ( ( (lv_arguments_0_0= ruleSynchronizedArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )* ) )
-            // InternalNavascript.g:904:2: ( ( (lv_arguments_0_0= ruleSynchronizedArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )* )
+            // InternalNavascript.g:924:2: ( ( ( (lv_arguments_0_0= ruleSynchronizedArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )* ) )
+            // InternalNavascript.g:925:2: ( ( (lv_arguments_0_0= ruleSynchronizedArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )* )
             {
-            // InternalNavascript.g:904:2: ( ( (lv_arguments_0_0= ruleSynchronizedArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )* )
-            // InternalNavascript.g:905:3: ( (lv_arguments_0_0= ruleSynchronizedArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )*
+            // InternalNavascript.g:925:2: ( ( (lv_arguments_0_0= ruleSynchronizedArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )* )
+            // InternalNavascript.g:926:3: ( (lv_arguments_0_0= ruleSynchronizedArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )*
             {
-            // InternalNavascript.g:905:3: ( (lv_arguments_0_0= ruleSynchronizedArgument ) )
-            // InternalNavascript.g:906:4: (lv_arguments_0_0= ruleSynchronizedArgument )
+            // InternalNavascript.g:926:3: ( (lv_arguments_0_0= ruleSynchronizedArgument ) )
+            // InternalNavascript.g:927:4: (lv_arguments_0_0= ruleSynchronizedArgument )
             {
-            // InternalNavascript.g:906:4: (lv_arguments_0_0= ruleSynchronizedArgument )
-            // InternalNavascript.g:907:5: lv_arguments_0_0= ruleSynchronizedArgument
+            // InternalNavascript.g:927:4: (lv_arguments_0_0= ruleSynchronizedArgument )
+            // InternalNavascript.g:928:5: lv_arguments_0_0= ruleSynchronizedArgument
             {
             if ( state.backtracking==0 ) {
 
@@ -2397,32 +2428,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:924:3: (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )*
+            // InternalNavascript.g:945:3: (otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) ) )*
             loop10:
             do {
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( (LA10_0==32) ) {
+                if ( (LA10_0==33) ) {
                     alt10=1;
                 }
 
 
                 switch (alt10) {
             	case 1 :
-            	    // InternalNavascript.g:925:4: otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) )
+            	    // InternalNavascript.g:946:4: otherlv_1= ',' ( (lv_arguments_2_0= ruleSynchronizedArgument ) )
             	    {
-            	    otherlv_1=(Token)match(input,32,FOLLOW_12); if (state.failed) return current;
+            	    otherlv_1=(Token)match(input,33,FOLLOW_12); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_1, grammarAccess.getSynchronizedArgumentsAccess().getCommaKeyword_1_0());
             	      			
             	    }
-            	    // InternalNavascript.g:929:4: ( (lv_arguments_2_0= ruleSynchronizedArgument ) )
-            	    // InternalNavascript.g:930:5: (lv_arguments_2_0= ruleSynchronizedArgument )
+            	    // InternalNavascript.g:950:4: ( (lv_arguments_2_0= ruleSynchronizedArgument ) )
+            	    // InternalNavascript.g:951:5: (lv_arguments_2_0= ruleSynchronizedArgument )
             	    {
-            	    // InternalNavascript.g:930:5: (lv_arguments_2_0= ruleSynchronizedArgument )
-            	    // InternalNavascript.g:931:6: lv_arguments_2_0= ruleSynchronizedArgument
+            	    // InternalNavascript.g:951:5: (lv_arguments_2_0= ruleSynchronizedArgument )
+            	    // InternalNavascript.g:952:6: lv_arguments_2_0= ruleSynchronizedArgument
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -2487,7 +2518,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSynchronizedArgument"
-    // InternalNavascript.g:953:1: entryRuleSynchronizedArgument returns [EObject current=null] : iv_ruleSynchronizedArgument= ruleSynchronizedArgument EOF ;
+    // InternalNavascript.g:974:1: entryRuleSynchronizedArgument returns [EObject current=null] : iv_ruleSynchronizedArgument= ruleSynchronizedArgument EOF ;
     public final EObject entryRuleSynchronizedArgument() throws RecognitionException {
         EObject current = null;
 
@@ -2495,8 +2526,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:953:61: (iv_ruleSynchronizedArgument= ruleSynchronizedArgument EOF )
-            // InternalNavascript.g:954:2: iv_ruleSynchronizedArgument= ruleSynchronizedArgument EOF
+            // InternalNavascript.g:974:61: (iv_ruleSynchronizedArgument= ruleSynchronizedArgument EOF )
+            // InternalNavascript.g:975:2: iv_ruleSynchronizedArgument= ruleSynchronizedArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSynchronizedArgumentRule()); 
@@ -2527,7 +2558,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSynchronizedArgument"
-    // InternalNavascript.g:960:1: ruleSynchronizedArgument returns [EObject current=null] : ( ( () ruleSContext ) | this_SKey_2= ruleSKey | this_STimeout_3= ruleSTimeout | this_SBreakOnNoLock_4= ruleSBreakOnNoLock ) ;
+    // InternalNavascript.g:981:1: ruleSynchronizedArgument returns [EObject current=null] : ( ( () ruleSContext ) | this_SKey_2= ruleSKey | this_STimeout_3= ruleSTimeout | this_SBreakOnNoLock_4= ruleSBreakOnNoLock ) ;
     public final EObject ruleSynchronizedArgument() throws RecognitionException {
         EObject current = null;
 
@@ -2542,28 +2573,28 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:966:2: ( ( ( () ruleSContext ) | this_SKey_2= ruleSKey | this_STimeout_3= ruleSTimeout | this_SBreakOnNoLock_4= ruleSBreakOnNoLock ) )
-            // InternalNavascript.g:967:2: ( ( () ruleSContext ) | this_SKey_2= ruleSKey | this_STimeout_3= ruleSTimeout | this_SBreakOnNoLock_4= ruleSBreakOnNoLock )
+            // InternalNavascript.g:987:2: ( ( ( () ruleSContext ) | this_SKey_2= ruleSKey | this_STimeout_3= ruleSTimeout | this_SBreakOnNoLock_4= ruleSBreakOnNoLock ) )
+            // InternalNavascript.g:988:2: ( ( () ruleSContext ) | this_SKey_2= ruleSKey | this_STimeout_3= ruleSTimeout | this_SBreakOnNoLock_4= ruleSBreakOnNoLock )
             {
-            // InternalNavascript.g:967:2: ( ( () ruleSContext ) | this_SKey_2= ruleSKey | this_STimeout_3= ruleSTimeout | this_SBreakOnNoLock_4= ruleSBreakOnNoLock )
+            // InternalNavascript.g:988:2: ( ( () ruleSContext ) | this_SKey_2= ruleSKey | this_STimeout_3= ruleSTimeout | this_SBreakOnNoLock_4= ruleSBreakOnNoLock )
             int alt11=4;
             switch ( input.LA(1) ) {
-            case 33:
+            case 34:
                 {
                 alt11=1;
                 }
                 break;
-            case 38:
+            case 39:
                 {
                 alt11=2;
                 }
                 break;
-            case 39:
+            case 40:
                 {
                 alt11=3;
                 }
                 break;
-            case 40:
+            case 41:
                 {
                 alt11=4;
                 }
@@ -2578,14 +2609,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             switch (alt11) {
                 case 1 :
-                    // InternalNavascript.g:968:3: ( () ruleSContext )
+                    // InternalNavascript.g:989:3: ( () ruleSContext )
                     {
-                    // InternalNavascript.g:968:3: ( () ruleSContext )
-                    // InternalNavascript.g:969:4: () ruleSContext
+                    // InternalNavascript.g:989:3: ( () ruleSContext )
+                    // InternalNavascript.g:990:4: () ruleSContext
                     {
-                    // InternalNavascript.g:969:4: ()
-                    // InternalNavascript.g:970:5: 
+                    // InternalNavascript.g:990:4: ()
+                    // InternalNavascript.g:991:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -2596,6 +2632,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
+                    if ( state.backtracking==0 ) {
+
+                      				/* */
+                      			
+                    }
                     if ( state.backtracking==0 ) {
 
                       				newCompositeNode(grammarAccess.getSynchronizedArgumentAccess().getSContextParserRuleCall_0_1());
@@ -2618,8 +2659,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:985:3: this_SKey_2= ruleSKey
+                    // InternalNavascript.g:1012:3: this_SKey_2= ruleSKey
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getSynchronizedArgumentAccess().getSKeyParserRuleCall_1());
@@ -2640,8 +2686,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:994:3: this_STimeout_3= ruleSTimeout
+                    // InternalNavascript.g:1024:3: this_STimeout_3= ruleSTimeout
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getSynchronizedArgumentAccess().getSTimeoutParserRuleCall_2());
@@ -2662,8 +2713,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalNavascript.g:1003:3: this_SBreakOnNoLock_4= ruleSBreakOnNoLock
+                    // InternalNavascript.g:1036:3: this_SBreakOnNoLock_4= ruleSBreakOnNoLock
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getSynchronizedArgumentAccess().getSBreakOnNoLockParserRuleCall_3());
@@ -2708,7 +2764,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSContext"
-    // InternalNavascript.g:1015:1: entryRuleSContext returns [String current=null] : iv_ruleSContext= ruleSContext EOF ;
+    // InternalNavascript.g:1051:1: entryRuleSContext returns [String current=null] : iv_ruleSContext= ruleSContext EOF ;
     public final String entryRuleSContext() throws RecognitionException {
         String current = null;
 
@@ -2716,8 +2772,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1015:48: (iv_ruleSContext= ruleSContext EOF )
-            // InternalNavascript.g:1016:2: iv_ruleSContext= ruleSContext EOF
+            // InternalNavascript.g:1051:48: (iv_ruleSContext= ruleSContext EOF )
+            // InternalNavascript.g:1052:2: iv_ruleSContext= ruleSContext EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSContextRule()); 
@@ -2748,7 +2804,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSContext"
-    // InternalNavascript.g:1022:1: ruleSContext returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' ) ) ;
+    // InternalNavascript.g:1058:1: ruleSContext returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' ) ) ;
     public final AntlrDatatypeRuleToken ruleSContext() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2758,27 +2814,27 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1028:2: ( (kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' ) ) )
-            // InternalNavascript.g:1029:2: (kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' ) )
+            // InternalNavascript.g:1064:2: ( (kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' ) ) )
+            // InternalNavascript.g:1065:2: (kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' ) )
             {
-            // InternalNavascript.g:1029:2: (kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' ) )
-            // InternalNavascript.g:1030:3: kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' )
+            // InternalNavascript.g:1065:2: (kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' ) )
+            // InternalNavascript.g:1066:3: kw= 'context' (kw= '=' | kw= ':' ) (kw= 'user' | kw= 'service' )
             {
-            kw=(Token)match(input,33,FOLLOW_17); if (state.failed) return current;
+            kw=(Token)match(input,34,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			current.merge(kw);
               			newLeafNode(kw, grammarAccess.getSContextAccess().getContextKeyword_0());
               		
             }
-            // InternalNavascript.g:1035:3: (kw= '=' | kw= ':' )
+            // InternalNavascript.g:1071:3: (kw= '=' | kw= ':' )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
-            if ( (LA12_0==34) ) {
+            if ( (LA12_0==35) ) {
                 alt12=1;
             }
-            else if ( (LA12_0==35) ) {
+            else if ( (LA12_0==36) ) {
                 alt12=2;
             }
             else {
@@ -2790,9 +2846,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             }
             switch (alt12) {
                 case 1 :
-                    // InternalNavascript.g:1036:4: kw= '='
+                    // InternalNavascript.g:1072:4: kw= '='
                     {
-                    kw=(Token)match(input,34,FOLLOW_18); if (state.failed) return current;
+                    kw=(Token)match(input,35,FOLLOW_18); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current.merge(kw);
@@ -2803,9 +2859,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:1042:4: kw= ':'
+                    // InternalNavascript.g:1078:4: kw= ':'
                     {
-                    kw=(Token)match(input,35,FOLLOW_18); if (state.failed) return current;
+                    kw=(Token)match(input,36,FOLLOW_18); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current.merge(kw);
@@ -2818,14 +2874,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:1048:3: (kw= 'user' | kw= 'service' )
+            // InternalNavascript.g:1084:3: (kw= 'user' | kw= 'service' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
-            if ( (LA13_0==36) ) {
+            if ( (LA13_0==37) ) {
                 alt13=1;
             }
-            else if ( (LA13_0==37) ) {
+            else if ( (LA13_0==38) ) {
                 alt13=2;
             }
             else {
@@ -2837,9 +2893,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             }
             switch (alt13) {
                 case 1 :
-                    // InternalNavascript.g:1049:4: kw= 'user'
+                    // InternalNavascript.g:1085:4: kw= 'user'
                     {
-                    kw=(Token)match(input,36,FOLLOW_2); if (state.failed) return current;
+                    kw=(Token)match(input,37,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current.merge(kw);
@@ -2850,9 +2906,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:1055:4: kw= 'service'
+                    // InternalNavascript.g:1091:4: kw= 'service'
                     {
-                    kw=(Token)match(input,37,FOLLOW_2); if (state.failed) return current;
+                    kw=(Token)match(input,38,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current.merge(kw);
@@ -2890,7 +2946,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSKey"
-    // InternalNavascript.g:1065:1: entryRuleSKey returns [EObject current=null] : iv_ruleSKey= ruleSKey EOF ;
+    // InternalNavascript.g:1101:1: entryRuleSKey returns [EObject current=null] : iv_ruleSKey= ruleSKey EOF ;
     public final EObject entryRuleSKey() throws RecognitionException {
         EObject current = null;
 
@@ -2898,8 +2954,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1065:45: (iv_ruleSKey= ruleSKey EOF )
-            // InternalNavascript.g:1066:2: iv_ruleSKey= ruleSKey EOF
+            // InternalNavascript.g:1101:45: (iv_ruleSKey= ruleSKey EOF )
+            // InternalNavascript.g:1102:2: iv_ruleSKey= ruleSKey EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSKeyRule()); 
@@ -2930,7 +2986,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSKey"
-    // InternalNavascript.g:1072:1: ruleSKey returns [EObject current=null] : (otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression ) ;
+    // InternalNavascript.g:1108:1: ruleSKey returns [EObject current=null] : (otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression ) ;
     public final EObject ruleSKey() throws RecognitionException {
         EObject current = null;
 
@@ -2944,26 +3000,26 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1078:2: ( (otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression ) )
-            // InternalNavascript.g:1079:2: (otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression )
+            // InternalNavascript.g:1114:2: ( (otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression ) )
+            // InternalNavascript.g:1115:2: (otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression )
             {
-            // InternalNavascript.g:1079:2: (otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression )
-            // InternalNavascript.g:1080:3: otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression
+            // InternalNavascript.g:1115:2: (otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression )
+            // InternalNavascript.g:1116:3: otherlv_0= 'key' (otherlv_1= '=' | otherlv_2= ':' ) this_LiteralOrExpression_3= ruleLiteralOrExpression
             {
-            otherlv_0=(Token)match(input,38,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,39,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getSKeyAccess().getKeyKeyword_0());
               		
             }
-            // InternalNavascript.g:1084:3: (otherlv_1= '=' | otherlv_2= ':' )
+            // InternalNavascript.g:1120:3: (otherlv_1= '=' | otherlv_2= ':' )
             int alt14=2;
             int LA14_0 = input.LA(1);
 
-            if ( (LA14_0==34) ) {
+            if ( (LA14_0==35) ) {
                 alt14=1;
             }
-            else if ( (LA14_0==35) ) {
+            else if ( (LA14_0==36) ) {
                 alt14=2;
             }
             else {
@@ -2975,9 +3031,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             }
             switch (alt14) {
                 case 1 :
-                    // InternalNavascript.g:1085:4: otherlv_1= '='
+                    // InternalNavascript.g:1121:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getSKeyAccess().getEqualsSignKeyword_1_0());
@@ -2987,9 +3043,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:1090:4: otherlv_2= ':'
+                    // InternalNavascript.g:1126:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,36,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getSKeyAccess().getColonKeyword_1_1());
@@ -3001,6 +3057,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
+            if ( state.backtracking==0 ) {
+
+              			/* */
+              		
+            }
             if ( state.backtracking==0 ) {
 
               			newCompositeNode(grammarAccess.getSKeyAccess().getLiteralOrExpressionParserRuleCall_2());
@@ -3042,7 +3103,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSTimeout"
-    // InternalNavascript.g:1107:1: entryRuleSTimeout returns [EObject current=null] : iv_ruleSTimeout= ruleSTimeout EOF ;
+    // InternalNavascript.g:1146:1: entryRuleSTimeout returns [EObject current=null] : iv_ruleSTimeout= ruleSTimeout EOF ;
     public final EObject entryRuleSTimeout() throws RecognitionException {
         EObject current = null;
 
@@ -3050,8 +3111,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1107:49: (iv_ruleSTimeout= ruleSTimeout EOF )
-            // InternalNavascript.g:1108:2: iv_ruleSTimeout= ruleSTimeout EOF
+            // InternalNavascript.g:1146:49: (iv_ruleSTimeout= ruleSTimeout EOF )
+            // InternalNavascript.g:1147:2: iv_ruleSTimeout= ruleSTimeout EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSTimeoutRule()); 
@@ -3082,7 +3143,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSTimeout"
-    // InternalNavascript.g:1114:1: ruleSTimeout returns [EObject current=null] : (otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression ) ;
+    // InternalNavascript.g:1153:1: ruleSTimeout returns [EObject current=null] : (otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression ) ;
     public final EObject ruleSTimeout() throws RecognitionException {
         EObject current = null;
 
@@ -3096,26 +3157,26 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1120:2: ( (otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression ) )
-            // InternalNavascript.g:1121:2: (otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression )
+            // InternalNavascript.g:1159:2: ( (otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression ) )
+            // InternalNavascript.g:1160:2: (otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression )
             {
-            // InternalNavascript.g:1121:2: (otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression )
-            // InternalNavascript.g:1122:3: otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression
+            // InternalNavascript.g:1160:2: (otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression )
+            // InternalNavascript.g:1161:3: otherlv_0= 'timeout' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression
             {
-            otherlv_0=(Token)match(input,39,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,40,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getSTimeoutAccess().getTimeoutKeyword_0());
               		
             }
-            // InternalNavascript.g:1126:3: (otherlv_1= '=' | otherlv_2= ':' )
+            // InternalNavascript.g:1165:3: (otherlv_1= '=' | otherlv_2= ':' )
             int alt15=2;
             int LA15_0 = input.LA(1);
 
-            if ( (LA15_0==34) ) {
+            if ( (LA15_0==35) ) {
                 alt15=1;
             }
-            else if ( (LA15_0==35) ) {
+            else if ( (LA15_0==36) ) {
                 alt15=2;
             }
             else {
@@ -3127,9 +3188,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             }
             switch (alt15) {
                 case 1 :
-                    // InternalNavascript.g:1127:4: otherlv_1= '='
+                    // InternalNavascript.g:1166:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getSTimeoutAccess().getEqualsSignKeyword_1_0());
@@ -3139,9 +3200,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:1132:4: otherlv_2= ':'
+                    // InternalNavascript.g:1171:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,36,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getSTimeoutAccess().getColonKeyword_1_1());
@@ -3153,6 +3214,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
+            if ( state.backtracking==0 ) {
+
+              			/* */
+              		
+            }
             if ( state.backtracking==0 ) {
 
               			newCompositeNode(grammarAccess.getSTimeoutAccess().getExpressionParserRuleCall_2());
@@ -3194,7 +3260,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSBreakOnNoLock"
-    // InternalNavascript.g:1149:1: entryRuleSBreakOnNoLock returns [EObject current=null] : iv_ruleSBreakOnNoLock= ruleSBreakOnNoLock EOF ;
+    // InternalNavascript.g:1191:1: entryRuleSBreakOnNoLock returns [EObject current=null] : iv_ruleSBreakOnNoLock= ruleSBreakOnNoLock EOF ;
     public final EObject entryRuleSBreakOnNoLock() throws RecognitionException {
         EObject current = null;
 
@@ -3202,8 +3268,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1149:55: (iv_ruleSBreakOnNoLock= ruleSBreakOnNoLock EOF )
-            // InternalNavascript.g:1150:2: iv_ruleSBreakOnNoLock= ruleSBreakOnNoLock EOF
+            // InternalNavascript.g:1191:55: (iv_ruleSBreakOnNoLock= ruleSBreakOnNoLock EOF )
+            // InternalNavascript.g:1192:2: iv_ruleSBreakOnNoLock= ruleSBreakOnNoLock EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSBreakOnNoLockRule()); 
@@ -3234,7 +3300,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSBreakOnNoLock"
-    // InternalNavascript.g:1156:1: ruleSBreakOnNoLock returns [EObject current=null] : (otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression ) ;
+    // InternalNavascript.g:1198:1: ruleSBreakOnNoLock returns [EObject current=null] : (otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression ) ;
     public final EObject ruleSBreakOnNoLock() throws RecognitionException {
         EObject current = null;
 
@@ -3248,26 +3314,26 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1162:2: ( (otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression ) )
-            // InternalNavascript.g:1163:2: (otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression )
+            // InternalNavascript.g:1204:2: ( (otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression ) )
+            // InternalNavascript.g:1205:2: (otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression )
             {
-            // InternalNavascript.g:1163:2: (otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression )
-            // InternalNavascript.g:1164:3: otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression
+            // InternalNavascript.g:1205:2: (otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression )
+            // InternalNavascript.g:1206:3: otherlv_0= 'breakOnNoLock' (otherlv_1= '=' | otherlv_2= ':' ) this_Expression_3= ruleExpression
             {
-            otherlv_0=(Token)match(input,40,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,41,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getSBreakOnNoLockAccess().getBreakOnNoLockKeyword_0());
               		
             }
-            // InternalNavascript.g:1168:3: (otherlv_1= '=' | otherlv_2= ':' )
+            // InternalNavascript.g:1210:3: (otherlv_1= '=' | otherlv_2= ':' )
             int alt16=2;
             int LA16_0 = input.LA(1);
 
-            if ( (LA16_0==34) ) {
+            if ( (LA16_0==35) ) {
                 alt16=1;
             }
-            else if ( (LA16_0==35) ) {
+            else if ( (LA16_0==36) ) {
                 alt16=2;
             }
             else {
@@ -3279,9 +3345,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             }
             switch (alt16) {
                 case 1 :
-                    // InternalNavascript.g:1169:4: otherlv_1= '='
+                    // InternalNavascript.g:1211:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getSBreakOnNoLockAccess().getEqualsSignKeyword_1_0());
@@ -3291,9 +3357,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:1174:4: otherlv_2= ':'
+                    // InternalNavascript.g:1216:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,36,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getSBreakOnNoLockAccess().getColonKeyword_1_1());
@@ -3305,6 +3371,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
+            if ( state.backtracking==0 ) {
+
+              			/* */
+              		
+            }
             if ( state.backtracking==0 ) {
 
               			newCompositeNode(grammarAccess.getSBreakOnNoLockAccess().getExpressionParserRuleCall_2());
@@ -3346,7 +3417,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBreak"
-    // InternalNavascript.g:1191:1: entryRuleBreak returns [EObject current=null] : iv_ruleBreak= ruleBreak EOF ;
+    // InternalNavascript.g:1236:1: entryRuleBreak returns [EObject current=null] : iv_ruleBreak= ruleBreak EOF ;
     public final EObject entryRuleBreak() throws RecognitionException {
         EObject current = null;
 
@@ -3354,8 +3425,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1191:46: (iv_ruleBreak= ruleBreak EOF )
-            // InternalNavascript.g:1192:2: iv_ruleBreak= ruleBreak EOF
+            // InternalNavascript.g:1236:46: (iv_ruleBreak= ruleBreak EOF )
+            // InternalNavascript.g:1237:2: iv_ruleBreak= ruleBreak EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBreakRule()); 
@@ -3386,7 +3457,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBreak"
-    // InternalNavascript.g:1198:1: ruleBreak returns [EObject current=null] : ( () otherlv_1= 'break' (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )? otherlv_5= ';' ) ;
+    // InternalNavascript.g:1243:1: ruleBreak returns [EObject current=null] : ( () otherlv_1= 'break' (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )? otherlv_5= ';' ) ;
     public final EObject ruleBreak() throws RecognitionException {
         EObject current = null;
 
@@ -3401,15 +3472,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1204:2: ( ( () otherlv_1= 'break' (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )? otherlv_5= ';' ) )
-            // InternalNavascript.g:1205:2: ( () otherlv_1= 'break' (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )? otherlv_5= ';' )
+            // InternalNavascript.g:1249:2: ( ( () otherlv_1= 'break' (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )? otherlv_5= ';' ) )
+            // InternalNavascript.g:1250:2: ( () otherlv_1= 'break' (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )? otherlv_5= ';' )
             {
-            // InternalNavascript.g:1205:2: ( () otherlv_1= 'break' (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )? otherlv_5= ';' )
-            // InternalNavascript.g:1206:3: () otherlv_1= 'break' (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )? otherlv_5= ';'
+            // InternalNavascript.g:1250:2: ( () otherlv_1= 'break' (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )? otherlv_5= ';' )
+            // InternalNavascript.g:1251:3: () otherlv_1= 'break' (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )? otherlv_5= ';'
             {
-            // InternalNavascript.g:1206:3: ()
-            // InternalNavascript.g:1207:4: 
+            // InternalNavascript.g:1251:3: ()
+            // InternalNavascript.g:1252:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -3420,42 +3496,42 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,41,FOLLOW_20); if (state.failed) return current;
+            otherlv_1=(Token)match(input,42,FOLLOW_20); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getBreakAccess().getBreakKeyword_1());
               		
             }
-            // InternalNavascript.g:1217:3: (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )?
+            // InternalNavascript.g:1265:3: (otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')' )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
-            if ( (LA18_0==30) ) {
+            if ( (LA18_0==31) ) {
                 alt18=1;
             }
             switch (alt18) {
                 case 1 :
-                    // InternalNavascript.g:1218:4: otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')'
+                    // InternalNavascript.g:1266:4: otherlv_2= '(' ( (lv_parameters_3_0= ruleBreakParameters ) )? otherlv_4= ')'
                     {
-                    otherlv_2=(Token)match(input,30,FOLLOW_21); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,31,FOLLOW_21); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getBreakAccess().getLeftParenthesisKeyword_2_0());
                       			
                     }
-                    // InternalNavascript.g:1222:4: ( (lv_parameters_3_0= ruleBreakParameters ) )?
+                    // InternalNavascript.g:1270:4: ( (lv_parameters_3_0= ruleBreakParameters ) )?
                     int alt17=2;
                     int LA17_0 = input.LA(1);
 
-                    if ( ((LA17_0>=43 && LA17_0<=45)) ) {
+                    if ( ((LA17_0>=44 && LA17_0<=46)) ) {
                         alt17=1;
                     }
                     switch (alt17) {
                         case 1 :
-                            // InternalNavascript.g:1223:5: (lv_parameters_3_0= ruleBreakParameters )
+                            // InternalNavascript.g:1271:5: (lv_parameters_3_0= ruleBreakParameters )
                             {
-                            // InternalNavascript.g:1223:5: (lv_parameters_3_0= ruleBreakParameters )
-                            // InternalNavascript.g:1224:6: lv_parameters_3_0= ruleBreakParameters
+                            // InternalNavascript.g:1271:5: (lv_parameters_3_0= ruleBreakParameters )
+                            // InternalNavascript.g:1272:6: lv_parameters_3_0= ruleBreakParameters
                             {
                             if ( state.backtracking==0 ) {
 
@@ -3489,7 +3565,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,31,FOLLOW_22); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,32,FOLLOW_22); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getBreakAccess().getRightParenthesisKeyword_2_2());
@@ -3501,7 +3577,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getBreakAccess().getSemicolonKeyword_3());
@@ -3532,7 +3608,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBreakParameter"
-    // InternalNavascript.g:1254:1: entryRuleBreakParameter returns [EObject current=null] : iv_ruleBreakParameter= ruleBreakParameter EOF ;
+    // InternalNavascript.g:1302:1: entryRuleBreakParameter returns [EObject current=null] : iv_ruleBreakParameter= ruleBreakParameter EOF ;
     public final EObject entryRuleBreakParameter() throws RecognitionException {
         EObject current = null;
 
@@ -3540,8 +3616,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1254:55: (iv_ruleBreakParameter= ruleBreakParameter EOF )
-            // InternalNavascript.g:1255:2: iv_ruleBreakParameter= ruleBreakParameter EOF
+            // InternalNavascript.g:1302:55: (iv_ruleBreakParameter= ruleBreakParameter EOF )
+            // InternalNavascript.g:1303:2: iv_ruleBreakParameter= ruleBreakParameter EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBreakParameterRule()); 
@@ -3572,7 +3648,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBreakParameter"
-    // InternalNavascript.g:1261:1: ruleBreakParameter returns [EObject current=null] : ( (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) ) | (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) ) | (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression ) ) ;
+    // InternalNavascript.g:1309:1: ruleBreakParameter returns [EObject current=null] : ( (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) ) | (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) ) | (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression ) ) ;
     public final EObject ruleBreakParameter() throws RecognitionException {
         EObject current = null;
 
@@ -3596,23 +3672,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1267:2: ( ( (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) ) | (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) ) | (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression ) ) )
-            // InternalNavascript.g:1268:2: ( (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) ) | (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) ) | (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression ) )
+            // InternalNavascript.g:1315:2: ( ( (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) ) | (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) ) | (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression ) ) )
+            // InternalNavascript.g:1316:2: ( (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) ) | (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) ) | (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression ) )
             {
-            // InternalNavascript.g:1268:2: ( (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) ) | (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) ) | (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression ) )
+            // InternalNavascript.g:1316:2: ( (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) ) | (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) ) | (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression ) )
             int alt22=3;
             switch ( input.LA(1) ) {
-            case 43:
+            case 44:
                 {
                 alt22=1;
                 }
                 break;
-            case 44:
+            case 45:
                 {
                 alt22=2;
                 }
                 break;
-            case 45:
+            case 46:
                 {
                 alt22=3;
                 }
@@ -3627,25 +3703,25 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             switch (alt22) {
                 case 1 :
-                    // InternalNavascript.g:1269:3: (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) )
+                    // InternalNavascript.g:1317:3: (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) )
                     {
-                    // InternalNavascript.g:1269:3: (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) )
-                    // InternalNavascript.g:1270:4: otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:1317:3: (otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) ) )
+                    // InternalNavascript.g:1318:4: otherlv_0= 'code' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_code_3_0= ruleLiteralOrExpression ) )
                     {
-                    otherlv_0=(Token)match(input,43,FOLLOW_17); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,44,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_0, grammarAccess.getBreakParameterAccess().getCodeKeyword_0_0());
                       			
                     }
-                    // InternalNavascript.g:1274:4: (otherlv_1= '=' | otherlv_2= ':' )
+                    // InternalNavascript.g:1322:4: (otherlv_1= '=' | otherlv_2= ':' )
                     int alt19=2;
                     int LA19_0 = input.LA(1);
 
-                    if ( (LA19_0==34) ) {
+                    if ( (LA19_0==35) ) {
                         alt19=1;
                     }
-                    else if ( (LA19_0==35) ) {
+                    else if ( (LA19_0==36) ) {
                         alt19=2;
                     }
                     else {
@@ -3657,9 +3733,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt19) {
                         case 1 :
-                            // InternalNavascript.g:1275:5: otherlv_1= '='
+                            // InternalNavascript.g:1323:5: otherlv_1= '='
                             {
-                            otherlv_1=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                            otherlv_1=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_1, grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_0_1_0());
@@ -3669,9 +3745,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:1280:5: otherlv_2= ':'
+                            // InternalNavascript.g:1328:5: otherlv_2= ':'
                             {
-                            otherlv_2=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
+                            otherlv_2=(Token)match(input,36,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_2, grammarAccess.getBreakParameterAccess().getColonKeyword_0_1_1());
@@ -3683,11 +3759,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:1285:4: ( (lv_code_3_0= ruleLiteralOrExpression ) )
-                    // InternalNavascript.g:1286:5: (lv_code_3_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:1333:4: ( (lv_code_3_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:1334:5: (lv_code_3_0= ruleLiteralOrExpression )
                     {
-                    // InternalNavascript.g:1286:5: (lv_code_3_0= ruleLiteralOrExpression )
-                    // InternalNavascript.g:1287:6: lv_code_3_0= ruleLiteralOrExpression
+                    // InternalNavascript.g:1334:5: (lv_code_3_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:1335:6: lv_code_3_0= ruleLiteralOrExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -3725,25 +3801,25 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:1306:3: (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) )
+                    // InternalNavascript.g:1354:3: (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) )
                     {
-                    // InternalNavascript.g:1306:3: (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) )
-                    // InternalNavascript.g:1307:4: otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:1354:3: (otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) ) )
+                    // InternalNavascript.g:1355:4: otherlv_4= 'description' (otherlv_5= '=' | otherlv_6= ':' ) ( (lv_description_7_0= ruleLiteralOrExpression ) )
                     {
-                    otherlv_4=(Token)match(input,44,FOLLOW_17); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,45,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getBreakParameterAccess().getDescriptionKeyword_1_0());
                       			
                     }
-                    // InternalNavascript.g:1311:4: (otherlv_5= '=' | otherlv_6= ':' )
+                    // InternalNavascript.g:1359:4: (otherlv_5= '=' | otherlv_6= ':' )
                     int alt20=2;
                     int LA20_0 = input.LA(1);
 
-                    if ( (LA20_0==34) ) {
+                    if ( (LA20_0==35) ) {
                         alt20=1;
                     }
-                    else if ( (LA20_0==35) ) {
+                    else if ( (LA20_0==36) ) {
                         alt20=2;
                     }
                     else {
@@ -3755,9 +3831,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt20) {
                         case 1 :
-                            // InternalNavascript.g:1312:5: otherlv_5= '='
+                            // InternalNavascript.g:1360:5: otherlv_5= '='
                             {
-                            otherlv_5=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_5, grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_1_1_0());
@@ -3767,9 +3843,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:1317:5: otherlv_6= ':'
+                            // InternalNavascript.g:1365:5: otherlv_6= ':'
                             {
-                            otherlv_6=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,36,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_6, grammarAccess.getBreakParameterAccess().getColonKeyword_1_1_1());
@@ -3781,11 +3857,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:1322:4: ( (lv_description_7_0= ruleLiteralOrExpression ) )
-                    // InternalNavascript.g:1323:5: (lv_description_7_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:1370:4: ( (lv_description_7_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:1371:5: (lv_description_7_0= ruleLiteralOrExpression )
                     {
-                    // InternalNavascript.g:1323:5: (lv_description_7_0= ruleLiteralOrExpression )
-                    // InternalNavascript.g:1324:6: lv_description_7_0= ruleLiteralOrExpression
+                    // InternalNavascript.g:1371:5: (lv_description_7_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:1372:6: lv_description_7_0= ruleLiteralOrExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -3823,25 +3899,25 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:1343:3: (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression )
+                    // InternalNavascript.g:1391:3: (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression )
                     {
-                    // InternalNavascript.g:1343:3: (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression )
-                    // InternalNavascript.g:1344:4: otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression
+                    // InternalNavascript.g:1391:3: (otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression )
+                    // InternalNavascript.g:1392:4: otherlv_8= 'error' (otherlv_9= '=' | otherlv_10= ':' ) this_LiteralOrExpression_11= ruleLiteralOrExpression
                     {
-                    otherlv_8=(Token)match(input,45,FOLLOW_17); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,46,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_8, grammarAccess.getBreakParameterAccess().getErrorKeyword_2_0());
                       			
                     }
-                    // InternalNavascript.g:1348:4: (otherlv_9= '=' | otherlv_10= ':' )
+                    // InternalNavascript.g:1396:4: (otherlv_9= '=' | otherlv_10= ':' )
                     int alt21=2;
                     int LA21_0 = input.LA(1);
 
-                    if ( (LA21_0==34) ) {
+                    if ( (LA21_0==35) ) {
                         alt21=1;
                     }
-                    else if ( (LA21_0==35) ) {
+                    else if ( (LA21_0==36) ) {
                         alt21=2;
                     }
                     else {
@@ -3853,9 +3929,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt21) {
                         case 1 :
-                            // InternalNavascript.g:1349:5: otherlv_9= '='
+                            // InternalNavascript.g:1397:5: otherlv_9= '='
                             {
-                            otherlv_9=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                            otherlv_9=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_9, grammarAccess.getBreakParameterAccess().getEqualsSignKeyword_2_1_0());
@@ -3865,9 +3941,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:1354:5: otherlv_10= ':'
+                            // InternalNavascript.g:1402:5: otherlv_10= ':'
                             {
-                            otherlv_10=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
+                            otherlv_10=(Token)match(input,36,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_10, grammarAccess.getBreakParameterAccess().getColonKeyword_2_1_1());
@@ -3879,6 +3955,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
+                    if ( state.backtracking==0 ) {
+
+                      				/* */
+                      			
+                    }
                     if ( state.backtracking==0 ) {
 
                       				newCompositeNode(grammarAccess.getBreakParameterAccess().getLiteralOrExpressionParserRuleCall_2_2());
@@ -3926,7 +4007,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBreakParameters"
-    // InternalNavascript.g:1372:1: entryRuleBreakParameters returns [EObject current=null] : iv_ruleBreakParameters= ruleBreakParameters EOF ;
+    // InternalNavascript.g:1423:1: entryRuleBreakParameters returns [EObject current=null] : iv_ruleBreakParameters= ruleBreakParameters EOF ;
     public final EObject entryRuleBreakParameters() throws RecognitionException {
         EObject current = null;
 
@@ -3934,8 +4015,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1372:56: (iv_ruleBreakParameters= ruleBreakParameters EOF )
-            // InternalNavascript.g:1373:2: iv_ruleBreakParameters= ruleBreakParameters EOF
+            // InternalNavascript.g:1423:56: (iv_ruleBreakParameters= ruleBreakParameters EOF )
+            // InternalNavascript.g:1424:2: iv_ruleBreakParameters= ruleBreakParameters EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBreakParametersRule()); 
@@ -3966,7 +4047,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBreakParameters"
-    // InternalNavascript.g:1379:1: ruleBreakParameters returns [EObject current=null] : ( ( (lv_parameters_0_0= ruleBreakParameter ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )* ) ;
+    // InternalNavascript.g:1430:1: ruleBreakParameters returns [EObject current=null] : ( ( (lv_parameters_0_0= ruleBreakParameter ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )* ) ;
     public final EObject ruleBreakParameters() throws RecognitionException {
         EObject current = null;
 
@@ -3980,17 +4061,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1385:2: ( ( ( (lv_parameters_0_0= ruleBreakParameter ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )* ) )
-            // InternalNavascript.g:1386:2: ( ( (lv_parameters_0_0= ruleBreakParameter ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )* )
+            // InternalNavascript.g:1436:2: ( ( ( (lv_parameters_0_0= ruleBreakParameter ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )* ) )
+            // InternalNavascript.g:1437:2: ( ( (lv_parameters_0_0= ruleBreakParameter ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )* )
             {
-            // InternalNavascript.g:1386:2: ( ( (lv_parameters_0_0= ruleBreakParameter ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )* )
-            // InternalNavascript.g:1387:3: ( (lv_parameters_0_0= ruleBreakParameter ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )*
+            // InternalNavascript.g:1437:2: ( ( (lv_parameters_0_0= ruleBreakParameter ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )* )
+            // InternalNavascript.g:1438:3: ( (lv_parameters_0_0= ruleBreakParameter ) ) (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )*
             {
-            // InternalNavascript.g:1387:3: ( (lv_parameters_0_0= ruleBreakParameter ) )
-            // InternalNavascript.g:1388:4: (lv_parameters_0_0= ruleBreakParameter )
+            // InternalNavascript.g:1438:3: ( (lv_parameters_0_0= ruleBreakParameter ) )
+            // InternalNavascript.g:1439:4: (lv_parameters_0_0= ruleBreakParameter )
             {
-            // InternalNavascript.g:1388:4: (lv_parameters_0_0= ruleBreakParameter )
-            // InternalNavascript.g:1389:5: lv_parameters_0_0= ruleBreakParameter
+            // InternalNavascript.g:1439:4: (lv_parameters_0_0= ruleBreakParameter )
+            // InternalNavascript.g:1440:5: lv_parameters_0_0= ruleBreakParameter
             {
             if ( state.backtracking==0 ) {
 
@@ -4021,32 +4102,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:1406:3: (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )*
+            // InternalNavascript.g:1457:3: (otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) ) )*
             loop23:
             do {
                 int alt23=2;
                 int LA23_0 = input.LA(1);
 
-                if ( (LA23_0==32) ) {
+                if ( (LA23_0==33) ) {
                     alt23=1;
                 }
 
 
                 switch (alt23) {
             	case 1 :
-            	    // InternalNavascript.g:1407:4: otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) )
+            	    // InternalNavascript.g:1458:4: otherlv_1= ',' ( (lv_parameters_2_0= ruleBreakParameter ) )
             	    {
-            	    otherlv_1=(Token)match(input,32,FOLLOW_23); if (state.failed) return current;
+            	    otherlv_1=(Token)match(input,33,FOLLOW_23); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_1, grammarAccess.getBreakParametersAccess().getCommaKeyword_1_0());
             	      			
             	    }
-            	    // InternalNavascript.g:1411:4: ( (lv_parameters_2_0= ruleBreakParameter ) )
-            	    // InternalNavascript.g:1412:5: (lv_parameters_2_0= ruleBreakParameter )
+            	    // InternalNavascript.g:1462:4: ( (lv_parameters_2_0= ruleBreakParameter ) )
+            	    // InternalNavascript.g:1463:5: (lv_parameters_2_0= ruleBreakParameter )
             	    {
-            	    // InternalNavascript.g:1412:5: (lv_parameters_2_0= ruleBreakParameter )
-            	    // InternalNavascript.g:1413:6: lv_parameters_2_0= ruleBreakParameter
+            	    // InternalNavascript.g:1463:5: (lv_parameters_2_0= ruleBreakParameter )
+            	    // InternalNavascript.g:1464:6: lv_parameters_2_0= ruleBreakParameter
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -4111,7 +4192,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleValidations"
-    // InternalNavascript.g:1435:1: entryRuleValidations returns [EObject current=null] : iv_ruleValidations= ruleValidations EOF ;
+    // InternalNavascript.g:1486:1: entryRuleValidations returns [EObject current=null] : iv_ruleValidations= ruleValidations EOF ;
     public final EObject entryRuleValidations() throws RecognitionException {
         EObject current = null;
 
@@ -4119,8 +4200,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1435:52: (iv_ruleValidations= ruleValidations EOF )
-            // InternalNavascript.g:1436:2: iv_ruleValidations= ruleValidations EOF
+            // InternalNavascript.g:1486:52: (iv_ruleValidations= ruleValidations EOF )
+            // InternalNavascript.g:1487:2: iv_ruleValidations= ruleValidations EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValidationsRule()); 
@@ -4151,7 +4232,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValidations"
-    // InternalNavascript.g:1442:1: ruleValidations returns [EObject current=null] : ( () otherlv_1= 'validations' otherlv_2= '{' ( (lv_checks_3_0= ruleCheck ) )* otherlv_4= '}' ) ;
+    // InternalNavascript.g:1493:1: ruleValidations returns [EObject current=null] : ( () otherlv_1= 'validations' otherlv_2= '{' ( (lv_checks_3_0= ruleCheck ) )* otherlv_4= '}' ) ;
     public final EObject ruleValidations() throws RecognitionException {
         EObject current = null;
 
@@ -4165,15 +4246,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1448:2: ( ( () otherlv_1= 'validations' otherlv_2= '{' ( (lv_checks_3_0= ruleCheck ) )* otherlv_4= '}' ) )
-            // InternalNavascript.g:1449:2: ( () otherlv_1= 'validations' otherlv_2= '{' ( (lv_checks_3_0= ruleCheck ) )* otherlv_4= '}' )
+            // InternalNavascript.g:1499:2: ( ( () otherlv_1= 'validations' otherlv_2= '{' ( (lv_checks_3_0= ruleCheck ) )* otherlv_4= '}' ) )
+            // InternalNavascript.g:1500:2: ( () otherlv_1= 'validations' otherlv_2= '{' ( (lv_checks_3_0= ruleCheck ) )* otherlv_4= '}' )
             {
-            // InternalNavascript.g:1449:2: ( () otherlv_1= 'validations' otherlv_2= '{' ( (lv_checks_3_0= ruleCheck ) )* otherlv_4= '}' )
-            // InternalNavascript.g:1450:3: () otherlv_1= 'validations' otherlv_2= '{' ( (lv_checks_3_0= ruleCheck ) )* otherlv_4= '}'
+            // InternalNavascript.g:1500:2: ( () otherlv_1= 'validations' otherlv_2= '{' ( (lv_checks_3_0= ruleCheck ) )* otherlv_4= '}' )
+            // InternalNavascript.g:1501:3: () otherlv_1= 'validations' otherlv_2= '{' ( (lv_checks_3_0= ruleCheck ) )* otherlv_4= '}'
             {
-            // InternalNavascript.g:1450:3: ()
-            // InternalNavascript.g:1451:4: 
+            // InternalNavascript.g:1501:3: ()
+            // InternalNavascript.g:1502:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -4184,35 +4270,35 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,46,FOLLOW_14); if (state.failed) return current;
+            otherlv_1=(Token)match(input,47,FOLLOW_14); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getValidationsAccess().getValidationsKeyword_1());
               		
             }
-            otherlv_2=(Token)match(input,27,FOLLOW_24); if (state.failed) return current;
+            otherlv_2=(Token)match(input,28,FOLLOW_24); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getValidationsAccess().getLeftCurlyBracketKeyword_2());
               		
             }
-            // InternalNavascript.g:1465:3: ( (lv_checks_3_0= ruleCheck ) )*
+            // InternalNavascript.g:1519:3: ( (lv_checks_3_0= ruleCheck ) )*
             loop24:
             do {
                 int alt24=2;
                 int LA24_0 = input.LA(1);
 
-                if ( (LA24_0==25||LA24_0==48) ) {
+                if ( (LA24_0==26||LA24_0==49) ) {
                     alt24=1;
                 }
 
 
                 switch (alt24) {
             	case 1 :
-            	    // InternalNavascript.g:1466:4: (lv_checks_3_0= ruleCheck )
+            	    // InternalNavascript.g:1520:4: (lv_checks_3_0= ruleCheck )
             	    {
-            	    // InternalNavascript.g:1466:4: (lv_checks_3_0= ruleCheck )
-            	    // InternalNavascript.g:1467:5: lv_checks_3_0= ruleCheck
+            	    // InternalNavascript.g:1520:4: (lv_checks_3_0= ruleCheck )
+            	    // InternalNavascript.g:1521:5: lv_checks_3_0= ruleCheck
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -4249,7 +4335,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_4=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getValidationsAccess().getRightCurlyBracketKeyword_4());
@@ -4280,7 +4366,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDefine"
-    // InternalNavascript.g:1492:1: entryRuleDefine returns [EObject current=null] : iv_ruleDefine= ruleDefine EOF ;
+    // InternalNavascript.g:1546:1: entryRuleDefine returns [EObject current=null] : iv_ruleDefine= ruleDefine EOF ;
     public final EObject entryRuleDefine() throws RecognitionException {
         EObject current = null;
 
@@ -4288,8 +4374,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1492:47: (iv_ruleDefine= ruleDefine EOF )
-            // InternalNavascript.g:1493:2: iv_ruleDefine= ruleDefine EOF
+            // InternalNavascript.g:1546:47: (iv_ruleDefine= ruleDefine EOF )
+            // InternalNavascript.g:1547:2: iv_ruleDefine= ruleDefine EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getDefineRule()); 
@@ -4320,7 +4406,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDefine"
-    // InternalNavascript.g:1499:1: ruleDefine returns [EObject current=null] : ( () otherlv_1= 'define' ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '=' | otherlv_4= ':' ) ( (lv_expression_5_0= ruleExpression ) ) otherlv_6= ';' ) ;
+    // InternalNavascript.g:1553:1: ruleDefine returns [EObject current=null] : ( () otherlv_1= 'define' ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '=' | otherlv_4= ':' ) ( (lv_expression_5_0= ruleExpression ) ) otherlv_6= ';' ) ;
     public final EObject ruleDefine() throws RecognitionException {
         EObject current = null;
 
@@ -4336,15 +4422,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1505:2: ( ( () otherlv_1= 'define' ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '=' | otherlv_4= ':' ) ( (lv_expression_5_0= ruleExpression ) ) otherlv_6= ';' ) )
-            // InternalNavascript.g:1506:2: ( () otherlv_1= 'define' ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '=' | otherlv_4= ':' ) ( (lv_expression_5_0= ruleExpression ) ) otherlv_6= ';' )
+            // InternalNavascript.g:1559:2: ( ( () otherlv_1= 'define' ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '=' | otherlv_4= ':' ) ( (lv_expression_5_0= ruleExpression ) ) otherlv_6= ';' ) )
+            // InternalNavascript.g:1560:2: ( () otherlv_1= 'define' ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '=' | otherlv_4= ':' ) ( (lv_expression_5_0= ruleExpression ) ) otherlv_6= ';' )
             {
-            // InternalNavascript.g:1506:2: ( () otherlv_1= 'define' ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '=' | otherlv_4= ':' ) ( (lv_expression_5_0= ruleExpression ) ) otherlv_6= ';' )
-            // InternalNavascript.g:1507:3: () otherlv_1= 'define' ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '=' | otherlv_4= ':' ) ( (lv_expression_5_0= ruleExpression ) ) otherlv_6= ';'
+            // InternalNavascript.g:1560:2: ( () otherlv_1= 'define' ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '=' | otherlv_4= ':' ) ( (lv_expression_5_0= ruleExpression ) ) otherlv_6= ';' )
+            // InternalNavascript.g:1561:3: () otherlv_1= 'define' ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '=' | otherlv_4= ':' ) ( (lv_expression_5_0= ruleExpression ) ) otherlv_6= ';'
             {
-            // InternalNavascript.g:1507:3: ()
-            // InternalNavascript.g:1508:4: 
+            // InternalNavascript.g:1561:3: ()
+            // InternalNavascript.g:1562:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -4355,17 +4446,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,47,FOLLOW_25); if (state.failed) return current;
+            otherlv_1=(Token)match(input,48,FOLLOW_25); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getDefineAccess().getDefineKeyword_1());
               		
             }
-            // InternalNavascript.g:1518:3: ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) )
-            // InternalNavascript.g:1519:4: (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:1575:3: ( (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER ) )
+            // InternalNavascript.g:1576:4: (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER )
             {
-            // InternalNavascript.g:1519:4: (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER )
-            // InternalNavascript.g:1520:5: lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER
+            // InternalNavascript.g:1576:4: (lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:1577:5: lv_defineKey_2_0= RULE_QUOTED_IDENTIFIER
             {
             lv_defineKey_2_0=(Token)match(input,RULE_QUOTED_IDENTIFIER,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -4391,14 +4482,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:1536:3: (otherlv_3= '=' | otherlv_4= ':' )
+            // InternalNavascript.g:1593:3: (otherlv_3= '=' | otherlv_4= ':' )
             int alt25=2;
             int LA25_0 = input.LA(1);
 
-            if ( (LA25_0==34) ) {
+            if ( (LA25_0==35) ) {
                 alt25=1;
             }
-            else if ( (LA25_0==35) ) {
+            else if ( (LA25_0==36) ) {
                 alt25=2;
             }
             else {
@@ -4410,9 +4501,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             }
             switch (alt25) {
                 case 1 :
-                    // InternalNavascript.g:1537:4: otherlv_3= '='
+                    // InternalNavascript.g:1594:4: otherlv_3= '='
                     {
-                    otherlv_3=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getDefineAccess().getEqualsSignKeyword_3_0());
@@ -4422,9 +4513,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:1542:4: otherlv_4= ':'
+                    // InternalNavascript.g:1599:4: otherlv_4= ':'
                     {
-                    otherlv_4=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,36,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getDefineAccess().getColonKeyword_3_1());
@@ -4436,11 +4527,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:1547:3: ( (lv_expression_5_0= ruleExpression ) )
-            // InternalNavascript.g:1548:4: (lv_expression_5_0= ruleExpression )
+            // InternalNavascript.g:1604:3: ( (lv_expression_5_0= ruleExpression ) )
+            // InternalNavascript.g:1605:4: (lv_expression_5_0= ruleExpression )
             {
-            // InternalNavascript.g:1548:4: (lv_expression_5_0= ruleExpression )
-            // InternalNavascript.g:1549:5: lv_expression_5_0= ruleExpression
+            // InternalNavascript.g:1605:4: (lv_expression_5_0= ruleExpression )
+            // InternalNavascript.g:1606:5: lv_expression_5_0= ruleExpression
             {
             if ( state.backtracking==0 ) {
 
@@ -4471,7 +4562,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+            otherlv_6=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_6, grammarAccess.getDefineAccess().getSemicolonKeyword_5());
@@ -4502,7 +4593,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCheck"
-    // InternalNavascript.g:1574:1: entryRuleCheck returns [EObject current=null] : iv_ruleCheck= ruleCheck EOF ;
+    // InternalNavascript.g:1631:1: entryRuleCheck returns [EObject current=null] : iv_ruleCheck= ruleCheck EOF ;
     public final EObject entryRuleCheck() throws RecognitionException {
         EObject current = null;
 
@@ -4510,8 +4601,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1574:46: (iv_ruleCheck= ruleCheck EOF )
-            // InternalNavascript.g:1575:2: iv_ruleCheck= ruleCheck EOF
+            // InternalNavascript.g:1631:46: (iv_ruleCheck= ruleCheck EOF )
+            // InternalNavascript.g:1632:2: iv_ruleCheck= ruleCheck EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCheckRule()); 
@@ -4542,7 +4633,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCheck"
-    // InternalNavascript.g:1581:1: ruleCheck returns [EObject current=null] : ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? otherlv_4= 'check' otherlv_5= '(' ( (lv_checkAttributes_6_0= ruleCheckAttribute ) ) (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )? otherlv_9= ')' (otherlv_10= '=' | otherlv_11= ':' ) ( (lv_expression_12_0= ruleExpression ) ) otherlv_13= ';' ) ;
+    // InternalNavascript.g:1638:1: ruleCheck returns [EObject current=null] : ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? otherlv_4= 'check' otherlv_5= '(' ( (lv_checkAttributes_6_0= ruleCheckAttribute ) ) (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )? otherlv_9= ')' (otherlv_10= '=' | otherlv_11= ':' ) ( (lv_expression_12_0= ruleExpression ) ) otherlv_13= ';' ) ;
     public final EObject ruleCheck() throws RecognitionException {
         EObject current = null;
 
@@ -4568,15 +4659,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1587:2: ( ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? otherlv_4= 'check' otherlv_5= '(' ( (lv_checkAttributes_6_0= ruleCheckAttribute ) ) (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )? otherlv_9= ')' (otherlv_10= '=' | otherlv_11= ':' ) ( (lv_expression_12_0= ruleExpression ) ) otherlv_13= ';' ) )
-            // InternalNavascript.g:1588:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? otherlv_4= 'check' otherlv_5= '(' ( (lv_checkAttributes_6_0= ruleCheckAttribute ) ) (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )? otherlv_9= ')' (otherlv_10= '=' | otherlv_11= ':' ) ( (lv_expression_12_0= ruleExpression ) ) otherlv_13= ';' )
+            // InternalNavascript.g:1644:2: ( ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? otherlv_4= 'check' otherlv_5= '(' ( (lv_checkAttributes_6_0= ruleCheckAttribute ) ) (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )? otherlv_9= ')' (otherlv_10= '=' | otherlv_11= ':' ) ( (lv_expression_12_0= ruleExpression ) ) otherlv_13= ';' ) )
+            // InternalNavascript.g:1645:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? otherlv_4= 'check' otherlv_5= '(' ( (lv_checkAttributes_6_0= ruleCheckAttribute ) ) (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )? otherlv_9= ')' (otherlv_10= '=' | otherlv_11= ':' ) ( (lv_expression_12_0= ruleExpression ) ) otherlv_13= ';' )
             {
-            // InternalNavascript.g:1588:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? otherlv_4= 'check' otherlv_5= '(' ( (lv_checkAttributes_6_0= ruleCheckAttribute ) ) (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )? otherlv_9= ')' (otherlv_10= '=' | otherlv_11= ':' ) ( (lv_expression_12_0= ruleExpression ) ) otherlv_13= ';' )
-            // InternalNavascript.g:1589:3: () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? otherlv_4= 'check' otherlv_5= '(' ( (lv_checkAttributes_6_0= ruleCheckAttribute ) ) (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )? otherlv_9= ')' (otherlv_10= '=' | otherlv_11= ':' ) ( (lv_expression_12_0= ruleExpression ) ) otherlv_13= ';'
+            // InternalNavascript.g:1645:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? otherlv_4= 'check' otherlv_5= '(' ( (lv_checkAttributes_6_0= ruleCheckAttribute ) ) (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )? otherlv_9= ')' (otherlv_10= '=' | otherlv_11= ':' ) ( (lv_expression_12_0= ruleExpression ) ) otherlv_13= ';' )
+            // InternalNavascript.g:1646:3: () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? otherlv_4= 'check' otherlv_5= '(' ( (lv_checkAttributes_6_0= ruleCheckAttribute ) ) (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )? otherlv_9= ')' (otherlv_10= '=' | otherlv_11= ':' ) ( (lv_expression_12_0= ruleExpression ) ) otherlv_13= ';'
             {
-            // InternalNavascript.g:1589:3: ()
-            // InternalNavascript.g:1590:4: 
+            // InternalNavascript.g:1646:3: ()
+            // InternalNavascript.g:1647:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -4587,28 +4683,28 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:1596:3: (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )?
+            // InternalNavascript.g:1656:3: (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )?
             int alt26=2;
             int LA26_0 = input.LA(1);
 
-            if ( (LA26_0==25) ) {
+            if ( (LA26_0==26) ) {
                 alt26=1;
             }
             switch (alt26) {
                 case 1 :
-                    // InternalNavascript.g:1597:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
+                    // InternalNavascript.g:1657:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
                     {
-                    otherlv_1=(Token)match(input,25,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,26,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getCheckAccess().getIfKeyword_1_0());
                       			
                     }
-                    // InternalNavascript.g:1601:4: ( (lv_condition_2_0= ruleExpression ) )
-                    // InternalNavascript.g:1602:5: (lv_condition_2_0= ruleExpression )
+                    // InternalNavascript.g:1661:4: ( (lv_condition_2_0= ruleExpression ) )
+                    // InternalNavascript.g:1662:5: (lv_condition_2_0= ruleExpression )
                     {
-                    // InternalNavascript.g:1602:5: (lv_condition_2_0= ruleExpression )
-                    // InternalNavascript.g:1603:6: lv_condition_2_0= ruleExpression
+                    // InternalNavascript.g:1662:5: (lv_condition_2_0= ruleExpression )
+                    // InternalNavascript.g:1663:6: lv_condition_2_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -4639,7 +4735,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,26,FOLLOW_26); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,27,FOLLOW_26); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getCheckAccess().getThenKeyword_1_2());
@@ -4651,23 +4747,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,48,FOLLOW_11); if (state.failed) return current;
+            otherlv_4=(Token)match(input,49,FOLLOW_11); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getCheckAccess().getCheckKeyword_2());
               		
             }
-            otherlv_5=(Token)match(input,30,FOLLOW_27); if (state.failed) return current;
+            otherlv_5=(Token)match(input,31,FOLLOW_27); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getCheckAccess().getLeftParenthesisKeyword_3());
               		
             }
-            // InternalNavascript.g:1633:3: ( (lv_checkAttributes_6_0= ruleCheckAttribute ) )
-            // InternalNavascript.g:1634:4: (lv_checkAttributes_6_0= ruleCheckAttribute )
+            // InternalNavascript.g:1693:3: ( (lv_checkAttributes_6_0= ruleCheckAttribute ) )
+            // InternalNavascript.g:1694:4: (lv_checkAttributes_6_0= ruleCheckAttribute )
             {
-            // InternalNavascript.g:1634:4: (lv_checkAttributes_6_0= ruleCheckAttribute )
-            // InternalNavascript.g:1635:5: lv_checkAttributes_6_0= ruleCheckAttribute
+            // InternalNavascript.g:1694:4: (lv_checkAttributes_6_0= ruleCheckAttribute )
+            // InternalNavascript.g:1695:5: lv_checkAttributes_6_0= ruleCheckAttribute
             {
             if ( state.backtracking==0 ) {
 
@@ -4698,28 +4794,28 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:1652:3: (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )?
+            // InternalNavascript.g:1712:3: (otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) ) )?
             int alt27=2;
             int LA27_0 = input.LA(1);
 
-            if ( (LA27_0==32) ) {
+            if ( (LA27_0==33) ) {
                 alt27=1;
             }
             switch (alt27) {
                 case 1 :
-                    // InternalNavascript.g:1653:4: otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) )
+                    // InternalNavascript.g:1713:4: otherlv_7= ',' ( (lv_checkAttributes_8_0= ruleCheckAttribute ) )
                     {
-                    otherlv_7=(Token)match(input,32,FOLLOW_27); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,33,FOLLOW_27); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_7, grammarAccess.getCheckAccess().getCommaKeyword_5_0());
                       			
                     }
-                    // InternalNavascript.g:1657:4: ( (lv_checkAttributes_8_0= ruleCheckAttribute ) )
-                    // InternalNavascript.g:1658:5: (lv_checkAttributes_8_0= ruleCheckAttribute )
+                    // InternalNavascript.g:1717:4: ( (lv_checkAttributes_8_0= ruleCheckAttribute ) )
+                    // InternalNavascript.g:1718:5: (lv_checkAttributes_8_0= ruleCheckAttribute )
                     {
-                    // InternalNavascript.g:1658:5: (lv_checkAttributes_8_0= ruleCheckAttribute )
-                    // InternalNavascript.g:1659:6: lv_checkAttributes_8_0= ruleCheckAttribute
+                    // InternalNavascript.g:1718:5: (lv_checkAttributes_8_0= ruleCheckAttribute )
+                    // InternalNavascript.g:1719:6: lv_checkAttributes_8_0= ruleCheckAttribute
                     {
                     if ( state.backtracking==0 ) {
 
@@ -4756,20 +4852,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,31,FOLLOW_17); if (state.failed) return current;
+            otherlv_9=(Token)match(input,32,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_9, grammarAccess.getCheckAccess().getRightParenthesisKeyword_6());
               		
             }
-            // InternalNavascript.g:1681:3: (otherlv_10= '=' | otherlv_11= ':' )
+            // InternalNavascript.g:1741:3: (otherlv_10= '=' | otherlv_11= ':' )
             int alt28=2;
             int LA28_0 = input.LA(1);
 
-            if ( (LA28_0==34) ) {
+            if ( (LA28_0==35) ) {
                 alt28=1;
             }
-            else if ( (LA28_0==35) ) {
+            else if ( (LA28_0==36) ) {
                 alt28=2;
             }
             else {
@@ -4781,9 +4877,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             }
             switch (alt28) {
                 case 1 :
-                    // InternalNavascript.g:1682:4: otherlv_10= '='
+                    // InternalNavascript.g:1742:4: otherlv_10= '='
                     {
-                    otherlv_10=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_10, grammarAccess.getCheckAccess().getEqualsSignKeyword_7_0());
@@ -4793,9 +4889,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:1687:4: otherlv_11= ':'
+                    // InternalNavascript.g:1747:4: otherlv_11= ':'
                     {
-                    otherlv_11=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,36,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_11, grammarAccess.getCheckAccess().getColonKeyword_7_1());
@@ -4807,11 +4903,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:1692:3: ( (lv_expression_12_0= ruleExpression ) )
-            // InternalNavascript.g:1693:4: (lv_expression_12_0= ruleExpression )
+            // InternalNavascript.g:1752:3: ( (lv_expression_12_0= ruleExpression ) )
+            // InternalNavascript.g:1753:4: (lv_expression_12_0= ruleExpression )
             {
-            // InternalNavascript.g:1693:4: (lv_expression_12_0= ruleExpression )
-            // InternalNavascript.g:1694:5: lv_expression_12_0= ruleExpression
+            // InternalNavascript.g:1753:4: (lv_expression_12_0= ruleExpression )
+            // InternalNavascript.g:1754:5: lv_expression_12_0= ruleExpression
             {
             if ( state.backtracking==0 ) {
 
@@ -4842,7 +4938,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_13=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+            otherlv_13=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_13, grammarAccess.getCheckAccess().getSemicolonKeyword_9());
@@ -4873,7 +4969,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCheckAttribute"
-    // InternalNavascript.g:1719:1: entryRuleCheckAttribute returns [EObject current=null] : iv_ruleCheckAttribute= ruleCheckAttribute EOF ;
+    // InternalNavascript.g:1779:1: entryRuleCheckAttribute returns [EObject current=null] : iv_ruleCheckAttribute= ruleCheckAttribute EOF ;
     public final EObject entryRuleCheckAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4881,8 +4977,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1719:55: (iv_ruleCheckAttribute= ruleCheckAttribute EOF )
-            // InternalNavascript.g:1720:2: iv_ruleCheckAttribute= ruleCheckAttribute EOF
+            // InternalNavascript.g:1779:55: (iv_ruleCheckAttribute= ruleCheckAttribute EOF )
+            // InternalNavascript.g:1780:2: iv_ruleCheckAttribute= ruleCheckAttribute EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCheckAttributeRule()); 
@@ -4913,7 +5009,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCheckAttribute"
-    // InternalNavascript.g:1726:1: ruleCheckAttribute returns [EObject current=null] : ( ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) ) | (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) ) ) ;
+    // InternalNavascript.g:1786:1: ruleCheckAttribute returns [EObject current=null] : ( ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) ) | (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) ) ) ;
     public final EObject ruleCheckAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4932,17 +5028,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1732:2: ( ( ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) ) | (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) ) ) )
-            // InternalNavascript.g:1733:2: ( ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) ) | (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) ) )
+            // InternalNavascript.g:1792:2: ( ( ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) ) | (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) ) ) )
+            // InternalNavascript.g:1793:2: ( ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) ) | (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) ) )
             {
-            // InternalNavascript.g:1733:2: ( ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) ) | (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) ) )
+            // InternalNavascript.g:1793:2: ( ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) ) | (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) ) )
             int alt31=2;
             int LA31_0 = input.LA(1);
 
-            if ( (LA31_0==43) ) {
+            if ( (LA31_0==44) ) {
                 alt31=1;
             }
-            else if ( (LA31_0==44) ) {
+            else if ( (LA31_0==45) ) {
                 alt31=2;
             }
             else {
@@ -4954,14 +5050,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             }
             switch (alt31) {
                 case 1 :
-                    // InternalNavascript.g:1734:3: ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) )
+                    // InternalNavascript.g:1794:3: ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) )
                     {
-                    // InternalNavascript.g:1734:3: ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) )
-                    // InternalNavascript.g:1735:4: () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) )
+                    // InternalNavascript.g:1794:3: ( () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) )
+                    // InternalNavascript.g:1795:4: () (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) )
                     {
-                    // InternalNavascript.g:1735:4: ()
-                    // InternalNavascript.g:1736:5: 
+                    // InternalNavascript.g:1795:4: ()
+                    // InternalNavascript.g:1796:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -4972,23 +5073,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:1742:4: (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) )
-                    // InternalNavascript.g:1743:5: otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:1805:4: (otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) )
+                    // InternalNavascript.g:1806:5: otherlv_1= 'code' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) )
                     {
-                    otherlv_1=(Token)match(input,43,FOLLOW_17); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,44,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_1, grammarAccess.getCheckAttributeAccess().getCodeKeyword_0_1_0());
                       				
                     }
-                    // InternalNavascript.g:1747:5: (otherlv_2= '=' | otherlv_3= ':' )
+                    // InternalNavascript.g:1810:5: (otherlv_2= '=' | otherlv_3= ':' )
                     int alt29=2;
                     int LA29_0 = input.LA(1);
 
-                    if ( (LA29_0==34) ) {
+                    if ( (LA29_0==35) ) {
                         alt29=1;
                     }
-                    else if ( (LA29_0==35) ) {
+                    else if ( (LA29_0==36) ) {
                         alt29=2;
                     }
                     else {
@@ -5000,9 +5101,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt29) {
                         case 1 :
-                            // InternalNavascript.g:1748:6: otherlv_2= '='
+                            // InternalNavascript.g:1811:6: otherlv_2= '='
                             {
-                            otherlv_2=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                            otherlv_2=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_2, grammarAccess.getCheckAttributeAccess().getEqualsSignKeyword_0_1_1_0());
@@ -5012,9 +5113,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:1753:6: otherlv_3= ':'
+                            // InternalNavascript.g:1816:6: otherlv_3= ':'
                             {
-                            otherlv_3=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
+                            otherlv_3=(Token)match(input,36,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_3, grammarAccess.getCheckAttributeAccess().getColonKeyword_0_1_1_1());
@@ -5026,11 +5127,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:1758:5: ( (lv_value_4_0= ruleLiteralOrExpression ) )
-                    // InternalNavascript.g:1759:6: (lv_value_4_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:1821:5: ( (lv_value_4_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:1822:6: (lv_value_4_0= ruleLiteralOrExpression )
                     {
-                    // InternalNavascript.g:1759:6: (lv_value_4_0= ruleLiteralOrExpression )
-                    // InternalNavascript.g:1760:7: lv_value_4_0= ruleLiteralOrExpression
+                    // InternalNavascript.g:1822:6: (lv_value_4_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:1823:7: lv_value_4_0= ruleLiteralOrExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -5071,25 +5172,25 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:1780:3: (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) )
+                    // InternalNavascript.g:1843:3: (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) )
                     {
-                    // InternalNavascript.g:1780:3: (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) )
-                    // InternalNavascript.g:1781:4: otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:1843:3: (otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) ) )
+                    // InternalNavascript.g:1844:4: otherlv_5= 'description' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_value_8_0= ruleLiteralOrExpression ) )
                     {
-                    otherlv_5=(Token)match(input,44,FOLLOW_17); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,45,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_5, grammarAccess.getCheckAttributeAccess().getDescriptionKeyword_1_0());
                       			
                     }
-                    // InternalNavascript.g:1785:4: (otherlv_6= '=' | otherlv_7= ':' )
+                    // InternalNavascript.g:1848:4: (otherlv_6= '=' | otherlv_7= ':' )
                     int alt30=2;
                     int LA30_0 = input.LA(1);
 
-                    if ( (LA30_0==34) ) {
+                    if ( (LA30_0==35) ) {
                         alt30=1;
                     }
-                    else if ( (LA30_0==35) ) {
+                    else if ( (LA30_0==36) ) {
                         alt30=2;
                     }
                     else {
@@ -5101,9 +5202,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt30) {
                         case 1 :
-                            // InternalNavascript.g:1786:5: otherlv_6= '='
+                            // InternalNavascript.g:1849:5: otherlv_6= '='
                             {
-                            otherlv_6=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_6, grammarAccess.getCheckAttributeAccess().getEqualsSignKeyword_1_1_0());
@@ -5113,9 +5214,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:1791:5: otherlv_7= ':'
+                            // InternalNavascript.g:1854:5: otherlv_7= ':'
                             {
-                            otherlv_7=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
+                            otherlv_7=(Token)match(input,36,FOLLOW_19); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_7, grammarAccess.getCheckAttributeAccess().getColonKeyword_1_1_1());
@@ -5127,11 +5228,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:1796:4: ( (lv_value_8_0= ruleLiteralOrExpression ) )
-                    // InternalNavascript.g:1797:5: (lv_value_8_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:1859:4: ( (lv_value_8_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:1860:5: (lv_value_8_0= ruleLiteralOrExpression )
                     {
-                    // InternalNavascript.g:1797:5: (lv_value_8_0= ruleLiteralOrExpression )
-                    // InternalNavascript.g:1798:6: lv_value_8_0= ruleLiteralOrExpression
+                    // InternalNavascript.g:1860:5: (lv_value_8_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:1861:6: lv_value_8_0= ruleLiteralOrExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -5193,7 +5294,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLiteralOrExpression"
-    // InternalNavascript.g:1820:1: entryRuleLiteralOrExpression returns [EObject current=null] : iv_ruleLiteralOrExpression= ruleLiteralOrExpression EOF ;
+    // InternalNavascript.g:1883:1: entryRuleLiteralOrExpression returns [EObject current=null] : iv_ruleLiteralOrExpression= ruleLiteralOrExpression EOF ;
     public final EObject entryRuleLiteralOrExpression() throws RecognitionException {
         EObject current = null;
 
@@ -5201,8 +5302,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1820:60: (iv_ruleLiteralOrExpression= ruleLiteralOrExpression EOF )
-            // InternalNavascript.g:1821:2: iv_ruleLiteralOrExpression= ruleLiteralOrExpression EOF
+            // InternalNavascript.g:1883:60: (iv_ruleLiteralOrExpression= ruleLiteralOrExpression EOF )
+            // InternalNavascript.g:1884:2: iv_ruleLiteralOrExpression= ruleLiteralOrExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLiteralOrExpressionRule()); 
@@ -5233,7 +5334,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteralOrExpression"
-    // InternalNavascript.g:1827:1: ruleLiteralOrExpression returns [EObject current=null] : ( ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) ) | ( (lv_expression_2_0= ruleExpression ) ) ) ;
+    // InternalNavascript.g:1890:1: ruleLiteralOrExpression returns [EObject current=null] : ( ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) ) | ( (lv_expression_2_0= ruleExpression ) ) ) ;
     public final EObject ruleLiteralOrExpression() throws RecognitionException {
         EObject current = null;
 
@@ -5246,17 +5347,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1833:2: ( ( ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) ) | ( (lv_expression_2_0= ruleExpression ) ) ) )
-            // InternalNavascript.g:1834:2: ( ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) ) | ( (lv_expression_2_0= ruleExpression ) ) )
+            // InternalNavascript.g:1896:2: ( ( ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) ) | ( (lv_expression_2_0= ruleExpression ) ) ) )
+            // InternalNavascript.g:1897:2: ( ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) ) | ( (lv_expression_2_0= ruleExpression ) ) )
             {
-            // InternalNavascript.g:1834:2: ( ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) ) | ( (lv_expression_2_0= ruleExpression ) ) )
+            // InternalNavascript.g:1897:2: ( ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) ) | ( (lv_expression_2_0= ruleExpression ) ) )
             int alt33=2;
             int LA33_0 = input.LA(1);
 
             if ( ((LA33_0>=RULE_QUOTED_IDENTIFIER && LA33_0<=RULE_STRING_CONSTANT)) ) {
                 alt33=1;
             }
-            else if ( (LA33_0==RULE_IDENTIFIER||(LA33_0>=RULE_MAPPABLE_IDENTIFIER && LA33_0<=RULE_EXISTS)||LA33_0==30||LA33_0==85||(LA33_0>=88 && LA33_0<=89)) ) {
+            else if ( (LA33_0==RULE_IDENTIFIER||(LA33_0>=RULE_MAPPABLE_IDENTIFIER && LA33_0<=RULE_EXISTS)||LA33_0==31||LA33_0==86||(LA33_0>=89 && LA33_0<=90)) ) {
                 alt33=2;
             }
             else {
@@ -5268,14 +5369,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             }
             switch (alt33) {
                 case 1 :
-                    // InternalNavascript.g:1835:3: ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) )
+                    // InternalNavascript.g:1898:3: ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) )
                     {
-                    // InternalNavascript.g:1835:3: ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) )
-                    // InternalNavascript.g:1836:4: () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) )
+                    // InternalNavascript.g:1898:3: ( () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) ) )
+                    // InternalNavascript.g:1899:4: () ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) )
                     {
-                    // InternalNavascript.g:1836:4: ()
-                    // InternalNavascript.g:1837:5: 
+                    // InternalNavascript.g:1899:4: ()
+                    // InternalNavascript.g:1900:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -5286,13 +5392,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:1843:4: ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) )
-                    // InternalNavascript.g:1844:5: ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) )
+                    // InternalNavascript.g:1909:4: ( ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) ) )
+                    // InternalNavascript.g:1910:5: ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) )
                     {
-                    // InternalNavascript.g:1844:5: ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) )
-                    // InternalNavascript.g:1845:6: (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT )
+                    // InternalNavascript.g:1910:5: ( (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT ) )
+                    // InternalNavascript.g:1911:6: (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT )
                     {
-                    // InternalNavascript.g:1845:6: (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT )
+                    // InternalNavascript.g:1911:6: (lv_literal_1_1= RULE_QUOTED_IDENTIFIER | lv_literal_1_2= RULE_STRING_CONSTANT )
                     int alt32=2;
                     int LA32_0 = input.LA(1);
 
@@ -5311,7 +5417,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt32) {
                         case 1 :
-                            // InternalNavascript.g:1846:7: lv_literal_1_1= RULE_QUOTED_IDENTIFIER
+                            // InternalNavascript.g:1912:7: lv_literal_1_1= RULE_QUOTED_IDENTIFIER
                             {
                             lv_literal_1_1=(Token)match(input,RULE_QUOTED_IDENTIFIER,FOLLOW_2); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
@@ -5335,7 +5441,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:1861:7: lv_literal_1_2= RULE_STRING_CONSTANT
+                            // InternalNavascript.g:1927:7: lv_literal_1_2= RULE_STRING_CONSTANT
                             {
                             lv_literal_1_2=(Token)match(input,RULE_STRING_CONSTANT,FOLLOW_2); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
@@ -5374,13 +5480,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:1880:3: ( (lv_expression_2_0= ruleExpression ) )
+                    // InternalNavascript.g:1946:3: ( (lv_expression_2_0= ruleExpression ) )
                     {
-                    // InternalNavascript.g:1880:3: ( (lv_expression_2_0= ruleExpression ) )
-                    // InternalNavascript.g:1881:4: (lv_expression_2_0= ruleExpression )
+                    // InternalNavascript.g:1946:3: ( (lv_expression_2_0= ruleExpression ) )
+                    // InternalNavascript.g:1947:4: (lv_expression_2_0= ruleExpression )
                     {
-                    // InternalNavascript.g:1881:4: (lv_expression_2_0= ruleExpression )
-                    // InternalNavascript.g:1882:5: lv_expression_2_0= ruleExpression
+                    // InternalNavascript.g:1947:4: (lv_expression_2_0= ruleExpression )
+                    // InternalNavascript.g:1948:5: lv_expression_2_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -5439,7 +5545,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrint"
-    // InternalNavascript.g:1903:1: entryRulePrint returns [EObject current=null] : iv_rulePrint= rulePrint EOF ;
+    // InternalNavascript.g:1969:1: entryRulePrint returns [EObject current=null] : iv_rulePrint= rulePrint EOF ;
     public final EObject entryRulePrint() throws RecognitionException {
         EObject current = null;
 
@@ -5447,8 +5553,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1903:46: (iv_rulePrint= rulePrint EOF )
-            // InternalNavascript.g:1904:2: iv_rulePrint= rulePrint EOF
+            // InternalNavascript.g:1969:46: (iv_rulePrint= rulePrint EOF )
+            // InternalNavascript.g:1970:2: iv_rulePrint= rulePrint EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPrintRule()); 
@@ -5479,7 +5585,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrint"
-    // InternalNavascript.g:1910:1: rulePrint returns [EObject current=null] : ( () otherlv_1= 'print' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' ) ;
+    // InternalNavascript.g:1976:1: rulePrint returns [EObject current=null] : ( () otherlv_1= 'print' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' ) ;
     public final EObject rulePrint() throws RecognitionException {
         EObject current = null;
 
@@ -5494,15 +5600,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1916:2: ( ( () otherlv_1= 'print' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' ) )
-            // InternalNavascript.g:1917:2: ( () otherlv_1= 'print' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' )
+            // InternalNavascript.g:1982:2: ( ( () otherlv_1= 'print' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' ) )
+            // InternalNavascript.g:1983:2: ( () otherlv_1= 'print' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' )
             {
-            // InternalNavascript.g:1917:2: ( () otherlv_1= 'print' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' )
-            // InternalNavascript.g:1918:3: () otherlv_1= 'print' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';'
+            // InternalNavascript.g:1983:2: ( () otherlv_1= 'print' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' )
+            // InternalNavascript.g:1984:3: () otherlv_1= 'print' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';'
             {
-            // InternalNavascript.g:1918:3: ()
-            // InternalNavascript.g:1919:4: 
+            // InternalNavascript.g:1984:3: ()
+            // InternalNavascript.g:1985:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -5513,23 +5624,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,49,FOLLOW_11); if (state.failed) return current;
+            otherlv_1=(Token)match(input,50,FOLLOW_11); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getPrintAccess().getPrintKeyword_1());
               		
             }
-            otherlv_2=(Token)match(input,30,FOLLOW_6); if (state.failed) return current;
+            otherlv_2=(Token)match(input,31,FOLLOW_6); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getPrintAccess().getLeftParenthesisKeyword_2());
               		
             }
-            // InternalNavascript.g:1933:3: ( (lv_expression_3_0= ruleExpression ) )
-            // InternalNavascript.g:1934:4: (lv_expression_3_0= ruleExpression )
+            // InternalNavascript.g:2002:3: ( (lv_expression_3_0= ruleExpression ) )
+            // InternalNavascript.g:2003:4: (lv_expression_3_0= ruleExpression )
             {
-            // InternalNavascript.g:1934:4: (lv_expression_3_0= ruleExpression )
-            // InternalNavascript.g:1935:5: lv_expression_3_0= ruleExpression
+            // InternalNavascript.g:2003:4: (lv_expression_3_0= ruleExpression )
+            // InternalNavascript.g:2004:5: lv_expression_3_0= ruleExpression
             {
             if ( state.backtracking==0 ) {
 
@@ -5560,13 +5671,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,31,FOLLOW_22); if (state.failed) return current;
+            otherlv_4=(Token)match(input,32,FOLLOW_22); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getPrintAccess().getRightParenthesisKeyword_4());
               		
             }
-            otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getPrintAccess().getSemicolonKeyword_5());
@@ -5597,7 +5708,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLog"
-    // InternalNavascript.g:1964:1: entryRuleLog returns [EObject current=null] : iv_ruleLog= ruleLog EOF ;
+    // InternalNavascript.g:2033:1: entryRuleLog returns [EObject current=null] : iv_ruleLog= ruleLog EOF ;
     public final EObject entryRuleLog() throws RecognitionException {
         EObject current = null;
 
@@ -5605,8 +5716,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:1964:44: (iv_ruleLog= ruleLog EOF )
-            // InternalNavascript.g:1965:2: iv_ruleLog= ruleLog EOF
+            // InternalNavascript.g:2033:44: (iv_ruleLog= ruleLog EOF )
+            // InternalNavascript.g:2034:2: iv_ruleLog= ruleLog EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLogRule()); 
@@ -5637,7 +5748,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLog"
-    // InternalNavascript.g:1971:1: ruleLog returns [EObject current=null] : ( () otherlv_1= 'log' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' ) ;
+    // InternalNavascript.g:2040:1: ruleLog returns [EObject current=null] : ( () otherlv_1= 'log' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' ) ;
     public final EObject ruleLog() throws RecognitionException {
         EObject current = null;
 
@@ -5652,15 +5763,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:1977:2: ( ( () otherlv_1= 'log' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' ) )
-            // InternalNavascript.g:1978:2: ( () otherlv_1= 'log' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' )
+            // InternalNavascript.g:2046:2: ( ( () otherlv_1= 'log' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' ) )
+            // InternalNavascript.g:2047:2: ( () otherlv_1= 'log' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' )
             {
-            // InternalNavascript.g:1978:2: ( () otherlv_1= 'log' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' )
-            // InternalNavascript.g:1979:3: () otherlv_1= 'log' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';'
+            // InternalNavascript.g:2047:2: ( () otherlv_1= 'log' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';' )
+            // InternalNavascript.g:2048:3: () otherlv_1= 'log' otherlv_2= '(' ( (lv_expression_3_0= ruleExpression ) ) otherlv_4= ')' otherlv_5= ';'
             {
-            // InternalNavascript.g:1979:3: ()
-            // InternalNavascript.g:1980:4: 
+            // InternalNavascript.g:2048:3: ()
+            // InternalNavascript.g:2049:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -5671,23 +5787,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,50,FOLLOW_11); if (state.failed) return current;
+            otherlv_1=(Token)match(input,51,FOLLOW_11); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getLogAccess().getLogKeyword_1());
               		
             }
-            otherlv_2=(Token)match(input,30,FOLLOW_6); if (state.failed) return current;
+            otherlv_2=(Token)match(input,31,FOLLOW_6); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getLogAccess().getLeftParenthesisKeyword_2());
               		
             }
-            // InternalNavascript.g:1994:3: ( (lv_expression_3_0= ruleExpression ) )
-            // InternalNavascript.g:1995:4: (lv_expression_3_0= ruleExpression )
+            // InternalNavascript.g:2066:3: ( (lv_expression_3_0= ruleExpression ) )
+            // InternalNavascript.g:2067:4: (lv_expression_3_0= ruleExpression )
             {
-            // InternalNavascript.g:1995:4: (lv_expression_3_0= ruleExpression )
-            // InternalNavascript.g:1996:5: lv_expression_3_0= ruleExpression
+            // InternalNavascript.g:2067:4: (lv_expression_3_0= ruleExpression )
+            // InternalNavascript.g:2068:5: lv_expression_3_0= ruleExpression
             {
             if ( state.backtracking==0 ) {
 
@@ -5718,13 +5834,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,31,FOLLOW_22); if (state.failed) return current;
+            otherlv_4=(Token)match(input,32,FOLLOW_22); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getLogAccess().getRightParenthesisKeyword_4());
               		
             }
-            otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getLogAccess().getSemicolonKeyword_5());
@@ -5755,7 +5871,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFinally"
-    // InternalNavascript.g:2025:1: entryRuleFinally returns [EObject current=null] : iv_ruleFinally= ruleFinally EOF ;
+    // InternalNavascript.g:2097:1: entryRuleFinally returns [EObject current=null] : iv_ruleFinally= ruleFinally EOF ;
     public final EObject entryRuleFinally() throws RecognitionException {
         EObject current = null;
 
@@ -5763,8 +5879,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2025:48: (iv_ruleFinally= ruleFinally EOF )
-            // InternalNavascript.g:2026:2: iv_ruleFinally= ruleFinally EOF
+            // InternalNavascript.g:2097:48: (iv_ruleFinally= ruleFinally EOF )
+            // InternalNavascript.g:2098:2: iv_ruleFinally= ruleFinally EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFinallyRule()); 
@@ -5795,7 +5911,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFinally"
-    // InternalNavascript.g:2032:1: ruleFinally returns [EObject current=null] : ( () otherlv_1= 'finally' otherlv_2= '{' ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) ) otherlv_4= '}' ) ;
+    // InternalNavascript.g:2104:1: ruleFinally returns [EObject current=null] : ( () otherlv_1= 'finally' otherlv_2= '{' ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) ) otherlv_4= '}' ) ;
     public final EObject ruleFinally() throws RecognitionException {
         EObject current = null;
 
@@ -5809,15 +5925,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2038:2: ( ( () otherlv_1= 'finally' otherlv_2= '{' ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) ) otherlv_4= '}' ) )
-            // InternalNavascript.g:2039:2: ( () otherlv_1= 'finally' otherlv_2= '{' ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) ) otherlv_4= '}' )
+            // InternalNavascript.g:2110:2: ( ( () otherlv_1= 'finally' otherlv_2= '{' ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) ) otherlv_4= '}' ) )
+            // InternalNavascript.g:2111:2: ( () otherlv_1= 'finally' otherlv_2= '{' ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) ) otherlv_4= '}' )
             {
-            // InternalNavascript.g:2039:2: ( () otherlv_1= 'finally' otherlv_2= '{' ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) ) otherlv_4= '}' )
-            // InternalNavascript.g:2040:3: () otherlv_1= 'finally' otherlv_2= '{' ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) ) otherlv_4= '}'
+            // InternalNavascript.g:2111:2: ( () otherlv_1= 'finally' otherlv_2= '{' ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) ) otherlv_4= '}' )
+            // InternalNavascript.g:2112:3: () otherlv_1= 'finally' otherlv_2= '{' ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) ) otherlv_4= '}'
             {
-            // InternalNavascript.g:2040:3: ()
-            // InternalNavascript.g:2041:4: 
+            // InternalNavascript.g:2112:3: ()
+            // InternalNavascript.g:2113:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -5828,23 +5949,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,51,FOLLOW_14); if (state.failed) return current;
+            otherlv_1=(Token)match(input,52,FOLLOW_14); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getFinallyAccess().getFinallyKeyword_1());
               		
             }
-            otherlv_2=(Token)match(input,27,FOLLOW_15); if (state.failed) return current;
+            otherlv_2=(Token)match(input,28,FOLLOW_15); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getFinallyAccess().getLeftCurlyBracketKeyword_2());
               		
             }
-            // InternalNavascript.g:2055:3: ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) )
-            // InternalNavascript.g:2056:4: (lv_finallyStatements_3_0= ruleTopLevelStatements )
+            // InternalNavascript.g:2130:3: ( (lv_finallyStatements_3_0= ruleTopLevelStatements ) )
+            // InternalNavascript.g:2131:4: (lv_finallyStatements_3_0= ruleTopLevelStatements )
             {
-            // InternalNavascript.g:2056:4: (lv_finallyStatements_3_0= ruleTopLevelStatements )
-            // InternalNavascript.g:2057:5: lv_finallyStatements_3_0= ruleTopLevelStatements
+            // InternalNavascript.g:2131:4: (lv_finallyStatements_3_0= ruleTopLevelStatements )
+            // InternalNavascript.g:2132:5: lv_finallyStatements_3_0= ruleTopLevelStatements
             {
             if ( state.backtracking==0 ) {
 
@@ -5875,7 +5996,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_4=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getFinallyAccess().getRightCurlyBracketKeyword_4());
@@ -5906,7 +6027,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMethods"
-    // InternalNavascript.g:2082:1: entryRuleMethods returns [EObject current=null] : iv_ruleMethods= ruleMethods EOF ;
+    // InternalNavascript.g:2157:1: entryRuleMethods returns [EObject current=null] : iv_ruleMethods= ruleMethods EOF ;
     public final EObject entryRuleMethods() throws RecognitionException {
         EObject current = null;
 
@@ -5914,8 +6035,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2082:48: (iv_ruleMethods= ruleMethods EOF )
-            // InternalNavascript.g:2083:2: iv_ruleMethods= ruleMethods EOF
+            // InternalNavascript.g:2157:48: (iv_ruleMethods= ruleMethods EOF )
+            // InternalNavascript.g:2158:2: iv_ruleMethods= ruleMethods EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMethodsRule()); 
@@ -5946,7 +6067,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMethods"
-    // InternalNavascript.g:2089:1: ruleMethods returns [EObject current=null] : ( () otherlv_1= 'methods' otherlv_2= '{' ( (lv_methods_3_0= ruleMethod ) )* otherlv_4= '}' ) ;
+    // InternalNavascript.g:2164:1: ruleMethods returns [EObject current=null] : ( () otherlv_1= 'methods' otherlv_2= '{' ( (lv_methods_3_0= ruleMethod ) )* otherlv_4= '}' ) ;
     public final EObject ruleMethods() throws RecognitionException {
         EObject current = null;
 
@@ -5960,15 +6081,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2095:2: ( ( () otherlv_1= 'methods' otherlv_2= '{' ( (lv_methods_3_0= ruleMethod ) )* otherlv_4= '}' ) )
-            // InternalNavascript.g:2096:2: ( () otherlv_1= 'methods' otherlv_2= '{' ( (lv_methods_3_0= ruleMethod ) )* otherlv_4= '}' )
+            // InternalNavascript.g:2170:2: ( ( () otherlv_1= 'methods' otherlv_2= '{' ( (lv_methods_3_0= ruleMethod ) )* otherlv_4= '}' ) )
+            // InternalNavascript.g:2171:2: ( () otherlv_1= 'methods' otherlv_2= '{' ( (lv_methods_3_0= ruleMethod ) )* otherlv_4= '}' )
             {
-            // InternalNavascript.g:2096:2: ( () otherlv_1= 'methods' otherlv_2= '{' ( (lv_methods_3_0= ruleMethod ) )* otherlv_4= '}' )
-            // InternalNavascript.g:2097:3: () otherlv_1= 'methods' otherlv_2= '{' ( (lv_methods_3_0= ruleMethod ) )* otherlv_4= '}'
+            // InternalNavascript.g:2171:2: ( () otherlv_1= 'methods' otherlv_2= '{' ( (lv_methods_3_0= ruleMethod ) )* otherlv_4= '}' )
+            // InternalNavascript.g:2172:3: () otherlv_1= 'methods' otherlv_2= '{' ( (lv_methods_3_0= ruleMethod ) )* otherlv_4= '}'
             {
-            // InternalNavascript.g:2097:3: ()
-            // InternalNavascript.g:2098:4: 
+            // InternalNavascript.g:2172:3: ()
+            // InternalNavascript.g:2173:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -5979,19 +6105,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,52,FOLLOW_14); if (state.failed) return current;
+            otherlv_1=(Token)match(input,53,FOLLOW_14); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getMethodsAccess().getMethodsKeyword_1());
               		
             }
-            otherlv_2=(Token)match(input,27,FOLLOW_30); if (state.failed) return current;
+            otherlv_2=(Token)match(input,28,FOLLOW_30); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getMethodsAccess().getLeftCurlyBracketKeyword_2());
               		
             }
-            // InternalNavascript.g:2112:3: ( (lv_methods_3_0= ruleMethod ) )*
+            // InternalNavascript.g:2190:3: ( (lv_methods_3_0= ruleMethod ) )*
             loop34:
             do {
                 int alt34=2;
@@ -6004,10 +6130,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                 switch (alt34) {
             	case 1 :
-            	    // InternalNavascript.g:2113:4: (lv_methods_3_0= ruleMethod )
+            	    // InternalNavascript.g:2191:4: (lv_methods_3_0= ruleMethod )
             	    {
-            	    // InternalNavascript.g:2113:4: (lv_methods_3_0= ruleMethod )
-            	    // InternalNavascript.g:2114:5: lv_methods_3_0= ruleMethod
+            	    // InternalNavascript.g:2191:4: (lv_methods_3_0= ruleMethod )
+            	    // InternalNavascript.g:2192:5: lv_methods_3_0= ruleMethod
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -6044,7 +6170,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_4=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getMethodsAccess().getRightCurlyBracketKeyword_4());
@@ -6075,7 +6201,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMethod"
-    // InternalNavascript.g:2139:1: entryRuleMethod returns [EObject current=null] : iv_ruleMethod= ruleMethod EOF ;
+    // InternalNavascript.g:2217:1: entryRuleMethod returns [EObject current=null] : iv_ruleMethod= ruleMethod EOF ;
     public final EObject entryRuleMethod() throws RecognitionException {
         EObject current = null;
 
@@ -6083,8 +6209,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2139:47: (iv_ruleMethod= ruleMethod EOF )
-            // InternalNavascript.g:2140:2: iv_ruleMethod= ruleMethod EOF
+            // InternalNavascript.g:2217:47: (iv_ruleMethod= ruleMethod EOF )
+            // InternalNavascript.g:2218:2: iv_ruleMethod= ruleMethod EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMethodRule()); 
@@ -6115,7 +6241,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMethod"
-    // InternalNavascript.g:2146:1: ruleMethod returns [EObject current=null] : ( () ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_2= ';' ) ;
+    // InternalNavascript.g:2224:1: ruleMethod returns [EObject current=null] : ( () ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_2= ';' ) ;
     public final EObject ruleMethod() throws RecognitionException {
         EObject current = null;
 
@@ -6126,15 +6252,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2152:2: ( ( () ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_2= ';' ) )
-            // InternalNavascript.g:2153:2: ( () ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_2= ';' )
+            // InternalNavascript.g:2230:2: ( ( () ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_2= ';' ) )
+            // InternalNavascript.g:2231:2: ( () ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_2= ';' )
             {
-            // InternalNavascript.g:2153:2: ( () ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_2= ';' )
-            // InternalNavascript.g:2154:3: () ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_2= ';'
+            // InternalNavascript.g:2231:2: ( () ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_2= ';' )
+            // InternalNavascript.g:2232:3: () ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_2= ';'
             {
-            // InternalNavascript.g:2154:3: ()
-            // InternalNavascript.g:2155:4: 
+            // InternalNavascript.g:2232:3: ()
+            // InternalNavascript.g:2233:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -6145,11 +6276,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:2161:3: ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) )
-            // InternalNavascript.g:2162:4: (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:2242:3: ( (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER ) )
+            // InternalNavascript.g:2243:4: (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER )
             {
-            // InternalNavascript.g:2162:4: (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER )
-            // InternalNavascript.g:2163:5: lv_methodName_1_0= RULE_QUOTED_IDENTIFIER
+            // InternalNavascript.g:2243:4: (lv_methodName_1_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:2244:5: lv_methodName_1_0= RULE_QUOTED_IDENTIFIER
             {
             lv_methodName_1_0=(Token)match(input,RULE_QUOTED_IDENTIFIER,FOLLOW_22); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -6175,7 +6306,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+            otherlv_2=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getMethodAccess().getSemicolonKeyword_2());
@@ -6206,7 +6337,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLoop"
-    // InternalNavascript.g:2187:1: entryRuleLoop returns [EObject current=null] : iv_ruleLoop= ruleLoop EOF ;
+    // InternalNavascript.g:2268:1: entryRuleLoop returns [EObject current=null] : iv_ruleLoop= ruleLoop EOF ;
     public final EObject entryRuleLoop() throws RecognitionException {
         EObject current = null;
 
@@ -6214,8 +6345,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2187:45: (iv_ruleLoop= ruleLoop EOF )
-            // InternalNavascript.g:2188:2: iv_ruleLoop= ruleLoop EOF
+            // InternalNavascript.g:2268:45: (iv_ruleLoop= ruleLoop EOF )
+            // InternalNavascript.g:2269:2: iv_ruleLoop= ruleLoop EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLoopRule()); 
@@ -6246,7 +6377,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLoop"
-    // InternalNavascript.g:2194:1: ruleLoop returns [EObject current=null] : ( () otherlv_1= 'loop' ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) ) (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )? otherlv_10= '{' ( (lv_statements_11_0= ruleInnerBody ) )* otherlv_12= '}' ) ;
+    // InternalNavascript.g:2275:1: ruleLoop returns [EObject current=null] : ( () otherlv_1= 'loop' ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) ) (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )? otherlv_10= '{' ( (lv_statements_11_0= ruleInnerBody ) )* otherlv_12= '}' ) ;
     public final EObject ruleLoop() throws RecognitionException {
         EObject current = null;
 
@@ -6271,15 +6402,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2200:2: ( ( () otherlv_1= 'loop' ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) ) (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )? otherlv_10= '{' ( (lv_statements_11_0= ruleInnerBody ) )* otherlv_12= '}' ) )
-            // InternalNavascript.g:2201:2: ( () otherlv_1= 'loop' ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) ) (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )? otherlv_10= '{' ( (lv_statements_11_0= ruleInnerBody ) )* otherlv_12= '}' )
+            // InternalNavascript.g:2281:2: ( ( () otherlv_1= 'loop' ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) ) (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )? otherlv_10= '{' ( (lv_statements_11_0= ruleInnerBody ) )* otherlv_12= '}' ) )
+            // InternalNavascript.g:2282:2: ( () otherlv_1= 'loop' ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) ) (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )? otherlv_10= '{' ( (lv_statements_11_0= ruleInnerBody ) )* otherlv_12= '}' )
             {
-            // InternalNavascript.g:2201:2: ( () otherlv_1= 'loop' ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) ) (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )? otherlv_10= '{' ( (lv_statements_11_0= ruleInnerBody ) )* otherlv_12= '}' )
-            // InternalNavascript.g:2202:3: () otherlv_1= 'loop' ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) ) (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )? otherlv_10= '{' ( (lv_statements_11_0= ruleInnerBody ) )* otherlv_12= '}'
+            // InternalNavascript.g:2282:2: ( () otherlv_1= 'loop' ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) ) (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )? otherlv_10= '{' ( (lv_statements_11_0= ruleInnerBody ) )* otherlv_12= '}' )
+            // InternalNavascript.g:2283:3: () otherlv_1= 'loop' ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) ) (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )? otherlv_10= '{' ( (lv_statements_11_0= ruleInnerBody ) )* otherlv_12= '}'
             {
-            // InternalNavascript.g:2202:3: ()
-            // InternalNavascript.g:2203:4: 
+            // InternalNavascript.g:2283:3: ()
+            // InternalNavascript.g:2284:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -6290,13 +6426,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,53,FOLLOW_31); if (state.failed) return current;
+            otherlv_1=(Token)match(input,54,FOLLOW_31); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getLoopAccess().getLoopKeyword_1());
               		
             }
-            // InternalNavascript.g:2213:3: ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) )
+            // InternalNavascript.g:2297:3: ( ( (lv_mappable_2_0= ruleMappableIdentifier ) ) | ( (lv_tml_3_0= ruleTmlIdentifier ) ) )
             int alt35=2;
             int LA35_0 = input.LA(1);
 
@@ -6315,13 +6451,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             }
             switch (alt35) {
                 case 1 :
-                    // InternalNavascript.g:2214:4: ( (lv_mappable_2_0= ruleMappableIdentifier ) )
+                    // InternalNavascript.g:2298:4: ( (lv_mappable_2_0= ruleMappableIdentifier ) )
                     {
-                    // InternalNavascript.g:2214:4: ( (lv_mappable_2_0= ruleMappableIdentifier ) )
-                    // InternalNavascript.g:2215:5: (lv_mappable_2_0= ruleMappableIdentifier )
+                    // InternalNavascript.g:2298:4: ( (lv_mappable_2_0= ruleMappableIdentifier ) )
+                    // InternalNavascript.g:2299:5: (lv_mappable_2_0= ruleMappableIdentifier )
                     {
-                    // InternalNavascript.g:2215:5: (lv_mappable_2_0= ruleMappableIdentifier )
-                    // InternalNavascript.g:2216:6: lv_mappable_2_0= ruleMappableIdentifier
+                    // InternalNavascript.g:2299:5: (lv_mappable_2_0= ruleMappableIdentifier )
+                    // InternalNavascript.g:2300:6: lv_mappable_2_0= ruleMappableIdentifier
                     {
                     if ( state.backtracking==0 ) {
 
@@ -6356,13 +6492,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:2234:4: ( (lv_tml_3_0= ruleTmlIdentifier ) )
+                    // InternalNavascript.g:2318:4: ( (lv_tml_3_0= ruleTmlIdentifier ) )
                     {
-                    // InternalNavascript.g:2234:4: ( (lv_tml_3_0= ruleTmlIdentifier ) )
-                    // InternalNavascript.g:2235:5: (lv_tml_3_0= ruleTmlIdentifier )
+                    // InternalNavascript.g:2318:4: ( (lv_tml_3_0= ruleTmlIdentifier ) )
+                    // InternalNavascript.g:2319:5: (lv_tml_3_0= ruleTmlIdentifier )
                     {
-                    // InternalNavascript.g:2235:5: (lv_tml_3_0= ruleTmlIdentifier )
-                    // InternalNavascript.g:2236:6: lv_tml_3_0= ruleTmlIdentifier
+                    // InternalNavascript.g:2319:5: (lv_tml_3_0= ruleTmlIdentifier )
+                    // InternalNavascript.g:2320:6: lv_tml_3_0= ruleTmlIdentifier
                     {
                     if ( state.backtracking==0 ) {
 
@@ -6399,37 +6535,37 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:2254:3: (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )?
+            // InternalNavascript.g:2338:3: (otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')' )?
             int alt37=2;
             int LA37_0 = input.LA(1);
 
-            if ( (LA37_0==30) ) {
+            if ( (LA37_0==31) ) {
                 alt37=1;
             }
             switch (alt37) {
                 case 1 :
-                    // InternalNavascript.g:2255:4: otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')'
+                    // InternalNavascript.g:2339:4: otherlv_4= '(' otherlv_5= 'filter' (otherlv_6= '=' | otherlv_7= ':' ) ( (lv_filter_8_0= ruleExpression ) ) otherlv_9= ')'
                     {
-                    otherlv_4=(Token)match(input,30,FOLLOW_33); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,31,FOLLOW_33); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getLoopAccess().getLeftParenthesisKeyword_3_0());
                       			
                     }
-                    otherlv_5=(Token)match(input,54,FOLLOW_17); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,55,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_5, grammarAccess.getLoopAccess().getFilterKeyword_3_1());
                       			
                     }
-                    // InternalNavascript.g:2263:4: (otherlv_6= '=' | otherlv_7= ':' )
+                    // InternalNavascript.g:2347:4: (otherlv_6= '=' | otherlv_7= ':' )
                     int alt36=2;
                     int LA36_0 = input.LA(1);
 
-                    if ( (LA36_0==34) ) {
+                    if ( (LA36_0==35) ) {
                         alt36=1;
                     }
-                    else if ( (LA36_0==35) ) {
+                    else if ( (LA36_0==36) ) {
                         alt36=2;
                     }
                     else {
@@ -6441,9 +6577,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt36) {
                         case 1 :
-                            // InternalNavascript.g:2264:5: otherlv_6= '='
+                            // InternalNavascript.g:2348:5: otherlv_6= '='
                             {
-                            otherlv_6=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_6, grammarAccess.getLoopAccess().getEqualsSignKeyword_3_2_0());
@@ -6453,9 +6589,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:2269:5: otherlv_7= ':'
+                            // InternalNavascript.g:2353:5: otherlv_7= ':'
                             {
-                            otherlv_7=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
+                            otherlv_7=(Token)match(input,36,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_7, grammarAccess.getLoopAccess().getColonKeyword_3_2_1());
@@ -6467,11 +6603,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:2274:4: ( (lv_filter_8_0= ruleExpression ) )
-                    // InternalNavascript.g:2275:5: (lv_filter_8_0= ruleExpression )
+                    // InternalNavascript.g:2358:4: ( (lv_filter_8_0= ruleExpression ) )
+                    // InternalNavascript.g:2359:5: (lv_filter_8_0= ruleExpression )
                     {
-                    // InternalNavascript.g:2275:5: (lv_filter_8_0= ruleExpression )
-                    // InternalNavascript.g:2276:6: lv_filter_8_0= ruleExpression
+                    // InternalNavascript.g:2359:5: (lv_filter_8_0= ruleExpression )
+                    // InternalNavascript.g:2360:6: lv_filter_8_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -6502,7 +6638,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_9=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
+                    otherlv_9=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_9, grammarAccess.getLoopAccess().getRightParenthesisKeyword_3_4());
@@ -6514,29 +6650,29 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_10=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
+            otherlv_10=(Token)match(input,28,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_10, grammarAccess.getLoopAccess().getLeftCurlyBracketKeyword_4());
               		
             }
-            // InternalNavascript.g:2302:3: ( (lv_statements_11_0= ruleInnerBody ) )*
+            // InternalNavascript.g:2386:3: ( (lv_statements_11_0= ruleInnerBody ) )*
             loop38:
             do {
                 int alt38=2;
                 int LA38_0 = input.LA(1);
 
-                if ( ((LA38_0>=RULE_METHOD_IDENTIFIER && LA38_0<=RULE_MAPPABLE_IDENTIFIER)||LA38_0==25||LA38_0==27||LA38_0==41||LA38_0==47||(LA38_0>=49 && LA38_0<=50)||(LA38_0>=52 && LA38_0<=53)||(LA38_0>=55 && LA38_0<=57)||(LA38_0>=62 && LA38_0<=63)||(LA38_0>=65 && LA38_0<=67)) ) {
+                if ( ((LA38_0>=RULE_METHOD_IDENTIFIER && LA38_0<=RULE_MAPPABLE_IDENTIFIER)||LA38_0==26||LA38_0==28||LA38_0==42||LA38_0==48||(LA38_0>=50 && LA38_0<=51)||(LA38_0>=53 && LA38_0<=54)||(LA38_0>=56 && LA38_0<=58)||(LA38_0>=63 && LA38_0<=64)||(LA38_0>=66 && LA38_0<=68)) ) {
                     alt38=1;
                 }
 
 
                 switch (alt38) {
             	case 1 :
-            	    // InternalNavascript.g:2303:4: (lv_statements_11_0= ruleInnerBody )
+            	    // InternalNavascript.g:2387:4: (lv_statements_11_0= ruleInnerBody )
             	    {
-            	    // InternalNavascript.g:2303:4: (lv_statements_11_0= ruleInnerBody )
-            	    // InternalNavascript.g:2304:5: lv_statements_11_0= ruleInnerBody
+            	    // InternalNavascript.g:2387:4: (lv_statements_11_0= ruleInnerBody )
+            	    // InternalNavascript.g:2388:5: lv_statements_11_0= ruleInnerBody
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -6573,7 +6709,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_12=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_12=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_12, grammarAccess.getLoopAccess().getRightCurlyBracketKeyword_6());
@@ -6604,7 +6740,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInclude"
-    // InternalNavascript.g:2329:1: entryRuleInclude returns [EObject current=null] : iv_ruleInclude= ruleInclude EOF ;
+    // InternalNavascript.g:2413:1: entryRuleInclude returns [EObject current=null] : iv_ruleInclude= ruleInclude EOF ;
     public final EObject entryRuleInclude() throws RecognitionException {
         EObject current = null;
 
@@ -6612,8 +6748,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2329:48: (iv_ruleInclude= ruleInclude EOF )
-            // InternalNavascript.g:2330:2: iv_ruleInclude= ruleInclude EOF
+            // InternalNavascript.g:2413:48: (iv_ruleInclude= ruleInclude EOF )
+            // InternalNavascript.g:2414:2: iv_ruleInclude= ruleInclude EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIncludeRule()); 
@@ -6644,7 +6780,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInclude"
-    // InternalNavascript.g:2336:1: ruleInclude returns [EObject current=null] : ( () otherlv_1= 'include' ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' ) ;
+    // InternalNavascript.g:2420:1: ruleInclude returns [EObject current=null] : ( () otherlv_1= 'include' ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' ) ;
     public final EObject ruleInclude() throws RecognitionException {
         EObject current = null;
 
@@ -6656,15 +6792,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2342:2: ( ( () otherlv_1= 'include' ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' ) )
-            // InternalNavascript.g:2343:2: ( () otherlv_1= 'include' ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' )
+            // InternalNavascript.g:2426:2: ( ( () otherlv_1= 'include' ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' ) )
+            // InternalNavascript.g:2427:2: ( () otherlv_1= 'include' ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' )
             {
-            // InternalNavascript.g:2343:2: ( () otherlv_1= 'include' ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' )
-            // InternalNavascript.g:2344:3: () otherlv_1= 'include' ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';'
+            // InternalNavascript.g:2427:2: ( () otherlv_1= 'include' ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' )
+            // InternalNavascript.g:2428:3: () otherlv_1= 'include' ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';'
             {
-            // InternalNavascript.g:2344:3: ()
-            // InternalNavascript.g:2345:4: 
+            // InternalNavascript.g:2428:3: ()
+            // InternalNavascript.g:2429:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -6675,17 +6816,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,55,FOLLOW_25); if (state.failed) return current;
+            otherlv_1=(Token)match(input,56,FOLLOW_25); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getIncludeAccess().getIncludeKeyword_1());
               		
             }
-            // InternalNavascript.g:2355:3: ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) )
-            // InternalNavascript.g:2356:4: (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:2442:3: ( (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER ) )
+            // InternalNavascript.g:2443:4: (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER )
             {
-            // InternalNavascript.g:2356:4: (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER )
-            // InternalNavascript.g:2357:5: lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER
+            // InternalNavascript.g:2443:4: (lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:2444:5: lv_scriptName_2_0= RULE_QUOTED_IDENTIFIER
             {
             lv_scriptName_2_0=(Token)match(input,RULE_QUOTED_IDENTIFIER,FOLLOW_22); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -6711,7 +6852,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getIncludeAccess().getSemicolonKeyword_3());
@@ -6742,7 +6883,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAntiMessage"
-    // InternalNavascript.g:2381:1: entryRuleAntiMessage returns [EObject current=null] : iv_ruleAntiMessage= ruleAntiMessage EOF ;
+    // InternalNavascript.g:2468:1: entryRuleAntiMessage returns [EObject current=null] : iv_ruleAntiMessage= ruleAntiMessage EOF ;
     public final EObject entryRuleAntiMessage() throws RecognitionException {
         EObject current = null;
 
@@ -6750,8 +6891,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2381:52: (iv_ruleAntiMessage= ruleAntiMessage EOF )
-            // InternalNavascript.g:2382:2: iv_ruleAntiMessage= ruleAntiMessage EOF
+            // InternalNavascript.g:2468:52: (iv_ruleAntiMessage= ruleAntiMessage EOF )
+            // InternalNavascript.g:2469:2: iv_ruleAntiMessage= ruleAntiMessage EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAntiMessageRule()); 
@@ -6782,7 +6923,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAntiMessage"
-    // InternalNavascript.g:2388:1: ruleAntiMessage returns [EObject current=null] : ( () otherlv_1= 'antimessage' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' ) ;
+    // InternalNavascript.g:2475:1: ruleAntiMessage returns [EObject current=null] : ( () otherlv_1= 'antimessage' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' ) ;
     public final EObject ruleAntiMessage() throws RecognitionException {
         EObject current = null;
 
@@ -6794,15 +6935,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2394:2: ( ( () otherlv_1= 'antimessage' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' ) )
-            // InternalNavascript.g:2395:2: ( () otherlv_1= 'antimessage' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' )
+            // InternalNavascript.g:2481:2: ( ( () otherlv_1= 'antimessage' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' ) )
+            // InternalNavascript.g:2482:2: ( () otherlv_1= 'antimessage' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' )
             {
-            // InternalNavascript.g:2395:2: ( () otherlv_1= 'antimessage' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' )
-            // InternalNavascript.g:2396:3: () otherlv_1= 'antimessage' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';'
+            // InternalNavascript.g:2482:2: ( () otherlv_1= 'antimessage' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';' )
+            // InternalNavascript.g:2483:3: () otherlv_1= 'antimessage' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) otherlv_3= ';'
             {
-            // InternalNavascript.g:2396:3: ()
-            // InternalNavascript.g:2397:4: 
+            // InternalNavascript.g:2483:3: ()
+            // InternalNavascript.g:2484:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -6813,17 +6959,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,56,FOLLOW_25); if (state.failed) return current;
+            otherlv_1=(Token)match(input,57,FOLLOW_25); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getAntiMessageAccess().getAntimessageKeyword_1());
               		
             }
-            // InternalNavascript.g:2407:3: ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) )
-            // InternalNavascript.g:2408:4: (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:2497:3: ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) )
+            // InternalNavascript.g:2498:4: (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER )
             {
-            // InternalNavascript.g:2408:4: (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER )
-            // InternalNavascript.g:2409:5: lv_messageName_2_0= RULE_QUOTED_IDENTIFIER
+            // InternalNavascript.g:2498:4: (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:2499:5: lv_messageName_2_0= RULE_QUOTED_IDENTIFIER
             {
             lv_messageName_2_0=(Token)match(input,RULE_QUOTED_IDENTIFIER,FOLLOW_22); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -6849,7 +6995,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getAntiMessageAccess().getSemicolonKeyword_3());
@@ -6880,7 +7026,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMessage"
-    // InternalNavascript.g:2433:1: entryRuleMessage returns [EObject current=null] : iv_ruleMessage= ruleMessage EOF ;
+    // InternalNavascript.g:2523:1: entryRuleMessage returns [EObject current=null] : iv_ruleMessage= ruleMessage EOF ;
     public final EObject entryRuleMessage() throws RecognitionException {
         EObject current = null;
 
@@ -6888,8 +7034,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2433:48: (iv_ruleMessage= ruleMessage EOF )
-            // InternalNavascript.g:2434:2: iv_ruleMessage= ruleMessage EOF
+            // InternalNavascript.g:2523:48: (iv_ruleMessage= ruleMessage EOF )
+            // InternalNavascript.g:2524:2: iv_ruleMessage= ruleMessage EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMessageRule()); 
@@ -6920,7 +7066,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMessage"
-    // InternalNavascript.g:2440:1: ruleMessage returns [EObject current=null] : ( () otherlv_1= 'message' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )? ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']' ) ) ) ;
+    // InternalNavascript.g:2530:1: ruleMessage returns [EObject current=null] : ( () otherlv_1= 'message' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )? ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) )? otherlv_14= ']' ) ) ) ;
     public final EObject ruleMessage() throws RecognitionException {
         EObject current = null;
 
@@ -6948,15 +7094,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2446:2: ( ( () otherlv_1= 'message' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )? ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']' ) ) ) )
-            // InternalNavascript.g:2447:2: ( () otherlv_1= 'message' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )? ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']' ) ) )
+            // InternalNavascript.g:2536:2: ( ( () otherlv_1= 'message' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )? ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) )? otherlv_14= ']' ) ) ) )
+            // InternalNavascript.g:2537:2: ( () otherlv_1= 'message' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )? ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) )? otherlv_14= ']' ) ) )
             {
-            // InternalNavascript.g:2447:2: ( () otherlv_1= 'message' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )? ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']' ) ) )
-            // InternalNavascript.g:2448:3: () otherlv_1= 'message' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )? ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']' ) )
+            // InternalNavascript.g:2537:2: ( () otherlv_1= 'message' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )? ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) )? otherlv_14= ']' ) ) )
+            // InternalNavascript.g:2538:3: () otherlv_1= 'message' ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )? ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) )? otherlv_14= ']' ) )
             {
-            // InternalNavascript.g:2448:3: ()
-            // InternalNavascript.g:2449:4: 
+            // InternalNavascript.g:2538:3: ()
+            // InternalNavascript.g:2539:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -6967,17 +7118,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,57,FOLLOW_25); if (state.failed) return current;
+            otherlv_1=(Token)match(input,58,FOLLOW_25); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getMessageAccess().getMessageKeyword_1());
               		
             }
-            // InternalNavascript.g:2459:3: ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) )
-            // InternalNavascript.g:2460:4: (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:2552:3: ( (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER ) )
+            // InternalNavascript.g:2553:4: (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER )
             {
-            // InternalNavascript.g:2460:4: (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER )
-            // InternalNavascript.g:2461:5: lv_messageName_2_0= RULE_QUOTED_IDENTIFIER
+            // InternalNavascript.g:2553:4: (lv_messageName_2_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:2554:5: lv_messageName_2_0= RULE_QUOTED_IDENTIFIER
             {
             lv_messageName_2_0=(Token)match(input,RULE_QUOTED_IDENTIFIER,FOLLOW_34); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -7003,28 +7154,28 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:2477:3: (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )?
+            // InternalNavascript.g:2570:3: (otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')' )?
             int alt39=2;
             int LA39_0 = input.LA(1);
 
-            if ( (LA39_0==30) ) {
+            if ( (LA39_0==31) ) {
                 alt39=1;
             }
             switch (alt39) {
                 case 1 :
-                    // InternalNavascript.g:2478:4: otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')'
+                    // InternalNavascript.g:2571:4: otherlv_3= '(' ( (lv_arguments_4_0= ruleMessageArguments ) ) otherlv_5= ')'
                     {
-                    otherlv_3=(Token)match(input,30,FOLLOW_35); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,31,FOLLOW_35); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getMessageAccess().getLeftParenthesisKeyword_3_0());
                       			
                     }
-                    // InternalNavascript.g:2482:4: ( (lv_arguments_4_0= ruleMessageArguments ) )
-                    // InternalNavascript.g:2483:5: (lv_arguments_4_0= ruleMessageArguments )
+                    // InternalNavascript.g:2575:4: ( (lv_arguments_4_0= ruleMessageArguments ) )
+                    // InternalNavascript.g:2576:5: (lv_arguments_4_0= ruleMessageArguments )
                     {
-                    // InternalNavascript.g:2483:5: (lv_arguments_4_0= ruleMessageArguments )
-                    // InternalNavascript.g:2484:6: lv_arguments_4_0= ruleMessageArguments
+                    // InternalNavascript.g:2576:5: (lv_arguments_4_0= ruleMessageArguments )
+                    // InternalNavascript.g:2577:6: lv_arguments_4_0= ruleMessageArguments
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7055,7 +7206,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,31,FOLLOW_36); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,32,FOLLOW_36); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_5, grammarAccess.getMessageAccess().getRightParenthesisKeyword_3_2());
@@ -7067,162 +7218,69 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:2506:3: ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']' ) )
-            int alt42=3;
+            // InternalNavascript.g:2599:3: ( (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' ) | otherlv_11= ';' | (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) )? otherlv_14= ']' ) )
+            int alt43=3;
             switch ( input.LA(1) ) {
-            case 27:
+            case 28:
                 {
-                alt42=1;
+                alt43=1;
                 }
                 break;
-            case 42:
+            case 43:
                 {
-                alt42=2;
+                alt43=2;
                 }
                 break;
-            case 58:
+            case 59:
                 {
-                alt42=3;
+                alt43=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 42, 0, input);
+                    new NoViableAltException("", 43, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt42) {
+            switch (alt43) {
                 case 1 :
-                    // InternalNavascript.g:2507:4: (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' )
+                    // InternalNavascript.g:2600:4: (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' )
                     {
-                    // InternalNavascript.g:2507:4: (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' )
-                    // InternalNavascript.g:2508:5: otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}'
+                    // InternalNavascript.g:2600:4: (otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}' )
+                    // InternalNavascript.g:2601:5: otherlv_6= '{' ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) ) otherlv_10= '}'
                     {
-                    otherlv_6=(Token)match(input,27,FOLLOW_37); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,28,FOLLOW_37); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_6, grammarAccess.getMessageAccess().getLeftCurlyBracketKeyword_4_0_0());
                       				
                     }
-                    // InternalNavascript.g:2512:5: ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) )
+                    // InternalNavascript.g:2605:5: ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) )
                     int alt41=3;
-                    switch ( input.LA(1) ) {
-                    case RULE_METHOD_IDENTIFIER:
-                    case 25:
-                    case 27:
-                    case 28:
-                    case 41:
-                    case 47:
-                    case 49:
-                    case 50:
-                    case 52:
-                    case 53:
-                    case 55:
-                    case 56:
-                    case 57:
-                    case 62:
-                    case 63:
-                    case 65:
-                    case 66:
-                    case 67:
-                        {
-                        alt41=1;
-                        }
-                        break;
-                    case RULE_MAPPABLE_IDENTIFIER:
-                        {
-                        switch ( input.LA(2) ) {
-                        case RULE_MAPPABLE_IDENTIFIER:
-                        case 34:
-                        case 35:
-                            {
-                            alt41=1;
-                            }
-                            break;
-                        case 30:
-                            {
-                            int LA41_4 = input.LA(3);
-
-                            if ( (LA41_4==RULE_IDENTIFIER||(LA41_4>=102 && LA41_4<=104)) ) {
-                                alt41=1;
-                            }
-                            else if ( (LA41_4==54) ) {
-                                alt41=2;
-                            }
-                            else {
-                                if (state.backtracking>0) {state.failed=true; return current;}
-                                NoViableAltException nvae =
-                                    new NoViableAltException("", 41, 4, input);
-
-                                throw nvae;
-                            }
-                            }
-                            break;
-                        case 27:
-                            {
-                            int LA41_5 = input.LA(3);
-
-                            if ( ((LA41_5>=RULE_METHOD_IDENTIFIER && LA41_5<=RULE_MAPPABLE_IDENTIFIER)||LA41_5==25||(LA41_5>=27 && LA41_5<=28)||LA41_5==41||LA41_5==47||(LA41_5>=49 && LA41_5<=50)||(LA41_5>=52 && LA41_5<=53)||(LA41_5>=55 && LA41_5<=57)||(LA41_5>=62 && LA41_5<=63)||(LA41_5>=65 && LA41_5<=67)) ) {
-                                alt41=2;
-                            }
-                            else if ( (LA41_5==RULE_TML_LITERAL) ) {
-                                alt41=1;
-                            }
-                            else {
-                                if (state.backtracking>0) {state.failed=true; return current;}
-                                NoViableAltException nvae =
-                                    new NoViableAltException("", 41, 5, input);
-
-                                throw nvae;
-                            }
-                            }
-                            break;
-                        default:
-                            if (state.backtracking>0) {state.failed=true; return current;}
-                            NoViableAltException nvae =
-                                new NoViableAltException("", 41, 2, input);
-
-                            throw nvae;
-                        }
-
-                        }
-                        break;
-                    case RULE_TML_LITERAL:
-                        {
-                        alt41=3;
-                        }
-                        break;
-                    default:
-                        if (state.backtracking>0) {state.failed=true; return current;}
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 41, 0, input);
-
-                        throw nvae;
-                    }
-
+                    alt41 = dfa41.predict(input);
                     switch (alt41) {
                         case 1 :
-                            // InternalNavascript.g:2513:6: ( (lv_statements_7_0= ruleInnerBody ) )*
+                            // InternalNavascript.g:2606:6: ( (lv_statements_7_0= ruleInnerBody ) )*
                             {
-                            // InternalNavascript.g:2513:6: ( (lv_statements_7_0= ruleInnerBody ) )*
+                            // InternalNavascript.g:2606:6: ( (lv_statements_7_0= ruleInnerBody ) )*
                             loop40:
                             do {
                                 int alt40=2;
                                 int LA40_0 = input.LA(1);
 
-                                if ( ((LA40_0>=RULE_METHOD_IDENTIFIER && LA40_0<=RULE_MAPPABLE_IDENTIFIER)||LA40_0==25||LA40_0==27||LA40_0==41||LA40_0==47||(LA40_0>=49 && LA40_0<=50)||(LA40_0>=52 && LA40_0<=53)||(LA40_0>=55 && LA40_0<=57)||(LA40_0>=62 && LA40_0<=63)||(LA40_0>=65 && LA40_0<=67)) ) {
+                                if ( ((LA40_0>=RULE_METHOD_IDENTIFIER && LA40_0<=RULE_MAPPABLE_IDENTIFIER)||LA40_0==26||LA40_0==28||LA40_0==42||LA40_0==48||(LA40_0>=50 && LA40_0<=51)||(LA40_0>=53 && LA40_0<=54)||(LA40_0>=56 && LA40_0<=58)||(LA40_0>=63 && LA40_0<=64)||(LA40_0>=66 && LA40_0<=68)) ) {
                                     alt40=1;
                                 }
 
 
                                 switch (alt40) {
                             	case 1 :
-                            	    // InternalNavascript.g:2514:7: (lv_statements_7_0= ruleInnerBody )
+                            	    // InternalNavascript.g:2607:7: (lv_statements_7_0= ruleInnerBody )
                             	    {
-                            	    // InternalNavascript.g:2514:7: (lv_statements_7_0= ruleInnerBody )
-                            	    // InternalNavascript.g:2515:8: lv_statements_7_0= ruleInnerBody
+                            	    // InternalNavascript.g:2607:7: (lv_statements_7_0= ruleInnerBody )
+                            	    // InternalNavascript.g:2608:8: lv_statements_7_0= ruleInnerBody
                             	    {
                             	    if ( state.backtracking==0 ) {
 
@@ -7263,13 +7321,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:2533:6: ( (lv_arrayField_8_0= ruleMappedArrayField ) )
+                            // InternalNavascript.g:2626:6: ( (lv_arrayField_8_0= ruleMappedArrayField ) )
                             {
-                            // InternalNavascript.g:2533:6: ( (lv_arrayField_8_0= ruleMappedArrayField ) )
-                            // InternalNavascript.g:2534:7: (lv_arrayField_8_0= ruleMappedArrayField )
+                            // InternalNavascript.g:2626:6: ( (lv_arrayField_8_0= ruleMappedArrayField ) )
+                            // InternalNavascript.g:2627:7: (lv_arrayField_8_0= ruleMappedArrayField )
                             {
-                            // InternalNavascript.g:2534:7: (lv_arrayField_8_0= ruleMappedArrayField )
-                            // InternalNavascript.g:2535:8: lv_arrayField_8_0= ruleMappedArrayField
+                            // InternalNavascript.g:2627:7: (lv_arrayField_8_0= ruleMappedArrayField )
+                            // InternalNavascript.g:2628:8: lv_arrayField_8_0= ruleMappedArrayField
                             {
                             if ( state.backtracking==0 ) {
 
@@ -7304,13 +7362,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 3 :
-                            // InternalNavascript.g:2553:6: ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) )
+                            // InternalNavascript.g:2646:6: ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) )
                             {
-                            // InternalNavascript.g:2553:6: ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) )
-                            // InternalNavascript.g:2554:7: (lv_arrayMessage_9_0= ruleMappedArrayMessage )
+                            // InternalNavascript.g:2646:6: ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) )
+                            // InternalNavascript.g:2647:7: (lv_arrayMessage_9_0= ruleMappedArrayMessage )
                             {
-                            // InternalNavascript.g:2554:7: (lv_arrayMessage_9_0= ruleMappedArrayMessage )
-                            // InternalNavascript.g:2555:8: lv_arrayMessage_9_0= ruleMappedArrayMessage
+                            // InternalNavascript.g:2647:7: (lv_arrayMessage_9_0= ruleMappedArrayMessage )
+                            // InternalNavascript.g:2648:8: lv_arrayMessage_9_0= ruleMappedArrayMessage
                             {
                             if ( state.backtracking==0 ) {
 
@@ -7347,7 +7405,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_10, grammarAccess.getMessageAccess().getRightCurlyBracketKeyword_4_0_2());
@@ -7360,9 +7418,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:2579:4: otherlv_11= ';'
+                    // InternalNavascript.g:2672:4: otherlv_11= ';'
                     {
-                    otherlv_11=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_11, grammarAccess.getMessageAccess().getSemicolonKeyword_4_1());
@@ -7372,53 +7430,64 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:2584:4: (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']' )
+                    // InternalNavascript.g:2677:4: (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) )? otherlv_14= ']' )
                     {
-                    // InternalNavascript.g:2584:4: (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']' )
-                    // InternalNavascript.g:2585:5: otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) ) otherlv_14= ']'
+                    // InternalNavascript.g:2677:4: (otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) )? otherlv_14= ']' )
+                    // InternalNavascript.g:2678:5: otherlv_12= '[' ( (lv_messageArray_13_0= ruleMessageArray ) )? otherlv_14= ']'
                     {
-                    otherlv_12=(Token)match(input,58,FOLLOW_14); if (state.failed) return current;
+                    otherlv_12=(Token)match(input,59,FOLLOW_38); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_12, grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0());
                       				
                     }
-                    // InternalNavascript.g:2589:5: ( (lv_messageArray_13_0= ruleMessageArray ) )
-                    // InternalNavascript.g:2590:6: (lv_messageArray_13_0= ruleMessageArray )
-                    {
-                    // InternalNavascript.g:2590:6: (lv_messageArray_13_0= ruleMessageArray )
-                    // InternalNavascript.g:2591:7: lv_messageArray_13_0= ruleMessageArray
-                    {
-                    if ( state.backtracking==0 ) {
+                    // InternalNavascript.g:2682:5: ( (lv_messageArray_13_0= ruleMessageArray ) )?
+                    int alt42=2;
+                    int LA42_0 = input.LA(1);
 
-                      							newCompositeNode(grammarAccess.getMessageAccess().getMessageArrayMessageArrayParserRuleCall_4_2_1_0());
-                      						
+                    if ( (LA42_0==28) ) {
+                        alt42=1;
                     }
-                    pushFollow(FOLLOW_38);
-                    lv_messageArray_13_0=ruleMessageArray();
+                    switch (alt42) {
+                        case 1 :
+                            // InternalNavascript.g:2683:6: (lv_messageArray_13_0= ruleMessageArray )
+                            {
+                            // InternalNavascript.g:2683:6: (lv_messageArray_13_0= ruleMessageArray )
+                            // InternalNavascript.g:2684:7: lv_messageArray_13_0= ruleMessageArray
+                            {
+                            if ( state.backtracking==0 ) {
 
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
+                              							newCompositeNode(grammarAccess.getMessageAccess().getMessageArrayMessageArrayParserRuleCall_4_2_1_0());
+                              						
+                            }
+                            pushFollow(FOLLOW_39);
+                            lv_messageArray_13_0=ruleMessageArray();
 
-                      							if (current==null) {
-                      								current = createModelElementForParent(grammarAccess.getMessageRule());
-                      							}
-                      							set(
-                      								current,
-                      								"messageArray",
-                      								lv_messageArray_13_0,
-                      								"com.dexels.navajo.Navascript.MessageArray");
-                      							afterParserOrEnumRuleCall();
-                      						
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                              							if (current==null) {
+                              								current = createModelElementForParent(grammarAccess.getMessageRule());
+                              							}
+                              							set(
+                              								current,
+                              								"messageArray",
+                              								lv_messageArray_13_0,
+                              								"com.dexels.navajo.Navascript.MessageArray");
+                              							afterParserOrEnumRuleCall();
+                              						
+                            }
+
+                            }
+
+
+                            }
+                            break;
+
                     }
 
-                    }
-
-
-                    }
-
-                    otherlv_14=(Token)match(input,59,FOLLOW_2); if (state.failed) return current;
+                    otherlv_14=(Token)match(input,60,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_14, grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2());
@@ -7458,7 +7527,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMessageArray"
-    // InternalNavascript.g:2618:1: entryRuleMessageArray returns [EObject current=null] : iv_ruleMessageArray= ruleMessageArray EOF ;
+    // InternalNavascript.g:2711:1: entryRuleMessageArray returns [EObject current=null] : iv_ruleMessageArray= ruleMessageArray EOF ;
     public final EObject entryRuleMessageArray() throws RecognitionException {
         EObject current = null;
 
@@ -7466,8 +7535,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2618:53: (iv_ruleMessageArray= ruleMessageArray EOF )
-            // InternalNavascript.g:2619:2: iv_ruleMessageArray= ruleMessageArray EOF
+            // InternalNavascript.g:2711:53: (iv_ruleMessageArray= ruleMessageArray EOF )
+            // InternalNavascript.g:2712:2: iv_ruleMessageArray= ruleMessageArray EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMessageArrayRule()); 
@@ -7498,7 +7567,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMessageArray"
-    // InternalNavascript.g:2625:1: ruleMessageArray returns [EObject current=null] : ( ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) ) (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )* ) ;
+    // InternalNavascript.g:2718:1: ruleMessageArray returns [EObject current=null] : ( ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) ) (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )* ) ;
     public final EObject ruleMessageArray() throws RecognitionException {
         EObject current = null;
 
@@ -7512,17 +7581,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2631:2: ( ( ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) ) (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )* ) )
-            // InternalNavascript.g:2632:2: ( ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) ) (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )* )
+            // InternalNavascript.g:2724:2: ( ( ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) ) (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )* ) )
+            // InternalNavascript.g:2725:2: ( ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) ) (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )* )
             {
-            // InternalNavascript.g:2632:2: ( ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) ) (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )* )
-            // InternalNavascript.g:2633:3: ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) ) (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )*
+            // InternalNavascript.g:2725:2: ( ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) ) (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )* )
+            // InternalNavascript.g:2726:3: ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) ) (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )*
             {
-            // InternalNavascript.g:2633:3: ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) )
-            // InternalNavascript.g:2634:4: (lv_arrayMessageElements_0_0= ruleMessageArrayElement )
+            // InternalNavascript.g:2726:3: ( (lv_arrayMessageElements_0_0= ruleMessageArrayElement ) )
+            // InternalNavascript.g:2727:4: (lv_arrayMessageElements_0_0= ruleMessageArrayElement )
             {
-            // InternalNavascript.g:2634:4: (lv_arrayMessageElements_0_0= ruleMessageArrayElement )
-            // InternalNavascript.g:2635:5: lv_arrayMessageElements_0_0= ruleMessageArrayElement
+            // InternalNavascript.g:2727:4: (lv_arrayMessageElements_0_0= ruleMessageArrayElement )
+            // InternalNavascript.g:2728:5: lv_arrayMessageElements_0_0= ruleMessageArrayElement
             {
             if ( state.backtracking==0 ) {
 
@@ -7553,32 +7622,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:2652:3: (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )*
-            loop43:
+            // InternalNavascript.g:2745:3: (otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) ) )*
+            loop44:
             do {
-                int alt43=2;
-                int LA43_0 = input.LA(1);
+                int alt44=2;
+                int LA44_0 = input.LA(1);
 
-                if ( (LA43_0==32) ) {
-                    alt43=1;
+                if ( (LA44_0==33) ) {
+                    alt44=1;
                 }
 
 
-                switch (alt43) {
+                switch (alt44) {
             	case 1 :
-            	    // InternalNavascript.g:2653:4: otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) )
+            	    // InternalNavascript.g:2746:4: otherlv_1= ',' ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) )
             	    {
-            	    otherlv_1=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
+            	    otherlv_1=(Token)match(input,33,FOLLOW_14); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_1, grammarAccess.getMessageArrayAccess().getCommaKeyword_1_0());
             	      			
             	    }
-            	    // InternalNavascript.g:2657:4: ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) )
-            	    // InternalNavascript.g:2658:5: (lv_arrayMessageElements_2_0= ruleMessageArrayElement )
+            	    // InternalNavascript.g:2750:4: ( (lv_arrayMessageElements_2_0= ruleMessageArrayElement ) )
+            	    // InternalNavascript.g:2751:5: (lv_arrayMessageElements_2_0= ruleMessageArrayElement )
             	    {
-            	    // InternalNavascript.g:2658:5: (lv_arrayMessageElements_2_0= ruleMessageArrayElement )
-            	    // InternalNavascript.g:2659:6: lv_arrayMessageElements_2_0= ruleMessageArrayElement
+            	    // InternalNavascript.g:2751:5: (lv_arrayMessageElements_2_0= ruleMessageArrayElement )
+            	    // InternalNavascript.g:2752:6: lv_arrayMessageElements_2_0= ruleMessageArrayElement
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -7614,7 +7683,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop43;
+            	    break loop44;
                 }
             } while (true);
 
@@ -7643,7 +7712,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMessageArrayElement"
-    // InternalNavascript.g:2681:1: entryRuleMessageArrayElement returns [EObject current=null] : iv_ruleMessageArrayElement= ruleMessageArrayElement EOF ;
+    // InternalNavascript.g:2774:1: entryRuleMessageArrayElement returns [EObject current=null] : iv_ruleMessageArrayElement= ruleMessageArrayElement EOF ;
     public final EObject entryRuleMessageArrayElement() throws RecognitionException {
         EObject current = null;
 
@@ -7651,8 +7720,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2681:60: (iv_ruleMessageArrayElement= ruleMessageArrayElement EOF )
-            // InternalNavascript.g:2682:2: iv_ruleMessageArrayElement= ruleMessageArrayElement EOF
+            // InternalNavascript.g:2774:60: (iv_ruleMessageArrayElement= ruleMessageArrayElement EOF )
+            // InternalNavascript.g:2775:2: iv_ruleMessageArrayElement= ruleMessageArrayElement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMessageArrayElementRule()); 
@@ -7683,7 +7752,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMessageArrayElement"
-    // InternalNavascript.g:2688:1: ruleMessageArrayElement returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' ) ;
+    // InternalNavascript.g:2781:1: ruleMessageArrayElement returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' ) ;
     public final EObject ruleMessageArrayElement() throws RecognitionException {
         EObject current = null;
 
@@ -7696,15 +7765,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2694:2: ( ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' ) )
-            // InternalNavascript.g:2695:2: ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' )
+            // InternalNavascript.g:2787:2: ( ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' ) )
+            // InternalNavascript.g:2788:2: ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' )
             {
-            // InternalNavascript.g:2695:2: ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' )
-            // InternalNavascript.g:2696:3: () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}'
+            // InternalNavascript.g:2788:2: ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' )
+            // InternalNavascript.g:2789:3: () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}'
             {
-            // InternalNavascript.g:2696:3: ()
-            // InternalNavascript.g:2697:4: 
+            // InternalNavascript.g:2789:3: ()
+            // InternalNavascript.g:2790:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -7715,29 +7789,29 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
+            otherlv_1=(Token)match(input,28,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getMessageArrayElementAccess().getLeftCurlyBracketKeyword_1());
               		
             }
-            // InternalNavascript.g:2707:3: ( (lv_statements_2_0= ruleInnerBody ) )*
-            loop44:
+            // InternalNavascript.g:2803:3: ( (lv_statements_2_0= ruleInnerBody ) )*
+            loop45:
             do {
-                int alt44=2;
-                int LA44_0 = input.LA(1);
+                int alt45=2;
+                int LA45_0 = input.LA(1);
 
-                if ( ((LA44_0>=RULE_METHOD_IDENTIFIER && LA44_0<=RULE_MAPPABLE_IDENTIFIER)||LA44_0==25||LA44_0==27||LA44_0==41||LA44_0==47||(LA44_0>=49 && LA44_0<=50)||(LA44_0>=52 && LA44_0<=53)||(LA44_0>=55 && LA44_0<=57)||(LA44_0>=62 && LA44_0<=63)||(LA44_0>=65 && LA44_0<=67)) ) {
-                    alt44=1;
+                if ( ((LA45_0>=RULE_METHOD_IDENTIFIER && LA45_0<=RULE_MAPPABLE_IDENTIFIER)||LA45_0==26||LA45_0==28||LA45_0==42||LA45_0==48||(LA45_0>=50 && LA45_0<=51)||(LA45_0>=53 && LA45_0<=54)||(LA45_0>=56 && LA45_0<=58)||(LA45_0>=63 && LA45_0<=64)||(LA45_0>=66 && LA45_0<=68)) ) {
+                    alt45=1;
                 }
 
 
-                switch (alt44) {
+                switch (alt45) {
             	case 1 :
-            	    // InternalNavascript.g:2708:4: (lv_statements_2_0= ruleInnerBody )
+            	    // InternalNavascript.g:2804:4: (lv_statements_2_0= ruleInnerBody )
             	    {
-            	    // InternalNavascript.g:2708:4: (lv_statements_2_0= ruleInnerBody )
-            	    // InternalNavascript.g:2709:5: lv_statements_2_0= ruleInnerBody
+            	    // InternalNavascript.g:2804:4: (lv_statements_2_0= ruleInnerBody )
+            	    // InternalNavascript.g:2805:5: lv_statements_2_0= ruleInnerBody
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -7770,11 +7844,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop44;
+            	    break loop45;
                 }
             } while (true);
 
-            otherlv_3=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getMessageArrayElementAccess().getRightCurlyBracketKeyword_3());
@@ -7805,7 +7879,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMessageArgument"
-    // InternalNavascript.g:2734:1: entryRuleMessageArgument returns [EObject current=null] : iv_ruleMessageArgument= ruleMessageArgument EOF ;
+    // InternalNavascript.g:2830:1: entryRuleMessageArgument returns [EObject current=null] : iv_ruleMessageArgument= ruleMessageArgument EOF ;
     public final EObject entryRuleMessageArgument() throws RecognitionException {
         EObject current = null;
 
@@ -7813,8 +7887,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2734:56: (iv_ruleMessageArgument= ruleMessageArgument EOF )
-            // InternalNavascript.g:2735:2: iv_ruleMessageArgument= ruleMessageArgument EOF
+            // InternalNavascript.g:2830:56: (iv_ruleMessageArgument= ruleMessageArgument EOF )
+            // InternalNavascript.g:2831:2: iv_ruleMessageArgument= ruleMessageArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMessageArgumentRule()); 
@@ -7845,7 +7919,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMessageArgument"
-    // InternalNavascript.g:2741:1: ruleMessageArgument returns [EObject current=null] : ( (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType ) | (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode ) ) ;
+    // InternalNavascript.g:2837:1: ruleMessageArgument returns [EObject current=null] : ( (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType ) | (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode ) ) ;
     public final EObject ruleMessageArgument() throws RecognitionException {
         EObject current = null;
 
@@ -7864,61 +7938,61 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2747:2: ( ( (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType ) | (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode ) ) )
-            // InternalNavascript.g:2748:2: ( (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType ) | (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode ) )
+            // InternalNavascript.g:2843:2: ( ( (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType ) | (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode ) ) )
+            // InternalNavascript.g:2844:2: ( (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType ) | (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode ) )
             {
-            // InternalNavascript.g:2748:2: ( (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType ) | (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode ) )
-            int alt47=2;
-            int LA47_0 = input.LA(1);
+            // InternalNavascript.g:2844:2: ( (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType ) | (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode ) )
+            int alt48=2;
+            int LA48_0 = input.LA(1);
 
-            if ( (LA47_0==60) ) {
-                alt47=1;
+            if ( (LA48_0==61) ) {
+                alt48=1;
             }
-            else if ( (LA47_0==61) ) {
-                alt47=2;
+            else if ( (LA48_0==62) ) {
+                alt48=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 47, 0, input);
+                    new NoViableAltException("", 48, 0, input);
 
                 throw nvae;
             }
-            switch (alt47) {
+            switch (alt48) {
                 case 1 :
-                    // InternalNavascript.g:2749:3: (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType )
+                    // InternalNavascript.g:2845:3: (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType )
                     {
-                    // InternalNavascript.g:2749:3: (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType )
-                    // InternalNavascript.g:2750:4: otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType
+                    // InternalNavascript.g:2845:3: (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType )
+                    // InternalNavascript.g:2846:4: otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) this_MessageType_3= ruleMessageType
                     {
-                    otherlv_0=(Token)match(input,60,FOLLOW_17); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,61,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_0, grammarAccess.getMessageArgumentAccess().getTypeKeyword_0_0());
                       			
                     }
-                    // InternalNavascript.g:2754:4: (otherlv_1= '=' | otherlv_2= ':' )
-                    int alt45=2;
-                    int LA45_0 = input.LA(1);
+                    // InternalNavascript.g:2850:4: (otherlv_1= '=' | otherlv_2= ':' )
+                    int alt46=2;
+                    int LA46_0 = input.LA(1);
 
-                    if ( (LA45_0==34) ) {
-                        alt45=1;
+                    if ( (LA46_0==35) ) {
+                        alt46=1;
                     }
-                    else if ( (LA45_0==35) ) {
-                        alt45=2;
+                    else if ( (LA46_0==36) ) {
+                        alt46=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 45, 0, input);
+                            new NoViableAltException("", 46, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt45) {
+                    switch (alt46) {
                         case 1 :
-                            // InternalNavascript.g:2755:5: otherlv_1= '='
+                            // InternalNavascript.g:2851:5: otherlv_1= '='
                             {
-                            otherlv_1=(Token)match(input,34,FOLLOW_39); if (state.failed) return current;
+                            otherlv_1=(Token)match(input,35,FOLLOW_40); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_1, grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_0_1_0());
@@ -7928,9 +8002,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:2760:5: otherlv_2= ':'
+                            // InternalNavascript.g:2856:5: otherlv_2= ':'
                             {
-                            otherlv_2=(Token)match(input,35,FOLLOW_39); if (state.failed) return current;
+                            otherlv_2=(Token)match(input,36,FOLLOW_40); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_2, grammarAccess.getMessageArgumentAccess().getColonKeyword_0_1_1());
@@ -7942,6 +8016,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
+                    if ( state.backtracking==0 ) {
+
+                      				/* */
+                      			
+                    }
                     if ( state.backtracking==0 ) {
 
                       				newCompositeNode(grammarAccess.getMessageArgumentAccess().getMessageTypeParserRuleCall_0_2());
@@ -7965,39 +8044,39 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:2775:3: (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode )
+                    // InternalNavascript.g:2874:3: (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode )
                     {
-                    // InternalNavascript.g:2775:3: (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode )
-                    // InternalNavascript.g:2776:4: otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode
+                    // InternalNavascript.g:2874:3: (otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode )
+                    // InternalNavascript.g:2875:4: otherlv_4= 'mode' (otherlv_5= '=' | otherlv_6= ':' ) this_MessageMode_7= ruleMessageMode
                     {
-                    otherlv_4=(Token)match(input,61,FOLLOW_17); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,62,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getMessageArgumentAccess().getModeKeyword_1_0());
                       			
                     }
-                    // InternalNavascript.g:2780:4: (otherlv_5= '=' | otherlv_6= ':' )
-                    int alt46=2;
-                    int LA46_0 = input.LA(1);
+                    // InternalNavascript.g:2879:4: (otherlv_5= '=' | otherlv_6= ':' )
+                    int alt47=2;
+                    int LA47_0 = input.LA(1);
 
-                    if ( (LA46_0==34) ) {
-                        alt46=1;
+                    if ( (LA47_0==35) ) {
+                        alt47=1;
                     }
-                    else if ( (LA46_0==35) ) {
-                        alt46=2;
+                    else if ( (LA47_0==36) ) {
+                        alt47=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 46, 0, input);
+                            new NoViableAltException("", 47, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt46) {
+                    switch (alt47) {
                         case 1 :
-                            // InternalNavascript.g:2781:5: otherlv_5= '='
+                            // InternalNavascript.g:2880:5: otherlv_5= '='
                             {
-                            otherlv_5=(Token)match(input,34,FOLLOW_40); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,35,FOLLOW_41); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_5, grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_1_1_0());
@@ -8007,9 +8086,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:2786:5: otherlv_6= ':'
+                            // InternalNavascript.g:2885:5: otherlv_6= ':'
                             {
-                            otherlv_6=(Token)match(input,35,FOLLOW_40); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,36,FOLLOW_41); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_6, grammarAccess.getMessageArgumentAccess().getColonKeyword_1_1_1());
@@ -8021,6 +8100,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
+                    if ( state.backtracking==0 ) {
+
+                      				/* */
+                      			
+                    }
                     if ( state.backtracking==0 ) {
 
                       				newCompositeNode(grammarAccess.getMessageArgumentAccess().getMessageModeParserRuleCall_1_2());
@@ -8068,7 +8152,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMessageArguments"
-    // InternalNavascript.g:2804:1: entryRuleMessageArguments returns [EObject current=null] : iv_ruleMessageArguments= ruleMessageArguments EOF ;
+    // InternalNavascript.g:2906:1: entryRuleMessageArguments returns [EObject current=null] : iv_ruleMessageArguments= ruleMessageArguments EOF ;
     public final EObject entryRuleMessageArguments() throws RecognitionException {
         EObject current = null;
 
@@ -8076,8 +8160,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2804:57: (iv_ruleMessageArguments= ruleMessageArguments EOF )
-            // InternalNavascript.g:2805:2: iv_ruleMessageArguments= ruleMessageArguments EOF
+            // InternalNavascript.g:2906:57: (iv_ruleMessageArguments= ruleMessageArguments EOF )
+            // InternalNavascript.g:2907:2: iv_ruleMessageArguments= ruleMessageArguments EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMessageArgumentsRule()); 
@@ -8108,7 +8192,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMessageArguments"
-    // InternalNavascript.g:2811:1: ruleMessageArguments returns [EObject current=null] : ( ( (lv_arguments_0_0= ruleMessageArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )* ) ;
+    // InternalNavascript.g:2913:1: ruleMessageArguments returns [EObject current=null] : ( ( (lv_arguments_0_0= ruleMessageArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )* ) ;
     public final EObject ruleMessageArguments() throws RecognitionException {
         EObject current = null;
 
@@ -8122,17 +8206,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2817:2: ( ( ( (lv_arguments_0_0= ruleMessageArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )* ) )
-            // InternalNavascript.g:2818:2: ( ( (lv_arguments_0_0= ruleMessageArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )* )
+            // InternalNavascript.g:2919:2: ( ( ( (lv_arguments_0_0= ruleMessageArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )* ) )
+            // InternalNavascript.g:2920:2: ( ( (lv_arguments_0_0= ruleMessageArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )* )
             {
-            // InternalNavascript.g:2818:2: ( ( (lv_arguments_0_0= ruleMessageArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )* )
-            // InternalNavascript.g:2819:3: ( (lv_arguments_0_0= ruleMessageArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )*
+            // InternalNavascript.g:2920:2: ( ( (lv_arguments_0_0= ruleMessageArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )* )
+            // InternalNavascript.g:2921:3: ( (lv_arguments_0_0= ruleMessageArgument ) ) (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )*
             {
-            // InternalNavascript.g:2819:3: ( (lv_arguments_0_0= ruleMessageArgument ) )
-            // InternalNavascript.g:2820:4: (lv_arguments_0_0= ruleMessageArgument )
+            // InternalNavascript.g:2921:3: ( (lv_arguments_0_0= ruleMessageArgument ) )
+            // InternalNavascript.g:2922:4: (lv_arguments_0_0= ruleMessageArgument )
             {
-            // InternalNavascript.g:2820:4: (lv_arguments_0_0= ruleMessageArgument )
-            // InternalNavascript.g:2821:5: lv_arguments_0_0= ruleMessageArgument
+            // InternalNavascript.g:2922:4: (lv_arguments_0_0= ruleMessageArgument )
+            // InternalNavascript.g:2923:5: lv_arguments_0_0= ruleMessageArgument
             {
             if ( state.backtracking==0 ) {
 
@@ -8163,32 +8247,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:2838:3: (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )*
-            loop48:
+            // InternalNavascript.g:2940:3: (otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) ) )*
+            loop49:
             do {
-                int alt48=2;
-                int LA48_0 = input.LA(1);
+                int alt49=2;
+                int LA49_0 = input.LA(1);
 
-                if ( (LA48_0==32) ) {
-                    alt48=1;
+                if ( (LA49_0==33) ) {
+                    alt49=1;
                 }
 
 
-                switch (alt48) {
+                switch (alt49) {
             	case 1 :
-            	    // InternalNavascript.g:2839:4: otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) )
+            	    // InternalNavascript.g:2941:4: otherlv_1= ',' ( (lv_arguments_2_0= ruleMessageArgument ) )
             	    {
-            	    otherlv_1=(Token)match(input,32,FOLLOW_35); if (state.failed) return current;
+            	    otherlv_1=(Token)match(input,33,FOLLOW_35); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_1, grammarAccess.getMessageArgumentsAccess().getCommaKeyword_1_0());
             	      			
             	    }
-            	    // InternalNavascript.g:2843:4: ( (lv_arguments_2_0= ruleMessageArgument ) )
-            	    // InternalNavascript.g:2844:5: (lv_arguments_2_0= ruleMessageArgument )
+            	    // InternalNavascript.g:2945:4: ( (lv_arguments_2_0= ruleMessageArgument ) )
+            	    // InternalNavascript.g:2946:5: (lv_arguments_2_0= ruleMessageArgument )
             	    {
-            	    // InternalNavascript.g:2844:5: (lv_arguments_2_0= ruleMessageArgument )
-            	    // InternalNavascript.g:2845:6: lv_arguments_2_0= ruleMessageArgument
+            	    // InternalNavascript.g:2946:5: (lv_arguments_2_0= ruleMessageArgument )
+            	    // InternalNavascript.g:2947:6: lv_arguments_2_0= ruleMessageArgument
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -8224,7 +8308,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop48;
+            	    break loop49;
                 }
             } while (true);
 
@@ -8253,7 +8337,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMap"
-    // InternalNavascript.g:2867:1: entryRuleMap returns [EObject current=null] : iv_ruleMap= ruleMap EOF ;
+    // InternalNavascript.g:2969:1: entryRuleMap returns [EObject current=null] : iv_ruleMap= ruleMap EOF ;
     public final EObject entryRuleMap() throws RecognitionException {
         EObject current = null;
 
@@ -8261,8 +8345,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:2867:44: (iv_ruleMap= ruleMap EOF )
-            // InternalNavascript.g:2868:2: iv_ruleMap= ruleMap EOF
+            // InternalNavascript.g:2969:44: (iv_ruleMap= ruleMap EOF )
+            // InternalNavascript.g:2970:2: iv_ruleMap= ruleMap EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMapRule()); 
@@ -8293,7 +8377,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMap"
-    // InternalNavascript.g:2874:1: ruleMap returns [EObject current=null] : ( () ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) ) otherlv_15= '{' ( (lv_statements_16_0= ruleInnerBody ) )* otherlv_17= '}' ) ;
+    // InternalNavascript.g:2976:1: ruleMap returns [EObject current=null] : ( () ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) ) otherlv_15= '{' ( (lv_statements_16_0= ruleInnerBody ) )* otherlv_17= '}' ) ;
     public final EObject ruleMap() throws RecognitionException {
         EObject current = null;
 
@@ -8322,15 +8406,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:2880:2: ( ( () ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) ) otherlv_15= '{' ( (lv_statements_16_0= ruleInnerBody ) )* otherlv_17= '}' ) )
-            // InternalNavascript.g:2881:2: ( () ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) ) otherlv_15= '{' ( (lv_statements_16_0= ruleInnerBody ) )* otherlv_17= '}' )
+            // InternalNavascript.g:2982:2: ( ( () ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) ) otherlv_15= '{' ( (lv_statements_16_0= ruleInnerBody ) )* otherlv_17= '}' ) )
+            // InternalNavascript.g:2983:2: ( () ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) ) otherlv_15= '{' ( (lv_statements_16_0= ruleInnerBody ) )* otherlv_17= '}' )
             {
-            // InternalNavascript.g:2881:2: ( () ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) ) otherlv_15= '{' ( (lv_statements_16_0= ruleInnerBody ) )* otherlv_17= '}' )
-            // InternalNavascript.g:2882:3: () ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) ) otherlv_15= '{' ( (lv_statements_16_0= ruleInnerBody ) )* otherlv_17= '}'
+            // InternalNavascript.g:2983:2: ( () ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) ) otherlv_15= '{' ( (lv_statements_16_0= ruleInnerBody ) )* otherlv_17= '}' )
+            // InternalNavascript.g:2984:3: () ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) ) otherlv_15= '{' ( (lv_statements_16_0= ruleInnerBody ) )* otherlv_17= '}'
             {
-            // InternalNavascript.g:2882:3: ()
-            // InternalNavascript.g:2883:4: 
+            // InternalNavascript.g:2984:3: ()
+            // InternalNavascript.g:2985:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -8341,41 +8430,41 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:2889:3: ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) )
-            int alt53=2;
-            int LA53_0 = input.LA(1);
+            // InternalNavascript.g:2994:3: ( (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? ) | (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' ) )
+            int alt54=2;
+            int LA54_0 = input.LA(1);
 
-            if ( (LA53_0==62) ) {
-                alt53=1;
+            if ( (LA54_0==63) ) {
+                alt54=1;
             }
-            else if ( (LA53_0==63) ) {
-                alt53=2;
+            else if ( (LA54_0==64) ) {
+                alt54=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 53, 0, input);
+                    new NoViableAltException("", 54, 0, input);
 
                 throw nvae;
             }
-            switch (alt53) {
+            switch (alt54) {
                 case 1 :
-                    // InternalNavascript.g:2890:4: (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? )
+                    // InternalNavascript.g:2995:4: (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? )
                     {
-                    // InternalNavascript.g:2890:4: (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? )
-                    // InternalNavascript.g:2891:5: otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )?
+                    // InternalNavascript.g:2995:4: (otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )? )
+                    // InternalNavascript.g:2996:5: otherlv_1= 'map.' ( (lv_adapterName_2_0= RULE_IDENTIFIER ) ) (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )?
                     {
-                    otherlv_1=(Token)match(input,62,FOLLOW_41); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,63,FOLLOW_42); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_1, grammarAccess.getMapAccess().getMapKeyword_1_0_0());
                       				
                     }
-                    // InternalNavascript.g:2895:5: ( (lv_adapterName_2_0= RULE_IDENTIFIER ) )
-                    // InternalNavascript.g:2896:6: (lv_adapterName_2_0= RULE_IDENTIFIER )
+                    // InternalNavascript.g:3000:5: ( (lv_adapterName_2_0= RULE_IDENTIFIER ) )
+                    // InternalNavascript.g:3001:6: (lv_adapterName_2_0= RULE_IDENTIFIER )
                     {
-                    // InternalNavascript.g:2896:6: (lv_adapterName_2_0= RULE_IDENTIFIER )
-                    // InternalNavascript.g:2897:7: lv_adapterName_2_0= RULE_IDENTIFIER
+                    // InternalNavascript.g:3001:6: (lv_adapterName_2_0= RULE_IDENTIFIER )
+                    // InternalNavascript.g:3002:7: lv_adapterName_2_0= RULE_IDENTIFIER
                     {
                     lv_adapterName_2_0=(Token)match(input,RULE_IDENTIFIER,FOLLOW_32); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -8401,36 +8490,36 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:2913:5: (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )?
-                    int alt50=2;
-                    int LA50_0 = input.LA(1);
+                    // InternalNavascript.g:3018:5: (otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')' )?
+                    int alt51=2;
+                    int LA51_0 = input.LA(1);
 
-                    if ( (LA50_0==30) ) {
-                        alt50=1;
+                    if ( (LA51_0==31) ) {
+                        alt51=1;
                     }
-                    switch (alt50) {
+                    switch (alt51) {
                         case 1 :
-                            // InternalNavascript.g:2914:6: otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')'
+                            // InternalNavascript.g:3019:6: otherlv_3= '(' ( (lv_arguments_4_0= ruleKeyValueArguments ) )? otherlv_5= ')'
                             {
-                            otherlv_3=(Token)match(input,30,FOLLOW_42); if (state.failed) return current;
+                            otherlv_3=(Token)match(input,31,FOLLOW_43); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_3, grammarAccess.getMapAccess().getLeftParenthesisKeyword_1_0_2_0());
                               					
                             }
-                            // InternalNavascript.g:2918:6: ( (lv_arguments_4_0= ruleKeyValueArguments ) )?
-                            int alt49=2;
-                            int LA49_0 = input.LA(1);
+                            // InternalNavascript.g:3023:6: ( (lv_arguments_4_0= ruleKeyValueArguments ) )?
+                            int alt50=2;
+                            int LA50_0 = input.LA(1);
 
-                            if ( (LA49_0==RULE_IDENTIFIER||(LA49_0>=102 && LA49_0<=104)) ) {
-                                alt49=1;
+                            if ( (LA50_0==RULE_IDENTIFIER||(LA50_0>=103 && LA50_0<=105)) ) {
+                                alt50=1;
                             }
-                            switch (alt49) {
+                            switch (alt50) {
                                 case 1 :
-                                    // InternalNavascript.g:2919:7: (lv_arguments_4_0= ruleKeyValueArguments )
+                                    // InternalNavascript.g:3024:7: (lv_arguments_4_0= ruleKeyValueArguments )
                                     {
-                                    // InternalNavascript.g:2919:7: (lv_arguments_4_0= ruleKeyValueArguments )
-                                    // InternalNavascript.g:2920:8: lv_arguments_4_0= ruleKeyValueArguments
+                                    // InternalNavascript.g:3024:7: (lv_arguments_4_0= ruleKeyValueArguments )
+                                    // InternalNavascript.g:3025:8: lv_arguments_4_0= ruleKeyValueArguments
                                     {
                                     if ( state.backtracking==0 ) {
 
@@ -8464,7 +8553,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_5=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_5, grammarAccess.getMapAccess().getRightParenthesisKeyword_1_0_2_2());
@@ -8483,51 +8572,51 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:2944:4: (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' )
+                    // InternalNavascript.g:3049:4: (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' )
                     {
-                    // InternalNavascript.g:2944:4: (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' )
-                    // InternalNavascript.g:2945:5: otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')'
+                    // InternalNavascript.g:3049:4: (otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')' )
+                    // InternalNavascript.g:3050:5: otherlv_6= 'map' otherlv_7= '(' otherlv_8= 'object' (otherlv_9= '=' | otherlv_10= ':' ) ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) ) (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )? otherlv_14= ')'
                     {
-                    otherlv_6=(Token)match(input,63,FOLLOW_11); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,64,FOLLOW_11); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_6, grammarAccess.getMapAccess().getMapKeyword_1_1_0());
                       				
                     }
-                    otherlv_7=(Token)match(input,30,FOLLOW_43); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,31,FOLLOW_44); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_7, grammarAccess.getMapAccess().getLeftParenthesisKeyword_1_1_1());
                       				
                     }
-                    otherlv_8=(Token)match(input,64,FOLLOW_17); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,65,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_8, grammarAccess.getMapAccess().getObjectKeyword_1_1_2());
                       				
                     }
-                    // InternalNavascript.g:2957:5: (otherlv_9= '=' | otherlv_10= ':' )
-                    int alt51=2;
-                    int LA51_0 = input.LA(1);
+                    // InternalNavascript.g:3062:5: (otherlv_9= '=' | otherlv_10= ':' )
+                    int alt52=2;
+                    int LA52_0 = input.LA(1);
 
-                    if ( (LA51_0==34) ) {
-                        alt51=1;
+                    if ( (LA52_0==35) ) {
+                        alt52=1;
                     }
-                    else if ( (LA51_0==35) ) {
-                        alt51=2;
+                    else if ( (LA52_0==36) ) {
+                        alt52=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 51, 0, input);
+                            new NoViableAltException("", 52, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt51) {
+                    switch (alt52) {
                         case 1 :
-                            // InternalNavascript.g:2958:6: otherlv_9= '='
+                            // InternalNavascript.g:3063:6: otherlv_9= '='
                             {
-                            otherlv_9=(Token)match(input,34,FOLLOW_44); if (state.failed) return current;
+                            otherlv_9=(Token)match(input,35,FOLLOW_45); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_9, grammarAccess.getMapAccess().getEqualsSignKeyword_1_1_3_0());
@@ -8537,9 +8626,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:2963:6: otherlv_10= ':'
+                            // InternalNavascript.g:3068:6: otherlv_10= ':'
                             {
-                            otherlv_10=(Token)match(input,35,FOLLOW_44); if (state.failed) return current;
+                            otherlv_10=(Token)match(input,36,FOLLOW_45); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_10, grammarAccess.getMapAccess().getColonKeyword_1_1_3_1());
@@ -8551,11 +8640,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:2968:5: ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) )
-                    // InternalNavascript.g:2969:6: (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER )
+                    // InternalNavascript.g:3073:5: ( (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER ) )
+                    // InternalNavascript.g:3074:6: (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER )
                     {
-                    // InternalNavascript.g:2969:6: (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER )
-                    // InternalNavascript.g:2970:7: lv_objectName_11_0= RULE_OBJECT_IDENTIFIER
+                    // InternalNavascript.g:3074:6: (lv_objectName_11_0= RULE_OBJECT_IDENTIFIER )
+                    // InternalNavascript.g:3075:7: lv_objectName_11_0= RULE_OBJECT_IDENTIFIER
                     {
                     lv_objectName_11_0=(Token)match(input,RULE_OBJECT_IDENTIFIER,FOLLOW_28); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -8581,28 +8670,28 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:2986:5: (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )?
-                    int alt52=2;
-                    int LA52_0 = input.LA(1);
+                    // InternalNavascript.g:3091:5: (otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) ) )?
+                    int alt53=2;
+                    int LA53_0 = input.LA(1);
 
-                    if ( (LA52_0==32) ) {
-                        alt52=1;
+                    if ( (LA53_0==33) ) {
+                        alt53=1;
                     }
-                    switch (alt52) {
+                    switch (alt53) {
                         case 1 :
-                            // InternalNavascript.g:2987:6: otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) )
+                            // InternalNavascript.g:3092:6: otherlv_12= ',' ( (lv_arguments_13_0= ruleKeyValueArguments ) )
                             {
-                            otherlv_12=(Token)match(input,32,FOLLOW_45); if (state.failed) return current;
+                            otherlv_12=(Token)match(input,33,FOLLOW_46); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_12, grammarAccess.getMapAccess().getCommaKeyword_1_1_5_0());
                               					
                             }
-                            // InternalNavascript.g:2991:6: ( (lv_arguments_13_0= ruleKeyValueArguments ) )
-                            // InternalNavascript.g:2992:7: (lv_arguments_13_0= ruleKeyValueArguments )
+                            // InternalNavascript.g:3096:6: ( (lv_arguments_13_0= ruleKeyValueArguments ) )
+                            // InternalNavascript.g:3097:7: (lv_arguments_13_0= ruleKeyValueArguments )
                             {
-                            // InternalNavascript.g:2992:7: (lv_arguments_13_0= ruleKeyValueArguments )
-                            // InternalNavascript.g:2993:8: lv_arguments_13_0= ruleKeyValueArguments
+                            // InternalNavascript.g:3097:7: (lv_arguments_13_0= ruleKeyValueArguments )
+                            // InternalNavascript.g:3098:8: lv_arguments_13_0= ruleKeyValueArguments
                             {
                             if ( state.backtracking==0 ) {
 
@@ -8639,7 +8728,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_14=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
+                    otherlv_14=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_14, grammarAccess.getMapAccess().getRightParenthesisKeyword_1_1_6());
@@ -8654,29 +8743,29 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_15=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
+            otherlv_15=(Token)match(input,28,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_15, grammarAccess.getMapAccess().getLeftCurlyBracketKeyword_2());
               		
             }
-            // InternalNavascript.g:3021:3: ( (lv_statements_16_0= ruleInnerBody ) )*
-            loop54:
+            // InternalNavascript.g:3126:3: ( (lv_statements_16_0= ruleInnerBody ) )*
+            loop55:
             do {
-                int alt54=2;
-                int LA54_0 = input.LA(1);
+                int alt55=2;
+                int LA55_0 = input.LA(1);
 
-                if ( ((LA54_0>=RULE_METHOD_IDENTIFIER && LA54_0<=RULE_MAPPABLE_IDENTIFIER)||LA54_0==25||LA54_0==27||LA54_0==41||LA54_0==47||(LA54_0>=49 && LA54_0<=50)||(LA54_0>=52 && LA54_0<=53)||(LA54_0>=55 && LA54_0<=57)||(LA54_0>=62 && LA54_0<=63)||(LA54_0>=65 && LA54_0<=67)) ) {
-                    alt54=1;
+                if ( ((LA55_0>=RULE_METHOD_IDENTIFIER && LA55_0<=RULE_MAPPABLE_IDENTIFIER)||LA55_0==26||LA55_0==28||LA55_0==42||LA55_0==48||(LA55_0>=50 && LA55_0<=51)||(LA55_0>=53 && LA55_0<=54)||(LA55_0>=56 && LA55_0<=58)||(LA55_0>=63 && LA55_0<=64)||(LA55_0>=66 && LA55_0<=68)) ) {
+                    alt55=1;
                 }
 
 
-                switch (alt54) {
+                switch (alt55) {
             	case 1 :
-            	    // InternalNavascript.g:3022:4: (lv_statements_16_0= ruleInnerBody )
+            	    // InternalNavascript.g:3127:4: (lv_statements_16_0= ruleInnerBody )
             	    {
-            	    // InternalNavascript.g:3022:4: (lv_statements_16_0= ruleInnerBody )
-            	    // InternalNavascript.g:3023:5: lv_statements_16_0= ruleInnerBody
+            	    // InternalNavascript.g:3127:4: (lv_statements_16_0= ruleInnerBody )
+            	    // InternalNavascript.g:3128:5: lv_statements_16_0= ruleInnerBody
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -8709,11 +8798,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop54;
+            	    break loop55;
                 }
             } while (true);
 
-            otherlv_17=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_17=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_17, grammarAccess.getMapAccess().getRightCurlyBracketKeyword_4());
@@ -8744,7 +8833,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMethodOrSetter"
-    // InternalNavascript.g:3048:1: entryRuleMethodOrSetter returns [EObject current=null] : iv_ruleMethodOrSetter= ruleMethodOrSetter EOF ;
+    // InternalNavascript.g:3153:1: entryRuleMethodOrSetter returns [EObject current=null] : iv_ruleMethodOrSetter= ruleMethodOrSetter EOF ;
     public final EObject entryRuleMethodOrSetter() throws RecognitionException {
         EObject current = null;
 
@@ -8752,8 +8841,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:3048:55: (iv_ruleMethodOrSetter= ruleMethodOrSetter EOF )
-            // InternalNavascript.g:3049:2: iv_ruleMethodOrSetter= ruleMethodOrSetter EOF
+            // InternalNavascript.g:3153:55: (iv_ruleMethodOrSetter= ruleMethodOrSetter EOF )
+            // InternalNavascript.g:3154:2: iv_ruleMethodOrSetter= ruleMethodOrSetter EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMethodOrSetterRule()); 
@@ -8784,7 +8873,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMethodOrSetter"
-    // InternalNavascript.g:3055:1: ruleMethodOrSetter returns [EObject current=null] : (this_AdapterMethod_0= ruleAdapterMethod | this_SetterField_1= ruleSetterField ) ;
+    // InternalNavascript.g:3160:1: ruleMethodOrSetter returns [EObject current=null] : (this_AdapterMethod_0= ruleAdapterMethod | this_SetterField_1= ruleSetterField ) ;
     public final EObject ruleMethodOrSetter() throws RecognitionException {
         EObject current = null;
 
@@ -8797,30 +8886,35 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:3061:2: ( (this_AdapterMethod_0= ruleAdapterMethod | this_SetterField_1= ruleSetterField ) )
-            // InternalNavascript.g:3062:2: (this_AdapterMethod_0= ruleAdapterMethod | this_SetterField_1= ruleSetterField )
+            // InternalNavascript.g:3166:2: ( (this_AdapterMethod_0= ruleAdapterMethod | this_SetterField_1= ruleSetterField ) )
+            // InternalNavascript.g:3167:2: (this_AdapterMethod_0= ruleAdapterMethod | this_SetterField_1= ruleSetterField )
             {
-            // InternalNavascript.g:3062:2: (this_AdapterMethod_0= ruleAdapterMethod | this_SetterField_1= ruleSetterField )
-            int alt55=2;
-            int LA55_0 = input.LA(1);
+            // InternalNavascript.g:3167:2: (this_AdapterMethod_0= ruleAdapterMethod | this_SetterField_1= ruleSetterField )
+            int alt56=2;
+            int LA56_0 = input.LA(1);
 
-            if ( (LA55_0==RULE_METHOD_IDENTIFIER) ) {
-                alt55=1;
+            if ( (LA56_0==RULE_METHOD_IDENTIFIER) ) {
+                alt56=1;
             }
-            else if ( (LA55_0==RULE_MAPPABLE_IDENTIFIER) ) {
-                alt55=2;
+            else if ( (LA56_0==RULE_MAPPABLE_IDENTIFIER) ) {
+                alt56=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 55, 0, input);
+                    new NoViableAltException("", 56, 0, input);
 
                 throw nvae;
             }
-            switch (alt55) {
+            switch (alt56) {
                 case 1 :
-                    // InternalNavascript.g:3063:3: this_AdapterMethod_0= ruleAdapterMethod
+                    // InternalNavascript.g:3168:3: this_AdapterMethod_0= ruleAdapterMethod
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getMethodOrSetterAccess().getAdapterMethodParserRuleCall_0());
@@ -8841,8 +8935,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:3072:3: this_SetterField_1= ruleSetterField
+                    // InternalNavascript.g:3180:3: this_SetterField_1= ruleSetterField
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getMethodOrSetterAccess().getSetterFieldParserRuleCall_1());
@@ -8887,7 +8986,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAdapterMethod"
-    // InternalNavascript.g:3084:1: entryRuleAdapterMethod returns [EObject current=null] : iv_ruleAdapterMethod= ruleAdapterMethod EOF ;
+    // InternalNavascript.g:3195:1: entryRuleAdapterMethod returns [EObject current=null] : iv_ruleAdapterMethod= ruleAdapterMethod EOF ;
     public final EObject entryRuleAdapterMethod() throws RecognitionException {
         EObject current = null;
 
@@ -8895,8 +8994,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:3084:54: (iv_ruleAdapterMethod= ruleAdapterMethod EOF )
-            // InternalNavascript.g:3085:2: iv_ruleAdapterMethod= ruleAdapterMethod EOF
+            // InternalNavascript.g:3195:54: (iv_ruleAdapterMethod= ruleAdapterMethod EOF )
+            // InternalNavascript.g:3196:2: iv_ruleAdapterMethod= ruleAdapterMethod EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAdapterMethodRule()); 
@@ -8927,7 +9026,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAdapterMethod"
-    // InternalNavascript.g:3091:1: ruleAdapterMethod returns [EObject current=null] : ( () ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) ) otherlv_2= '(' ( (lv_arguments_3_0= ruleKeyValueArguments ) )? otherlv_4= ')' otherlv_5= ';' ) ;
+    // InternalNavascript.g:3202:1: ruleAdapterMethod returns [EObject current=null] : ( () ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) ) otherlv_2= '(' ( (lv_arguments_3_0= ruleKeyValueArguments ) )? otherlv_4= ')' otherlv_5= ';' ) ;
     public final EObject ruleAdapterMethod() throws RecognitionException {
         EObject current = null;
 
@@ -8942,15 +9041,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:3097:2: ( ( () ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) ) otherlv_2= '(' ( (lv_arguments_3_0= ruleKeyValueArguments ) )? otherlv_4= ')' otherlv_5= ';' ) )
-            // InternalNavascript.g:3098:2: ( () ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) ) otherlv_2= '(' ( (lv_arguments_3_0= ruleKeyValueArguments ) )? otherlv_4= ')' otherlv_5= ';' )
+            // InternalNavascript.g:3208:2: ( ( () ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) ) otherlv_2= '(' ( (lv_arguments_3_0= ruleKeyValueArguments ) )? otherlv_4= ')' otherlv_5= ';' ) )
+            // InternalNavascript.g:3209:2: ( () ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) ) otherlv_2= '(' ( (lv_arguments_3_0= ruleKeyValueArguments ) )? otherlv_4= ')' otherlv_5= ';' )
             {
-            // InternalNavascript.g:3098:2: ( () ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) ) otherlv_2= '(' ( (lv_arguments_3_0= ruleKeyValueArguments ) )? otherlv_4= ')' otherlv_5= ';' )
-            // InternalNavascript.g:3099:3: () ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) ) otherlv_2= '(' ( (lv_arguments_3_0= ruleKeyValueArguments ) )? otherlv_4= ')' otherlv_5= ';'
+            // InternalNavascript.g:3209:2: ( () ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) ) otherlv_2= '(' ( (lv_arguments_3_0= ruleKeyValueArguments ) )? otherlv_4= ')' otherlv_5= ';' )
+            // InternalNavascript.g:3210:3: () ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) ) otherlv_2= '(' ( (lv_arguments_3_0= ruleKeyValueArguments ) )? otherlv_4= ')' otherlv_5= ';'
             {
-            // InternalNavascript.g:3099:3: ()
-            // InternalNavascript.g:3100:4: 
+            // InternalNavascript.g:3210:3: ()
+            // InternalNavascript.g:3211:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -8961,11 +9065,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3106:3: ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) )
-            // InternalNavascript.g:3107:4: (lv_method_1_0= RULE_METHOD_IDENTIFIER )
+            // InternalNavascript.g:3220:3: ( (lv_method_1_0= RULE_METHOD_IDENTIFIER ) )
+            // InternalNavascript.g:3221:4: (lv_method_1_0= RULE_METHOD_IDENTIFIER )
             {
-            // InternalNavascript.g:3107:4: (lv_method_1_0= RULE_METHOD_IDENTIFIER )
-            // InternalNavascript.g:3108:5: lv_method_1_0= RULE_METHOD_IDENTIFIER
+            // InternalNavascript.g:3221:4: (lv_method_1_0= RULE_METHOD_IDENTIFIER )
+            // InternalNavascript.g:3222:5: lv_method_1_0= RULE_METHOD_IDENTIFIER
             {
             lv_method_1_0=(Token)match(input,RULE_METHOD_IDENTIFIER,FOLLOW_11); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -8991,25 +9095,25 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,30,FOLLOW_42); if (state.failed) return current;
+            otherlv_2=(Token)match(input,31,FOLLOW_43); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getAdapterMethodAccess().getLeftParenthesisKeyword_2());
               		
             }
-            // InternalNavascript.g:3128:3: ( (lv_arguments_3_0= ruleKeyValueArguments ) )?
-            int alt56=2;
-            int LA56_0 = input.LA(1);
+            // InternalNavascript.g:3242:3: ( (lv_arguments_3_0= ruleKeyValueArguments ) )?
+            int alt57=2;
+            int LA57_0 = input.LA(1);
 
-            if ( (LA56_0==RULE_IDENTIFIER||(LA56_0>=102 && LA56_0<=104)) ) {
-                alt56=1;
+            if ( (LA57_0==RULE_IDENTIFIER||(LA57_0>=103 && LA57_0<=105)) ) {
+                alt57=1;
             }
-            switch (alt56) {
+            switch (alt57) {
                 case 1 :
-                    // InternalNavascript.g:3129:4: (lv_arguments_3_0= ruleKeyValueArguments )
+                    // InternalNavascript.g:3243:4: (lv_arguments_3_0= ruleKeyValueArguments )
                     {
-                    // InternalNavascript.g:3129:4: (lv_arguments_3_0= ruleKeyValueArguments )
-                    // InternalNavascript.g:3130:5: lv_arguments_3_0= ruleKeyValueArguments
+                    // InternalNavascript.g:3243:4: (lv_arguments_3_0= ruleKeyValueArguments )
+                    // InternalNavascript.g:3244:5: lv_arguments_3_0= ruleKeyValueArguments
                     {
                     if ( state.backtracking==0 ) {
 
@@ -9043,13 +9147,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,31,FOLLOW_22); if (state.failed) return current;
+            otherlv_4=(Token)match(input,32,FOLLOW_22); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_4, grammarAccess.getAdapterMethodAccess().getRightParenthesisKeyword_4());
               		
             }
-            otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getAdapterMethodAccess().getSemicolonKeyword_5());
@@ -9080,7 +9184,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSetterField"
-    // InternalNavascript.g:3159:1: entryRuleSetterField returns [EObject current=null] : iv_ruleSetterField= ruleSetterField EOF ;
+    // InternalNavascript.g:3273:1: entryRuleSetterField returns [EObject current=null] : iv_ruleSetterField= ruleSetterField EOF ;
     public final EObject entryRuleSetterField() throws RecognitionException {
         EObject current = null;
 
@@ -9088,8 +9192,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:3159:52: (iv_ruleSetterField= ruleSetterField EOF )
-            // InternalNavascript.g:3160:2: iv_ruleSetterField= ruleSetterField EOF
+            // InternalNavascript.g:3273:52: (iv_ruleSetterField= ruleSetterField EOF )
+            // InternalNavascript.g:3274:2: iv_ruleSetterField= ruleSetterField EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSetterFieldRule()); 
@@ -9120,7 +9224,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSetterField"
-    // InternalNavascript.g:3166:1: ruleSetterField returns [EObject current=null] : ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) ) ) ;
+    // InternalNavascript.g:3280:1: ruleSetterField returns [EObject current=null] : ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) | ( (lv_mappedMessage_13_0= ruleMappedMessage ) ) ) ) ;
     public final EObject ruleSetterField() throws RecognitionException {
         EObject current = null;
 
@@ -9140,20 +9244,27 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
         EObject lv_mappedField_12_0 = null;
 
+        EObject lv_mappedMessage_13_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalNavascript.g:3172:2: ( ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) ) ) )
-            // InternalNavascript.g:3173:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) ) )
+            // InternalNavascript.g:3286:2: ( ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) | ( (lv_mappedMessage_13_0= ruleMappedMessage ) ) ) ) )
+            // InternalNavascript.g:3287:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) | ( (lv_mappedMessage_13_0= ruleMappedMessage ) ) ) )
             {
-            // InternalNavascript.g:3173:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) ) )
-            // InternalNavascript.g:3174:3: () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) )
+            // InternalNavascript.g:3287:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) | ( (lv_mappedMessage_13_0= ruleMappedMessage ) ) ) )
+            // InternalNavascript.g:3288:3: () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) | ( (lv_mappedMessage_13_0= ruleMappedMessage ) ) )
             {
-            // InternalNavascript.g:3174:3: ()
-            // InternalNavascript.g:3175:4: 
+            // InternalNavascript.g:3288:3: ()
+            // InternalNavascript.g:3289:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -9164,13 +9275,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3181:3: ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) )
-            // InternalNavascript.g:3182:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
+            // InternalNavascript.g:3298:3: ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) )
+            // InternalNavascript.g:3299:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
             {
-            // InternalNavascript.g:3182:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
-            // InternalNavascript.g:3183:5: lv_field_1_0= RULE_MAPPABLE_IDENTIFIER
+            // InternalNavascript.g:3299:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
+            // InternalNavascript.g:3300:5: lv_field_1_0= RULE_MAPPABLE_IDENTIFIER
             {
-            lv_field_1_0=(Token)match(input,RULE_MAPPABLE_IDENTIFIER,FOLLOW_46); if (state.failed) return current;
+            lv_field_1_0=(Token)match(input,RULE_MAPPABLE_IDENTIFIER,FOLLOW_47); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               					newLeafNode(lv_field_1_0, grammarAccess.getSetterFieldAccess().getFieldMAPPABLE_IDENTIFIERTerminalRuleCall_1_0());
@@ -9194,63 +9305,81 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3199:3: ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) )
-            int alt59=3;
+            // InternalNavascript.g:3316:3: ( ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) | ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' ) | ( (lv_mappedField_12_0= ruleMappedArrayField ) ) | ( (lv_mappedMessage_13_0= ruleMappedMessage ) ) )
+            int alt60=4;
             switch ( input.LA(1) ) {
-            case 34:
             case 35:
+            case 36:
                 {
-                alt59=1;
+                alt60=1;
                 }
                 break;
-            case 27:
-            case 30:
+            case 31:
                 {
-                alt59=2;
+                alt60=2;
+                }
+                break;
+            case 28:
+                {
+                int LA60_3 = input.LA(2);
+
+                if ( (LA60_3==RULE_TML_LITERAL) ) {
+                    alt60=2;
+                }
+                else if ( ((LA60_3>=RULE_METHOD_IDENTIFIER && LA60_3<=RULE_MAPPABLE_IDENTIFIER)||LA60_3==26||(LA60_3>=28 && LA60_3<=29)||LA60_3==42||LA60_3==48||(LA60_3>=50 && LA60_3<=51)||(LA60_3>=53 && LA60_3<=54)||(LA60_3>=56 && LA60_3<=58)||(LA60_3>=63 && LA60_3<=64)||(LA60_3>=66 && LA60_3<=68)) ) {
+                    alt60=4;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return current;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 60, 3, input);
+
+                    throw nvae;
+                }
                 }
                 break;
             case RULE_MAPPABLE_IDENTIFIER:
                 {
-                alt59=3;
+                alt60=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 59, 0, input);
+                    new NoViableAltException("", 60, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt59) {
+            switch (alt60) {
                 case 1 :
-                    // InternalNavascript.g:3200:4: ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' )
+                    // InternalNavascript.g:3317:4: ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' )
                     {
-                    // InternalNavascript.g:3200:4: ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' )
-                    // InternalNavascript.g:3201:5: (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';'
+                    // InternalNavascript.g:3317:4: ( (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' )
+                    // InternalNavascript.g:3318:5: (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';'
                     {
-                    // InternalNavascript.g:3201:5: (otherlv_2= '=' | otherlv_3= ':' )
-                    int alt57=2;
-                    int LA57_0 = input.LA(1);
+                    // InternalNavascript.g:3318:5: (otherlv_2= '=' | otherlv_3= ':' )
+                    int alt58=2;
+                    int LA58_0 = input.LA(1);
 
-                    if ( (LA57_0==34) ) {
-                        alt57=1;
+                    if ( (LA58_0==35) ) {
+                        alt58=1;
                     }
-                    else if ( (LA57_0==35) ) {
-                        alt57=2;
+                    else if ( (LA58_0==36) ) {
+                        alt58=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 57, 0, input);
+                            new NoViableAltException("", 58, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt57) {
+                    switch (alt58) {
                         case 1 :
-                            // InternalNavascript.g:3202:6: otherlv_2= '='
+                            // InternalNavascript.g:3319:6: otherlv_2= '='
                             {
-                            otherlv_2=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
+                            otherlv_2=(Token)match(input,35,FOLLOW_48); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_2, grammarAccess.getSetterFieldAccess().getEqualsSignKeyword_2_0_0_0());
@@ -9260,9 +9389,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:3207:6: otherlv_3= ':'
+                            // InternalNavascript.g:3324:6: otherlv_3= ':'
                             {
-                            otherlv_3=(Token)match(input,35,FOLLOW_47); if (state.failed) return current;
+                            otherlv_3=(Token)match(input,36,FOLLOW_48); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_3, grammarAccess.getSetterFieldAccess().getColonKeyword_2_0_0_1());
@@ -9274,11 +9403,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:3212:5: ( (lv_expressionList_4_0= ruleConditionalExpressions ) )
-                    // InternalNavascript.g:3213:6: (lv_expressionList_4_0= ruleConditionalExpressions )
+                    // InternalNavascript.g:3329:5: ( (lv_expressionList_4_0= ruleConditionalExpressions ) )
+                    // InternalNavascript.g:3330:6: (lv_expressionList_4_0= ruleConditionalExpressions )
                     {
-                    // InternalNavascript.g:3213:6: (lv_expressionList_4_0= ruleConditionalExpressions )
-                    // InternalNavascript.g:3214:7: lv_expressionList_4_0= ruleConditionalExpressions
+                    // InternalNavascript.g:3330:6: (lv_expressionList_4_0= ruleConditionalExpressions )
+                    // InternalNavascript.g:3331:7: lv_expressionList_4_0= ruleConditionalExpressions
                     {
                     if ( state.backtracking==0 ) {
 
@@ -9309,7 +9438,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_5, grammarAccess.getSetterFieldAccess().getSemicolonKeyword_2_0_2());
@@ -9322,33 +9451,33 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:3237:4: ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' )
+                    // InternalNavascript.g:3354:4: ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' )
                     {
-                    // InternalNavascript.g:3237:4: ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' )
-                    // InternalNavascript.g:3238:5: (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}'
+                    // InternalNavascript.g:3354:4: ( (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}' )
+                    // InternalNavascript.g:3355:5: (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )? otherlv_9= '{' ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) ) otherlv_11= '}'
                     {
-                    // InternalNavascript.g:3238:5: (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )?
-                    int alt58=2;
-                    int LA58_0 = input.LA(1);
+                    // InternalNavascript.g:3355:5: (otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')' )?
+                    int alt59=2;
+                    int LA59_0 = input.LA(1);
 
-                    if ( (LA58_0==30) ) {
-                        alt58=1;
+                    if ( (LA59_0==31) ) {
+                        alt59=1;
                     }
-                    switch (alt58) {
+                    switch (alt59) {
                         case 1 :
-                            // InternalNavascript.g:3239:6: otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')'
+                            // InternalNavascript.g:3356:6: otherlv_6= '(' ( (lv_arguments_7_0= ruleKeyValueArguments ) ) otherlv_8= ')'
                             {
-                            otherlv_6=(Token)match(input,30,FOLLOW_45); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,31,FOLLOW_46); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_6, grammarAccess.getSetterFieldAccess().getLeftParenthesisKeyword_2_1_0_0());
                               					
                             }
-                            // InternalNavascript.g:3243:6: ( (lv_arguments_7_0= ruleKeyValueArguments ) )
-                            // InternalNavascript.g:3244:7: (lv_arguments_7_0= ruleKeyValueArguments )
+                            // InternalNavascript.g:3360:6: ( (lv_arguments_7_0= ruleKeyValueArguments ) )
+                            // InternalNavascript.g:3361:7: (lv_arguments_7_0= ruleKeyValueArguments )
                             {
-                            // InternalNavascript.g:3244:7: (lv_arguments_7_0= ruleKeyValueArguments )
-                            // InternalNavascript.g:3245:8: lv_arguments_7_0= ruleKeyValueArguments
+                            // InternalNavascript.g:3361:7: (lv_arguments_7_0= ruleKeyValueArguments )
+                            // InternalNavascript.g:3362:8: lv_arguments_7_0= ruleKeyValueArguments
                             {
                             if ( state.backtracking==0 ) {
 
@@ -9379,7 +9508,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_8=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
+                            otherlv_8=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_8, grammarAccess.getSetterFieldAccess().getRightParenthesisKeyword_2_1_0_2());
@@ -9391,17 +9520,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_9=(Token)match(input,27,FOLLOW_37); if (state.failed) return current;
+                    otherlv_9=(Token)match(input,28,FOLLOW_37); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_9, grammarAccess.getSetterFieldAccess().getLeftCurlyBracketKeyword_2_1_1());
                       				
                     }
-                    // InternalNavascript.g:3271:5: ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) )
-                    // InternalNavascript.g:3272:6: (lv_mappedArray_10_0= ruleMappedArrayMessage )
+                    // InternalNavascript.g:3388:5: ( (lv_mappedArray_10_0= ruleMappedArrayMessage ) )
+                    // InternalNavascript.g:3389:6: (lv_mappedArray_10_0= ruleMappedArrayMessage )
                     {
-                    // InternalNavascript.g:3272:6: (lv_mappedArray_10_0= ruleMappedArrayMessage )
-                    // InternalNavascript.g:3273:7: lv_mappedArray_10_0= ruleMappedArrayMessage
+                    // InternalNavascript.g:3389:6: (lv_mappedArray_10_0= ruleMappedArrayMessage )
+                    // InternalNavascript.g:3390:7: lv_mappedArray_10_0= ruleMappedArrayMessage
                     {
                     if ( state.backtracking==0 ) {
 
@@ -9432,7 +9561,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_11=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_11, grammarAccess.getSetterFieldAccess().getRightCurlyBracketKeyword_2_1_3());
@@ -9445,13 +9574,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:3296:4: ( (lv_mappedField_12_0= ruleMappedArrayField ) )
+                    // InternalNavascript.g:3413:4: ( (lv_mappedField_12_0= ruleMappedArrayField ) )
                     {
-                    // InternalNavascript.g:3296:4: ( (lv_mappedField_12_0= ruleMappedArrayField ) )
-                    // InternalNavascript.g:3297:5: (lv_mappedField_12_0= ruleMappedArrayField )
+                    // InternalNavascript.g:3413:4: ( (lv_mappedField_12_0= ruleMappedArrayField ) )
+                    // InternalNavascript.g:3414:5: (lv_mappedField_12_0= ruleMappedArrayField )
                     {
-                    // InternalNavascript.g:3297:5: (lv_mappedField_12_0= ruleMappedArrayField )
-                    // InternalNavascript.g:3298:6: lv_mappedField_12_0= ruleMappedArrayField
+                    // InternalNavascript.g:3414:5: (lv_mappedField_12_0= ruleMappedArrayField )
+                    // InternalNavascript.g:3415:6: lv_mappedField_12_0= ruleMappedArrayField
                     {
                     if ( state.backtracking==0 ) {
 
@@ -9473,6 +9602,47 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                       							"mappedField",
                       							lv_mappedField_12_0,
                       							"com.dexels.navajo.Navascript.MappedArrayField");
+                      						afterParserOrEnumRuleCall();
+                      					
+                    }
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // InternalNavascript.g:3433:4: ( (lv_mappedMessage_13_0= ruleMappedMessage ) )
+                    {
+                    // InternalNavascript.g:3433:4: ( (lv_mappedMessage_13_0= ruleMappedMessage ) )
+                    // InternalNavascript.g:3434:5: (lv_mappedMessage_13_0= ruleMappedMessage )
+                    {
+                    // InternalNavascript.g:3434:5: (lv_mappedMessage_13_0= ruleMappedMessage )
+                    // InternalNavascript.g:3435:6: lv_mappedMessage_13_0= ruleMappedMessage
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      						newCompositeNode(grammarAccess.getSetterFieldAccess().getMappedMessageMappedMessageParserRuleCall_2_3_0());
+                      					
+                    }
+                    pushFollow(FOLLOW_2);
+                    lv_mappedMessage_13_0=ruleMappedMessage();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      						if (current==null) {
+                      							current = createModelElementForParent(grammarAccess.getSetterFieldRule());
+                      						}
+                      						set(
+                      							current,
+                      							"mappedMessage",
+                      							lv_mappedMessage_13_0,
+                      							"com.dexels.navajo.Navascript.MappedMessage");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -9512,8 +9682,175 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleSetterField"
 
 
+    // $ANTLR start "entryRuleMappedMessage"
+    // InternalNavascript.g:3457:1: entryRuleMappedMessage returns [EObject current=null] : iv_ruleMappedMessage= ruleMappedMessage EOF ;
+    public final EObject entryRuleMappedMessage() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleMappedMessage = null;
+
+
+        try {
+            // InternalNavascript.g:3457:54: (iv_ruleMappedMessage= ruleMappedMessage EOF )
+            // InternalNavascript.g:3458:2: iv_ruleMappedMessage= ruleMappedMessage EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getMappedMessageRule()); 
+            }
+            pushFollow(FOLLOW_1);
+            iv_ruleMappedMessage=ruleMappedMessage();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleMappedMessage; 
+            }
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleMappedMessage"
+
+
+    // $ANTLR start "ruleMappedMessage"
+    // InternalNavascript.g:3464:1: ruleMappedMessage returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' ) ;
+    public final EObject ruleMappedMessage() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        Token otherlv_3=null;
+        EObject lv_statements_2_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalNavascript.g:3470:2: ( ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' ) )
+            // InternalNavascript.g:3471:2: ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' )
+            {
+            // InternalNavascript.g:3471:2: ( () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}' )
+            // InternalNavascript.g:3472:3: () otherlv_1= '{' ( (lv_statements_2_0= ruleInnerBody ) )* otherlv_3= '}'
+            {
+            // InternalNavascript.g:3472:3: ()
+            // InternalNavascript.g:3473:4: 
+            {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
+            if ( state.backtracking==0 ) {
+
+              				current = forceCreateModelElement(
+              					grammarAccess.getMappedMessageAccess().getMappedMessageAction_0(),
+              					current);
+              			
+            }
+
+            }
+
+            otherlv_1=(Token)match(input,28,FOLLOW_10); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(otherlv_1, grammarAccess.getMappedMessageAccess().getLeftCurlyBracketKeyword_1());
+              		
+            }
+            // InternalNavascript.g:3486:3: ( (lv_statements_2_0= ruleInnerBody ) )*
+            loop61:
+            do {
+                int alt61=2;
+                int LA61_0 = input.LA(1);
+
+                if ( ((LA61_0>=RULE_METHOD_IDENTIFIER && LA61_0<=RULE_MAPPABLE_IDENTIFIER)||LA61_0==26||LA61_0==28||LA61_0==42||LA61_0==48||(LA61_0>=50 && LA61_0<=51)||(LA61_0>=53 && LA61_0<=54)||(LA61_0>=56 && LA61_0<=58)||(LA61_0>=63 && LA61_0<=64)||(LA61_0>=66 && LA61_0<=68)) ) {
+                    alt61=1;
+                }
+
+
+                switch (alt61) {
+            	case 1 :
+            	    // InternalNavascript.g:3487:4: (lv_statements_2_0= ruleInnerBody )
+            	    {
+            	    // InternalNavascript.g:3487:4: (lv_statements_2_0= ruleInnerBody )
+            	    // InternalNavascript.g:3488:5: lv_statements_2_0= ruleInnerBody
+            	    {
+            	    if ( state.backtracking==0 ) {
+
+            	      					newCompositeNode(grammarAccess.getMappedMessageAccess().getStatementsInnerBodyParserRuleCall_2_0());
+            	      				
+            	    }
+            	    pushFollow(FOLLOW_10);
+            	    lv_statements_2_0=ruleInnerBody();
+
+            	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	      					if (current==null) {
+            	      						current = createModelElementForParent(grammarAccess.getMappedMessageRule());
+            	      					}
+            	      					add(
+            	      						current,
+            	      						"statements",
+            	      						lv_statements_2_0,
+            	      						"com.dexels.navajo.Navascript.InnerBody");
+            	      					afterParserOrEnumRuleCall();
+            	      				
+            	    }
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop61;
+                }
+            } while (true);
+
+            otherlv_3=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(otherlv_3, grammarAccess.getMappedMessageAccess().getRightCurlyBracketKeyword_3());
+              		
+            }
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+
+              	leaveRule();
+
+            }
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleMappedMessage"
+
+
     // $ANTLR start "entryRuleMappedArrayField"
-    // InternalNavascript.g:3320:1: entryRuleMappedArrayField returns [EObject current=null] : iv_ruleMappedArrayField= ruleMappedArrayField EOF ;
+    // InternalNavascript.g:3513:1: entryRuleMappedArrayField returns [EObject current=null] : iv_ruleMappedArrayField= ruleMappedArrayField EOF ;
     public final EObject entryRuleMappedArrayField() throws RecognitionException {
         EObject current = null;
 
@@ -9521,8 +9858,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:3320:57: (iv_ruleMappedArrayField= ruleMappedArrayField EOF )
-            // InternalNavascript.g:3321:2: iv_ruleMappedArrayField= ruleMappedArrayField EOF
+            // InternalNavascript.g:3513:57: (iv_ruleMappedArrayField= ruleMappedArrayField EOF )
+            // InternalNavascript.g:3514:2: iv_ruleMappedArrayField= ruleMappedArrayField EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMappedArrayFieldRule()); 
@@ -9553,7 +9890,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMappedArrayField"
-    // InternalNavascript.g:3327:1: ruleMappedArrayField returns [EObject current=null] : ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' ) ;
+    // InternalNavascript.g:3520:1: ruleMappedArrayField returns [EObject current=null] : ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' ) ;
     public final EObject ruleMappedArrayField() throws RecognitionException {
         EObject current = null;
 
@@ -9574,15 +9911,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:3333:2: ( ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' ) )
-            // InternalNavascript.g:3334:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' )
+            // InternalNavascript.g:3526:2: ( ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' ) )
+            // InternalNavascript.g:3527:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' )
             {
-            // InternalNavascript.g:3334:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' )
-            // InternalNavascript.g:3335:3: () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}'
+            // InternalNavascript.g:3527:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' )
+            // InternalNavascript.g:3528:3: () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}'
             {
-            // InternalNavascript.g:3335:3: ()
-            // InternalNavascript.g:3336:4: 
+            // InternalNavascript.g:3528:3: ()
+            // InternalNavascript.g:3529:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -9593,11 +9935,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3342:3: ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) )
-            // InternalNavascript.g:3343:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
+            // InternalNavascript.g:3538:3: ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) )
+            // InternalNavascript.g:3539:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
             {
-            // InternalNavascript.g:3343:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
-            // InternalNavascript.g:3344:5: lv_field_1_0= RULE_MAPPABLE_IDENTIFIER
+            // InternalNavascript.g:3539:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
+            // InternalNavascript.g:3540:5: lv_field_1_0= RULE_MAPPABLE_IDENTIFIER
             {
             lv_field_1_0=(Token)match(input,RULE_MAPPABLE_IDENTIFIER,FOLLOW_32); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -9623,51 +9965,51 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3360:3: (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )?
-            int alt61=2;
-            int LA61_0 = input.LA(1);
+            // InternalNavascript.g:3556:3: (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )?
+            int alt63=2;
+            int LA63_0 = input.LA(1);
 
-            if ( (LA61_0==30) ) {
-                alt61=1;
+            if ( (LA63_0==31) ) {
+                alt63=1;
             }
-            switch (alt61) {
+            switch (alt63) {
                 case 1 :
-                    // InternalNavascript.g:3361:4: otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')'
+                    // InternalNavascript.g:3557:4: otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')'
                     {
-                    otherlv_2=(Token)match(input,30,FOLLOW_33); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,31,FOLLOW_33); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getMappedArrayFieldAccess().getLeftParenthesisKeyword_2_0());
                       			
                     }
-                    otherlv_3=(Token)match(input,54,FOLLOW_17); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,55,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getMappedArrayFieldAccess().getFilterKeyword_2_1());
                       			
                     }
-                    // InternalNavascript.g:3369:4: (otherlv_4= '=' | otherlv_5= ':' )
-                    int alt60=2;
-                    int LA60_0 = input.LA(1);
+                    // InternalNavascript.g:3565:4: (otherlv_4= '=' | otherlv_5= ':' )
+                    int alt62=2;
+                    int LA62_0 = input.LA(1);
 
-                    if ( (LA60_0==34) ) {
-                        alt60=1;
+                    if ( (LA62_0==35) ) {
+                        alt62=1;
                     }
-                    else if ( (LA60_0==35) ) {
-                        alt60=2;
+                    else if ( (LA62_0==36) ) {
+                        alt62=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 60, 0, input);
+                            new NoViableAltException("", 62, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt60) {
+                    switch (alt62) {
                         case 1 :
-                            // InternalNavascript.g:3370:5: otherlv_4= '='
+                            // InternalNavascript.g:3566:5: otherlv_4= '='
                             {
-                            otherlv_4=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_4, grammarAccess.getMappedArrayFieldAccess().getEqualsSignKeyword_2_2_0());
@@ -9677,9 +10019,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:3375:5: otherlv_5= ':'
+                            // InternalNavascript.g:3571:5: otherlv_5= ':'
                             {
-                            otherlv_5=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,36,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_5, grammarAccess.getMappedArrayFieldAccess().getColonKeyword_2_2_1());
@@ -9691,11 +10033,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:3380:4: ( (lv_filter_6_0= ruleExpression ) )
-                    // InternalNavascript.g:3381:5: (lv_filter_6_0= ruleExpression )
+                    // InternalNavascript.g:3576:4: ( (lv_filter_6_0= ruleExpression ) )
+                    // InternalNavascript.g:3577:5: (lv_filter_6_0= ruleExpression )
                     {
-                    // InternalNavascript.g:3381:5: (lv_filter_6_0= ruleExpression )
-                    // InternalNavascript.g:3382:6: lv_filter_6_0= ruleExpression
+                    // InternalNavascript.g:3577:5: (lv_filter_6_0= ruleExpression )
+                    // InternalNavascript.g:3578:6: lv_filter_6_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -9726,7 +10068,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_7, grammarAccess.getMappedArrayFieldAccess().getRightParenthesisKeyword_2_4());
@@ -9738,29 +10080,29 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
+            otherlv_8=(Token)match(input,28,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_8, grammarAccess.getMappedArrayFieldAccess().getLeftCurlyBracketKeyword_3());
               		
             }
-            // InternalNavascript.g:3408:3: ( (lv_statements_9_0= ruleInnerBody ) )*
-            loop62:
+            // InternalNavascript.g:3604:3: ( (lv_statements_9_0= ruleInnerBody ) )*
+            loop64:
             do {
-                int alt62=2;
-                int LA62_0 = input.LA(1);
+                int alt64=2;
+                int LA64_0 = input.LA(1);
 
-                if ( ((LA62_0>=RULE_METHOD_IDENTIFIER && LA62_0<=RULE_MAPPABLE_IDENTIFIER)||LA62_0==25||LA62_0==27||LA62_0==41||LA62_0==47||(LA62_0>=49 && LA62_0<=50)||(LA62_0>=52 && LA62_0<=53)||(LA62_0>=55 && LA62_0<=57)||(LA62_0>=62 && LA62_0<=63)||(LA62_0>=65 && LA62_0<=67)) ) {
-                    alt62=1;
+                if ( ((LA64_0>=RULE_METHOD_IDENTIFIER && LA64_0<=RULE_MAPPABLE_IDENTIFIER)||LA64_0==26||LA64_0==28||LA64_0==42||LA64_0==48||(LA64_0>=50 && LA64_0<=51)||(LA64_0>=53 && LA64_0<=54)||(LA64_0>=56 && LA64_0<=58)||(LA64_0>=63 && LA64_0<=64)||(LA64_0>=66 && LA64_0<=68)) ) {
+                    alt64=1;
                 }
 
 
-                switch (alt62) {
+                switch (alt64) {
             	case 1 :
-            	    // InternalNavascript.g:3409:4: (lv_statements_9_0= ruleInnerBody )
+            	    // InternalNavascript.g:3605:4: (lv_statements_9_0= ruleInnerBody )
             	    {
-            	    // InternalNavascript.g:3409:4: (lv_statements_9_0= ruleInnerBody )
-            	    // InternalNavascript.g:3410:5: lv_statements_9_0= ruleInnerBody
+            	    // InternalNavascript.g:3605:4: (lv_statements_9_0= ruleInnerBody )
+            	    // InternalNavascript.g:3606:5: lv_statements_9_0= ruleInnerBody
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -9793,11 +10135,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop62;
+            	    break loop64;
                 }
             } while (true);
 
-            otherlv_10=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_10=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_10, grammarAccess.getMappedArrayFieldAccess().getRightCurlyBracketKeyword_5());
@@ -9828,7 +10170,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMappedArrayMessage"
-    // InternalNavascript.g:3435:1: entryRuleMappedArrayMessage returns [EObject current=null] : iv_ruleMappedArrayMessage= ruleMappedArrayMessage EOF ;
+    // InternalNavascript.g:3631:1: entryRuleMappedArrayMessage returns [EObject current=null] : iv_ruleMappedArrayMessage= ruleMappedArrayMessage EOF ;
     public final EObject entryRuleMappedArrayMessage() throws RecognitionException {
         EObject current = null;
 
@@ -9836,8 +10178,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:3435:59: (iv_ruleMappedArrayMessage= ruleMappedArrayMessage EOF )
-            // InternalNavascript.g:3436:2: iv_ruleMappedArrayMessage= ruleMappedArrayMessage EOF
+            // InternalNavascript.g:3631:59: (iv_ruleMappedArrayMessage= ruleMappedArrayMessage EOF )
+            // InternalNavascript.g:3632:2: iv_ruleMappedArrayMessage= ruleMappedArrayMessage EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMappedArrayMessageRule()); 
@@ -9868,7 +10210,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMappedArrayMessage"
-    // InternalNavascript.g:3442:1: ruleMappedArrayMessage returns [EObject current=null] : ( () ( (lv_message_1_0= RULE_TML_LITERAL ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' ) ;
+    // InternalNavascript.g:3638:1: ruleMappedArrayMessage returns [EObject current=null] : ( () ( (lv_message_1_0= RULE_TML_LITERAL ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' ) ;
     public final EObject ruleMappedArrayMessage() throws RecognitionException {
         EObject current = null;
 
@@ -9889,15 +10231,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:3448:2: ( ( () ( (lv_message_1_0= RULE_TML_LITERAL ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' ) )
-            // InternalNavascript.g:3449:2: ( () ( (lv_message_1_0= RULE_TML_LITERAL ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' )
+            // InternalNavascript.g:3644:2: ( ( () ( (lv_message_1_0= RULE_TML_LITERAL ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' ) )
+            // InternalNavascript.g:3645:2: ( () ( (lv_message_1_0= RULE_TML_LITERAL ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' )
             {
-            // InternalNavascript.g:3449:2: ( () ( (lv_message_1_0= RULE_TML_LITERAL ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' )
-            // InternalNavascript.g:3450:3: () ( (lv_message_1_0= RULE_TML_LITERAL ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}'
+            // InternalNavascript.g:3645:2: ( () ( (lv_message_1_0= RULE_TML_LITERAL ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}' )
+            // InternalNavascript.g:3646:3: () ( (lv_message_1_0= RULE_TML_LITERAL ) ) (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )? otherlv_8= '{' ( (lv_statements_9_0= ruleInnerBody ) )* otherlv_10= '}'
             {
-            // InternalNavascript.g:3450:3: ()
-            // InternalNavascript.g:3451:4: 
+            // InternalNavascript.g:3646:3: ()
+            // InternalNavascript.g:3647:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -9908,11 +10255,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3457:3: ( (lv_message_1_0= RULE_TML_LITERAL ) )
-            // InternalNavascript.g:3458:4: (lv_message_1_0= RULE_TML_LITERAL )
+            // InternalNavascript.g:3656:3: ( (lv_message_1_0= RULE_TML_LITERAL ) )
+            // InternalNavascript.g:3657:4: (lv_message_1_0= RULE_TML_LITERAL )
             {
-            // InternalNavascript.g:3458:4: (lv_message_1_0= RULE_TML_LITERAL )
-            // InternalNavascript.g:3459:5: lv_message_1_0= RULE_TML_LITERAL
+            // InternalNavascript.g:3657:4: (lv_message_1_0= RULE_TML_LITERAL )
+            // InternalNavascript.g:3658:5: lv_message_1_0= RULE_TML_LITERAL
             {
             lv_message_1_0=(Token)match(input,RULE_TML_LITERAL,FOLLOW_32); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -9938,51 +10285,51 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3475:3: (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )?
-            int alt64=2;
-            int LA64_0 = input.LA(1);
+            // InternalNavascript.g:3674:3: (otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')' )?
+            int alt66=2;
+            int LA66_0 = input.LA(1);
 
-            if ( (LA64_0==30) ) {
-                alt64=1;
+            if ( (LA66_0==31) ) {
+                alt66=1;
             }
-            switch (alt64) {
+            switch (alt66) {
                 case 1 :
-                    // InternalNavascript.g:3476:4: otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')'
+                    // InternalNavascript.g:3675:4: otherlv_2= '(' otherlv_3= 'filter' (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_filter_6_0= ruleExpression ) ) otherlv_7= ')'
                     {
-                    otherlv_2=(Token)match(input,30,FOLLOW_33); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,31,FOLLOW_33); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getMappedArrayMessageAccess().getLeftParenthesisKeyword_2_0());
                       			
                     }
-                    otherlv_3=(Token)match(input,54,FOLLOW_17); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,55,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getMappedArrayMessageAccess().getFilterKeyword_2_1());
                       			
                     }
-                    // InternalNavascript.g:3484:4: (otherlv_4= '=' | otherlv_5= ':' )
-                    int alt63=2;
-                    int LA63_0 = input.LA(1);
+                    // InternalNavascript.g:3683:4: (otherlv_4= '=' | otherlv_5= ':' )
+                    int alt65=2;
+                    int LA65_0 = input.LA(1);
 
-                    if ( (LA63_0==34) ) {
-                        alt63=1;
+                    if ( (LA65_0==35) ) {
+                        alt65=1;
                     }
-                    else if ( (LA63_0==35) ) {
-                        alt63=2;
+                    else if ( (LA65_0==36) ) {
+                        alt65=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 63, 0, input);
+                            new NoViableAltException("", 65, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt63) {
+                    switch (alt65) {
                         case 1 :
-                            // InternalNavascript.g:3485:5: otherlv_4= '='
+                            // InternalNavascript.g:3684:5: otherlv_4= '='
                             {
-                            otherlv_4=(Token)match(input,34,FOLLOW_6); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_4, grammarAccess.getMappedArrayMessageAccess().getEqualsSignKeyword_2_2_0());
@@ -9992,9 +10339,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:3490:5: otherlv_5= ':'
+                            // InternalNavascript.g:3689:5: otherlv_5= ':'
                             {
-                            otherlv_5=(Token)match(input,35,FOLLOW_6); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,36,FOLLOW_6); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               					newLeafNode(otherlv_5, grammarAccess.getMappedArrayMessageAccess().getColonKeyword_2_2_1());
@@ -10006,11 +10353,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:3495:4: ( (lv_filter_6_0= ruleExpression ) )
-                    // InternalNavascript.g:3496:5: (lv_filter_6_0= ruleExpression )
+                    // InternalNavascript.g:3694:4: ( (lv_filter_6_0= ruleExpression ) )
+                    // InternalNavascript.g:3695:5: (lv_filter_6_0= ruleExpression )
                     {
-                    // InternalNavascript.g:3496:5: (lv_filter_6_0= ruleExpression )
-                    // InternalNavascript.g:3497:6: lv_filter_6_0= ruleExpression
+                    // InternalNavascript.g:3695:5: (lv_filter_6_0= ruleExpression )
+                    // InternalNavascript.g:3696:6: lv_filter_6_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -10041,7 +10388,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,31,FOLLOW_14); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_7, grammarAccess.getMappedArrayMessageAccess().getRightParenthesisKeyword_2_4());
@@ -10053,29 +10400,29 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
+            otherlv_8=(Token)match(input,28,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_8, grammarAccess.getMappedArrayMessageAccess().getLeftCurlyBracketKeyword_3());
               		
             }
-            // InternalNavascript.g:3523:3: ( (lv_statements_9_0= ruleInnerBody ) )*
-            loop65:
+            // InternalNavascript.g:3722:3: ( (lv_statements_9_0= ruleInnerBody ) )*
+            loop67:
             do {
-                int alt65=2;
-                int LA65_0 = input.LA(1);
+                int alt67=2;
+                int LA67_0 = input.LA(1);
 
-                if ( ((LA65_0>=RULE_METHOD_IDENTIFIER && LA65_0<=RULE_MAPPABLE_IDENTIFIER)||LA65_0==25||LA65_0==27||LA65_0==41||LA65_0==47||(LA65_0>=49 && LA65_0<=50)||(LA65_0>=52 && LA65_0<=53)||(LA65_0>=55 && LA65_0<=57)||(LA65_0>=62 && LA65_0<=63)||(LA65_0>=65 && LA65_0<=67)) ) {
-                    alt65=1;
+                if ( ((LA67_0>=RULE_METHOD_IDENTIFIER && LA67_0<=RULE_MAPPABLE_IDENTIFIER)||LA67_0==26||LA67_0==28||LA67_0==42||LA67_0==48||(LA67_0>=50 && LA67_0<=51)||(LA67_0>=53 && LA67_0<=54)||(LA67_0>=56 && LA67_0<=58)||(LA67_0>=63 && LA67_0<=64)||(LA67_0>=66 && LA67_0<=68)) ) {
+                    alt67=1;
                 }
 
 
-                switch (alt65) {
+                switch (alt67) {
             	case 1 :
-            	    // InternalNavascript.g:3524:4: (lv_statements_9_0= ruleInnerBody )
+            	    // InternalNavascript.g:3723:4: (lv_statements_9_0= ruleInnerBody )
             	    {
-            	    // InternalNavascript.g:3524:4: (lv_statements_9_0= ruleInnerBody )
-            	    // InternalNavascript.g:3525:5: lv_statements_9_0= ruleInnerBody
+            	    // InternalNavascript.g:3723:4: (lv_statements_9_0= ruleInnerBody )
+            	    // InternalNavascript.g:3724:5: lv_statements_9_0= ruleInnerBody
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -10108,11 +10455,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop65;
+            	    break loop67;
                 }
             } while (true);
 
-            otherlv_10=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_10=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_10, grammarAccess.getMappedArrayMessageAccess().getRightCurlyBracketKeyword_5());
@@ -10143,7 +10490,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleKeyValueArguments"
-    // InternalNavascript.g:3550:1: entryRuleKeyValueArguments returns [EObject current=null] : iv_ruleKeyValueArguments= ruleKeyValueArguments EOF ;
+    // InternalNavascript.g:3749:1: entryRuleKeyValueArguments returns [EObject current=null] : iv_ruleKeyValueArguments= ruleKeyValueArguments EOF ;
     public final EObject entryRuleKeyValueArguments() throws RecognitionException {
         EObject current = null;
 
@@ -10151,8 +10498,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:3550:58: (iv_ruleKeyValueArguments= ruleKeyValueArguments EOF )
-            // InternalNavascript.g:3551:2: iv_ruleKeyValueArguments= ruleKeyValueArguments EOF
+            // InternalNavascript.g:3749:58: (iv_ruleKeyValueArguments= ruleKeyValueArguments EOF )
+            // InternalNavascript.g:3750:2: iv_ruleKeyValueArguments= ruleKeyValueArguments EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getKeyValueArgumentsRule()); 
@@ -10183,7 +10530,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleKeyValueArguments"
-    // InternalNavascript.g:3557:1: ruleKeyValueArguments returns [EObject current=null] : ( () ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) ) (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )* ) ;
+    // InternalNavascript.g:3756:1: ruleKeyValueArguments returns [EObject current=null] : ( () ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) ) (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )* ) ;
     public final EObject ruleKeyValueArguments() throws RecognitionException {
         EObject current = null;
 
@@ -10197,15 +10544,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:3563:2: ( ( () ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) ) (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )* ) )
-            // InternalNavascript.g:3564:2: ( () ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) ) (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )* )
+            // InternalNavascript.g:3762:2: ( ( () ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) ) (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )* ) )
+            // InternalNavascript.g:3763:2: ( () ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) ) (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )* )
             {
-            // InternalNavascript.g:3564:2: ( () ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) ) (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )* )
-            // InternalNavascript.g:3565:3: () ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) ) (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )*
+            // InternalNavascript.g:3763:2: ( () ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) ) (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )* )
+            // InternalNavascript.g:3764:3: () ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) ) (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )*
             {
-            // InternalNavascript.g:3565:3: ()
-            // InternalNavascript.g:3566:4: 
+            // InternalNavascript.g:3764:3: ()
+            // InternalNavascript.g:3765:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -10216,11 +10568,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3572:3: ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) )
-            // InternalNavascript.g:3573:4: (lv_keyValueArguments_1_0= ruleKeyValueArgument )
+            // InternalNavascript.g:3774:3: ( (lv_keyValueArguments_1_0= ruleKeyValueArgument ) )
+            // InternalNavascript.g:3775:4: (lv_keyValueArguments_1_0= ruleKeyValueArgument )
             {
-            // InternalNavascript.g:3573:4: (lv_keyValueArguments_1_0= ruleKeyValueArgument )
-            // InternalNavascript.g:3574:5: lv_keyValueArguments_1_0= ruleKeyValueArgument
+            // InternalNavascript.g:3775:4: (lv_keyValueArguments_1_0= ruleKeyValueArgument )
+            // InternalNavascript.g:3776:5: lv_keyValueArguments_1_0= ruleKeyValueArgument
             {
             if ( state.backtracking==0 ) {
 
@@ -10251,32 +10603,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3591:3: (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )*
-            loop66:
+            // InternalNavascript.g:3793:3: (otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) ) )*
+            loop68:
             do {
-                int alt66=2;
-                int LA66_0 = input.LA(1);
+                int alt68=2;
+                int LA68_0 = input.LA(1);
 
-                if ( (LA66_0==32) ) {
-                    alt66=1;
+                if ( (LA68_0==33) ) {
+                    alt68=1;
                 }
 
 
-                switch (alt66) {
+                switch (alt68) {
             	case 1 :
-            	    // InternalNavascript.g:3592:4: otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) )
+            	    // InternalNavascript.g:3794:4: otherlv_2= ',' ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) )
             	    {
-            	    otherlv_2=(Token)match(input,32,FOLLOW_45); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,33,FOLLOW_46); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_2, grammarAccess.getKeyValueArgumentsAccess().getCommaKeyword_2_0());
             	      			
             	    }
-            	    // InternalNavascript.g:3596:4: ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) )
-            	    // InternalNavascript.g:3597:5: (lv_keyValueArguments_3_0= ruleKeyValueArgument )
+            	    // InternalNavascript.g:3798:4: ( (lv_keyValueArguments_3_0= ruleKeyValueArgument ) )
+            	    // InternalNavascript.g:3799:5: (lv_keyValueArguments_3_0= ruleKeyValueArgument )
             	    {
-            	    // InternalNavascript.g:3597:5: (lv_keyValueArguments_3_0= ruleKeyValueArgument )
-            	    // InternalNavascript.g:3598:6: lv_keyValueArguments_3_0= ruleKeyValueArgument
+            	    // InternalNavascript.g:3799:5: (lv_keyValueArguments_3_0= ruleKeyValueArgument )
+            	    // InternalNavascript.g:3800:6: lv_keyValueArguments_3_0= ruleKeyValueArgument
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -10312,7 +10664,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop66;
+            	    break loop68;
                 }
             } while (true);
 
@@ -10341,7 +10693,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleKeyValueArgument"
-    // InternalNavascript.g:3620:1: entryRuleKeyValueArgument returns [EObject current=null] : iv_ruleKeyValueArgument= ruleKeyValueArgument EOF ;
+    // InternalNavascript.g:3822:1: entryRuleKeyValueArgument returns [EObject current=null] : iv_ruleKeyValueArgument= ruleKeyValueArgument EOF ;
     public final EObject entryRuleKeyValueArgument() throws RecognitionException {
         EObject current = null;
 
@@ -10349,8 +10701,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:3620:57: (iv_ruleKeyValueArgument= ruleKeyValueArgument EOF )
-            // InternalNavascript.g:3621:2: iv_ruleKeyValueArgument= ruleKeyValueArgument EOF
+            // InternalNavascript.g:3822:57: (iv_ruleKeyValueArgument= ruleKeyValueArgument EOF )
+            // InternalNavascript.g:3823:2: iv_ruleKeyValueArgument= ruleKeyValueArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getKeyValueArgumentRule()); 
@@ -10381,7 +10733,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleKeyValueArgument"
-    // InternalNavascript.g:3627:1: ruleKeyValueArgument returns [EObject current=null] : ( () ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) ;
+    // InternalNavascript.g:3829:1: ruleKeyValueArgument returns [EObject current=null] : ( () ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) ;
     public final EObject ruleKeyValueArgument() throws RecognitionException {
         EObject current = null;
 
@@ -10397,15 +10749,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:3633:2: ( ( () ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) )
-            // InternalNavascript.g:3634:2: ( () ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) )
+            // InternalNavascript.g:3835:2: ( ( () ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) ) )
+            // InternalNavascript.g:3836:2: ( () ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) )
             {
-            // InternalNavascript.g:3634:2: ( () ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) )
-            // InternalNavascript.g:3635:3: () ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) )
+            // InternalNavascript.g:3836:2: ( () ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) ) )
+            // InternalNavascript.g:3837:3: () ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_value_4_0= ruleLiteralOrExpression ) )
             {
-            // InternalNavascript.g:3635:3: ()
-            // InternalNavascript.g:3636:4: 
+            // InternalNavascript.g:3837:3: ()
+            // InternalNavascript.g:3838:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -10416,32 +10773,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3642:3: ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) )
-            // InternalNavascript.g:3643:4: ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) )
+            // InternalNavascript.g:3847:3: ( ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) ) )
+            // InternalNavascript.g:3848:4: ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) )
             {
-            // InternalNavascript.g:3643:4: ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) )
-            // InternalNavascript.g:3644:5: (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE )
+            // InternalNavascript.g:3848:4: ( (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE ) )
+            // InternalNavascript.g:3849:5: (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE )
             {
-            // InternalNavascript.g:3644:5: (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE )
-            int alt67=2;
-            int LA67_0 = input.LA(1);
+            // InternalNavascript.g:3849:5: (lv_key_1_1= RULE_IDENTIFIER | lv_key_1_2= ruleOPTION_TYPE )
+            int alt69=2;
+            int LA69_0 = input.LA(1);
 
-            if ( (LA67_0==RULE_IDENTIFIER) ) {
-                alt67=1;
+            if ( (LA69_0==RULE_IDENTIFIER) ) {
+                alt69=1;
             }
-            else if ( ((LA67_0>=102 && LA67_0<=104)) ) {
-                alt67=2;
+            else if ( ((LA69_0>=103 && LA69_0<=105)) ) {
+                alt69=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 67, 0, input);
+                    new NoViableAltException("", 69, 0, input);
 
                 throw nvae;
             }
-            switch (alt67) {
+            switch (alt69) {
                 case 1 :
-                    // InternalNavascript.g:3645:6: lv_key_1_1= RULE_IDENTIFIER
+                    // InternalNavascript.g:3850:6: lv_key_1_1= RULE_IDENTIFIER
                     {
                     lv_key_1_1=(Token)match(input,RULE_IDENTIFIER,FOLLOW_17); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -10465,7 +10822,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:3660:6: lv_key_1_2= ruleOPTION_TYPE
+                    // InternalNavascript.g:3865:6: lv_key_1_2= ruleOPTION_TYPE
                     {
                     if ( state.backtracking==0 ) {
 
@@ -10502,28 +10859,28 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3678:3: (otherlv_2= '=' | otherlv_3= ':' )
-            int alt68=2;
-            int LA68_0 = input.LA(1);
+            // InternalNavascript.g:3883:3: (otherlv_2= '=' | otherlv_3= ':' )
+            int alt70=2;
+            int LA70_0 = input.LA(1);
 
-            if ( (LA68_0==34) ) {
-                alt68=1;
+            if ( (LA70_0==35) ) {
+                alt70=1;
             }
-            else if ( (LA68_0==35) ) {
-                alt68=2;
+            else if ( (LA70_0==36) ) {
+                alt70=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 68, 0, input);
+                    new NoViableAltException("", 70, 0, input);
 
                 throw nvae;
             }
-            switch (alt68) {
+            switch (alt70) {
                 case 1 :
-                    // InternalNavascript.g:3679:4: otherlv_2= '='
+                    // InternalNavascript.g:3884:4: otherlv_2= '='
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getKeyValueArgumentAccess().getEqualsSignKeyword_2_0());
@@ -10533,9 +10890,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:3684:4: otherlv_3= ':'
+                    // InternalNavascript.g:3889:4: otherlv_3= ':'
                     {
-                    otherlv_3=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,36,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getKeyValueArgumentAccess().getColonKeyword_2_1());
@@ -10547,11 +10904,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3689:3: ( (lv_value_4_0= ruleLiteralOrExpression ) )
-            // InternalNavascript.g:3690:4: (lv_value_4_0= ruleLiteralOrExpression )
+            // InternalNavascript.g:3894:3: ( (lv_value_4_0= ruleLiteralOrExpression ) )
+            // InternalNavascript.g:3895:4: (lv_value_4_0= ruleLiteralOrExpression )
             {
-            // InternalNavascript.g:3690:4: (lv_value_4_0= ruleLiteralOrExpression )
-            // InternalNavascript.g:3691:5: lv_value_4_0= ruleLiteralOrExpression
+            // InternalNavascript.g:3895:4: (lv_value_4_0= ruleLiteralOrExpression )
+            // InternalNavascript.g:3896:5: lv_value_4_0= ruleLiteralOrExpression
             {
             if ( state.backtracking==0 ) {
 
@@ -10607,7 +10964,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVar"
-    // InternalNavascript.g:3712:1: entryRuleVar returns [EObject current=null] : iv_ruleVar= ruleVar EOF ;
+    // InternalNavascript.g:3917:1: entryRuleVar returns [EObject current=null] : iv_ruleVar= ruleVar EOF ;
     public final EObject entryRuleVar() throws RecognitionException {
         EObject current = null;
 
@@ -10615,8 +10972,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:3712:44: (iv_ruleVar= ruleVar EOF )
-            // InternalNavascript.g:3713:2: iv_ruleVar= ruleVar EOF
+            // InternalNavascript.g:3917:44: (iv_ruleVar= ruleVar EOF )
+            // InternalNavascript.g:3918:2: iv_ruleVar= ruleVar EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVarRule()); 
@@ -10647,7 +11004,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVar"
-    // InternalNavascript.g:3719:1: ruleVar returns [EObject current=null] : ( () otherlv_1= 'var' ( (lv_varName_2_0= RULE_IDENTIFIER ) ) ( (lv_arguments_3_0= ruleVarArguments ) )? ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) ) ) ;
+    // InternalNavascript.g:3924:1: ruleVar returns [EObject current=null] : ( () otherlv_1= 'var' ( (lv_varName_2_0= RULE_IDENTIFIER ) ) ( (lv_arguments_3_0= ruleVarArguments ) )? ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) ) ) ;
     public final EObject ruleVar() throws RecognitionException {
         EObject current = null;
 
@@ -10681,15 +11038,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:3725:2: ( ( () otherlv_1= 'var' ( (lv_varName_2_0= RULE_IDENTIFIER ) ) ( (lv_arguments_3_0= ruleVarArguments ) )? ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) ) ) )
-            // InternalNavascript.g:3726:2: ( () otherlv_1= 'var' ( (lv_varName_2_0= RULE_IDENTIFIER ) ) ( (lv_arguments_3_0= ruleVarArguments ) )? ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) ) )
+            // InternalNavascript.g:3930:2: ( ( () otherlv_1= 'var' ( (lv_varName_2_0= RULE_IDENTIFIER ) ) ( (lv_arguments_3_0= ruleVarArguments ) )? ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) ) ) )
+            // InternalNavascript.g:3931:2: ( () otherlv_1= 'var' ( (lv_varName_2_0= RULE_IDENTIFIER ) ) ( (lv_arguments_3_0= ruleVarArguments ) )? ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) ) )
             {
-            // InternalNavascript.g:3726:2: ( () otherlv_1= 'var' ( (lv_varName_2_0= RULE_IDENTIFIER ) ) ( (lv_arguments_3_0= ruleVarArguments ) )? ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) ) )
-            // InternalNavascript.g:3727:3: () otherlv_1= 'var' ( (lv_varName_2_0= RULE_IDENTIFIER ) ) ( (lv_arguments_3_0= ruleVarArguments ) )? ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) )
+            // InternalNavascript.g:3931:2: ( () otherlv_1= 'var' ( (lv_varName_2_0= RULE_IDENTIFIER ) ) ( (lv_arguments_3_0= ruleVarArguments ) )? ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) ) )
+            // InternalNavascript.g:3932:3: () otherlv_1= 'var' ( (lv_varName_2_0= RULE_IDENTIFIER ) ) ( (lv_arguments_3_0= ruleVarArguments ) )? ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) )
             {
-            // InternalNavascript.g:3727:3: ()
-            // InternalNavascript.g:3728:4: 
+            // InternalNavascript.g:3932:3: ()
+            // InternalNavascript.g:3933:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -10700,19 +11062,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,65,FOLLOW_41); if (state.failed) return current;
+            otherlv_1=(Token)match(input,66,FOLLOW_42); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getVarAccess().getVarKeyword_1());
               		
             }
-            // InternalNavascript.g:3738:3: ( (lv_varName_2_0= RULE_IDENTIFIER ) )
-            // InternalNavascript.g:3739:4: (lv_varName_2_0= RULE_IDENTIFIER )
+            // InternalNavascript.g:3946:3: ( (lv_varName_2_0= RULE_IDENTIFIER ) )
+            // InternalNavascript.g:3947:4: (lv_varName_2_0= RULE_IDENTIFIER )
             {
-            // InternalNavascript.g:3739:4: (lv_varName_2_0= RULE_IDENTIFIER )
-            // InternalNavascript.g:3740:5: lv_varName_2_0= RULE_IDENTIFIER
+            // InternalNavascript.g:3947:4: (lv_varName_2_0= RULE_IDENTIFIER )
+            // InternalNavascript.g:3948:5: lv_varName_2_0= RULE_IDENTIFIER
             {
-            lv_varName_2_0=(Token)match(input,RULE_IDENTIFIER,FOLLOW_48); if (state.failed) return current;
+            lv_varName_2_0=(Token)match(input,RULE_IDENTIFIER,FOLLOW_49); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               					newLeafNode(lv_varName_2_0, grammarAccess.getVarAccess().getVarNameIDENTIFIERTerminalRuleCall_2_0());
@@ -10736,26 +11098,26 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3756:3: ( (lv_arguments_3_0= ruleVarArguments ) )?
-            int alt69=2;
-            int LA69_0 = input.LA(1);
+            // InternalNavascript.g:3964:3: ( (lv_arguments_3_0= ruleVarArguments ) )?
+            int alt71=2;
+            int LA71_0 = input.LA(1);
 
-            if ( (LA69_0==30) ) {
-                alt69=1;
+            if ( (LA71_0==31) ) {
+                alt71=1;
             }
-            switch (alt69) {
+            switch (alt71) {
                 case 1 :
-                    // InternalNavascript.g:3757:4: (lv_arguments_3_0= ruleVarArguments )
+                    // InternalNavascript.g:3965:4: (lv_arguments_3_0= ruleVarArguments )
                     {
-                    // InternalNavascript.g:3757:4: (lv_arguments_3_0= ruleVarArguments )
-                    // InternalNavascript.g:3758:5: lv_arguments_3_0= ruleVarArguments
+                    // InternalNavascript.g:3965:4: (lv_arguments_3_0= ruleVarArguments )
+                    // InternalNavascript.g:3966:5: lv_arguments_3_0= ruleVarArguments
                     {
                     if ( state.backtracking==0 ) {
 
                       					newCompositeNode(grammarAccess.getVarAccess().getArgumentsVarArgumentsParserRuleCall_3_0());
                       				
                     }
-                    pushFollow(FOLLOW_49);
+                    pushFollow(FOLLOW_50);
                     lv_arguments_3_0=ruleVarArguments();
 
                     state._fsp--;
@@ -10782,44 +11144,44 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3775:3: ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) )
-            int alt73=5;
+            // InternalNavascript.g:3983:3: ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' ) | (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' ) )
+            int alt75=5;
             switch ( input.LA(1) ) {
-            case 34:
             case 35:
+            case 36:
                 {
-                alt73=1;
+                alt75=1;
                 }
                 break;
-            case 58:
+            case 59:
                 {
-                alt73=2;
+                alt75=2;
                 }
                 break;
-            case 27:
+            case 28:
                 {
                 switch ( input.LA(2) ) {
                 case RULE_TML_LITERAL:
                     {
-                    alt73=5;
+                    alt75=5;
                     }
                     break;
-                case 25:
-                case 28:
-                case 65:
+                case 26:
+                case 29:
+                case 66:
                     {
-                    alt73=3;
+                    alt75=3;
                     }
                     break;
                 case RULE_MAPPABLE_IDENTIFIER:
                     {
-                    alt73=4;
+                    alt75=4;
                     }
                     break;
                 default:
                     if (state.backtracking>0) {state.failed=true; return current;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 73, 3, input);
+                        new NoViableAltException("", 75, 3, input);
 
                     throw nvae;
                 }
@@ -10829,40 +11191,40 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 73, 0, input);
+                    new NoViableAltException("", 75, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt73) {
+            switch (alt75) {
                 case 1 :
-                    // InternalNavascript.g:3776:4: ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' )
+                    // InternalNavascript.g:3984:4: ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' )
                     {
-                    // InternalNavascript.g:3776:4: ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' )
-                    // InternalNavascript.g:3777:5: (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';'
+                    // InternalNavascript.g:3984:4: ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';' )
+                    // InternalNavascript.g:3985:5: (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) otherlv_7= ';'
                     {
-                    // InternalNavascript.g:3777:5: (otherlv_4= '=' | otherlv_5= ':' )
-                    int alt70=2;
-                    int LA70_0 = input.LA(1);
+                    // InternalNavascript.g:3985:5: (otherlv_4= '=' | otherlv_5= ':' )
+                    int alt72=2;
+                    int LA72_0 = input.LA(1);
 
-                    if ( (LA70_0==34) ) {
-                        alt70=1;
+                    if ( (LA72_0==35) ) {
+                        alt72=1;
                     }
-                    else if ( (LA70_0==35) ) {
-                        alt70=2;
+                    else if ( (LA72_0==36) ) {
+                        alt72=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 70, 0, input);
+                            new NoViableAltException("", 72, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt70) {
+                    switch (alt72) {
                         case 1 :
-                            // InternalNavascript.g:3778:6: otherlv_4= '='
+                            // InternalNavascript.g:3986:6: otherlv_4= '='
                             {
-                            otherlv_4=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,35,FOLLOW_48); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_4, grammarAccess.getVarAccess().getEqualsSignKeyword_4_0_0_0());
@@ -10872,9 +11234,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:3783:6: otherlv_5= ':'
+                            // InternalNavascript.g:3991:6: otherlv_5= ':'
                             {
-                            otherlv_5=(Token)match(input,35,FOLLOW_47); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,36,FOLLOW_48); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(otherlv_5, grammarAccess.getVarAccess().getColonKeyword_4_0_0_1());
@@ -10886,11 +11248,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:3788:5: ( (lv_expressionList_6_0= ruleConditionalExpressions ) )
-                    // InternalNavascript.g:3789:6: (lv_expressionList_6_0= ruleConditionalExpressions )
+                    // InternalNavascript.g:3996:5: ( (lv_expressionList_6_0= ruleConditionalExpressions ) )
+                    // InternalNavascript.g:3997:6: (lv_expressionList_6_0= ruleConditionalExpressions )
                     {
-                    // InternalNavascript.g:3789:6: (lv_expressionList_6_0= ruleConditionalExpressions )
-                    // InternalNavascript.g:3790:7: lv_expressionList_6_0= ruleConditionalExpressions
+                    // InternalNavascript.g:3997:6: (lv_expressionList_6_0= ruleConditionalExpressions )
+                    // InternalNavascript.g:3998:7: lv_expressionList_6_0= ruleConditionalExpressions
                     {
                     if ( state.backtracking==0 ) {
 
@@ -10921,7 +11283,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_7, grammarAccess.getVarAccess().getSemicolonKeyword_4_0_2());
@@ -10934,37 +11296,37 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:3813:4: (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' )
+                    // InternalNavascript.g:4021:4: (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' )
                     {
-                    // InternalNavascript.g:3813:4: (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' )
-                    // InternalNavascript.g:3814:5: otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']'
+                    // InternalNavascript.g:4021:4: (otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']' )
+                    // InternalNavascript.g:4022:5: otherlv_8= '[' ( (lv_varArray_9_0= ruleVarArray ) )? otherlv_10= ']'
                     {
-                    otherlv_8=(Token)match(input,58,FOLLOW_50); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,59,FOLLOW_38); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_8, grammarAccess.getVarAccess().getLeftSquareBracketKeyword_4_1_0());
                       				
                     }
-                    // InternalNavascript.g:3818:5: ( (lv_varArray_9_0= ruleVarArray ) )?
-                    int alt71=2;
-                    int LA71_0 = input.LA(1);
+                    // InternalNavascript.g:4026:5: ( (lv_varArray_9_0= ruleVarArray ) )?
+                    int alt73=2;
+                    int LA73_0 = input.LA(1);
 
-                    if ( (LA71_0==27) ) {
-                        alt71=1;
+                    if ( (LA73_0==28) ) {
+                        alt73=1;
                     }
-                    switch (alt71) {
+                    switch (alt73) {
                         case 1 :
-                            // InternalNavascript.g:3819:6: (lv_varArray_9_0= ruleVarArray )
+                            // InternalNavascript.g:4027:6: (lv_varArray_9_0= ruleVarArray )
                             {
-                            // InternalNavascript.g:3819:6: (lv_varArray_9_0= ruleVarArray )
-                            // InternalNavascript.g:3820:7: lv_varArray_9_0= ruleVarArray
+                            // InternalNavascript.g:4027:6: (lv_varArray_9_0= ruleVarArray )
+                            // InternalNavascript.g:4028:7: lv_varArray_9_0= ruleVarArray
                             {
                             if ( state.backtracking==0 ) {
 
                               							newCompositeNode(grammarAccess.getVarAccess().getVarArrayVarArrayParserRuleCall_4_1_1_0());
                               						
                             }
-                            pushFollow(FOLLOW_38);
+                            pushFollow(FOLLOW_39);
                             lv_varArray_9_0=ruleVarArray();
 
                             state._fsp--;
@@ -10991,7 +11353,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,59,FOLLOW_2); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,60,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_10, grammarAccess.getVarAccess().getRightSquareBracketKeyword_4_1_2());
@@ -11004,34 +11366,34 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:3843:4: (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' )
+                    // InternalNavascript.g:4051:4: (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' )
                     {
-                    // InternalNavascript.g:3843:4: (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' )
-                    // InternalNavascript.g:3844:5: otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}'
+                    // InternalNavascript.g:4051:4: (otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}' )
+                    // InternalNavascript.g:4052:5: otherlv_11= '{' ( (lv_varElements_12_0= ruleVarElement ) )* otherlv_13= '}'
                     {
-                    otherlv_11=(Token)match(input,27,FOLLOW_51); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,28,FOLLOW_51); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_11, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_2_0());
                       				
                     }
-                    // InternalNavascript.g:3848:5: ( (lv_varElements_12_0= ruleVarElement ) )*
-                    loop72:
+                    // InternalNavascript.g:4056:5: ( (lv_varElements_12_0= ruleVarElement ) )*
+                    loop74:
                     do {
-                        int alt72=2;
-                        int LA72_0 = input.LA(1);
+                        int alt74=2;
+                        int LA74_0 = input.LA(1);
 
-                        if ( (LA72_0==25||LA72_0==65) ) {
-                            alt72=1;
+                        if ( (LA74_0==26||LA74_0==66) ) {
+                            alt74=1;
                         }
 
 
-                        switch (alt72) {
+                        switch (alt74) {
                     	case 1 :
-                    	    // InternalNavascript.g:3849:6: (lv_varElements_12_0= ruleVarElement )
+                    	    // InternalNavascript.g:4057:6: (lv_varElements_12_0= ruleVarElement )
                     	    {
-                    	    // InternalNavascript.g:3849:6: (lv_varElements_12_0= ruleVarElement )
-                    	    // InternalNavascript.g:3850:7: lv_varElements_12_0= ruleVarElement
+                    	    // InternalNavascript.g:4057:6: (lv_varElements_12_0= ruleVarElement )
+                    	    // InternalNavascript.g:4058:7: lv_varElements_12_0= ruleVarElement
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -11064,11 +11426,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop72;
+                    	    break loop74;
                         }
                     } while (true);
 
-                    otherlv_13=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+                    otherlv_13=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_13, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_2_2());
@@ -11081,22 +11443,22 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalNavascript.g:3873:4: (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' )
+                    // InternalNavascript.g:4081:4: (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' )
                     {
-                    // InternalNavascript.g:3873:4: (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' )
-                    // InternalNavascript.g:3874:5: otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}'
+                    // InternalNavascript.g:4081:4: (otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}' )
+                    // InternalNavascript.g:4082:5: otherlv_14= '{' ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) ) otherlv_16= '}'
                     {
-                    otherlv_14=(Token)match(input,27,FOLLOW_52); if (state.failed) return current;
+                    otherlv_14=(Token)match(input,28,FOLLOW_52); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_14, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_3_0());
                       				
                     }
-                    // InternalNavascript.g:3878:5: ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) )
-                    // InternalNavascript.g:3879:6: (lv_mappedArrayField_15_0= ruleMappedArrayField )
+                    // InternalNavascript.g:4086:5: ( (lv_mappedArrayField_15_0= ruleMappedArrayField ) )
+                    // InternalNavascript.g:4087:6: (lv_mappedArrayField_15_0= ruleMappedArrayField )
                     {
-                    // InternalNavascript.g:3879:6: (lv_mappedArrayField_15_0= ruleMappedArrayField )
-                    // InternalNavascript.g:3880:7: lv_mappedArrayField_15_0= ruleMappedArrayField
+                    // InternalNavascript.g:4087:6: (lv_mappedArrayField_15_0= ruleMappedArrayField )
+                    // InternalNavascript.g:4088:7: lv_mappedArrayField_15_0= ruleMappedArrayField
                     {
                     if ( state.backtracking==0 ) {
 
@@ -11127,7 +11489,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_16=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+                    otherlv_16=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_16, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_3_2());
@@ -11140,22 +11502,22 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalNavascript.g:3903:4: (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' )
+                    // InternalNavascript.g:4111:4: (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' )
                     {
-                    // InternalNavascript.g:3903:4: (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' )
-                    // InternalNavascript.g:3904:5: otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}'
+                    // InternalNavascript.g:4111:4: (otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}' )
+                    // InternalNavascript.g:4112:5: otherlv_17= '{' ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) ) otherlv_19= '}'
                     {
-                    otherlv_17=(Token)match(input,27,FOLLOW_37); if (state.failed) return current;
+                    otherlv_17=(Token)match(input,28,FOLLOW_37); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_17, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_4_0());
                       				
                     }
-                    // InternalNavascript.g:3908:5: ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) )
-                    // InternalNavascript.g:3909:6: (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage )
+                    // InternalNavascript.g:4116:5: ( (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage ) )
+                    // InternalNavascript.g:4117:6: (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage )
                     {
-                    // InternalNavascript.g:3909:6: (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage )
-                    // InternalNavascript.g:3910:7: lv_mappedArrayMessage_18_0= ruleMappedArrayMessage
+                    // InternalNavascript.g:4117:6: (lv_mappedArrayMessage_18_0= ruleMappedArrayMessage )
+                    // InternalNavascript.g:4118:7: lv_mappedArrayMessage_18_0= ruleMappedArrayMessage
                     {
                     if ( state.backtracking==0 ) {
 
@@ -11186,7 +11548,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_19=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+                    otherlv_19=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_19, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_4_2());
@@ -11226,7 +11588,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVarArray"
-    // InternalNavascript.g:3937:1: entryRuleVarArray returns [EObject current=null] : iv_ruleVarArray= ruleVarArray EOF ;
+    // InternalNavascript.g:4145:1: entryRuleVarArray returns [EObject current=null] : iv_ruleVarArray= ruleVarArray EOF ;
     public final EObject entryRuleVarArray() throws RecognitionException {
         EObject current = null;
 
@@ -11234,8 +11596,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:3937:49: (iv_ruleVarArray= ruleVarArray EOF )
-            // InternalNavascript.g:3938:2: iv_ruleVarArray= ruleVarArray EOF
+            // InternalNavascript.g:4145:49: (iv_ruleVarArray= ruleVarArray EOF )
+            // InternalNavascript.g:4146:2: iv_ruleVarArray= ruleVarArray EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVarArrayRule()); 
@@ -11266,7 +11628,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVarArray"
-    // InternalNavascript.g:3944:1: ruleVarArray returns [EObject current=null] : ( () ( (lv_vararrayelement_1_0= ruleVarArrayElement ) ) (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )* ) ;
+    // InternalNavascript.g:4152:1: ruleVarArray returns [EObject current=null] : ( () ( (lv_vararrayelement_1_0= ruleVarArrayElement ) ) (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )* ) ;
     public final EObject ruleVarArray() throws RecognitionException {
         EObject current = null;
 
@@ -11280,15 +11642,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:3950:2: ( ( () ( (lv_vararrayelement_1_0= ruleVarArrayElement ) ) (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )* ) )
-            // InternalNavascript.g:3951:2: ( () ( (lv_vararrayelement_1_0= ruleVarArrayElement ) ) (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )* )
+            // InternalNavascript.g:4158:2: ( ( () ( (lv_vararrayelement_1_0= ruleVarArrayElement ) ) (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )* ) )
+            // InternalNavascript.g:4159:2: ( () ( (lv_vararrayelement_1_0= ruleVarArrayElement ) ) (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )* )
             {
-            // InternalNavascript.g:3951:2: ( () ( (lv_vararrayelement_1_0= ruleVarArrayElement ) ) (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )* )
-            // InternalNavascript.g:3952:3: () ( (lv_vararrayelement_1_0= ruleVarArrayElement ) ) (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )*
+            // InternalNavascript.g:4159:2: ( () ( (lv_vararrayelement_1_0= ruleVarArrayElement ) ) (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )* )
+            // InternalNavascript.g:4160:3: () ( (lv_vararrayelement_1_0= ruleVarArrayElement ) ) (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )*
             {
-            // InternalNavascript.g:3952:3: ()
-            // InternalNavascript.g:3953:4: 
+            // InternalNavascript.g:4160:3: ()
+            // InternalNavascript.g:4161:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -11299,11 +11666,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3959:3: ( (lv_vararrayelement_1_0= ruleVarArrayElement ) )
-            // InternalNavascript.g:3960:4: (lv_vararrayelement_1_0= ruleVarArrayElement )
+            // InternalNavascript.g:4170:3: ( (lv_vararrayelement_1_0= ruleVarArrayElement ) )
+            // InternalNavascript.g:4171:4: (lv_vararrayelement_1_0= ruleVarArrayElement )
             {
-            // InternalNavascript.g:3960:4: (lv_vararrayelement_1_0= ruleVarArrayElement )
-            // InternalNavascript.g:3961:5: lv_vararrayelement_1_0= ruleVarArrayElement
+            // InternalNavascript.g:4171:4: (lv_vararrayelement_1_0= ruleVarArrayElement )
+            // InternalNavascript.g:4172:5: lv_vararrayelement_1_0= ruleVarArrayElement
             {
             if ( state.backtracking==0 ) {
 
@@ -11334,32 +11701,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:3978:3: (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )*
-            loop74:
+            // InternalNavascript.g:4189:3: (otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) ) )*
+            loop76:
             do {
-                int alt74=2;
-                int LA74_0 = input.LA(1);
+                int alt76=2;
+                int LA76_0 = input.LA(1);
 
-                if ( (LA74_0==32) ) {
-                    alt74=1;
+                if ( (LA76_0==33) ) {
+                    alt76=1;
                 }
 
 
-                switch (alt74) {
+                switch (alt76) {
             	case 1 :
-            	    // InternalNavascript.g:3979:4: otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) )
+            	    // InternalNavascript.g:4190:4: otherlv_2= ',' ( (lv_vararrayelement_3_0= ruleVarArrayElement ) )
             	    {
-            	    otherlv_2=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,33,FOLLOW_14); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_2, grammarAccess.getVarArrayAccess().getCommaKeyword_2_0());
             	      			
             	    }
-            	    // InternalNavascript.g:3983:4: ( (lv_vararrayelement_3_0= ruleVarArrayElement ) )
-            	    // InternalNavascript.g:3984:5: (lv_vararrayelement_3_0= ruleVarArrayElement )
+            	    // InternalNavascript.g:4194:4: ( (lv_vararrayelement_3_0= ruleVarArrayElement ) )
+            	    // InternalNavascript.g:4195:5: (lv_vararrayelement_3_0= ruleVarArrayElement )
             	    {
-            	    // InternalNavascript.g:3984:5: (lv_vararrayelement_3_0= ruleVarArrayElement )
-            	    // InternalNavascript.g:3985:6: lv_vararrayelement_3_0= ruleVarArrayElement
+            	    // InternalNavascript.g:4195:5: (lv_vararrayelement_3_0= ruleVarArrayElement )
+            	    // InternalNavascript.g:4196:6: lv_vararrayelement_3_0= ruleVarArrayElement
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -11395,7 +11762,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop74;
+            	    break loop76;
                 }
             } while (true);
 
@@ -11424,7 +11791,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVarArrayElement"
-    // InternalNavascript.g:4007:1: entryRuleVarArrayElement returns [EObject current=null] : iv_ruleVarArrayElement= ruleVarArrayElement EOF ;
+    // InternalNavascript.g:4218:1: entryRuleVarArrayElement returns [EObject current=null] : iv_ruleVarArrayElement= ruleVarArrayElement EOF ;
     public final EObject entryRuleVarArrayElement() throws RecognitionException {
         EObject current = null;
 
@@ -11432,8 +11799,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4007:56: (iv_ruleVarArrayElement= ruleVarArrayElement EOF )
-            // InternalNavascript.g:4008:2: iv_ruleVarArrayElement= ruleVarArrayElement EOF
+            // InternalNavascript.g:4218:56: (iv_ruleVarArrayElement= ruleVarArrayElement EOF )
+            // InternalNavascript.g:4219:2: iv_ruleVarArrayElement= ruleVarArrayElement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVarArrayElementRule()); 
@@ -11464,7 +11831,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVarArrayElement"
-    // InternalNavascript.g:4014:1: ruleVarArrayElement returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_varElements_2_0= ruleVarElement ) )* otherlv_3= '}' ) ;
+    // InternalNavascript.g:4225:1: ruleVarArrayElement returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_varElements_2_0= ruleVarElement ) )* otherlv_3= '}' ) ;
     public final EObject ruleVarArrayElement() throws RecognitionException {
         EObject current = null;
 
@@ -11477,15 +11844,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4020:2: ( ( () otherlv_1= '{' ( (lv_varElements_2_0= ruleVarElement ) )* otherlv_3= '}' ) )
-            // InternalNavascript.g:4021:2: ( () otherlv_1= '{' ( (lv_varElements_2_0= ruleVarElement ) )* otherlv_3= '}' )
+            // InternalNavascript.g:4231:2: ( ( () otherlv_1= '{' ( (lv_varElements_2_0= ruleVarElement ) )* otherlv_3= '}' ) )
+            // InternalNavascript.g:4232:2: ( () otherlv_1= '{' ( (lv_varElements_2_0= ruleVarElement ) )* otherlv_3= '}' )
             {
-            // InternalNavascript.g:4021:2: ( () otherlv_1= '{' ( (lv_varElements_2_0= ruleVarElement ) )* otherlv_3= '}' )
-            // InternalNavascript.g:4022:3: () otherlv_1= '{' ( (lv_varElements_2_0= ruleVarElement ) )* otherlv_3= '}'
+            // InternalNavascript.g:4232:2: ( () otherlv_1= '{' ( (lv_varElements_2_0= ruleVarElement ) )* otherlv_3= '}' )
+            // InternalNavascript.g:4233:3: () otherlv_1= '{' ( (lv_varElements_2_0= ruleVarElement ) )* otherlv_3= '}'
             {
-            // InternalNavascript.g:4022:3: ()
-            // InternalNavascript.g:4023:4: 
+            // InternalNavascript.g:4233:3: ()
+            // InternalNavascript.g:4234:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -11496,29 +11868,29 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,27,FOLLOW_51); if (state.failed) return current;
+            otherlv_1=(Token)match(input,28,FOLLOW_51); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getVarArrayElementAccess().getLeftCurlyBracketKeyword_1());
               		
             }
-            // InternalNavascript.g:4033:3: ( (lv_varElements_2_0= ruleVarElement ) )*
-            loop75:
+            // InternalNavascript.g:4247:3: ( (lv_varElements_2_0= ruleVarElement ) )*
+            loop77:
             do {
-                int alt75=2;
-                int LA75_0 = input.LA(1);
+                int alt77=2;
+                int LA77_0 = input.LA(1);
 
-                if ( (LA75_0==25||LA75_0==65) ) {
-                    alt75=1;
+                if ( (LA77_0==26||LA77_0==66) ) {
+                    alt77=1;
                 }
 
 
-                switch (alt75) {
+                switch (alt77) {
             	case 1 :
-            	    // InternalNavascript.g:4034:4: (lv_varElements_2_0= ruleVarElement )
+            	    // InternalNavascript.g:4248:4: (lv_varElements_2_0= ruleVarElement )
             	    {
-            	    // InternalNavascript.g:4034:4: (lv_varElements_2_0= ruleVarElement )
-            	    // InternalNavascript.g:4035:5: lv_varElements_2_0= ruleVarElement
+            	    // InternalNavascript.g:4248:4: (lv_varElements_2_0= ruleVarElement )
+            	    // InternalNavascript.g:4249:5: lv_varElements_2_0= ruleVarElement
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -11551,11 +11923,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop75;
+            	    break loop77;
                 }
             } while (true);
 
-            otherlv_3=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getVarArrayElementAccess().getRightCurlyBracketKeyword_3());
@@ -11586,7 +11958,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVarElement"
-    // InternalNavascript.g:4060:1: entryRuleVarElement returns [EObject current=null] : iv_ruleVarElement= ruleVarElement EOF ;
+    // InternalNavascript.g:4274:1: entryRuleVarElement returns [EObject current=null] : iv_ruleVarElement= ruleVarElement EOF ;
     public final EObject entryRuleVarElement() throws RecognitionException {
         EObject current = null;
 
@@ -11594,8 +11966,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4060:51: (iv_ruleVarElement= ruleVarElement EOF )
-            // InternalNavascript.g:4061:2: iv_ruleVarElement= ruleVarElement EOF
+            // InternalNavascript.g:4274:51: (iv_ruleVarElement= ruleVarElement EOF )
+            // InternalNavascript.g:4275:2: iv_ruleVarElement= ruleVarElement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVarElementRule()); 
@@ -11626,7 +11998,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVarElement"
-    // InternalNavascript.g:4067:1: ruleVarElement returns [EObject current=null] : ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( (lv_var_4_0= ruleVar ) ) ) ;
+    // InternalNavascript.g:4281:1: ruleVarElement returns [EObject current=null] : ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( (lv_var_4_0= ruleVar ) ) ) ;
     public final EObject ruleVarElement() throws RecognitionException {
         EObject current = null;
 
@@ -11641,15 +12013,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4073:2: ( ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( (lv_var_4_0= ruleVar ) ) ) )
-            // InternalNavascript.g:4074:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( (lv_var_4_0= ruleVar ) ) )
+            // InternalNavascript.g:4287:2: ( ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( (lv_var_4_0= ruleVar ) ) ) )
+            // InternalNavascript.g:4288:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( (lv_var_4_0= ruleVar ) ) )
             {
-            // InternalNavascript.g:4074:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( (lv_var_4_0= ruleVar ) ) )
-            // InternalNavascript.g:4075:3: () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( (lv_var_4_0= ruleVar ) )
+            // InternalNavascript.g:4288:2: ( () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( (lv_var_4_0= ruleVar ) ) )
+            // InternalNavascript.g:4289:3: () (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )? ( (lv_var_4_0= ruleVar ) )
             {
-            // InternalNavascript.g:4075:3: ()
-            // InternalNavascript.g:4076:4: 
+            // InternalNavascript.g:4289:3: ()
+            // InternalNavascript.g:4290:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -11660,28 +12037,28 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4082:3: (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )?
-            int alt76=2;
-            int LA76_0 = input.LA(1);
+            // InternalNavascript.g:4299:3: (otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then' )?
+            int alt78=2;
+            int LA78_0 = input.LA(1);
 
-            if ( (LA76_0==25) ) {
-                alt76=1;
+            if ( (LA78_0==26) ) {
+                alt78=1;
             }
-            switch (alt76) {
+            switch (alt78) {
                 case 1 :
-                    // InternalNavascript.g:4083:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
+                    // InternalNavascript.g:4300:4: otherlv_1= 'if' ( (lv_condition_2_0= ruleExpression ) ) otherlv_3= 'then'
                     {
-                    otherlv_1=(Token)match(input,25,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,26,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getVarElementAccess().getIfKeyword_1_0());
                       			
                     }
-                    // InternalNavascript.g:4087:4: ( (lv_condition_2_0= ruleExpression ) )
-                    // InternalNavascript.g:4088:5: (lv_condition_2_0= ruleExpression )
+                    // InternalNavascript.g:4304:4: ( (lv_condition_2_0= ruleExpression ) )
+                    // InternalNavascript.g:4305:5: (lv_condition_2_0= ruleExpression )
                     {
-                    // InternalNavascript.g:4088:5: (lv_condition_2_0= ruleExpression )
-                    // InternalNavascript.g:4089:6: lv_condition_2_0= ruleExpression
+                    // InternalNavascript.g:4305:5: (lv_condition_2_0= ruleExpression )
+                    // InternalNavascript.g:4306:6: lv_condition_2_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -11712,7 +12089,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,26,FOLLOW_53); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,27,FOLLOW_53); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getVarElementAccess().getThenKeyword_1_2());
@@ -11724,11 +12101,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4111:3: ( (lv_var_4_0= ruleVar ) )
-            // InternalNavascript.g:4112:4: (lv_var_4_0= ruleVar )
+            // InternalNavascript.g:4328:3: ( (lv_var_4_0= ruleVar ) )
+            // InternalNavascript.g:4329:4: (lv_var_4_0= ruleVar )
             {
-            // InternalNavascript.g:4112:4: (lv_var_4_0= ruleVar )
-            // InternalNavascript.g:4113:5: lv_var_4_0= ruleVar
+            // InternalNavascript.g:4329:4: (lv_var_4_0= ruleVar )
+            // InternalNavascript.g:4330:5: lv_var_4_0= ruleVar
             {
             if ( state.backtracking==0 ) {
 
@@ -11784,7 +12161,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVarArguments"
-    // InternalNavascript.g:4134:1: entryRuleVarArguments returns [EObject current=null] : iv_ruleVarArguments= ruleVarArguments EOF ;
+    // InternalNavascript.g:4351:1: entryRuleVarArguments returns [EObject current=null] : iv_ruleVarArguments= ruleVarArguments EOF ;
     public final EObject entryRuleVarArguments() throws RecognitionException {
         EObject current = null;
 
@@ -11792,8 +12169,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4134:53: (iv_ruleVarArguments= ruleVarArguments EOF )
-            // InternalNavascript.g:4135:2: iv_ruleVarArguments= ruleVarArguments EOF
+            // InternalNavascript.g:4351:53: (iv_ruleVarArguments= ruleVarArguments EOF )
+            // InternalNavascript.g:4352:2: iv_ruleVarArguments= ruleVarArguments EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVarArgumentsRule()); 
@@ -11824,7 +12201,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVarArguments"
-    // InternalNavascript.g:4141:1: ruleVarArguments returns [EObject current=null] : ( () otherlv_1= '(' ( (lv_varArguments_2_0= ruleVarArgument ) ) (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )* otherlv_5= ')' ) ;
+    // InternalNavascript.g:4358:1: ruleVarArguments returns [EObject current=null] : ( () otherlv_1= '(' ( (lv_varArguments_2_0= ruleVarArgument ) ) (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )* otherlv_5= ')' ) ;
     public final EObject ruleVarArguments() throws RecognitionException {
         EObject current = null;
 
@@ -11840,15 +12217,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4147:2: ( ( () otherlv_1= '(' ( (lv_varArguments_2_0= ruleVarArgument ) ) (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )* otherlv_5= ')' ) )
-            // InternalNavascript.g:4148:2: ( () otherlv_1= '(' ( (lv_varArguments_2_0= ruleVarArgument ) ) (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )* otherlv_5= ')' )
+            // InternalNavascript.g:4364:2: ( ( () otherlv_1= '(' ( (lv_varArguments_2_0= ruleVarArgument ) ) (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )* otherlv_5= ')' ) )
+            // InternalNavascript.g:4365:2: ( () otherlv_1= '(' ( (lv_varArguments_2_0= ruleVarArgument ) ) (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )* otherlv_5= ')' )
             {
-            // InternalNavascript.g:4148:2: ( () otherlv_1= '(' ( (lv_varArguments_2_0= ruleVarArgument ) ) (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )* otherlv_5= ')' )
-            // InternalNavascript.g:4149:3: () otherlv_1= '(' ( (lv_varArguments_2_0= ruleVarArgument ) ) (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )* otherlv_5= ')'
+            // InternalNavascript.g:4365:2: ( () otherlv_1= '(' ( (lv_varArguments_2_0= ruleVarArgument ) ) (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )* otherlv_5= ')' )
+            // InternalNavascript.g:4366:3: () otherlv_1= '(' ( (lv_varArguments_2_0= ruleVarArgument ) ) (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )* otherlv_5= ')'
             {
-            // InternalNavascript.g:4149:3: ()
-            // InternalNavascript.g:4150:4: 
+            // InternalNavascript.g:4366:3: ()
+            // InternalNavascript.g:4367:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -11859,17 +12241,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,30,FOLLOW_35); if (state.failed) return current;
+            otherlv_1=(Token)match(input,31,FOLLOW_35); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getVarArgumentsAccess().getLeftParenthesisKeyword_1());
               		
             }
-            // InternalNavascript.g:4160:3: ( (lv_varArguments_2_0= ruleVarArgument ) )
-            // InternalNavascript.g:4161:4: (lv_varArguments_2_0= ruleVarArgument )
+            // InternalNavascript.g:4380:3: ( (lv_varArguments_2_0= ruleVarArgument ) )
+            // InternalNavascript.g:4381:4: (lv_varArguments_2_0= ruleVarArgument )
             {
-            // InternalNavascript.g:4161:4: (lv_varArguments_2_0= ruleVarArgument )
-            // InternalNavascript.g:4162:5: lv_varArguments_2_0= ruleVarArgument
+            // InternalNavascript.g:4381:4: (lv_varArguments_2_0= ruleVarArgument )
+            // InternalNavascript.g:4382:5: lv_varArguments_2_0= ruleVarArgument
             {
             if ( state.backtracking==0 ) {
 
@@ -11900,32 +12282,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4179:3: (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )*
-            loop77:
+            // InternalNavascript.g:4399:3: (otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) ) )*
+            loop79:
             do {
-                int alt77=2;
-                int LA77_0 = input.LA(1);
+                int alt79=2;
+                int LA79_0 = input.LA(1);
 
-                if ( (LA77_0==32) ) {
-                    alt77=1;
+                if ( (LA79_0==33) ) {
+                    alt79=1;
                 }
 
 
-                switch (alt77) {
+                switch (alt79) {
             	case 1 :
-            	    // InternalNavascript.g:4180:4: otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) )
+            	    // InternalNavascript.g:4400:4: otherlv_3= ',' ( (lv_varArguments_4_0= ruleVarArgument ) )
             	    {
-            	    otherlv_3=(Token)match(input,32,FOLLOW_35); if (state.failed) return current;
+            	    otherlv_3=(Token)match(input,33,FOLLOW_35); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_3, grammarAccess.getVarArgumentsAccess().getCommaKeyword_3_0());
             	      			
             	    }
-            	    // InternalNavascript.g:4184:4: ( (lv_varArguments_4_0= ruleVarArgument ) )
-            	    // InternalNavascript.g:4185:5: (lv_varArguments_4_0= ruleVarArgument )
+            	    // InternalNavascript.g:4404:4: ( (lv_varArguments_4_0= ruleVarArgument ) )
+            	    // InternalNavascript.g:4405:5: (lv_varArguments_4_0= ruleVarArgument )
             	    {
-            	    // InternalNavascript.g:4185:5: (lv_varArguments_4_0= ruleVarArgument )
-            	    // InternalNavascript.g:4186:6: lv_varArguments_4_0= ruleVarArgument
+            	    // InternalNavascript.g:4405:5: (lv_varArguments_4_0= ruleVarArgument )
+            	    // InternalNavascript.g:4406:6: lv_varArguments_4_0= ruleVarArgument
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -11961,11 +12343,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop77;
+            	    break loop79;
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,32,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getVarArgumentsAccess().getRightParenthesisKeyword_4());
@@ -11996,7 +12378,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVarArgument"
-    // InternalNavascript.g:4212:1: entryRuleVarArgument returns [EObject current=null] : iv_ruleVarArgument= ruleVarArgument EOF ;
+    // InternalNavascript.g:4432:1: entryRuleVarArgument returns [EObject current=null] : iv_ruleVarArgument= ruleVarArgument EOF ;
     public final EObject entryRuleVarArgument() throws RecognitionException {
         EObject current = null;
 
@@ -12004,8 +12386,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4212:52: (iv_ruleVarArgument= ruleVarArgument EOF )
-            // InternalNavascript.g:4213:2: iv_ruleVarArgument= ruleVarArgument EOF
+            // InternalNavascript.g:4432:52: (iv_ruleVarArgument= ruleVarArgument EOF )
+            // InternalNavascript.g:4433:2: iv_ruleVarArgument= ruleVarArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVarArgumentRule()); 
@@ -12036,7 +12418,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVarArgument"
-    // InternalNavascript.g:4219:1: ruleVarArgument returns [EObject current=null] : ( () ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) ) ) ;
+    // InternalNavascript.g:4439:1: ruleVarArgument returns [EObject current=null] : ( () ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) ) ) ;
     public final EObject ruleVarArgument() throws RecognitionException {
         EObject current = null;
 
@@ -12049,15 +12431,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4225:2: ( ( () ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) ) ) )
-            // InternalNavascript.g:4226:2: ( () ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) ) )
+            // InternalNavascript.g:4445:2: ( ( () ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) ) ) )
+            // InternalNavascript.g:4446:2: ( () ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) ) )
             {
-            // InternalNavascript.g:4226:2: ( () ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) ) )
-            // InternalNavascript.g:4227:3: () ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) )
+            // InternalNavascript.g:4446:2: ( () ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) ) )
+            // InternalNavascript.g:4447:3: () ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) )
             {
-            // InternalNavascript.g:4227:3: ()
-            // InternalNavascript.g:4228:4: 
+            // InternalNavascript.g:4447:3: ()
+            // InternalNavascript.g:4448:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -12068,32 +12455,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4234:3: ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) )
-            // InternalNavascript.g:4235:4: ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) )
+            // InternalNavascript.g:4457:3: ( ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) ) )
+            // InternalNavascript.g:4458:4: ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) )
             {
-            // InternalNavascript.g:4235:4: ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) )
-            // InternalNavascript.g:4236:5: (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode )
+            // InternalNavascript.g:4458:4: ( (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode ) )
+            // InternalNavascript.g:4459:5: (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode )
             {
-            // InternalNavascript.g:4236:5: (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode )
-            int alt78=2;
-            int LA78_0 = input.LA(1);
+            // InternalNavascript.g:4459:5: (lv_argument_1_1= ruleVarType | lv_argument_1_2= ruleVarMode )
+            int alt80=2;
+            int LA80_0 = input.LA(1);
 
-            if ( (LA78_0==60) ) {
-                alt78=1;
+            if ( (LA80_0==61) ) {
+                alt80=1;
             }
-            else if ( (LA78_0==61) ) {
-                alt78=2;
+            else if ( (LA80_0==62) ) {
+                alt80=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 78, 0, input);
+                    new NoViableAltException("", 80, 0, input);
 
                 throw nvae;
             }
-            switch (alt78) {
+            switch (alt80) {
                 case 1 :
-                    // InternalNavascript.g:4237:6: lv_argument_1_1= ruleVarType
+                    // InternalNavascript.g:4460:6: lv_argument_1_1= ruleVarType
                     {
                     if ( state.backtracking==0 ) {
 
@@ -12122,7 +12509,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:4253:6: lv_argument_1_2= ruleVarMode
+                    // InternalNavascript.g:4476:6: lv_argument_1_2= ruleVarMode
                     {
                     if ( state.backtracking==0 ) {
 
@@ -12184,7 +12571,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVarType"
-    // InternalNavascript.g:4275:1: entryRuleVarType returns [EObject current=null] : iv_ruleVarType= ruleVarType EOF ;
+    // InternalNavascript.g:4498:1: entryRuleVarType returns [EObject current=null] : iv_ruleVarType= ruleVarType EOF ;
     public final EObject entryRuleVarType() throws RecognitionException {
         EObject current = null;
 
@@ -12192,8 +12579,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4275:48: (iv_ruleVarType= ruleVarType EOF )
-            // InternalNavascript.g:4276:2: iv_ruleVarType= ruleVarType EOF
+            // InternalNavascript.g:4498:48: (iv_ruleVarType= ruleVarType EOF )
+            // InternalNavascript.g:4499:2: iv_ruleVarType= ruleVarType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVarTypeRule()); 
@@ -12224,7 +12611,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVarType"
-    // InternalNavascript.g:4282:1: ruleVarType returns [EObject current=null] : ( () otherlv_1= 'type' (otherlv_2= '=' | otherlv_3= ':' ) ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) ) ) ;
+    // InternalNavascript.g:4505:1: ruleVarType returns [EObject current=null] : ( () otherlv_1= 'type' (otherlv_2= '=' | otherlv_3= ':' ) ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) ) ) ;
     public final EObject ruleVarType() throws RecognitionException {
         EObject current = null;
 
@@ -12240,15 +12627,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4288:2: ( ( () otherlv_1= 'type' (otherlv_2= '=' | otherlv_3= ':' ) ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) ) ) )
-            // InternalNavascript.g:4289:2: ( () otherlv_1= 'type' (otherlv_2= '=' | otherlv_3= ':' ) ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) ) )
+            // InternalNavascript.g:4511:2: ( ( () otherlv_1= 'type' (otherlv_2= '=' | otherlv_3= ':' ) ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) ) ) )
+            // InternalNavascript.g:4512:2: ( () otherlv_1= 'type' (otherlv_2= '=' | otherlv_3= ':' ) ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) ) )
             {
-            // InternalNavascript.g:4289:2: ( () otherlv_1= 'type' (otherlv_2= '=' | otherlv_3= ':' ) ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) ) )
-            // InternalNavascript.g:4290:3: () otherlv_1= 'type' (otherlv_2= '=' | otherlv_3= ':' ) ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) )
+            // InternalNavascript.g:4512:2: ( () otherlv_1= 'type' (otherlv_2= '=' | otherlv_3= ':' ) ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) ) )
+            // InternalNavascript.g:4513:3: () otherlv_1= 'type' (otherlv_2= '=' | otherlv_3= ':' ) ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) )
             {
-            // InternalNavascript.g:4290:3: ()
-            // InternalNavascript.g:4291:4: 
+            // InternalNavascript.g:4513:3: ()
+            // InternalNavascript.g:4514:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -12259,34 +12651,34 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,60,FOLLOW_17); if (state.failed) return current;
+            otherlv_1=(Token)match(input,61,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getVarTypeAccess().getTypeKeyword_1());
               		
             }
-            // InternalNavascript.g:4301:3: (otherlv_2= '=' | otherlv_3= ':' )
-            int alt79=2;
-            int LA79_0 = input.LA(1);
+            // InternalNavascript.g:4527:3: (otherlv_2= '=' | otherlv_3= ':' )
+            int alt81=2;
+            int LA81_0 = input.LA(1);
 
-            if ( (LA79_0==34) ) {
-                alt79=1;
+            if ( (LA81_0==35) ) {
+                alt81=1;
             }
-            else if ( (LA79_0==35) ) {
-                alt79=2;
+            else if ( (LA81_0==36) ) {
+                alt81=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 79, 0, input);
+                    new NoViableAltException("", 81, 0, input);
 
                 throw nvae;
             }
-            switch (alt79) {
+            switch (alt81) {
                 case 1 :
-                    // InternalNavascript.g:4302:4: otherlv_2= '='
+                    // InternalNavascript.g:4528:4: otherlv_2= '='
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_54); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_54); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getVarTypeAccess().getEqualsSignKeyword_2_0());
@@ -12296,9 +12688,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:4307:4: otherlv_3= ':'
+                    // InternalNavascript.g:4533:4: otherlv_3= ':'
                     {
-                    otherlv_3=(Token)match(input,35,FOLLOW_54); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,36,FOLLOW_54); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getVarTypeAccess().getColonKeyword_2_1());
@@ -12310,32 +12702,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4312:3: ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) )
-            // InternalNavascript.g:4313:4: ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) )
+            // InternalNavascript.g:4538:3: ( ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) ) )
+            // InternalNavascript.g:4539:4: ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) )
             {
-            // InternalNavascript.g:4313:4: ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) )
-            // InternalNavascript.g:4314:5: (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType )
+            // InternalNavascript.g:4539:4: ( (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType ) )
+            // InternalNavascript.g:4540:5: (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType )
             {
-            // InternalNavascript.g:4314:5: (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType )
-            int alt80=2;
-            int LA80_0 = input.LA(1);
+            // InternalNavascript.g:4540:5: (lv_type_4_1= ruleMessageType | lv_type_4_2= rulePropertyType )
+            int alt82=2;
+            int LA82_0 = input.LA(1);
 
-            if ( ((LA80_0>=105 && LA80_0<=107)) ) {
-                alt80=1;
+            if ( ((LA82_0>=106 && LA82_0<=108)) ) {
+                alt82=1;
             }
-            else if ( ((LA80_0>=91 && LA80_0<=101)) ) {
-                alt80=2;
+            else if ( ((LA82_0>=92 && LA82_0<=102)) ) {
+                alt82=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 80, 0, input);
+                    new NoViableAltException("", 82, 0, input);
 
                 throw nvae;
             }
-            switch (alt80) {
+            switch (alt82) {
                 case 1 :
-                    // InternalNavascript.g:4315:6: lv_type_4_1= ruleMessageType
+                    // InternalNavascript.g:4541:6: lv_type_4_1= ruleMessageType
                     {
                     if ( state.backtracking==0 ) {
 
@@ -12364,7 +12756,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:4331:6: lv_type_4_2= rulePropertyType
+                    // InternalNavascript.g:4557:6: lv_type_4_2= rulePropertyType
                     {
                     if ( state.backtracking==0 ) {
 
@@ -12426,7 +12818,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVarMode"
-    // InternalNavascript.g:4353:1: entryRuleVarMode returns [EObject current=null] : iv_ruleVarMode= ruleVarMode EOF ;
+    // InternalNavascript.g:4579:1: entryRuleVarMode returns [EObject current=null] : iv_ruleVarMode= ruleVarMode EOF ;
     public final EObject entryRuleVarMode() throws RecognitionException {
         EObject current = null;
 
@@ -12434,8 +12826,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4353:48: (iv_ruleVarMode= ruleVarMode EOF )
-            // InternalNavascript.g:4354:2: iv_ruleVarMode= ruleVarMode EOF
+            // InternalNavascript.g:4579:48: (iv_ruleVarMode= ruleVarMode EOF )
+            // InternalNavascript.g:4580:2: iv_ruleVarMode= ruleVarMode EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVarModeRule()); 
@@ -12466,7 +12858,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVarMode"
-    // InternalNavascript.g:4360:1: ruleVarMode returns [EObject current=null] : ( () otherlv_1= 'mode' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_mode_4_0= ruleMessageMode ) ) ) ;
+    // InternalNavascript.g:4586:1: ruleVarMode returns [EObject current=null] : ( () otherlv_1= 'mode' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_mode_4_0= ruleMessageMode ) ) ) ;
     public final EObject ruleVarMode() throws RecognitionException {
         EObject current = null;
 
@@ -12480,15 +12872,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4366:2: ( ( () otherlv_1= 'mode' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_mode_4_0= ruleMessageMode ) ) ) )
-            // InternalNavascript.g:4367:2: ( () otherlv_1= 'mode' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_mode_4_0= ruleMessageMode ) ) )
+            // InternalNavascript.g:4592:2: ( ( () otherlv_1= 'mode' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_mode_4_0= ruleMessageMode ) ) ) )
+            // InternalNavascript.g:4593:2: ( () otherlv_1= 'mode' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_mode_4_0= ruleMessageMode ) ) )
             {
-            // InternalNavascript.g:4367:2: ( () otherlv_1= 'mode' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_mode_4_0= ruleMessageMode ) ) )
-            // InternalNavascript.g:4368:3: () otherlv_1= 'mode' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_mode_4_0= ruleMessageMode ) )
+            // InternalNavascript.g:4593:2: ( () otherlv_1= 'mode' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_mode_4_0= ruleMessageMode ) ) )
+            // InternalNavascript.g:4594:3: () otherlv_1= 'mode' (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_mode_4_0= ruleMessageMode ) )
             {
-            // InternalNavascript.g:4368:3: ()
-            // InternalNavascript.g:4369:4: 
+            // InternalNavascript.g:4594:3: ()
+            // InternalNavascript.g:4595:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -12499,34 +12896,34 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,61,FOLLOW_17); if (state.failed) return current;
+            otherlv_1=(Token)match(input,62,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getVarModeAccess().getModeKeyword_1());
               		
             }
-            // InternalNavascript.g:4379:3: (otherlv_2= '=' | otherlv_3= ':' )
-            int alt81=2;
-            int LA81_0 = input.LA(1);
+            // InternalNavascript.g:4608:3: (otherlv_2= '=' | otherlv_3= ':' )
+            int alt83=2;
+            int LA83_0 = input.LA(1);
 
-            if ( (LA81_0==34) ) {
-                alt81=1;
+            if ( (LA83_0==35) ) {
+                alt83=1;
             }
-            else if ( (LA81_0==35) ) {
-                alt81=2;
+            else if ( (LA83_0==36) ) {
+                alt83=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 81, 0, input);
+                    new NoViableAltException("", 83, 0, input);
 
                 throw nvae;
             }
-            switch (alt81) {
+            switch (alt83) {
                 case 1 :
-                    // InternalNavascript.g:4380:4: otherlv_2= '='
+                    // InternalNavascript.g:4609:4: otherlv_2= '='
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_40); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_41); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getVarModeAccess().getEqualsSignKeyword_2_0());
@@ -12536,9 +12933,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:4385:4: otherlv_3= ':'
+                    // InternalNavascript.g:4614:4: otherlv_3= ':'
                     {
-                    otherlv_3=(Token)match(input,35,FOLLOW_40); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,36,FOLLOW_41); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getVarModeAccess().getColonKeyword_2_1());
@@ -12550,11 +12947,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4390:3: ( (lv_mode_4_0= ruleMessageMode ) )
-            // InternalNavascript.g:4391:4: (lv_mode_4_0= ruleMessageMode )
+            // InternalNavascript.g:4619:3: ( (lv_mode_4_0= ruleMessageMode ) )
+            // InternalNavascript.g:4620:4: (lv_mode_4_0= ruleMessageMode )
             {
-            // InternalNavascript.g:4391:4: (lv_mode_4_0= ruleMessageMode )
-            // InternalNavascript.g:4392:5: lv_mode_4_0= ruleMessageMode
+            // InternalNavascript.g:4620:4: (lv_mode_4_0= ruleMessageMode )
+            // InternalNavascript.g:4621:5: lv_mode_4_0= ruleMessageMode
             {
             if ( state.backtracking==0 ) {
 
@@ -12610,7 +13007,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProperty"
-    // InternalNavascript.g:4413:1: entryRuleProperty returns [EObject current=null] : iv_ruleProperty= ruleProperty EOF ;
+    // InternalNavascript.g:4642:1: entryRuleProperty returns [EObject current=null] : iv_ruleProperty= ruleProperty EOF ;
     public final EObject entryRuleProperty() throws RecognitionException {
         EObject current = null;
 
@@ -12618,8 +13015,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4413:49: (iv_ruleProperty= ruleProperty EOF )
-            // InternalNavascript.g:4414:2: iv_ruleProperty= ruleProperty EOF
+            // InternalNavascript.g:4642:49: (iv_ruleProperty= ruleProperty EOF )
+            // InternalNavascript.g:4643:2: iv_ruleProperty= ruleProperty EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPropertyRule()); 
@@ -12650,7 +13047,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProperty"
-    // InternalNavascript.g:4420:1: ruleProperty returns [EObject current=null] : ( () otherlv_1= 'property' ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) ) ( (lv_arguments_3_0= rulePropertyArguments ) )? ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) ) ) ;
+    // InternalNavascript.g:4649:1: ruleProperty returns [EObject current=null] : ( () otherlv_1= 'property' ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) ) ( (lv_arguments_3_0= rulePropertyArguments ) )? ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) ) ) ;
     public final EObject ruleProperty() throws RecognitionException {
         EObject current = null;
 
@@ -12680,15 +13077,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4426:2: ( ( () otherlv_1= 'property' ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) ) ( (lv_arguments_3_0= rulePropertyArguments ) )? ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) ) ) )
-            // InternalNavascript.g:4427:2: ( () otherlv_1= 'property' ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) ) ( (lv_arguments_3_0= rulePropertyArguments ) )? ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) ) )
+            // InternalNavascript.g:4655:2: ( ( () otherlv_1= 'property' ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) ) ( (lv_arguments_3_0= rulePropertyArguments ) )? ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) ) ) )
+            // InternalNavascript.g:4656:2: ( () otherlv_1= 'property' ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) ) ( (lv_arguments_3_0= rulePropertyArguments ) )? ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) ) )
             {
-            // InternalNavascript.g:4427:2: ( () otherlv_1= 'property' ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) ) ( (lv_arguments_3_0= rulePropertyArguments ) )? ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) ) )
-            // InternalNavascript.g:4428:3: () otherlv_1= 'property' ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) ) ( (lv_arguments_3_0= rulePropertyArguments ) )? ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) )
+            // InternalNavascript.g:4656:2: ( () otherlv_1= 'property' ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) ) ( (lv_arguments_3_0= rulePropertyArguments ) )? ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) ) )
+            // InternalNavascript.g:4657:3: () otherlv_1= 'property' ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) ) ( (lv_arguments_3_0= rulePropertyArguments ) )? ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) )
             {
-            // InternalNavascript.g:4428:3: ()
-            // InternalNavascript.g:4429:4: 
+            // InternalNavascript.g:4657:3: ()
+            // InternalNavascript.g:4658:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -12699,17 +13101,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,66,FOLLOW_25); if (state.failed) return current;
+            otherlv_1=(Token)match(input,67,FOLLOW_25); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getPropertyAccess().getPropertyKeyword_1());
               		
             }
-            // InternalNavascript.g:4439:3: ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) )
-            // InternalNavascript.g:4440:4: (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:4671:3: ( (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER ) )
+            // InternalNavascript.g:4672:4: (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER )
             {
-            // InternalNavascript.g:4440:4: (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER )
-            // InternalNavascript.g:4441:5: lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER
+            // InternalNavascript.g:4672:4: (lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER )
+            // InternalNavascript.g:4673:5: lv_propertyName_2_0= RULE_QUOTED_IDENTIFIER
             {
             lv_propertyName_2_0=(Token)match(input,RULE_QUOTED_IDENTIFIER,FOLLOW_55); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -12735,19 +13137,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4457:3: ( (lv_arguments_3_0= rulePropertyArguments ) )?
-            int alt82=2;
-            int LA82_0 = input.LA(1);
+            // InternalNavascript.g:4689:3: ( (lv_arguments_3_0= rulePropertyArguments ) )?
+            int alt84=2;
+            int LA84_0 = input.LA(1);
 
-            if ( (LA82_0==30) ) {
-                alt82=1;
+            if ( (LA84_0==31) ) {
+                alt84=1;
             }
-            switch (alt82) {
+            switch (alt84) {
                 case 1 :
-                    // InternalNavascript.g:4458:4: (lv_arguments_3_0= rulePropertyArguments )
+                    // InternalNavascript.g:4690:4: (lv_arguments_3_0= rulePropertyArguments )
                     {
-                    // InternalNavascript.g:4458:4: (lv_arguments_3_0= rulePropertyArguments )
-                    // InternalNavascript.g:4459:5: lv_arguments_3_0= rulePropertyArguments
+                    // InternalNavascript.g:4690:4: (lv_arguments_3_0= rulePropertyArguments )
+                    // InternalNavascript.g:4691:5: lv_arguments_3_0= rulePropertyArguments
                     {
                     if ( state.backtracking==0 ) {
 
@@ -12781,35 +13183,35 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4476:3: ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) )
-            int alt85=4;
+            // InternalNavascript.g:4708:3: ( ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' ) | (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' ) | (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' ) | (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' ) )
+            int alt87=4;
             switch ( input.LA(1) ) {
-            case 34:
             case 35:
-            case 42:
+            case 36:
+            case 43:
                 {
-                alt85=1;
+                alt87=1;
                 }
                 break;
-            case 58:
+            case 59:
                 {
-                alt85=2;
+                alt87=2;
                 }
                 break;
-            case 27:
+            case 28:
                 {
-                int LA85_3 = input.LA(2);
+                int LA87_3 = input.LA(2);
 
-                if ( (LA85_3==RULE_MAPPABLE_IDENTIFIER) ) {
-                    alt85=3;
+                if ( (LA87_3==RULE_MAPPABLE_IDENTIFIER) ) {
+                    alt87=3;
                 }
-                else if ( (LA85_3==RULE_TML_LITERAL) ) {
-                    alt85=4;
+                else if ( (LA87_3==RULE_TML_LITERAL) ) {
+                    alt87=4;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 85, 3, input);
+                        new NoViableAltException("", 87, 3, input);
 
                     throw nvae;
                 }
@@ -12818,51 +13220,51 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 85, 0, input);
+                    new NoViableAltException("", 87, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt85) {
+            switch (alt87) {
                 case 1 :
-                    // InternalNavascript.g:4477:4: ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' )
+                    // InternalNavascript.g:4709:4: ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' )
                     {
-                    // InternalNavascript.g:4477:4: ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' )
-                    // InternalNavascript.g:4478:5: ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';'
+                    // InternalNavascript.g:4709:4: ( ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';' )
+                    // InternalNavascript.g:4710:5: ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )? otherlv_7= ';'
                     {
-                    // InternalNavascript.g:4478:5: ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )?
-                    int alt84=2;
-                    int LA84_0 = input.LA(1);
+                    // InternalNavascript.g:4710:5: ( (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) ) )?
+                    int alt86=2;
+                    int LA86_0 = input.LA(1);
 
-                    if ( ((LA84_0>=34 && LA84_0<=35)) ) {
-                        alt84=1;
+                    if ( ((LA86_0>=35 && LA86_0<=36)) ) {
+                        alt86=1;
                     }
-                    switch (alt84) {
+                    switch (alt86) {
                         case 1 :
-                            // InternalNavascript.g:4479:6: (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) )
+                            // InternalNavascript.g:4711:6: (otherlv_4= '=' | otherlv_5= ':' ) ( (lv_expressionList_6_0= ruleConditionalExpressions ) )
                             {
-                            // InternalNavascript.g:4479:6: (otherlv_4= '=' | otherlv_5= ':' )
-                            int alt83=2;
-                            int LA83_0 = input.LA(1);
+                            // InternalNavascript.g:4711:6: (otherlv_4= '=' | otherlv_5= ':' )
+                            int alt85=2;
+                            int LA85_0 = input.LA(1);
 
-                            if ( (LA83_0==34) ) {
-                                alt83=1;
+                            if ( (LA85_0==35) ) {
+                                alt85=1;
                             }
-                            else if ( (LA83_0==35) ) {
-                                alt83=2;
+                            else if ( (LA85_0==36) ) {
+                                alt85=2;
                             }
                             else {
                                 if (state.backtracking>0) {state.failed=true; return current;}
                                 NoViableAltException nvae =
-                                    new NoViableAltException("", 83, 0, input);
+                                    new NoViableAltException("", 85, 0, input);
 
                                 throw nvae;
                             }
-                            switch (alt83) {
+                            switch (alt85) {
                                 case 1 :
-                                    // InternalNavascript.g:4480:7: otherlv_4= '='
+                                    // InternalNavascript.g:4712:7: otherlv_4= '='
                                     {
-                                    otherlv_4=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
+                                    otherlv_4=(Token)match(input,35,FOLLOW_48); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                       							newLeafNode(otherlv_4, grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_0_0_0_0());
@@ -12872,9 +13274,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                                     }
                                     break;
                                 case 2 :
-                                    // InternalNavascript.g:4485:7: otherlv_5= ':'
+                                    // InternalNavascript.g:4717:7: otherlv_5= ':'
                                     {
-                                    otherlv_5=(Token)match(input,35,FOLLOW_47); if (state.failed) return current;
+                                    otherlv_5=(Token)match(input,36,FOLLOW_48); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                       							newLeafNode(otherlv_5, grammarAccess.getPropertyAccess().getColonKeyword_4_0_0_0_1());
@@ -12886,11 +13288,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // InternalNavascript.g:4490:6: ( (lv_expressionList_6_0= ruleConditionalExpressions ) )
-                            // InternalNavascript.g:4491:7: (lv_expressionList_6_0= ruleConditionalExpressions )
+                            // InternalNavascript.g:4722:6: ( (lv_expressionList_6_0= ruleConditionalExpressions ) )
+                            // InternalNavascript.g:4723:7: (lv_expressionList_6_0= ruleConditionalExpressions )
                             {
-                            // InternalNavascript.g:4491:7: (lv_expressionList_6_0= ruleConditionalExpressions )
-                            // InternalNavascript.g:4492:8: lv_expressionList_6_0= ruleConditionalExpressions
+                            // InternalNavascript.g:4723:7: (lv_expressionList_6_0= ruleConditionalExpressions )
+                            // InternalNavascript.g:4724:8: lv_expressionList_6_0= ruleConditionalExpressions
                             {
                             if ( state.backtracking==0 ) {
 
@@ -12927,7 +13329,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_7, grammarAccess.getPropertyAccess().getSemicolonKeyword_4_0_1());
@@ -12940,29 +13342,29 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:4516:4: (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' )
+                    // InternalNavascript.g:4748:4: (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' )
                     {
-                    // InternalNavascript.g:4516:4: (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' )
-                    // InternalNavascript.g:4517:5: otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']'
+                    // InternalNavascript.g:4748:4: (otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']' )
+                    // InternalNavascript.g:4749:5: otherlv_8= '[' ( (lv_selectionArray_9_0= ruleSelectionArray ) ) otherlv_10= ']'
                     {
-                    otherlv_8=(Token)match(input,58,FOLLOW_14); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,59,FOLLOW_14); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_8, grammarAccess.getPropertyAccess().getLeftSquareBracketKeyword_4_1_0());
                       				
                     }
-                    // InternalNavascript.g:4521:5: ( (lv_selectionArray_9_0= ruleSelectionArray ) )
-                    // InternalNavascript.g:4522:6: (lv_selectionArray_9_0= ruleSelectionArray )
+                    // InternalNavascript.g:4753:5: ( (lv_selectionArray_9_0= ruleSelectionArray ) )
+                    // InternalNavascript.g:4754:6: (lv_selectionArray_9_0= ruleSelectionArray )
                     {
-                    // InternalNavascript.g:4522:6: (lv_selectionArray_9_0= ruleSelectionArray )
-                    // InternalNavascript.g:4523:7: lv_selectionArray_9_0= ruleSelectionArray
+                    // InternalNavascript.g:4754:6: (lv_selectionArray_9_0= ruleSelectionArray )
+                    // InternalNavascript.g:4755:7: lv_selectionArray_9_0= ruleSelectionArray
                     {
                     if ( state.backtracking==0 ) {
 
                       							newCompositeNode(grammarAccess.getPropertyAccess().getSelectionArraySelectionArrayParserRuleCall_4_1_1_0());
                       						
                     }
-                    pushFollow(FOLLOW_38);
+                    pushFollow(FOLLOW_39);
                     lv_selectionArray_9_0=ruleSelectionArray();
 
                     state._fsp--;
@@ -12986,7 +13388,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,59,FOLLOW_2); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,60,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_10, grammarAccess.getPropertyAccess().getRightSquareBracketKeyword_4_1_2());
@@ -12999,22 +13401,22 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:4546:4: (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' )
+                    // InternalNavascript.g:4778:4: (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' )
                     {
-                    // InternalNavascript.g:4546:4: (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' )
-                    // InternalNavascript.g:4547:5: otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}'
+                    // InternalNavascript.g:4778:4: (otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}' )
+                    // InternalNavascript.g:4779:5: otherlv_11= '{' ( (lv_arrayField_12_0= ruleMappedArrayField ) ) otherlv_13= '}'
                     {
-                    otherlv_11=(Token)match(input,27,FOLLOW_52); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,28,FOLLOW_52); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_11, grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_2_0());
                       				
                     }
-                    // InternalNavascript.g:4551:5: ( (lv_arrayField_12_0= ruleMappedArrayField ) )
-                    // InternalNavascript.g:4552:6: (lv_arrayField_12_0= ruleMappedArrayField )
+                    // InternalNavascript.g:4783:5: ( (lv_arrayField_12_0= ruleMappedArrayField ) )
+                    // InternalNavascript.g:4784:6: (lv_arrayField_12_0= ruleMappedArrayField )
                     {
-                    // InternalNavascript.g:4552:6: (lv_arrayField_12_0= ruleMappedArrayField )
-                    // InternalNavascript.g:4553:7: lv_arrayField_12_0= ruleMappedArrayField
+                    // InternalNavascript.g:4784:6: (lv_arrayField_12_0= ruleMappedArrayField )
+                    // InternalNavascript.g:4785:7: lv_arrayField_12_0= ruleMappedArrayField
                     {
                     if ( state.backtracking==0 ) {
 
@@ -13045,7 +13447,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_13=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+                    otherlv_13=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_13, grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_2_2());
@@ -13058,22 +13460,22 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalNavascript.g:4576:4: (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' )
+                    // InternalNavascript.g:4808:4: (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' )
                     {
-                    // InternalNavascript.g:4576:4: (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' )
-                    // InternalNavascript.g:4577:5: otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}'
+                    // InternalNavascript.g:4808:4: (otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}' )
+                    // InternalNavascript.g:4809:5: otherlv_14= '{' ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) ) otherlv_16= '}'
                     {
-                    otherlv_14=(Token)match(input,27,FOLLOW_37); if (state.failed) return current;
+                    otherlv_14=(Token)match(input,28,FOLLOW_37); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_14, grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_3_0());
                       				
                     }
-                    // InternalNavascript.g:4581:5: ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) )
-                    // InternalNavascript.g:4582:6: (lv_arrayMessage_15_0= ruleMappedArrayMessage )
+                    // InternalNavascript.g:4813:5: ( (lv_arrayMessage_15_0= ruleMappedArrayMessage ) )
+                    // InternalNavascript.g:4814:6: (lv_arrayMessage_15_0= ruleMappedArrayMessage )
                     {
-                    // InternalNavascript.g:4582:6: (lv_arrayMessage_15_0= ruleMappedArrayMessage )
-                    // InternalNavascript.g:4583:7: lv_arrayMessage_15_0= ruleMappedArrayMessage
+                    // InternalNavascript.g:4814:6: (lv_arrayMessage_15_0= ruleMappedArrayMessage )
+                    // InternalNavascript.g:4815:7: lv_arrayMessage_15_0= ruleMappedArrayMessage
                     {
                     if ( state.backtracking==0 ) {
 
@@ -13104,7 +13506,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_16=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+                    otherlv_16=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_16, grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_3_2());
@@ -13144,7 +13546,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSelectionArray"
-    // InternalNavascript.g:4610:1: entryRuleSelectionArray returns [EObject current=null] : iv_ruleSelectionArray= ruleSelectionArray EOF ;
+    // InternalNavascript.g:4842:1: entryRuleSelectionArray returns [EObject current=null] : iv_ruleSelectionArray= ruleSelectionArray EOF ;
     public final EObject entryRuleSelectionArray() throws RecognitionException {
         EObject current = null;
 
@@ -13152,8 +13554,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4610:55: (iv_ruleSelectionArray= ruleSelectionArray EOF )
-            // InternalNavascript.g:4611:2: iv_ruleSelectionArray= ruleSelectionArray EOF
+            // InternalNavascript.g:4842:55: (iv_ruleSelectionArray= ruleSelectionArray EOF )
+            // InternalNavascript.g:4843:2: iv_ruleSelectionArray= ruleSelectionArray EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSelectionArrayRule()); 
@@ -13184,7 +13586,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSelectionArray"
-    // InternalNavascript.g:4617:1: ruleSelectionArray returns [EObject current=null] : ( ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) ) (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )* ) ;
+    // InternalNavascript.g:4849:1: ruleSelectionArray returns [EObject current=null] : ( ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) ) (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )* ) ;
     public final EObject ruleSelectionArray() throws RecognitionException {
         EObject current = null;
 
@@ -13198,17 +13600,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4623:2: ( ( ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) ) (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )* ) )
-            // InternalNavascript.g:4624:2: ( ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) ) (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )* )
+            // InternalNavascript.g:4855:2: ( ( ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) ) (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )* ) )
+            // InternalNavascript.g:4856:2: ( ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) ) (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )* )
             {
-            // InternalNavascript.g:4624:2: ( ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) ) (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )* )
-            // InternalNavascript.g:4625:3: ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) ) (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )*
+            // InternalNavascript.g:4856:2: ( ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) ) (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )* )
+            // InternalNavascript.g:4857:3: ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) ) (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )*
             {
-            // InternalNavascript.g:4625:3: ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) )
-            // InternalNavascript.g:4626:4: (lv_arrayElements_0_0= ruleSelectionArrayElement )
+            // InternalNavascript.g:4857:3: ( (lv_arrayElements_0_0= ruleSelectionArrayElement ) )
+            // InternalNavascript.g:4858:4: (lv_arrayElements_0_0= ruleSelectionArrayElement )
             {
-            // InternalNavascript.g:4626:4: (lv_arrayElements_0_0= ruleSelectionArrayElement )
-            // InternalNavascript.g:4627:5: lv_arrayElements_0_0= ruleSelectionArrayElement
+            // InternalNavascript.g:4858:4: (lv_arrayElements_0_0= ruleSelectionArrayElement )
+            // InternalNavascript.g:4859:5: lv_arrayElements_0_0= ruleSelectionArrayElement
             {
             if ( state.backtracking==0 ) {
 
@@ -13239,32 +13641,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4644:3: (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )*
-            loop86:
+            // InternalNavascript.g:4876:3: (otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) ) )*
+            loop88:
             do {
-                int alt86=2;
-                int LA86_0 = input.LA(1);
+                int alt88=2;
+                int LA88_0 = input.LA(1);
 
-                if ( (LA86_0==32) ) {
-                    alt86=1;
+                if ( (LA88_0==33) ) {
+                    alt88=1;
                 }
 
 
-                switch (alt86) {
+                switch (alt88) {
             	case 1 :
-            	    // InternalNavascript.g:4645:4: otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) )
+            	    // InternalNavascript.g:4877:4: otherlv_1= ',' ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) )
             	    {
-            	    otherlv_1=(Token)match(input,32,FOLLOW_14); if (state.failed) return current;
+            	    otherlv_1=(Token)match(input,33,FOLLOW_14); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_1, grammarAccess.getSelectionArrayAccess().getCommaKeyword_1_0());
             	      			
             	    }
-            	    // InternalNavascript.g:4649:4: ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) )
-            	    // InternalNavascript.g:4650:5: (lv_arrayElements_2_0= ruleSelectionArrayElement )
+            	    // InternalNavascript.g:4881:4: ( (lv_arrayElements_2_0= ruleSelectionArrayElement ) )
+            	    // InternalNavascript.g:4882:5: (lv_arrayElements_2_0= ruleSelectionArrayElement )
             	    {
-            	    // InternalNavascript.g:4650:5: (lv_arrayElements_2_0= ruleSelectionArrayElement )
-            	    // InternalNavascript.g:4651:6: lv_arrayElements_2_0= ruleSelectionArrayElement
+            	    // InternalNavascript.g:4882:5: (lv_arrayElements_2_0= ruleSelectionArrayElement )
+            	    // InternalNavascript.g:4883:6: lv_arrayElements_2_0= ruleSelectionArrayElement
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -13300,7 +13702,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop86;
+            	    break loop88;
                 }
             } while (true);
 
@@ -13329,7 +13731,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSelectionArrayElement"
-    // InternalNavascript.g:4673:1: entryRuleSelectionArrayElement returns [EObject current=null] : iv_ruleSelectionArrayElement= ruleSelectionArrayElement EOF ;
+    // InternalNavascript.g:4905:1: entryRuleSelectionArrayElement returns [EObject current=null] : iv_ruleSelectionArrayElement= ruleSelectionArrayElement EOF ;
     public final EObject entryRuleSelectionArrayElement() throws RecognitionException {
         EObject current = null;
 
@@ -13337,8 +13739,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4673:62: (iv_ruleSelectionArrayElement= ruleSelectionArrayElement EOF )
-            // InternalNavascript.g:4674:2: iv_ruleSelectionArrayElement= ruleSelectionArrayElement EOF
+            // InternalNavascript.g:4905:62: (iv_ruleSelectionArrayElement= ruleSelectionArrayElement EOF )
+            // InternalNavascript.g:4906:2: iv_ruleSelectionArrayElement= ruleSelectionArrayElement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSelectionArrayElementRule()); 
@@ -13369,7 +13771,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSelectionArrayElement"
-    // InternalNavascript.g:4680:1: ruleSelectionArrayElement returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_innerBody_2_0= ruleInnerBody ) )* otherlv_3= '}' ) ;
+    // InternalNavascript.g:4912:1: ruleSelectionArrayElement returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_innerBody_2_0= ruleInnerBody ) )* otherlv_3= '}' ) ;
     public final EObject ruleSelectionArrayElement() throws RecognitionException {
         EObject current = null;
 
@@ -13382,15 +13784,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4686:2: ( ( () otherlv_1= '{' ( (lv_innerBody_2_0= ruleInnerBody ) )* otherlv_3= '}' ) )
-            // InternalNavascript.g:4687:2: ( () otherlv_1= '{' ( (lv_innerBody_2_0= ruleInnerBody ) )* otherlv_3= '}' )
+            // InternalNavascript.g:4918:2: ( ( () otherlv_1= '{' ( (lv_innerBody_2_0= ruleInnerBody ) )* otherlv_3= '}' ) )
+            // InternalNavascript.g:4919:2: ( () otherlv_1= '{' ( (lv_innerBody_2_0= ruleInnerBody ) )* otherlv_3= '}' )
             {
-            // InternalNavascript.g:4687:2: ( () otherlv_1= '{' ( (lv_innerBody_2_0= ruleInnerBody ) )* otherlv_3= '}' )
-            // InternalNavascript.g:4688:3: () otherlv_1= '{' ( (lv_innerBody_2_0= ruleInnerBody ) )* otherlv_3= '}'
+            // InternalNavascript.g:4919:2: ( () otherlv_1= '{' ( (lv_innerBody_2_0= ruleInnerBody ) )* otherlv_3= '}' )
+            // InternalNavascript.g:4920:3: () otherlv_1= '{' ( (lv_innerBody_2_0= ruleInnerBody ) )* otherlv_3= '}'
             {
-            // InternalNavascript.g:4688:3: ()
-            // InternalNavascript.g:4689:4: 
+            // InternalNavascript.g:4920:3: ()
+            // InternalNavascript.g:4921:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -13401,29 +13808,29 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,27,FOLLOW_10); if (state.failed) return current;
+            otherlv_1=(Token)match(input,28,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getSelectionArrayElementAccess().getLeftCurlyBracketKeyword_1());
               		
             }
-            // InternalNavascript.g:4699:3: ( (lv_innerBody_2_0= ruleInnerBody ) )*
-            loop87:
+            // InternalNavascript.g:4934:3: ( (lv_innerBody_2_0= ruleInnerBody ) )*
+            loop89:
             do {
-                int alt87=2;
-                int LA87_0 = input.LA(1);
+                int alt89=2;
+                int LA89_0 = input.LA(1);
 
-                if ( ((LA87_0>=RULE_METHOD_IDENTIFIER && LA87_0<=RULE_MAPPABLE_IDENTIFIER)||LA87_0==25||LA87_0==27||LA87_0==41||LA87_0==47||(LA87_0>=49 && LA87_0<=50)||(LA87_0>=52 && LA87_0<=53)||(LA87_0>=55 && LA87_0<=57)||(LA87_0>=62 && LA87_0<=63)||(LA87_0>=65 && LA87_0<=67)) ) {
-                    alt87=1;
+                if ( ((LA89_0>=RULE_METHOD_IDENTIFIER && LA89_0<=RULE_MAPPABLE_IDENTIFIER)||LA89_0==26||LA89_0==28||LA89_0==42||LA89_0==48||(LA89_0>=50 && LA89_0<=51)||(LA89_0>=53 && LA89_0<=54)||(LA89_0>=56 && LA89_0<=58)||(LA89_0>=63 && LA89_0<=64)||(LA89_0>=66 && LA89_0<=68)) ) {
+                    alt89=1;
                 }
 
 
-                switch (alt87) {
+                switch (alt89) {
             	case 1 :
-            	    // InternalNavascript.g:4700:4: (lv_innerBody_2_0= ruleInnerBody )
+            	    // InternalNavascript.g:4935:4: (lv_innerBody_2_0= ruleInnerBody )
             	    {
-            	    // InternalNavascript.g:4700:4: (lv_innerBody_2_0= ruleInnerBody )
-            	    // InternalNavascript.g:4701:5: lv_innerBody_2_0= ruleInnerBody
+            	    // InternalNavascript.g:4935:4: (lv_innerBody_2_0= ruleInnerBody )
+            	    // InternalNavascript.g:4936:5: lv_innerBody_2_0= ruleInnerBody
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -13456,11 +13863,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop87;
+            	    break loop89;
                 }
             } while (true);
 
-            otherlv_3=(Token)match(input,28,FOLLOW_2); if (state.failed) return current;
+            otherlv_3=(Token)match(input,29,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getSelectionArrayElementAccess().getRightCurlyBracketKeyword_3());
@@ -13491,7 +13898,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOption"
-    // InternalNavascript.g:4726:1: entryRuleOption returns [EObject current=null] : iv_ruleOption= ruleOption EOF ;
+    // InternalNavascript.g:4961:1: entryRuleOption returns [EObject current=null] : iv_ruleOption= ruleOption EOF ;
     public final EObject entryRuleOption() throws RecognitionException {
         EObject current = null;
 
@@ -13499,8 +13906,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4726:47: (iv_ruleOption= ruleOption EOF )
-            // InternalNavascript.g:4727:2: iv_ruleOption= ruleOption EOF
+            // InternalNavascript.g:4961:47: (iv_ruleOption= ruleOption EOF )
+            // InternalNavascript.g:4962:2: iv_ruleOption= ruleOption EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOptionRule()); 
@@ -13531,7 +13938,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOption"
-    // InternalNavascript.g:4733:1: ruleOption returns [EObject current=null] : (otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) ;
+    // InternalNavascript.g:4968:1: ruleOption returns [EObject current=null] : (otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) ;
     public final EObject ruleOption() throws RecognitionException {
         EObject current = null;
 
@@ -13548,23 +13955,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4739:2: ( (otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) )
-            // InternalNavascript.g:4740:2: (otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' )
+            // InternalNavascript.g:4974:2: ( (otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' ) )
+            // InternalNavascript.g:4975:2: (otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' )
             {
-            // InternalNavascript.g:4740:2: (otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' )
-            // InternalNavascript.g:4741:3: otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';'
+            // InternalNavascript.g:4975:2: (otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';' )
+            // InternalNavascript.g:4976:3: otherlv_0= 'option' ( (lv_option_1_0= ruleOPTION_TYPE ) ) (otherlv_2= '=' | otherlv_3= ':' ) ( (lv_expressionList_4_0= ruleConditionalExpressions ) ) otherlv_5= ';'
             {
-            otherlv_0=(Token)match(input,67,FOLLOW_45); if (state.failed) return current;
+            otherlv_0=(Token)match(input,68,FOLLOW_46); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getOptionAccess().getOptionKeyword_0());
               		
             }
-            // InternalNavascript.g:4745:3: ( (lv_option_1_0= ruleOPTION_TYPE ) )
-            // InternalNavascript.g:4746:4: (lv_option_1_0= ruleOPTION_TYPE )
+            // InternalNavascript.g:4980:3: ( (lv_option_1_0= ruleOPTION_TYPE ) )
+            // InternalNavascript.g:4981:4: (lv_option_1_0= ruleOPTION_TYPE )
             {
-            // InternalNavascript.g:4746:4: (lv_option_1_0= ruleOPTION_TYPE )
-            // InternalNavascript.g:4747:5: lv_option_1_0= ruleOPTION_TYPE
+            // InternalNavascript.g:4981:4: (lv_option_1_0= ruleOPTION_TYPE )
+            // InternalNavascript.g:4982:5: lv_option_1_0= ruleOPTION_TYPE
             {
             if ( state.backtracking==0 ) {
 
@@ -13595,28 +14002,28 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4764:3: (otherlv_2= '=' | otherlv_3= ':' )
-            int alt88=2;
-            int LA88_0 = input.LA(1);
+            // InternalNavascript.g:4999:3: (otherlv_2= '=' | otherlv_3= ':' )
+            int alt90=2;
+            int LA90_0 = input.LA(1);
 
-            if ( (LA88_0==34) ) {
-                alt88=1;
+            if ( (LA90_0==35) ) {
+                alt90=1;
             }
-            else if ( (LA88_0==35) ) {
-                alt88=2;
+            else if ( (LA90_0==36) ) {
+                alt90=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 88, 0, input);
+                    new NoViableAltException("", 90, 0, input);
 
                 throw nvae;
             }
-            switch (alt88) {
+            switch (alt90) {
                 case 1 :
-                    // InternalNavascript.g:4765:4: otherlv_2= '='
+                    // InternalNavascript.g:5000:4: otherlv_2= '='
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_47); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,35,FOLLOW_48); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getOptionAccess().getEqualsSignKeyword_2_0());
@@ -13626,9 +14033,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:4770:4: otherlv_3= ':'
+                    // InternalNavascript.g:5005:4: otherlv_3= ':'
                     {
-                    otherlv_3=(Token)match(input,35,FOLLOW_47); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,36,FOLLOW_48); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getOptionAccess().getColonKeyword_2_1());
@@ -13640,11 +14047,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4775:3: ( (lv_expressionList_4_0= ruleConditionalExpressions ) )
-            // InternalNavascript.g:4776:4: (lv_expressionList_4_0= ruleConditionalExpressions )
+            // InternalNavascript.g:5010:3: ( (lv_expressionList_4_0= ruleConditionalExpressions ) )
+            // InternalNavascript.g:5011:4: (lv_expressionList_4_0= ruleConditionalExpressions )
             {
-            // InternalNavascript.g:4776:4: (lv_expressionList_4_0= ruleConditionalExpressions )
-            // InternalNavascript.g:4777:5: lv_expressionList_4_0= ruleConditionalExpressions
+            // InternalNavascript.g:5011:4: (lv_expressionList_4_0= ruleConditionalExpressions )
+            // InternalNavascript.g:5012:5: lv_expressionList_4_0= ruleConditionalExpressions
             {
             if ( state.backtracking==0 ) {
 
@@ -13675,7 +14082,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getOptionAccess().getSemicolonKeyword_4());
@@ -13706,7 +14113,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePropertyArguments"
-    // InternalNavascript.g:4802:1: entryRulePropertyArguments returns [EObject current=null] : iv_rulePropertyArguments= rulePropertyArguments EOF ;
+    // InternalNavascript.g:5037:1: entryRulePropertyArguments returns [EObject current=null] : iv_rulePropertyArguments= rulePropertyArguments EOF ;
     public final EObject entryRulePropertyArguments() throws RecognitionException {
         EObject current = null;
 
@@ -13714,8 +14121,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4802:58: (iv_rulePropertyArguments= rulePropertyArguments EOF )
-            // InternalNavascript.g:4803:2: iv_rulePropertyArguments= rulePropertyArguments EOF
+            // InternalNavascript.g:5037:58: (iv_rulePropertyArguments= rulePropertyArguments EOF )
+            // InternalNavascript.g:5038:2: iv_rulePropertyArguments= rulePropertyArguments EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPropertyArgumentsRule()); 
@@ -13746,7 +14153,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePropertyArguments"
-    // InternalNavascript.g:4809:1: rulePropertyArguments returns [EObject current=null] : ( () otherlv_1= '(' ( (lv_arguments_2_0= rulePropertyArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )* otherlv_5= ')' ) ;
+    // InternalNavascript.g:5044:1: rulePropertyArguments returns [EObject current=null] : ( () otherlv_1= '(' ( (lv_arguments_2_0= rulePropertyArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )* otherlv_5= ')' ) ;
     public final EObject rulePropertyArguments() throws RecognitionException {
         EObject current = null;
 
@@ -13762,15 +14169,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4815:2: ( ( () otherlv_1= '(' ( (lv_arguments_2_0= rulePropertyArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )* otherlv_5= ')' ) )
-            // InternalNavascript.g:4816:2: ( () otherlv_1= '(' ( (lv_arguments_2_0= rulePropertyArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )* otherlv_5= ')' )
+            // InternalNavascript.g:5050:2: ( ( () otherlv_1= '(' ( (lv_arguments_2_0= rulePropertyArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )* otherlv_5= ')' ) )
+            // InternalNavascript.g:5051:2: ( () otherlv_1= '(' ( (lv_arguments_2_0= rulePropertyArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )* otherlv_5= ')' )
             {
-            // InternalNavascript.g:4816:2: ( () otherlv_1= '(' ( (lv_arguments_2_0= rulePropertyArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )* otherlv_5= ')' )
-            // InternalNavascript.g:4817:3: () otherlv_1= '(' ( (lv_arguments_2_0= rulePropertyArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )* otherlv_5= ')'
+            // InternalNavascript.g:5051:2: ( () otherlv_1= '(' ( (lv_arguments_2_0= rulePropertyArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )* otherlv_5= ')' )
+            // InternalNavascript.g:5052:3: () otherlv_1= '(' ( (lv_arguments_2_0= rulePropertyArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )* otherlv_5= ')'
             {
-            // InternalNavascript.g:4817:3: ()
-            // InternalNavascript.g:4818:4: 
+            // InternalNavascript.g:5052:3: ()
+            // InternalNavascript.g:5053:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -13781,17 +14193,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,30,FOLLOW_57); if (state.failed) return current;
+            otherlv_1=(Token)match(input,31,FOLLOW_57); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_1, grammarAccess.getPropertyArgumentsAccess().getLeftParenthesisKeyword_1());
               		
             }
-            // InternalNavascript.g:4828:3: ( (lv_arguments_2_0= rulePropertyArgument ) )
-            // InternalNavascript.g:4829:4: (lv_arguments_2_0= rulePropertyArgument )
+            // InternalNavascript.g:5066:3: ( (lv_arguments_2_0= rulePropertyArgument ) )
+            // InternalNavascript.g:5067:4: (lv_arguments_2_0= rulePropertyArgument )
             {
-            // InternalNavascript.g:4829:4: (lv_arguments_2_0= rulePropertyArgument )
-            // InternalNavascript.g:4830:5: lv_arguments_2_0= rulePropertyArgument
+            // InternalNavascript.g:5067:4: (lv_arguments_2_0= rulePropertyArgument )
+            // InternalNavascript.g:5068:5: lv_arguments_2_0= rulePropertyArgument
             {
             if ( state.backtracking==0 ) {
 
@@ -13822,32 +14234,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4847:3: (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )*
-            loop89:
+            // InternalNavascript.g:5085:3: (otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) ) )*
+            loop91:
             do {
-                int alt89=2;
-                int LA89_0 = input.LA(1);
+                int alt91=2;
+                int LA91_0 = input.LA(1);
 
-                if ( (LA89_0==32) ) {
-                    alt89=1;
+                if ( (LA91_0==33) ) {
+                    alt91=1;
                 }
 
 
-                switch (alt89) {
+                switch (alt91) {
             	case 1 :
-            	    // InternalNavascript.g:4848:4: otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) )
+            	    // InternalNavascript.g:5086:4: otherlv_3= ',' ( (lv_arguments_4_0= rulePropertyArgument ) )
             	    {
-            	    otherlv_3=(Token)match(input,32,FOLLOW_57); if (state.failed) return current;
+            	    otherlv_3=(Token)match(input,33,FOLLOW_57); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      				newLeafNode(otherlv_3, grammarAccess.getPropertyArgumentsAccess().getCommaKeyword_3_0());
             	      			
             	    }
-            	    // InternalNavascript.g:4852:4: ( (lv_arguments_4_0= rulePropertyArgument ) )
-            	    // InternalNavascript.g:4853:5: (lv_arguments_4_0= rulePropertyArgument )
+            	    // InternalNavascript.g:5090:4: ( (lv_arguments_4_0= rulePropertyArgument ) )
+            	    // InternalNavascript.g:5091:5: (lv_arguments_4_0= rulePropertyArgument )
             	    {
-            	    // InternalNavascript.g:4853:5: (lv_arguments_4_0= rulePropertyArgument )
-            	    // InternalNavascript.g:4854:6: lv_arguments_4_0= rulePropertyArgument
+            	    // InternalNavascript.g:5091:5: (lv_arguments_4_0= rulePropertyArgument )
+            	    // InternalNavascript.g:5092:6: lv_arguments_4_0= rulePropertyArgument
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -13883,11 +14295,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop89;
+            	    break loop91;
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
+            otherlv_5=(Token)match(input,32,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getPropertyArgumentsAccess().getRightParenthesisKeyword_4());
@@ -13918,7 +14330,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePropertyArgument"
-    // InternalNavascript.g:4880:1: entryRulePropertyArgument returns [EObject current=null] : iv_rulePropertyArgument= rulePropertyArgument EOF ;
+    // InternalNavascript.g:5118:1: entryRulePropertyArgument returns [EObject current=null] : iv_rulePropertyArgument= rulePropertyArgument EOF ;
     public final EObject entryRulePropertyArgument() throws RecognitionException {
         EObject current = null;
 
@@ -13926,8 +14338,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4880:57: (iv_rulePropertyArgument= rulePropertyArgument EOF )
-            // InternalNavascript.g:4881:2: iv_rulePropertyArgument= rulePropertyArgument EOF
+            // InternalNavascript.g:5118:57: (iv_rulePropertyArgument= rulePropertyArgument EOF )
+            // InternalNavascript.g:5119:2: iv_rulePropertyArgument= rulePropertyArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPropertyArgumentRule()); 
@@ -13958,7 +14370,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePropertyArgument"
-    // InternalNavascript.g:4887:1: rulePropertyArgument returns [EObject current=null] : (this_DirectionArgument_0= ruleDirectionArgument | this_TypeArgument_1= ruleTypeArgument | this_SubTypeArgument_2= ruleSubTypeArgument | this_DescriptionArgument_3= ruleDescriptionArgument | this_CardinalityArgument_4= ruleCardinalityArgument | this_LengthArgument_5= ruleLengthArgument ) ;
+    // InternalNavascript.g:5125:1: rulePropertyArgument returns [EObject current=null] : (this_DirectionArgument_0= ruleDirectionArgument | this_TypeArgument_1= ruleTypeArgument | this_SubTypeArgument_2= ruleSubTypeArgument | this_DescriptionArgument_3= ruleDescriptionArgument | this_CardinalityArgument_4= ruleCardinalityArgument | this_LengthArgument_5= ruleLengthArgument ) ;
     public final EObject rulePropertyArgument() throws RecognitionException {
         EObject current = null;
 
@@ -13979,54 +14391,59 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4893:2: ( (this_DirectionArgument_0= ruleDirectionArgument | this_TypeArgument_1= ruleTypeArgument | this_SubTypeArgument_2= ruleSubTypeArgument | this_DescriptionArgument_3= ruleDescriptionArgument | this_CardinalityArgument_4= ruleCardinalityArgument | this_LengthArgument_5= ruleLengthArgument ) )
-            // InternalNavascript.g:4894:2: (this_DirectionArgument_0= ruleDirectionArgument | this_TypeArgument_1= ruleTypeArgument | this_SubTypeArgument_2= ruleSubTypeArgument | this_DescriptionArgument_3= ruleDescriptionArgument | this_CardinalityArgument_4= ruleCardinalityArgument | this_LengthArgument_5= ruleLengthArgument )
+            // InternalNavascript.g:5131:2: ( (this_DirectionArgument_0= ruleDirectionArgument | this_TypeArgument_1= ruleTypeArgument | this_SubTypeArgument_2= ruleSubTypeArgument | this_DescriptionArgument_3= ruleDescriptionArgument | this_CardinalityArgument_4= ruleCardinalityArgument | this_LengthArgument_5= ruleLengthArgument ) )
+            // InternalNavascript.g:5132:2: (this_DirectionArgument_0= ruleDirectionArgument | this_TypeArgument_1= ruleTypeArgument | this_SubTypeArgument_2= ruleSubTypeArgument | this_DescriptionArgument_3= ruleDescriptionArgument | this_CardinalityArgument_4= ruleCardinalityArgument | this_LengthArgument_5= ruleLengthArgument )
             {
-            // InternalNavascript.g:4894:2: (this_DirectionArgument_0= ruleDirectionArgument | this_TypeArgument_1= ruleTypeArgument | this_SubTypeArgument_2= ruleSubTypeArgument | this_DescriptionArgument_3= ruleDescriptionArgument | this_CardinalityArgument_4= ruleCardinalityArgument | this_LengthArgument_5= ruleLengthArgument )
-            int alt90=6;
+            // InternalNavascript.g:5132:2: (this_DirectionArgument_0= ruleDirectionArgument | this_TypeArgument_1= ruleTypeArgument | this_SubTypeArgument_2= ruleSubTypeArgument | this_DescriptionArgument_3= ruleDescriptionArgument | this_CardinalityArgument_4= ruleCardinalityArgument | this_LengthArgument_5= ruleLengthArgument )
+            int alt92=6;
             switch ( input.LA(1) ) {
+            case 70:
+                {
+                alt92=1;
+                }
+                break;
+            case 61:
+                {
+                alt92=2;
+                }
+                break;
+            case 76:
+                {
+                alt92=3;
+                }
+                break;
+            case 45:
+                {
+                alt92=4;
+                }
+                break;
+            case 74:
+                {
+                alt92=5;
+                }
+                break;
             case 69:
                 {
-                alt90=1;
-                }
-                break;
-            case 60:
-                {
-                alt90=2;
-                }
-                break;
-            case 75:
-                {
-                alt90=3;
-                }
-                break;
-            case 44:
-                {
-                alt90=4;
-                }
-                break;
-            case 73:
-                {
-                alt90=5;
-                }
-                break;
-            case 68:
-                {
-                alt90=6;
+                alt92=6;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 90, 0, input);
+                    new NoViableAltException("", 92, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt90) {
+            switch (alt92) {
                 case 1 :
-                    // InternalNavascript.g:4895:3: this_DirectionArgument_0= ruleDirectionArgument
+                    // InternalNavascript.g:5133:3: this_DirectionArgument_0= ruleDirectionArgument
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getDirectionArgumentParserRuleCall_0());
@@ -14047,8 +14464,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:4904:3: this_TypeArgument_1= ruleTypeArgument
+                    // InternalNavascript.g:5145:3: this_TypeArgument_1= ruleTypeArgument
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getTypeArgumentParserRuleCall_1());
@@ -14069,8 +14491,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:4913:3: this_SubTypeArgument_2= ruleSubTypeArgument
+                    // InternalNavascript.g:5157:3: this_SubTypeArgument_2= ruleSubTypeArgument
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getSubTypeArgumentParserRuleCall_2());
@@ -14091,8 +14518,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalNavascript.g:4922:3: this_DescriptionArgument_3= ruleDescriptionArgument
+                    // InternalNavascript.g:5169:3: this_DescriptionArgument_3= ruleDescriptionArgument
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getDescriptionArgumentParserRuleCall_3());
@@ -14113,8 +14545,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalNavascript.g:4931:3: this_CardinalityArgument_4= ruleCardinalityArgument
+                    // InternalNavascript.g:5181:3: this_CardinalityArgument_4= ruleCardinalityArgument
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getCardinalityArgumentParserRuleCall_4());
@@ -14135,8 +14572,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalNavascript.g:4940:3: this_LengthArgument_5= ruleLengthArgument
+                    // InternalNavascript.g:5193:3: this_LengthArgument_5= ruleLengthArgument
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getLengthArgumentParserRuleCall_5());
@@ -14181,7 +14623,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLengthArgument"
-    // InternalNavascript.g:4952:1: entryRuleLengthArgument returns [EObject current=null] : iv_ruleLengthArgument= ruleLengthArgument EOF ;
+    // InternalNavascript.g:5208:1: entryRuleLengthArgument returns [EObject current=null] : iv_ruleLengthArgument= ruleLengthArgument EOF ;
     public final EObject entryRuleLengthArgument() throws RecognitionException {
         EObject current = null;
 
@@ -14189,8 +14631,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:4952:55: (iv_ruleLengthArgument= ruleLengthArgument EOF )
-            // InternalNavascript.g:4953:2: iv_ruleLengthArgument= ruleLengthArgument EOF
+            // InternalNavascript.g:5208:55: (iv_ruleLengthArgument= ruleLengthArgument EOF )
+            // InternalNavascript.g:5209:2: iv_ruleLengthArgument= ruleLengthArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLengthArgumentRule()); 
@@ -14221,7 +14663,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLengthArgument"
-    // InternalNavascript.g:4959:1: ruleLengthArgument returns [EObject current=null] : (otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) ) ) ;
+    // InternalNavascript.g:5215:1: ruleLengthArgument returns [EObject current=null] : (otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) ) ) ;
     public final EObject ruleLengthArgument() throws RecognitionException {
         EObject current = null;
 
@@ -14234,40 +14676,40 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:4965:2: ( (otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) ) ) )
-            // InternalNavascript.g:4966:2: (otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) ) )
+            // InternalNavascript.g:5221:2: ( (otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) ) ) )
+            // InternalNavascript.g:5222:2: (otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) ) )
             {
-            // InternalNavascript.g:4966:2: (otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) ) )
-            // InternalNavascript.g:4967:3: otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) )
+            // InternalNavascript.g:5222:2: (otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) ) )
+            // InternalNavascript.g:5223:3: otherlv_0= 'length' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_INTEGER ) )
             {
-            otherlv_0=(Token)match(input,68,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,69,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getLengthArgumentAccess().getLengthKeyword_0());
               		
             }
-            // InternalNavascript.g:4971:3: (otherlv_1= '=' | otherlv_2= ':' )
-            int alt91=2;
-            int LA91_0 = input.LA(1);
+            // InternalNavascript.g:5227:3: (otherlv_1= '=' | otherlv_2= ':' )
+            int alt93=2;
+            int LA93_0 = input.LA(1);
 
-            if ( (LA91_0==34) ) {
-                alt91=1;
+            if ( (LA93_0==35) ) {
+                alt93=1;
             }
-            else if ( (LA91_0==35) ) {
-                alt91=2;
+            else if ( (LA93_0==36) ) {
+                alt93=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 91, 0, input);
+                    new NoViableAltException("", 93, 0, input);
 
                 throw nvae;
             }
-            switch (alt91) {
+            switch (alt93) {
                 case 1 :
-                    // InternalNavascript.g:4972:4: otherlv_1= '='
+                    // InternalNavascript.g:5228:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,34,FOLLOW_58); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,35,FOLLOW_58); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getLengthArgumentAccess().getEqualsSignKeyword_1_0());
@@ -14277,9 +14719,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:4977:4: otherlv_2= ':'
+                    // InternalNavascript.g:5233:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,35,FOLLOW_58); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,36,FOLLOW_58); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getLengthArgumentAccess().getColonKeyword_1_1());
@@ -14291,11 +14733,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:4982:3: ( (lv_value_3_0= RULE_INTEGER ) )
-            // InternalNavascript.g:4983:4: (lv_value_3_0= RULE_INTEGER )
+            // InternalNavascript.g:5238:3: ( (lv_value_3_0= RULE_INTEGER ) )
+            // InternalNavascript.g:5239:4: (lv_value_3_0= RULE_INTEGER )
             {
-            // InternalNavascript.g:4983:4: (lv_value_3_0= RULE_INTEGER )
-            // InternalNavascript.g:4984:5: lv_value_3_0= RULE_INTEGER
+            // InternalNavascript.g:5239:4: (lv_value_3_0= RULE_INTEGER )
+            // InternalNavascript.g:5240:5: lv_value_3_0= RULE_INTEGER
             {
             lv_value_3_0=(Token)match(input,RULE_INTEGER,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -14346,7 +14788,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDirectionArgument"
-    // InternalNavascript.g:5004:1: entryRuleDirectionArgument returns [EObject current=null] : iv_ruleDirectionArgument= ruleDirectionArgument EOF ;
+    // InternalNavascript.g:5260:1: entryRuleDirectionArgument returns [EObject current=null] : iv_ruleDirectionArgument= ruleDirectionArgument EOF ;
     public final EObject entryRuleDirectionArgument() throws RecognitionException {
         EObject current = null;
 
@@ -14354,8 +14796,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:5004:58: (iv_ruleDirectionArgument= ruleDirectionArgument EOF )
-            // InternalNavascript.g:5005:2: iv_ruleDirectionArgument= ruleDirectionArgument EOF
+            // InternalNavascript.g:5260:58: (iv_ruleDirectionArgument= ruleDirectionArgument EOF )
+            // InternalNavascript.g:5261:2: iv_ruleDirectionArgument= ruleDirectionArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getDirectionArgumentRule()); 
@@ -14386,7 +14828,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDirectionArgument"
-    // InternalNavascript.g:5011:1: ruleDirectionArgument returns [EObject current=null] : (otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) ) ) ;
+    // InternalNavascript.g:5267:1: ruleDirectionArgument returns [EObject current=null] : (otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) ) ) ;
     public final EObject ruleDirectionArgument() throws RecognitionException {
         EObject current = null;
 
@@ -14401,40 +14843,40 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:5017:2: ( (otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) ) ) )
-            // InternalNavascript.g:5018:2: (otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) ) )
+            // InternalNavascript.g:5273:2: ( (otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) ) ) )
+            // InternalNavascript.g:5274:2: (otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) ) )
             {
-            // InternalNavascript.g:5018:2: (otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) ) )
-            // InternalNavascript.g:5019:3: otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) )
+            // InternalNavascript.g:5274:2: (otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) ) )
+            // InternalNavascript.g:5275:3: otherlv_0= 'direction' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) )
             {
-            otherlv_0=(Token)match(input,69,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,70,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getDirectionArgumentAccess().getDirectionKeyword_0());
               		
             }
-            // InternalNavascript.g:5023:3: (otherlv_1= '=' | otherlv_2= ':' )
-            int alt92=2;
-            int LA92_0 = input.LA(1);
+            // InternalNavascript.g:5279:3: (otherlv_1= '=' | otherlv_2= ':' )
+            int alt94=2;
+            int LA94_0 = input.LA(1);
 
-            if ( (LA92_0==34) ) {
-                alt92=1;
+            if ( (LA94_0==35) ) {
+                alt94=1;
             }
-            else if ( (LA92_0==35) ) {
-                alt92=2;
+            else if ( (LA94_0==36) ) {
+                alt94=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 92, 0, input);
+                    new NoViableAltException("", 94, 0, input);
 
                 throw nvae;
             }
-            switch (alt92) {
+            switch (alt94) {
                 case 1 :
-                    // InternalNavascript.g:5024:4: otherlv_1= '='
+                    // InternalNavascript.g:5280:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,34,FOLLOW_59); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,35,FOLLOW_59); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getDirectionArgumentAccess().getEqualsSignKeyword_1_0());
@@ -14444,9 +14886,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:5029:4: otherlv_2= ':'
+                    // InternalNavascript.g:5285:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,35,FOLLOW_59); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,36,FOLLOW_59); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getDirectionArgumentAccess().getColonKeyword_1_1());
@@ -14458,43 +14900,43 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:5034:3: ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) )
-            // InternalNavascript.g:5035:4: ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) )
+            // InternalNavascript.g:5290:3: ( ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) ) )
+            // InternalNavascript.g:5291:4: ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) )
             {
-            // InternalNavascript.g:5035:4: ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) )
-            // InternalNavascript.g:5036:5: (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' )
+            // InternalNavascript.g:5291:4: ( (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' ) )
+            // InternalNavascript.g:5292:5: (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' )
             {
-            // InternalNavascript.g:5036:5: (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' )
-            int alt93=3;
+            // InternalNavascript.g:5292:5: (lv_value_3_1= 'in' | lv_value_3_2= 'out' | lv_value_3_3= 'inout' )
+            int alt95=3;
             switch ( input.LA(1) ) {
-            case 70:
-                {
-                alt93=1;
-                }
-                break;
             case 71:
                 {
-                alt93=2;
+                alt95=1;
                 }
                 break;
             case 72:
                 {
-                alt93=3;
+                alt95=2;
+                }
+                break;
+            case 73:
+                {
+                alt95=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 93, 0, input);
+                    new NoViableAltException("", 95, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt93) {
+            switch (alt95) {
                 case 1 :
-                    // InternalNavascript.g:5037:6: lv_value_3_1= 'in'
+                    // InternalNavascript.g:5293:6: lv_value_3_1= 'in'
                     {
-                    lv_value_3_1=(Token)match(input,70,FOLLOW_2); if (state.failed) return current;
+                    lv_value_3_1=(Token)match(input,71,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       						newLeafNode(lv_value_3_1, grammarAccess.getDirectionArgumentAccess().getValueInKeyword_2_0_0());
@@ -14512,9 +14954,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:5048:6: lv_value_3_2= 'out'
+                    // InternalNavascript.g:5304:6: lv_value_3_2= 'out'
                     {
-                    lv_value_3_2=(Token)match(input,71,FOLLOW_2); if (state.failed) return current;
+                    lv_value_3_2=(Token)match(input,72,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       						newLeafNode(lv_value_3_2, grammarAccess.getDirectionArgumentAccess().getValueOutKeyword_2_0_1());
@@ -14532,9 +14974,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:5059:6: lv_value_3_3= 'inout'
+                    // InternalNavascript.g:5315:6: lv_value_3_3= 'inout'
                     {
-                    lv_value_3_3=(Token)match(input,72,FOLLOW_2); if (state.failed) return current;
+                    lv_value_3_3=(Token)match(input,73,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       						newLeafNode(lv_value_3_3, grammarAccess.getDirectionArgumentAccess().getValueInoutKeyword_2_0_2());
@@ -14585,7 +15027,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDescriptionArgument"
-    // InternalNavascript.g:5076:1: entryRuleDescriptionArgument returns [EObject current=null] : iv_ruleDescriptionArgument= ruleDescriptionArgument EOF ;
+    // InternalNavascript.g:5332:1: entryRuleDescriptionArgument returns [EObject current=null] : iv_ruleDescriptionArgument= ruleDescriptionArgument EOF ;
     public final EObject entryRuleDescriptionArgument() throws RecognitionException {
         EObject current = null;
 
@@ -14593,8 +15035,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:5076:60: (iv_ruleDescriptionArgument= ruleDescriptionArgument EOF )
-            // InternalNavascript.g:5077:2: iv_ruleDescriptionArgument= ruleDescriptionArgument EOF
+            // InternalNavascript.g:5332:60: (iv_ruleDescriptionArgument= ruleDescriptionArgument EOF )
+            // InternalNavascript.g:5333:2: iv_ruleDescriptionArgument= ruleDescriptionArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getDescriptionArgumentRule()); 
@@ -14625,7 +15067,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDescriptionArgument"
-    // InternalNavascript.g:5083:1: ruleDescriptionArgument returns [EObject current=null] : (otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) ) ) ;
+    // InternalNavascript.g:5339:1: ruleDescriptionArgument returns [EObject current=null] : (otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) ) ) ;
     public final EObject ruleDescriptionArgument() throws RecognitionException {
         EObject current = null;
 
@@ -14639,40 +15081,40 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:5089:2: ( (otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) ) ) )
-            // InternalNavascript.g:5090:2: (otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) ) )
+            // InternalNavascript.g:5345:2: ( (otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) ) ) )
+            // InternalNavascript.g:5346:2: (otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) ) )
             {
-            // InternalNavascript.g:5090:2: (otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) ) )
-            // InternalNavascript.g:5091:3: otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) )
+            // InternalNavascript.g:5346:2: (otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) ) )
+            // InternalNavascript.g:5347:3: otherlv_0= 'description' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= ruleLiteralOrExpression ) )
             {
-            otherlv_0=(Token)match(input,44,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,45,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getDescriptionArgumentAccess().getDescriptionKeyword_0());
               		
             }
-            // InternalNavascript.g:5095:3: (otherlv_1= '=' | otherlv_2= ':' )
-            int alt94=2;
-            int LA94_0 = input.LA(1);
+            // InternalNavascript.g:5351:3: (otherlv_1= '=' | otherlv_2= ':' )
+            int alt96=2;
+            int LA96_0 = input.LA(1);
 
-            if ( (LA94_0==34) ) {
-                alt94=1;
+            if ( (LA96_0==35) ) {
+                alt96=1;
             }
-            else if ( (LA94_0==35) ) {
-                alt94=2;
+            else if ( (LA96_0==36) ) {
+                alt96=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 94, 0, input);
+                    new NoViableAltException("", 96, 0, input);
 
                 throw nvae;
             }
-            switch (alt94) {
+            switch (alt96) {
                 case 1 :
-                    // InternalNavascript.g:5096:4: otherlv_1= '='
+                    // InternalNavascript.g:5352:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,34,FOLLOW_19); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getDescriptionArgumentAccess().getEqualsSignKeyword_1_0());
@@ -14682,9 +15124,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:5101:4: otherlv_2= ':'
+                    // InternalNavascript.g:5357:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,35,FOLLOW_19); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,36,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getDescriptionArgumentAccess().getColonKeyword_1_1());
@@ -14696,11 +15138,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:5106:3: ( (lv_value_3_0= ruleLiteralOrExpression ) )
-            // InternalNavascript.g:5107:4: (lv_value_3_0= ruleLiteralOrExpression )
+            // InternalNavascript.g:5362:3: ( (lv_value_3_0= ruleLiteralOrExpression ) )
+            // InternalNavascript.g:5363:4: (lv_value_3_0= ruleLiteralOrExpression )
             {
-            // InternalNavascript.g:5107:4: (lv_value_3_0= ruleLiteralOrExpression )
-            // InternalNavascript.g:5108:5: lv_value_3_0= ruleLiteralOrExpression
+            // InternalNavascript.g:5363:4: (lv_value_3_0= ruleLiteralOrExpression )
+            // InternalNavascript.g:5364:5: lv_value_3_0= ruleLiteralOrExpression
             {
             if ( state.backtracking==0 ) {
 
@@ -14756,7 +15198,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCardinalityArgument"
-    // InternalNavascript.g:5129:1: entryRuleCardinalityArgument returns [EObject current=null] : iv_ruleCardinalityArgument= ruleCardinalityArgument EOF ;
+    // InternalNavascript.g:5385:1: entryRuleCardinalityArgument returns [EObject current=null] : iv_ruleCardinalityArgument= ruleCardinalityArgument EOF ;
     public final EObject entryRuleCardinalityArgument() throws RecognitionException {
         EObject current = null;
 
@@ -14764,8 +15206,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:5129:60: (iv_ruleCardinalityArgument= ruleCardinalityArgument EOF )
-            // InternalNavascript.g:5130:2: iv_ruleCardinalityArgument= ruleCardinalityArgument EOF
+            // InternalNavascript.g:5385:60: (iv_ruleCardinalityArgument= ruleCardinalityArgument EOF )
+            // InternalNavascript.g:5386:2: iv_ruleCardinalityArgument= ruleCardinalityArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCardinalityArgumentRule()); 
@@ -14796,7 +15238,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCardinalityArgument"
-    // InternalNavascript.g:5136:1: ruleCardinalityArgument returns [EObject current=null] : (otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) ) ) ;
+    // InternalNavascript.g:5392:1: ruleCardinalityArgument returns [EObject current=null] : (otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) ) ) ;
     public final EObject ruleCardinalityArgument() throws RecognitionException {
         EObject current = null;
 
@@ -14810,40 +15252,40 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:5142:2: ( (otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) ) ) )
-            // InternalNavascript.g:5143:2: (otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) ) )
+            // InternalNavascript.g:5398:2: ( (otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) ) ) )
+            // InternalNavascript.g:5399:2: (otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) ) )
             {
-            // InternalNavascript.g:5143:2: (otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) ) )
-            // InternalNavascript.g:5144:3: otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) )
+            // InternalNavascript.g:5399:2: (otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) ) )
+            // InternalNavascript.g:5400:3: otherlv_0= 'cardinality' (otherlv_1= '=' | otherlv_2= ':' ) ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) )
             {
-            otherlv_0=(Token)match(input,73,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,74,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getCardinalityArgumentAccess().getCardinalityKeyword_0());
               		
             }
-            // InternalNavascript.g:5148:3: (otherlv_1= '=' | otherlv_2= ':' )
-            int alt95=2;
-            int LA95_0 = input.LA(1);
+            // InternalNavascript.g:5404:3: (otherlv_1= '=' | otherlv_2= ':' )
+            int alt97=2;
+            int LA97_0 = input.LA(1);
 
-            if ( (LA95_0==34) ) {
-                alt95=1;
+            if ( (LA97_0==35) ) {
+                alt97=1;
             }
-            else if ( (LA95_0==35) ) {
-                alt95=2;
+            else if ( (LA97_0==36) ) {
+                alt97=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 95, 0, input);
+                    new NoViableAltException("", 97, 0, input);
 
                 throw nvae;
             }
-            switch (alt95) {
+            switch (alt97) {
                 case 1 :
-                    // InternalNavascript.g:5149:4: otherlv_1= '='
+                    // InternalNavascript.g:5405:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,34,FOLLOW_60); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,35,FOLLOW_60); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getCardinalityArgumentAccess().getEqualsSignKeyword_1_0());
@@ -14853,9 +15295,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:5154:4: otherlv_2= ':'
+                    // InternalNavascript.g:5410:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,35,FOLLOW_60); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,36,FOLLOW_60); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getCardinalityArgumentAccess().getColonKeyword_1_1());
@@ -14867,34 +15309,34 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:5159:3: ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) )
-            // InternalNavascript.g:5160:4: ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) )
+            // InternalNavascript.g:5415:3: ( ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) ) )
+            // InternalNavascript.g:5416:4: ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) )
             {
-            // InternalNavascript.g:5160:4: ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) )
-            // InternalNavascript.g:5161:5: (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE )
+            // InternalNavascript.g:5416:4: ( (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE ) )
+            // InternalNavascript.g:5417:5: (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE )
             {
-            // InternalNavascript.g:5161:5: (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE )
-            int alt96=2;
-            int LA96_0 = input.LA(1);
+            // InternalNavascript.g:5417:5: (lv_value_3_1= '+' | lv_value_3_2= RULE_ONE )
+            int alt98=2;
+            int LA98_0 = input.LA(1);
 
-            if ( (LA96_0==74) ) {
-                alt96=1;
+            if ( (LA98_0==75) ) {
+                alt98=1;
             }
-            else if ( (LA96_0==RULE_ONE) ) {
-                alt96=2;
+            else if ( (LA98_0==RULE_ONE) ) {
+                alt98=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 96, 0, input);
+                    new NoViableAltException("", 98, 0, input);
 
                 throw nvae;
             }
-            switch (alt96) {
+            switch (alt98) {
                 case 1 :
-                    // InternalNavascript.g:5162:6: lv_value_3_1= '+'
+                    // InternalNavascript.g:5418:6: lv_value_3_1= '+'
                     {
-                    lv_value_3_1=(Token)match(input,74,FOLLOW_2); if (state.failed) return current;
+                    lv_value_3_1=(Token)match(input,75,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       						newLeafNode(lv_value_3_1, grammarAccess.getCardinalityArgumentAccess().getValuePlusSignKeyword_2_0_0());
@@ -14912,7 +15354,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:5173:6: lv_value_3_2= RULE_ONE
+                    // InternalNavascript.g:5429:6: lv_value_3_2= RULE_ONE
                     {
                     lv_value_3_2=(Token)match(input,RULE_ONE,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -14969,7 +15411,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTypeArgument"
-    // InternalNavascript.g:5194:1: entryRuleTypeArgument returns [EObject current=null] : iv_ruleTypeArgument= ruleTypeArgument EOF ;
+    // InternalNavascript.g:5450:1: entryRuleTypeArgument returns [EObject current=null] : iv_ruleTypeArgument= ruleTypeArgument EOF ;
     public final EObject entryRuleTypeArgument() throws RecognitionException {
         EObject current = null;
 
@@ -14977,8 +15419,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:5194:53: (iv_ruleTypeArgument= ruleTypeArgument EOF )
-            // InternalNavascript.g:5195:2: iv_ruleTypeArgument= ruleTypeArgument EOF
+            // InternalNavascript.g:5450:53: (iv_ruleTypeArgument= ruleTypeArgument EOF )
+            // InternalNavascript.g:5451:2: iv_ruleTypeArgument= ruleTypeArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeArgumentRule()); 
@@ -15009,7 +15451,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTypeArgument"
-    // InternalNavascript.g:5201:1: ruleTypeArgument returns [EObject current=null] : (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) ) ) ;
+    // InternalNavascript.g:5457:1: ruleTypeArgument returns [EObject current=null] : (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) ) ) ;
     public final EObject ruleTypeArgument() throws RecognitionException {
         EObject current = null;
 
@@ -15023,40 +15465,40 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:5207:2: ( (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) ) ) )
-            // InternalNavascript.g:5208:2: (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) ) )
+            // InternalNavascript.g:5463:2: ( (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) ) ) )
+            // InternalNavascript.g:5464:2: (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) ) )
             {
-            // InternalNavascript.g:5208:2: (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) ) )
-            // InternalNavascript.g:5209:3: otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) )
+            // InternalNavascript.g:5464:2: (otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) ) )
+            // InternalNavascript.g:5465:3: otherlv_0= 'type' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= rulePropertyType ) )
             {
-            otherlv_0=(Token)match(input,60,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,61,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getTypeArgumentAccess().getTypeKeyword_0());
               		
             }
-            // InternalNavascript.g:5213:3: (otherlv_1= '=' | otherlv_2= ':' )
-            int alt97=2;
-            int LA97_0 = input.LA(1);
+            // InternalNavascript.g:5469:3: (otherlv_1= '=' | otherlv_2= ':' )
+            int alt99=2;
+            int LA99_0 = input.LA(1);
 
-            if ( (LA97_0==34) ) {
-                alt97=1;
+            if ( (LA99_0==35) ) {
+                alt99=1;
             }
-            else if ( (LA97_0==35) ) {
-                alt97=2;
+            else if ( (LA99_0==36) ) {
+                alt99=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 97, 0, input);
+                    new NoViableAltException("", 99, 0, input);
 
                 throw nvae;
             }
-            switch (alt97) {
+            switch (alt99) {
                 case 1 :
-                    // InternalNavascript.g:5214:4: otherlv_1= '='
+                    // InternalNavascript.g:5470:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,34,FOLLOW_54); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,35,FOLLOW_54); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getTypeArgumentAccess().getEqualsSignKeyword_1_0());
@@ -15066,9 +15508,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:5219:4: otherlv_2= ':'
+                    // InternalNavascript.g:5475:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,35,FOLLOW_54); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,36,FOLLOW_54); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getTypeArgumentAccess().getColonKeyword_1_1());
@@ -15080,11 +15522,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:5224:3: ( (lv_value_3_0= rulePropertyType ) )
-            // InternalNavascript.g:5225:4: (lv_value_3_0= rulePropertyType )
+            // InternalNavascript.g:5480:3: ( (lv_value_3_0= rulePropertyType ) )
+            // InternalNavascript.g:5481:4: (lv_value_3_0= rulePropertyType )
             {
-            // InternalNavascript.g:5225:4: (lv_value_3_0= rulePropertyType )
-            // InternalNavascript.g:5226:5: lv_value_3_0= rulePropertyType
+            // InternalNavascript.g:5481:4: (lv_value_3_0= rulePropertyType )
+            // InternalNavascript.g:5482:5: lv_value_3_0= rulePropertyType
             {
             if ( state.backtracking==0 ) {
 
@@ -15140,7 +15582,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSubTypeArgument"
-    // InternalNavascript.g:5247:1: entryRuleSubTypeArgument returns [EObject current=null] : iv_ruleSubTypeArgument= ruleSubTypeArgument EOF ;
+    // InternalNavascript.g:5503:1: entryRuleSubTypeArgument returns [EObject current=null] : iv_ruleSubTypeArgument= ruleSubTypeArgument EOF ;
     public final EObject entryRuleSubTypeArgument() throws RecognitionException {
         EObject current = null;
 
@@ -15148,8 +15590,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:5247:56: (iv_ruleSubTypeArgument= ruleSubTypeArgument EOF )
-            // InternalNavascript.g:5248:2: iv_ruleSubTypeArgument= ruleSubTypeArgument EOF
+            // InternalNavascript.g:5503:56: (iv_ruleSubTypeArgument= ruleSubTypeArgument EOF )
+            // InternalNavascript.g:5504:2: iv_ruleSubTypeArgument= ruleSubTypeArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSubTypeArgumentRule()); 
@@ -15180,7 +15622,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSubTypeArgument"
-    // InternalNavascript.g:5254:1: ruleSubTypeArgument returns [EObject current=null] : (otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) ) ) ;
+    // InternalNavascript.g:5510:1: ruleSubTypeArgument returns [EObject current=null] : (otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) ) ) ;
     public final EObject ruleSubTypeArgument() throws RecognitionException {
         EObject current = null;
 
@@ -15193,40 +15635,40 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:5260:2: ( (otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) ) ) )
-            // InternalNavascript.g:5261:2: (otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) ) )
+            // InternalNavascript.g:5516:2: ( (otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) ) ) )
+            // InternalNavascript.g:5517:2: (otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) ) )
             {
-            // InternalNavascript.g:5261:2: (otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) ) )
-            // InternalNavascript.g:5262:3: otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) )
+            // InternalNavascript.g:5517:2: (otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) ) )
+            // InternalNavascript.g:5518:3: otherlv_0= 'subtype' (otherlv_1= '=' | otherlv_2= ':' ) ( (lv_value_3_0= RULE_IDENTIFIER ) )
             {
-            otherlv_0=(Token)match(input,75,FOLLOW_17); if (state.failed) return current;
+            otherlv_0=(Token)match(input,76,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getSubTypeArgumentAccess().getSubtypeKeyword_0());
               		
             }
-            // InternalNavascript.g:5266:3: (otherlv_1= '=' | otherlv_2= ':' )
-            int alt98=2;
-            int LA98_0 = input.LA(1);
+            // InternalNavascript.g:5522:3: (otherlv_1= '=' | otherlv_2= ':' )
+            int alt100=2;
+            int LA100_0 = input.LA(1);
 
-            if ( (LA98_0==34) ) {
-                alt98=1;
+            if ( (LA100_0==35) ) {
+                alt100=1;
             }
-            else if ( (LA98_0==35) ) {
-                alt98=2;
+            else if ( (LA100_0==36) ) {
+                alt100=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 98, 0, input);
+                    new NoViableAltException("", 100, 0, input);
 
                 throw nvae;
             }
-            switch (alt98) {
+            switch (alt100) {
                 case 1 :
-                    // InternalNavascript.g:5267:4: otherlv_1= '='
+                    // InternalNavascript.g:5523:4: otherlv_1= '='
                     {
-                    otherlv_1=(Token)match(input,34,FOLLOW_41); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,35,FOLLOW_42); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getSubTypeArgumentAccess().getEqualsSignKeyword_1_0());
@@ -15236,9 +15678,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:5272:4: otherlv_2= ':'
+                    // InternalNavascript.g:5528:4: otherlv_2= ':'
                     {
-                    otherlv_2=(Token)match(input,35,FOLLOW_41); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,36,FOLLOW_42); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getSubTypeArgumentAccess().getColonKeyword_1_1());
@@ -15250,11 +15692,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:5277:3: ( (lv_value_3_0= RULE_IDENTIFIER ) )
-            // InternalNavascript.g:5278:4: (lv_value_3_0= RULE_IDENTIFIER )
+            // InternalNavascript.g:5533:3: ( (lv_value_3_0= RULE_IDENTIFIER ) )
+            // InternalNavascript.g:5534:4: (lv_value_3_0= RULE_IDENTIFIER )
             {
-            // InternalNavascript.g:5278:4: (lv_value_3_0= RULE_IDENTIFIER )
-            // InternalNavascript.g:5279:5: lv_value_3_0= RULE_IDENTIFIER
+            // InternalNavascript.g:5534:4: (lv_value_3_0= RULE_IDENTIFIER )
+            // InternalNavascript.g:5535:5: lv_value_3_0= RULE_IDENTIFIER
             {
             lv_value_3_0=(Token)match(input,RULE_IDENTIFIER,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -15305,7 +15747,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConditionalExpressions"
-    // InternalNavascript.g:5299:1: entryRuleConditionalExpressions returns [EObject current=null] : iv_ruleConditionalExpressions= ruleConditionalExpressions EOF ;
+    // InternalNavascript.g:5555:1: entryRuleConditionalExpressions returns [EObject current=null] : iv_ruleConditionalExpressions= ruleConditionalExpressions EOF ;
     public final EObject entryRuleConditionalExpressions() throws RecognitionException {
         EObject current = null;
 
@@ -15313,8 +15755,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:5299:63: (iv_ruleConditionalExpressions= ruleConditionalExpressions EOF )
-            // InternalNavascript.g:5300:2: iv_ruleConditionalExpressions= ruleConditionalExpressions EOF
+            // InternalNavascript.g:5555:63: (iv_ruleConditionalExpressions= ruleConditionalExpressions EOF )
+            // InternalNavascript.g:5556:2: iv_ruleConditionalExpressions= ruleConditionalExpressions EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getConditionalExpressionsRule()); 
@@ -15345,7 +15787,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConditionalExpressions"
-    // InternalNavascript.g:5306:1: ruleConditionalExpressions returns [EObject current=null] : ( ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) ) | ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) ) ) ;
+    // InternalNavascript.g:5562:1: ruleConditionalExpressions returns [EObject current=null] : ( ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) ) | ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) ) ) ;
     public final EObject ruleConditionalExpressions() throws RecognitionException {
         EObject current = null;
 
@@ -15361,36 +15803,41 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:5312:2: ( ( ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) ) | ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) ) ) )
-            // InternalNavascript.g:5313:2: ( ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) ) | ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) ) )
+            // InternalNavascript.g:5568:2: ( ( ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) ) | ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) ) ) )
+            // InternalNavascript.g:5569:2: ( ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) ) | ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) ) )
             {
-            // InternalNavascript.g:5313:2: ( ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) ) | ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) ) )
-            int alt100=2;
-            int LA100_0 = input.LA(1);
+            // InternalNavascript.g:5569:2: ( ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) ) | ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) ) )
+            int alt102=2;
+            int LA102_0 = input.LA(1);
 
-            if ( (LA100_0==25) ) {
-                alt100=1;
+            if ( (LA102_0==26) ) {
+                alt102=1;
             }
-            else if ( ((LA100_0>=RULE_QUOTED_IDENTIFIER && LA100_0<=RULE_IDENTIFIER)||(LA100_0>=RULE_MAPPABLE_IDENTIFIER && LA100_0<=RULE_EXISTS)||LA100_0==30||LA100_0==85||(LA100_0>=88 && LA100_0<=89)) ) {
-                alt100=2;
+            else if ( ((LA102_0>=RULE_QUOTED_IDENTIFIER && LA102_0<=RULE_IDENTIFIER)||(LA102_0>=RULE_MAPPABLE_IDENTIFIER && LA102_0<=RULE_EXISTS)||LA102_0==31||LA102_0==86||(LA102_0>=89 && LA102_0<=90)) ) {
+                alt102=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 100, 0, input);
+                    new NoViableAltException("", 102, 0, input);
 
                 throw nvae;
             }
-            switch (alt100) {
+            switch (alt102) {
                 case 1 :
-                    // InternalNavascript.g:5314:3: ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) )
+                    // InternalNavascript.g:5570:3: ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) )
                     {
-                    // InternalNavascript.g:5314:3: ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) )
-                    // InternalNavascript.g:5315:4: () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:5570:3: ( () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) ) )
+                    // InternalNavascript.g:5571:4: () ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+ otherlv_2= 'else' ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) )
                     {
-                    // InternalNavascript.g:5315:4: ()
-                    // InternalNavascript.g:5316:5: 
+                    // InternalNavascript.g:5571:4: ()
+                    // InternalNavascript.g:5572:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -15401,24 +15848,24 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:5322:4: ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+
-                    int cnt99=0;
-                    loop99:
+                    // InternalNavascript.g:5581:4: ( (lv_conditionalExpressions_1_0= ruleConditionalExpression ) )+
+                    int cnt101=0;
+                    loop101:
                     do {
-                        int alt99=2;
-                        int LA99_0 = input.LA(1);
+                        int alt101=2;
+                        int LA101_0 = input.LA(1);
 
-                        if ( (LA99_0==25) ) {
-                            alt99=1;
+                        if ( (LA101_0==26) ) {
+                            alt101=1;
                         }
 
 
-                        switch (alt99) {
+                        switch (alt101) {
                     	case 1 :
-                    	    // InternalNavascript.g:5323:5: (lv_conditionalExpressions_1_0= ruleConditionalExpression )
+                    	    // InternalNavascript.g:5582:5: (lv_conditionalExpressions_1_0= ruleConditionalExpression )
                     	    {
-                    	    // InternalNavascript.g:5323:5: (lv_conditionalExpressions_1_0= ruleConditionalExpression )
-                    	    // InternalNavascript.g:5324:6: lv_conditionalExpressions_1_0= ruleConditionalExpression
+                    	    // InternalNavascript.g:5582:5: (lv_conditionalExpressions_1_0= ruleConditionalExpression )
+                    	    // InternalNavascript.g:5583:6: lv_conditionalExpressions_1_0= ruleConditionalExpression
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -15451,26 +15898,26 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt99 >= 1 ) break loop99;
+                    	    if ( cnt101 >= 1 ) break loop101;
                     	    if (state.backtracking>0) {state.failed=true; return current;}
                                 EarlyExitException eee =
-                                    new EarlyExitException(99, input);
+                                    new EarlyExitException(101, input);
                                 throw eee;
                         }
-                        cnt99++;
+                        cnt101++;
                     } while (true);
 
-                    otherlv_2=(Token)match(input,76,FOLLOW_19); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,77,FOLLOW_19); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getConditionalExpressionsAccess().getElseKeyword_0_2());
                       			
                     }
-                    // InternalNavascript.g:5345:4: ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) )
-                    // InternalNavascript.g:5346:5: (lv_elseExpresssion_3_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:5604:4: ( (lv_elseExpresssion_3_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:5605:5: (lv_elseExpresssion_3_0= ruleLiteralOrExpression )
                     {
-                    // InternalNavascript.g:5346:5: (lv_elseExpresssion_3_0= ruleLiteralOrExpression )
-                    // InternalNavascript.g:5347:6: lv_elseExpresssion_3_0= ruleLiteralOrExpression
+                    // InternalNavascript.g:5605:5: (lv_elseExpresssion_3_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:5606:6: lv_elseExpresssion_3_0= ruleLiteralOrExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -15508,13 +15955,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:5366:3: ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:5625:3: ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) )
                     {
-                    // InternalNavascript.g:5366:3: ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) )
-                    // InternalNavascript.g:5367:4: (lv_singleExpression_4_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:5625:3: ( (lv_singleExpression_4_0= ruleLiteralOrExpression ) )
+                    // InternalNavascript.g:5626:4: (lv_singleExpression_4_0= ruleLiteralOrExpression )
                     {
-                    // InternalNavascript.g:5367:4: (lv_singleExpression_4_0= ruleLiteralOrExpression )
-                    // InternalNavascript.g:5368:5: lv_singleExpression_4_0= ruleLiteralOrExpression
+                    // InternalNavascript.g:5626:4: (lv_singleExpression_4_0= ruleLiteralOrExpression )
+                    // InternalNavascript.g:5627:5: lv_singleExpression_4_0= ruleLiteralOrExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -15573,7 +16020,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConditionalExpression"
-    // InternalNavascript.g:5389:1: entryRuleConditionalExpression returns [EObject current=null] : iv_ruleConditionalExpression= ruleConditionalExpression EOF ;
+    // InternalNavascript.g:5648:1: entryRuleConditionalExpression returns [EObject current=null] : iv_ruleConditionalExpression= ruleConditionalExpression EOF ;
     public final EObject entryRuleConditionalExpression() throws RecognitionException {
         EObject current = null;
 
@@ -15581,8 +16028,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:5389:62: (iv_ruleConditionalExpression= ruleConditionalExpression EOF )
-            // InternalNavascript.g:5390:2: iv_ruleConditionalExpression= ruleConditionalExpression EOF
+            // InternalNavascript.g:5648:62: (iv_ruleConditionalExpression= ruleConditionalExpression EOF )
+            // InternalNavascript.g:5649:2: iv_ruleConditionalExpression= ruleConditionalExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getConditionalExpressionRule()); 
@@ -15613,7 +16060,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConditionalExpression"
-    // InternalNavascript.g:5396:1: ruleConditionalExpression returns [EObject current=null] : (otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) ) ) ;
+    // InternalNavascript.g:5655:1: ruleConditionalExpression returns [EObject current=null] : (otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) ) ) ;
     public final EObject ruleConditionalExpression() throws RecognitionException {
         EObject current = null;
 
@@ -15628,23 +16075,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:5402:2: ( (otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) ) ) )
-            // InternalNavascript.g:5403:2: (otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) ) )
+            // InternalNavascript.g:5661:2: ( (otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) ) ) )
+            // InternalNavascript.g:5662:2: (otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) ) )
             {
-            // InternalNavascript.g:5403:2: (otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) ) )
-            // InternalNavascript.g:5404:3: otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) )
+            // InternalNavascript.g:5662:2: (otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) ) )
+            // InternalNavascript.g:5663:3: otherlv_0= 'if' ( (lv_condition_1_0= ruleExpression ) ) otherlv_2= 'then' ( (lv_expression_3_0= ruleLiteralOrExpression ) )
             {
-            otherlv_0=(Token)match(input,25,FOLLOW_6); if (state.failed) return current;
+            otherlv_0=(Token)match(input,26,FOLLOW_6); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_0, grammarAccess.getConditionalExpressionAccess().getIfKeyword_0());
               		
             }
-            // InternalNavascript.g:5408:3: ( (lv_condition_1_0= ruleExpression ) )
-            // InternalNavascript.g:5409:4: (lv_condition_1_0= ruleExpression )
+            // InternalNavascript.g:5667:3: ( (lv_condition_1_0= ruleExpression ) )
+            // InternalNavascript.g:5668:4: (lv_condition_1_0= ruleExpression )
             {
-            // InternalNavascript.g:5409:4: (lv_condition_1_0= ruleExpression )
-            // InternalNavascript.g:5410:5: lv_condition_1_0= ruleExpression
+            // InternalNavascript.g:5668:4: (lv_condition_1_0= ruleExpression )
+            // InternalNavascript.g:5669:5: lv_condition_1_0= ruleExpression
             {
             if ( state.backtracking==0 ) {
 
@@ -15675,17 +16122,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,26,FOLLOW_19); if (state.failed) return current;
+            otherlv_2=(Token)match(input,27,FOLLOW_19); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getConditionalExpressionAccess().getThenKeyword_2());
               		
             }
-            // InternalNavascript.g:5431:3: ( (lv_expression_3_0= ruleLiteralOrExpression ) )
-            // InternalNavascript.g:5432:4: (lv_expression_3_0= ruleLiteralOrExpression )
+            // InternalNavascript.g:5690:3: ( (lv_expression_3_0= ruleLiteralOrExpression ) )
+            // InternalNavascript.g:5691:4: (lv_expression_3_0= ruleLiteralOrExpression )
             {
-            // InternalNavascript.g:5432:4: (lv_expression_3_0= ruleLiteralOrExpression )
-            // InternalNavascript.g:5433:5: lv_expression_3_0= ruleLiteralOrExpression
+            // InternalNavascript.g:5691:4: (lv_expression_3_0= ruleLiteralOrExpression )
+            // InternalNavascript.g:5692:5: lv_expression_3_0= ruleLiteralOrExpression
             {
             if ( state.backtracking==0 ) {
 
@@ -15741,7 +16188,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleExpression"
-    // InternalNavascript.g:5454:1: entryRuleExpression returns [EObject current=null] : iv_ruleExpression= ruleExpression EOF ;
+    // InternalNavascript.g:5713:1: entryRuleExpression returns [EObject current=null] : iv_ruleExpression= ruleExpression EOF ;
     public final EObject entryRuleExpression() throws RecognitionException {
         EObject current = null;
 
@@ -15749,8 +16196,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:5454:51: (iv_ruleExpression= ruleExpression EOF )
-            // InternalNavascript.g:5455:2: iv_ruleExpression= ruleExpression EOF
+            // InternalNavascript.g:5713:51: (iv_ruleExpression= ruleExpression EOF )
+            // InternalNavascript.g:5714:2: iv_ruleExpression= ruleExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getExpressionRule()); 
@@ -15781,7 +16228,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExpression"
-    // InternalNavascript.g:5461:1: ruleExpression returns [EObject current=null] : this_BooleanExpression_0= ruleBooleanExpression ;
+    // InternalNavascript.g:5720:1: ruleExpression returns [EObject current=null] : this_BooleanExpression_0= ruleBooleanExpression ;
     public final EObject ruleExpression() throws RecognitionException {
         EObject current = null;
 
@@ -15792,9 +16239,14 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:5467:2: (this_BooleanExpression_0= ruleBooleanExpression )
-            // InternalNavascript.g:5468:2: this_BooleanExpression_0= ruleBooleanExpression
+            // InternalNavascript.g:5726:2: (this_BooleanExpression_0= ruleBooleanExpression )
+            // InternalNavascript.g:5727:2: this_BooleanExpression_0= ruleBooleanExpression
             {
+            if ( state.backtracking==0 ) {
+
+              		/* */
+              	
+            }
             if ( state.backtracking==0 ) {
 
               		newCompositeNode(grammarAccess.getExpressionAccess().getBooleanExpressionParserRuleCall());
@@ -15833,7 +16285,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBooleanExpression"
-    // InternalNavascript.g:5479:1: entryRuleBooleanExpression returns [EObject current=null] : iv_ruleBooleanExpression= ruleBooleanExpression EOF ;
+    // InternalNavascript.g:5741:1: entryRuleBooleanExpression returns [EObject current=null] : iv_ruleBooleanExpression= ruleBooleanExpression EOF ;
     public final EObject entryRuleBooleanExpression() throws RecognitionException {
         EObject current = null;
 
@@ -15841,8 +16293,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:5479:58: (iv_ruleBooleanExpression= ruleBooleanExpression EOF )
-            // InternalNavascript.g:5480:2: iv_ruleBooleanExpression= ruleBooleanExpression EOF
+            // InternalNavascript.g:5741:58: (iv_ruleBooleanExpression= ruleBooleanExpression EOF )
+            // InternalNavascript.g:5742:2: iv_ruleBooleanExpression= ruleBooleanExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBooleanExpressionRule()); 
@@ -15873,7 +16325,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanExpression"
-    // InternalNavascript.g:5486:1: ruleBooleanExpression returns [EObject current=null] : (this_Comparison_0= ruleComparison ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )* ) ;
+    // InternalNavascript.g:5748:1: ruleBooleanExpression returns [EObject current=null] : (this_Comparison_0= ruleComparison ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )* ) ;
     public final EObject ruleBooleanExpression() throws RecognitionException {
         EObject current = null;
 
@@ -15888,12 +16340,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:5492:2: ( (this_Comparison_0= ruleComparison ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )* ) )
-            // InternalNavascript.g:5493:2: (this_Comparison_0= ruleComparison ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )* )
+            // InternalNavascript.g:5754:2: ( (this_Comparison_0= ruleComparison ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )* ) )
+            // InternalNavascript.g:5755:2: (this_Comparison_0= ruleComparison ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )* )
             {
-            // InternalNavascript.g:5493:2: (this_Comparison_0= ruleComparison ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )* )
-            // InternalNavascript.g:5494:3: this_Comparison_0= ruleComparison ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )*
+            // InternalNavascript.g:5755:2: (this_Comparison_0= ruleComparison ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )* )
+            // InternalNavascript.g:5756:3: this_Comparison_0= ruleComparison ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )*
             {
+            if ( state.backtracking==0 ) {
+
+              			/* */
+              		
+            }
             if ( state.backtracking==0 ) {
 
               			newCompositeNode(grammarAccess.getBooleanExpressionAccess().getComparisonParserRuleCall_0());
@@ -15910,27 +16367,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
               			afterParserOrEnumRuleCall();
               		
             }
-            // InternalNavascript.g:5502:3: ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )*
-            loop102:
+            // InternalNavascript.g:5767:3: ( ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) ) )*
+            loop104:
             do {
-                int alt102=2;
-                int LA102_0 = input.LA(1);
+                int alt104=2;
+                int LA104_0 = input.LA(1);
 
-                if ( ((LA102_0>=77 && LA102_0<=78)) ) {
-                    alt102=1;
+                if ( ((LA104_0>=78 && LA104_0<=79)) ) {
+                    alt104=1;
                 }
 
 
-                switch (alt102) {
+                switch (alt104) {
             	case 1 :
-            	    // InternalNavascript.g:5503:4: ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) )
+            	    // InternalNavascript.g:5768:4: ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) ) ( (lv_right_3_0= ruleComparison ) )
             	    {
-            	    // InternalNavascript.g:5503:4: ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) )
-            	    // InternalNavascript.g:5504:5: () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) )
+            	    // InternalNavascript.g:5768:4: ( () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) ) )
+            	    // InternalNavascript.g:5769:5: () ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) )
             	    {
-            	    // InternalNavascript.g:5504:5: ()
-            	    // InternalNavascript.g:5505:6: 
+            	    // InternalNavascript.g:5769:5: ()
+            	    // InternalNavascript.g:5770:6: 
             	    {
+            	    if ( state.backtracking==0 ) {
+
+            	      						/* */
+            	      					
+            	    }
             	    if ( state.backtracking==0 ) {
 
             	      						current = forceCreateModelElementAndSet(
@@ -15941,34 +16403,34 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalNavascript.g:5511:5: ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) )
-            	    // InternalNavascript.g:5512:6: ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) )
+            	    // InternalNavascript.g:5779:5: ( ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) ) )
+            	    // InternalNavascript.g:5780:6: ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) )
             	    {
-            	    // InternalNavascript.g:5512:6: ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) )
-            	    // InternalNavascript.g:5513:7: (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' )
+            	    // InternalNavascript.g:5780:6: ( (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' ) )
+            	    // InternalNavascript.g:5781:7: (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' )
             	    {
-            	    // InternalNavascript.g:5513:7: (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' )
-            	    int alt101=2;
-            	    int LA101_0 = input.LA(1);
+            	    // InternalNavascript.g:5781:7: (lv_op_2_1= 'OR' | lv_op_2_2= 'AND' )
+            	    int alt103=2;
+            	    int LA103_0 = input.LA(1);
 
-            	    if ( (LA101_0==77) ) {
-            	        alt101=1;
+            	    if ( (LA103_0==78) ) {
+            	        alt103=1;
             	    }
-            	    else if ( (LA101_0==78) ) {
-            	        alt101=2;
+            	    else if ( (LA103_0==79) ) {
+            	        alt103=2;
             	    }
             	    else {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 101, 0, input);
+            	            new NoViableAltException("", 103, 0, input);
 
             	        throw nvae;
             	    }
-            	    switch (alt101) {
+            	    switch (alt103) {
             	        case 1 :
-            	            // InternalNavascript.g:5514:8: lv_op_2_1= 'OR'
+            	            // InternalNavascript.g:5782:8: lv_op_2_1= 'OR'
             	            {
-            	            lv_op_2_1=(Token)match(input,77,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_1=(Token)match(input,78,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_1, grammarAccess.getBooleanExpressionAccess().getOpORKeyword_1_0_1_0_0());
@@ -15986,9 +16448,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalNavascript.g:5525:8: lv_op_2_2= 'AND'
+            	            // InternalNavascript.g:5793:8: lv_op_2_2= 'AND'
             	            {
-            	            lv_op_2_2=(Token)match(input,78,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_2=(Token)match(input,79,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              								newLeafNode(lv_op_2_2, grammarAccess.getBooleanExpressionAccess().getOpANDKeyword_1_0_1_0_1());
@@ -16017,11 +16479,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalNavascript.g:5539:4: ( (lv_right_3_0= ruleComparison ) )
-            	    // InternalNavascript.g:5540:5: (lv_right_3_0= ruleComparison )
+            	    // InternalNavascript.g:5807:4: ( (lv_right_3_0= ruleComparison ) )
+            	    // InternalNavascript.g:5808:5: (lv_right_3_0= ruleComparison )
             	    {
-            	    // InternalNavascript.g:5540:5: (lv_right_3_0= ruleComparison )
-            	    // InternalNavascript.g:5541:6: lv_right_3_0= ruleComparison
+            	    // InternalNavascript.g:5808:5: (lv_right_3_0= ruleComparison )
+            	    // InternalNavascript.g:5809:6: lv_right_3_0= ruleComparison
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -16043,315 +16505,6 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	      							"right",
             	      							lv_right_3_0,
             	      							"com.dexels.navajo.Navascript.Comparison");
-            	      						afterParserOrEnumRuleCall();
-            	      					
-            	    }
-
-            	    }
-
-
-            	    }
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop102;
-                }
-            } while (true);
-
-
-            }
-
-
-            }
-
-            if ( state.backtracking==0 ) {
-
-              	leaveRule();
-
-            }
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleBooleanExpression"
-
-
-    // $ANTLR start "entryRuleComparison"
-    // InternalNavascript.g:5563:1: entryRuleComparison returns [EObject current=null] : iv_ruleComparison= ruleComparison EOF ;
-    public final EObject entryRuleComparison() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleComparison = null;
-
-
-        try {
-            // InternalNavascript.g:5563:51: (iv_ruleComparison= ruleComparison EOF )
-            // InternalNavascript.g:5564:2: iv_ruleComparison= ruleComparison EOF
-            {
-            if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getComparisonRule()); 
-            }
-            pushFollow(FOLLOW_1);
-            iv_ruleComparison=ruleComparison();
-
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-               current =iv_ruleComparison; 
-            }
-            match(input,EOF,FOLLOW_2); if (state.failed) return current;
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleComparison"
-
-
-    // $ANTLR start "ruleComparison"
-    // InternalNavascript.g:5570:1: ruleComparison returns [EObject current=null] : (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* ) ;
-    public final EObject ruleComparison() throws RecognitionException {
-        EObject current = null;
-
-        Token lv_op_2_1=null;
-        Token lv_op_2_2=null;
-        Token lv_op_2_3=null;
-        Token lv_op_2_4=null;
-        EObject this_Equals_0 = null;
-
-        EObject lv_right_3_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalNavascript.g:5576:2: ( (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* ) )
-            // InternalNavascript.g:5577:2: (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* )
-            {
-            // InternalNavascript.g:5577:2: (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* )
-            // InternalNavascript.g:5578:3: this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )*
-            {
-            if ( state.backtracking==0 ) {
-
-              			newCompositeNode(grammarAccess.getComparisonAccess().getEqualsParserRuleCall_0());
-              		
-            }
-            pushFollow(FOLLOW_63);
-            this_Equals_0=ruleEquals();
-
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-              			current = this_Equals_0;
-              			afterParserOrEnumRuleCall();
-              		
-            }
-            // InternalNavascript.g:5586:3: ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )*
-            loop104:
-            do {
-                int alt104=2;
-                int LA104_0 = input.LA(1);
-
-                if ( ((LA104_0>=79 && LA104_0<=82)) ) {
-                    alt104=1;
-                }
-
-
-                switch (alt104) {
-            	case 1 :
-            	    // InternalNavascript.g:5587:4: ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) )
-            	    {
-            	    // InternalNavascript.g:5587:4: ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) )
-            	    // InternalNavascript.g:5588:5: () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) )
-            	    {
-            	    // InternalNavascript.g:5588:5: ()
-            	    // InternalNavascript.g:5589:6: 
-            	    {
-            	    if ( state.backtracking==0 ) {
-
-            	      						current = forceCreateModelElementAndSet(
-            	      							grammarAccess.getComparisonAccess().getComparisonLeftAction_1_0_0(),
-            	      							current);
-            	      					
-            	    }
-
-            	    }
-
-            	    // InternalNavascript.g:5595:5: ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) )
-            	    // InternalNavascript.g:5596:6: ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) )
-            	    {
-            	    // InternalNavascript.g:5596:6: ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) )
-            	    // InternalNavascript.g:5597:7: (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' )
-            	    {
-            	    // InternalNavascript.g:5597:7: (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' )
-            	    int alt103=4;
-            	    switch ( input.LA(1) ) {
-            	    case 79:
-            	        {
-            	        alt103=1;
-            	        }
-            	        break;
-            	    case 80:
-            	        {
-            	        alt103=2;
-            	        }
-            	        break;
-            	    case 81:
-            	        {
-            	        alt103=3;
-            	        }
-            	        break;
-            	    case 82:
-            	        {
-            	        alt103=4;
-            	        }
-            	        break;
-            	    default:
-            	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        NoViableAltException nvae =
-            	            new NoViableAltException("", 103, 0, input);
-
-            	        throw nvae;
-            	    }
-
-            	    switch (alt103) {
-            	        case 1 :
-            	            // InternalNavascript.g:5598:8: lv_op_2_1= '<'
-            	            {
-            	            lv_op_2_1=(Token)match(input,79,FOLLOW_6); if (state.failed) return current;
-            	            if ( state.backtracking==0 ) {
-
-            	              								newLeafNode(lv_op_2_1, grammarAccess.getComparisonAccess().getOpLessThanSignKeyword_1_0_1_0_0());
-            	              							
-            	            }
-            	            if ( state.backtracking==0 ) {
-
-            	              								if (current==null) {
-            	              									current = createModelElement(grammarAccess.getComparisonRule());
-            	              								}
-            	              								setWithLastConsumed(current, "op", lv_op_2_1, null);
-            	              							
-            	            }
-
-            	            }
-            	            break;
-            	        case 2 :
-            	            // InternalNavascript.g:5609:8: lv_op_2_2= '>'
-            	            {
-            	            lv_op_2_2=(Token)match(input,80,FOLLOW_6); if (state.failed) return current;
-            	            if ( state.backtracking==0 ) {
-
-            	              								newLeafNode(lv_op_2_2, grammarAccess.getComparisonAccess().getOpGreaterThanSignKeyword_1_0_1_0_1());
-            	              							
-            	            }
-            	            if ( state.backtracking==0 ) {
-
-            	              								if (current==null) {
-            	              									current = createModelElement(grammarAccess.getComparisonRule());
-            	              								}
-            	              								setWithLastConsumed(current, "op", lv_op_2_2, null);
-            	              							
-            	            }
-
-            	            }
-            	            break;
-            	        case 3 :
-            	            // InternalNavascript.g:5620:8: lv_op_2_3= '<='
-            	            {
-            	            lv_op_2_3=(Token)match(input,81,FOLLOW_6); if (state.failed) return current;
-            	            if ( state.backtracking==0 ) {
-
-            	              								newLeafNode(lv_op_2_3, grammarAccess.getComparisonAccess().getOpLessThanSignEqualsSignKeyword_1_0_1_0_2());
-            	              							
-            	            }
-            	            if ( state.backtracking==0 ) {
-
-            	              								if (current==null) {
-            	              									current = createModelElement(grammarAccess.getComparisonRule());
-            	              								}
-            	              								setWithLastConsumed(current, "op", lv_op_2_3, null);
-            	              							
-            	            }
-
-            	            }
-            	            break;
-            	        case 4 :
-            	            // InternalNavascript.g:5631:8: lv_op_2_4= '>='
-            	            {
-            	            lv_op_2_4=(Token)match(input,82,FOLLOW_6); if (state.failed) return current;
-            	            if ( state.backtracking==0 ) {
-
-            	              								newLeafNode(lv_op_2_4, grammarAccess.getComparisonAccess().getOpGreaterThanSignEqualsSignKeyword_1_0_1_0_3());
-            	              							
-            	            }
-            	            if ( state.backtracking==0 ) {
-
-            	              								if (current==null) {
-            	              									current = createModelElement(grammarAccess.getComparisonRule());
-            	              								}
-            	              								setWithLastConsumed(current, "op", lv_op_2_4, null);
-            	              							
-            	            }
-
-            	            }
-            	            break;
-
-            	    }
-
-
-            	    }
-
-
-            	    }
-
-
-            	    }
-
-            	    // InternalNavascript.g:5645:4: ( (lv_right_3_0= ruleEquals ) )
-            	    // InternalNavascript.g:5646:5: (lv_right_3_0= ruleEquals )
-            	    {
-            	    // InternalNavascript.g:5646:5: (lv_right_3_0= ruleEquals )
-            	    // InternalNavascript.g:5647:6: lv_right_3_0= ruleEquals
-            	    {
-            	    if ( state.backtracking==0 ) {
-
-            	      						newCompositeNode(grammarAccess.getComparisonAccess().getRightEqualsParserRuleCall_1_1_0());
-            	      					
-            	    }
-            	    pushFollow(FOLLOW_63);
-            	    lv_right_3_0=ruleEquals();
-
-            	    state._fsp--;
-            	    if (state.failed) return current;
-            	    if ( state.backtracking==0 ) {
-
-            	      						if (current==null) {
-            	      							current = createModelElementForParent(grammarAccess.getComparisonRule());
-            	      						}
-            	      						set(
-            	      							current,
-            	      							"right",
-            	      							lv_right_3_0,
-            	      							"com.dexels.navajo.Navascript.Equals");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -16391,31 +16544,31 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleComparison"
+    // $ANTLR end "ruleBooleanExpression"
 
 
-    // $ANTLR start "entryRuleEquals"
-    // InternalNavascript.g:5669:1: entryRuleEquals returns [EObject current=null] : iv_ruleEquals= ruleEquals EOF ;
-    public final EObject entryRuleEquals() throws RecognitionException {
+    // $ANTLR start "entryRuleComparison"
+    // InternalNavascript.g:5831:1: entryRuleComparison returns [EObject current=null] : iv_ruleComparison= ruleComparison EOF ;
+    public final EObject entryRuleComparison() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleEquals = null;
+        EObject iv_ruleComparison = null;
 
 
         try {
-            // InternalNavascript.g:5669:47: (iv_ruleEquals= ruleEquals EOF )
-            // InternalNavascript.g:5670:2: iv_ruleEquals= ruleEquals EOF
+            // InternalNavascript.g:5831:51: (iv_ruleComparison= ruleComparison EOF )
+            // InternalNavascript.g:5832:2: iv_ruleComparison= ruleComparison EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getEqualsRule()); 
+               newCompositeNode(grammarAccess.getComparisonRule()); 
             }
             pushFollow(FOLLOW_1);
-            iv_ruleEquals=ruleEquals();
+            iv_ruleComparison=ruleComparison();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleEquals; 
+               current =iv_ruleComparison; 
             }
             match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
@@ -16431,17 +16584,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleEquals"
+    // $ANTLR end "entryRuleComparison"
 
 
-    // $ANTLR start "ruleEquals"
-    // InternalNavascript.g:5676:1: ruleEquals returns [EObject current=null] : (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* ) ;
-    public final EObject ruleEquals() throws RecognitionException {
+    // $ANTLR start "ruleComparison"
+    // InternalNavascript.g:5838:1: ruleComparison returns [EObject current=null] : (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* ) ;
+    public final EObject ruleComparison() throws RecognitionException {
         EObject current = null;
 
         Token lv_op_2_1=null;
         Token lv_op_2_2=null;
-        EObject this_Addition_0 = null;
+        Token lv_op_2_3=null;
+        Token lv_op_2_4=null;
+        EObject this_Equals_0 = null;
 
         EObject lv_right_3_0 = null;
 
@@ -16450,96 +16605,120 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:5682:2: ( (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* ) )
-            // InternalNavascript.g:5683:2: (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* )
+            // InternalNavascript.g:5844:2: ( (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* ) )
+            // InternalNavascript.g:5845:2: (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* )
             {
-            // InternalNavascript.g:5683:2: (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* )
-            // InternalNavascript.g:5684:3: this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )*
+            // InternalNavascript.g:5845:2: (this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )* )
+            // InternalNavascript.g:5846:3: this_Equals_0= ruleEquals ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )*
             {
             if ( state.backtracking==0 ) {
 
-              			newCompositeNode(grammarAccess.getEqualsAccess().getAdditionParserRuleCall_0());
+              			/* */
               		
             }
-            pushFollow(FOLLOW_64);
-            this_Addition_0=ruleAddition();
+            if ( state.backtracking==0 ) {
+
+              			newCompositeNode(grammarAccess.getComparisonAccess().getEqualsParserRuleCall_0());
+              		
+            }
+            pushFollow(FOLLOW_63);
+            this_Equals_0=ruleEquals();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			current = this_Addition_0;
+              			current = this_Equals_0;
               			afterParserOrEnumRuleCall();
               		
             }
-            // InternalNavascript.g:5692:3: ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )*
+            // InternalNavascript.g:5857:3: ( ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) ) )*
             loop106:
             do {
                 int alt106=2;
                 int LA106_0 = input.LA(1);
 
-                if ( ((LA106_0>=83 && LA106_0<=84)) ) {
+                if ( ((LA106_0>=80 && LA106_0<=83)) ) {
                     alt106=1;
                 }
 
 
                 switch (alt106) {
             	case 1 :
-            	    // InternalNavascript.g:5693:4: ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) )
+            	    // InternalNavascript.g:5858:4: ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) ) ( (lv_right_3_0= ruleEquals ) )
             	    {
-            	    // InternalNavascript.g:5693:4: ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) )
-            	    // InternalNavascript.g:5694:5: () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) )
+            	    // InternalNavascript.g:5858:4: ( () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) ) )
+            	    // InternalNavascript.g:5859:5: () ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) )
             	    {
-            	    // InternalNavascript.g:5694:5: ()
-            	    // InternalNavascript.g:5695:6: 
+            	    // InternalNavascript.g:5859:5: ()
+            	    // InternalNavascript.g:5860:6: 
             	    {
             	    if ( state.backtracking==0 ) {
 
+            	      						/* */
+            	      					
+            	    }
+            	    if ( state.backtracking==0 ) {
+
             	      						current = forceCreateModelElementAndSet(
-            	      							grammarAccess.getEqualsAccess().getEqualsLeftAction_1_0_0(),
+            	      							grammarAccess.getComparisonAccess().getComparisonLeftAction_1_0_0(),
             	      							current);
             	      					
             	    }
 
             	    }
 
-            	    // InternalNavascript.g:5701:5: ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) )
-            	    // InternalNavascript.g:5702:6: ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) )
+            	    // InternalNavascript.g:5869:5: ( ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) ) )
+            	    // InternalNavascript.g:5870:6: ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) )
             	    {
-            	    // InternalNavascript.g:5702:6: ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) )
-            	    // InternalNavascript.g:5703:7: (lv_op_2_1= '==' | lv_op_2_2= '!=' )
+            	    // InternalNavascript.g:5870:6: ( (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' ) )
+            	    // InternalNavascript.g:5871:7: (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' )
             	    {
-            	    // InternalNavascript.g:5703:7: (lv_op_2_1= '==' | lv_op_2_2= '!=' )
-            	    int alt105=2;
-            	    int LA105_0 = input.LA(1);
-
-            	    if ( (LA105_0==83) ) {
+            	    // InternalNavascript.g:5871:7: (lv_op_2_1= '<' | lv_op_2_2= '>' | lv_op_2_3= '<=' | lv_op_2_4= '>=' )
+            	    int alt105=4;
+            	    switch ( input.LA(1) ) {
+            	    case 80:
+            	        {
             	        alt105=1;
-            	    }
-            	    else if ( (LA105_0==84) ) {
+            	        }
+            	        break;
+            	    case 81:
+            	        {
             	        alt105=2;
-            	    }
-            	    else {
+            	        }
+            	        break;
+            	    case 82:
+            	        {
+            	        alt105=3;
+            	        }
+            	        break;
+            	    case 83:
+            	        {
+            	        alt105=4;
+            	        }
+            	        break;
+            	    default:
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        NoViableAltException nvae =
             	            new NoViableAltException("", 105, 0, input);
 
             	        throw nvae;
             	    }
+
             	    switch (alt105) {
             	        case 1 :
-            	            // InternalNavascript.g:5704:8: lv_op_2_1= '=='
+            	            // InternalNavascript.g:5872:8: lv_op_2_1= '<'
             	            {
-            	            lv_op_2_1=(Token)match(input,83,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_1=(Token)match(input,80,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              								newLeafNode(lv_op_2_1, grammarAccess.getEqualsAccess().getOpEqualsSignEqualsSignKeyword_1_0_1_0_0());
+            	              								newLeafNode(lv_op_2_1, grammarAccess.getComparisonAccess().getOpLessThanSignKeyword_1_0_1_0_0());
             	              							
             	            }
             	            if ( state.backtracking==0 ) {
 
             	              								if (current==null) {
-            	              									current = createModelElement(grammarAccess.getEqualsRule());
+            	              									current = createModelElement(grammarAccess.getComparisonRule());
             	              								}
             	              								setWithLastConsumed(current, "op", lv_op_2_1, null);
             	              							
@@ -16548,20 +16727,60 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalNavascript.g:5715:8: lv_op_2_2= '!='
+            	            // InternalNavascript.g:5883:8: lv_op_2_2= '>'
             	            {
-            	            lv_op_2_2=(Token)match(input,84,FOLLOW_6); if (state.failed) return current;
+            	            lv_op_2_2=(Token)match(input,81,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              								newLeafNode(lv_op_2_2, grammarAccess.getEqualsAccess().getOpExclamationMarkEqualsSignKeyword_1_0_1_0_1());
+            	              								newLeafNode(lv_op_2_2, grammarAccess.getComparisonAccess().getOpGreaterThanSignKeyword_1_0_1_0_1());
             	              							
             	            }
             	            if ( state.backtracking==0 ) {
 
             	              								if (current==null) {
-            	              									current = createModelElement(grammarAccess.getEqualsRule());
+            	              									current = createModelElement(grammarAccess.getComparisonRule());
             	              								}
             	              								setWithLastConsumed(current, "op", lv_op_2_2, null);
+            	              							
+            	            }
+
+            	            }
+            	            break;
+            	        case 3 :
+            	            // InternalNavascript.g:5894:8: lv_op_2_3= '<='
+            	            {
+            	            lv_op_2_3=(Token)match(input,82,FOLLOW_6); if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              								newLeafNode(lv_op_2_3, grammarAccess.getComparisonAccess().getOpLessThanSignEqualsSignKeyword_1_0_1_0_2());
+            	              							
+            	            }
+            	            if ( state.backtracking==0 ) {
+
+            	              								if (current==null) {
+            	              									current = createModelElement(grammarAccess.getComparisonRule());
+            	              								}
+            	              								setWithLastConsumed(current, "op", lv_op_2_3, null);
+            	              							
+            	            }
+
+            	            }
+            	            break;
+            	        case 4 :
+            	            // InternalNavascript.g:5905:8: lv_op_2_4= '>='
+            	            {
+            	            lv_op_2_4=(Token)match(input,83,FOLLOW_6); if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              								newLeafNode(lv_op_2_4, grammarAccess.getComparisonAccess().getOpGreaterThanSignEqualsSignKeyword_1_0_1_0_3());
+            	              							
+            	            }
+            	            if ( state.backtracking==0 ) {
+
+            	              								if (current==null) {
+            	              									current = createModelElement(grammarAccess.getComparisonRule());
+            	              								}
+            	              								setWithLastConsumed(current, "op", lv_op_2_4, null);
             	              							
             	            }
 
@@ -16579,32 +16798,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalNavascript.g:5729:4: ( (lv_right_3_0= ruleAddition ) )
-            	    // InternalNavascript.g:5730:5: (lv_right_3_0= ruleAddition )
+            	    // InternalNavascript.g:5919:4: ( (lv_right_3_0= ruleEquals ) )
+            	    // InternalNavascript.g:5920:5: (lv_right_3_0= ruleEquals )
             	    {
-            	    // InternalNavascript.g:5730:5: (lv_right_3_0= ruleAddition )
-            	    // InternalNavascript.g:5731:6: lv_right_3_0= ruleAddition
+            	    // InternalNavascript.g:5920:5: (lv_right_3_0= ruleEquals )
+            	    // InternalNavascript.g:5921:6: lv_right_3_0= ruleEquals
             	    {
             	    if ( state.backtracking==0 ) {
 
-            	      						newCompositeNode(grammarAccess.getEqualsAccess().getRightAdditionParserRuleCall_1_1_0());
+            	      						newCompositeNode(grammarAccess.getComparisonAccess().getRightEqualsParserRuleCall_1_1_0());
             	      					
             	    }
-            	    pushFollow(FOLLOW_64);
-            	    lv_right_3_0=ruleAddition();
+            	    pushFollow(FOLLOW_63);
+            	    lv_right_3_0=ruleEquals();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      						if (current==null) {
-            	      							current = createModelElementForParent(grammarAccess.getEqualsRule());
+            	      							current = createModelElementForParent(grammarAccess.getComparisonRule());
             	      						}
             	      						set(
             	      							current,
             	      							"right",
             	      							lv_right_3_0,
-            	      							"com.dexels.navajo.Navascript.Addition");
+            	      							"com.dexels.navajo.Navascript.Equals");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -16644,31 +16863,31 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleEquals"
+    // $ANTLR end "ruleComparison"
 
 
-    // $ANTLR start "entryRuleAddition"
-    // InternalNavascript.g:5753:1: entryRuleAddition returns [EObject current=null] : iv_ruleAddition= ruleAddition EOF ;
-    public final EObject entryRuleAddition() throws RecognitionException {
+    // $ANTLR start "entryRuleEquals"
+    // InternalNavascript.g:5943:1: entryRuleEquals returns [EObject current=null] : iv_ruleEquals= ruleEquals EOF ;
+    public final EObject entryRuleEquals() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleAddition = null;
+        EObject iv_ruleEquals = null;
 
 
         try {
-            // InternalNavascript.g:5753:49: (iv_ruleAddition= ruleAddition EOF )
-            // InternalNavascript.g:5754:2: iv_ruleAddition= ruleAddition EOF
+            // InternalNavascript.g:5943:47: (iv_ruleEquals= ruleEquals EOF )
+            // InternalNavascript.g:5944:2: iv_ruleEquals= ruleEquals EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getAdditionRule()); 
+               newCompositeNode(grammarAccess.getEqualsRule()); 
             }
             pushFollow(FOLLOW_1);
-            iv_ruleAddition=ruleAddition();
+            iv_ruleEquals=ruleEquals();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleAddition; 
+               current =iv_ruleEquals; 
             }
             match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
@@ -16684,67 +16903,99 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleAddition"
+    // $ANTLR end "entryRuleEquals"
 
 
-    // $ANTLR start "ruleAddition"
-    // InternalNavascript.g:5760:1: ruleAddition returns [EObject current=null] : (this_Multiplication_0= ruleMultiplication ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* ) ;
-    public final EObject ruleAddition() throws RecognitionException {
+    // $ANTLR start "ruleEquals"
+    // InternalNavascript.g:5950:1: ruleEquals returns [EObject current=null] : (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* ) ;
+    public final EObject ruleEquals() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_2=null;
-        Token otherlv_4=null;
-        EObject this_Multiplication_0 = null;
+        Token lv_op_2_1=null;
+        Token lv_op_2_2=null;
+        EObject this_Addition_0 = null;
 
-        EObject lv_right_5_0 = null;
+        EObject lv_right_3_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalNavascript.g:5766:2: ( (this_Multiplication_0= ruleMultiplication ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* ) )
-            // InternalNavascript.g:5767:2: (this_Multiplication_0= ruleMultiplication ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* )
+            // InternalNavascript.g:5956:2: ( (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* ) )
+            // InternalNavascript.g:5957:2: (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* )
             {
-            // InternalNavascript.g:5767:2: (this_Multiplication_0= ruleMultiplication ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* )
-            // InternalNavascript.g:5768:3: this_Multiplication_0= ruleMultiplication ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )*
+            // InternalNavascript.g:5957:2: (this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )* )
+            // InternalNavascript.g:5958:3: this_Addition_0= ruleAddition ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )*
             {
             if ( state.backtracking==0 ) {
 
-              			newCompositeNode(grammarAccess.getAdditionAccess().getMultiplicationParserRuleCall_0());
+              			/* */
               		
             }
-            pushFollow(FOLLOW_65);
-            this_Multiplication_0=ruleMultiplication();
+            if ( state.backtracking==0 ) {
+
+              			newCompositeNode(grammarAccess.getEqualsAccess().getAdditionParserRuleCall_0());
+              		
+            }
+            pushFollow(FOLLOW_64);
+            this_Addition_0=ruleAddition();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			current = this_Multiplication_0;
+              			current = this_Addition_0;
               			afterParserOrEnumRuleCall();
               		
             }
-            // InternalNavascript.g:5776:3: ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )*
+            // InternalNavascript.g:5969:3: ( ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) ) )*
             loop108:
             do {
                 int alt108=2;
                 int LA108_0 = input.LA(1);
 
-                if ( (LA108_0==74||LA108_0==85) ) {
+                if ( ((LA108_0>=84 && LA108_0<=85)) ) {
                     alt108=1;
                 }
 
 
                 switch (alt108) {
             	case 1 :
-            	    // InternalNavascript.g:5777:4: ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) )
+            	    // InternalNavascript.g:5970:4: ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) ) ( (lv_right_3_0= ruleAddition ) )
             	    {
-            	    // InternalNavascript.g:5777:4: ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) )
+            	    // InternalNavascript.g:5970:4: ( () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) ) )
+            	    // InternalNavascript.g:5971:5: () ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) )
+            	    {
+            	    // InternalNavascript.g:5971:5: ()
+            	    // InternalNavascript.g:5972:6: 
+            	    {
+            	    if ( state.backtracking==0 ) {
+
+            	      						/* */
+            	      					
+            	    }
+            	    if ( state.backtracking==0 ) {
+
+            	      						current = forceCreateModelElementAndSet(
+            	      							grammarAccess.getEqualsAccess().getEqualsLeftAction_1_0_0(),
+            	      							current);
+            	      					
+            	    }
+
+            	    }
+
+            	    // InternalNavascript.g:5981:5: ( ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) ) )
+            	    // InternalNavascript.g:5982:6: ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) )
+            	    {
+            	    // InternalNavascript.g:5982:6: ( (lv_op_2_1= '==' | lv_op_2_2= '!=' ) )
+            	    // InternalNavascript.g:5983:7: (lv_op_2_1= '==' | lv_op_2_2= '!=' )
+            	    {
+            	    // InternalNavascript.g:5983:7: (lv_op_2_1= '==' | lv_op_2_2= '!=' )
             	    int alt107=2;
             	    int LA107_0 = input.LA(1);
 
-            	    if ( (LA107_0==74) ) {
+            	    if ( (LA107_0==84) ) {
             	        alt107=1;
             	    }
             	    else if ( (LA107_0==85) ) {
@@ -16759,96 +17010,83 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    }
             	    switch (alt107) {
             	        case 1 :
-            	            // InternalNavascript.g:5778:5: ( () otherlv_2= '+' )
+            	            // InternalNavascript.g:5984:8: lv_op_2_1= '=='
             	            {
-            	            // InternalNavascript.g:5778:5: ( () otherlv_2= '+' )
-            	            // InternalNavascript.g:5779:6: () otherlv_2= '+'
-            	            {
-            	            // InternalNavascript.g:5779:6: ()
-            	            // InternalNavascript.g:5780:7: 
-            	            {
+            	            lv_op_2_1=(Token)match(input,84,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              							current = forceCreateModelElementAndSet(
-            	              								grammarAccess.getAdditionAccess().getPlusLeftAction_1_0_0_0(),
-            	              								current);
-            	              						
+            	              								newLeafNode(lv_op_2_1, grammarAccess.getEqualsAccess().getOpEqualsSignEqualsSignKeyword_1_0_1_0_0());
+            	              							
             	            }
-
-            	            }
-
-            	            otherlv_2=(Token)match(input,74,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              						newLeafNode(otherlv_2, grammarAccess.getAdditionAccess().getPlusSignKeyword_1_0_0_1());
-            	              					
+            	              								if (current==null) {
+            	              									current = createModelElement(grammarAccess.getEqualsRule());
+            	              								}
+            	              								setWithLastConsumed(current, "op", lv_op_2_1, null);
+            	              							
             	            }
-
-            	            }
-
 
             	            }
             	            break;
             	        case 2 :
-            	            // InternalNavascript.g:5792:5: ( () otherlv_4= '-' )
+            	            // InternalNavascript.g:5995:8: lv_op_2_2= '!='
             	            {
-            	            // InternalNavascript.g:5792:5: ( () otherlv_4= '-' )
-            	            // InternalNavascript.g:5793:6: () otherlv_4= '-'
-            	            {
-            	            // InternalNavascript.g:5793:6: ()
-            	            // InternalNavascript.g:5794:7: 
-            	            {
+            	            lv_op_2_2=(Token)match(input,85,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              							current = forceCreateModelElementAndSet(
-            	              								grammarAccess.getAdditionAccess().getMinusLeftAction_1_0_1_0(),
-            	              								current);
-            	              						
+            	              								newLeafNode(lv_op_2_2, grammarAccess.getEqualsAccess().getOpExclamationMarkEqualsSignKeyword_1_0_1_0_1());
+            	              							
             	            }
-
-            	            }
-
-            	            otherlv_4=(Token)match(input,85,FOLLOW_6); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              						newLeafNode(otherlv_4, grammarAccess.getAdditionAccess().getHyphenMinusKeyword_1_0_1_1());
-            	              					
+            	              								if (current==null) {
+            	              									current = createModelElement(grammarAccess.getEqualsRule());
+            	              								}
+            	              								setWithLastConsumed(current, "op", lv_op_2_2, null);
+            	              							
             	            }
-
-            	            }
-
 
             	            }
             	            break;
 
             	    }
 
-            	    // InternalNavascript.g:5806:4: ( (lv_right_5_0= ruleMultiplication ) )
-            	    // InternalNavascript.g:5807:5: (lv_right_5_0= ruleMultiplication )
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+
+            	    // InternalNavascript.g:6009:4: ( (lv_right_3_0= ruleAddition ) )
+            	    // InternalNavascript.g:6010:5: (lv_right_3_0= ruleAddition )
             	    {
-            	    // InternalNavascript.g:5807:5: (lv_right_5_0= ruleMultiplication )
-            	    // InternalNavascript.g:5808:6: lv_right_5_0= ruleMultiplication
+            	    // InternalNavascript.g:6010:5: (lv_right_3_0= ruleAddition )
+            	    // InternalNavascript.g:6011:6: lv_right_3_0= ruleAddition
             	    {
             	    if ( state.backtracking==0 ) {
 
-            	      						newCompositeNode(grammarAccess.getAdditionAccess().getRightMultiplicationParserRuleCall_1_1_0());
+            	      						newCompositeNode(grammarAccess.getEqualsAccess().getRightAdditionParserRuleCall_1_1_0());
             	      					
             	    }
-            	    pushFollow(FOLLOW_65);
-            	    lv_right_5_0=ruleMultiplication();
+            	    pushFollow(FOLLOW_64);
+            	    lv_right_3_0=ruleAddition();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      						if (current==null) {
-            	      							current = createModelElementForParent(grammarAccess.getAdditionRule());
+            	      							current = createModelElementForParent(grammarAccess.getEqualsRule());
             	      						}
             	      						set(
             	      							current,
             	      							"right",
-            	      							lv_right_5_0,
-            	      							"com.dexels.navajo.Navascript.Multiplication");
+            	      							lv_right_3_0,
+            	      							"com.dexels.navajo.Navascript.Addition");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -16888,31 +17126,31 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleAddition"
+    // $ANTLR end "ruleEquals"
 
 
-    // $ANTLR start "entryRuleMultiplication"
-    // InternalNavascript.g:5830:1: entryRuleMultiplication returns [EObject current=null] : iv_ruleMultiplication= ruleMultiplication EOF ;
-    public final EObject entryRuleMultiplication() throws RecognitionException {
+    // $ANTLR start "entryRuleAddition"
+    // InternalNavascript.g:6033:1: entryRuleAddition returns [EObject current=null] : iv_ruleAddition= ruleAddition EOF ;
+    public final EObject entryRuleAddition() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleMultiplication = null;
+        EObject iv_ruleAddition = null;
 
 
         try {
-            // InternalNavascript.g:5830:55: (iv_ruleMultiplication= ruleMultiplication EOF )
-            // InternalNavascript.g:5831:2: iv_ruleMultiplication= ruleMultiplication EOF
+            // InternalNavascript.g:6033:49: (iv_ruleAddition= ruleAddition EOF )
+            // InternalNavascript.g:6034:2: iv_ruleAddition= ruleAddition EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getMultiplicationRule()); 
+               newCompositeNode(grammarAccess.getAdditionRule()); 
             }
             pushFollow(FOLLOW_1);
-            iv_ruleMultiplication=ruleMultiplication();
+            iv_ruleAddition=ruleAddition();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleMultiplication; 
+               current =iv_ruleAddition; 
             }
             match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
@@ -16928,92 +17166,75 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleMultiplication"
+    // $ANTLR end "entryRuleAddition"
 
 
-    // $ANTLR start "ruleMultiplication"
-    // InternalNavascript.g:5837:1: ruleMultiplication returns [EObject current=null] : (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* ) ;
-    public final EObject ruleMultiplication() throws RecognitionException {
+    // $ANTLR start "ruleAddition"
+    // InternalNavascript.g:6040:1: ruleAddition returns [EObject current=null] : (this_Multiplication_0= ruleMultiplication ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* ) ;
+    public final EObject ruleAddition() throws RecognitionException {
         EObject current = null;
 
-        Token lv_op_2_1=null;
-        Token lv_op_2_2=null;
-        EObject this_Prefixed_0 = null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
+        EObject this_Multiplication_0 = null;
 
-        EObject lv_right_3_0 = null;
+        EObject lv_right_5_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalNavascript.g:5843:2: ( (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* ) )
-            // InternalNavascript.g:5844:2: (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* )
+            // InternalNavascript.g:6046:2: ( (this_Multiplication_0= ruleMultiplication ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* ) )
+            // InternalNavascript.g:6047:2: (this_Multiplication_0= ruleMultiplication ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* )
             {
-            // InternalNavascript.g:5844:2: (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* )
-            // InternalNavascript.g:5845:3: this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )*
+            // InternalNavascript.g:6047:2: (this_Multiplication_0= ruleMultiplication ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )* )
+            // InternalNavascript.g:6048:3: this_Multiplication_0= ruleMultiplication ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )*
             {
             if ( state.backtracking==0 ) {
 
-              			newCompositeNode(grammarAccess.getMultiplicationAccess().getPrefixedParserRuleCall_0());
+              			/* */
               		
             }
-            pushFollow(FOLLOW_66);
-            this_Prefixed_0=rulePrefixed();
+            if ( state.backtracking==0 ) {
+
+              			newCompositeNode(grammarAccess.getAdditionAccess().getMultiplicationParserRuleCall_0());
+              		
+            }
+            pushFollow(FOLLOW_65);
+            this_Multiplication_0=ruleMultiplication();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			current = this_Prefixed_0;
+              			current = this_Multiplication_0;
               			afterParserOrEnumRuleCall();
               		
             }
-            // InternalNavascript.g:5853:3: ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )*
+            // InternalNavascript.g:6059:3: ( ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) ) )*
             loop110:
             do {
                 int alt110=2;
                 int LA110_0 = input.LA(1);
 
-                if ( ((LA110_0>=86 && LA110_0<=87)) ) {
+                if ( (LA110_0==75||LA110_0==86) ) {
                     alt110=1;
                 }
 
 
                 switch (alt110) {
             	case 1 :
-            	    // InternalNavascript.g:5854:4: ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) )
+            	    // InternalNavascript.g:6060:4: ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) ) ( (lv_right_5_0= ruleMultiplication ) )
             	    {
-            	    // InternalNavascript.g:5854:4: ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) )
-            	    // InternalNavascript.g:5855:5: () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) )
-            	    {
-            	    // InternalNavascript.g:5855:5: ()
-            	    // InternalNavascript.g:5856:6: 
-            	    {
-            	    if ( state.backtracking==0 ) {
-
-            	      						current = forceCreateModelElementAndSet(
-            	      							grammarAccess.getMultiplicationAccess().getMultiOrDivLeftAction_1_0_0(),
-            	      							current);
-            	      					
-            	    }
-
-            	    }
-
-            	    // InternalNavascript.g:5862:5: ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) )
-            	    // InternalNavascript.g:5863:6: ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) )
-            	    {
-            	    // InternalNavascript.g:5863:6: ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) )
-            	    // InternalNavascript.g:5864:7: (lv_op_2_1= '*' | lv_op_2_2= '/' )
-            	    {
-            	    // InternalNavascript.g:5864:7: (lv_op_2_1= '*' | lv_op_2_2= '/' )
+            	    // InternalNavascript.g:6060:4: ( ( () otherlv_2= '+' ) | ( () otherlv_4= '-' ) )
             	    int alt109=2;
             	    int LA109_0 = input.LA(1);
 
-            	    if ( (LA109_0==86) ) {
+            	    if ( (LA109_0==75) ) {
             	        alt109=1;
             	    }
-            	    else if ( (LA109_0==87) ) {
+            	    else if ( (LA109_0==86) ) {
             	        alt109=2;
             	    }
             	    else {
@@ -17025,83 +17246,106 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             	    }
             	    switch (alt109) {
             	        case 1 :
-            	            // InternalNavascript.g:5865:8: lv_op_2_1= '*'
+            	            // InternalNavascript.g:6061:5: ( () otherlv_2= '+' )
             	            {
-            	            lv_op_2_1=(Token)match(input,86,FOLLOW_6); if (state.failed) return current;
+            	            // InternalNavascript.g:6061:5: ( () otherlv_2= '+' )
+            	            // InternalNavascript.g:6062:6: () otherlv_2= '+'
+            	            {
+            	            // InternalNavascript.g:6062:6: ()
+            	            // InternalNavascript.g:6063:7: 
+            	            {
             	            if ( state.backtracking==0 ) {
 
-            	              								newLeafNode(lv_op_2_1, grammarAccess.getMultiplicationAccess().getOpAsteriskKeyword_1_0_1_0_0());
-            	              							
+            	              							/* */
+            	              						
             	            }
             	            if ( state.backtracking==0 ) {
 
-            	              								if (current==null) {
-            	              									current = createModelElement(grammarAccess.getMultiplicationRule());
-            	              								}
-            	              								setWithLastConsumed(current, "op", lv_op_2_1, null);
-            	              							
+            	              							current = forceCreateModelElementAndSet(
+            	              								grammarAccess.getAdditionAccess().getPlusLeftAction_1_0_0_0(),
+            	              								current);
+            	              						
             	            }
+
+            	            }
+
+            	            otherlv_2=(Token)match(input,75,FOLLOW_6); if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              						newLeafNode(otherlv_2, grammarAccess.getAdditionAccess().getPlusSignKeyword_1_0_0_1());
+            	              					
+            	            }
+
+            	            }
+
 
             	            }
             	            break;
             	        case 2 :
-            	            // InternalNavascript.g:5876:8: lv_op_2_2= '/'
+            	            // InternalNavascript.g:6078:5: ( () otherlv_4= '-' )
             	            {
-            	            lv_op_2_2=(Token)match(input,87,FOLLOW_6); if (state.failed) return current;
+            	            // InternalNavascript.g:6078:5: ( () otherlv_4= '-' )
+            	            // InternalNavascript.g:6079:6: () otherlv_4= '-'
+            	            {
+            	            // InternalNavascript.g:6079:6: ()
+            	            // InternalNavascript.g:6080:7: 
+            	            {
             	            if ( state.backtracking==0 ) {
 
-            	              								newLeafNode(lv_op_2_2, grammarAccess.getMultiplicationAccess().getOpSolidusKeyword_1_0_1_0_1());
-            	              							
+            	              							/* */
+            	              						
             	            }
             	            if ( state.backtracking==0 ) {
 
-            	              								if (current==null) {
-            	              									current = createModelElement(grammarAccess.getMultiplicationRule());
-            	              								}
-            	              								setWithLastConsumed(current, "op", lv_op_2_2, null);
-            	              							
+            	              							current = forceCreateModelElementAndSet(
+            	              								grammarAccess.getAdditionAccess().getMinusLeftAction_1_0_1_0(),
+            	              								current);
+            	              						
             	            }
+
+            	            }
+
+            	            otherlv_4=(Token)match(input,86,FOLLOW_6); if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              						newLeafNode(otherlv_4, grammarAccess.getAdditionAccess().getHyphenMinusKeyword_1_0_1_1());
+            	              					
+            	            }
+
+            	            }
+
 
             	            }
             	            break;
 
             	    }
 
-
-            	    }
-
-
-            	    }
-
-
-            	    }
-
-            	    // InternalNavascript.g:5890:4: ( (lv_right_3_0= rulePrefixed ) )
-            	    // InternalNavascript.g:5891:5: (lv_right_3_0= rulePrefixed )
+            	    // InternalNavascript.g:6095:4: ( (lv_right_5_0= ruleMultiplication ) )
+            	    // InternalNavascript.g:6096:5: (lv_right_5_0= ruleMultiplication )
             	    {
-            	    // InternalNavascript.g:5891:5: (lv_right_3_0= rulePrefixed )
-            	    // InternalNavascript.g:5892:6: lv_right_3_0= rulePrefixed
+            	    // InternalNavascript.g:6096:5: (lv_right_5_0= ruleMultiplication )
+            	    // InternalNavascript.g:6097:6: lv_right_5_0= ruleMultiplication
             	    {
             	    if ( state.backtracking==0 ) {
 
-            	      						newCompositeNode(grammarAccess.getMultiplicationAccess().getRightPrefixedParserRuleCall_1_1_0());
+            	      						newCompositeNode(grammarAccess.getAdditionAccess().getRightMultiplicationParserRuleCall_1_1_0());
             	      					
             	    }
-            	    pushFollow(FOLLOW_66);
-            	    lv_right_3_0=rulePrefixed();
+            	    pushFollow(FOLLOW_65);
+            	    lv_right_5_0=ruleMultiplication();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      						if (current==null) {
-            	      							current = createModelElementForParent(grammarAccess.getMultiplicationRule());
+            	      							current = createModelElementForParent(grammarAccess.getAdditionRule());
             	      						}
             	      						set(
             	      							current,
             	      							"right",
-            	      							lv_right_3_0,
-            	      							"com.dexels.navajo.Navascript.Prefixed");
+            	      							lv_right_5_0,
+            	      							"com.dexels.navajo.Navascript.Multiplication");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -17141,11 +17385,274 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
+    // $ANTLR end "ruleAddition"
+
+
+    // $ANTLR start "entryRuleMultiplication"
+    // InternalNavascript.g:6119:1: entryRuleMultiplication returns [EObject current=null] : iv_ruleMultiplication= ruleMultiplication EOF ;
+    public final EObject entryRuleMultiplication() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleMultiplication = null;
+
+
+        try {
+            // InternalNavascript.g:6119:55: (iv_ruleMultiplication= ruleMultiplication EOF )
+            // InternalNavascript.g:6120:2: iv_ruleMultiplication= ruleMultiplication EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getMultiplicationRule()); 
+            }
+            pushFollow(FOLLOW_1);
+            iv_ruleMultiplication=ruleMultiplication();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleMultiplication; 
+            }
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleMultiplication"
+
+
+    // $ANTLR start "ruleMultiplication"
+    // InternalNavascript.g:6126:1: ruleMultiplication returns [EObject current=null] : (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* ) ;
+    public final EObject ruleMultiplication() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_op_2_1=null;
+        Token lv_op_2_2=null;
+        EObject this_Prefixed_0 = null;
+
+        EObject lv_right_3_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalNavascript.g:6132:2: ( (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* ) )
+            // InternalNavascript.g:6133:2: (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* )
+            {
+            // InternalNavascript.g:6133:2: (this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )* )
+            // InternalNavascript.g:6134:3: this_Prefixed_0= rulePrefixed ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )*
+            {
+            if ( state.backtracking==0 ) {
+
+              			/* */
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              			newCompositeNode(grammarAccess.getMultiplicationAccess().getPrefixedParserRuleCall_0());
+              		
+            }
+            pushFollow(FOLLOW_66);
+            this_Prefixed_0=rulePrefixed();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			current = this_Prefixed_0;
+              			afterParserOrEnumRuleCall();
+              		
+            }
+            // InternalNavascript.g:6145:3: ( ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) ) )*
+            loop112:
+            do {
+                int alt112=2;
+                int LA112_0 = input.LA(1);
+
+                if ( ((LA112_0>=87 && LA112_0<=88)) ) {
+                    alt112=1;
+                }
+
+
+                switch (alt112) {
+            	case 1 :
+            	    // InternalNavascript.g:6146:4: ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) ) ( (lv_right_3_0= rulePrefixed ) )
+            	    {
+            	    // InternalNavascript.g:6146:4: ( () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) ) )
+            	    // InternalNavascript.g:6147:5: () ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) )
+            	    {
+            	    // InternalNavascript.g:6147:5: ()
+            	    // InternalNavascript.g:6148:6: 
+            	    {
+            	    if ( state.backtracking==0 ) {
+
+            	      						/* */
+            	      					
+            	    }
+            	    if ( state.backtracking==0 ) {
+
+            	      						current = forceCreateModelElementAndSet(
+            	      							grammarAccess.getMultiplicationAccess().getMultiOrDivLeftAction_1_0_0(),
+            	      							current);
+            	      					
+            	    }
+
+            	    }
+
+            	    // InternalNavascript.g:6157:5: ( ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) ) )
+            	    // InternalNavascript.g:6158:6: ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) )
+            	    {
+            	    // InternalNavascript.g:6158:6: ( (lv_op_2_1= '*' | lv_op_2_2= '/' ) )
+            	    // InternalNavascript.g:6159:7: (lv_op_2_1= '*' | lv_op_2_2= '/' )
+            	    {
+            	    // InternalNavascript.g:6159:7: (lv_op_2_1= '*' | lv_op_2_2= '/' )
+            	    int alt111=2;
+            	    int LA111_0 = input.LA(1);
+
+            	    if ( (LA111_0==87) ) {
+            	        alt111=1;
+            	    }
+            	    else if ( (LA111_0==88) ) {
+            	        alt111=2;
+            	    }
+            	    else {
+            	        if (state.backtracking>0) {state.failed=true; return current;}
+            	        NoViableAltException nvae =
+            	            new NoViableAltException("", 111, 0, input);
+
+            	        throw nvae;
+            	    }
+            	    switch (alt111) {
+            	        case 1 :
+            	            // InternalNavascript.g:6160:8: lv_op_2_1= '*'
+            	            {
+            	            lv_op_2_1=(Token)match(input,87,FOLLOW_6); if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              								newLeafNode(lv_op_2_1, grammarAccess.getMultiplicationAccess().getOpAsteriskKeyword_1_0_1_0_0());
+            	              							
+            	            }
+            	            if ( state.backtracking==0 ) {
+
+            	              								if (current==null) {
+            	              									current = createModelElement(grammarAccess.getMultiplicationRule());
+            	              								}
+            	              								setWithLastConsumed(current, "op", lv_op_2_1, null);
+            	              							
+            	            }
+
+            	            }
+            	            break;
+            	        case 2 :
+            	            // InternalNavascript.g:6171:8: lv_op_2_2= '/'
+            	            {
+            	            lv_op_2_2=(Token)match(input,88,FOLLOW_6); if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              								newLeafNode(lv_op_2_2, grammarAccess.getMultiplicationAccess().getOpSolidusKeyword_1_0_1_0_1());
+            	              							
+            	            }
+            	            if ( state.backtracking==0 ) {
+
+            	              								if (current==null) {
+            	              									current = createModelElement(grammarAccess.getMultiplicationRule());
+            	              								}
+            	              								setWithLastConsumed(current, "op", lv_op_2_2, null);
+            	              							
+            	            }
+
+            	            }
+            	            break;
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+
+            	    // InternalNavascript.g:6185:4: ( (lv_right_3_0= rulePrefixed ) )
+            	    // InternalNavascript.g:6186:5: (lv_right_3_0= rulePrefixed )
+            	    {
+            	    // InternalNavascript.g:6186:5: (lv_right_3_0= rulePrefixed )
+            	    // InternalNavascript.g:6187:6: lv_right_3_0= rulePrefixed
+            	    {
+            	    if ( state.backtracking==0 ) {
+
+            	      						newCompositeNode(grammarAccess.getMultiplicationAccess().getRightPrefixedParserRuleCall_1_1_0());
+            	      					
+            	    }
+            	    pushFollow(FOLLOW_66);
+            	    lv_right_3_0=rulePrefixed();
+
+            	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	      						if (current==null) {
+            	      							current = createModelElementForParent(grammarAccess.getMultiplicationRule());
+            	      						}
+            	      						set(
+            	      							current,
+            	      							"right",
+            	      							lv_right_3_0,
+            	      							"com.dexels.navajo.Navascript.Prefixed");
+            	      						afterParserOrEnumRuleCall();
+            	      					
+            	    }
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop112;
+                }
+            } while (true);
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+
+              	leaveRule();
+
+            }
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
     // $ANTLR end "ruleMultiplication"
 
 
     // $ANTLR start "entryRulePrefixed"
-    // InternalNavascript.g:5914:1: entryRulePrefixed returns [EObject current=null] : iv_rulePrefixed= rulePrefixed EOF ;
+    // InternalNavascript.g:6209:1: entryRulePrefixed returns [EObject current=null] : iv_rulePrefixed= rulePrefixed EOF ;
     public final EObject entryRulePrefixed() throws RecognitionException {
         EObject current = null;
 
@@ -17153,8 +17660,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:5914:49: (iv_rulePrefixed= rulePrefixed EOF )
-            // InternalNavascript.g:5915:2: iv_rulePrefixed= rulePrefixed EOF
+            // InternalNavascript.g:6209:49: (iv_rulePrefixed= rulePrefixed EOF )
+            // InternalNavascript.g:6210:2: iv_rulePrefixed= rulePrefixed EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPrefixedRule()); 
@@ -17185,7 +17692,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrefixed"
-    // InternalNavascript.g:5921:1: rulePrefixed returns [EObject current=null] : ( ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic ) ;
+    // InternalNavascript.g:6216:1: rulePrefixed returns [EObject current=null] : ( ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic ) ;
     public final EObject rulePrefixed() throws RecognitionException {
         EObject current = null;
 
@@ -17202,20 +17709,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:5927:2: ( ( ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic ) )
-            // InternalNavascript.g:5928:2: ( ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic )
+            // InternalNavascript.g:6222:2: ( ( ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic ) )
+            // InternalNavascript.g:6223:2: ( ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic )
             {
-            // InternalNavascript.g:5928:2: ( ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic )
-            int alt111=3;
+            // InternalNavascript.g:6223:2: ( ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) ) | ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) ) | this_Atomic_6= ruleAtomic )
+            int alt113=3;
             switch ( input.LA(1) ) {
-            case 88:
+            case 89:
                 {
-                alt111=1;
+                alt113=1;
                 }
                 break;
-            case 85:
+            case 86:
                 {
-                alt111=2;
+                alt113=2;
                 }
                 break;
             case RULE_IDENTIFIER:
@@ -17223,36 +17730,42 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
             case RULE_TML_LITERAL:
             case RULE_INTEGER:
             case RULE_ONE:
+            case RULE_FLOAT:
             case RULE_STRING_LITERAL:
             case RULE_TRUE:
             case RULE_FALSE:
             case RULE_NULL_DEF:
             case RULE_FORALL:
             case RULE_EXISTS:
-            case 30:
-            case 89:
+            case 31:
+            case 90:
                 {
-                alt111=3;
+                alt113=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 111, 0, input);
+                    new NoViableAltException("", 113, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt111) {
+            switch (alt113) {
                 case 1 :
-                    // InternalNavascript.g:5929:3: ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) )
+                    // InternalNavascript.g:6224:3: ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) )
                     {
-                    // InternalNavascript.g:5929:3: ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) )
-                    // InternalNavascript.g:5930:4: () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) )
+                    // InternalNavascript.g:6224:3: ( () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) ) )
+                    // InternalNavascript.g:6225:4: () ( ( '!' )=>otherlv_1= '!' ) ( (lv_expression_2_0= ruleAtomic ) )
                     {
-                    // InternalNavascript.g:5930:4: ()
-                    // InternalNavascript.g:5931:5: 
+                    // InternalNavascript.g:6225:4: ()
+                    // InternalNavascript.g:6226:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -17263,10 +17776,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:5937:4: ( ( '!' )=>otherlv_1= '!' )
-                    // InternalNavascript.g:5938:5: ( '!' )=>otherlv_1= '!'
+                    // InternalNavascript.g:6235:4: ( ( '!' )=>otherlv_1= '!' )
+                    // InternalNavascript.g:6236:5: ( '!' )=>otherlv_1= '!'
                     {
-                    otherlv_1=(Token)match(input,88,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,89,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_1, grammarAccess.getPrefixedAccess().getExclamationMarkKeyword_0_1());
@@ -17275,11 +17788,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:5944:4: ( (lv_expression_2_0= ruleAtomic ) )
-                    // InternalNavascript.g:5945:5: (lv_expression_2_0= ruleAtomic )
+                    // InternalNavascript.g:6242:4: ( (lv_expression_2_0= ruleAtomic ) )
+                    // InternalNavascript.g:6243:5: (lv_expression_2_0= ruleAtomic )
                     {
-                    // InternalNavascript.g:5945:5: (lv_expression_2_0= ruleAtomic )
-                    // InternalNavascript.g:5946:6: lv_expression_2_0= ruleAtomic
+                    // InternalNavascript.g:6243:5: (lv_expression_2_0= ruleAtomic )
+                    // InternalNavascript.g:6244:6: lv_expression_2_0= ruleAtomic
                     {
                     if ( state.backtracking==0 ) {
 
@@ -17317,14 +17830,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:5965:3: ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) )
+                    // InternalNavascript.g:6263:3: ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) )
                     {
-                    // InternalNavascript.g:5965:3: ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) )
-                    // InternalNavascript.g:5966:4: () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) )
+                    // InternalNavascript.g:6263:3: ( () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) ) )
+                    // InternalNavascript.g:6264:4: () ( ( '-' )=>otherlv_4= '-' ) ( (lv_expression_5_0= ruleAtomic ) )
                     {
-                    // InternalNavascript.g:5966:4: ()
-                    // InternalNavascript.g:5967:5: 
+                    // InternalNavascript.g:6264:4: ()
+                    // InternalNavascript.g:6265:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -17335,10 +17853,10 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:5973:4: ( ( '-' )=>otherlv_4= '-' )
-                    // InternalNavascript.g:5974:5: ( '-' )=>otherlv_4= '-'
+                    // InternalNavascript.g:6274:4: ( ( '-' )=>otherlv_4= '-' )
+                    // InternalNavascript.g:6275:5: ( '-' )=>otherlv_4= '-'
                     {
-                    otherlv_4=(Token)match(input,85,FOLLOW_6); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,86,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       					newLeafNode(otherlv_4, grammarAccess.getPrefixedAccess().getHyphenMinusKeyword_1_1());
@@ -17347,11 +17865,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:5980:4: ( (lv_expression_5_0= ruleAtomic ) )
-                    // InternalNavascript.g:5981:5: (lv_expression_5_0= ruleAtomic )
+                    // InternalNavascript.g:6281:4: ( (lv_expression_5_0= ruleAtomic ) )
+                    // InternalNavascript.g:6282:5: (lv_expression_5_0= ruleAtomic )
                     {
-                    // InternalNavascript.g:5981:5: (lv_expression_5_0= ruleAtomic )
-                    // InternalNavascript.g:5982:6: lv_expression_5_0= ruleAtomic
+                    // InternalNavascript.g:6282:5: (lv_expression_5_0= ruleAtomic )
+                    // InternalNavascript.g:6283:6: lv_expression_5_0= ruleAtomic
                     {
                     if ( state.backtracking==0 ) {
 
@@ -17389,8 +17907,13 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:6001:3: this_Atomic_6= ruleAtomic
+                    // InternalNavascript.g:6302:3: this_Atomic_6= ruleAtomic
                     {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
                     if ( state.backtracking==0 ) {
 
                       			newCompositeNode(grammarAccess.getPrefixedAccess().getAtomicParserRuleCall_2());
@@ -17435,7 +17958,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAtomic"
-    // InternalNavascript.g:6013:1: entryRuleAtomic returns [EObject current=null] : iv_ruleAtomic= ruleAtomic EOF ;
+    // InternalNavascript.g:6317:1: entryRuleAtomic returns [EObject current=null] : iv_ruleAtomic= ruleAtomic EOF ;
     public final EObject entryRuleAtomic() throws RecognitionException {
         EObject current = null;
 
@@ -17443,8 +17966,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:6013:47: (iv_ruleAtomic= ruleAtomic EOF )
-            // InternalNavascript.g:6014:2: iv_ruleAtomic= ruleAtomic EOF
+            // InternalNavascript.g:6317:47: (iv_ruleAtomic= ruleAtomic EOF )
+            // InternalNavascript.g:6318:2: iv_ruleAtomic= ruleAtomic EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAtomicRule()); 
@@ -17475,7 +17998,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomic"
-    // InternalNavascript.g:6020:1: ruleAtomic returns [EObject current=null] : ( ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) | ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE ) ) ) ) | ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) ) | ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) ) | ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) ) | ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) ) | ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) ) | ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) ) | ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) ) ) ;
+    // InternalNavascript.g:6324:1: ruleAtomic returns [EObject current=null] : ( ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) | ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT ) ) ) ) | ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) ) | ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) ) | ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) ) | ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) ) | ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) ) | ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) ) | ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) ) ) ;
     public final EObject ruleAtomic() throws RecognitionException {
         EObject current = null;
 
@@ -17483,6 +18006,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         Token otherlv_3=null;
         Token lv_value_5_1=null;
         Token lv_value_5_2=null;
+        Token lv_value_5_3=null;
         Token lv_value_7_0=null;
         Token lv_value_9_1=null;
         Token lv_value_9_2=null;
@@ -17503,79 +18027,85 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:6026:2: ( ( ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) | ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE ) ) ) ) | ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) ) | ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) ) | ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) ) | ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) ) | ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) ) | ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) ) | ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) ) ) )
-            // InternalNavascript.g:6027:2: ( ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) | ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE ) ) ) ) | ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) ) | ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) ) | ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) ) | ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) ) | ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) ) | ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) ) | ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) ) )
+            // InternalNavascript.g:6330:2: ( ( ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) | ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT ) ) ) ) | ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) ) | ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) ) | ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) ) | ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) ) | ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) ) | ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) ) | ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) ) ) )
+            // InternalNavascript.g:6331:2: ( ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) | ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT ) ) ) ) | ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) ) | ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) ) | ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) ) | ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) ) | ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) ) | ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) ) | ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) ) )
             {
-            // InternalNavascript.g:6027:2: ( ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) | ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE ) ) ) ) | ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) ) | ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) ) | ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) ) | ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) ) | ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) ) | ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) ) | ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) ) )
-            int alt115=9;
+            // InternalNavascript.g:6331:2: ( ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) | ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT ) ) ) ) | ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) ) | ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) ) | ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) ) | ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) ) | ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) ) | ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) ) | ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) ) )
+            int alt117=9;
             switch ( input.LA(1) ) {
-            case 30:
+            case 31:
                 {
-                alt115=1;
+                alt117=1;
                 }
                 break;
             case RULE_INTEGER:
             case RULE_ONE:
+            case RULE_FLOAT:
                 {
-                alt115=2;
+                alt117=2;
                 }
                 break;
             case RULE_STRING_LITERAL:
                 {
-                alt115=3;
+                alt117=3;
                 }
                 break;
             case RULE_TRUE:
             case RULE_FALSE:
                 {
-                alt115=4;
+                alt117=4;
                 }
                 break;
             case RULE_IDENTIFIER:
                 {
-                alt115=5;
+                alt117=5;
                 }
                 break;
             case RULE_MAPPABLE_IDENTIFIER:
                 {
-                alt115=6;
+                alt117=6;
                 }
                 break;
             case RULE_TML_LITERAL:
-            case 89:
+            case 90:
                 {
-                alt115=7;
+                alt117=7;
                 }
                 break;
             case RULE_FORALL:
             case RULE_EXISTS:
                 {
-                alt115=8;
+                alt117=8;
                 }
                 break;
             case RULE_NULL_DEF:
                 {
-                alt115=9;
+                alt117=9;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 115, 0, input);
+                    new NoViableAltException("", 117, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt115) {
+            switch (alt117) {
                 case 1 :
-                    // InternalNavascript.g:6028:3: ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
+                    // InternalNavascript.g:6332:3: ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
                     {
-                    // InternalNavascript.g:6028:3: ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
-                    // InternalNavascript.g:6029:4: () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')'
+                    // InternalNavascript.g:6332:3: ( () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
+                    // InternalNavascript.g:6333:4: () otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')'
                     {
-                    // InternalNavascript.g:6029:4: ()
-                    // InternalNavascript.g:6030:5: 
+                    // InternalNavascript.g:6333:4: ()
+                    // InternalNavascript.g:6334:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -17586,17 +18116,17 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,30,FOLLOW_6); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,31,FOLLOW_6); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getAtomicAccess().getLeftParenthesisKeyword_0_1());
                       			
                     }
-                    // InternalNavascript.g:6040:4: ( (lv_value_2_0= ruleExpression ) )
-                    // InternalNavascript.g:6041:5: (lv_value_2_0= ruleExpression )
+                    // InternalNavascript.g:6347:4: ( (lv_value_2_0= ruleExpression ) )
+                    // InternalNavascript.g:6348:5: (lv_value_2_0= ruleExpression )
                     {
-                    // InternalNavascript.g:6041:5: (lv_value_2_0= ruleExpression )
-                    // InternalNavascript.g:6042:6: lv_value_2_0= ruleExpression
+                    // InternalNavascript.g:6348:5: (lv_value_2_0= ruleExpression )
+                    // InternalNavascript.g:6349:6: lv_value_2_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -17627,7 +18157,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,32,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getAtomicAccess().getRightParenthesisKeyword_0_3());
@@ -17640,14 +18170,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:6065:3: ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE ) ) ) )
+                    // InternalNavascript.g:6372:3: ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT ) ) ) )
                     {
-                    // InternalNavascript.g:6065:3: ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE ) ) ) )
-                    // InternalNavascript.g:6066:4: () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE ) ) )
+                    // InternalNavascript.g:6372:3: ( () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT ) ) ) )
+                    // InternalNavascript.g:6373:4: () ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT ) ) )
                     {
-                    // InternalNavascript.g:6066:4: ()
-                    // InternalNavascript.g:6067:5: 
+                    // InternalNavascript.g:6373:4: ()
+                    // InternalNavascript.g:6374:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -17658,32 +18193,41 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:6073:4: ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE ) ) )
-                    // InternalNavascript.g:6074:5: ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE ) )
+                    // InternalNavascript.g:6383:4: ( ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT ) ) )
+                    // InternalNavascript.g:6384:5: ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT ) )
                     {
-                    // InternalNavascript.g:6074:5: ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE ) )
-                    // InternalNavascript.g:6075:6: (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE )
+                    // InternalNavascript.g:6384:5: ( (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT ) )
+                    // InternalNavascript.g:6385:6: (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT )
                     {
-                    // InternalNavascript.g:6075:6: (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE )
-                    int alt112=2;
-                    int LA112_0 = input.LA(1);
-
-                    if ( (LA112_0==RULE_INTEGER) ) {
-                        alt112=1;
-                    }
-                    else if ( (LA112_0==RULE_ONE) ) {
-                        alt112=2;
-                    }
-                    else {
+                    // InternalNavascript.g:6385:6: (lv_value_5_1= RULE_INTEGER | lv_value_5_2= RULE_ONE | lv_value_5_3= RULE_FLOAT )
+                    int alt114=3;
+                    switch ( input.LA(1) ) {
+                    case RULE_INTEGER:
+                        {
+                        alt114=1;
+                        }
+                        break;
+                    case RULE_ONE:
+                        {
+                        alt114=2;
+                        }
+                        break;
+                    case RULE_FLOAT:
+                        {
+                        alt114=3;
+                        }
+                        break;
+                    default:
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 112, 0, input);
+                            new NoViableAltException("", 114, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt112) {
+
+                    switch (alt114) {
                         case 1 :
-                            // InternalNavascript.g:6076:7: lv_value_5_1= RULE_INTEGER
+                            // InternalNavascript.g:6386:7: lv_value_5_1= RULE_INTEGER
                             {
                             lv_value_5_1=(Token)match(input,RULE_INTEGER,FOLLOW_2); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
@@ -17707,7 +18251,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:6091:7: lv_value_5_2= RULE_ONE
+                            // InternalNavascript.g:6401:7: lv_value_5_2= RULE_ONE
                             {
                             lv_value_5_2=(Token)match(input,RULE_ONE,FOLLOW_2); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
@@ -17730,6 +18274,30 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                             }
                             break;
+                        case 3 :
+                            // InternalNavascript.g:6416:7: lv_value_5_3= RULE_FLOAT
+                            {
+                            lv_value_5_3=(Token)match(input,RULE_FLOAT,FOLLOW_2); if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                              							newLeafNode(lv_value_5_3, grammarAccess.getAtomicAccess().getValueFLOATTerminalRuleCall_1_1_0_2());
+                              						
+                            }
+                            if ( state.backtracking==0 ) {
+
+                              							if (current==null) {
+                              								current = createModelElement(grammarAccess.getAtomicRule());
+                              							}
+                              							setWithLastConsumed(
+                              								current,
+                              								"value",
+                              								lv_value_5_3,
+                              								"com.dexels.navajo.Navascript.FLOAT");
+                              						
+                            }
+
+                            }
+                            break;
 
                     }
 
@@ -17746,14 +18314,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:6110:3: ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) )
+                    // InternalNavascript.g:6435:3: ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) )
                     {
-                    // InternalNavascript.g:6110:3: ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) )
-                    // InternalNavascript.g:6111:4: () ( (lv_value_7_0= RULE_STRING_LITERAL ) )
+                    // InternalNavascript.g:6435:3: ( () ( (lv_value_7_0= RULE_STRING_LITERAL ) ) )
+                    // InternalNavascript.g:6436:4: () ( (lv_value_7_0= RULE_STRING_LITERAL ) )
                     {
-                    // InternalNavascript.g:6111:4: ()
-                    // InternalNavascript.g:6112:5: 
+                    // InternalNavascript.g:6436:4: ()
+                    // InternalNavascript.g:6437:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -17764,11 +18337,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:6118:4: ( (lv_value_7_0= RULE_STRING_LITERAL ) )
-                    // InternalNavascript.g:6119:5: (lv_value_7_0= RULE_STRING_LITERAL )
+                    // InternalNavascript.g:6446:4: ( (lv_value_7_0= RULE_STRING_LITERAL ) )
+                    // InternalNavascript.g:6447:5: (lv_value_7_0= RULE_STRING_LITERAL )
                     {
-                    // InternalNavascript.g:6119:5: (lv_value_7_0= RULE_STRING_LITERAL )
-                    // InternalNavascript.g:6120:6: lv_value_7_0= RULE_STRING_LITERAL
+                    // InternalNavascript.g:6447:5: (lv_value_7_0= RULE_STRING_LITERAL )
+                    // InternalNavascript.g:6448:6: lv_value_7_0= RULE_STRING_LITERAL
                     {
                     lv_value_7_0=(Token)match(input,RULE_STRING_LITERAL,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -17801,14 +18374,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalNavascript.g:6138:3: ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) )
+                    // InternalNavascript.g:6466:3: ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) )
                     {
-                    // InternalNavascript.g:6138:3: ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) )
-                    // InternalNavascript.g:6139:4: () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) )
+                    // InternalNavascript.g:6466:3: ( () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) ) )
+                    // InternalNavascript.g:6467:4: () ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) )
                     {
-                    // InternalNavascript.g:6139:4: ()
-                    // InternalNavascript.g:6140:5: 
+                    // InternalNavascript.g:6467:4: ()
+                    // InternalNavascript.g:6468:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -17819,32 +18397,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:6146:4: ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) )
-                    // InternalNavascript.g:6147:5: ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) )
+                    // InternalNavascript.g:6477:4: ( ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) ) )
+                    // InternalNavascript.g:6478:5: ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) )
                     {
-                    // InternalNavascript.g:6147:5: ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) )
-                    // InternalNavascript.g:6148:6: (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE )
+                    // InternalNavascript.g:6478:5: ( (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE ) )
+                    // InternalNavascript.g:6479:6: (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE )
                     {
-                    // InternalNavascript.g:6148:6: (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE )
-                    int alt113=2;
-                    int LA113_0 = input.LA(1);
+                    // InternalNavascript.g:6479:6: (lv_value_9_1= RULE_TRUE | lv_value_9_2= RULE_FALSE )
+                    int alt115=2;
+                    int LA115_0 = input.LA(1);
 
-                    if ( (LA113_0==RULE_TRUE) ) {
-                        alt113=1;
+                    if ( (LA115_0==RULE_TRUE) ) {
+                        alt115=1;
                     }
-                    else if ( (LA113_0==RULE_FALSE) ) {
-                        alt113=2;
+                    else if ( (LA115_0==RULE_FALSE) ) {
+                        alt115=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 113, 0, input);
+                            new NoViableAltException("", 115, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt113) {
+                    switch (alt115) {
                         case 1 :
-                            // InternalNavascript.g:6149:7: lv_value_9_1= RULE_TRUE
+                            // InternalNavascript.g:6480:7: lv_value_9_1= RULE_TRUE
                             {
                             lv_value_9_1=(Token)match(input,RULE_TRUE,FOLLOW_2); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
@@ -17868,7 +18446,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalNavascript.g:6164:7: lv_value_9_2= RULE_FALSE
+                            // InternalNavascript.g:6495:7: lv_value_9_2= RULE_FALSE
                             {
                             lv_value_9_2=(Token)match(input,RULE_FALSE,FOLLOW_2); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
@@ -17907,14 +18485,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalNavascript.g:6183:3: ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) )
+                    // InternalNavascript.g:6514:3: ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) )
                     {
-                    // InternalNavascript.g:6183:3: ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) )
-                    // InternalNavascript.g:6184:4: () ( (lv_value_11_0= ruleFunctionIdentifier ) )
+                    // InternalNavascript.g:6514:3: ( () ( (lv_value_11_0= ruleFunctionIdentifier ) ) )
+                    // InternalNavascript.g:6515:4: () ( (lv_value_11_0= ruleFunctionIdentifier ) )
                     {
-                    // InternalNavascript.g:6184:4: ()
-                    // InternalNavascript.g:6185:5: 
+                    // InternalNavascript.g:6515:4: ()
+                    // InternalNavascript.g:6516:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -17925,11 +18508,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:6191:4: ( (lv_value_11_0= ruleFunctionIdentifier ) )
-                    // InternalNavascript.g:6192:5: (lv_value_11_0= ruleFunctionIdentifier )
+                    // InternalNavascript.g:6525:4: ( (lv_value_11_0= ruleFunctionIdentifier ) )
+                    // InternalNavascript.g:6526:5: (lv_value_11_0= ruleFunctionIdentifier )
                     {
-                    // InternalNavascript.g:6192:5: (lv_value_11_0= ruleFunctionIdentifier )
-                    // InternalNavascript.g:6193:6: lv_value_11_0= ruleFunctionIdentifier
+                    // InternalNavascript.g:6526:5: (lv_value_11_0= ruleFunctionIdentifier )
+                    // InternalNavascript.g:6527:6: lv_value_11_0= ruleFunctionIdentifier
                     {
                     if ( state.backtracking==0 ) {
 
@@ -17967,14 +18550,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalNavascript.g:6212:3: ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) )
+                    // InternalNavascript.g:6546:3: ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) )
                     {
-                    // InternalNavascript.g:6212:3: ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) )
-                    // InternalNavascript.g:6213:4: () ( (lv_value_13_0= ruleMappableIdentifier ) )
+                    // InternalNavascript.g:6546:3: ( () ( (lv_value_13_0= ruleMappableIdentifier ) ) )
+                    // InternalNavascript.g:6547:4: () ( (lv_value_13_0= ruleMappableIdentifier ) )
                     {
-                    // InternalNavascript.g:6213:4: ()
-                    // InternalNavascript.g:6214:5: 
+                    // InternalNavascript.g:6547:4: ()
+                    // InternalNavascript.g:6548:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -17985,11 +18573,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:6220:4: ( (lv_value_13_0= ruleMappableIdentifier ) )
-                    // InternalNavascript.g:6221:5: (lv_value_13_0= ruleMappableIdentifier )
+                    // InternalNavascript.g:6557:4: ( (lv_value_13_0= ruleMappableIdentifier ) )
+                    // InternalNavascript.g:6558:5: (lv_value_13_0= ruleMappableIdentifier )
                     {
-                    // InternalNavascript.g:6221:5: (lv_value_13_0= ruleMappableIdentifier )
-                    // InternalNavascript.g:6222:6: lv_value_13_0= ruleMappableIdentifier
+                    // InternalNavascript.g:6558:5: (lv_value_13_0= ruleMappableIdentifier )
+                    // InternalNavascript.g:6559:6: lv_value_13_0= ruleMappableIdentifier
                     {
                     if ( state.backtracking==0 ) {
 
@@ -18027,14 +18615,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalNavascript.g:6241:3: ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) )
+                    // InternalNavascript.g:6578:3: ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) )
                     {
-                    // InternalNavascript.g:6241:3: ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) )
-                    // InternalNavascript.g:6242:4: () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) )
+                    // InternalNavascript.g:6578:3: ( () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) ) )
+                    // InternalNavascript.g:6579:4: () ( (lv_hasExists_15_0= '?' ) )? ( (lv_value_16_0= ruleTmlIdentifier ) )
                     {
-                    // InternalNavascript.g:6242:4: ()
-                    // InternalNavascript.g:6243:5: 
+                    // InternalNavascript.g:6579:4: ()
+                    // InternalNavascript.g:6580:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -18045,21 +18638,21 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:6249:4: ( (lv_hasExists_15_0= '?' ) )?
-                    int alt114=2;
-                    int LA114_0 = input.LA(1);
+                    // InternalNavascript.g:6589:4: ( (lv_hasExists_15_0= '?' ) )?
+                    int alt116=2;
+                    int LA116_0 = input.LA(1);
 
-                    if ( (LA114_0==89) ) {
-                        alt114=1;
+                    if ( (LA116_0==90) ) {
+                        alt116=1;
                     }
-                    switch (alt114) {
+                    switch (alt116) {
                         case 1 :
-                            // InternalNavascript.g:6250:5: (lv_hasExists_15_0= '?' )
+                            // InternalNavascript.g:6590:5: (lv_hasExists_15_0= '?' )
                             {
-                            // InternalNavascript.g:6250:5: (lv_hasExists_15_0= '?' )
-                            // InternalNavascript.g:6251:6: lv_hasExists_15_0= '?'
+                            // InternalNavascript.g:6590:5: (lv_hasExists_15_0= '?' )
+                            // InternalNavascript.g:6591:6: lv_hasExists_15_0= '?'
                             {
-                            lv_hasExists_15_0=(Token)match(input,89,FOLLOW_67); if (state.failed) return current;
+                            lv_hasExists_15_0=(Token)match(input,90,FOLLOW_67); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               						newLeafNode(lv_hasExists_15_0, grammarAccess.getAtomicAccess().getHasExistsQuestionMarkKeyword_6_1_0());
@@ -18082,11 +18675,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:6263:4: ( (lv_value_16_0= ruleTmlIdentifier ) )
-                    // InternalNavascript.g:6264:5: (lv_value_16_0= ruleTmlIdentifier )
+                    // InternalNavascript.g:6603:4: ( (lv_value_16_0= ruleTmlIdentifier ) )
+                    // InternalNavascript.g:6604:5: (lv_value_16_0= ruleTmlIdentifier )
                     {
-                    // InternalNavascript.g:6264:5: (lv_value_16_0= ruleTmlIdentifier )
-                    // InternalNavascript.g:6265:6: lv_value_16_0= ruleTmlIdentifier
+                    // InternalNavascript.g:6604:5: (lv_value_16_0= ruleTmlIdentifier )
+                    // InternalNavascript.g:6605:6: lv_value_16_0= ruleTmlIdentifier
                     {
                     if ( state.backtracking==0 ) {
 
@@ -18124,14 +18717,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalNavascript.g:6284:3: ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) )
+                    // InternalNavascript.g:6624:3: ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) )
                     {
-                    // InternalNavascript.g:6284:3: ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) )
-                    // InternalNavascript.g:6285:4: () ( (lv_value_18_0= ruleForAllIdentifier ) )
+                    // InternalNavascript.g:6624:3: ( () ( (lv_value_18_0= ruleForAllIdentifier ) ) )
+                    // InternalNavascript.g:6625:4: () ( (lv_value_18_0= ruleForAllIdentifier ) )
                     {
-                    // InternalNavascript.g:6285:4: ()
-                    // InternalNavascript.g:6286:5: 
+                    // InternalNavascript.g:6625:4: ()
+                    // InternalNavascript.g:6626:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -18142,11 +18740,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:6292:4: ( (lv_value_18_0= ruleForAllIdentifier ) )
-                    // InternalNavascript.g:6293:5: (lv_value_18_0= ruleForAllIdentifier )
+                    // InternalNavascript.g:6635:4: ( (lv_value_18_0= ruleForAllIdentifier ) )
+                    // InternalNavascript.g:6636:5: (lv_value_18_0= ruleForAllIdentifier )
                     {
-                    // InternalNavascript.g:6293:5: (lv_value_18_0= ruleForAllIdentifier )
-                    // InternalNavascript.g:6294:6: lv_value_18_0= ruleForAllIdentifier
+                    // InternalNavascript.g:6636:5: (lv_value_18_0= ruleForAllIdentifier )
+                    // InternalNavascript.g:6637:6: lv_value_18_0= ruleForAllIdentifier
                     {
                     if ( state.backtracking==0 ) {
 
@@ -18184,14 +18782,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // InternalNavascript.g:6313:3: ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) )
+                    // InternalNavascript.g:6656:3: ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) )
                     {
-                    // InternalNavascript.g:6313:3: ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) )
-                    // InternalNavascript.g:6314:4: () ( (lv_value_20_0= RULE_NULL_DEF ) )
+                    // InternalNavascript.g:6656:3: ( () ( (lv_value_20_0= RULE_NULL_DEF ) ) )
+                    // InternalNavascript.g:6657:4: () ( (lv_value_20_0= RULE_NULL_DEF ) )
                     {
-                    // InternalNavascript.g:6314:4: ()
-                    // InternalNavascript.g:6315:5: 
+                    // InternalNavascript.g:6657:4: ()
+                    // InternalNavascript.g:6658:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -18202,11 +18805,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:6321:4: ( (lv_value_20_0= RULE_NULL_DEF ) )
-                    // InternalNavascript.g:6322:5: (lv_value_20_0= RULE_NULL_DEF )
+                    // InternalNavascript.g:6667:4: ( (lv_value_20_0= RULE_NULL_DEF ) )
+                    // InternalNavascript.g:6668:5: (lv_value_20_0= RULE_NULL_DEF )
                     {
-                    // InternalNavascript.g:6322:5: (lv_value_20_0= RULE_NULL_DEF )
-                    // InternalNavascript.g:6323:6: lv_value_20_0= RULE_NULL_DEF
+                    // InternalNavascript.g:6668:5: (lv_value_20_0= RULE_NULL_DEF )
+                    // InternalNavascript.g:6669:6: lv_value_20_0= RULE_NULL_DEF
                     {
                     lv_value_20_0=(Token)match(input,RULE_NULL_DEF,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -18263,7 +18866,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleForAllIdentifier"
-    // InternalNavascript.g:6344:1: entryRuleForAllIdentifier returns [EObject current=null] : iv_ruleForAllIdentifier= ruleForAllIdentifier EOF ;
+    // InternalNavascript.g:6690:1: entryRuleForAllIdentifier returns [EObject current=null] : iv_ruleForAllIdentifier= ruleForAllIdentifier EOF ;
     public final EObject entryRuleForAllIdentifier() throws RecognitionException {
         EObject current = null;
 
@@ -18271,8 +18874,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:6344:57: (iv_ruleForAllIdentifier= ruleForAllIdentifier EOF )
-            // InternalNavascript.g:6345:2: iv_ruleForAllIdentifier= ruleForAllIdentifier EOF
+            // InternalNavascript.g:6690:57: (iv_ruleForAllIdentifier= ruleForAllIdentifier EOF )
+            // InternalNavascript.g:6691:2: iv_ruleForAllIdentifier= ruleForAllIdentifier EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getForAllIdentifierRule()); 
@@ -18303,7 +18906,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleForAllIdentifier"
-    // InternalNavascript.g:6351:1: ruleForAllIdentifier returns [EObject current=null] : ( () ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) ) otherlv_2= '(' otherlv_3= '`' ( (lv_expression_4_0= ruleExpression ) ) otherlv_5= '`' otherlv_6= ',' ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) ) otherlv_8= ')' ) ;
+    // InternalNavascript.g:6697:1: ruleForAllIdentifier returns [EObject current=null] : ( () ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) ) otherlv_2= '(' otherlv_3= '`' ( (lv_expression_4_0= ruleExpression ) ) otherlv_5= '`' otherlv_6= ',' ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) ) otherlv_8= ')' ) ;
     public final EObject ruleForAllIdentifier() throws RecognitionException {
         EObject current = null;
 
@@ -18322,15 +18925,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:6357:2: ( ( () ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) ) otherlv_2= '(' otherlv_3= '`' ( (lv_expression_4_0= ruleExpression ) ) otherlv_5= '`' otherlv_6= ',' ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) ) otherlv_8= ')' ) )
-            // InternalNavascript.g:6358:2: ( () ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) ) otherlv_2= '(' otherlv_3= '`' ( (lv_expression_4_0= ruleExpression ) ) otherlv_5= '`' otherlv_6= ',' ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) ) otherlv_8= ')' )
+            // InternalNavascript.g:6703:2: ( ( () ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) ) otherlv_2= '(' otherlv_3= '`' ( (lv_expression_4_0= ruleExpression ) ) otherlv_5= '`' otherlv_6= ',' ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) ) otherlv_8= ')' ) )
+            // InternalNavascript.g:6704:2: ( () ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) ) otherlv_2= '(' otherlv_3= '`' ( (lv_expression_4_0= ruleExpression ) ) otherlv_5= '`' otherlv_6= ',' ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) ) otherlv_8= ')' )
             {
-            // InternalNavascript.g:6358:2: ( () ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) ) otherlv_2= '(' otherlv_3= '`' ( (lv_expression_4_0= ruleExpression ) ) otherlv_5= '`' otherlv_6= ',' ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) ) otherlv_8= ')' )
-            // InternalNavascript.g:6359:3: () ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) ) otherlv_2= '(' otherlv_3= '`' ( (lv_expression_4_0= ruleExpression ) ) otherlv_5= '`' otherlv_6= ',' ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) ) otherlv_8= ')'
+            // InternalNavascript.g:6704:2: ( () ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) ) otherlv_2= '(' otherlv_3= '`' ( (lv_expression_4_0= ruleExpression ) ) otherlv_5= '`' otherlv_6= ',' ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) ) otherlv_8= ')' )
+            // InternalNavascript.g:6705:3: () ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) ) otherlv_2= '(' otherlv_3= '`' ( (lv_expression_4_0= ruleExpression ) ) otherlv_5= '`' otherlv_6= ',' ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) ) otherlv_8= ')'
             {
-            // InternalNavascript.g:6359:3: ()
-            // InternalNavascript.g:6360:4: 
+            // InternalNavascript.g:6705:3: ()
+            // InternalNavascript.g:6706:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -18341,32 +18949,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:6366:3: ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) )
-            // InternalNavascript.g:6367:4: ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) )
+            // InternalNavascript.g:6715:3: ( ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) ) )
+            // InternalNavascript.g:6716:4: ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) )
             {
-            // InternalNavascript.g:6367:4: ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) )
-            // InternalNavascript.g:6368:5: (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS )
+            // InternalNavascript.g:6716:4: ( (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS ) )
+            // InternalNavascript.g:6717:5: (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS )
             {
-            // InternalNavascript.g:6368:5: (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS )
-            int alt116=2;
-            int LA116_0 = input.LA(1);
+            // InternalNavascript.g:6717:5: (lv_op_1_1= RULE_FORALL | lv_op_1_2= RULE_EXISTS )
+            int alt118=2;
+            int LA118_0 = input.LA(1);
 
-            if ( (LA116_0==RULE_FORALL) ) {
-                alt116=1;
+            if ( (LA118_0==RULE_FORALL) ) {
+                alt118=1;
             }
-            else if ( (LA116_0==RULE_EXISTS) ) {
-                alt116=2;
+            else if ( (LA118_0==RULE_EXISTS) ) {
+                alt118=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 116, 0, input);
+                    new NoViableAltException("", 118, 0, input);
 
                 throw nvae;
             }
-            switch (alt116) {
+            switch (alt118) {
                 case 1 :
-                    // InternalNavascript.g:6369:6: lv_op_1_1= RULE_FORALL
+                    // InternalNavascript.g:6718:6: lv_op_1_1= RULE_FORALL
                     {
                     lv_op_1_1=(Token)match(input,RULE_FORALL,FOLLOW_11); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -18390,7 +18998,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:6384:6: lv_op_1_2= RULE_EXISTS
+                    // InternalNavascript.g:6733:6: lv_op_1_2= RULE_EXISTS
                     {
                     lv_op_1_2=(Token)match(input,RULE_EXISTS,FOLLOW_11); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -18422,23 +19030,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,30,FOLLOW_68); if (state.failed) return current;
+            otherlv_2=(Token)match(input,31,FOLLOW_68); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_2, grammarAccess.getForAllIdentifierAccess().getLeftParenthesisKeyword_2());
               		
             }
-            otherlv_3=(Token)match(input,90,FOLLOW_6); if (state.failed) return current;
+            otherlv_3=(Token)match(input,91,FOLLOW_6); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_3, grammarAccess.getForAllIdentifierAccess().getGraveAccentKeyword_3());
               		
             }
-            // InternalNavascript.g:6409:3: ( (lv_expression_4_0= ruleExpression ) )
-            // InternalNavascript.g:6410:4: (lv_expression_4_0= ruleExpression )
+            // InternalNavascript.g:6758:3: ( (lv_expression_4_0= ruleExpression ) )
+            // InternalNavascript.g:6759:4: (lv_expression_4_0= ruleExpression )
             {
-            // InternalNavascript.g:6410:4: (lv_expression_4_0= ruleExpression )
-            // InternalNavascript.g:6411:5: lv_expression_4_0= ruleExpression
+            // InternalNavascript.g:6759:4: (lv_expression_4_0= ruleExpression )
+            // InternalNavascript.g:6760:5: lv_expression_4_0= ruleExpression
             {
             if ( state.backtracking==0 ) {
 
@@ -18469,23 +19077,23 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,90,FOLLOW_69); if (state.failed) return current;
+            otherlv_5=(Token)match(input,91,FOLLOW_69); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_5, grammarAccess.getForAllIdentifierAccess().getGraveAccentKeyword_5());
               		
             }
-            otherlv_6=(Token)match(input,32,FOLLOW_70); if (state.failed) return current;
+            otherlv_6=(Token)match(input,33,FOLLOW_70); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_6, grammarAccess.getForAllIdentifierAccess().getCommaKeyword_6());
               		
             }
-            // InternalNavascript.g:6436:3: ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) )
-            // InternalNavascript.g:6437:4: (lv_messagedefinition_7_0= RULE_STRING_LITERAL )
+            // InternalNavascript.g:6785:3: ( (lv_messagedefinition_7_0= RULE_STRING_LITERAL ) )
+            // InternalNavascript.g:6786:4: (lv_messagedefinition_7_0= RULE_STRING_LITERAL )
             {
-            // InternalNavascript.g:6437:4: (lv_messagedefinition_7_0= RULE_STRING_LITERAL )
-            // InternalNavascript.g:6438:5: lv_messagedefinition_7_0= RULE_STRING_LITERAL
+            // InternalNavascript.g:6786:4: (lv_messagedefinition_7_0= RULE_STRING_LITERAL )
+            // InternalNavascript.g:6787:5: lv_messagedefinition_7_0= RULE_STRING_LITERAL
             {
             lv_messagedefinition_7_0=(Token)match(input,RULE_STRING_LITERAL,FOLLOW_13); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -18511,7 +19119,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
+            otherlv_8=(Token)match(input,32,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(otherlv_8, grammarAccess.getForAllIdentifierAccess().getRightParenthesisKeyword_8());
@@ -18542,7 +19150,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFunctionIdentifier"
-    // InternalNavascript.g:6462:1: entryRuleFunctionIdentifier returns [EObject current=null] : iv_ruleFunctionIdentifier= ruleFunctionIdentifier EOF ;
+    // InternalNavascript.g:6811:1: entryRuleFunctionIdentifier returns [EObject current=null] : iv_ruleFunctionIdentifier= ruleFunctionIdentifier EOF ;
     public final EObject entryRuleFunctionIdentifier() throws RecognitionException {
         EObject current = null;
 
@@ -18550,8 +19158,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:6462:59: (iv_ruleFunctionIdentifier= ruleFunctionIdentifier EOF )
-            // InternalNavascript.g:6463:2: iv_ruleFunctionIdentifier= ruleFunctionIdentifier EOF
+            // InternalNavascript.g:6811:59: (iv_ruleFunctionIdentifier= ruleFunctionIdentifier EOF )
+            // InternalNavascript.g:6812:2: iv_ruleFunctionIdentifier= ruleFunctionIdentifier EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFunctionIdentifierRule()); 
@@ -18582,7 +19190,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunctionIdentifier"
-    // InternalNavascript.g:6469:1: ruleFunctionIdentifier returns [EObject current=null] : ( () ( (lv_func_1_0= RULE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' ) ) ;
+    // InternalNavascript.g:6818:1: ruleFunctionIdentifier returns [EObject current=null] : ( () ( (lv_func_1_0= RULE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' ) ) ;
     public final EObject ruleFunctionIdentifier() throws RecognitionException {
         EObject current = null;
 
@@ -18599,15 +19207,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:6475:2: ( ( () ( (lv_func_1_0= RULE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' ) ) )
-            // InternalNavascript.g:6476:2: ( () ( (lv_func_1_0= RULE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' ) )
+            // InternalNavascript.g:6824:2: ( ( () ( (lv_func_1_0= RULE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' ) ) )
+            // InternalNavascript.g:6825:2: ( () ( (lv_func_1_0= RULE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' ) )
             {
-            // InternalNavascript.g:6476:2: ( () ( (lv_func_1_0= RULE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' ) )
-            // InternalNavascript.g:6477:3: () ( (lv_func_1_0= RULE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )
+            // InternalNavascript.g:6825:2: ( () ( (lv_func_1_0= RULE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' ) )
+            // InternalNavascript.g:6826:3: () ( (lv_func_1_0= RULE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )
             {
-            // InternalNavascript.g:6477:3: ()
-            // InternalNavascript.g:6478:4: 
+            // InternalNavascript.g:6826:3: ()
+            // InternalNavascript.g:6827:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -18618,11 +19231,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:6484:3: ( (lv_func_1_0= RULE_IDENTIFIER ) )
-            // InternalNavascript.g:6485:4: (lv_func_1_0= RULE_IDENTIFIER )
+            // InternalNavascript.g:6836:3: ( (lv_func_1_0= RULE_IDENTIFIER ) )
+            // InternalNavascript.g:6837:4: (lv_func_1_0= RULE_IDENTIFIER )
             {
-            // InternalNavascript.g:6485:4: (lv_func_1_0= RULE_IDENTIFIER )
-            // InternalNavascript.g:6486:5: lv_func_1_0= RULE_IDENTIFIER
+            // InternalNavascript.g:6837:4: (lv_func_1_0= RULE_IDENTIFIER )
+            // InternalNavascript.g:6838:5: lv_func_1_0= RULE_IDENTIFIER
             {
             lv_func_1_0=(Token)match(input,RULE_IDENTIFIER,FOLLOW_11); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -18648,31 +19261,31 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:6502:3: (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )
-            // InternalNavascript.g:6503:4: otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')'
+            // InternalNavascript.g:6854:3: (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )
+            // InternalNavascript.g:6855:4: otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')'
             {
-            otherlv_2=(Token)match(input,30,FOLLOW_71); if (state.failed) return current;
+            otherlv_2=(Token)match(input,31,FOLLOW_71); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               				newLeafNode(otherlv_2, grammarAccess.getFunctionIdentifierAccess().getLeftParenthesisKeyword_2_0());
               			
             }
-            // InternalNavascript.g:6507:4: ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )?
-            int alt118=2;
-            int LA118_0 = input.LA(1);
+            // InternalNavascript.g:6859:4: ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )?
+            int alt120=2;
+            int LA120_0 = input.LA(1);
 
-            if ( (LA118_0==RULE_IDENTIFIER||(LA118_0>=RULE_MAPPABLE_IDENTIFIER && LA118_0<=RULE_EXISTS)||LA118_0==30||LA118_0==85||(LA118_0>=88 && LA118_0<=89)) ) {
-                alt118=1;
+            if ( (LA120_0==RULE_IDENTIFIER||(LA120_0>=RULE_MAPPABLE_IDENTIFIER && LA120_0<=RULE_EXISTS)||LA120_0==31||LA120_0==86||(LA120_0>=89 && LA120_0<=90)) ) {
+                alt120=1;
             }
-            switch (alt118) {
+            switch (alt120) {
                 case 1 :
-                    // InternalNavascript.g:6508:5: ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )*
+                    // InternalNavascript.g:6860:5: ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )*
                     {
-                    // InternalNavascript.g:6508:5: ( (lv_args_3_0= ruleExpression ) )
-                    // InternalNavascript.g:6509:6: (lv_args_3_0= ruleExpression )
+                    // InternalNavascript.g:6860:5: ( (lv_args_3_0= ruleExpression ) )
+                    // InternalNavascript.g:6861:6: (lv_args_3_0= ruleExpression )
                     {
-                    // InternalNavascript.g:6509:6: (lv_args_3_0= ruleExpression )
-                    // InternalNavascript.g:6510:7: lv_args_3_0= ruleExpression
+                    // InternalNavascript.g:6861:6: (lv_args_3_0= ruleExpression )
+                    // InternalNavascript.g:6862:7: lv_args_3_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
@@ -18703,32 +19316,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalNavascript.g:6527:5: (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )*
-                    loop117:
+                    // InternalNavascript.g:6879:5: (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )*
+                    loop119:
                     do {
-                        int alt117=2;
-                        int LA117_0 = input.LA(1);
+                        int alt119=2;
+                        int LA119_0 = input.LA(1);
 
-                        if ( (LA117_0==32) ) {
-                            alt117=1;
+                        if ( (LA119_0==33) ) {
+                            alt119=1;
                         }
 
 
-                        switch (alt117) {
+                        switch (alt119) {
                     	case 1 :
-                    	    // InternalNavascript.g:6528:6: otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) )
+                    	    // InternalNavascript.g:6880:6: otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,32,FOLLOW_6); if (state.failed) return current;
+                    	    otherlv_4=(Token)match(input,33,FOLLOW_6); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	      						newLeafNode(otherlv_4, grammarAccess.getFunctionIdentifierAccess().getCommaKeyword_2_1_1_0());
                     	      					
                     	    }
-                    	    // InternalNavascript.g:6532:6: ( (lv_args_5_0= ruleExpression ) )
-                    	    // InternalNavascript.g:6533:7: (lv_args_5_0= ruleExpression )
+                    	    // InternalNavascript.g:6884:6: ( (lv_args_5_0= ruleExpression ) )
+                    	    // InternalNavascript.g:6885:7: (lv_args_5_0= ruleExpression )
                     	    {
-                    	    // InternalNavascript.g:6533:7: (lv_args_5_0= ruleExpression )
-                    	    // InternalNavascript.g:6534:8: lv_args_5_0= ruleExpression
+                    	    // InternalNavascript.g:6885:7: (lv_args_5_0= ruleExpression )
+                    	    // InternalNavascript.g:6886:8: lv_args_5_0= ruleExpression
                     	    {
                     	    if ( state.backtracking==0 ) {
 
@@ -18764,7 +19377,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop117;
+                    	    break loop119;
                         }
                     } while (true);
 
@@ -18774,7 +19387,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
+            otherlv_6=(Token)match(input,32,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               				newLeafNode(otherlv_6, grammarAccess.getFunctionIdentifierAccess().getRightParenthesisKeyword_2_2());
@@ -18808,7 +19421,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMappableIdentifier"
-    // InternalNavascript.g:6562:1: entryRuleMappableIdentifier returns [EObject current=null] : iv_ruleMappableIdentifier= ruleMappableIdentifier EOF ;
+    // InternalNavascript.g:6914:1: entryRuleMappableIdentifier returns [EObject current=null] : iv_ruleMappableIdentifier= ruleMappableIdentifier EOF ;
     public final EObject entryRuleMappableIdentifier() throws RecognitionException {
         EObject current = null;
 
@@ -18816,8 +19429,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:6562:59: (iv_ruleMappableIdentifier= ruleMappableIdentifier EOF )
-            // InternalNavascript.g:6563:2: iv_ruleMappableIdentifier= ruleMappableIdentifier EOF
+            // InternalNavascript.g:6914:59: (iv_ruleMappableIdentifier= ruleMappableIdentifier EOF )
+            // InternalNavascript.g:6915:2: iv_ruleMappableIdentifier= ruleMappableIdentifier EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMappableIdentifierRule()); 
@@ -18848,7 +19461,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMappableIdentifier"
-    // InternalNavascript.g:6569:1: ruleMappableIdentifier returns [EObject current=null] : ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )? ) ;
+    // InternalNavascript.g:6921:1: ruleMappableIdentifier returns [EObject current=null] : ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )? ) ;
     public final EObject ruleMappableIdentifier() throws RecognitionException {
         EObject current = null;
 
@@ -18865,15 +19478,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:6575:2: ( ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )? ) )
-            // InternalNavascript.g:6576:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )? )
+            // InternalNavascript.g:6927:2: ( ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )? ) )
+            // InternalNavascript.g:6928:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )? )
             {
-            // InternalNavascript.g:6576:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )? )
-            // InternalNavascript.g:6577:3: () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )?
+            // InternalNavascript.g:6928:2: ( () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )? )
+            // InternalNavascript.g:6929:3: () ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) ) (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )?
             {
-            // InternalNavascript.g:6577:3: ()
-            // InternalNavascript.g:6578:4: 
+            // InternalNavascript.g:6929:3: ()
+            // InternalNavascript.g:6930:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -18884,11 +19502,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:6584:3: ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) )
-            // InternalNavascript.g:6585:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
+            // InternalNavascript.g:6939:3: ( (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER ) )
+            // InternalNavascript.g:6940:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
             {
-            // InternalNavascript.g:6585:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
-            // InternalNavascript.g:6586:5: lv_field_1_0= RULE_MAPPABLE_IDENTIFIER
+            // InternalNavascript.g:6940:4: (lv_field_1_0= RULE_MAPPABLE_IDENTIFIER )
+            // InternalNavascript.g:6941:5: lv_field_1_0= RULE_MAPPABLE_IDENTIFIER
             {
             lv_field_1_0=(Token)match(input,RULE_MAPPABLE_IDENTIFIER,FOLLOW_72); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -18914,43 +19532,43 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:6602:3: (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )?
-            int alt121=2;
-            int LA121_0 = input.LA(1);
+            // InternalNavascript.g:6957:3: (otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')' )?
+            int alt123=2;
+            int LA123_0 = input.LA(1);
 
-            if ( (LA121_0==30) ) {
-                int LA121_1 = input.LA(2);
+            if ( (LA123_0==31) ) {
+                int LA123_1 = input.LA(2);
 
-                if ( (LA121_1==RULE_IDENTIFIER||(LA121_1>=RULE_MAPPABLE_IDENTIFIER && LA121_1<=RULE_EXISTS)||(LA121_1>=30 && LA121_1<=31)||LA121_1==85||(LA121_1>=88 && LA121_1<=89)) ) {
-                    alt121=1;
+                if ( (LA123_1==RULE_IDENTIFIER||(LA123_1>=RULE_MAPPABLE_IDENTIFIER && LA123_1<=RULE_EXISTS)||(LA123_1>=31 && LA123_1<=32)||LA123_1==86||(LA123_1>=89 && LA123_1<=90)) ) {
+                    alt123=1;
                 }
             }
-            switch (alt121) {
+            switch (alt123) {
                 case 1 :
-                    // InternalNavascript.g:6603:4: otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')'
+                    // InternalNavascript.g:6958:4: otherlv_2= '(' ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )? otherlv_6= ')'
                     {
-                    otherlv_2=(Token)match(input,30,FOLLOW_71); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,31,FOLLOW_71); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_2, grammarAccess.getMappableIdentifierAccess().getLeftParenthesisKeyword_2_0());
                       			
                     }
-                    // InternalNavascript.g:6607:4: ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )?
-                    int alt120=2;
-                    int LA120_0 = input.LA(1);
+                    // InternalNavascript.g:6962:4: ( ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )* )?
+                    int alt122=2;
+                    int LA122_0 = input.LA(1);
 
-                    if ( (LA120_0==RULE_IDENTIFIER||(LA120_0>=RULE_MAPPABLE_IDENTIFIER && LA120_0<=RULE_EXISTS)||LA120_0==30||LA120_0==85||(LA120_0>=88 && LA120_0<=89)) ) {
-                        alt120=1;
+                    if ( (LA122_0==RULE_IDENTIFIER||(LA122_0>=RULE_MAPPABLE_IDENTIFIER && LA122_0<=RULE_EXISTS)||LA122_0==31||LA122_0==86||(LA122_0>=89 && LA122_0<=90)) ) {
+                        alt122=1;
                     }
-                    switch (alt120) {
+                    switch (alt122) {
                         case 1 :
-                            // InternalNavascript.g:6608:5: ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )*
+                            // InternalNavascript.g:6963:5: ( (lv_args_3_0= ruleExpression ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )*
                             {
-                            // InternalNavascript.g:6608:5: ( (lv_args_3_0= ruleExpression ) )
-                            // InternalNavascript.g:6609:6: (lv_args_3_0= ruleExpression )
+                            // InternalNavascript.g:6963:5: ( (lv_args_3_0= ruleExpression ) )
+                            // InternalNavascript.g:6964:6: (lv_args_3_0= ruleExpression )
                             {
-                            // InternalNavascript.g:6609:6: (lv_args_3_0= ruleExpression )
-                            // InternalNavascript.g:6610:7: lv_args_3_0= ruleExpression
+                            // InternalNavascript.g:6964:6: (lv_args_3_0= ruleExpression )
+                            // InternalNavascript.g:6965:7: lv_args_3_0= ruleExpression
                             {
                             if ( state.backtracking==0 ) {
 
@@ -18981,32 +19599,32 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // InternalNavascript.g:6627:5: (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )*
-                            loop119:
+                            // InternalNavascript.g:6982:5: (otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) ) )*
+                            loop121:
                             do {
-                                int alt119=2;
-                                int LA119_0 = input.LA(1);
+                                int alt121=2;
+                                int LA121_0 = input.LA(1);
 
-                                if ( (LA119_0==32) ) {
-                                    alt119=1;
+                                if ( (LA121_0==33) ) {
+                                    alt121=1;
                                 }
 
 
-                                switch (alt119) {
+                                switch (alt121) {
                             	case 1 :
-                            	    // InternalNavascript.g:6628:6: otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) )
+                            	    // InternalNavascript.g:6983:6: otherlv_4= ',' ( (lv_args_5_0= ruleExpression ) )
                             	    {
-                            	    otherlv_4=(Token)match(input,32,FOLLOW_6); if (state.failed) return current;
+                            	    otherlv_4=(Token)match(input,33,FOLLOW_6); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	      						newLeafNode(otherlv_4, grammarAccess.getMappableIdentifierAccess().getCommaKeyword_2_1_1_0());
                             	      					
                             	    }
-                            	    // InternalNavascript.g:6632:6: ( (lv_args_5_0= ruleExpression ) )
-                            	    // InternalNavascript.g:6633:7: (lv_args_5_0= ruleExpression )
+                            	    // InternalNavascript.g:6987:6: ( (lv_args_5_0= ruleExpression ) )
+                            	    // InternalNavascript.g:6988:7: (lv_args_5_0= ruleExpression )
                             	    {
-                            	    // InternalNavascript.g:6633:7: (lv_args_5_0= ruleExpression )
-                            	    // InternalNavascript.g:6634:8: lv_args_5_0= ruleExpression
+                            	    // InternalNavascript.g:6988:7: (lv_args_5_0= ruleExpression )
+                            	    // InternalNavascript.g:6989:8: lv_args_5_0= ruleExpression
                             	    {
                             	    if ( state.backtracking==0 ) {
 
@@ -19042,7 +19660,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop119;
+                            	    break loop121;
                                 }
                             } while (true);
 
@@ -19052,7 +19670,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_6=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,32,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_6, grammarAccess.getMappableIdentifierAccess().getRightParenthesisKeyword_2_2());
@@ -19089,7 +19707,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTmlIdentifier"
-    // InternalNavascript.g:6662:1: entryRuleTmlIdentifier returns [EObject current=null] : iv_ruleTmlIdentifier= ruleTmlIdentifier EOF ;
+    // InternalNavascript.g:7017:1: entryRuleTmlIdentifier returns [EObject current=null] : iv_ruleTmlIdentifier= ruleTmlIdentifier EOF ;
     public final EObject entryRuleTmlIdentifier() throws RecognitionException {
         EObject current = null;
 
@@ -19097,8 +19715,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:6662:54: (iv_ruleTmlIdentifier= ruleTmlIdentifier EOF )
-            // InternalNavascript.g:6663:2: iv_ruleTmlIdentifier= ruleTmlIdentifier EOF
+            // InternalNavascript.g:7017:54: (iv_ruleTmlIdentifier= ruleTmlIdentifier EOF )
+            // InternalNavascript.g:7018:2: iv_ruleTmlIdentifier= ruleTmlIdentifier EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTmlIdentifierRule()); 
@@ -19129,7 +19747,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTmlIdentifier"
-    // InternalNavascript.g:6669:1: ruleTmlIdentifier returns [EObject current=null] : ( () ( (lv_tml_1_0= RULE_TML_LITERAL ) ) ) ;
+    // InternalNavascript.g:7024:1: ruleTmlIdentifier returns [EObject current=null] : ( () ( (lv_tml_1_0= RULE_TML_LITERAL ) ) ) ;
     public final EObject ruleTmlIdentifier() throws RecognitionException {
         EObject current = null;
 
@@ -19139,15 +19757,20 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:6675:2: ( ( () ( (lv_tml_1_0= RULE_TML_LITERAL ) ) ) )
-            // InternalNavascript.g:6676:2: ( () ( (lv_tml_1_0= RULE_TML_LITERAL ) ) )
+            // InternalNavascript.g:7030:2: ( ( () ( (lv_tml_1_0= RULE_TML_LITERAL ) ) ) )
+            // InternalNavascript.g:7031:2: ( () ( (lv_tml_1_0= RULE_TML_LITERAL ) ) )
             {
-            // InternalNavascript.g:6676:2: ( () ( (lv_tml_1_0= RULE_TML_LITERAL ) ) )
-            // InternalNavascript.g:6677:3: () ( (lv_tml_1_0= RULE_TML_LITERAL ) )
+            // InternalNavascript.g:7031:2: ( () ( (lv_tml_1_0= RULE_TML_LITERAL ) ) )
+            // InternalNavascript.g:7032:3: () ( (lv_tml_1_0= RULE_TML_LITERAL ) )
             {
-            // InternalNavascript.g:6677:3: ()
-            // InternalNavascript.g:6678:4: 
+            // InternalNavascript.g:7032:3: ()
+            // InternalNavascript.g:7033:4: 
             {
+            if ( state.backtracking==0 ) {
+
+              				/* */
+              			
+            }
             if ( state.backtracking==0 ) {
 
               				current = forceCreateModelElement(
@@ -19158,11 +19781,11 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalNavascript.g:6684:3: ( (lv_tml_1_0= RULE_TML_LITERAL ) )
-            // InternalNavascript.g:6685:4: (lv_tml_1_0= RULE_TML_LITERAL )
+            // InternalNavascript.g:7042:3: ( (lv_tml_1_0= RULE_TML_LITERAL ) )
+            // InternalNavascript.g:7043:4: (lv_tml_1_0= RULE_TML_LITERAL )
             {
-            // InternalNavascript.g:6685:4: (lv_tml_1_0= RULE_TML_LITERAL )
-            // InternalNavascript.g:6686:5: lv_tml_1_0= RULE_TML_LITERAL
+            // InternalNavascript.g:7043:4: (lv_tml_1_0= RULE_TML_LITERAL )
+            // InternalNavascript.g:7044:5: lv_tml_1_0= RULE_TML_LITERAL
             {
             lv_tml_1_0=(Token)match(input,RULE_TML_LITERAL,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -19213,7 +19836,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePropertyType"
-    // InternalNavascript.g:6706:1: entryRulePropertyType returns [EObject current=null] : iv_rulePropertyType= rulePropertyType EOF ;
+    // InternalNavascript.g:7064:1: entryRulePropertyType returns [EObject current=null] : iv_rulePropertyType= rulePropertyType EOF ;
     public final EObject entryRulePropertyType() throws RecognitionException {
         EObject current = null;
 
@@ -19221,8 +19844,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:6706:53: (iv_rulePropertyType= rulePropertyType EOF )
-            // InternalNavascript.g:6707:2: iv_rulePropertyType= rulePropertyType EOF
+            // InternalNavascript.g:7064:53: (iv_rulePropertyType= rulePropertyType EOF )
+            // InternalNavascript.g:7065:2: iv_rulePropertyType= rulePropertyType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPropertyTypeRule()); 
@@ -19253,7 +19876,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePropertyType"
-    // InternalNavascript.g:6713:1: rulePropertyType returns [EObject current=null] : ( ( () otherlv_1= 'integer' ) | ( () otherlv_3= 'string' ) | ( () otherlv_5= 'boolean' ) | ( () otherlv_7= 'date' ) | ( () otherlv_9= 'float' ) | ( () otherlv_11= 'binary' ) | ( () otherlv_13= 'clocktime' ) | ( () otherlv_15= 'memo' ) | ( () otherlv_17= 'timestamp' ) | ( () otherlv_19= 'percentage' ) | ( () otherlv_21= 'selection' ) ) ;
+    // InternalNavascript.g:7071:1: rulePropertyType returns [EObject current=null] : ( ( () otherlv_1= 'integer' ) | ( () otherlv_3= 'string' ) | ( () otherlv_5= 'boolean' ) | ( () otherlv_7= 'date' ) | ( () otherlv_9= 'float' ) | ( () otherlv_11= 'binary' ) | ( () otherlv_13= 'clocktime' ) | ( () otherlv_15= 'memo' ) | ( () otherlv_17= 'timestamp' ) | ( () otherlv_19= 'percentage' ) | ( () otherlv_21= 'selection' ) ) ;
     public final EObject rulePropertyType() throws RecognitionException {
         EObject current = null;
 
@@ -19273,85 +19896,90 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:6719:2: ( ( ( () otherlv_1= 'integer' ) | ( () otherlv_3= 'string' ) | ( () otherlv_5= 'boolean' ) | ( () otherlv_7= 'date' ) | ( () otherlv_9= 'float' ) | ( () otherlv_11= 'binary' ) | ( () otherlv_13= 'clocktime' ) | ( () otherlv_15= 'memo' ) | ( () otherlv_17= 'timestamp' ) | ( () otherlv_19= 'percentage' ) | ( () otherlv_21= 'selection' ) ) )
-            // InternalNavascript.g:6720:2: ( ( () otherlv_1= 'integer' ) | ( () otherlv_3= 'string' ) | ( () otherlv_5= 'boolean' ) | ( () otherlv_7= 'date' ) | ( () otherlv_9= 'float' ) | ( () otherlv_11= 'binary' ) | ( () otherlv_13= 'clocktime' ) | ( () otherlv_15= 'memo' ) | ( () otherlv_17= 'timestamp' ) | ( () otherlv_19= 'percentage' ) | ( () otherlv_21= 'selection' ) )
+            // InternalNavascript.g:7077:2: ( ( ( () otherlv_1= 'integer' ) | ( () otherlv_3= 'string' ) | ( () otherlv_5= 'boolean' ) | ( () otherlv_7= 'date' ) | ( () otherlv_9= 'float' ) | ( () otherlv_11= 'binary' ) | ( () otherlv_13= 'clocktime' ) | ( () otherlv_15= 'memo' ) | ( () otherlv_17= 'timestamp' ) | ( () otherlv_19= 'percentage' ) | ( () otherlv_21= 'selection' ) ) )
+            // InternalNavascript.g:7078:2: ( ( () otherlv_1= 'integer' ) | ( () otherlv_3= 'string' ) | ( () otherlv_5= 'boolean' ) | ( () otherlv_7= 'date' ) | ( () otherlv_9= 'float' ) | ( () otherlv_11= 'binary' ) | ( () otherlv_13= 'clocktime' ) | ( () otherlv_15= 'memo' ) | ( () otherlv_17= 'timestamp' ) | ( () otherlv_19= 'percentage' ) | ( () otherlv_21= 'selection' ) )
             {
-            // InternalNavascript.g:6720:2: ( ( () otherlv_1= 'integer' ) | ( () otherlv_3= 'string' ) | ( () otherlv_5= 'boolean' ) | ( () otherlv_7= 'date' ) | ( () otherlv_9= 'float' ) | ( () otherlv_11= 'binary' ) | ( () otherlv_13= 'clocktime' ) | ( () otherlv_15= 'memo' ) | ( () otherlv_17= 'timestamp' ) | ( () otherlv_19= 'percentage' ) | ( () otherlv_21= 'selection' ) )
-            int alt122=11;
+            // InternalNavascript.g:7078:2: ( ( () otherlv_1= 'integer' ) | ( () otherlv_3= 'string' ) | ( () otherlv_5= 'boolean' ) | ( () otherlv_7= 'date' ) | ( () otherlv_9= 'float' ) | ( () otherlv_11= 'binary' ) | ( () otherlv_13= 'clocktime' ) | ( () otherlv_15= 'memo' ) | ( () otherlv_17= 'timestamp' ) | ( () otherlv_19= 'percentage' ) | ( () otherlv_21= 'selection' ) )
+            int alt124=11;
             switch ( input.LA(1) ) {
-            case 91:
-                {
-                alt122=1;
-                }
-                break;
             case 92:
                 {
-                alt122=2;
+                alt124=1;
                 }
                 break;
             case 93:
                 {
-                alt122=3;
+                alt124=2;
                 }
                 break;
             case 94:
                 {
-                alt122=4;
+                alt124=3;
                 }
                 break;
             case 95:
                 {
-                alt122=5;
+                alt124=4;
                 }
                 break;
             case 96:
                 {
-                alt122=6;
+                alt124=5;
                 }
                 break;
             case 97:
                 {
-                alt122=7;
+                alt124=6;
                 }
                 break;
             case 98:
                 {
-                alt122=8;
+                alt124=7;
                 }
                 break;
             case 99:
                 {
-                alt122=9;
+                alt124=8;
                 }
                 break;
             case 100:
                 {
-                alt122=10;
+                alt124=9;
                 }
                 break;
             case 101:
                 {
-                alt122=11;
+                alt124=10;
+                }
+                break;
+            case 102:
+                {
+                alt124=11;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 122, 0, input);
+                    new NoViableAltException("", 124, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt122) {
+            switch (alt124) {
                 case 1 :
-                    // InternalNavascript.g:6721:3: ( () otherlv_1= 'integer' )
+                    // InternalNavascript.g:7079:3: ( () otherlv_1= 'integer' )
                     {
-                    // InternalNavascript.g:6721:3: ( () otherlv_1= 'integer' )
-                    // InternalNavascript.g:6722:4: () otherlv_1= 'integer'
+                    // InternalNavascript.g:7079:3: ( () otherlv_1= 'integer' )
+                    // InternalNavascript.g:7080:4: () otherlv_1= 'integer'
                     {
-                    // InternalNavascript.g:6722:4: ()
-                    // InternalNavascript.g:6723:5: 
+                    // InternalNavascript.g:7080:4: ()
+                    // InternalNavascript.g:7081:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19362,7 +19990,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,91,FOLLOW_2); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,92,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getPropertyTypeAccess().getIntegerKeyword_0_1());
@@ -19375,14 +20003,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:6735:3: ( () otherlv_3= 'string' )
+                    // InternalNavascript.g:7096:3: ( () otherlv_3= 'string' )
                     {
-                    // InternalNavascript.g:6735:3: ( () otherlv_3= 'string' )
-                    // InternalNavascript.g:6736:4: () otherlv_3= 'string'
+                    // InternalNavascript.g:7096:3: ( () otherlv_3= 'string' )
+                    // InternalNavascript.g:7097:4: () otherlv_3= 'string'
                     {
-                    // InternalNavascript.g:6736:4: ()
-                    // InternalNavascript.g:6737:5: 
+                    // InternalNavascript.g:7097:4: ()
+                    // InternalNavascript.g:7098:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19393,7 +20026,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,92,FOLLOW_2); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,93,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getPropertyTypeAccess().getStringKeyword_1_1());
@@ -19406,14 +20039,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:6749:3: ( () otherlv_5= 'boolean' )
+                    // InternalNavascript.g:7113:3: ( () otherlv_5= 'boolean' )
                     {
-                    // InternalNavascript.g:6749:3: ( () otherlv_5= 'boolean' )
-                    // InternalNavascript.g:6750:4: () otherlv_5= 'boolean'
+                    // InternalNavascript.g:7113:3: ( () otherlv_5= 'boolean' )
+                    // InternalNavascript.g:7114:4: () otherlv_5= 'boolean'
                     {
-                    // InternalNavascript.g:6750:4: ()
-                    // InternalNavascript.g:6751:5: 
+                    // InternalNavascript.g:7114:4: ()
+                    // InternalNavascript.g:7115:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19424,7 +20062,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,93,FOLLOW_2); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,94,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_5, grammarAccess.getPropertyTypeAccess().getBooleanKeyword_2_1());
@@ -19437,14 +20075,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalNavascript.g:6763:3: ( () otherlv_7= 'date' )
+                    // InternalNavascript.g:7130:3: ( () otherlv_7= 'date' )
                     {
-                    // InternalNavascript.g:6763:3: ( () otherlv_7= 'date' )
-                    // InternalNavascript.g:6764:4: () otherlv_7= 'date'
+                    // InternalNavascript.g:7130:3: ( () otherlv_7= 'date' )
+                    // InternalNavascript.g:7131:4: () otherlv_7= 'date'
                     {
-                    // InternalNavascript.g:6764:4: ()
-                    // InternalNavascript.g:6765:5: 
+                    // InternalNavascript.g:7131:4: ()
+                    // InternalNavascript.g:7132:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19455,7 +20098,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,94,FOLLOW_2); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,95,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_7, grammarAccess.getPropertyTypeAccess().getDateKeyword_3_1());
@@ -19468,14 +20111,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalNavascript.g:6777:3: ( () otherlv_9= 'float' )
+                    // InternalNavascript.g:7147:3: ( () otherlv_9= 'float' )
                     {
-                    // InternalNavascript.g:6777:3: ( () otherlv_9= 'float' )
-                    // InternalNavascript.g:6778:4: () otherlv_9= 'float'
+                    // InternalNavascript.g:7147:3: ( () otherlv_9= 'float' )
+                    // InternalNavascript.g:7148:4: () otherlv_9= 'float'
                     {
-                    // InternalNavascript.g:6778:4: ()
-                    // InternalNavascript.g:6779:5: 
+                    // InternalNavascript.g:7148:4: ()
+                    // InternalNavascript.g:7149:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19486,7 +20134,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_9=(Token)match(input,95,FOLLOW_2); if (state.failed) return current;
+                    otherlv_9=(Token)match(input,96,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_9, grammarAccess.getPropertyTypeAccess().getFloatKeyword_4_1());
@@ -19499,14 +20147,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalNavascript.g:6791:3: ( () otherlv_11= 'binary' )
+                    // InternalNavascript.g:7164:3: ( () otherlv_11= 'binary' )
                     {
-                    // InternalNavascript.g:6791:3: ( () otherlv_11= 'binary' )
-                    // InternalNavascript.g:6792:4: () otherlv_11= 'binary'
+                    // InternalNavascript.g:7164:3: ( () otherlv_11= 'binary' )
+                    // InternalNavascript.g:7165:4: () otherlv_11= 'binary'
                     {
-                    // InternalNavascript.g:6792:4: ()
-                    // InternalNavascript.g:6793:5: 
+                    // InternalNavascript.g:7165:4: ()
+                    // InternalNavascript.g:7166:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19517,7 +20170,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_11=(Token)match(input,96,FOLLOW_2); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,97,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_11, grammarAccess.getPropertyTypeAccess().getBinaryKeyword_5_1());
@@ -19530,14 +20183,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalNavascript.g:6805:3: ( () otherlv_13= 'clocktime' )
+                    // InternalNavascript.g:7181:3: ( () otherlv_13= 'clocktime' )
                     {
-                    // InternalNavascript.g:6805:3: ( () otherlv_13= 'clocktime' )
-                    // InternalNavascript.g:6806:4: () otherlv_13= 'clocktime'
+                    // InternalNavascript.g:7181:3: ( () otherlv_13= 'clocktime' )
+                    // InternalNavascript.g:7182:4: () otherlv_13= 'clocktime'
                     {
-                    // InternalNavascript.g:6806:4: ()
-                    // InternalNavascript.g:6807:5: 
+                    // InternalNavascript.g:7182:4: ()
+                    // InternalNavascript.g:7183:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19548,7 +20206,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_13=(Token)match(input,97,FOLLOW_2); if (state.failed) return current;
+                    otherlv_13=(Token)match(input,98,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_13, grammarAccess.getPropertyTypeAccess().getClocktimeKeyword_6_1());
@@ -19561,14 +20219,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalNavascript.g:6819:3: ( () otherlv_15= 'memo' )
+                    // InternalNavascript.g:7198:3: ( () otherlv_15= 'memo' )
                     {
-                    // InternalNavascript.g:6819:3: ( () otherlv_15= 'memo' )
-                    // InternalNavascript.g:6820:4: () otherlv_15= 'memo'
+                    // InternalNavascript.g:7198:3: ( () otherlv_15= 'memo' )
+                    // InternalNavascript.g:7199:4: () otherlv_15= 'memo'
                     {
-                    // InternalNavascript.g:6820:4: ()
-                    // InternalNavascript.g:6821:5: 
+                    // InternalNavascript.g:7199:4: ()
+                    // InternalNavascript.g:7200:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19579,7 +20242,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_15=(Token)match(input,98,FOLLOW_2); if (state.failed) return current;
+                    otherlv_15=(Token)match(input,99,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_15, grammarAccess.getPropertyTypeAccess().getMemoKeyword_7_1());
@@ -19592,14 +20255,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // InternalNavascript.g:6833:3: ( () otherlv_17= 'timestamp' )
+                    // InternalNavascript.g:7215:3: ( () otherlv_17= 'timestamp' )
                     {
-                    // InternalNavascript.g:6833:3: ( () otherlv_17= 'timestamp' )
-                    // InternalNavascript.g:6834:4: () otherlv_17= 'timestamp'
+                    // InternalNavascript.g:7215:3: ( () otherlv_17= 'timestamp' )
+                    // InternalNavascript.g:7216:4: () otherlv_17= 'timestamp'
                     {
-                    // InternalNavascript.g:6834:4: ()
-                    // InternalNavascript.g:6835:5: 
+                    // InternalNavascript.g:7216:4: ()
+                    // InternalNavascript.g:7217:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19610,7 +20278,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_17=(Token)match(input,99,FOLLOW_2); if (state.failed) return current;
+                    otherlv_17=(Token)match(input,100,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_17, grammarAccess.getPropertyTypeAccess().getTimestampKeyword_8_1());
@@ -19623,14 +20291,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // InternalNavascript.g:6847:3: ( () otherlv_19= 'percentage' )
+                    // InternalNavascript.g:7232:3: ( () otherlv_19= 'percentage' )
                     {
-                    // InternalNavascript.g:6847:3: ( () otherlv_19= 'percentage' )
-                    // InternalNavascript.g:6848:4: () otherlv_19= 'percentage'
+                    // InternalNavascript.g:7232:3: ( () otherlv_19= 'percentage' )
+                    // InternalNavascript.g:7233:4: () otherlv_19= 'percentage'
                     {
-                    // InternalNavascript.g:6848:4: ()
-                    // InternalNavascript.g:6849:5: 
+                    // InternalNavascript.g:7233:4: ()
+                    // InternalNavascript.g:7234:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19641,7 +20314,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_19=(Token)match(input,100,FOLLOW_2); if (state.failed) return current;
+                    otherlv_19=(Token)match(input,101,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_19, grammarAccess.getPropertyTypeAccess().getPercentageKeyword_9_1());
@@ -19654,14 +20327,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // InternalNavascript.g:6861:3: ( () otherlv_21= 'selection' )
+                    // InternalNavascript.g:7249:3: ( () otherlv_21= 'selection' )
                     {
-                    // InternalNavascript.g:6861:3: ( () otherlv_21= 'selection' )
-                    // InternalNavascript.g:6862:4: () otherlv_21= 'selection'
+                    // InternalNavascript.g:7249:3: ( () otherlv_21= 'selection' )
+                    // InternalNavascript.g:7250:4: () otherlv_21= 'selection'
                     {
-                    // InternalNavascript.g:6862:4: ()
-                    // InternalNavascript.g:6863:5: 
+                    // InternalNavascript.g:7250:4: ()
+                    // InternalNavascript.g:7251:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19672,7 +20350,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_21=(Token)match(input,101,FOLLOW_2); if (state.failed) return current;
+                    otherlv_21=(Token)match(input,102,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_21, grammarAccess.getPropertyTypeAccess().getSelectionKeyword_10_1());
@@ -19709,7 +20387,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOPTION_TYPE"
-    // InternalNavascript.g:6878:1: entryRuleOPTION_TYPE returns [String current=null] : iv_ruleOPTION_TYPE= ruleOPTION_TYPE EOF ;
+    // InternalNavascript.g:7269:1: entryRuleOPTION_TYPE returns [String current=null] : iv_ruleOPTION_TYPE= ruleOPTION_TYPE EOF ;
     public final String entryRuleOPTION_TYPE() throws RecognitionException {
         String current = null;
 
@@ -19717,8 +20395,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:6878:51: (iv_ruleOPTION_TYPE= ruleOPTION_TYPE EOF )
-            // InternalNavascript.g:6879:2: iv_ruleOPTION_TYPE= ruleOPTION_TYPE EOF
+            // InternalNavascript.g:7269:51: (iv_ruleOPTION_TYPE= ruleOPTION_TYPE EOF )
+            // InternalNavascript.g:7270:2: iv_ruleOPTION_TYPE= ruleOPTION_TYPE EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOPTION_TYPERule()); 
@@ -19749,7 +20427,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOPTION_TYPE"
-    // InternalNavascript.g:6885:1: ruleOPTION_TYPE returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'name' | kw= 'value' | kw= 'selected' ) ;
+    // InternalNavascript.g:7276:1: ruleOPTION_TYPE returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'name' | kw= 'value' | kw= 'selected' ) ;
     public final AntlrDatatypeRuleToken ruleOPTION_TYPE() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -19759,40 +20437,40 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:6891:2: ( (kw= 'name' | kw= 'value' | kw= 'selected' ) )
-            // InternalNavascript.g:6892:2: (kw= 'name' | kw= 'value' | kw= 'selected' )
+            // InternalNavascript.g:7282:2: ( (kw= 'name' | kw= 'value' | kw= 'selected' ) )
+            // InternalNavascript.g:7283:2: (kw= 'name' | kw= 'value' | kw= 'selected' )
             {
-            // InternalNavascript.g:6892:2: (kw= 'name' | kw= 'value' | kw= 'selected' )
-            int alt123=3;
+            // InternalNavascript.g:7283:2: (kw= 'name' | kw= 'value' | kw= 'selected' )
+            int alt125=3;
             switch ( input.LA(1) ) {
-            case 102:
-                {
-                alt123=1;
-                }
-                break;
             case 103:
                 {
-                alt123=2;
+                alt125=1;
                 }
                 break;
             case 104:
                 {
-                alt123=3;
+                alt125=2;
+                }
+                break;
+            case 105:
+                {
+                alt125=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 123, 0, input);
+                    new NoViableAltException("", 125, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt123) {
+            switch (alt125) {
                 case 1 :
-                    // InternalNavascript.g:6893:3: kw= 'name'
+                    // InternalNavascript.g:7284:3: kw= 'name'
                     {
-                    kw=(Token)match(input,102,FOLLOW_2); if (state.failed) return current;
+                    kw=(Token)match(input,103,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			current.merge(kw);
@@ -19803,9 +20481,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:6899:3: kw= 'value'
+                    // InternalNavascript.g:7290:3: kw= 'value'
                     {
-                    kw=(Token)match(input,103,FOLLOW_2); if (state.failed) return current;
+                    kw=(Token)match(input,104,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			current.merge(kw);
@@ -19816,9 +20494,9 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:6905:3: kw= 'selected'
+                    // InternalNavascript.g:7296:3: kw= 'selected'
                     {
-                    kw=(Token)match(input,104,FOLLOW_2); if (state.failed) return current;
+                    kw=(Token)match(input,105,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			current.merge(kw);
@@ -19853,7 +20531,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMessageType"
-    // InternalNavascript.g:6914:1: entryRuleMessageType returns [EObject current=null] : iv_ruleMessageType= ruleMessageType EOF ;
+    // InternalNavascript.g:7305:1: entryRuleMessageType returns [EObject current=null] : iv_ruleMessageType= ruleMessageType EOF ;
     public final EObject entryRuleMessageType() throws RecognitionException {
         EObject current = null;
 
@@ -19861,8 +20539,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:6914:52: (iv_ruleMessageType= ruleMessageType EOF )
-            // InternalNavascript.g:6915:2: iv_ruleMessageType= ruleMessageType EOF
+            // InternalNavascript.g:7305:52: (iv_ruleMessageType= ruleMessageType EOF )
+            // InternalNavascript.g:7306:2: iv_ruleMessageType= ruleMessageType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMessageTypeRule()); 
@@ -19893,7 +20571,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMessageType"
-    // InternalNavascript.g:6921:1: ruleMessageType returns [EObject current=null] : ( ( () otherlv_1= 'array' ) | ( () otherlv_3= 'simple' ) | ( () otherlv_5= 'arrayelement' ) ) ;
+    // InternalNavascript.g:7312:1: ruleMessageType returns [EObject current=null] : ( ( () otherlv_1= 'array' ) | ( () otherlv_3= 'simple' ) | ( () otherlv_5= 'arrayelement' ) ) ;
     public final EObject ruleMessageType() throws RecognitionException {
         EObject current = null;
 
@@ -19905,45 +20583,50 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:6927:2: ( ( ( () otherlv_1= 'array' ) | ( () otherlv_3= 'simple' ) | ( () otherlv_5= 'arrayelement' ) ) )
-            // InternalNavascript.g:6928:2: ( ( () otherlv_1= 'array' ) | ( () otherlv_3= 'simple' ) | ( () otherlv_5= 'arrayelement' ) )
+            // InternalNavascript.g:7318:2: ( ( ( () otherlv_1= 'array' ) | ( () otherlv_3= 'simple' ) | ( () otherlv_5= 'arrayelement' ) ) )
+            // InternalNavascript.g:7319:2: ( ( () otherlv_1= 'array' ) | ( () otherlv_3= 'simple' ) | ( () otherlv_5= 'arrayelement' ) )
             {
-            // InternalNavascript.g:6928:2: ( ( () otherlv_1= 'array' ) | ( () otherlv_3= 'simple' ) | ( () otherlv_5= 'arrayelement' ) )
-            int alt124=3;
+            // InternalNavascript.g:7319:2: ( ( () otherlv_1= 'array' ) | ( () otherlv_3= 'simple' ) | ( () otherlv_5= 'arrayelement' ) )
+            int alt126=3;
             switch ( input.LA(1) ) {
-            case 105:
-                {
-                alt124=1;
-                }
-                break;
             case 106:
                 {
-                alt124=2;
+                alt126=1;
                 }
                 break;
             case 107:
                 {
-                alt124=3;
+                alt126=2;
+                }
+                break;
+            case 108:
+                {
+                alt126=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 124, 0, input);
+                    new NoViableAltException("", 126, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt124) {
+            switch (alt126) {
                 case 1 :
-                    // InternalNavascript.g:6929:3: ( () otherlv_1= 'array' )
+                    // InternalNavascript.g:7320:3: ( () otherlv_1= 'array' )
                     {
-                    // InternalNavascript.g:6929:3: ( () otherlv_1= 'array' )
-                    // InternalNavascript.g:6930:4: () otherlv_1= 'array'
+                    // InternalNavascript.g:7320:3: ( () otherlv_1= 'array' )
+                    // InternalNavascript.g:7321:4: () otherlv_1= 'array'
                     {
-                    // InternalNavascript.g:6930:4: ()
-                    // InternalNavascript.g:6931:5: 
+                    // InternalNavascript.g:7321:4: ()
+                    // InternalNavascript.g:7322:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19954,7 +20637,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,105,FOLLOW_2); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,106,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getMessageTypeAccess().getArrayKeyword_0_1());
@@ -19967,14 +20650,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:6943:3: ( () otherlv_3= 'simple' )
+                    // InternalNavascript.g:7337:3: ( () otherlv_3= 'simple' )
                     {
-                    // InternalNavascript.g:6943:3: ( () otherlv_3= 'simple' )
-                    // InternalNavascript.g:6944:4: () otherlv_3= 'simple'
+                    // InternalNavascript.g:7337:3: ( () otherlv_3= 'simple' )
+                    // InternalNavascript.g:7338:4: () otherlv_3= 'simple'
                     {
-                    // InternalNavascript.g:6944:4: ()
-                    // InternalNavascript.g:6945:5: 
+                    // InternalNavascript.g:7338:4: ()
+                    // InternalNavascript.g:7339:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -19985,7 +20673,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,106,FOLLOW_2); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,107,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getMessageTypeAccess().getSimpleKeyword_1_1());
@@ -19998,14 +20686,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalNavascript.g:6957:3: ( () otherlv_5= 'arrayelement' )
+                    // InternalNavascript.g:7354:3: ( () otherlv_5= 'arrayelement' )
                     {
-                    // InternalNavascript.g:6957:3: ( () otherlv_5= 'arrayelement' )
-                    // InternalNavascript.g:6958:4: () otherlv_5= 'arrayelement'
+                    // InternalNavascript.g:7354:3: ( () otherlv_5= 'arrayelement' )
+                    // InternalNavascript.g:7355:4: () otherlv_5= 'arrayelement'
                     {
-                    // InternalNavascript.g:6958:4: ()
-                    // InternalNavascript.g:6959:5: 
+                    // InternalNavascript.g:7355:4: ()
+                    // InternalNavascript.g:7356:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -20016,7 +20709,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,107,FOLLOW_2); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,108,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_5, grammarAccess.getMessageTypeAccess().getArrayelementKeyword_2_1());
@@ -20053,7 +20746,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMessageMode"
-    // InternalNavascript.g:6974:1: entryRuleMessageMode returns [EObject current=null] : iv_ruleMessageMode= ruleMessageMode EOF ;
+    // InternalNavascript.g:7374:1: entryRuleMessageMode returns [EObject current=null] : iv_ruleMessageMode= ruleMessageMode EOF ;
     public final EObject entryRuleMessageMode() throws RecognitionException {
         EObject current = null;
 
@@ -20061,8 +20754,8 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalNavascript.g:6974:52: (iv_ruleMessageMode= ruleMessageMode EOF )
-            // InternalNavascript.g:6975:2: iv_ruleMessageMode= ruleMessageMode EOF
+            // InternalNavascript.g:7374:52: (iv_ruleMessageMode= ruleMessageMode EOF )
+            // InternalNavascript.g:7375:2: iv_ruleMessageMode= ruleMessageMode EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMessageModeRule()); 
@@ -20093,7 +20786,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMessageMode"
-    // InternalNavascript.g:6981:1: ruleMessageMode returns [EObject current=null] : ( ( () otherlv_1= 'ignore' ) | ( () otherlv_3= 'overwrite' ) ) ;
+    // InternalNavascript.g:7381:1: ruleMessageMode returns [EObject current=null] : ( ( () otherlv_1= 'ignore' ) | ( () otherlv_3= 'overwrite' ) ) ;
     public final EObject ruleMessageMode() throws RecognitionException {
         EObject current = null;
 
@@ -20104,36 +20797,41 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalNavascript.g:6987:2: ( ( ( () otherlv_1= 'ignore' ) | ( () otherlv_3= 'overwrite' ) ) )
-            // InternalNavascript.g:6988:2: ( ( () otherlv_1= 'ignore' ) | ( () otherlv_3= 'overwrite' ) )
+            // InternalNavascript.g:7387:2: ( ( ( () otherlv_1= 'ignore' ) | ( () otherlv_3= 'overwrite' ) ) )
+            // InternalNavascript.g:7388:2: ( ( () otherlv_1= 'ignore' ) | ( () otherlv_3= 'overwrite' ) )
             {
-            // InternalNavascript.g:6988:2: ( ( () otherlv_1= 'ignore' ) | ( () otherlv_3= 'overwrite' ) )
-            int alt125=2;
-            int LA125_0 = input.LA(1);
+            // InternalNavascript.g:7388:2: ( ( () otherlv_1= 'ignore' ) | ( () otherlv_3= 'overwrite' ) )
+            int alt127=2;
+            int LA127_0 = input.LA(1);
 
-            if ( (LA125_0==108) ) {
-                alt125=1;
+            if ( (LA127_0==109) ) {
+                alt127=1;
             }
-            else if ( (LA125_0==109) ) {
-                alt125=2;
+            else if ( (LA127_0==110) ) {
+                alt127=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 125, 0, input);
+                    new NoViableAltException("", 127, 0, input);
 
                 throw nvae;
             }
-            switch (alt125) {
+            switch (alt127) {
                 case 1 :
-                    // InternalNavascript.g:6989:3: ( () otherlv_1= 'ignore' )
+                    // InternalNavascript.g:7389:3: ( () otherlv_1= 'ignore' )
                     {
-                    // InternalNavascript.g:6989:3: ( () otherlv_1= 'ignore' )
-                    // InternalNavascript.g:6990:4: () otherlv_1= 'ignore'
+                    // InternalNavascript.g:7389:3: ( () otherlv_1= 'ignore' )
+                    // InternalNavascript.g:7390:4: () otherlv_1= 'ignore'
                     {
-                    // InternalNavascript.g:6990:4: ()
-                    // InternalNavascript.g:6991:5: 
+                    // InternalNavascript.g:7390:4: ()
+                    // InternalNavascript.g:7391:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -20144,7 +20842,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,108,FOLLOW_2); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,109,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getMessageModeAccess().getIgnoreKeyword_0_1());
@@ -20157,14 +20855,19 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:7003:3: ( () otherlv_3= 'overwrite' )
+                    // InternalNavascript.g:7406:3: ( () otherlv_3= 'overwrite' )
                     {
-                    // InternalNavascript.g:7003:3: ( () otherlv_3= 'overwrite' )
-                    // InternalNavascript.g:7004:4: () otherlv_3= 'overwrite'
+                    // InternalNavascript.g:7406:3: ( () otherlv_3= 'overwrite' )
+                    // InternalNavascript.g:7407:4: () otherlv_3= 'overwrite'
                     {
-                    // InternalNavascript.g:7004:4: ()
-                    // InternalNavascript.g:7005:5: 
+                    // InternalNavascript.g:7407:4: ()
+                    // InternalNavascript.g:7408:5: 
                     {
+                    if ( state.backtracking==0 ) {
+
+                      					/* */
+                      				
+                    }
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
@@ -20175,7 +20878,7 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,109,FOLLOW_2); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,110,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_3, grammarAccess.getMessageModeAccess().getOverwriteKeyword_1_1());
@@ -20210,82 +20913,281 @@ public class InternalNavascriptParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleMessageMode"
 
+    // $ANTLR start synpred68_InternalNavascript
+    public final void synpred68_InternalNavascript_fragment() throws RecognitionException {   
+        EObject lv_statements_7_0 = null;
+
+
+        // InternalNavascript.g:2606:6: ( ( (lv_statements_7_0= ruleInnerBody ) )* )
+        // InternalNavascript.g:2606:6: ( (lv_statements_7_0= ruleInnerBody ) )*
+        {
+        // InternalNavascript.g:2606:6: ( (lv_statements_7_0= ruleInnerBody ) )*
+        loop134:
+        do {
+            int alt134=2;
+            int LA134_0 = input.LA(1);
+
+            if ( ((LA134_0>=RULE_METHOD_IDENTIFIER && LA134_0<=RULE_MAPPABLE_IDENTIFIER)||LA134_0==26||LA134_0==28||LA134_0==42||LA134_0==48||(LA134_0>=50 && LA134_0<=51)||(LA134_0>=53 && LA134_0<=54)||(LA134_0>=56 && LA134_0<=58)||(LA134_0>=63 && LA134_0<=64)||(LA134_0>=66 && LA134_0<=68)) ) {
+                alt134=1;
+            }
+
+
+            switch (alt134) {
+        	case 1 :
+        	    // InternalNavascript.g:2607:7: (lv_statements_7_0= ruleInnerBody )
+        	    {
+        	    // InternalNavascript.g:2607:7: (lv_statements_7_0= ruleInnerBody )
+        	    // InternalNavascript.g:2608:8: lv_statements_7_0= ruleInnerBody
+        	    {
+        	    if ( state.backtracking==0 ) {
+
+        	      								newCompositeNode(grammarAccess.getMessageAccess().getStatementsInnerBodyParserRuleCall_4_0_1_0_0());
+        	      							
+        	    }
+        	    pushFollow(FOLLOW_73);
+        	    lv_statements_7_0=ruleInnerBody();
+
+        	    state._fsp--;
+        	    if (state.failed) return ;
+
+        	    }
+
+
+        	    }
+        	    break;
+
+        	default :
+        	    break loop134;
+            }
+        } while (true);
+
+
+        }
+    }
+    // $ANTLR end synpred68_InternalNavascript
+
+    // $ANTLR start synpred69_InternalNavascript
+    public final void synpred69_InternalNavascript_fragment() throws RecognitionException {   
+        EObject lv_arrayField_8_0 = null;
+
+
+        // InternalNavascript.g:2626:6: ( ( (lv_arrayField_8_0= ruleMappedArrayField ) ) )
+        // InternalNavascript.g:2626:6: ( (lv_arrayField_8_0= ruleMappedArrayField ) )
+        {
+        // InternalNavascript.g:2626:6: ( (lv_arrayField_8_0= ruleMappedArrayField ) )
+        // InternalNavascript.g:2627:7: (lv_arrayField_8_0= ruleMappedArrayField )
+        {
+        // InternalNavascript.g:2627:7: (lv_arrayField_8_0= ruleMappedArrayField )
+        // InternalNavascript.g:2628:8: lv_arrayField_8_0= ruleMappedArrayField
+        {
+        if ( state.backtracking==0 ) {
+
+          								newCompositeNode(grammarAccess.getMessageAccess().getArrayFieldMappedArrayFieldParserRuleCall_4_0_1_1_0());
+          							
+        }
+        pushFollow(FOLLOW_2);
+        lv_arrayField_8_0=ruleMappedArrayField();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+
+
+        }
+
+
+        }
+    }
+    // $ANTLR end synpred69_InternalNavascript
+
     // Delegated rules
 
+    public final boolean synpred69_InternalNavascript() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred69_InternalNavascript_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred68_InternalNavascript() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred68_InternalNavascript_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
 
+
+    protected DFA41 dfa41 = new DFA41(this);
+    static final String dfa_1s = "\26\uffff";
+    static final String dfa_2s = "\1\10\4\uffff\1\0\20\uffff";
+    static final String dfa_3s = "\1\104\4\uffff\1\0\20\uffff";
+    static final String dfa_4s = "\1\uffff\1\1\22\uffff\1\3\1\2";
+    static final String dfa_5s = "\5\uffff\1\0\20\uffff}>";
+    static final String[] dfa_6s = {
+            "\1\1\1\5\1\24\17\uffff\1\1\1\uffff\2\1\14\uffff\1\1\5\uffff\1\1\1\uffff\2\1\1\uffff\2\1\1\uffff\3\1\4\uffff\2\1\1\uffff\3\1",
+            "",
+            "",
+            "",
+            "",
+            "\1\uffff",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static final short[] dfa_1 = DFA.unpackEncodedString(dfa_1s);
+    static final char[] dfa_2 = DFA.unpackEncodedStringToUnsignedChars(dfa_2s);
+    static final char[] dfa_3 = DFA.unpackEncodedStringToUnsignedChars(dfa_3s);
+    static final short[] dfa_4 = DFA.unpackEncodedString(dfa_4s);
+    static final short[] dfa_5 = DFA.unpackEncodedString(dfa_5s);
+    static final short[][] dfa_6 = unpackEncodedStringArray(dfa_6s);
+
+    class DFA41 extends DFA {
+
+        public DFA41(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 41;
+            this.eot = dfa_1;
+            this.eof = dfa_1;
+            this.min = dfa_2;
+            this.max = dfa_3;
+            this.accept = dfa_4;
+            this.special = dfa_5;
+            this.transition = dfa_6;
+        }
+        public String getDescription() {
+            return "2605:5: ( ( (lv_statements_7_0= ruleInnerBody ) )* | ( (lv_arrayField_8_0= ruleMappedArrayField ) ) | ( (lv_arrayMessage_9_0= ruleMappedArrayMessage ) ) )";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA41_5 = input.LA(1);
+
+                         
+                        int index41_5 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred68_InternalNavascript()) ) {s = 1;}
+
+                        else if ( (synpred69_InternalNavascript()) ) {s = 21;}
+
+                         
+                        input.seek(index41_5);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            if (state.backtracking>0) {state.failed=true; return -1;}
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 41, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
  
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0xC3BE82002A000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0xC3B682002A000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x000000004007FE40L,0x0000000003200000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0xC3B682002A000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0xC3B682002A000300L,0x000000000000000EL});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0xC3B682003A000300L,0x000000000000000EL});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x000001C200000000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0xC3B682003A000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000100000002L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000C00000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000003000000000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x000000004007FE70L,0x0000000003200000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000040040000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000380080000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000380000000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0001000012000000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x877D040054000000L,0x0000000000000005L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0010000000000002L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x876D040054000002L,0x0000000000000005L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x00000000800FFE40L,0x0000000006400000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x876D040054000000L,0x0000000000000005L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x876D040054000300L,0x000000000000001DL});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x876D040074000300L,0x000000000000001DL});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000038400000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x876D040074000000L,0x0000000000000005L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000200000002L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000001800000000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000006000000000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x00000000800FFE70L,0x0000000006400000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000080080000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000700100000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000700000000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0002000024000000L});
     public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000180000000000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000180000000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000010000010L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000600L,0x0000000002000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000048000000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0400040048000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x3000000000000000L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0400040008000000L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0xC3B682003A000700L,0x000000000000000EL});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0800000000000000L});
-    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000000L,0x00000E0000000000L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000300000000000L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000080000040L,0x000001C000000000L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000040L,0x000001C000000000L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000C48000200L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x000000004207FE70L,0x0000000003200000L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0400000C48000000L});
-    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0400000C08000000L});
-    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0800000008000000L});
-    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000012000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000300000000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000300000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000020000010L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000600L,0x0000000004000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000090000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0800080090000000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x6000000000000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0800080010000000L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x876D040074000700L,0x000000000000001DL});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x1000000010000000L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x1000000000000000L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x00001C0000000000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000000L,0x0000600000000000L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000100000040L,0x0000038000000000L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000040L,0x0000038000000000L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000001890000200L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x00000000840FFE70L,0x0000000006400000L});
+    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0800001890000000L});
+    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0800001810000000L});
+    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000024000000L,0x0000000000000004L});
     public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000000L,0x00000E3FF8000000L});
-    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0400040C48000000L});
-    public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0400040C08000000L});
-    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x1000100000000000L,0x0000000000000A30L});
+    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000000L,0x00001C7FF0000000L});
+    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0800081890000000L});
+    public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0800081810000000L});
+    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x2000200000000000L,0x0000000000001460L});
     public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000000000000L,0x00000000000001C0L});
-    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000001000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000002000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000002L,0x0000000000006000L});
-    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000000000000002L,0x0000000000078000L});
-    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000000002L,0x0000000000180000L});
-    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200400L});
-    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000000002L,0x0000000000C00000L});
-    public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000000400L,0x0000000002000000L});
-    public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x00000000C007FE40L,0x0000000003200000L});
-    public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000040000002L});
+    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000380L});
+    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000001000L,0x0000000000000800L});
+    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000004000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000002L,0x000000000000C000L});
+    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000000000000002L,0x00000000000F0000L});
+    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000000002L,0x0000000000300000L});
+    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400800L});
+    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000000002L,0x0000000001800000L});
+    public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000000400L,0x0000000004000000L});
+    public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x00000001800FFE40L,0x0000000006400000L});
+    public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_73 = new BitSet(new long[]{0x876D040054000302L,0x000000000000001DL});
 
 }

@@ -168,6 +168,12 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mappedField" eType="#//MappedArrayField"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mappedMessage" eType="#//MappedMessage"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MappedMessage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//InnerBody" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MappedArrayField">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="field" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -51,6 +51,7 @@ import com.dexels.navajo.navascript.MappableIdentifier;
 import com.dexels.navajo.navascript.MappableIdentifierLiteral;
 import com.dexels.navajo.navascript.MappedArrayField;
 import com.dexels.navajo.navascript.MappedArrayMessage;
+import com.dexels.navajo.navascript.MappedMessage;
 import com.dexels.navajo.navascript.MemoType;
 import com.dexels.navajo.navascript.Message;
 import com.dexels.navajo.navascript.MessageArguments;
@@ -267,6 +268,9 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				return; 
 			case NavascriptPackage.MAPPED_ARRAY_MESSAGE:
 				sequence_MappedArrayMessage(context, (MappedArrayMessage) semanticObject); 
+				return; 
+			case NavascriptPackage.MAPPED_MESSAGE:
+				sequence_MappedMessage(context, (MappedMessage) semanticObject); 
 				return; 
 			case NavascriptPackage.MEMO_TYPE:
 				sequence_PropertyType(context, (MemoType) semanticObject); 
@@ -724,7 +728,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Atomic returns NumberLiteral
 	 *
 	 * Constraint:
-	 *     (value=INTEGER | value=ONE)
+	 *     (value=INTEGER | value=ONE | value=FLOAT)
 	 */
 	protected void sequence_Atomic(ISerializationContext context, NumberLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1250,6 +1254,18 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     MappedMessage returns MappedMessage
+	 *
+	 * Constraint:
+	 *     statements+=InnerBody*
+	 */
+	protected void sequence_MappedMessage(ISerializationContext context, MappedMessage semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     MessageArguments returns MessageArguments
 	 *
 	 * Constraint:
@@ -1730,7 +1746,12 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 * Constraint:
 	 *     (
 	 *         field=MAPPABLE_IDENTIFIER 
-	 *         (expressionList=ConditionalExpressions | (arguments=KeyValueArguments? mappedArray=MappedArrayMessage) | mappedField=MappedArrayField)
+	 *         (
+	 *             expressionList=ConditionalExpressions | 
+	 *             (arguments=KeyValueArguments? mappedArray=MappedArrayMessage) | 
+	 *             mappedField=MappedArrayField | 
+	 *             mappedMessage=MappedMessage
+	 *         )
 	 *     )
 	 */
 	protected void sequence_SetterField(ISerializationContext context, SetterField semanticObject) {

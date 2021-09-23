@@ -1264,13 +1264,50 @@ public interface NavascriptPackage extends EPackage
   int SETTER_FIELD__MAPPED_FIELD = METHOD_OR_SETTER_FEATURE_COUNT + 3;
 
   /**
+   * The feature id for the '<em><b>Mapped Message</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SETTER_FIELD__MAPPED_MESSAGE = METHOD_OR_SETTER_FEATURE_COUNT + 4;
+
+  /**
    * The number of structural features of the '<em>Setter Field</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SETTER_FIELD_FEATURE_COUNT = METHOD_OR_SETTER_FEATURE_COUNT + 4;
+  int SETTER_FIELD_FEATURE_COUNT = METHOD_OR_SETTER_FEATURE_COUNT + 5;
+
+  /**
+   * The meta object id for the '{@link com.dexels.navajo.navascript.impl.MappedMessageImpl <em>Mapped Message</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.dexels.navajo.navascript.impl.MappedMessageImpl
+   * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMappedMessage()
+   * @generated
+   */
+  int MAPPED_MESSAGE = 36;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAPPED_MESSAGE__STATEMENTS = 0;
+
+  /**
+   * The number of structural features of the '<em>Mapped Message</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAPPED_MESSAGE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link com.dexels.navajo.navascript.impl.MappedArrayFieldImpl <em>Mapped Array Field</em>}' class.
@@ -1280,7 +1317,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMappedArrayField()
    * @generated
    */
-  int MAPPED_ARRAY_FIELD = 36;
+  int MAPPED_ARRAY_FIELD = 37;
 
   /**
    * The feature id for the '<em><b>Field</b></em>' attribute.
@@ -1326,7 +1363,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMappedArrayMessage()
    * @generated
    */
-  int MAPPED_ARRAY_MESSAGE = 37;
+  int MAPPED_ARRAY_MESSAGE = 38;
 
   /**
    * The feature id for the '<em><b>Message</b></em>' attribute.
@@ -1372,7 +1409,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getKeyValueArguments()
    * @generated
    */
-  int KEY_VALUE_ARGUMENTS = 38;
+  int KEY_VALUE_ARGUMENTS = 39;
 
   /**
    * The feature id for the '<em><b>Key Value Arguments</b></em>' containment reference list.
@@ -1400,7 +1437,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getKeyValueArgument()
    * @generated
    */
-  int KEY_VALUE_ARGUMENT = 39;
+  int KEY_VALUE_ARGUMENT = 40;
 
   /**
    * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1437,7 +1474,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getVar()
    * @generated
    */
-  int VAR = 40;
+  int VAR = 41;
 
   /**
    * The feature id for the '<em><b>Var Name</b></em>' attribute.
@@ -1519,7 +1556,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getVarArray()
    * @generated
    */
-  int VAR_ARRAY = 41;
+  int VAR_ARRAY = 42;
 
   /**
    * The feature id for the '<em><b>Vararrayelement</b></em>' containment reference list.
@@ -1547,7 +1584,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getVarArrayElement()
    * @generated
    */
-  int VAR_ARRAY_ELEMENT = 42;
+  int VAR_ARRAY_ELEMENT = 43;
 
   /**
    * The feature id for the '<em><b>Var Elements</b></em>' containment reference list.
@@ -1575,7 +1612,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getVarElement()
    * @generated
    */
-  int VAR_ELEMENT = 43;
+  int VAR_ELEMENT = 44;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -1612,7 +1649,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getVarArguments()
    * @generated
    */
-  int VAR_ARGUMENTS = 44;
+  int VAR_ARGUMENTS = 45;
 
   /**
    * The feature id for the '<em><b>Var Arguments</b></em>' containment reference list.
@@ -1640,7 +1677,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getVarArgument()
    * @generated
    */
-  int VAR_ARGUMENT = 45;
+  int VAR_ARGUMENT = 46;
 
   /**
    * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -1668,7 +1705,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getVarType()
    * @generated
    */
-  int VAR_TYPE = 46;
+  int VAR_TYPE = 47;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -1696,7 +1733,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getVarMode()
    * @generated
    */
-  int VAR_MODE = 47;
+  int VAR_MODE = 48;
 
   /**
    * The feature id for the '<em><b>Mode</b></em>' containment reference.
@@ -1724,7 +1761,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 48;
+  int PROPERTY = 49;
 
   /**
    * The feature id for the '<em><b>Property Name</b></em>' attribute.
@@ -1797,7 +1834,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getSelectionArray()
    * @generated
    */
-  int SELECTION_ARRAY = 49;
+  int SELECTION_ARRAY = 50;
 
   /**
    * The feature id for the '<em><b>Array Elements</b></em>' containment reference list.
@@ -1825,7 +1862,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getSelectionArrayElement()
    * @generated
    */
-  int SELECTION_ARRAY_ELEMENT = 50;
+  int SELECTION_ARRAY_ELEMENT = 51;
 
   /**
    * The feature id for the '<em><b>Inner Body</b></em>' containment reference list.
@@ -1853,7 +1890,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getOption()
    * @generated
    */
-  int OPTION = 51;
+  int OPTION = 52;
 
   /**
    * The feature id for the '<em><b>Option</b></em>' attribute.
@@ -1890,7 +1927,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getPropertyArguments()
    * @generated
    */
-  int PROPERTY_ARGUMENTS = 52;
+  int PROPERTY_ARGUMENTS = 53;
 
   /**
    * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
@@ -1918,7 +1955,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getPropertyArgument()
    * @generated
    */
-  int PROPERTY_ARGUMENT = 53;
+  int PROPERTY_ARGUMENT = 54;
 
   /**
    * The number of structural features of the '<em>Property Argument</em>' class.
@@ -1937,7 +1974,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getLengthArgument()
    * @generated
    */
-  int LENGTH_ARGUMENT = 54;
+  int LENGTH_ARGUMENT = 55;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1965,7 +2002,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getDirectionArgument()
    * @generated
    */
-  int DIRECTION_ARGUMENT = 55;
+  int DIRECTION_ARGUMENT = 56;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1993,7 +2030,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getDescriptionArgument()
    * @generated
    */
-  int DESCRIPTION_ARGUMENT = 56;
+  int DESCRIPTION_ARGUMENT = 57;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2021,7 +2058,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getCardinalityArgument()
    * @generated
    */
-  int CARDINALITY_ARGUMENT = 57;
+  int CARDINALITY_ARGUMENT = 58;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2049,7 +2086,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getTypeArgument()
    * @generated
    */
-  int TYPE_ARGUMENT = 58;
+  int TYPE_ARGUMENT = 59;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2077,7 +2114,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getSubTypeArgument()
    * @generated
    */
-  int SUB_TYPE_ARGUMENT = 59;
+  int SUB_TYPE_ARGUMENT = 60;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2105,7 +2142,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getConditionalExpressions()
    * @generated
    */
-  int CONDITIONAL_EXPRESSIONS = 60;
+  int CONDITIONAL_EXPRESSIONS = 61;
 
   /**
    * The feature id for the '<em><b>Conditional Expressions</b></em>' containment reference list.
@@ -2151,7 +2188,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getConditionalExpression()
    * @generated
    */
-  int CONDITIONAL_EXPRESSION = 61;
+  int CONDITIONAL_EXPRESSION = 62;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -2188,7 +2225,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 62;
+  int EXPRESSION = 63;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -2207,7 +2244,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getForAllIdentifier()
    * @generated
    */
-  int FOR_ALL_IDENTIFIER = 63;
+  int FOR_ALL_IDENTIFIER = 64;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -2253,7 +2290,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getFunctionIdentifier()
    * @generated
    */
-  int FUNCTION_IDENTIFIER = 64;
+  int FUNCTION_IDENTIFIER = 65;
 
   /**
    * The feature id for the '<em><b>Func</b></em>' attribute.
@@ -2290,7 +2327,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMappableIdentifier()
    * @generated
    */
-  int MAPPABLE_IDENTIFIER = 65;
+  int MAPPABLE_IDENTIFIER = 66;
 
   /**
    * The feature id for the '<em><b>Field</b></em>' attribute.
@@ -2327,7 +2364,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getTmlIdentifier()
    * @generated
    */
-  int TML_IDENTIFIER = 66;
+  int TML_IDENTIFIER = 67;
 
   /**
    * The feature id for the '<em><b>Tml</b></em>' attribute.
@@ -2355,7 +2392,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getPropertyType()
    * @generated
    */
-  int PROPERTY_TYPE = 67;
+  int PROPERTY_TYPE = 68;
 
   /**
    * The number of structural features of the '<em>Property Type</em>' class.
@@ -2374,7 +2411,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMessageType()
    * @generated
    */
-  int MESSAGE_TYPE = 68;
+  int MESSAGE_TYPE = 69;
 
   /**
    * The number of structural features of the '<em>Message Type</em>' class.
@@ -2393,7 +2430,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMessageMode()
    * @generated
    */
-  int MESSAGE_MODE = 69;
+  int MESSAGE_MODE = 70;
 
   /**
    * The number of structural features of the '<em>Message Mode</em>' class.
@@ -2412,7 +2449,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getAndOrExpression()
    * @generated
    */
-  int AND_OR_EXPRESSION = 70;
+  int AND_OR_EXPRESSION = 71;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -2458,7 +2495,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getComparison()
    * @generated
    */
-  int COMPARISON = 71;
+  int COMPARISON = 72;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -2504,7 +2541,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getEquals()
    * @generated
    */
-  int EQUALS = 72;
+  int EQUALS = 73;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -2550,7 +2587,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getPlus()
    * @generated
    */
-  int PLUS = 73;
+  int PLUS = 74;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -2587,7 +2624,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMinus()
    * @generated
    */
-  int MINUS = 74;
+  int MINUS = 75;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -2624,7 +2661,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMultiOrDiv()
    * @generated
    */
-  int MULTI_OR_DIV = 75;
+  int MULTI_OR_DIV = 76;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -2670,7 +2707,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getBooleanNegation()
    * @generated
    */
-  int BOOLEAN_NEGATION = 76;
+  int BOOLEAN_NEGATION = 77;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -2698,7 +2735,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getArithmeticSigned()
    * @generated
    */
-  int ARITHMETIC_SIGNED = 77;
+  int ARITHMETIC_SIGNED = 78;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -2726,7 +2763,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getExpressionLiteral()
    * @generated
    */
-  int EXPRESSION_LITERAL = 78;
+  int EXPRESSION_LITERAL = 79;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2754,7 +2791,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getNumberLiteral()
    * @generated
    */
-  int NUMBER_LITERAL = 79;
+  int NUMBER_LITERAL = 80;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2782,7 +2819,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 80;
+  int STRING_LITERAL = 81;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2810,7 +2847,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 81;
+  int BOOLEAN_LITERAL = 82;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2838,7 +2875,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getFunctionCallLiteral()
    * @generated
    */
-  int FUNCTION_CALL_LITERAL = 82;
+  int FUNCTION_CALL_LITERAL = 83;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2866,7 +2903,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMappableIdentifierLiteral()
    * @generated
    */
-  int MAPPABLE_IDENTIFIER_LITERAL = 83;
+  int MAPPABLE_IDENTIFIER_LITERAL = 84;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2894,7 +2931,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getTmlIdentifierLiteral()
    * @generated
    */
-  int TML_IDENTIFIER_LITERAL = 84;
+  int TML_IDENTIFIER_LITERAL = 85;
 
   /**
    * The feature id for the '<em><b>Has Exists</b></em>' attribute.
@@ -2931,7 +2968,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getForAllLiteral()
    * @generated
    */
-  int FOR_ALL_LITERAL = 85;
+  int FOR_ALL_LITERAL = 86;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2959,7 +2996,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getNullLiteral()
    * @generated
    */
-  int NULL_LITERAL = 86;
+  int NULL_LITERAL = 87;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2987,7 +3024,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getIntType()
    * @generated
    */
-  int INT_TYPE = 87;
+  int INT_TYPE = 88;
 
   /**
    * The number of structural features of the '<em>Int Type</em>' class.
@@ -3006,7 +3043,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getStringType()
    * @generated
    */
-  int STRING_TYPE = 88;
+  int STRING_TYPE = 89;
 
   /**
    * The number of structural features of the '<em>String Type</em>' class.
@@ -3025,7 +3062,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getBooleanType()
    * @generated
    */
-  int BOOLEAN_TYPE = 89;
+  int BOOLEAN_TYPE = 90;
 
   /**
    * The number of structural features of the '<em>Boolean Type</em>' class.
@@ -3044,7 +3081,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getDateType()
    * @generated
    */
-  int DATE_TYPE = 90;
+  int DATE_TYPE = 91;
 
   /**
    * The number of structural features of the '<em>Date Type</em>' class.
@@ -3063,7 +3100,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getFloatType()
    * @generated
    */
-  int FLOAT_TYPE = 91;
+  int FLOAT_TYPE = 92;
 
   /**
    * The number of structural features of the '<em>Float Type</em>' class.
@@ -3082,7 +3119,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getBinaryType()
    * @generated
    */
-  int BINARY_TYPE = 92;
+  int BINARY_TYPE = 93;
 
   /**
    * The number of structural features of the '<em>Binary Type</em>' class.
@@ -3101,7 +3138,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getClockTimeType()
    * @generated
    */
-  int CLOCK_TIME_TYPE = 93;
+  int CLOCK_TIME_TYPE = 94;
 
   /**
    * The number of structural features of the '<em>Clock Time Type</em>' class.
@@ -3120,7 +3157,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMemoType()
    * @generated
    */
-  int MEMO_TYPE = 94;
+  int MEMO_TYPE = 95;
 
   /**
    * The number of structural features of the '<em>Memo Type</em>' class.
@@ -3139,7 +3176,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getTimestampType()
    * @generated
    */
-  int TIMESTAMP_TYPE = 95;
+  int TIMESTAMP_TYPE = 96;
 
   /**
    * The number of structural features of the '<em>Timestamp Type</em>' class.
@@ -3158,7 +3195,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getPercentageType()
    * @generated
    */
-  int PERCENTAGE_TYPE = 96;
+  int PERCENTAGE_TYPE = 97;
 
   /**
    * The number of structural features of the '<em>Percentage Type</em>' class.
@@ -3177,7 +3214,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getSelectionType()
    * @generated
    */
-  int SELECTION_TYPE = 97;
+  int SELECTION_TYPE = 98;
 
   /**
    * The number of structural features of the '<em>Selection Type</em>' class.
@@ -3196,7 +3233,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getArrayType()
    * @generated
    */
-  int ARRAY_TYPE = 98;
+  int ARRAY_TYPE = 99;
 
   /**
    * The number of structural features of the '<em>Array Type</em>' class.
@@ -3215,7 +3252,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getSimpleType()
    * @generated
    */
-  int SIMPLE_TYPE = 99;
+  int SIMPLE_TYPE = 100;
 
   /**
    * The number of structural features of the '<em>Simple Type</em>' class.
@@ -3234,7 +3271,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getArrayElementType()
    * @generated
    */
-  int ARRAY_ELEMENT_TYPE = 100;
+  int ARRAY_ELEMENT_TYPE = 101;
 
   /**
    * The number of structural features of the '<em>Array Element Type</em>' class.
@@ -3253,7 +3290,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getIgnore()
    * @generated
    */
-  int IGNORE = 101;
+  int IGNORE = 102;
 
   /**
    * The number of structural features of the '<em>Ignore</em>' class.
@@ -3272,7 +3309,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getOverwrite()
    * @generated
    */
-  int OVERWRITE = 102;
+  int OVERWRITE = 103;
 
   /**
    * The number of structural features of the '<em>Overwrite</em>' class.
@@ -4248,6 +4285,38 @@ public interface NavascriptPackage extends EPackage
    * @generated
    */
   EReference getSetterField_MappedField();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.dexels.navajo.navascript.SetterField#getMappedMessage <em>Mapped Message</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Mapped Message</em>'.
+   * @see com.dexels.navajo.navascript.SetterField#getMappedMessage()
+   * @see #getSetterField()
+   * @generated
+   */
+  EReference getSetterField_MappedMessage();
+
+  /**
+   * Returns the meta object for class '{@link com.dexels.navajo.navascript.MappedMessage <em>Mapped Message</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Mapped Message</em>'.
+   * @see com.dexels.navajo.navascript.MappedMessage
+   * @generated
+   */
+  EClass getMappedMessage();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.dexels.navajo.navascript.MappedMessage#getStatements <em>Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Statements</em>'.
+   * @see com.dexels.navajo.navascript.MappedMessage#getStatements()
+   * @see #getMappedMessage()
+   * @generated
+   */
+  EReference getMappedMessage_Statements();
 
   /**
    * Returns the meta object for class '{@link com.dexels.navajo.navascript.MappedArrayField <em>Mapped Array Field</em>}'.
@@ -6643,6 +6712,32 @@ public interface NavascriptPackage extends EPackage
      * @generated
      */
     EReference SETTER_FIELD__MAPPED_FIELD = eINSTANCE.getSetterField_MappedField();
+
+    /**
+     * The meta object literal for the '<em><b>Mapped Message</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SETTER_FIELD__MAPPED_MESSAGE = eINSTANCE.getSetterField_MappedMessage();
+
+    /**
+     * The meta object literal for the '{@link com.dexels.navajo.navascript.impl.MappedMessageImpl <em>Mapped Message</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.dexels.navajo.navascript.impl.MappedMessageImpl
+     * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMappedMessage()
+     * @generated
+     */
+    EClass MAPPED_MESSAGE = eINSTANCE.getMappedMessage();
+
+    /**
+     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MAPPED_MESSAGE__STATEMENTS = eINSTANCE.getMappedMessage_Statements();
 
     /**
      * The meta object literal for the '{@link com.dexels.navajo.navascript.impl.MappedArrayFieldImpl <em>Mapped Array Field</em>}' class.

@@ -101,6 +101,7 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
       case NavascriptPackage.METHOD_OR_SETTER: return createMethodOrSetter();
       case NavascriptPackage.ADAPTER_METHOD: return createAdapterMethod();
       case NavascriptPackage.SETTER_FIELD: return createSetterField();
+      case NavascriptPackage.MAPPED_MESSAGE: return createMappedMessage();
       case NavascriptPackage.MAPPED_ARRAY_FIELD: return createMappedArrayField();
       case NavascriptPackage.MAPPED_ARRAY_MESSAGE: return createMappedArrayMessage();
       case NavascriptPackage.KEY_VALUE_ARGUMENTS: return createKeyValueArguments();
@@ -603,6 +604,18 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
   {
     SetterFieldImpl setterField = new SetterFieldImpl();
     return setterField;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MappedMessage createMappedMessage()
+  {
+    MappedMessageImpl mappedMessage = new MappedMessageImpl();
+    return mappedMessage;
   }
 
   /**

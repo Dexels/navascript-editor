@@ -52,6 +52,7 @@ import com.dexels.navajo.navascript.MappableIdentifier;
 import com.dexels.navajo.navascript.MappableIdentifierLiteral;
 import com.dexels.navajo.navascript.MappedArrayField;
 import com.dexels.navajo.navascript.MappedArrayMessage;
+import com.dexels.navajo.navascript.MappedMessage;
 import com.dexels.navajo.navascript.MemoType;
 import com.dexels.navajo.navascript.Message;
 import com.dexels.navajo.navascript.MessageArgument;
@@ -375,6 +376,13 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   private EClass setterFieldEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mappedMessageEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1907,6 +1915,39 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
   public EReference getSetterField_MappedField()
   {
     return (EReference)setterFieldEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSetterField_MappedMessage()
+  {
+    return (EReference)setterFieldEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMappedMessage()
+  {
+    return mappedMessageEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMappedMessage_Statements()
+  {
+    return (EReference)mappedMessageEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3705,6 +3746,10 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     createEReference(setterFieldEClass, SETTER_FIELD__EXPRESSION_LIST);
     createEReference(setterFieldEClass, SETTER_FIELD__MAPPED_ARRAY);
     createEReference(setterFieldEClass, SETTER_FIELD__MAPPED_FIELD);
+    createEReference(setterFieldEClass, SETTER_FIELD__MAPPED_MESSAGE);
+
+    mappedMessageEClass = createEClass(MAPPED_MESSAGE);
+    createEReference(mappedMessageEClass, MAPPED_MESSAGE__STATEMENTS);
 
     mappedArrayFieldEClass = createEClass(MAPPED_ARRAY_FIELD);
     createEAttribute(mappedArrayFieldEClass, MAPPED_ARRAY_FIELD__FIELD);
@@ -4130,6 +4175,10 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     initEReference(getSetterField_ExpressionList(), this.getConditionalExpressions(), null, "expressionList", null, 0, 1, SetterField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSetterField_MappedArray(), this.getMappedArrayMessage(), null, "mappedArray", null, 0, 1, SetterField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSetterField_MappedField(), this.getMappedArrayField(), null, "mappedField", null, 0, 1, SetterField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSetterField_MappedMessage(), this.getMappedMessage(), null, "mappedMessage", null, 0, 1, SetterField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mappedMessageEClass, MappedMessage.class, "MappedMessage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMappedMessage_Statements(), this.getInnerBody(), null, "statements", null, 0, -1, MappedMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mappedArrayFieldEClass, MappedArrayField.class, "MappedArrayField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMappedArrayField_Field(), ecorePackage.getEString(), "field", null, 0, 1, MappedArrayField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

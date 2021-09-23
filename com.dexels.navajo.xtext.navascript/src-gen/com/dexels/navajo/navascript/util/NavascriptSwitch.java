@@ -333,6 +333,13 @@ public class NavascriptSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case NavascriptPackage.MAPPED_MESSAGE:
+      {
+        MappedMessage mappedMessage = (MappedMessage)theEObject;
+        T result = caseMappedMessage(mappedMessage);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case NavascriptPackage.MAPPED_ARRAY_FIELD:
       {
         MappedArrayField mappedArrayField = (MappedArrayField)theEObject;
@@ -1478,6 +1485,22 @@ public class NavascriptSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSetterField(SetterField object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Mapped Message</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Mapped Message</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMappedMessage(MappedMessage object)
   {
     return null;
   }

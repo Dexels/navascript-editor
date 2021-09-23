@@ -348,6 +348,15 @@ public interface NavascriptFactory extends EFactory
   SetterField createSetterField();
 
   /**
+   * Returns a new object of class '<em>Mapped Message</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Mapped Message</em>'.
+   * @generated
+   */
+  MappedMessage createMappedMessage();
+
+  /**
    * Returns a new object of class '<em>Mapped Array Field</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

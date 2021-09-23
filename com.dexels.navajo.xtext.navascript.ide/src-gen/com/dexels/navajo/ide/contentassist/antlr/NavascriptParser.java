@@ -160,6 +160,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSetterFieldAccess().getGroup_2_0(), "rule__SetterField__Group_2_0__0");
 			builder.put(grammarAccess.getSetterFieldAccess().getGroup_2_1(), "rule__SetterField__Group_2_1__0");
 			builder.put(grammarAccess.getSetterFieldAccess().getGroup_2_1_0(), "rule__SetterField__Group_2_1_0__0");
+			builder.put(grammarAccess.getMappedMessageAccess().getGroup(), "rule__MappedMessage__Group__0");
 			builder.put(grammarAccess.getMappedArrayFieldAccess().getGroup(), "rule__MappedArrayField__Group__0");
 			builder.put(grammarAccess.getMappedArrayFieldAccess().getGroup_2(), "rule__MappedArrayField__Group_2__0");
 			builder.put(grammarAccess.getMappedArrayMessageAccess().getGroup(), "rule__MappedArrayMessage__Group__0");
@@ -319,6 +320,8 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSetterFieldAccess().getArgumentsAssignment_2_1_0_1(), "rule__SetterField__ArgumentsAssignment_2_1_0_1");
 			builder.put(grammarAccess.getSetterFieldAccess().getMappedArrayAssignment_2_1_2(), "rule__SetterField__MappedArrayAssignment_2_1_2");
 			builder.put(grammarAccess.getSetterFieldAccess().getMappedFieldAssignment_2_2(), "rule__SetterField__MappedFieldAssignment_2_2");
+			builder.put(grammarAccess.getSetterFieldAccess().getMappedMessageAssignment_2_3(), "rule__SetterField__MappedMessageAssignment_2_3");
+			builder.put(grammarAccess.getMappedMessageAccess().getStatementsAssignment_2(), "rule__MappedMessage__StatementsAssignment_2");
 			builder.put(grammarAccess.getMappedArrayFieldAccess().getFieldAssignment_1(), "rule__MappedArrayField__FieldAssignment_1");
 			builder.put(grammarAccess.getMappedArrayFieldAccess().getFilterAssignment_2_3(), "rule__MappedArrayField__FilterAssignment_2_3");
 			builder.put(grammarAccess.getMappedArrayFieldAccess().getStatementsAssignment_4(), "rule__MappedArrayField__StatementsAssignment_4");

@@ -17,6 +17,7 @@ package com.dexels.navajo.navascript;
  *   <li>{@link com.dexels.navajo.navascript.SetterField#getExpressionList <em>Expression List</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.SetterField#getMappedArray <em>Mapped Array</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.SetterField#getMappedField <em>Mapped Field</em>}</li>
+ *   <li>{@link com.dexels.navajo.navascript.SetterField#getMappedMessage <em>Mapped Message</em>}</li>
  * </ul>
  *
  * @see com.dexels.navajo.navascript.NavascriptPackage#getSetterField()
@@ -112,5 +113,27 @@ public interface SetterField extends MethodOrSetter
    * @generated
    */
   void setMappedField(MappedArrayField value);
+
+  /**
+   * Returns the value of the '<em><b>Mapped Message</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Mapped Message</em>' containment reference.
+   * @see #setMappedMessage(MappedMessage)
+   * @see com.dexels.navajo.navascript.NavascriptPackage#getSetterField_MappedMessage()
+   * @model containment="true"
+   * @generated
+   */
+  MappedMessage getMappedMessage();
+
+  /**
+   * Sets the value of the '{@link com.dexels.navajo.navascript.SetterField#getMappedMessage <em>Mapped Message</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Mapped Message</em>' containment reference.
+   * @see #getMappedMessage()
+   * @generated
+   */
+  void setMappedMessage(MappedMessage value);
 
 } // SetterField

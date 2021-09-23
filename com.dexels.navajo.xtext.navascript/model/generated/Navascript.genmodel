@@ -127,6 +127,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//SetterField/expressionList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//SetterField/mappedArray"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//SetterField/mappedField"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//SetterField/mappedMessage"/>
+    </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//MappedMessage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//MappedMessage/statements"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//MappedArrayField">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//MappedArrayField/field"/>
