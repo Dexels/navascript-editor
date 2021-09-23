@@ -3,7 +3,7 @@ Automatic-Module-Name: com.dexels.navajo.xtext.navascript.ui
 Bundle-ManifestVersion: 2
 Bundle-Name: com.dexels.navajo.xtext.navascript.ui
 Bundle-Vendor: Dexels BV
-Bundle-Version: 0.9.16
+Bundle-Version: 0.9.18
 Bundle-SymbolicName: com.dexels.navajo.xtext.navascript.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.ui,
