@@ -2,7 +2,7 @@
 <feature
       id="com.dexels.navajo.xtext.navascript.editor.feature"
       label="Navascript 3 Editor"
-      version="1.0.44"
+      version="1.0.46"
       provider-name="Dexels BV">
 
    <description url="http://www.example.com/description">
@@ -266,7 +266,7 @@ The GNU General Public License does not permit incorporating your program into p
          id="com.dexels.navajo.xtext.navascript.navajobridge"
          download-size="0"
          install-size="0"
-         version="0.9.28"
+         version="0.9.30"
          unpack="false"/>
 
    <plugin
