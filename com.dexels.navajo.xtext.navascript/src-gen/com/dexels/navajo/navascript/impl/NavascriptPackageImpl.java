@@ -25,6 +25,7 @@ import com.dexels.navajo.navascript.Comparison;
 import com.dexels.navajo.navascript.ConditionalExpression;
 import com.dexels.navajo.navascript.ConditionalExpressions;
 import com.dexels.navajo.navascript.DateType;
+import com.dexels.navajo.navascript.DebugStatement;
 import com.dexels.navajo.navascript.Define;
 import com.dexels.navajo.navascript.DescriptionArgument;
 import com.dexels.navajo.navascript.DirectionArgument;
@@ -159,6 +160,13 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   private EClass blockStatementsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass debugStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -933,7 +941,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
-  public EReference getNavascript_Validations()
+  public EReference getNavascript_Debug()
   {
     return (EReference)navascriptEClass.getEStructuralFeatures().get(0);
   }
@@ -944,7 +952,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
-  public EReference getNavascript_ToplevelStatements()
+  public EReference getNavascript_Validations()
   {
     return (EReference)navascriptEClass.getEStructuralFeatures().get(1);
   }
@@ -955,9 +963,20 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
-  public EReference getNavascript_Finally()
+  public EReference getNavascript_ToplevelStatements()
   {
     return (EReference)navascriptEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNavascript_Finally()
+  {
+    return (EReference)navascriptEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1068,6 +1087,28 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
   public EReference getBlockStatements_Statements()
   {
     return (EReference)blockStatementsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDebugStatement()
+  {
+    return debugStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDebugStatement_Value()
+  {
+    return (EAttribute)debugStatementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3621,6 +3662,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     // Create classes and their features
     navascriptEClass = createEClass(NAVASCRIPT);
+    createEReference(navascriptEClass, NAVASCRIPT__DEBUG);
     createEReference(navascriptEClass, NAVASCRIPT__VALIDATIONS);
     createEReference(navascriptEClass, NAVASCRIPT__TOPLEVEL_STATEMENTS);
     createEReference(navascriptEClass, NAVASCRIPT__FINALLY);
@@ -3638,6 +3680,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     blockStatementsEClass = createEClass(BLOCK_STATEMENTS);
     createEReference(blockStatementsEClass, BLOCK_STATEMENTS__STATEMENTS);
+
+    debugStatementEClass = createEClass(DEBUG_STATEMENT);
+    createEAttribute(debugStatementEClass, DEBUG_STATEMENT__VALUE);
 
     synchronizedEClass = createEClass(SYNCHRONIZED);
     createEReference(synchronizedEClass, SYNCHRONIZED__ARGUMENTS);
@@ -4050,6 +4095,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     // Initialize classes and features; add operations and parameters
     initEClass(navascriptEClass, Navascript.class, "Navascript", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNavascript_Debug(), this.getDebugStatement(), null, "debug", null, 0, 1, Navascript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNavascript_Validations(), this.getValidations(), null, "validations", null, 0, 1, Navascript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNavascript_ToplevelStatements(), this.getTopLevelStatements(), null, "toplevelStatements", null, 0, 1, Navascript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNavascript_Finally(), this.getFinally(), null, "finally", null, 0, 1, Navascript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4067,6 +4113,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     initEClass(blockStatementsEClass, BlockStatements.class, "BlockStatements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBlockStatements_Statements(), this.getInnerBody(), null, "statements", null, 0, -1, BlockStatements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(debugStatementEClass, DebugStatement.class, "DebugStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDebugStatement_Value(), ecorePackage.getEString(), "value", null, 0, 1, DebugStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(synchronizedEClass, Synchronized.class, "Synchronized", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSynchronized_Arguments(), this.getSynchronizedArguments(), null, "arguments", null, 0, 1, Synchronized.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

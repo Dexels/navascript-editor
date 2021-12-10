@@ -25,6 +25,7 @@ import com.dexels.navajo.navascript.Comparison;
 import com.dexels.navajo.navascript.ConditionalExpression;
 import com.dexels.navajo.navascript.ConditionalExpressions;
 import com.dexels.navajo.navascript.DateType;
+import com.dexels.navajo.navascript.DebugStatement;
 import com.dexels.navajo.navascript.Define;
 import com.dexels.navajo.navascript.DescriptionArgument;
 import com.dexels.navajo.navascript.DirectionArgument;
@@ -190,6 +191,9 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				return; 
 			case NavascriptPackage.DATE_TYPE:
 				sequence_PropertyType(context, (DateType) semanticObject); 
+				return; 
+			case NavascriptPackage.DEBUG_STATEMENT:
+				sequence_DebugStatement(context, (DebugStatement) semanticObject); 
 				return; 
 			case NavascriptPackage.DEFINE:
 				sequence_Define(context, (Define) semanticObject); 
@@ -953,6 +957,18 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     DebugStatement returns DebugStatement
+	 *
+	 * Constraint:
+	 *     (value='all' | value='request' | value='response')
+	 */
+	protected void sequence_DebugStatement(ISerializationContext context, DebugStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Define returns Define
 	 *
 	 * Constraint:
@@ -1442,7 +1458,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Navascript returns Navascript
 	 *
 	 * Constraint:
-	 *     (validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?)
+	 *     (debug=DebugStatement? validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?)
 	 */
 	protected void sequence_Navascript(ISerializationContext context, Navascript semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

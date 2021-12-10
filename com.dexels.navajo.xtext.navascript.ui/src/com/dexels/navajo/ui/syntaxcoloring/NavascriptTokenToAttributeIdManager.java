@@ -23,6 +23,7 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 	static String [] keywordArray =
 		{
 				"'if'",
+				"'@debug'",
 				"'then'",
 				"'else'",
 				"'map.'",
@@ -53,6 +54,7 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 				"'timeout'",
 				"'breakOnNoLock'",
 				"'key'",
+				"'loop'",
 				"'object'",
 				"RULE_IF",
 				"RULE_THEN",

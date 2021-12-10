@@ -7,6 +7,7 @@
   <genPackages prefix="Navascript" basePackage="com.dexels.navajo" disposableProviderFactory="true"
       fileExtensions="ns" ecorePackage="Navascript.ecore#/">
     <genClasses ecoreClass="Navascript.ecore#//Navascript">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Navascript/debug"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Navascript/validations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Navascript/toplevelStatements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Navascript/finally"/>
@@ -24,6 +25,9 @@
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//BlockStatements">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//BlockStatements/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//DebugStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//DebugStatement/value"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//Synchronized">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Synchronized/arguments"/>

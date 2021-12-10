@@ -26,40 +26,48 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Navascript");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cNavascriptAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cValidationsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValidationsValidationsParserRuleCall_1_0 = (RuleCall)cValidationsAssignment_1.eContents().get(0);
-		private final Assignment cToplevelStatementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cToplevelStatementsTopLevelStatementsParserRuleCall_2_0 = (RuleCall)cToplevelStatementsAssignment_2.eContents().get(0);
-		private final Assignment cFinallyAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cFinallyFinallyParserRuleCall_3_0 = (RuleCall)cFinallyAssignment_3.eContents().get(0);
+		private final Assignment cDebugAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cDebugDebugStatementParserRuleCall_1_0 = (RuleCall)cDebugAssignment_1.eContents().get(0);
+		private final Assignment cValidationsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValidationsValidationsParserRuleCall_2_0 = (RuleCall)cValidationsAssignment_2.eContents().get(0);
+		private final Assignment cToplevelStatementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cToplevelStatementsTopLevelStatementsParserRuleCall_3_0 = (RuleCall)cToplevelStatementsAssignment_3.eContents().get(0);
+		private final Assignment cFinallyAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cFinallyFinallyParserRuleCall_4_0 = (RuleCall)cFinallyAssignment_4.eContents().get(0);
 		
 		//Navascript:
-		//	{Navascript} validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?;
+		//	{Navascript} debug=DebugStatement? validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Navascript} validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?
+		//{Navascript} debug=DebugStatement? validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?
 		public Group getGroup() { return cGroup; }
 		
 		//{Navascript}
 		public Action getNavascriptAction_0() { return cNavascriptAction_0; }
 		
+		//debug=DebugStatement?
+		public Assignment getDebugAssignment_1() { return cDebugAssignment_1; }
+		
+		//DebugStatement
+		public RuleCall getDebugDebugStatementParserRuleCall_1_0() { return cDebugDebugStatementParserRuleCall_1_0; }
+		
 		//validations=Validations?
-		public Assignment getValidationsAssignment_1() { return cValidationsAssignment_1; }
+		public Assignment getValidationsAssignment_2() { return cValidationsAssignment_2; }
 		
 		//Validations
-		public RuleCall getValidationsValidationsParserRuleCall_1_0() { return cValidationsValidationsParserRuleCall_1_0; }
+		public RuleCall getValidationsValidationsParserRuleCall_2_0() { return cValidationsValidationsParserRuleCall_2_0; }
 		
 		//toplevelStatements=TopLevelStatements
-		public Assignment getToplevelStatementsAssignment_2() { return cToplevelStatementsAssignment_2; }
+		public Assignment getToplevelStatementsAssignment_3() { return cToplevelStatementsAssignment_3; }
 		
 		//TopLevelStatements
-		public RuleCall getToplevelStatementsTopLevelStatementsParserRuleCall_2_0() { return cToplevelStatementsTopLevelStatementsParserRuleCall_2_0; }
+		public RuleCall getToplevelStatementsTopLevelStatementsParserRuleCall_3_0() { return cToplevelStatementsTopLevelStatementsParserRuleCall_3_0; }
 		
 		//finally=Finally?
-		public Assignment getFinallyAssignment_3() { return cFinallyAssignment_3; }
+		public Assignment getFinallyAssignment_4() { return cFinallyAssignment_4; }
 		
 		//Finally
-		public RuleCall getFinallyFinallyParserRuleCall_3_0() { return cFinallyFinallyParserRuleCall_3_0; }
+		public RuleCall getFinallyFinallyParserRuleCall_4_0() { return cFinallyFinallyParserRuleCall_4_0; }
 	}
 	public class TopLevelStatementsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.TopLevelStatements");
@@ -329,6 +337,50 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
+	public class DebugStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.DebugStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cDebugStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cDebugKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cValueAlternatives_2_0 = (Alternatives)cValueAssignment_2.eContents().get(0);
+		private final Keyword cValueAllKeyword_2_0_0 = (Keyword)cValueAlternatives_2_0.eContents().get(0);
+		private final Keyword cValueRequestKeyword_2_0_1 = (Keyword)cValueAlternatives_2_0.eContents().get(1);
+		private final Keyword cValueResponseKeyword_2_0_2 = (Keyword)cValueAlternatives_2_0.eContents().get(2);
+		
+		///*
+		// * synchronized() {
+		// * 
+		// * }
+		// */
+		//DebugStatement:
+		//	{DebugStatement} '@debug=' value=('all' | 'request' | 'response');
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{DebugStatement} '@debug=' value=('all' | 'request' | 'response')
+		public Group getGroup() { return cGroup; }
+		
+		//{DebugStatement}
+		public Action getDebugStatementAction_0() { return cDebugStatementAction_0; }
+		
+		//'@debug='
+		public Keyword getDebugKeyword_1() { return cDebugKeyword_1; }
+		
+		//value=('all' | 'request' | 'response')
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		
+		//('all' | 'request' | 'response')
+		public Alternatives getValueAlternatives_2_0() { return cValueAlternatives_2_0; }
+		
+		//'all'
+		public Keyword getValueAllKeyword_2_0_0() { return cValueAllKeyword_2_0_0; }
+		
+		//'request'
+		public Keyword getValueRequestKeyword_2_0_1() { return cValueRequestKeyword_2_0_1; }
+		
+		//'response'
+		public Keyword getValueResponseKeyword_2_0_2() { return cValueResponseKeyword_2_0_2; }
+	}
 	public class SynchronizedElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.Synchronized");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -342,11 +394,6 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final RuleCall cStatementsTopLevelStatementParserRuleCall_5_0 = (RuleCall)cStatementsAssignment_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		///*
-		// * synchronized() {
-		// * 
-		// * }
-		// */
 		//Synchronized:
 		//	'synchronized' '(' arguments=SynchronizedArguments ')' '{' statements+=TopLevelStatement* '}';
 		@Override public ParserRule getRule() { return rule; }
@@ -4343,6 +4390,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	private final TopLevelStatementElements pTopLevelStatement;
 	private final InnerBodyElements pInnerBody;
 	private final BlockStatementsElements pBlockStatements;
+	private final DebugStatementElements pDebugStatement;
 	private final SynchronizedElements pSynchronized;
 	private final SynchronizedArgumentsElements pSynchronizedArguments;
 	private final SynchronizedArgumentElements pSynchronizedArgument;
@@ -4451,6 +4499,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		this.pTopLevelStatement = new TopLevelStatementElements();
 		this.pInnerBody = new InnerBodyElements();
 		this.pBlockStatements = new BlockStatementsElements();
+		this.pDebugStatement = new DebugStatementElements();
 		this.pSynchronized = new SynchronizedElements();
 		this.pSynchronizedArguments = new SynchronizedArgumentsElements();
 		this.pSynchronizedArgument = new SynchronizedArgumentElements();
@@ -4574,7 +4623,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 
 	
 	//Navascript:
-	//	{Navascript} validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?;
+	//	{Navascript} debug=DebugStatement? validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?;
 	public NavascriptElements getNavascriptAccess() {
 		return pNavascript;
 	}
@@ -4636,6 +4685,16 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	// * 
 	// * }
 	// */
+	//DebugStatement:
+	//	{DebugStatement} '@debug=' value=('all' | 'request' | 'response');
+	public DebugStatementElements getDebugStatementAccess() {
+		return pDebugStatement;
+	}
+	
+	public ParserRule getDebugStatementRule() {
+		return getDebugStatementAccess().getRule();
+	}
+	
 	//Synchronized:
 	//	'synchronized' '(' arguments=SynchronizedArguments ')' '{' statements+=TopLevelStatement* '}';
 	public SynchronizedElements getSynchronizedAccess() {

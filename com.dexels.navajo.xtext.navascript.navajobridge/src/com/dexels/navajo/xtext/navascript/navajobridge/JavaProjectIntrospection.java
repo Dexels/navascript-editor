@@ -188,7 +188,8 @@ public class JavaProjectIntrospection {
 				urls.add(u);
 			}
 		} catch (Throwable t) {
-			t.printStackTrace(System.err);
+			System.err.println(t.getLocalizedMessage());
+			//t.printStackTrace(System.err);
 		}
 
 		return urls;
@@ -201,7 +202,7 @@ public class JavaProjectIntrospection {
 		try {
 			Class foundClass = Class.forName(adapterClassName, true, cl);
 			Object adapterObject = foundClass.getDeclaredConstructor().newInstance();
-			System.err.println("LOADED " + adapterClassName + " OBJECT: " + adapterObject);
+			//System.err.println("LOADED " + adapterClassName + " OBJECT: " + adapterObject);
 			readAdaptersFromDefinitionFile(adapterObject, cl);
 		} catch (Throwable t) {
 			System.err.println("could not load MONGO lib: " + t);
@@ -215,7 +216,7 @@ public class JavaProjectIntrospection {
 		try {
 			Class foundClass = Class.forName(adapterClassName, true, cl);
 			Object adapterObject = foundClass.getDeclaredConstructor().newInstance();
-			System.err.println("LOADED " + adapterClassName + " OBJECT: " + adapterObject);
+			//System.err.println("LOADED " + adapterClassName + " OBJECT: " + adapterObject);
 			readFunctionsFromDefinitionFile(adapterObject);
 		} catch (Throwable t) {
 			System.err.println("could not load MONGO lib: " + t);
@@ -266,7 +267,7 @@ public class JavaProjectIntrospection {
 					pmd.addMapMetaData(o, foundClass);
 
 				} catch (Throwable e) {
-					e.printStackTrace(System.err);
+					//e.printStackTrace(System.err);
 					System.err.println("Could not find MapMetaData in project: " + p.getName() + ": " + e.getMessage());
 				}
 				

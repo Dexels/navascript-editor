@@ -101,6 +101,11 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
         return createBlockStatementsAdapter();
       }
       @Override
+      public Adapter caseDebugStatement(DebugStatement object)
+      {
+        return createDebugStatementAdapter();
+      }
+      @Override
       public Adapter caseSynchronized(Synchronized object)
       {
         return createSynchronizedAdapter();
@@ -688,6 +693,21 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBlockStatementsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.DebugStatement <em>Debug Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.DebugStatement
+   * @generated
+   */
+  public Adapter createDebugStatementAdapter()
   {
     return null;
   }

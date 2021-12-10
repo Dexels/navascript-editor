@@ -3,6 +3,7 @@
  */
 package com.dexels.navajo.navascript.impl;
 
+import com.dexels.navajo.navascript.DebugStatement;
 import com.dexels.navajo.navascript.Finally;
 import com.dexels.navajo.navascript.Navascript;
 import com.dexels.navajo.navascript.NavascriptPackage;
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link com.dexels.navajo.navascript.impl.NavascriptImpl#getDebug <em>Debug</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.impl.NavascriptImpl#getValidations <em>Validations</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.impl.NavascriptImpl#getToplevelStatements <em>Toplevel Statements</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.impl.NavascriptImpl#getFinally <em>Finally</em>}</li>
@@ -35,6 +37,16 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class NavascriptImpl extends MinimalEObjectImpl.Container implements Navascript
 {
+  /**
+   * The cached value of the '{@link #getDebug() <em>Debug</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDebug()
+   * @generated
+   * @ordered
+   */
+  protected DebugStatement debug;
+
   /**
    * The cached value of the '{@link #getValidations() <em>Validations</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -84,6 +96,56 @@ public class NavascriptImpl extends MinimalEObjectImpl.Container implements Nava
   protected EClass eStaticClass()
   {
     return NavascriptPackage.Literals.NAVASCRIPT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DebugStatement getDebug()
+  {
+    return debug;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDebug(DebugStatement newDebug, NotificationChain msgs)
+  {
+    DebugStatement oldDebug = debug;
+    debug = newDebug;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NavascriptPackage.NAVASCRIPT__DEBUG, oldDebug, newDebug);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDebug(DebugStatement newDebug)
+  {
+    if (newDebug != debug)
+    {
+      NotificationChain msgs = null;
+      if (debug != null)
+        msgs = ((InternalEObject)debug).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NavascriptPackage.NAVASCRIPT__DEBUG, null, msgs);
+      if (newDebug != null)
+        msgs = ((InternalEObject)newDebug).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NavascriptPackage.NAVASCRIPT__DEBUG, null, msgs);
+      msgs = basicSetDebug(newDebug, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, NavascriptPackage.NAVASCRIPT__DEBUG, newDebug, newDebug));
   }
 
   /**
@@ -246,6 +308,8 @@ public class NavascriptImpl extends MinimalEObjectImpl.Container implements Nava
   {
     switch (featureID)
     {
+      case NavascriptPackage.NAVASCRIPT__DEBUG:
+        return basicSetDebug(null, msgs);
       case NavascriptPackage.NAVASCRIPT__VALIDATIONS:
         return basicSetValidations(null, msgs);
       case NavascriptPackage.NAVASCRIPT__TOPLEVEL_STATEMENTS:
@@ -266,6 +330,8 @@ public class NavascriptImpl extends MinimalEObjectImpl.Container implements Nava
   {
     switch (featureID)
     {
+      case NavascriptPackage.NAVASCRIPT__DEBUG:
+        return getDebug();
       case NavascriptPackage.NAVASCRIPT__VALIDATIONS:
         return getValidations();
       case NavascriptPackage.NAVASCRIPT__TOPLEVEL_STATEMENTS:
@@ -286,6 +352,9 @@ public class NavascriptImpl extends MinimalEObjectImpl.Container implements Nava
   {
     switch (featureID)
     {
+      case NavascriptPackage.NAVASCRIPT__DEBUG:
+        setDebug((DebugStatement)newValue);
+        return;
       case NavascriptPackage.NAVASCRIPT__VALIDATIONS:
         setValidations((Validations)newValue);
         return;
@@ -309,6 +378,9 @@ public class NavascriptImpl extends MinimalEObjectImpl.Container implements Nava
   {
     switch (featureID)
     {
+      case NavascriptPackage.NAVASCRIPT__DEBUG:
+        setDebug((DebugStatement)null);
+        return;
       case NavascriptPackage.NAVASCRIPT__VALIDATIONS:
         setValidations((Validations)null);
         return;
@@ -332,6 +404,8 @@ public class NavascriptImpl extends MinimalEObjectImpl.Container implements Nava
   {
     switch (featureID)
     {
+      case NavascriptPackage.NAVASCRIPT__DEBUG:
+        return debug != null;
       case NavascriptPackage.NAVASCRIPT__VALIDATIONS:
         return validations != null;
       case NavascriptPackage.NAVASCRIPT__TOPLEVEL_STATEMENTS:

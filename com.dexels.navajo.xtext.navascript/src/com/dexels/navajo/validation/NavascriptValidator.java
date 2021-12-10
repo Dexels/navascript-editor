@@ -81,6 +81,9 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		}
 
 		List<String> altInputs = functionDef.getInput();
+		if ( altInputs.isEmpty() ) { // If there are no inputs specified, return;
+			return;
+		}
 		for (String alt : altInputs) {
 			int argSize = alt.split(",").length;
 			if (argSize == arguments.size()) {

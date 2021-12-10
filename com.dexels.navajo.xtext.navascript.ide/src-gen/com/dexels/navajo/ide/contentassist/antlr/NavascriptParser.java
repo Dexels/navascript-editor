@@ -33,6 +33,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, NavascriptGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getTopLevelStatementAccess().getStatementAlternatives_2_0(), "rule__TopLevelStatement__StatementAlternatives_2_0");
 			builder.put(grammarAccess.getInnerBodyAccess().getStatementAlternatives_2_0(), "rule__InnerBody__StatementAlternatives_2_0");
+			builder.put(grammarAccess.getDebugStatementAccess().getValueAlternatives_2_0(), "rule__DebugStatement__ValueAlternatives_2_0");
 			builder.put(grammarAccess.getSynchronizedArgumentAccess().getAlternatives(), "rule__SynchronizedArgument__Alternatives");
 			builder.put(grammarAccess.getSContextAccess().getAlternatives_1(), "rule__SContext__Alternatives_1");
 			builder.put(grammarAccess.getSContextAccess().getAlternatives_2(), "rule__SContext__Alternatives_2");
@@ -106,6 +107,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getInnerBodyAccess().getGroup(), "rule__InnerBody__Group__0");
 			builder.put(grammarAccess.getInnerBodyAccess().getGroup_1(), "rule__InnerBody__Group_1__0");
 			builder.put(grammarAccess.getBlockStatementsAccess().getGroup(), "rule__BlockStatements__Group__0");
+			builder.put(grammarAccess.getDebugStatementAccess().getGroup(), "rule__DebugStatement__Group__0");
 			builder.put(grammarAccess.getSynchronizedAccess().getGroup(), "rule__Synchronized__Group__0");
 			builder.put(grammarAccess.getSynchronizedArgumentsAccess().getGroup(), "rule__SynchronizedArguments__Group__0");
 			builder.put(grammarAccess.getSynchronizedArgumentsAccess().getGroup_1(), "rule__SynchronizedArguments__Group_1__0");
@@ -257,15 +259,17 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMessageTypeAccess().getGroup_2(), "rule__MessageType__Group_2__0");
 			builder.put(grammarAccess.getMessageModeAccess().getGroup_0(), "rule__MessageMode__Group_0__0");
 			builder.put(grammarAccess.getMessageModeAccess().getGroup_1(), "rule__MessageMode__Group_1__0");
-			builder.put(grammarAccess.getNavascriptAccess().getValidationsAssignment_1(), "rule__Navascript__ValidationsAssignment_1");
-			builder.put(grammarAccess.getNavascriptAccess().getToplevelStatementsAssignment_2(), "rule__Navascript__ToplevelStatementsAssignment_2");
-			builder.put(grammarAccess.getNavascriptAccess().getFinallyAssignment_3(), "rule__Navascript__FinallyAssignment_3");
+			builder.put(grammarAccess.getNavascriptAccess().getDebugAssignment_1(), "rule__Navascript__DebugAssignment_1");
+			builder.put(grammarAccess.getNavascriptAccess().getValidationsAssignment_2(), "rule__Navascript__ValidationsAssignment_2");
+			builder.put(grammarAccess.getNavascriptAccess().getToplevelStatementsAssignment_3(), "rule__Navascript__ToplevelStatementsAssignment_3");
+			builder.put(grammarAccess.getNavascriptAccess().getFinallyAssignment_4(), "rule__Navascript__FinallyAssignment_4");
 			builder.put(grammarAccess.getTopLevelStatementsAccess().getStatementsAssignment_1(), "rule__TopLevelStatements__StatementsAssignment_1");
 			builder.put(grammarAccess.getTopLevelStatementAccess().getConditionAssignment_1_1(), "rule__TopLevelStatement__ConditionAssignment_1_1");
 			builder.put(grammarAccess.getTopLevelStatementAccess().getStatementAssignment_2(), "rule__TopLevelStatement__StatementAssignment_2");
 			builder.put(grammarAccess.getInnerBodyAccess().getConditionAssignment_1_1(), "rule__InnerBody__ConditionAssignment_1_1");
 			builder.put(grammarAccess.getInnerBodyAccess().getStatementAssignment_2(), "rule__InnerBody__StatementAssignment_2");
 			builder.put(grammarAccess.getBlockStatementsAccess().getStatementsAssignment_2(), "rule__BlockStatements__StatementsAssignment_2");
+			builder.put(grammarAccess.getDebugStatementAccess().getValueAssignment_2(), "rule__DebugStatement__ValueAssignment_2");
 			builder.put(grammarAccess.getSynchronizedAccess().getArgumentsAssignment_2(), "rule__Synchronized__ArgumentsAssignment_2");
 			builder.put(grammarAccess.getSynchronizedAccess().getStatementsAssignment_5(), "rule__Synchronized__StatementsAssignment_5");
 			builder.put(grammarAccess.getSynchronizedArgumentsAccess().getArgumentsAssignment_0(), "rule__SynchronizedArguments__ArgumentsAssignment_0");

@@ -3,6 +3,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="navascript" nsURI="http://www.dexels.com/navajo/Navascript"
     nsPrefix="navascript">
   <eClassifiers xsi:type="ecore:EClass" name="Navascript">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//DebugStatement"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="validations" eType="#//Validations"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="toplevelStatements" eType="#//TopLevelStatements"
@@ -29,6 +31,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="BlockStatements">
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
         eType="#//InnerBody" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DebugStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Synchronized">
     <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" eType="#//SynchronizedArguments"

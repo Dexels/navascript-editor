@@ -95,9 +95,28 @@ ruleNavascript returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getNavascriptAccess().getValidationsValidationsParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getNavascriptAccess().getDebugDebugStatementParserRuleCall_1_0());
 				}
-				lv_validations_1_0=ruleValidations
+				lv_debug_1_0=ruleDebugStatement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getNavascriptRule());
+					}
+					set(
+						$current,
+						"debug",
+						lv_debug_1_0,
+						"com.dexels.navajo.Navascript.DebugStatement");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getNavascriptAccess().getValidationsValidationsParserRuleCall_2_0());
+				}
+				lv_validations_2_0=ruleValidations
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getNavascriptRule());
@@ -105,7 +124,7 @@ ruleNavascript returns [EObject current=null]
 					set(
 						$current,
 						"validations",
-						lv_validations_1_0,
+						lv_validations_2_0,
 						"com.dexels.navajo.Navascript.Validations");
 					afterParserOrEnumRuleCall();
 				}
@@ -114,9 +133,9 @@ ruleNavascript returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getNavascriptAccess().getToplevelStatementsTopLevelStatementsParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getNavascriptAccess().getToplevelStatementsTopLevelStatementsParserRuleCall_3_0());
 				}
-				lv_toplevelStatements_2_0=ruleTopLevelStatements
+				lv_toplevelStatements_3_0=ruleTopLevelStatements
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getNavascriptRule());
@@ -124,7 +143,7 @@ ruleNavascript returns [EObject current=null]
 					set(
 						$current,
 						"toplevelStatements",
-						lv_toplevelStatements_2_0,
+						lv_toplevelStatements_3_0,
 						"com.dexels.navajo.Navascript.TopLevelStatements");
 					afterParserOrEnumRuleCall();
 				}
@@ -133,9 +152,9 @@ ruleNavascript returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getNavascriptAccess().getFinallyFinallyParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getNavascriptAccess().getFinallyFinallyParserRuleCall_4_0());
 				}
-				lv_finally_3_0=ruleFinally
+				lv_finally_4_0=ruleFinally
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getNavascriptRule());
@@ -143,7 +162,7 @@ ruleNavascript returns [EObject current=null]
 					set(
 						$current,
 						"finally",
-						lv_finally_3_0,
+						lv_finally_4_0,
 						"com.dexels.navajo.Navascript.Finally");
 					afterParserOrEnumRuleCall();
 				}
@@ -827,6 +846,77 @@ ruleBlockStatements returns [EObject current=null]
 		{
 			newLeafNode(otherlv_3, grammarAccess.getBlockStatementsAccess().getRightCurlyBracketKeyword_3());
 		}
+	)
+;
+
+// Entry rule entryRuleDebugStatement
+entryRuleDebugStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDebugStatementRule()); }
+	iv_ruleDebugStatement=ruleDebugStatement
+	{ $current=$iv_ruleDebugStatement.current; }
+	EOF;
+
+// Rule DebugStatement
+ruleDebugStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				/* */
+			}
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getDebugStatementAccess().getDebugStatementAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='@debug='
+		{
+			newLeafNode(otherlv_1, grammarAccess.getDebugStatementAccess().getDebugKeyword_1());
+		}
+		(
+			(
+				(
+					lv_value_2_1='all'
+					{
+						newLeafNode(lv_value_2_1, grammarAccess.getDebugStatementAccess().getValueAllKeyword_2_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getDebugStatementRule());
+						}
+						setWithLastConsumed($current, "value", lv_value_2_1, null);
+					}
+					    |
+					lv_value_2_2='request'
+					{
+						newLeafNode(lv_value_2_2, grammarAccess.getDebugStatementAccess().getValueRequestKeyword_2_0_1());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getDebugStatementRule());
+						}
+						setWithLastConsumed($current, "value", lv_value_2_2, null);
+					}
+					    |
+					lv_value_2_3='response'
+					{
+						newLeafNode(lv_value_2_3, grammarAccess.getDebugStatementAccess().getValueResponseKeyword_2_0_2());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getDebugStatementRule());
+						}
+						setWithLastConsumed($current, "value", lv_value_2_3, null);
+					}
+				)
+			)
+		)
 	)
 ;
 

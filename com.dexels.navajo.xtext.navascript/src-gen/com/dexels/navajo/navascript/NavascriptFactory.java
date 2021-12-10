@@ -69,6 +69,15 @@ public interface NavascriptFactory extends EFactory
   BlockStatements createBlockStatements();
 
   /**
+   * Returns a new object of class '<em>Debug Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Debug Statement</em>'.
+   * @generated
+   */
+  DebugStatement createDebugStatement();
+
+  /**
    * Returns a new object of class '<em>Synchronized</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

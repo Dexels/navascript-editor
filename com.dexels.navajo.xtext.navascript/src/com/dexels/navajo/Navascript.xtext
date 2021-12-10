@@ -6,7 +6,7 @@ import "http://www.eclipse.org/emf/2002/Ecore"
 
 generate navascript "http://www.dexels.com/navajo/Navascript"
  
-Navascript: {Navascript} validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?;
+Navascript: {Navascript} debug=DebugStatement? validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?;
 
 // TopLevelStatement ::= Include | Message | Var | Break | Map | AntiMessage | Define | ConditionalEmptyMessage | Synchronized | Print | Log | Loop | Methods
 
@@ -31,6 +31,9 @@ BlockStatements : {BlockStatements} '{' statements+=InnerBody* '}' ;
  * 
  * }
  */
+
+DebugStatement:
+	{DebugStatement} '@debug=' ( value=( 'all' | 'request' | 'response') );
 
 Synchronized : 'synchronized' '(' arguments=SynchronizedArguments ')' '{' statements+=TopLevelStatement* '}';
 

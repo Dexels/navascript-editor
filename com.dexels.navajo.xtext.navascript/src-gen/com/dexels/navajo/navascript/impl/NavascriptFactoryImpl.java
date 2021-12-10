@@ -70,6 +70,7 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
       case NavascriptPackage.TOP_LEVEL_STATEMENT: return createTopLevelStatement();
       case NavascriptPackage.INNER_BODY: return createInnerBody();
       case NavascriptPackage.BLOCK_STATEMENTS: return createBlockStatements();
+      case NavascriptPackage.DEBUG_STATEMENT: return createDebugStatement();
       case NavascriptPackage.SYNCHRONIZED: return createSynchronized();
       case NavascriptPackage.SYNCHRONIZED_ARGUMENTS: return createSynchronizedArguments();
       case NavascriptPackage.SYNCHRONIZED_ARGUMENT: return createSynchronizedArgument();
@@ -232,6 +233,18 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
   {
     BlockStatementsImpl blockStatements = new BlockStatementsImpl();
     return blockStatements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DebugStatement createDebugStatement()
+  {
+    DebugStatementImpl debugStatement = new DebugStatementImpl();
+    return debugStatement;
   }
 
   /**
