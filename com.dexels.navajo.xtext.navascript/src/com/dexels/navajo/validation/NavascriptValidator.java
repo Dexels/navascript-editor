@@ -78,7 +78,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		if (functionDef == null) {
 			warning("Unknown function: " + functionName, NavascriptPackage.Literals.FUNCTION_IDENTIFIER__FUNC);
 			return;
-		}
+		} 
 
 		List<String> altInputs = functionDef.getInput();
 		if ( altInputs.isEmpty() ) { // If there are no inputs specified, return;
