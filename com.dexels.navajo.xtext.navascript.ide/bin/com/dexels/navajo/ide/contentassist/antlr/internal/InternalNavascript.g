@@ -3684,6 +3684,12 @@ rule__Atomic__Alternatives
 		(rule__Atomic__Group_8__0)
 		{ after(grammarAccess.getAtomicAccess().getGroup_8()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getAtomicAccess().getGroup_9()); }
+		(rule__Atomic__Group_9__0)
+		{ after(grammarAccess.getAtomicAccess().getGroup_9()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -15606,6 +15612,60 @@ finally {
 }
 
 
+rule__Atomic__Group_9__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Atomic__Group_9__0__Impl
+	rule__Atomic__Group_9__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Atomic__Group_9__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAtomicAccess().getTodayLiteralAction_9_0()); }
+	()
+	{ after(grammarAccess.getAtomicAccess().getTodayLiteralAction_9_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Atomic__Group_9__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Atomic__Group_9__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Atomic__Group_9__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAtomicAccess().getValueAssignment_9_1()); }
+	(rule__Atomic__ValueAssignment_9_1)
+	{ after(grammarAccess.getAtomicAccess().getValueAssignment_9_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 rule__ForAllIdentifier__Group__0
 	@init {
 		int stackSize = keepStackSize();
@@ -19396,6 +19456,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__Atomic__ValueAssignment_9_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getAtomicAccess().getValueTODAYTerminalRuleCall_9_1_0()); }
+		RULE_TODAY
+		{ after(grammarAccess.getAtomicAccess().getValueTODAYTerminalRuleCall_9_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__ForAllIdentifier__OpAssignment_1
 	@init {
 		int stackSize = keepStackSize();
@@ -19563,6 +19638,8 @@ RULE_FALSE : 'false';
 fragment RULE_MAPPABLE_ID : '$';
 
 RULE_NULL_DEF : 'null';
+
+RULE_TODAY : 'TODAY';
 
 RULE_OBJECT_IDENTIFIER : '"' RULE_IDENTIFIER ('.' RULE_IDENTIFIER)+ '"';
 

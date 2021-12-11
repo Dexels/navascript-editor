@@ -233,6 +233,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAtomicAccess().getGroup_6(), "rule__Atomic__Group_6__0");
 			builder.put(grammarAccess.getAtomicAccess().getGroup_7(), "rule__Atomic__Group_7__0");
 			builder.put(grammarAccess.getAtomicAccess().getGroup_8(), "rule__Atomic__Group_8__0");
+			builder.put(grammarAccess.getAtomicAccess().getGroup_9(), "rule__Atomic__Group_9__0");
 			builder.put(grammarAccess.getForAllIdentifierAccess().getGroup(), "rule__ForAllIdentifier__Group__0");
 			builder.put(grammarAccess.getFunctionIdentifierAccess().getGroup(), "rule__FunctionIdentifier__Group__0");
 			builder.put(grammarAccess.getFunctionIdentifierAccess().getGroup_2(), "rule__FunctionIdentifier__Group_2__0");
@@ -398,6 +399,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_6_2(), "rule__Atomic__ValueAssignment_6_2");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_7_1(), "rule__Atomic__ValueAssignment_7_1");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_8_1(), "rule__Atomic__ValueAssignment_8_1");
+			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_9_1(), "rule__Atomic__ValueAssignment_9_1");
 			builder.put(grammarAccess.getForAllIdentifierAccess().getOpAssignment_1(), "rule__ForAllIdentifier__OpAssignment_1");
 			builder.put(grammarAccess.getForAllIdentifierAccess().getExpressionAssignment_4(), "rule__ForAllIdentifier__ExpressionAssignment_4");
 			builder.put(grammarAccess.getForAllIdentifierAccess().getMessagedefinitionAssignment_7(), "rule__ForAllIdentifier__MessagedefinitionAssignment_7");

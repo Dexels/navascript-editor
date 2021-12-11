@@ -1,13 +1,17 @@
 package com.dexels.navajo.navigation;
 
+import java.lang.reflect.Method;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.INode;
 
 import com.dexels.navajo.navascript.InnerBody;
+import com.dexels.navajo.navascript.MappableIdentifierLiteral;
 import com.dexels.navajo.navascript.Message;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
 import com.dexels.navajo.navascript.impl.PropertyImpl;
+import com.dexels.navajo.navascript.impl.SetterFieldImpl;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
 import com.dexels.navajo.xtext.navascript.navajobridge.ProxyValueDefinition;
@@ -18,7 +22,7 @@ public final class NavigationUtils {
 
 	}
 
-	public static AdapterClassDefinition findAdapterClass(NavajoProxyStub adapters, EObject model) {
+	public static AdapterClassDefinition findAdapterClass(NavajoProxyStub adapters, EObject model, String childAdapter) {
 
 		if ( model instanceof MapImpl ) {
 			return adapters.getAdapter(((MapImpl) model).getAdapterName());
@@ -35,8 +39,36 @@ public final class NavigationUtils {
 				ProxyValueDefinition vdef = mde.getMapDefinition().getValueDefinition(fieldName);
 				return adapters.getAdapter(vdef.getMapType());
 			} else if ( parent instanceof MappedArrayFieldImpl ) {
-				return findAdapterClass(adapters, parent.eContainer());
+				return findAdapterClass(adapters, parent.eContainer(), childAdapter);
+			} 
+		} else if ( model instanceof SetterFieldImpl ) {
+			SetterFieldImpl sfi = (SetterFieldImpl) model;
+			String fieldName = getFieldFromMappableIdentifier(sfi.getField());
+			int level = countMappableParentLevel(sfi.getField());
+			EObject parent = NavigationUtils.findFirstMapOrMappedField(sfi.eContainer(), level);
+			if ( parent instanceof MapImpl ) {
+				MapImpl parentMap = (MapImpl) parent;
+				AdapterClassDefinition mde = adapters.getAdapter(parentMap.getAdapterName());
+				try {
+					AdapterClassDefinition fieldClass = mde.getMappedFieldType(fieldName);
+					// Check if childAdapter is non-zero
+					if ( childAdapter != null ) {
+						for ( String nextChild : childAdapter.split("\\.")) {
+							fieldClass = fieldClass.getMappedFieldType(nextChild);
+						}
+					}
+					return fieldClass;
+				} catch (Exception e) {
+					return null;
+				}
+			} else if ( parent instanceof MappedArrayFieldImpl ) {
+				return findAdapterClass(adapters, parent.eContainer(), childAdapter);
+			} else if ( parent instanceof SetterFieldImpl ) {
+				return findAdapterClass(adapters, parent, ( childAdapter != null ? fieldName + "." + childAdapter : fieldName ));
 			}
+
+		} else {
+			System.err.println("In findAdapterClass. model is unknown: " + model);
 		}
 
 		return null;
@@ -70,14 +102,26 @@ public final class NavigationUtils {
 
 	public static EObject findFirstMapOrMappedField(EObject node, int level) {
 
+		//System.err.println("In findFirstMapOrMappedField: " + node);
+
 		if ( level < 0 ) {
 			return null;
 		}
 
 		int currentLevel = level;
 		if ( node != null ) {
-			if ( node instanceof MapImpl || node instanceof MappedArrayFieldImpl ) {
+			boolean isMappedSetterField = false;
+			if ( node instanceof SetterFieldImpl ) {
+				// mappedField
+				SetterFieldImpl sfi = (SetterFieldImpl) node;
+				if ( sfi.getMappedField() != null || sfi.getMappedMessage() != null ) {
+					//System.err.println(">>>>>> Found mapped field: " + sfi.getField());
+					isMappedSetterField = true;
+				}
+			}
+			if ( node instanceof MapImpl || node instanceof MappedArrayFieldImpl || isMappedSetterField ) {
 				if ( currentLevel == 0 ) {
+					//System.err.println("In findFirstMapOrMappedField. Returning " + node);
 					return node;
 				} else {
 					currentLevel--;
@@ -85,6 +129,7 @@ public final class NavigationUtils {
 			} 
 			return findFirstMapOrMappedField(node.eContainer(), currentLevel);
 		} else {
+			//System.err.println("In findFirstMapOrMappedField. Returning null");
 			return null;
 		}
 	}
@@ -98,7 +143,15 @@ public final class NavigationUtils {
 		int currentLevel = level;
 		if ( node != null ) {
 			EObject e = node.getSemanticElement();
-			if ( e instanceof MapImpl || e instanceof MappedArrayFieldImpl ) {
+			if ( e instanceof SetterFieldImpl && ((SetterFieldImpl) e).getMappedMessage() != null ) { //
+				String fieldName = ((SetterFieldImpl) e).getField();
+				System.err.println("In findFirstMapOrMappedField: " + fieldName + ", mappedmessage: " + ((SetterFieldImpl) e).getMappedMessage());
+				if ( currentLevel == 0 ) {
+					return e;
+				} else {
+					currentLevel--;
+				}
+			} else if ( e instanceof MapImpl || e instanceof MappedArrayFieldImpl ) {
 				if ( currentLevel == 0 ) {
 					return e;
 				} else {

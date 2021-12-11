@@ -825,6 +825,15 @@ public interface NavascriptFactory extends EFactory
   NullLiteral createNullLiteral();
 
   /**
+   * Returns a new object of class '<em>Today Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Today Literal</em>'.
+   * @generated
+   */
+  TodayLiteral createTodayLiteral();
+
+  /**
    * Returns a new object of class '<em>Int Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

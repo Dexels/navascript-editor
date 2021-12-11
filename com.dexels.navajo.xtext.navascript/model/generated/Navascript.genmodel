@@ -315,6 +315,9 @@
     <genClasses ecoreClass="Navascript.ecore#//NullLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//NullLiteral/value"/>
     </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//TodayLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//TodayLiteral/value"/>
+    </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//IntType"/>
     <genClasses ecoreClass="Navascript.ecore#//StringType"/>
     <genClasses ecoreClass="Navascript.ecore#//BooleanType"/>

@@ -93,6 +93,10 @@ public class NavajoProxyStub implements IResourceChangeListener {
 		return acd;
 	}
 
+	public void addAdapter(String name, AdapterClassDefinition adapterClassDefinition) {
+		adapters.put(name, adapterClassDefinition);
+	}
+	
 	public ProxyFunctionDefinition getFunction(String s) {
 		return FunctionDefinitionCache.getInstance().getFunction(s);
 	}

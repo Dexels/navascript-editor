@@ -87,6 +87,7 @@ import com.dexels.navajo.navascript.SynchronizedArguments;
 import com.dexels.navajo.navascript.TimestampType;
 import com.dexels.navajo.navascript.TmlIdentifier;
 import com.dexels.navajo.navascript.TmlIdentifierLiteral;
+import com.dexels.navajo.navascript.TodayLiteral;
 import com.dexels.navajo.navascript.TopLevelStatement;
 import com.dexels.navajo.navascript.TopLevelStatements;
 import com.dexels.navajo.navascript.TypeArgument;
@@ -374,6 +375,9 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				return; 
 			case NavascriptPackage.TML_IDENTIFIER_LITERAL:
 				sequence_Atomic(context, (TmlIdentifierLiteral) semanticObject); 
+				return; 
+			case NavascriptPackage.TODAY_LITERAL:
+				sequence_Atomic(context, (TodayLiteral) semanticObject); 
 				return; 
 			case NavascriptPackage.TOP_LEVEL_STATEMENT:
 				sequence_TopLevelStatement(context, (TopLevelStatement) semanticObject); 
@@ -798,6 +802,40 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 */
 	protected void sequence_Atomic(ISerializationContext context, TmlIdentifierLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SynchronizedArgument returns TodayLiteral
+	 *     STimeout returns TodayLiteral
+	 *     SBreakOnNoLock returns TodayLiteral
+	 *     Expression returns TodayLiteral
+	 *     BooleanExpression returns TodayLiteral
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns TodayLiteral
+	 *     Comparison returns TodayLiteral
+	 *     Comparison.Comparison_1_0_0 returns TodayLiteral
+	 *     Equals returns TodayLiteral
+	 *     Equals.Equals_1_0_0 returns TodayLiteral
+	 *     Addition returns TodayLiteral
+	 *     Addition.Plus_1_0_0_0 returns TodayLiteral
+	 *     Addition.Minus_1_0_1_0 returns TodayLiteral
+	 *     Multiplication returns TodayLiteral
+	 *     Multiplication.MultiOrDiv_1_0_0 returns TodayLiteral
+	 *     Prefixed returns TodayLiteral
+	 *     Atomic returns TodayLiteral
+	 *
+	 * Constraint:
+	 *     value=TODAY
+	 */
+	protected void sequence_Atomic(ISerializationContext context, TodayLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.TODAY_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.TODAY_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueTODAYTerminalRuleCall_9_1_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	

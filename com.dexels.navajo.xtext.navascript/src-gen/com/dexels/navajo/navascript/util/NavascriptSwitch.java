@@ -783,6 +783,17 @@ public class NavascriptSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case NavascriptPackage.TODAY_LITERAL:
+      {
+        TodayLiteral todayLiteral = (TodayLiteral)theEObject;
+        T result = caseTodayLiteral(todayLiteral);
+        if (result == null) result = caseExpression(todayLiteral);
+        if (result == null) result = caseSTimeout(todayLiteral);
+        if (result == null) result = caseSBreakOnNoLock(todayLiteral);
+        if (result == null) result = caseSynchronizedArgument(todayLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case NavascriptPackage.INT_TYPE:
       {
         IntType intType = (IntType)theEObject;
@@ -2340,6 +2351,22 @@ public class NavascriptSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseNullLiteral(NullLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Today Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Today Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTodayLiteral(TodayLiteral object)
   {
     return null;
   }

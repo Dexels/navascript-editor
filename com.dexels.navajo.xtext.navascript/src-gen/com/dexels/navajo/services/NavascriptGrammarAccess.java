@@ -3766,18 +3766,22 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Action cNullLiteralAction_8_0 = (Action)cGroup_8.eContents().get(0);
 		private final Assignment cValueAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
 		private final RuleCall cValueNULL_DEFTerminalRuleCall_8_1_0 = (RuleCall)cValueAssignment_8_1.eContents().get(0);
+		private final Group cGroup_9 = (Group)cAlternatives.eContents().get(9);
+		private final Action cTodayLiteralAction_9_0 = (Action)cGroup_9.eContents().get(0);
+		private final Assignment cValueAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
+		private final RuleCall cValueTODAYTerminalRuleCall_9_1_0 = (RuleCall)cValueAssignment_9_1.eContents().get(0);
 		
 		//Atomic Expression:
 		//	{ExpressionLiteral} '(' value=Expression ')' | {NumberLiteral} value=(INTEGER | ONE | FLOAT) | {StringLiteral}
 		//	value=STRING_LITERAL | {BooleanLiteral} value=(TRUE | FALSE) | {FunctionCallLiteral} value=FunctionIdentifier |
 		//	{MappableIdentifierLiteral} value=MappableIdentifier | {TmlIdentifierLiteral} hasExists?='?'? value=TmlIdentifier |
-		//	{ForAllLiteral} value=ForAllIdentifier | {NullLiteral} value=NULL_DEF;
+		//	{ForAllLiteral} value=ForAllIdentifier | {NullLiteral} value=NULL_DEF | {TodayLiteral} value=TODAY;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{ExpressionLiteral} '(' value=Expression ')' | {NumberLiteral} value=(INTEGER | ONE | FLOAT) | {StringLiteral}
 		//value=STRING_LITERAL | {BooleanLiteral} value=(TRUE | FALSE) | {FunctionCallLiteral} value=FunctionIdentifier |
 		//{MappableIdentifierLiteral} value=MappableIdentifier | {TmlIdentifierLiteral} hasExists?='?'? value=TmlIdentifier |
-		//{ForAllLiteral} value=ForAllIdentifier | {NullLiteral} value=NULL_DEF
+		//{ForAllLiteral} value=ForAllIdentifier | {NullLiteral} value=NULL_DEF | {TodayLiteral} value=TODAY
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{ExpressionLiteral} '(' value=Expression ')'
@@ -3914,6 +3918,18 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		
 		//NULL_DEF
 		public RuleCall getValueNULL_DEFTerminalRuleCall_8_1_0() { return cValueNULL_DEFTerminalRuleCall_8_1_0; }
+		
+		//{TodayLiteral} value=TODAY
+		public Group getGroup_9() { return cGroup_9; }
+		
+		//{TodayLiteral}
+		public Action getTodayLiteralAction_9_0() { return cTodayLiteralAction_9_0; }
+		
+		//value=TODAY
+		public Assignment getValueAssignment_9_1() { return cValueAssignment_9_1; }
+		
+		//TODAY
+		public RuleCall getValueTODAYTerminalRuleCall_9_1_0() { return cValueTODAYTerminalRuleCall_9_1_0; }
 	}
 	public class ForAllIdentifierElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.ForAllIdentifier");
@@ -4475,6 +4491,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	private final TerminalRule tFALSE;
 	private final TerminalRule tMAPPABLE_ID;
 	private final TerminalRule tNULL_DEF;
+	private final TerminalRule tTODAY;
 	private final TerminalRule tOBJECT_IDENTIFIER;
 	private final TerminalRule tQUOTED_IDENTIFIER;
 	private final TerminalRule tSTRING_CONSTANT;
@@ -4584,6 +4601,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		this.tFALSE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.FALSE");
 		this.tMAPPABLE_ID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.MAPPABLE_ID");
 		this.tNULL_DEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.NULL_DEF");
+		this.tTODAY = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.TODAY");
 		this.tOBJECT_IDENTIFIER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.OBJECT_IDENTIFIER");
 		this.tQUOTED_IDENTIFIER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.QUOTED_IDENTIFIER");
 		this.tSTRING_CONSTANT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.STRING_CONSTANT");
@@ -5382,7 +5400,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	//	{ExpressionLiteral} '(' value=Expression ')' | {NumberLiteral} value=(INTEGER | ONE | FLOAT) | {StringLiteral}
 	//	value=STRING_LITERAL | {BooleanLiteral} value=(TRUE | FALSE) | {FunctionCallLiteral} value=FunctionIdentifier |
 	//	{MappableIdentifierLiteral} value=MappableIdentifier | {TmlIdentifierLiteral} hasExists?='?'? value=TmlIdentifier |
-	//	{ForAllLiteral} value=ForAllIdentifier | {NullLiteral} value=NULL_DEF;
+	//	{ForAllLiteral} value=ForAllIdentifier | {NullLiteral} value=NULL_DEF | {TodayLiteral} value=TODAY;
 	public AtomicElements getAtomicAccess() {
 		return pAtomic;
 	}
@@ -5525,6 +5543,12 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	//	'null';
 	public TerminalRule getNULL_DEFRule() {
 		return tNULL_DEF;
+	}
+	
+	//terminal TODAY:
+	//	'TODAY';
+	public TerminalRule getTODAYRule() {
+		return tTODAY;
 	}
 	
 	//terminal OBJECT_IDENTIFIER:

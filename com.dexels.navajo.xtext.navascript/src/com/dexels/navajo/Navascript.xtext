@@ -228,7 +228,8 @@ Atomic returns Expression:
     {MappableIdentifierLiteral} value=MappableIdentifier |
     {TmlIdentifierLiteral} hasExists?='?'? value=TmlIdentifier |
     {ForAllLiteral} value=ForAllIdentifier |
-    {NullLiteral} value=NULL_DEF
+    {NullLiteral} value=NULL_DEF |
+    {TodayLiteral} value=TODAY
         ;
 
 ForAllIdentifier:
@@ -281,7 +282,8 @@ terminal TRUE : 'true';
 terminal FALSE : 'false';
 terminal MAPPABLE_ID : '$';
 terminal NULL_DEF : 'null';
-	
+terminal TODAY : 'TODAY';
+
 terminal OBJECT_IDENTIFIER:
 	'"' IDENTIFIER ( '.' IDENTIFIER)+ '"'
 ;

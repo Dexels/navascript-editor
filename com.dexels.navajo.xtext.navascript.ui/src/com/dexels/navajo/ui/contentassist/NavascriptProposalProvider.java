@@ -36,6 +36,8 @@ import com.dexels.navajo.navascript.impl.FunctionIdentifierImpl;
 import com.dexels.navajo.navascript.impl.KeyValueArgumentsImpl;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
+import com.dexels.navajo.navascript.impl.MessageImpl;
+import com.dexels.navajo.navascript.impl.SetterFieldImpl;
 import com.dexels.navajo.navigation.NavigationUtils;
 import com.dexels.navajo.services.NavascriptGrammarAccess;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
@@ -276,14 +278,29 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	@Override
 	public void completeSetterField_Field(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 
+		System.err.println("In completeSetterField_Field: " + model);
+		System.err.println(">>>> parent: " + context.getLastCompleteNode().getParent().getSemanticElement());
+		
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), 0);
 
+		// Check if parent is mapped message.
+		boolean showGetters = false;
+		if (context.getLastCompleteNode().getParent() != null && context.getLastCompleteNode().getParent().getSemanticElement() instanceof MessageImpl) {
+			System.err.println("FOUND A MAPPED MESSAGE IN completeSetterField_Field... This could become a getter to map onto a message...");
+			showGetters = true;
+		}
+		
 		if ( map != null ) {
 			String adapterName;
 			Set<String> fields;
-			if ( map instanceof MapImpl ) {
-				adapterName = ((MapImpl) map).getAdapterName();
-				AdapterClassDefinition md = getNavajoProxyStub().getAdapter(adapterName);
+			if ( map instanceof MapImpl ||  map instanceof SetterFieldImpl) {
+				AdapterClassDefinition md  = null;
+				if (map instanceof MapImpl ) {
+					adapterName = ((MapImpl) map).getAdapterName();
+					md = getNavajoProxyStub().getAdapter(adapterName);
+				} else {
+					md = NavigationUtils.findAdapterClass(adapters, map, null);
+				}
 				fields = md.getSetters();
 				for ( String a : fields ) {
 					String type = "unknown";
@@ -293,6 +310,18 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 						System.err.println("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
 					}
 					acceptor.accept(createCompletionProposalFormatted("$" + a, type, 1, context));
+				}
+				if ( showGetters ) {
+					fields = md.getGetters();
+					for ( String a : fields ) {
+						String type = "unknown";
+						try {
+							type = md.getGetterType(a);
+						} catch (Exception e) {
+							System.err.println("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
+						}
+						acceptor.accept(createCompletionProposalFormatted("$" + a, type, 1, context));
+					}
 				}
 			} else if ( map instanceof MappedArrayFieldImpl ) {
 				System.err.println("Closest map is a MappedArrayFieldImpl");
@@ -364,7 +393,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
 		if ( map != null ) {
-			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
+			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map, null);
 			if ( md != null ) {
 				Set<String> fields = md.getGetters();
 				for ( String a : fields ) {
@@ -402,7 +431,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
 
 		if ( map != null ) {
-			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
+			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map, null);
 			if ( md != null ) {
 				List<ProxyValueDefinition> valuedDefs = md.getDeclaredValues();
 				for ( ProxyValueDefinition a : valuedDefs ) {

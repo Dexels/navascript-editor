@@ -2,6 +2,7 @@ package com.dexels.navajo.xtext.navascript.navajobridge;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +31,34 @@ public class AdapterClassDefinition  {
 	private Set<String> getters = new HashSet<>();
 	private Map<String,String> getterTypes = new HashMap<>();
 
+	private static final Set<Class<?>> WRAPPER_TYPE_MAP;
+	static {
+		WRAPPER_TYPE_MAP = new HashSet<Class<?>>();
+		WRAPPER_TYPE_MAP.add(Integer.class);
+		WRAPPER_TYPE_MAP.add(Byte.class);
+		WRAPPER_TYPE_MAP.add(Character.class);
+		WRAPPER_TYPE_MAP.add(Boolean.class);
+		WRAPPER_TYPE_MAP.add(Double.class);
+		WRAPPER_TYPE_MAP.add(Float.class);
+		WRAPPER_TYPE_MAP.add(Long.class);
+		WRAPPER_TYPE_MAP.add(Short.class);
+		WRAPPER_TYPE_MAP.add(Void.class);
+		WRAPPER_TYPE_MAP.add(int.class);
+		WRAPPER_TYPE_MAP.add(byte.class);
+		WRAPPER_TYPE_MAP.add(char.class);
+		WRAPPER_TYPE_MAP.add(boolean.class);
+		WRAPPER_TYPE_MAP.add(double.class);
+		WRAPPER_TYPE_MAP.add(float.class);
+		WRAPPER_TYPE_MAP.add(long.class);
+		WRAPPER_TYPE_MAP.add(short.class);
+		WRAPPER_TYPE_MAP.add(void.class);
+		WRAPPER_TYPE_MAP.add(String.class);
+	}
+
+	public static boolean isPrimitiveType(Class source) {
+		return WRAPPER_TYPE_MAP.contains(source);
+	}
+
 	public AdapterClassDefinition(ProxyMapDefinition m, ClassLoader cl) throws Exception {
 		myDefinition = m;
 		try {
@@ -45,6 +74,88 @@ public class AdapterClassDefinition  {
 	public AdapterClassDefinition(Class m, ClassLoader cl) throws Exception {
 		classLoader = cl;
 		classDefinition = m;
+		myDefinition = new ProxyMapDefinition();
+	}
+
+	private final String constructSetMethod(String name) {
+
+		StringBuilder methodNameBuffer = new StringBuilder();
+		methodNameBuffer.append("set")
+		.append((name.charAt(0) + "").toUpperCase())
+		.append(name.substring(1, name.length()));
+
+		return methodNameBuffer.toString();
+	}
+
+	private final String constructGetMethod(String name) {
+
+		StringBuilder methodNameBuffer = new StringBuilder();
+		methodNameBuffer.append("get")
+		.append((name.charAt(0) + "").toUpperCase())
+		.append(name.substring(1, name.length()));
+
+		return methodNameBuffer.toString();
+	}
+
+	public AdapterClassDefinition getMappedFieldType(String name, Class<?>...parameterTypes) throws Exception {
+
+		String fullyQualifiedName =  ( myDefinition.tagName != null ? myDefinition.tagName + "." + name : classDefinition.getCanonicalName() + "." + name );
+
+		NavajoProxyStub nps = NavajoProxyStub.getInstance();
+		if ( nps.getAdapter(fullyQualifiedName) != null ) {
+			return nps.getAdapter(fullyQualifiedName); 
+		}
+
+		Class returntype = null;
+		try {
+			String getMethod = constructGetMethod(name);
+			Method method = classDefinition.getMethod(getMethod, parameterTypes);
+			returntype =  method.getReturnType();
+			if ( isIterableClass(returntype) ) {
+				ParameterizedType pt = (ParameterizedType) method.getGenericReturnType();
+				returntype = (Class) pt.getActualTypeArguments()[0];
+			}
+		} catch (Exception e) {
+			try {
+				// finally try setting field directly
+				Field field = classDefinition.getField(name);
+				returntype = field.getType();
+				if ( isIterableClass(returntype) ) {
+					ParameterizedType pt = (ParameterizedType) classDefinition.getField(name).getGenericType();
+					returntype = (Class) pt.getActualTypeArguments()[0];
+				}
+			} catch (Exception e2 ) {
+				throw new Exception("Could not find field: " + name);
+			}
+		}
+
+		if ( isPrimitiveType(returntype) ) {
+			throw new Exception("Cannot map field with type: " + returntype);
+		}
+		
+		AdapterClassDefinition acd = new AdapterClassDefinition(returntype, this.classLoader);
+		nps.addAdapter(fullyQualifiedName, acd);
+
+		return acd;
+
+	}
+
+	private static boolean isIterableClass(Class<?> clazz) {
+		List<Class<?>> classes = new ArrayList<Class<?>>();
+		computeClassHierarchy( clazz, classes );
+		return classes.contains( Iterable.class );
+	}
+
+	private static void computeClassHierarchy(Class<?> clazz, List<Class<?>> classes) {
+		for ( Class current = clazz; current != null; current = current.getSuperclass() ) {
+			if ( classes.contains( current ) ) {
+				return;
+			}
+			classes.add( current );
+			for ( Class currentInterface : current.getInterfaces() ) {
+				computeClassHierarchy( currentInterface, classes );
+			}
+		}
 	}
 
 	public ProxyMapDefinition getMapDefinition() {
@@ -129,9 +240,11 @@ public class AdapterClassDefinition  {
 		}
 		if ( type.getTypeName().endsWith("Memo")) {
 			return "memo";
+		} else {
+			return type.getTypeName();
 		}
 
-		throw new Exception("Unknown navajo type for: " + type);
+		//throw new Exception("Unknown navajo type for: " + type);
 
 		//		if ( type.getTypeName().indexOf(".") != -1 && classLoader != null) { // object
 		//			return getType(Class.forName(type.getTypeName(), true, classLoader));
@@ -175,6 +288,10 @@ public class AdapterClassDefinition  {
 		} else {
 			return null;
 		}
+	}
+
+	public Class getClassDefinition() {
+		return classDefinition;
 	}
 
 	public boolean isSetter(String field)  {
@@ -226,12 +343,13 @@ public class AdapterClassDefinition  {
 		return false;
 	}
 
-	public Set<String> getGetters() { // Use definition not object.
+	public Set<String> getGetters() { // Use definition and object.
 
 		if ( getters.size() > 0 ) {
 			return getters;
 		}
 
+		// First get everything from definition
 		if ( !checkClassDefinition()) { 
 			Set<String> values = myDefinition.getValueDefinitions();
 			for ( String v : values ) {
@@ -243,9 +361,10 @@ public class AdapterClassDefinition  {
 			return getters;
 		}
 
+		// Then get all 'getters' for this class.
 		Method [] methods = classDefinition.getMethods();
 		for ( Method m : methods ) {
-			if ( m.getName().startsWith("get")) {
+			if ( m.getName().startsWith("get") && ! m.getName().equals("getClass")) {
 				String name = m.getName().substring(3);
 				name = (name.charAt(0)+"").toLowerCase() + name.substring(1);
 				// getterTypes
@@ -259,6 +378,20 @@ public class AdapterClassDefinition  {
 				}	
 			}
 		}
+
+		// Finally get all Fields for which there is NO getter.
+		Field [] fields = classDefinition.getFields();
+		for ( Field f : fields ) {
+			if ( !getters.contains(f.getName() ) ) {
+				try {
+					getterTypes.put(f.getName(), getType(f.getGenericType()) );
+					getters.add(f.getName());
+				} catch (Exception e) {
+					System.err.println("Could not find type for " + f.getGenericType() + ": " + e);
+				}
+			}
+		}
+
 		return getters;
 	}
 
@@ -278,7 +411,8 @@ public class AdapterClassDefinition  {
 			return setters;
 		}
 
-		if ( !checkClassDefinition()) { // Use definition not object.
+		// First get everything from definition.
+		if ( !checkClassDefinition()) { 
 			Set<String> values = myDefinition.getValueDefinitions();
 			for ( String v : values ) {
 				ProxyValueDefinition vd = myDefinition.getValueDefinition(v);
@@ -289,6 +423,7 @@ public class AdapterClassDefinition  {
 			return setters;
 		}
 
+		// Then get all methods that start with 'set'.
 		Method [] methods = classDefinition.getMethods();
 		for ( Method m : methods ) {
 			if ( m.getName().startsWith("set") && m.getGenericParameterTypes().length == 1 ) {
@@ -304,6 +439,20 @@ public class AdapterClassDefinition  {
 				}
 			}
 		}
+
+		// Finally get all Fields for which there is NO setter.
+		Field [] fields = classDefinition.getFields();
+		for ( Field f : fields ) {
+			if ( !setters.contains(f.getName() ) ) {
+				try {
+					setterTypes.put(f.getName(), getType(f.getGenericType()) );
+					setters.add(f.getName());
+				} catch (Exception e) {
+					System.err.println("Could not find type for " + f.getGenericType() + ": " + e);
+				}
+			}
+		}
+
 		return setters;
 	}
 
@@ -381,6 +530,10 @@ public class AdapterClassDefinition  {
 	private void printSignature(String field) {
 		List<List<String>> signatures  = getGetterTypeSignatures(field);
 		System.err.println(field + ": " + signatures);
+	}
+
+	public static void main(String [] args) {
+		System.err.println(isPrimitiveType(int.class));
 	}
 
 }

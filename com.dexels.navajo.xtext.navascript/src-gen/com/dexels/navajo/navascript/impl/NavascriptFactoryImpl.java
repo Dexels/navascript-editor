@@ -154,6 +154,7 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
       case NavascriptPackage.TML_IDENTIFIER_LITERAL: return createTmlIdentifierLiteral();
       case NavascriptPackage.FOR_ALL_LITERAL: return createForAllLiteral();
       case NavascriptPackage.NULL_LITERAL: return createNullLiteral();
+      case NavascriptPackage.TODAY_LITERAL: return createTodayLiteral();
       case NavascriptPackage.INT_TYPE: return createIntType();
       case NavascriptPackage.STRING_TYPE: return createStringType();
       case NavascriptPackage.BOOLEAN_TYPE: return createBooleanType();
@@ -1241,6 +1242,18 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
   {
     NullLiteralImpl nullLiteral = new NullLiteralImpl();
     return nullLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TodayLiteral createTodayLiteral()
+  {
+    TodayLiteralImpl todayLiteral = new TodayLiteralImpl();
+    return todayLiteral;
   }
 
   /**

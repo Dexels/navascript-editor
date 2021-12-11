@@ -489,6 +489,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=NULL_DEF
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=ONE
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=STRING_LITERAL
+	 *     (rule start) 'breakOnNoLock' (ambiguity) value=TODAY
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=TRUE
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=TmlIdentifier
 	 *     (rule start) 'breakOnNoLock' (ambiguity) {AndOrExpression.left=}
@@ -520,6 +521,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) value=NULL_DEF
 	 *     (rule start) (ambiguity) value=ONE
 	 *     (rule start) (ambiguity) value=STRING_LITERAL
+	 *     (rule start) (ambiguity) value=TODAY
 	 *     (rule start) (ambiguity) value=TRUE
 	 *     (rule start) (ambiguity) value=TmlIdentifier
 	 *     (rule start) (ambiguity) {AndOrExpression.left=}
@@ -564,6 +566,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) 'timeout' (ambiguity) value=NULL_DEF
 	 *     (rule start) 'timeout' (ambiguity) value=ONE
 	 *     (rule start) 'timeout' (ambiguity) value=STRING_LITERAL
+	 *     (rule start) 'timeout' (ambiguity) value=TODAY
 	 *     (rule start) 'timeout' (ambiguity) value=TRUE
 	 *     (rule start) 'timeout' (ambiguity) value=TmlIdentifier
 	 *     (rule start) 'timeout' (ambiguity) {AndOrExpression.left=}

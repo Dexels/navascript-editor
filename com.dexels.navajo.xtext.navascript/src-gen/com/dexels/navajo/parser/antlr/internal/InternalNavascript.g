@@ -6773,6 +6773,37 @@ ruleAtomic returns [EObject current=null]
 				)
 			)
 		)
+		    |
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicAccess().getTodayLiteralAction_9_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_22_0=RULE_TODAY
+					{
+						newLeafNode(lv_value_22_0, grammarAccess.getAtomicAccess().getValueTODAYTerminalRuleCall_9_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_22_0,
+							"com.dexels.navajo.Navascript.TODAY");
+					}
+				)
+			)
+		)
 	)
 ;
 
@@ -7529,6 +7560,8 @@ RULE_FALSE : 'false';
 fragment RULE_MAPPABLE_ID : '$';
 
 RULE_NULL_DEF : 'null';
+
+RULE_TODAY : 'TODAY';
 
 RULE_OBJECT_IDENTIFIER : '"' RULE_IDENTIFIER ('.' RULE_IDENTIFIER)+ '"';
 

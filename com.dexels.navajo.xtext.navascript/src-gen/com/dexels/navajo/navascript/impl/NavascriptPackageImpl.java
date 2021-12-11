@@ -98,6 +98,7 @@ import com.dexels.navajo.navascript.SynchronizedArguments;
 import com.dexels.navajo.navascript.TimestampType;
 import com.dexels.navajo.navascript.TmlIdentifier;
 import com.dexels.navajo.navascript.TmlIdentifierLiteral;
+import com.dexels.navajo.navascript.TodayLiteral;
 import com.dexels.navajo.navascript.TopLevelStatement;
 import com.dexels.navajo.navascript.TopLevelStatements;
 import com.dexels.navajo.navascript.TypeArgument;
@@ -748,6 +749,13 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   private EClass nullLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass todayLiteralEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -3460,6 +3468,28 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
+  public EClass getTodayLiteral()
+  {
+    return todayLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTodayLiteral_Value()
+  {
+    return (EAttribute)todayLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getIntType()
   {
     return intTypeEClass;
@@ -3980,6 +4010,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     nullLiteralEClass = createEClass(NULL_LITERAL);
     createEAttribute(nullLiteralEClass, NULL_LITERAL__VALUE);
 
+    todayLiteralEClass = createEClass(TODAY_LITERAL);
+    createEAttribute(todayLiteralEClass, TODAY_LITERAL__VALUE);
+
     intTypeEClass = createEClass(INT_TYPE);
 
     stringTypeEClass = createEClass(STRING_TYPE);
@@ -4076,6 +4109,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     tmlIdentifierLiteralEClass.getESuperTypes().add(this.getExpression());
     forAllLiteralEClass.getESuperTypes().add(this.getExpression());
     nullLiteralEClass.getESuperTypes().add(this.getExpression());
+    todayLiteralEClass.getESuperTypes().add(this.getExpression());
     intTypeEClass.getESuperTypes().add(this.getPropertyType());
     stringTypeEClass.getESuperTypes().add(this.getPropertyType());
     booleanTypeEClass.getESuperTypes().add(this.getPropertyType());
@@ -4412,6 +4446,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     initEClass(nullLiteralEClass, NullLiteral.class, "NullLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNullLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, NullLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(todayLiteralEClass, TodayLiteral.class, "TodayLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTodayLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, TodayLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intTypeEClass, IntType.class, "IntType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

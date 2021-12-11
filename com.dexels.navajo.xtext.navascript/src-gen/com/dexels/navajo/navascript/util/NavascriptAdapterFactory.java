@@ -521,6 +521,11 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
         return createNullLiteralAdapter();
       }
       @Override
+      public Adapter caseTodayLiteral(TodayLiteral object)
+      {
+        return createTodayLiteralAdapter();
+      }
+      @Override
       public Adapter caseIntType(IntType object)
       {
         return createIntTypeAdapter();
@@ -1953,6 +1958,21 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNullLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.TodayLiteral <em>Today Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.TodayLiteral
+   * @generated
+   */
+  public Adapter createTodayLiteralAdapter()
   {
     return null;
   }
