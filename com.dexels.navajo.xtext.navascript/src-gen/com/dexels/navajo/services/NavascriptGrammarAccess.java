@@ -1744,20 +1744,23 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Assignment cArgumentsAssignment_1_1_5_1 = (Assignment)cGroup_1_1_5.eContents().get(1);
 		private final RuleCall cArgumentsKeyValueArgumentsParserRuleCall_1_1_5_1_0 = (RuleCall)cArgumentsAssignment_1_1_5_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_1_6 = (Keyword)cGroup_1_1.eContents().get(6);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cStatementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cStatementsInnerBodyParserRuleCall_3_0 = (RuleCall)cStatementsAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Keyword cSemicolonKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Assignment cStatementsAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
+		private final RuleCall cStatementsInnerBodyParserRuleCall_2_1_1_0 = (RuleCall)cStatementsAssignment_2_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2_1_2 = (Keyword)cGroup_2_1.eContents().get(2);
 		
 		//Map:
 		//	{Map} ('map.' adapterName=IDENTIFIER ('(' arguments=KeyValueArguments? ')')? |
-		//	'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ')') '{'
-		//	statements+=InnerBody* '}';
+		//	'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ')') (';' | '{'
+		//	statements+=InnerBody* '}');
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{Map} ('map.' adapterName=IDENTIFIER ('(' arguments=KeyValueArguments? ')')? |
-		//'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ')') '{'
-		//statements+=InnerBody* '}'
+		//'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ')') (';' | '{'
+		//statements+=InnerBody* '}')
 		public Group getGroup() { return cGroup; }
 		
 		//{Map}
@@ -1836,17 +1839,26 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//')'
 		public Keyword getRightParenthesisKeyword_1_1_6() { return cRightParenthesisKeyword_1_1_6; }
 		
+		//(';' | '{' statements+=InnerBody* '}')
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_2_0() { return cSemicolonKeyword_2_0; }
+		
+		//'{' statements+=InnerBody* '}'
+		public Group getGroup_2_1() { return cGroup_2_1; }
+		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_2_1_0() { return cLeftCurlyBracketKeyword_2_1_0; }
 		
 		//statements+=InnerBody*
-		public Assignment getStatementsAssignment_3() { return cStatementsAssignment_3; }
+		public Assignment getStatementsAssignment_2_1_1() { return cStatementsAssignment_2_1_1; }
 		
 		//InnerBody
-		public RuleCall getStatementsInnerBodyParserRuleCall_3_0() { return cStatementsInnerBodyParserRuleCall_3_0; }
+		public RuleCall getStatementsInnerBodyParserRuleCall_2_1_1_0() { return cStatementsInnerBodyParserRuleCall_2_1_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_2_1_2() { return cRightCurlyBracketKeyword_2_1_2; }
 	}
 	public class MethodOrSetterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.MethodOrSetter");
@@ -5004,8 +5016,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	
 	//Map:
 	//	{Map} ('map.' adapterName=IDENTIFIER ('(' arguments=KeyValueArguments? ')')? |
-	//	'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ')') '{'
-	//	statements+=InnerBody* '}';
+	//	'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER (',' arguments=KeyValueArguments)? ')') (';' | '{'
+	//	statements+=InnerBody* '}');
 	public MapElements getMapAccess() {
 		return pMap;
 	}

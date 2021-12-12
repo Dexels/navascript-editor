@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.validation.Check;
@@ -50,17 +51,19 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 	NavajoProxyStub adapters = null;
 	BundleContext context;
 
+	private static final Logger logger = Logger.getLogger(NavascriptValidator.class);
+	
 	public NavascriptValidator() {
 		context = OSGIRuntime.getDefaultBundleContext();
 		context.addServiceListener(this);
-		System.err.println("In NavascriptValidator: " + context);
+		logger.info("In NavascriptValidator: " + context);
 	}
 
 	public synchronized void init() {
 		if (adapters == null) {
 			ServiceReference<NavajoProxyStub> ref = context.getServiceReference(NavajoProxyStub.class);
 			adapters = context.getService(ref);
-			System.err.println("In NavascriptValidator.init(): " + ref);
+			logger.info("In NavascriptValidator.init(): " + ref);
 		}
 	}
 
@@ -102,9 +105,6 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		String adapterName = map.getAdapterName();
 		String objectName = map.getObjectName();
 
-		// System.err.println("In checkMapDefinition. adapterName: " + adapterName + ",
-		// objectName: " + objectName);
-
 		// If an objectName (old style) is used, ignore check.
 		if (objectName != null && !"".equals(objectName)) {
 			return;
@@ -118,20 +118,27 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 	}
 
 	private void fieldValidator(EObject mai, String prefix) {
+		
+		boolean isSetter = false;
 		boolean isSetterField = ( mai instanceof SetterFieldImpl );
+		if ( mai instanceof SetterFieldImpl ) { // if this is a SetterFieldImpl it can either be a 'setter' or a 'getter'
+			SetterFieldImpl sfi = (SetterFieldImpl) mai;
+			// If nothing is 'mapped', it is a setter.
+			isSetter = sfi.getMappedArray() == null && sfi.getMappedField() == null && sfi.getMappedMessage() == null;
+		}		
 		String fieldName = NavigationUtils.getFieldFromMappableIdentifier(prefix);
 		int level = NavigationUtils.countMappableParentLevel(prefix);
 		EObject parent = NavigationUtils.findFirstMapOrMappedField(mai.eContainer(), level);
 		AdapterClassDefinition mapdef = NavigationUtils.findAdapterClass(getNavajoProxyStub(), parent, null);
 		if (mapdef != null) {
-			boolean isValid = mapdef.isGetter(fieldName);
+			boolean isValid = ( isSetter ? mapdef.isSetter(fieldName) : mapdef.isGetter(fieldName) );
 
 			if (!isValid) {
 				if ( isSetterField ) {
-					warning("Unknown mappable field: " + fieldName, NavascriptPackage.Literals.SETTER_FIELD__FIELD);
+					warning("(1) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.SETTER_FIELD__FIELD);
 					return;
 				} else {
-					warning("Unknown mappable field: " + fieldName, NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__FIELD);
+					warning("(2) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__FIELD);
 					return;
 				}
 			}
@@ -164,7 +171,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 			}
 		} else {
 			if ( isSetterField ) {
-				warning("Unknown mappable field: " + fieldName, NavascriptPackage.Literals.SETTER_FIELD__FIELD);
+				warning("(3) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.SETTER_FIELD__FIELD);
 			} else {
 				warning("Invalid mappable field: " + fieldName, NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__FIELD);
 			}
@@ -178,7 +185,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 	
 	@Check
 	public void checkMappedMessage(MappedMessageImpl mmi) {
-		System.err.println("In checkMappedMessage: " + mmi);
+		// No checking need for now I guess.
 	}
 	
 	@Check
@@ -252,7 +259,6 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 				error("Cannot find field: " + field, NavascriptPackage.Literals.MAPPED_ARRAY_FIELD__FIELD);
 			}
 		} else {
-			System.err.println("Cannot find field, producing message...");
 			error("Cannot find adapter for field: " + raw, NavascriptPackage.Literals.MAPPED_ARRAY_FIELD__FIELD);
 		}
 	}
@@ -307,7 +313,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 
 			}
 		} catch (Throwable t) {
-			t.printStackTrace(System.err);
+			logger.error(t);
 		}
 
 	}

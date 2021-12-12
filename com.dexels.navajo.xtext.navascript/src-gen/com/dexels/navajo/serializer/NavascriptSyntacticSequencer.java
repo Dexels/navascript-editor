@@ -37,6 +37,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_LengthArgument_ColonKeyword_1_1_or_EqualsSignKeyword_1_0;
 	protected AbstractElementAlias match_Loop_ColonKeyword_3_2_1_or_EqualsSignKeyword_3_2_0;
 	protected AbstractElementAlias match_Map_ColonKeyword_1_1_3_1_or_EqualsSignKeyword_1_1_3_0;
+	protected AbstractElementAlias match_Map_SemicolonKeyword_2_0_or___LeftCurlyBracketKeyword_2_1_0_RightCurlyBracketKeyword_2_1_2__;
 	protected AbstractElementAlias match_Map___LeftParenthesisKeyword_1_0_2_0_RightParenthesisKeyword_1_0_2_2__q;
 	protected AbstractElementAlias match_MappableIdentifier___LeftParenthesisKeyword_2_0_RightParenthesisKeyword_2_2__q;
 	protected AbstractElementAlias match_MappedArrayField_ColonKeyword_2_2_1_or_EqualsSignKeyword_2_2_0;
@@ -76,6 +77,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_LengthArgument_ColonKeyword_1_1_or_EqualsSignKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getLengthArgumentAccess().getColonKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getLengthArgumentAccess().getEqualsSignKeyword_1_0()));
 		match_Loop_ColonKeyword_3_2_1_or_EqualsSignKeyword_3_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getLoopAccess().getColonKeyword_3_2_1()), new TokenAlias(false, false, grammarAccess.getLoopAccess().getEqualsSignKeyword_3_2_0()));
 		match_Map_ColonKeyword_1_1_3_1_or_EqualsSignKeyword_1_1_3_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMapAccess().getColonKeyword_1_1_3_1()), new TokenAlias(false, false, grammarAccess.getMapAccess().getEqualsSignKeyword_1_1_3_0()));
+		match_Map_SemicolonKeyword_2_0_or___LeftCurlyBracketKeyword_2_1_0_RightCurlyBracketKeyword_2_1_2__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getMapAccess().getLeftCurlyBracketKeyword_2_1_0()), new TokenAlias(false, false, grammarAccess.getMapAccess().getRightCurlyBracketKeyword_2_1_2())), new TokenAlias(false, false, grammarAccess.getMapAccess().getSemicolonKeyword_2_0()));
 		match_Map___LeftParenthesisKeyword_1_0_2_0_RightParenthesisKeyword_1_0_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getMapAccess().getLeftParenthesisKeyword_1_0_2_0()), new TokenAlias(false, false, grammarAccess.getMapAccess().getRightParenthesisKeyword_1_0_2_2()));
 		match_MappableIdentifier___LeftParenthesisKeyword_2_0_RightParenthesisKeyword_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getMappableIdentifierAccess().getLeftParenthesisKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getMappableIdentifierAccess().getRightParenthesisKeyword_2_2()));
 		match_MappedArrayField_ColonKeyword_2_2_1_or_EqualsSignKeyword_2_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMappedArrayFieldAccess().getColonKeyword_2_2_1()), new TokenAlias(false, false, grammarAccess.getMappedArrayFieldAccess().getEqualsSignKeyword_2_2_0()));
@@ -150,6 +152,8 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_Loop_ColonKeyword_3_2_1_or_EqualsSignKeyword_3_2_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Map_ColonKeyword_1_1_3_1_or_EqualsSignKeyword_1_1_3_0.equals(syntax))
 				emit_Map_ColonKeyword_1_1_3_1_or_EqualsSignKeyword_1_1_3_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Map_SemicolonKeyword_2_0_or___LeftCurlyBracketKeyword_2_1_0_RightCurlyBracketKeyword_2_1_2__.equals(syntax))
+				emit_Map_SemicolonKeyword_2_0_or___LeftCurlyBracketKeyword_2_1_0_RightCurlyBracketKeyword_2_1_2__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Map___LeftParenthesisKeyword_1_0_2_0_RightParenthesisKeyword_1_0_2_2__q.equals(syntax))
 				emit_Map___LeftParenthesisKeyword_1_0_2_0_RightParenthesisKeyword_1_0_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_MappableIdentifier___LeftParenthesisKeyword_2_0_RightParenthesisKeyword_2_2__q.equals(syntax))
@@ -368,11 +372,24 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
+	 *     ';' | ('{' '}')
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     adapterName=IDENTIFIER ('(' ')')? (ambiguity) (rule end)
+	 *     arguments=KeyValueArguments ')' (ambiguity) (rule end)
+	 *     objectName=OBJECT_IDENTIFIER ')' (ambiguity) (rule end)
+	 */
+	protected void emit_Map_SemicolonKeyword_2_0_or___LeftCurlyBracketKeyword_2_1_0_RightCurlyBracketKeyword_2_1_2__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
 	 *     ('(' ')')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     adapterName=IDENTIFIER (ambiguity) '{' '}' (rule end)
 	 *     adapterName=IDENTIFIER (ambiguity) '{' statements+=InnerBody
+	 *     adapterName=IDENTIFIER (ambiguity) (';' | ('{' '}')) (rule end)
 	 */
 	protected void emit_Map___LeftParenthesisKeyword_1_0_2_0_RightParenthesisKeyword_1_0_2_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

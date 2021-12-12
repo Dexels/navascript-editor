@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
@@ -73,13 +74,15 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	BundleContext context;
 	NavascriptGrammarAccess grammar;
 
+	private static final Logger logger = Logger.getLogger(NavascriptProposalProvider.class);
+	
 	public NavascriptProposalProvider() {
 		context = OSGIRuntime.getDefaultBundleContext();
 		initGrammar();
 		if ( context != null ) {
 			context.addServiceListener(this);
 		} else {
-			System.err.println("No OSGI environment found");
+			logger.warn("No OSGI environment found");
 		}
 	}
 
@@ -171,7 +174,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				}
 				createParameterList(context, acceptor,  (MapImpl) map, currentParameters);
 			} else {
-				System.err.println(">>>>>>>>>>>>>> Parent is: " + parent);
+				logger.warn("Unknown Parent im processing keyvalue arguments: " + parent);
 			}
 		} else if ( model instanceof AdapterMethodImpl ) {
 			AdapterMethodImpl method = (AdapterMethodImpl) model;
@@ -239,7 +242,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				try {
 					type = md.getType(vd.getField());
 				} catch (Exception e) {
-					//System.err.println("Could not determine type for parameter: " + param);
+					logger.warn("Could not determine type for parameter: " + param);
 				}
 				acceptor.accept(createCompletionProposalFormatted(param + "=", type + " [" + vd.getRequired() + "]", 10, context));
 			}
@@ -251,7 +254,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				try {
 					type = md.getType(vd.getField());
 				} catch (Exception e) {
-					//System.err.println("Could not determine type for parameter: " + param);
+					logger.warn("Could not determine type for parameter: " + param);
 				}
 				acceptor.accept(createCompletionProposalFormatted(param + "=", type, 1, context));
 			}
@@ -278,15 +281,11 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	@Override
 	public void completeSetterField_Field(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 
-		System.err.println("In completeSetterField_Field: " + model);
-		System.err.println(">>>> parent: " + context.getLastCompleteNode().getParent().getSemanticElement());
-		
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), 0);
 
 		// Check if parent is mapped message.
 		boolean showGetters = false;
 		if (context.getLastCompleteNode().getParent() != null && context.getLastCompleteNode().getParent().getSemanticElement() instanceof MessageImpl) {
-			System.err.println("FOUND A MAPPED MESSAGE IN completeSetterField_Field... This could become a getter to map onto a message...");
 			showGetters = true;
 		}
 		
@@ -307,7 +306,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 					try {
 						type = md.getSetterType(a);
 					} catch (Exception e) {
-						System.err.println("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
+						logger.warn("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
 					}
 					acceptor.accept(createCompletionProposalFormatted("$" + a, type, 1, context));
 				}
@@ -318,13 +317,13 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 						try {
 							type = md.getGetterType(a);
 						} catch (Exception e) {
-							System.err.println("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
+							logger.warn("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
 						}
 						acceptor.accept(createCompletionProposalFormatted("$" + a, type, 1, context));
 					}
 				}
 			} else if ( map instanceof MappedArrayFieldImpl ) {
-				System.err.println("Closest map is a MappedArrayFieldImpl");
+				logger.warn("Closest map is a MappedArrayFieldImpl: should not happen.");
 			}
 		}
 	}
@@ -359,7 +358,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				acceptor.accept(createCompletionProposalFormatted("." + a.getName(), parameters+"", 1, context));
 			}
 		} else {
-			System.err.println("No parent map found");
+			logger.warn("No parent map found");
 		}
 	}
 
@@ -401,13 +400,13 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 					try {
 						type = md.getGetterTypeSignatures(a);
 					} catch (Exception e) {
-						System.err.println("(2) Could not determine type for field: " + a  + ": " + e);
+						logger.warn("(2) Could not determine type for field: " + a  + ": " + e);
 					}
 					String typeStr = ( ( type != null ) ? type.toString() : "" ) + " -> " + md.getGetterType(a);
 					acceptor.accept(createCompletionProposalFormatted(prefix + a, typeStr, 1, context));
 				}
 			} else {
-				System.err.println("Could not find parent adapter for " + model);
+				logger.warn("Could not find parent adapter for " + model);
 			}
 		}
 	}
@@ -440,7 +439,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 					}
 				}
 			} else {
-				System.err.println("Could not findAdapterClass for map: " + map);
+				logger.warn("Could not findAdapterClass for map: " + map);
 			}
 		}
 	}
@@ -455,7 +454,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				try {
 					description = getNavajoProxyStub().getFunction(a).getDescription();
 				} catch (Exception e) {
-					System.err.println("(3) Could not determine type for field: " + a + ": " + e);
+					logger.warn("(3) Could not determine type for field: " + a + ": " + e);
 				}
 				acceptor.accept(createCompletionProposalFormatted( a + "(", ": " + getNavajoProxyStub().getFunction(a).getResult() + " -- " + description, 1, context));
 			}

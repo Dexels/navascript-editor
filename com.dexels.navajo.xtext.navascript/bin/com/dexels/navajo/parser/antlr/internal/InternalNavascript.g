@@ -3209,33 +3209,42 @@ ruleMap returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_15='{'
-		{
-			newLeafNode(otherlv_15, grammarAccess.getMapAccess().getLeftCurlyBracketKeyword_2());
-		}
 		(
+			otherlv_15=';'
+			{
+				newLeafNode(otherlv_15, grammarAccess.getMapAccess().getSemicolonKeyword_2_0());
+			}
+			    |
 			(
+				otherlv_16='{'
 				{
-					newCompositeNode(grammarAccess.getMapAccess().getStatementsInnerBodyParserRuleCall_3_0());
+					newLeafNode(otherlv_16, grammarAccess.getMapAccess().getLeftCurlyBracketKeyword_2_1_0());
 				}
-				lv_statements_16_0=ruleInnerBody
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getMapAccess().getStatementsInnerBodyParserRuleCall_2_1_1_0());
+						}
+						lv_statements_17_0=ruleInnerBody
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getMapRule());
+							}
+							add(
+								$current,
+								"statements",
+								lv_statements_17_0,
+								"com.dexels.navajo.Navascript.InnerBody");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)*
+				otherlv_18='}'
 				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getMapRule());
-					}
-					add(
-						$current,
-						"statements",
-						lv_statements_16_0,
-						"com.dexels.navajo.Navascript.InnerBody");
-					afterParserOrEnumRuleCall();
+					newLeafNode(otherlv_18, grammarAccess.getMapAccess().getRightCurlyBracketKeyword_2_1_2());
 				}
 			)
-		)*
-		otherlv_17='}'
-		{
-			newLeafNode(otherlv_17, grammarAccess.getMapAccess().getRightCurlyBracketKeyword_4());
-		}
+		)
 	)
 ;
 

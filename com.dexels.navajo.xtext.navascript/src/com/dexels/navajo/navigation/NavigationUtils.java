@@ -1,23 +1,28 @@
 package com.dexels.navajo.navigation;
 
-import java.lang.reflect.Method;
-
+import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.INode;
 
 import com.dexels.navajo.navascript.InnerBody;
-import com.dexels.navajo.navascript.MappableIdentifierLiteral;
 import com.dexels.navajo.navascript.Message;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
-import com.dexels.navajo.navascript.impl.PropertyImpl;
 import com.dexels.navajo.navascript.impl.SetterFieldImpl;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
 import com.dexels.navajo.xtext.navascript.navajobridge.ProxyValueDefinition;
 
+/**
+ * This class contains helper method to find current "class context" in a script (findAdapterClass).
+ *  
+ * @author arjenschoneveld
+ *
+ */
 public final class NavigationUtils {
 
+	private static final Logger logger = Logger.getLogger(NavigationUtils.class);
+			
 	public NavigationUtils() {
 
 	}
@@ -68,7 +73,7 @@ public final class NavigationUtils {
 			}
 
 		} else {
-			System.err.println("In findAdapterClass. model is unknown: " + model);
+			logger.warn("In findAdapterClass. model is unknown: " + model);
 		}
 
 		return null;
@@ -102,8 +107,6 @@ public final class NavigationUtils {
 
 	public static EObject findFirstMapOrMappedField(EObject node, int level) {
 
-		//System.err.println("In findFirstMapOrMappedField: " + node);
-
 		if ( level < 0 ) {
 			return null;
 		}
@@ -115,13 +118,11 @@ public final class NavigationUtils {
 				// mappedField
 				SetterFieldImpl sfi = (SetterFieldImpl) node;
 				if ( sfi.getMappedField() != null || sfi.getMappedMessage() != null ) {
-					//System.err.println(">>>>>> Found mapped field: " + sfi.getField());
 					isMappedSetterField = true;
 				}
 			}
 			if ( node instanceof MapImpl || node instanceof MappedArrayFieldImpl || isMappedSetterField ) {
 				if ( currentLevel == 0 ) {
-					//System.err.println("In findFirstMapOrMappedField. Returning " + node);
 					return node;
 				} else {
 					currentLevel--;
@@ -129,7 +130,7 @@ public final class NavigationUtils {
 			} 
 			return findFirstMapOrMappedField(node.eContainer(), currentLevel);
 		} else {
-			//System.err.println("In findFirstMapOrMappedField. Returning null");
+			logger.warn("EObject is null");
 			return null;
 		}
 	}
@@ -144,8 +145,6 @@ public final class NavigationUtils {
 		if ( node != null ) {
 			EObject e = node.getSemanticElement();
 			if ( e instanceof SetterFieldImpl && ((SetterFieldImpl) e).getMappedMessage() != null ) { //
-				String fieldName = ((SetterFieldImpl) e).getField();
-				System.err.println("In findFirstMapOrMappedField: " + fieldName + ", mappedmessage: " + ((SetterFieldImpl) e).getMappedMessage());
 				if ( currentLevel == 0 ) {
 					return e;
 				} else {

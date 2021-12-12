@@ -60,6 +60,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMessageArgumentAccess().getAlternatives_1_1(), "rule__MessageArgument__Alternatives_1_1");
 			builder.put(grammarAccess.getMapAccess().getAlternatives_1(), "rule__Map__Alternatives_1");
 			builder.put(grammarAccess.getMapAccess().getAlternatives_1_1_3(), "rule__Map__Alternatives_1_1_3");
+			builder.put(grammarAccess.getMapAccess().getAlternatives_2(), "rule__Map__Alternatives_2");
 			builder.put(grammarAccess.getMethodOrSetterAccess().getAlternatives(), "rule__MethodOrSetter__Alternatives");
 			builder.put(grammarAccess.getSetterFieldAccess().getAlternatives_2(), "rule__SetterField__Alternatives_2");
 			builder.put(grammarAccess.getSetterFieldAccess().getAlternatives_2_0_0(), "rule__SetterField__Alternatives_2_0_0");
@@ -157,6 +158,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMapAccess().getGroup_1_0_2(), "rule__Map__Group_1_0_2__0");
 			builder.put(grammarAccess.getMapAccess().getGroup_1_1(), "rule__Map__Group_1_1__0");
 			builder.put(grammarAccess.getMapAccess().getGroup_1_1_5(), "rule__Map__Group_1_1_5__0");
+			builder.put(grammarAccess.getMapAccess().getGroup_2_1(), "rule__Map__Group_2_1__0");
 			builder.put(grammarAccess.getAdapterMethodAccess().getGroup(), "rule__AdapterMethod__Group__0");
 			builder.put(grammarAccess.getSetterFieldAccess().getGroup(), "rule__SetterField__Group__0");
 			builder.put(grammarAccess.getSetterFieldAccess().getGroup_2_0(), "rule__SetterField__Group_2_0__0");
@@ -317,7 +319,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMapAccess().getArgumentsAssignment_1_0_2_1(), "rule__Map__ArgumentsAssignment_1_0_2_1");
 			builder.put(grammarAccess.getMapAccess().getObjectNameAssignment_1_1_4(), "rule__Map__ObjectNameAssignment_1_1_4");
 			builder.put(grammarAccess.getMapAccess().getArgumentsAssignment_1_1_5_1(), "rule__Map__ArgumentsAssignment_1_1_5_1");
-			builder.put(grammarAccess.getMapAccess().getStatementsAssignment_3(), "rule__Map__StatementsAssignment_3");
+			builder.put(grammarAccess.getMapAccess().getStatementsAssignment_2_1_1(), "rule__Map__StatementsAssignment_2_1_1");
 			builder.put(grammarAccess.getAdapterMethodAccess().getMethodAssignment_1(), "rule__AdapterMethod__MethodAssignment_1");
 			builder.put(grammarAccess.getAdapterMethodAccess().getArgumentsAssignment_3(), "rule__AdapterMethod__ArgumentsAssignment_3");
 			builder.put(grammarAccess.getSetterFieldAccess().getFieldAssignment_1(), "rule__SetterField__FieldAssignment_1");

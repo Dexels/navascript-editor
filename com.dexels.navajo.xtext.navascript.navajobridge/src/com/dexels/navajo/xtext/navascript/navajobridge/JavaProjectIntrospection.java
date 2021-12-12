@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ServiceLoader;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
@@ -31,6 +32,8 @@ import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
 public class JavaProjectIntrospection {
 
 
+	private static final Logger logger = Logger.getLogger(JavaProjectIntrospection.class);
+	
 	public static ClassLoader getProjectClassLoader(IJavaProject javaProject, IProject p) throws Exception {
 
 		IClasspathEntry[] entries = javaProject.getResolvedClasspath(true);
@@ -188,39 +191,10 @@ public class JavaProjectIntrospection {
 				urls.add(u);
 			}
 		} catch (Throwable t) {
-			System.err.println(t.getLocalizedMessage());
-			//t.printStackTrace(System.err);
+			logger.warn(t.getLocalizedMessage());
 		}
 
 		return urls;
-
-	}
-
-	private static void addAdditionalAdapters(String adapterClassName, ClassLoader cl) {
-		// getDefinitionAsStream
-
-		try {
-			Class foundClass = Class.forName(adapterClassName, true, cl);
-			Object adapterObject = foundClass.getDeclaredConstructor().newInstance();
-			//System.err.println("LOADED " + adapterClassName + " OBJECT: " + adapterObject);
-			readAdaptersFromDefinitionFile(adapterObject, cl);
-		} catch (Throwable t) {
-			System.err.println("could not load MONGO lib: " + t);
-		}
-
-	}
-	
-	private static void addAdditionalFunctions(String adapterClassName, ClassLoader cl) {
-		// getDefinitionAsStream
-
-		try {
-			Class foundClass = Class.forName(adapterClassName, true, cl);
-			Object adapterObject = foundClass.getDeclaredConstructor().newInstance();
-			//System.err.println("LOADED " + adapterClassName + " OBJECT: " + adapterObject);
-			readFunctionsFromDefinitionFile(adapterObject);
-		} catch (Throwable t) {
-			System.err.println("could not load MONGO lib: " + t);
-		}
 
 	}
 
@@ -268,7 +242,7 @@ public class JavaProjectIntrospection {
 
 				} catch (Throwable e) {
 					//e.printStackTrace(System.err);
-					System.err.println("Could not find MapMetaData in project: " + p.getName() + ": " + e.getMessage());
+					logger.warn("Could not find MapMetaData in project: " + p.getName() + ": " + e.getMessage());
 				}
 				
 				//addAdditionalAdapters("com.dexels.navajo.mongo.adapter.MongoAdapterLibrary", cl);

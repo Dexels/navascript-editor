@@ -116,7 +116,7 @@ MessageArgument : ( 'type' ('=' | ':') MessageType ) | ( 'mode' ('=' | ':') Mess
 MessageArguments : arguments+=MessageArgument ( ',' arguments+=MessageArgument )*;
 
 Map : {Map} ( 'map.' adapterName=IDENTIFIER ('(' arguments=KeyValueArguments? ')')? | 
-	   'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER ( ',' arguments=KeyValueArguments )? ')') '{' statements+=InnerBody* '}'
+	   'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER ( ',' arguments=KeyValueArguments )? ')') (';' | '{' statements+=InnerBody* '}' )
 ;
 
 MethodOrSetter : AdapterMethod | SetterField ;
