@@ -109,7 +109,9 @@ public class AdapterClassDefinition  {
 			String getMethod = constructGetMethod(name);
 			Method method = classDefinition.getMethod(getMethod, parameterTypes);
 			returntype =  method.getReturnType();
-			if ( isIterableClass(returntype) ) {
+			if ( returntype.isArray() ) {
+				returntype = returntype.getComponentType();
+			} else if ( isIterableClass(returntype) ) {
 				ParameterizedType pt = (ParameterizedType) method.getGenericReturnType();
 				returntype = (Class) pt.getActualTypeArguments()[0];
 			}
@@ -118,7 +120,9 @@ public class AdapterClassDefinition  {
 				// finally try setting field directly
 				Field field = classDefinition.getField(name);
 				returntype = field.getType();
-				if ( isIterableClass(returntype) ) {
+				if ( returntype.isArray() ) {
+					returntype = returntype.getComponentType();
+				} else if ( isIterableClass(returntype) ) {
 					ParameterizedType pt = (ParameterizedType) classDefinition.getField(name).getGenericType();
 					returntype = (Class) pt.getActualTypeArguments()[0];
 				}
