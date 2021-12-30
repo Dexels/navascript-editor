@@ -1576,9 +1576,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
-  public EReference getLoop_Mappable()
+  public EAttribute getLoop_Mappable()
   {
-    return (EReference)loopEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)loopEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3774,7 +3774,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     createEAttribute(methodEClass, METHOD__METHOD_NAME);
 
     loopEClass = createEClass(LOOP);
-    createEReference(loopEClass, LOOP__MAPPABLE);
+    createEAttribute(loopEClass, LOOP__MAPPABLE);
     createEReference(loopEClass, LOOP__TML);
     createEReference(loopEClass, LOOP__FILTER);
     createEReference(loopEClass, LOOP__STATEMENTS);
@@ -4211,7 +4211,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     initEAttribute(getMethod_MethodName(), ecorePackage.getEString(), "methodName", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(loopEClass, Loop.class, "Loop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLoop_Mappable(), this.getMappableIdentifier(), null, "mappable", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLoop_Mappable(), ecorePackage.getEString(), "mappable", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLoop_Tml(), this.getTmlIdentifier(), null, "tml", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLoop_Filter(), this.getExpression(), null, "filter", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLoop_Statements(), this.getInnerBody(), null, "statements", null, 0, -1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

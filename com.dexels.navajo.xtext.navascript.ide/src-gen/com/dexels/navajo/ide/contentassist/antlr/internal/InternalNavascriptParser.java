@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalNavascriptParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_QUOTED_IDENTIFIER", "RULE_STRING_CONSTANT", "RULE_IDENTIFIER", "RULE_ONE", "RULE_INTEGER", "RULE_FLOAT", "RULE_TRUE", "RULE_FALSE", "RULE_FORALL", "RULE_EXISTS", "RULE_OBJECT_IDENTIFIER", "RULE_METHOD_IDENTIFIER", "RULE_MAPPABLE_IDENTIFIER", "RULE_TML_LITERAL", "RULE_STRING_LITERAL", "RULE_NULL_DEF", "RULE_TODAY", "RULE_MAPPABLE_ID", "RULE_UNDERSCORE", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'all'", "'request'", "'response'", "'='", "':'", "'user'", "'service'", "';'", "'in'", "'out'", "'inout'", "'+'", "'OR'", "'AND'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'*'", "'/'", "'name'", "'value'", "'selected'", "'if'", "'then'", "'{'", "'}'", "'@debug='", "'synchronized'", "'('", "')'", "','", "'context'", "'key'", "'timeout'", "'breakOnNoLock'", "'break'", "'code'", "'description'", "'error'", "'validations'", "'define'", "'check'", "'print'", "'log'", "'finally'", "'methods'", "'loop'", "'filter'", "'include'", "'antimessage'", "'message'", "'['", "']'", "'type'", "'mode'", "'map.'", "'map'", "'object'", "'var'", "'property'", "'option'", "'length'", "'direction'", "'cardinality'", "'subtype'", "'else'", "'-'", "'!'", "'`'", "'integer'", "'string'", "'boolean'", "'date'", "'float'", "'binary'", "'clocktime'", "'memo'", "'timestamp'", "'percentage'", "'selection'", "'array'", "'simple'", "'arrayelement'", "'ignore'", "'overwrite'", "'?'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_QUOTED_IDENTIFIER", "RULE_STRING_CONSTANT", "RULE_IDENTIFIER", "RULE_ONE", "RULE_INTEGER", "RULE_FLOAT", "RULE_TRUE", "RULE_FALSE", "RULE_FORALL", "RULE_EXISTS", "RULE_MAPPABLE_IDENTIFIER", "RULE_OBJECT_IDENTIFIER", "RULE_METHOD_IDENTIFIER", "RULE_TML_LITERAL", "RULE_STRING_LITERAL", "RULE_NULL_DEF", "RULE_TODAY", "RULE_MAPPABLE_ID", "RULE_UNDERSCORE", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'all'", "'request'", "'response'", "'='", "':'", "'user'", "'service'", "';'", "'in'", "'out'", "'inout'", "'+'", "'OR'", "'AND'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'*'", "'/'", "'name'", "'value'", "'selected'", "'if'", "'then'", "'{'", "'}'", "'@debug='", "'synchronized'", "'('", "')'", "','", "'context'", "'key'", "'timeout'", "'breakOnNoLock'", "'break'", "'code'", "'description'", "'error'", "'validations'", "'define'", "'check'", "'print'", "'log'", "'finally'", "'methods'", "'loop'", "'filter'", "'include'", "'antimessage'", "'message'", "'['", "']'", "'type'", "'mode'", "'map.'", "'map'", "'object'", "'var'", "'property'", "'option'", "'length'", "'direction'", "'cardinality'", "'subtype'", "'else'", "'-'", "'!'", "'`'", "'integer'", "'string'", "'boolean'", "'date'", "'float'", "'binary'", "'clocktime'", "'memo'", "'timestamp'", "'percentage'", "'selection'", "'array'", "'simple'", "'arrayelement'", "'ignore'", "'overwrite'", "'?'"
     };
     public static final int T__50=50;
     public static final int T__59=59;
@@ -40,8 +40,8 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
     public static final int T__61=61;
     public static final int RULE_EXISTS=13;
     public static final int RULE_NULL_DEF=19;
-    public static final int RULE_MAPPABLE_IDENTIFIER=16;
-    public static final int RULE_METHOD_IDENTIFIER=15;
+    public static final int RULE_MAPPABLE_IDENTIFIER=14;
+    public static final int RULE_METHOD_IDENTIFIER=16;
     public static final int T__66=66;
     public static final int RULE_ML_COMMENT=24;
     public static final int T__67=67;
@@ -130,7 +130,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
     public static final int T__109=109;
     public static final int T__84=84;
     public static final int T__104=104;
-    public static final int RULE_OBJECT_IDENTIFIER=14;
+    public static final int RULE_OBJECT_IDENTIFIER=15;
     public static final int T__85=85;
     public static final int T__103=103;
     public static final int RULE_INTEGER=8;
@@ -7474,8 +7474,8 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 alt2=2;
                 }
                 break;
-            case RULE_METHOD_IDENTIFIER:
             case RULE_MAPPABLE_IDENTIFIER:
+            case RULE_METHOD_IDENTIFIER:
                 {
                 alt2=3;
                 }
@@ -9386,7 +9386,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( ((LA19_0>=RULE_QUOTED_IDENTIFIER && LA19_0<=RULE_STRING_CONSTANT)) ) {
                 alt19=1;
             }
-            else if ( ((LA19_0>=RULE_IDENTIFIER && LA19_0<=RULE_EXISTS)||(LA19_0>=RULE_MAPPABLE_IDENTIFIER && LA19_0<=RULE_TODAY)||LA19_0==58||(LA19_0>=96 && LA19_0<=97)||LA19_0==115) ) {
+            else if ( ((LA19_0>=RULE_IDENTIFIER && LA19_0<=RULE_MAPPABLE_IDENTIFIER)||(LA19_0>=RULE_TML_LITERAL && LA19_0<=RULE_TODAY)||LA19_0==58||(LA19_0>=96 && LA19_0<=97)||LA19_0==115) ) {
                 alt19=2;
             }
             else {
@@ -9886,7 +9886,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                         int alt24=2;
                         int LA24_0 = input.LA(1);
 
-                        if ( ((LA24_0>=RULE_METHOD_IDENTIFIER && LA24_0<=RULE_MAPPABLE_IDENTIFIER)||LA24_0==52||LA24_0==54||LA24_0==65||LA24_0==70||(LA24_0>=72 && LA24_0<=73)||(LA24_0>=75 && LA24_0<=76)||(LA24_0>=78 && LA24_0<=80)||(LA24_0>=85 && LA24_0<=86)||(LA24_0>=88 && LA24_0<=90)) ) {
+                        if ( (LA24_0==RULE_MAPPABLE_IDENTIFIER||LA24_0==RULE_METHOD_IDENTIFIER||LA24_0==52||LA24_0==54||LA24_0==65||LA24_0==70||(LA24_0>=72 && LA24_0<=73)||(LA24_0>=75 && LA24_0<=76)||(LA24_0>=78 && LA24_0<=80)||(LA24_0>=85 && LA24_0<=86)||(LA24_0>=88 && LA24_0<=90)) ) {
                             alt24=1;
                         }
 
@@ -10636,7 +10636,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 {
                 int LA33_3 = input.LA(2);
 
-                if ( ((LA33_3>=RULE_METHOD_IDENTIFIER && LA33_3<=RULE_MAPPABLE_IDENTIFIER)||LA33_3==52||(LA33_3>=54 && LA33_3<=55)||LA33_3==65||LA33_3==70||(LA33_3>=72 && LA33_3<=73)||(LA33_3>=75 && LA33_3<=76)||(LA33_3>=78 && LA33_3<=80)||(LA33_3>=85 && LA33_3<=86)||(LA33_3>=88 && LA33_3<=90)) ) {
+                if ( (LA33_3==RULE_MAPPABLE_IDENTIFIER||LA33_3==RULE_METHOD_IDENTIFIER||LA33_3==52||(LA33_3>=54 && LA33_3<=55)||LA33_3==65||LA33_3==70||(LA33_3>=72 && LA33_3<=73)||(LA33_3>=75 && LA33_3<=76)||(LA33_3>=78 && LA33_3<=80)||(LA33_3>=85 && LA33_3<=86)||(LA33_3>=88 && LA33_3<=90)) ) {
                     alt33=4;
                 }
                 else if ( (LA33_3==RULE_TML_LITERAL) ) {
@@ -13069,7 +13069,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             if ( (LA57_0==52) ) {
                 alt57=1;
             }
-            else if ( ((LA57_0>=RULE_QUOTED_IDENTIFIER && LA57_0<=RULE_EXISTS)||(LA57_0>=RULE_MAPPABLE_IDENTIFIER && LA57_0<=RULE_TODAY)||LA57_0==58||(LA57_0>=96 && LA57_0<=97)||LA57_0==115) ) {
+            else if ( ((LA57_0>=RULE_QUOTED_IDENTIFIER && LA57_0<=RULE_MAPPABLE_IDENTIFIER)||(LA57_0>=RULE_TML_LITERAL && LA57_0<=RULE_TODAY)||LA57_0==58||(LA57_0>=96 && LA57_0<=97)||LA57_0==115) ) {
                 alt57=2;
             }
             else {
@@ -17050,7 +17050,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt78=2;
                 int LA78_0 = input.LA(1);
 
-                if ( ((LA78_0>=RULE_METHOD_IDENTIFIER && LA78_0<=RULE_MAPPABLE_IDENTIFIER)||LA78_0==52||LA78_0==54||LA78_0==65||LA78_0==70||(LA78_0>=72 && LA78_0<=73)||(LA78_0>=75 && LA78_0<=76)||(LA78_0>=78 && LA78_0<=80)||(LA78_0>=85 && LA78_0<=86)||(LA78_0>=88 && LA78_0<=90)) ) {
+                if ( (LA78_0==RULE_MAPPABLE_IDENTIFIER||LA78_0==RULE_METHOD_IDENTIFIER||LA78_0==52||LA78_0==54||LA78_0==65||LA78_0==70||(LA78_0>=72 && LA78_0<=73)||(LA78_0>=75 && LA78_0<=76)||(LA78_0>=78 && LA78_0<=80)||(LA78_0>=85 && LA78_0<=86)||(LA78_0>=88 && LA78_0<=90)) ) {
                     alt78=1;
                 }
 
@@ -26702,7 +26702,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt89=2;
                 int LA89_0 = input.LA(1);
 
-                if ( ((LA89_0>=RULE_METHOD_IDENTIFIER && LA89_0<=RULE_MAPPABLE_IDENTIFIER)||LA89_0==52||LA89_0==54||LA89_0==65||LA89_0==70||(LA89_0>=72 && LA89_0<=73)||(LA89_0>=75 && LA89_0<=76)||(LA89_0>=78 && LA89_0<=80)||(LA89_0>=85 && LA89_0<=86)||(LA89_0>=88 && LA89_0<=90)) ) {
+                if ( (LA89_0==RULE_MAPPABLE_IDENTIFIER||LA89_0==RULE_METHOD_IDENTIFIER||LA89_0==52||LA89_0==54||LA89_0==65||LA89_0==70||(LA89_0>=72 && LA89_0<=73)||(LA89_0>=75 && LA89_0<=76)||(LA89_0>=78 && LA89_0<=80)||(LA89_0>=85 && LA89_0<=86)||(LA89_0>=88 && LA89_0<=90)) ) {
                     alt89=1;
                 }
 
@@ -29615,7 +29615,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt93=2;
                 int LA93_0 = input.LA(1);
 
-                if ( ((LA93_0>=RULE_METHOD_IDENTIFIER && LA93_0<=RULE_MAPPABLE_IDENTIFIER)||LA93_0==52||LA93_0==54||LA93_0==65||LA93_0==70||(LA93_0>=72 && LA93_0<=73)||(LA93_0>=75 && LA93_0<=76)||(LA93_0>=78 && LA93_0<=80)||(LA93_0>=85 && LA93_0<=86)||(LA93_0>=88 && LA93_0<=90)) ) {
+                if ( (LA93_0==RULE_MAPPABLE_IDENTIFIER||LA93_0==RULE_METHOD_IDENTIFIER||LA93_0==52||LA93_0==54||LA93_0==65||LA93_0==70||(LA93_0>=72 && LA93_0<=73)||(LA93_0>=75 && LA93_0<=76)||(LA93_0>=78 && LA93_0<=80)||(LA93_0>=85 && LA93_0<=86)||(LA93_0>=88 && LA93_0<=90)) ) {
                     alt93=1;
                 }
 
@@ -32241,7 +32241,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt98=2;
                 int LA98_0 = input.LA(1);
 
-                if ( ((LA98_0>=RULE_METHOD_IDENTIFIER && LA98_0<=RULE_MAPPABLE_IDENTIFIER)||LA98_0==52||LA98_0==54||LA98_0==65||LA98_0==70||(LA98_0>=72 && LA98_0<=73)||(LA98_0>=75 && LA98_0<=76)||(LA98_0>=78 && LA98_0<=80)||(LA98_0>=85 && LA98_0<=86)||(LA98_0>=88 && LA98_0<=90)) ) {
+                if ( (LA98_0==RULE_MAPPABLE_IDENTIFIER||LA98_0==RULE_METHOD_IDENTIFIER||LA98_0==52||LA98_0==54||LA98_0==65||LA98_0==70||(LA98_0>=72 && LA98_0<=73)||(LA98_0>=75 && LA98_0<=76)||(LA98_0>=78 && LA98_0<=80)||(LA98_0>=85 && LA98_0<=86)||(LA98_0>=88 && LA98_0<=90)) ) {
                     alt98=1;
                 }
 
@@ -34168,7 +34168,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt101=2;
                 int LA101_0 = input.LA(1);
 
-                if ( ((LA101_0>=RULE_METHOD_IDENTIFIER && LA101_0<=RULE_MAPPABLE_IDENTIFIER)||LA101_0==52||LA101_0==54||LA101_0==65||LA101_0==70||(LA101_0>=72 && LA101_0<=73)||(LA101_0>=75 && LA101_0<=76)||(LA101_0>=78 && LA101_0<=80)||(LA101_0>=85 && LA101_0<=86)||(LA101_0>=88 && LA101_0<=90)) ) {
+                if ( (LA101_0==RULE_MAPPABLE_IDENTIFIER||LA101_0==RULE_METHOD_IDENTIFIER||LA101_0==52||LA101_0==54||LA101_0==65||LA101_0==70||(LA101_0>=72 && LA101_0<=73)||(LA101_0>=75 && LA101_0<=76)||(LA101_0>=78 && LA101_0<=80)||(LA101_0>=85 && LA101_0<=86)||(LA101_0>=88 && LA101_0<=90)) ) {
                     alt101=1;
                 }
 
@@ -34696,7 +34696,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt103=2;
                 int LA103_0 = input.LA(1);
 
-                if ( ((LA103_0>=RULE_METHOD_IDENTIFIER && LA103_0<=RULE_MAPPABLE_IDENTIFIER)||LA103_0==52||LA103_0==54||LA103_0==65||LA103_0==70||(LA103_0>=72 && LA103_0<=73)||(LA103_0>=75 && LA103_0<=76)||(LA103_0>=78 && LA103_0<=80)||(LA103_0>=85 && LA103_0<=86)||(LA103_0>=88 && LA103_0<=90)) ) {
+                if ( (LA103_0==RULE_MAPPABLE_IDENTIFIER||LA103_0==RULE_METHOD_IDENTIFIER||LA103_0==52||LA103_0==54||LA103_0==65||LA103_0==70||(LA103_0>=72 && LA103_0<=73)||(LA103_0>=75 && LA103_0<=76)||(LA103_0>=78 && LA103_0<=80)||(LA103_0>=85 && LA103_0<=86)||(LA103_0>=88 && LA103_0<=90)) ) {
                     alt103=1;
                 }
 
@@ -35634,7 +35634,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt105=2;
                 int LA105_0 = input.LA(1);
 
-                if ( ((LA105_0>=RULE_METHOD_IDENTIFIER && LA105_0<=RULE_MAPPABLE_IDENTIFIER)||LA105_0==52||LA105_0==54||LA105_0==65||LA105_0==70||(LA105_0>=72 && LA105_0<=73)||(LA105_0>=75 && LA105_0<=76)||(LA105_0>=78 && LA105_0<=80)||(LA105_0>=85 && LA105_0<=86)||(LA105_0>=88 && LA105_0<=90)) ) {
+                if ( (LA105_0==RULE_MAPPABLE_IDENTIFIER||LA105_0==RULE_METHOD_IDENTIFIER||LA105_0==52||LA105_0==54||LA105_0==65||LA105_0==70||(LA105_0>=72 && LA105_0<=73)||(LA105_0>=75 && LA105_0<=76)||(LA105_0>=78 && LA105_0<=80)||(LA105_0>=85 && LA105_0<=86)||(LA105_0>=88 && LA105_0<=90)) ) {
                     alt105=1;
                 }
 
@@ -43388,7 +43388,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
                 int alt117=2;
                 int LA117_0 = input.LA(1);
 
-                if ( ((LA117_0>=RULE_METHOD_IDENTIFIER && LA117_0<=RULE_MAPPABLE_IDENTIFIER)||LA117_0==52||LA117_0==54||LA117_0==65||LA117_0==70||(LA117_0>=72 && LA117_0<=73)||(LA117_0>=75 && LA117_0<=76)||(LA117_0>=78 && LA117_0<=80)||(LA117_0>=85 && LA117_0<=86)||(LA117_0>=88 && LA117_0<=90)) ) {
+                if ( (LA117_0==RULE_MAPPABLE_IDENTIFIER||LA117_0==RULE_METHOD_IDENTIFIER||LA117_0==52||LA117_0==54||LA117_0==65||LA117_0==70||(LA117_0>=72 && LA117_0<=73)||(LA117_0>=75 && LA117_0<=76)||(LA117_0>=78 && LA117_0<=80)||(LA117_0>=85 && LA117_0<=86)||(LA117_0>=88 && LA117_0<=90)) ) {
                     alt117=1;
                 }
 
@@ -52998,7 +52998,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt126=2;
             int LA126_0 = input.LA(1);
 
-            if ( ((LA126_0>=RULE_IDENTIFIER && LA126_0<=RULE_EXISTS)||(LA126_0>=RULE_MAPPABLE_IDENTIFIER && LA126_0<=RULE_TODAY)||LA126_0==58||(LA126_0>=96 && LA126_0<=97)||LA126_0==115) ) {
+            if ( ((LA126_0>=RULE_IDENTIFIER && LA126_0<=RULE_MAPPABLE_IDENTIFIER)||(LA126_0>=RULE_TML_LITERAL && LA126_0<=RULE_TODAY)||LA126_0==58||(LA126_0>=96 && LA126_0<=97)||LA126_0==115) ) {
                 alt126=1;
             }
             switch (alt126) {
@@ -53690,11 +53690,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int LA128_0 = input.LA(1);
 
             if ( (LA128_0==58) ) {
-                int LA128_1 = input.LA(2);
-
-                if ( ((LA128_1>=RULE_IDENTIFIER && LA128_1<=RULE_EXISTS)||(LA128_1>=RULE_MAPPABLE_IDENTIFIER && LA128_1<=RULE_TODAY)||(LA128_1>=58 && LA128_1<=59)||(LA128_1>=96 && LA128_1<=97)||LA128_1==115) ) {
-                    alt128=1;
-                }
+                alt128=1;
             }
             switch (alt128) {
                 case 1 :
@@ -53872,7 +53868,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt129=2;
             int LA129_0 = input.LA(1);
 
-            if ( ((LA129_0>=RULE_IDENTIFIER && LA129_0<=RULE_EXISTS)||(LA129_0>=RULE_MAPPABLE_IDENTIFIER && LA129_0<=RULE_TODAY)||LA129_0==58||(LA129_0>=96 && LA129_0<=97)||LA129_0==115) ) {
+            if ( ((LA129_0>=RULE_IDENTIFIER && LA129_0<=RULE_MAPPABLE_IDENTIFIER)||(LA129_0>=RULE_TML_LITERAL && LA129_0<=RULE_TODAY)||LA129_0==58||(LA129_0>=96 && LA129_0<=97)||LA129_0==115) ) {
                 alt129=1;
             }
             switch (alt129) {
@@ -58590,28 +58586,24 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Loop__MappableAssignment_2_0"
-    // InternalNavascript.g:17958:1: rule__Loop__MappableAssignment_2_0 : ( ruleMappableIdentifier ) ;
+    // InternalNavascript.g:17958:1: rule__Loop__MappableAssignment_2_0 : ( RULE_MAPPABLE_IDENTIFIER ) ;
     public final void rule__Loop__MappableAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalNavascript.g:17962:1: ( ( ruleMappableIdentifier ) )
-            // InternalNavascript.g:17963:2: ( ruleMappableIdentifier )
+            // InternalNavascript.g:17962:1: ( ( RULE_MAPPABLE_IDENTIFIER ) )
+            // InternalNavascript.g:17963:2: ( RULE_MAPPABLE_IDENTIFIER )
             {
-            // InternalNavascript.g:17963:2: ( ruleMappableIdentifier )
-            // InternalNavascript.g:17964:3: ruleMappableIdentifier
+            // InternalNavascript.g:17963:2: ( RULE_MAPPABLE_IDENTIFIER )
+            // InternalNavascript.g:17964:3: RULE_MAPPABLE_IDENTIFIER
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getLoopAccess().getMappableMappableIdentifierParserRuleCall_2_0_0()); 
+               before(grammarAccess.getLoopAccess().getMappableMAPPABLE_IDENTIFIERTerminalRuleCall_2_0_0()); 
             }
-            pushFollow(FOLLOW_2);
-            ruleMappableIdentifier();
-
-            state._fsp--;
-            if (state.failed) return ;
+            match(input,RULE_MAPPABLE_IDENTIFIER,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getLoopAccess().getMappableMappableIdentifierParserRuleCall_2_0_0()); 
+               after(grammarAccess.getLoopAccess().getMappableMAPPABLE_IDENTIFIERTerminalRuleCall_2_0_0()); 
             }
 
             }
@@ -63735,7 +63727,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
             int alt131=2;
             int LA131_0 = input.LA(1);
 
-            if ( ((LA131_0>=RULE_METHOD_IDENTIFIER && LA131_0<=RULE_MAPPABLE_IDENTIFIER)||LA131_0==52||LA131_0==54||LA131_0==65||LA131_0==70||(LA131_0>=72 && LA131_0<=73)||(LA131_0>=75 && LA131_0<=76)||(LA131_0>=78 && LA131_0<=80)||(LA131_0>=85 && LA131_0<=86)||(LA131_0>=88 && LA131_0<=90)) ) {
+            if ( (LA131_0==RULE_MAPPABLE_IDENTIFIER||LA131_0==RULE_METHOD_IDENTIFIER||LA131_0==52||LA131_0==54||LA131_0==65||LA131_0==70||(LA131_0>=72 && LA131_0<=73)||(LA131_0>=75 && LA131_0<=76)||(LA131_0>=78 && LA131_0<=80)||(LA131_0>=85 && LA131_0<=86)||(LA131_0>=88 && LA131_0<=90)) ) {
                 alt131=1;
             }
 
@@ -63830,12 +63822,12 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
     protected DFA25 dfa25 = new DFA25(this);
     static final String dfa_1s = "\26\uffff";
-    static final String dfa_2s = "\1\17\4\uffff\1\0\20\uffff";
+    static final String dfa_2s = "\1\16\4\uffff\1\0\20\uffff";
     static final String dfa_3s = "\1\132\4\uffff\1\0\20\uffff";
     static final String dfa_4s = "\1\uffff\1\1\22\uffff\1\3\1\2";
     static final String dfa_5s = "\5\uffff\1\0\20\uffff}>";
     static final String[] dfa_6s = {
-            "\1\1\1\5\1\24\42\uffff\1\1\1\uffff\2\1\11\uffff\1\1\4\uffff\1\1\1\uffff\2\1\1\uffff\2\1\1\uffff\3\1\4\uffff\2\1\1\uffff\3\1",
+            "\1\5\1\uffff\1\1\1\24\42\uffff\1\1\1\uffff\2\1\11\uffff\1\1\4\uffff\1\1\1\uffff\2\1\1\uffff\2\1\1\uffff\3\1\4\uffff\2\1\1\uffff\3\1",
             "",
             "",
             "",
@@ -63913,28 +63905,28 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0050000000018002L,0x000000000761DB42L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0350000000018000L,0x000000000761DB62L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0050000000014002L,0x000000000761DB42L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0350000000014000L,0x000000000761DB62L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0250000000018002L,0x000000000761DB42L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0250000000018000L,0x000000000761DB42L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x04000000001F3FC0L,0x0008000300000000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0250000000014002L,0x000000000761DB42L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0250000000014000L,0x000000000761DB42L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x04000000001E7FC0L,0x0008000300000000L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0050000000018000L,0x000000000761DB42L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x00D0000000018000L,0x000000000761DB42L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0050000000014000L,0x000000000761DB42L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x00D0000000014000L,0x000000000761DB42L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0100000000000000L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000038000000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0400000000000000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0xE000000000000000L,0x0000000000000001L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0800000000000000L});
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x02D0000000018000L,0x000000000761DB42L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x02D0000000014000L,0x000000000761DB42L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x1000000000000000L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x1000000000000002L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x2000000000000000L});
     public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x00000000C0000000L});
     public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000300000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x04000000001F3FF0L,0x0008000300000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x04000000001E7FF0L,0x0008000300000000L});
     public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0400000400000000L});
     public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0800000000000000L,0x000000000000001CL});
@@ -63957,7 +63949,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0080000000000010L});
     public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000012L});
     public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000030000L,0x0008000000000000L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000024000L,0x0008000000000000L});
     public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0440000000000000L});
     public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
     public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
@@ -63965,7 +63957,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
     public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0440000400000000L,0x0000000000020000L});
     public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000000L,0x0000000000180000L});
-    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0050000000038000L,0x000000000761DB42L});
+    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0050000000034000L,0x000000000761DB42L});
     public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0040000000000000L,0x0000000000040000L});
     public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0000000000000000L,0x0001C00000000000L});
     public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000000000000000L,0x0006000000000000L});
@@ -63974,13 +63966,13 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000000000040L});
     public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x080E000000000040L});
     public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
-    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000008000L});
     public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x000E000000000040L});
-    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000018000L});
-    public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x04400000C0010000L});
-    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x04100000001F3FF0L,0x0008000300000000L});
-    public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000014000L});
+    public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x04400000C0004000L});
+    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x04100000001E7FF0L,0x0008000300000000L});
+    public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
     public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x04400000C0000000L,0x0000000000020000L});
     public static final BitSet FOLLOW_73 = new BitSet(new long[]{0x0090000000000000L,0x0000000001000000L});
@@ -64019,7 +64011,7 @@ public class InternalNavascriptParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_106 = new BitSet(new long[]{0x0000000000003000L});
     public static final BitSet FOLLOW_107 = new BitSet(new long[]{0x0000000000080000L});
     public static final BitSet FOLLOW_108 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
-    public static final BitSet FOLLOW_109 = new BitSet(new long[]{0x0C000000001F3FC0L,0x0008000300000000L});
+    public static final BitSet FOLLOW_109 = new BitSet(new long[]{0x0C000000001E7FC0L,0x0008000300000000L});
     public static final BitSet FOLLOW_110 = new BitSet(new long[]{0x0000000000000000L,0x0000000800000000L});
     public static final BitSet FOLLOW_111 = new BitSet(new long[]{0x0000000000000000L,0x0000001000000000L});
     public static final BitSet FOLLOW_112 = new BitSet(new long[]{0x0000000000000000L,0x0000002000000000L});

@@ -352,7 +352,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '=' | ':'
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     mappable=MappableIdentifier '(' 'filter' (ambiguity) filter=Expression
+	 *     mappable=MAPPABLE_IDENTIFIER '(' 'filter' (ambiguity) filter=Expression
 	 *     tml=TmlIdentifier '(' 'filter' (ambiguity) filter=Expression
 	 */
 	protected void emit_Loop_ColonKeyword_3_2_1_or_EqualsSignKeyword_3_2_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {

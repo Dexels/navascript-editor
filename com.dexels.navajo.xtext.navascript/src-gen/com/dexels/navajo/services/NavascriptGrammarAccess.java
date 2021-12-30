@@ -1288,7 +1288,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cLoopKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Assignment cMappableAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
-		private final RuleCall cMappableMappableIdentifierParserRuleCall_2_0_0 = (RuleCall)cMappableAssignment_2_0.eContents().get(0);
+		private final RuleCall cMappableMAPPABLE_IDENTIFIERTerminalRuleCall_2_0_0 = (RuleCall)cMappableAssignment_2_0.eContents().get(0);
 		private final Assignment cTmlAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
 		private final RuleCall cTmlTmlIdentifierParserRuleCall_2_1_0 = (RuleCall)cTmlAssignment_2_1.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
@@ -1306,11 +1306,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Loop:
-		//	{Loop} 'loop' (mappable=MappableIdentifier | tml=TmlIdentifier) ('(' 'filter' ('=' | ':') filter=Expression ')')?
+		//	{Loop} 'loop' (mappable=MAPPABLE_IDENTIFIER | tml=TmlIdentifier) ('(' 'filter' ('=' | ':') filter=Expression ')')?
 		//	'{' statements+=InnerBody* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Loop} 'loop' (mappable=MappableIdentifier | tml=TmlIdentifier) ('(' 'filter' ('=' | ':') filter=Expression ')')? '{'
+		//{Loop} 'loop' (mappable=MAPPABLE_IDENTIFIER | tml=TmlIdentifier) ('(' 'filter' ('=' | ':') filter=Expression ')')? '{'
 		//statements+=InnerBody* '}'
 		public Group getGroup() { return cGroup; }
 		
@@ -1320,14 +1320,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//'loop'
 		public Keyword getLoopKeyword_1() { return cLoopKeyword_1; }
 		
-		//(mappable=MappableIdentifier | tml=TmlIdentifier)
+		//(mappable=MAPPABLE_IDENTIFIER | tml=TmlIdentifier)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
-		//mappable=MappableIdentifier
+		//mappable=MAPPABLE_IDENTIFIER
 		public Assignment getMappableAssignment_2_0() { return cMappableAssignment_2_0; }
 		
-		//MappableIdentifier
-		public RuleCall getMappableMappableIdentifierParserRuleCall_2_0_0() { return cMappableMappableIdentifierParserRuleCall_2_0_0; }
+		//MAPPABLE_IDENTIFIER
+		public RuleCall getMappableMAPPABLE_IDENTIFIERTerminalRuleCall_2_0_0() { return cMappableMAPPABLE_IDENTIFIERTerminalRuleCall_2_0_0; }
 		
 		//tml=TmlIdentifier
 		public Assignment getTmlAssignment_2_1() { return cTmlAssignment_2_1; }
@@ -4932,7 +4932,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Loop:
-	//	{Loop} 'loop' (mappable=MappableIdentifier | tml=TmlIdentifier) ('(' 'filter' ('=' | ':') filter=Expression ')')?
+	//	{Loop} 'loop' (mappable=MAPPABLE_IDENTIFIER | tml=TmlIdentifier) ('(' 'filter' ('=' | ':') filter=Expression ')')?
 	//	'{' statements+=InnerBody* '}';
 	public LoopElements getLoopAccess() {
 		return pLoop;

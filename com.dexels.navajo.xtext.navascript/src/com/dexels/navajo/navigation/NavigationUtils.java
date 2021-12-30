@@ -6,12 +6,12 @@ import org.eclipse.xtext.nodemodel.INode;
 
 import com.dexels.navajo.navascript.InnerBody;
 import com.dexels.navajo.navascript.Message;
+import com.dexels.navajo.navascript.impl.LoopImpl;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
 import com.dexels.navajo.navascript.impl.SetterFieldImpl;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
-import com.dexels.navajo.xtext.navascript.navajobridge.ProxyValueDefinition;
 
 /**
  * This class contains helper method to find current "class context" in a script (findAdapterClass).
@@ -27,56 +27,72 @@ public final class NavigationUtils {
 
 	}
 
-	public static AdapterClassDefinition findAdapterClass(NavajoProxyStub adapters, EObject model, String childAdapter) {
-
+	/**
+	 * Finds first adapter class given a model as a starting point.
+	 * 
+	 * @param adapters
+	 * @param model
+	 * @param childAdapter
+	 * @return
+	 */
+	public static AdapterClassDefinition findAdapterClass(NavajoProxyStub adapters, EObject model) {
+				
 		if ( model instanceof MapImpl ) {
-			return adapters.getAdapter(((MapImpl) model).getAdapterName());
+			String adapterName = ((MapImpl) model).getAdapterName();
+			AdapterClassDefinition acd = adapters.getAdapter( adapterName );
+			return acd;
+		}
+		
+		if ( model instanceof LoopImpl ) {
+			LoopImpl loop = (LoopImpl) model;
+			if ( loop.getMappable() != null ) { // It's not a loop over an array message.
+				String fieldName = getFieldFromMappableIdentifier(loop.getMappable());
+				int level = countMappableParentLevel(fieldName);
+				EObject parent = NavigationUtils.findFirstMapOrMappedField(loop.eContainer(), level);
+				AdapterClassDefinition parentMde = findAdapterClass(adapters, parent);
+				try {
+					AdapterClassDefinition acd = parentMde.getMappedFieldType(fieldName);
+					return acd;
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+					return null;
+				}
+			}
 		} 
-
+		
 		if ( model instanceof MappedArrayFieldImpl ) {
 			MappedArrayFieldImpl maf = (MappedArrayFieldImpl) model;
 			String fieldName = getFieldFromMappableIdentifier(maf.getField());
 			int level = countMappableParentLevel(maf.getField());
 			EObject parent = NavigationUtils.findFirstMapOrMappedField(maf.eContainer(), level);
-			if ( parent instanceof MapImpl ) {
-				MapImpl parentMap = (MapImpl) parent;
-				AdapterClassDefinition mde = adapters.getAdapter(parentMap.getAdapterName());
-				ProxyValueDefinition vdef = mde.getMapDefinition().getValueDefinition(fieldName);
-				return adapters.getAdapter(vdef.getMapType());
-			} else if ( parent instanceof MappedArrayFieldImpl ) {
-				return findAdapterClass(adapters, parent.eContainer(), childAdapter);
-			} 
-		} else if ( model instanceof SetterFieldImpl ) {
+			AdapterClassDefinition parentMde = findAdapterClass(adapters, parent);
+			try {
+				AdapterClassDefinition acd = parentMde.getMappedFieldType(fieldName);
+				return acd;
+			} catch (Exception e) {
+				e.printStackTrace(System.err);
+				return null;
+			}
+		} 
+
+		if ( model instanceof SetterFieldImpl ) {
 			SetterFieldImpl sfi = (SetterFieldImpl) model;
 			String fieldName = getFieldFromMappableIdentifier(sfi.getField());
 			int level = countMappableParentLevel(sfi.getField());
 			EObject parent = NavigationUtils.findFirstMapOrMappedField(sfi.eContainer(), level);
-			if ( parent instanceof MapImpl ) {
-				MapImpl parentMap = (MapImpl) parent;
-				AdapterClassDefinition mde = adapters.getAdapter(parentMap.getAdapterName());
-				try {
-					AdapterClassDefinition fieldClass = mde.getMappedFieldType(fieldName);
-					// Check if childAdapter is non-zero
-					if ( childAdapter != null ) {
-						for ( String nextChild : childAdapter.split("\\.")) {
-							fieldClass = fieldClass.getMappedFieldType(nextChild);
-						}
-					}
-					return fieldClass;
-				} catch (Exception e) {
-					return null;
-				}
-			} else if ( parent instanceof MappedArrayFieldImpl ) {
-				return findAdapterClass(adapters, parent.eContainer(), childAdapter);
-			} else if ( parent instanceof SetterFieldImpl ) {
-				return findAdapterClass(adapters, parent, ( childAdapter != null ? fieldName + "." + childAdapter : fieldName ));
+			AdapterClassDefinition parentMde = findAdapterClass(adapters, parent);
+			try {
+				AdapterClassDefinition acd = parentMde.getMappedFieldType(fieldName);
+				return acd;
+			} catch (Exception e) {
+				e.printStackTrace(System.err);
+				return null;
 			}
 
-		} else {
-			logger.warn("In findAdapterClass. model is unknown: " + model);
-		}
-
-		return null;
+		} 
+		
+		return findAdapterClass(adapters, model.eContainer());
+		
 	}
 
 	public static InnerBody findInnerBody(EObject node) {
@@ -105,6 +121,7 @@ public final class NavigationUtils {
 		return findMessage(node.eContainer());
 	}
 
+	// findFirstMapOrMappedField
 	public static EObject findFirstMapOrMappedField(EObject node, int level) {
 
 		if ( level < 0 ) {
@@ -128,6 +145,17 @@ public final class NavigationUtils {
 					currentLevel--;
 				}
 			} 
+			// Check for LoopImpl. If it's the start node, fetch parents of LoopImpl to find parent adapter.
+			if ( node instanceof LoopImpl && ((LoopImpl) node).getMappable() != null ) {
+				
+				if ( currentLevel == 0 ) {
+					return node;
+				} else {
+					currentLevel--;
+				}
+							
+			}
+			
 			return findFirstMapOrMappedField(node.eContainer(), currentLevel);
 		} else {
 			logger.warn("EObject is null");
@@ -150,7 +178,7 @@ public final class NavigationUtils {
 				} else {
 					currentLevel--;
 				}
-			} else if ( e instanceof MapImpl || e instanceof MappedArrayFieldImpl ) {
+			} else if ( e instanceof MapImpl || e instanceof MappedArrayFieldImpl || e instanceof LoopImpl ) {
 				if ( currentLevel == 0 ) {
 					return e;
 				} else {

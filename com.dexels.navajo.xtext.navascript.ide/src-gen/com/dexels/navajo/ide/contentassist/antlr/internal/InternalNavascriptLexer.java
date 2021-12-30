@@ -27,8 +27,8 @@ public class InternalNavascriptLexer extends Lexer {
     public static final int T__61=61;
     public static final int RULE_EXISTS=13;
     public static final int RULE_NULL_DEF=19;
-    public static final int RULE_MAPPABLE_IDENTIFIER=16;
-    public static final int RULE_METHOD_IDENTIFIER=15;
+    public static final int RULE_MAPPABLE_IDENTIFIER=14;
+    public static final int RULE_METHOD_IDENTIFIER=16;
     public static final int T__66=66;
     public static final int RULE_ML_COMMENT=24;
     public static final int T__67=67;
@@ -117,7 +117,7 @@ public class InternalNavascriptLexer extends Lexer {
     public static final int T__109=109;
     public static final int T__84=84;
     public static final int T__104=104;
-    public static final int RULE_OBJECT_IDENTIFIER=14;
+    public static final int RULE_OBJECT_IDENTIFIER=15;
     public static final int T__85=85;
     public static final int T__103=103;
     public static final int RULE_INTEGER=8;

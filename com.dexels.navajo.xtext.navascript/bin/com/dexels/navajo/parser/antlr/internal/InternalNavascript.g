@@ -2387,20 +2387,19 @@ ruleLoop returns [EObject current=null]
 		(
 			(
 				(
+					lv_mappable_2_0=RULE_MAPPABLE_IDENTIFIER
 					{
-						newCompositeNode(grammarAccess.getLoopAccess().getMappableMappableIdentifierParserRuleCall_2_0_0());
+						newLeafNode(lv_mappable_2_0, grammarAccess.getLoopAccess().getMappableMAPPABLE_IDENTIFIERTerminalRuleCall_2_0_0());
 					}
-					lv_mappable_2_0=ruleMappableIdentifier
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getLoopRule());
+							$current = createModelElement(grammarAccess.getLoopRule());
 						}
-						set(
+						setWithLastConsumed(
 							$current,
 							"mappable",
 							lv_mappable_2_0,
-							"com.dexels.navajo.Navascript.MappableIdentifier");
-						afterParserOrEnumRuleCall();
+							"com.dexels.navajo.Navascript.MAPPABLE_IDENTIFIER");
 					}
 				)
 			)

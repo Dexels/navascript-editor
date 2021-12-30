@@ -85,7 +85,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//Method/methodName"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//Loop">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Loop/mappable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//Loop/mappable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Loop/tml"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Loop/filter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Loop/statements"/>

@@ -849,7 +849,7 @@ public interface NavascriptPackage extends EPackage
   int LOOP = 25;
 
   /**
-   * The feature id for the '<em><b>Mappable</b></em>' containment reference.
+   * The feature id for the '<em><b>Mappable</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -3999,15 +3999,15 @@ public interface NavascriptPackage extends EPackage
   EClass getLoop();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.dexels.navajo.navascript.Loop#getMappable <em>Mappable</em>}'.
+   * Returns the meta object for the attribute '{@link com.dexels.navajo.navascript.Loop#getMappable <em>Mappable</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Mappable</em>'.
+   * @return the meta object for the attribute '<em>Mappable</em>'.
    * @see com.dexels.navajo.navascript.Loop#getMappable()
    * @see #getLoop()
    * @generated
    */
-  EReference getLoop_Mappable();
+  EAttribute getLoop_Mappable();
 
   /**
    * Returns the meta object for the containment reference '{@link com.dexels.navajo.navascript.Loop#getTml <em>Tml</em>}'.
@@ -6548,12 +6548,12 @@ public interface NavascriptPackage extends EPackage
     EClass LOOP = eINSTANCE.getLoop();
 
     /**
-     * The meta object literal for the '<em><b>Mappable</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Mappable</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LOOP__MAPPABLE = eINSTANCE.getLoop_Mappable();
+    EAttribute LOOP__MAPPABLE = eINSTANCE.getLoop_Mappable();
 
     /**
      * The meta object literal for the '<em><b>Tml</b></em>' containment reference feature.

@@ -109,8 +109,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="methodName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Loop">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mappable" eType="#//MappableIdentifier"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tml" eType="#//TmlIdentifier"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="filter" eType="#//Expression"

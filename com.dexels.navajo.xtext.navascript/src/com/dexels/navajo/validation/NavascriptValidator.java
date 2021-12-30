@@ -27,6 +27,7 @@ import com.dexels.navajo.navascript.PropertyArgument;
 import com.dexels.navajo.navascript.PropertyArguments;
 import com.dexels.navajo.navascript.impl.AdapterMethodImpl;
 import com.dexels.navajo.navascript.impl.FunctionIdentifierImpl;
+import com.dexels.navajo.navascript.impl.LoopImpl;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappableIdentifierImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
@@ -128,21 +129,32 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		}		
 		String fieldName = NavigationUtils.getFieldFromMappableIdentifier(prefix);
 		int level = NavigationUtils.countMappableParentLevel(prefix);
+		
+		if ( mai.eContainer() instanceof LoopImpl ) { // If current EOBject is a LoopImpl, move one level up.
+			mai = mai.eContainer();
+		}
 		EObject parent = NavigationUtils.findFirstMapOrMappedField(mai.eContainer(), level);
-		AdapterClassDefinition mapdef = NavigationUtils.findAdapterClass(getNavajoProxyStub(), parent, null);
+		
+		AdapterClassDefinition mapdef = NavigationUtils.findAdapterClass(getNavajoProxyStub(), parent);
+				
 		if (mapdef != null) {
+
 			boolean isValid = ( isSetter ? mapdef.isSetter(fieldName) : mapdef.isGetter(fieldName) );
 
+			
 			if (!isValid) {
-				if ( isSetterField ) {
-					warning("(1) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.SETTER_FIELD__FIELD);
+				if ( mai instanceof LoopImpl ) {
+					warning("(1) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.LOOP__MAPPABLE);
+					return;
+				} else if ( isSetterField ) {
+					warning("(2) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.SETTER_FIELD__FIELD);
 					return;
 				} else {
-					warning("(2) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__FIELD);
+					warning("(3) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__FIELD);
 					return;
 				}
 			}
-
+			
 			if ( mai instanceof MappableIdentifierImpl) {
 				int numberOfArguments = ((MappableIdentifierImpl) mai).getArgs().size();
 				List<List<String>> signatures = mapdef.getGetterTypeSignatures(fieldName);
@@ -171,9 +183,9 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 			}
 		} else {
 			if ( isSetterField ) {
-				warning("(3) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.SETTER_FIELD__FIELD);
+				warning("(4) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.SETTER_FIELD__FIELD);
 			} else {
-				warning("Invalid mappable field: " + fieldName, NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__FIELD);
+				warning("(5) Invalid mappable field: " + fieldName, NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__FIELD);
 			}
 		}
 	}
@@ -252,7 +264,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		int level = NavigationUtils.countMappableParentLevel(raw);
 		String field = NavigationUtils.getFieldFromMappableIdentifier(raw);
 		EObject eObject = NavigationUtils.findFirstMapOrMappedField(maf.eContainer(), level);
-		AdapterClassDefinition map = NavigationUtils.findAdapterClass(getNavajoProxyStub(), eObject, null);
+		AdapterClassDefinition map = NavigationUtils.findAdapterClass(getNavajoProxyStub(), eObject);
 		if (map != null) {
 			boolean isValid = map.isGetter(field);
 			if (!isValid) {

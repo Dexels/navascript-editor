@@ -1251,7 +1251,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Loop returns Loop
 	 *
 	 * Constraint:
-	 *     ((mappable=MappableIdentifier | tml=TmlIdentifier) filter=Expression? statements+=InnerBody*)
+	 *     ((mappable=MAPPABLE_IDENTIFIER | tml=TmlIdentifier) filter=Expression? statements+=InnerBody*)
 	 */
 	protected void sequence_Loop(ISerializationContext context, Loop semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

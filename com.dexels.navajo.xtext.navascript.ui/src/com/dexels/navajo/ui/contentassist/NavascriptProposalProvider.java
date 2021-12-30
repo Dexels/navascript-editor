@@ -35,6 +35,7 @@ import com.dexels.navajo.navascript.KeyValueArgument;
 import com.dexels.navajo.navascript.impl.AdapterMethodImpl;
 import com.dexels.navajo.navascript.impl.FunctionIdentifierImpl;
 import com.dexels.navajo.navascript.impl.KeyValueArgumentsImpl;
+import com.dexels.navajo.navascript.impl.LoopImpl;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
 import com.dexels.navajo.navascript.impl.MessageImpl;
@@ -292,13 +293,13 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		if ( map != null ) {
 			String adapterName;
 			Set<String> fields;
-			if ( map instanceof MapImpl ||  map instanceof SetterFieldImpl) {
+			if ( map instanceof MapImpl ||  map instanceof SetterFieldImpl || map instanceof LoopImpl ) {
 				AdapterClassDefinition md  = null;
 				if (map instanceof MapImpl ) {
 					adapterName = ((MapImpl) map).getAdapterName();
 					md = getNavajoProxyStub().getAdapter(adapterName);
 				} else {
-					md = NavigationUtils.findAdapterClass(adapters, map, null);
+					md = NavigationUtils.findAdapterClass(adapters, map);
 				}
 				fields = md.getSetters();
 				for ( String a : fields ) {
@@ -361,6 +362,37 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 			logger.warn("No parent map found");
 		}
 	}
+	
+	@Override
+	public void completeLoop_Mappable(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+
+		String prefix = NavigationUtils.getParentPrefix(context.getPrefix(), new StringBuffer());
+		int level = NavigationUtils.countMappableParentLevel(prefix);
+
+		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
+
+		if ( map != null ) {
+			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
+
+			if ( md != null ) {
+				Set<String> fields = md.getGetters();
+				for ( String a : fields ) {
+					if ( !md.isPrimitiveType(a)) { // Exclude primitive types from being loop-ed.
+						List<List<String>> type = new ArrayList<>();
+						try {
+							type = md.getGetterTypeSignatures(a);
+						} catch (Exception e) {
+							logger.warn("(2) Could not determine type for field: " + a  + ": " + e);
+						}
+						String typeStr = ( ( type != null ) ? type.toString() : "" ) + " -> " + md.getGetterType(a);
+						acceptor.accept(createCompletionProposalFormatted(prefix + a, typeStr, 1, context));
+					}
+				}
+			} else {
+				logger.warn("Could not findAdapterClass for map: " + map);
+			}
+		}
+	}
 
 	@Override
 	public void completeMap_AdapterName(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
@@ -392,7 +424,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
 		if ( map != null ) {
-			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map, null);
+			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
 			if ( md != null ) {
 				Set<String> fields = md.getGetters();
 				for ( String a : fields ) {
@@ -406,7 +438,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 					acceptor.accept(createCompletionProposalFormatted(prefix + a, typeStr, 1, context));
 				}
 			} else {
-				logger.warn("Could not find parent adapter for " + model);
+				logger.warn("**** completeMappableIdentifier_Field: Could not find parent adapter for " + model);
 			}
 		}
 	}
@@ -430,12 +462,20 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
 
 		if ( map != null ) {
-			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map, null);
+			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
+
 			if ( md != null ) {
-				List<ProxyValueDefinition> valuedDefs = md.getDeclaredValues();
-				for ( ProxyValueDefinition a : valuedDefs ) {
-					if ( a.getMap() != null && !"".equals(a.getMap() )) {
-						acceptor.accept(createCompletionProposalFormatted(prefix + a.getName(), a.getMapType(), 10, context));
+				Set<String> fields = md.getGetters();
+				for ( String a : fields ) {
+					if ( !md.isPrimitiveType(a)) {
+						List<List<String>> type = new ArrayList<>();
+						try {
+							type = md.getGetterTypeSignatures(a);
+						} catch (Exception e) {
+							logger.warn("(2) Could not determine type for field: " + a  + ": " + e);
+						}
+						String typeStr = ( ( type != null ) ? type.toString() : "" ) + " -> " + md.getGetterType(a);
+						acceptor.accept(createCompletionProposalFormatted(prefix + a, typeStr, 1, context));
 					}
 				}
 			} else {

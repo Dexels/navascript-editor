@@ -91,7 +91,7 @@ Method:
 ;
 
 Loop:
-	{Loop} 'loop' ( mappable=MappableIdentifier | tml=TmlIdentifier ) 
+	{Loop} 'loop' ( mappable=MAPPABLE_IDENTIFIER | tml=TmlIdentifier ) 
 	   ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' 
 ;
 

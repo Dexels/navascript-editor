@@ -49,6 +49,21 @@ public class AdapterClassDefinition  {
 		WRAPPER_TYPE_MAP.add(void.class);
 		WRAPPER_TYPE_MAP.add(String.class);
 	}
+	
+	private static final Set<String> PRIMITIVE_TYPES;
+	static {
+		PRIMITIVE_TYPES = new HashSet<>();
+		PRIMITIVE_TYPES.add(Property.STRING_PROPERTY);
+		PRIMITIVE_TYPES.add(Property.BINARY_PROPERTY);
+		PRIMITIVE_TYPES.add(Property.BOOLEAN_PROPERTY);
+		PRIMITIVE_TYPES.add(Property.INTEGER_PROPERTY);
+		PRIMITIVE_TYPES.add(Property.FLOAT_PROPERTY);
+		PRIMITIVE_TYPES.add(Property.DATE_PROPERTY);
+		PRIMITIVE_TYPES.add(Property.CLOCKTIME_PROPERTY);
+		PRIMITIVE_TYPES.add(Property.MONEY_PROPERTY);
+		PRIMITIVE_TYPES.add(Property.PERCENTAGE_PROPERTY);
+		PRIMITIVE_TYPES.add(Property.MEMO_PROPERTY);
+	}
 
 	private static final Set<String> EXCLUDED_METHODS;
 	static {
@@ -97,12 +112,6 @@ public class AdapterClassDefinition  {
 
 	public AdapterClassDefinition getMappedFieldType(String name, Class<?>...parameterTypes) throws Exception {
 
-		String fullyQualifiedName =  ( myDefinition.tagName != null ? myDefinition.tagName + "." + name : classDefinition.getCanonicalName() + "." + name );
-
-		NavajoProxyStub nps = NavajoProxyStub.getInstance();
-		if ( nps.getAdapter(fullyQualifiedName) != null ) {
-			return nps.getAdapter(fullyQualifiedName); 
-		}
 
 		Class returntype = null;
 		try {
@@ -136,7 +145,7 @@ public class AdapterClassDefinition  {
 		}
 
 		AdapterClassDefinition acd = new AdapterClassDefinition(returntype, this.classLoader);
-		nps.addAdapter(fullyQualifiedName, acd);
+		//nps.addAdapter(fullyQualifiedName, acd);
 
 		return acd;
 
@@ -251,19 +260,17 @@ public class AdapterClassDefinition  {
 		return p.getType();
 	}
 
-	public String getType(String field) throws Exception {
+	public String getType(String field)  {
 		if ( !checkClassDefinition()) {
 			return null;
 		}
 		if ( setterTypes.get(field) != null ) {
 			return setterTypes.get(field);
 		}
-		Field f = classDefinition.getField(field);
-		if ( !f.getType().isPrimitive() ) {
-			return getType(f.getType());
-		} else {
-			return getType(f.getGenericType());
+		if ( getterTypes.get(field) != null ) {
+			return getterTypes.get(field);
 		}
+		return "";
 	}
 
 	public AdapterClassDefinition getAdapterClass(String field) throws Exception {
@@ -289,9 +296,17 @@ public class AdapterClassDefinition  {
 		return getSetters().contains(field);
 	}
 
-
 	public boolean isGetter(String field)  {
 		return getGetters().contains(field);
+	}
+	
+	public boolean isPrimitiveType(String field)   {
+		try {
+			return PRIMITIVE_TYPES.contains(getType(field));
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+			return false;
+		}
 	}
 
 	public Set<String> getGetters() { // Use definition and object.
@@ -300,18 +315,7 @@ public class AdapterClassDefinition  {
 			return getters;
 		}
 
-		// First get everything from definition
-		if ( !checkClassDefinition()) { 
-			Set<String> values = myDefinition.getValueDefinitions();
-			for ( String v : values ) {
-				ProxyValueDefinition vd = myDefinition.getValueDefinition(v);
-				if ( "out".equals(vd.getDirection()) ){
-					getters.add(v);
-				}
-			}
-		}
-
-		// Then get all 'getters' for this class.
+		// Get all 'getters' for this class.
 		Method [] methods = classDefinition.getMethods();
 		for ( Method m : methods ) {
 			if ( !EXCLUDED_METHODS.contains(m.getName()) && m.getName().startsWith("get") ) {
@@ -323,6 +327,7 @@ public class AdapterClassDefinition  {
 					String rtString = getType(rtType);
 					getters.add(name);
 					getterTypes.put(name, rtString);
+					
 				} catch (Exception e) {
 					logger.warn("Could not determine return type for: " + name);
 				}	

@@ -17961,9 +17961,9 @@ rule__Loop__MappableAssignment_2_0
 	}
 :
 	(
-		{ before(grammarAccess.getLoopAccess().getMappableMappableIdentifierParserRuleCall_2_0_0()); }
-		ruleMappableIdentifier
-		{ after(grammarAccess.getLoopAccess().getMappableMappableIdentifierParserRuleCall_2_0_0()); }
+		{ before(grammarAccess.getLoopAccess().getMappableMAPPABLE_IDENTIFIERTerminalRuleCall_2_0_0()); }
+		RULE_MAPPABLE_IDENTIFIER
+		{ after(grammarAccess.getLoopAccess().getMappableMAPPABLE_IDENTIFIERTerminalRuleCall_2_0_0()); }
 	)
 ;
 finally {

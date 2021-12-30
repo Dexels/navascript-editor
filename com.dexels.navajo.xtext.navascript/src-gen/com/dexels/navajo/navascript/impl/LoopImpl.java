@@ -6,7 +6,6 @@ package com.dexels.navajo.navascript.impl;
 import com.dexels.navajo.navascript.Expression;
 import com.dexels.navajo.navascript.InnerBody;
 import com.dexels.navajo.navascript.Loop;
-import com.dexels.navajo.navascript.MappableIdentifier;
 import com.dexels.navajo.navascript.NavascriptPackage;
 import com.dexels.navajo.navascript.TmlIdentifier;
 
@@ -45,14 +44,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class LoopImpl extends MinimalEObjectImpl.Container implements Loop
 {
   /**
-   * The cached value of the '{@link #getMappable() <em>Mappable</em>}' containment reference.
+   * The default value of the '{@link #getMappable() <em>Mappable</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getMappable()
    * @generated
    * @ordered
    */
-  protected MappableIdentifier mappable;
+  protected static final String MAPPABLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMappable() <em>Mappable</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMappable()
+   * @generated
+   * @ordered
+   */
+  protected String mappable = MAPPABLE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getTml() <em>Tml</em>}' containment reference.
@@ -111,7 +120,7 @@ public class LoopImpl extends MinimalEObjectImpl.Container implements Loop
    * @generated
    */
   @Override
-  public MappableIdentifier getMappable()
+  public String getMappable()
   {
     return mappable;
   }
@@ -121,38 +130,13 @@ public class LoopImpl extends MinimalEObjectImpl.Container implements Loop
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetMappable(MappableIdentifier newMappable, NotificationChain msgs)
+  @Override
+  public void setMappable(String newMappable)
   {
-    MappableIdentifier oldMappable = mappable;
+    String oldMappable = mappable;
     mappable = newMappable;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NavascriptPackage.LOOP__MAPPABLE, oldMappable, newMappable);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setMappable(MappableIdentifier newMappable)
-  {
-    if (newMappable != mappable)
-    {
-      NotificationChain msgs = null;
-      if (mappable != null)
-        msgs = ((InternalEObject)mappable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NavascriptPackage.LOOP__MAPPABLE, null, msgs);
-      if (newMappable != null)
-        msgs = ((InternalEObject)newMappable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NavascriptPackage.LOOP__MAPPABLE, null, msgs);
-      msgs = basicSetMappable(newMappable, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NavascriptPackage.LOOP__MAPPABLE, newMappable, newMappable));
+      eNotify(new ENotificationImpl(this, Notification.SET, NavascriptPackage.LOOP__MAPPABLE, oldMappable, mappable));
   }
 
   /**
@@ -280,8 +264,6 @@ public class LoopImpl extends MinimalEObjectImpl.Container implements Loop
   {
     switch (featureID)
     {
-      case NavascriptPackage.LOOP__MAPPABLE:
-        return basicSetMappable(null, msgs);
       case NavascriptPackage.LOOP__TML:
         return basicSetTml(null, msgs);
       case NavascriptPackage.LOOP__FILTER:
@@ -326,7 +308,7 @@ public class LoopImpl extends MinimalEObjectImpl.Container implements Loop
     switch (featureID)
     {
       case NavascriptPackage.LOOP__MAPPABLE:
-        setMappable((MappableIdentifier)newValue);
+        setMappable((String)newValue);
         return;
       case NavascriptPackage.LOOP__TML:
         setTml((TmlIdentifier)newValue);
@@ -353,7 +335,7 @@ public class LoopImpl extends MinimalEObjectImpl.Container implements Loop
     switch (featureID)
     {
       case NavascriptPackage.LOOP__MAPPABLE:
-        setMappable((MappableIdentifier)null);
+        setMappable(MAPPABLE_EDEFAULT);
         return;
       case NavascriptPackage.LOOP__TML:
         setTml((TmlIdentifier)null);
@@ -379,7 +361,7 @@ public class LoopImpl extends MinimalEObjectImpl.Container implements Loop
     switch (featureID)
     {
       case NavascriptPackage.LOOP__MAPPABLE:
-        return mappable != null;
+        return MAPPABLE_EDEFAULT == null ? mappable != null : !MAPPABLE_EDEFAULT.equals(mappable);
       case NavascriptPackage.LOOP__TML:
         return tml != null;
       case NavascriptPackage.LOOP__FILTER:
@@ -388,6 +370,23 @@ public class LoopImpl extends MinimalEObjectImpl.Container implements Loop
         return statements != null && !statements.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (mappable: ");
+    result.append(mappable);
+    result.append(')');
+    return result.toString();
   }
 
 } //LoopImpl
