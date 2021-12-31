@@ -1994,8 +1994,8 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_METHOD_IDENTIFIER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7554:24: ( '.' RULE_IDENTIFIER )
-            // InternalNavascript.g:7554:26: '.' RULE_IDENTIFIER
+            // InternalNavascript.g:7570:24: ( '.' RULE_IDENTIFIER )
+            // InternalNavascript.g:7570:26: '.' RULE_IDENTIFIER
             {
             match('.'); 
             mRULE_IDENTIFIER(); 
@@ -2015,11 +2015,11 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_MAPPABLE_IDENTIFIER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7556:26: ( RULE_MAPPABLE_ID ( '../' )* RULE_IDENTIFIER )
-            // InternalNavascript.g:7556:28: RULE_MAPPABLE_ID ( '../' )* RULE_IDENTIFIER
+            // InternalNavascript.g:7572:26: ( RULE_MAPPABLE_ID ( '../' )* RULE_IDENTIFIER )
+            // InternalNavascript.g:7572:28: RULE_MAPPABLE_ID ( '../' )* RULE_IDENTIFIER
             {
             mRULE_MAPPABLE_ID(); 
-            // InternalNavascript.g:7556:45: ( '../' )*
+            // InternalNavascript.g:7572:45: ( '../' )*
             loop1:
             do {
                 int alt1=2;
@@ -2032,7 +2032,7 @@ public class InternalNavascriptLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalNavascript.g:7556:45: '../'
+            	    // InternalNavascript.g:7572:45: '../'
             	    {
             	    match("../"); 
 
@@ -2062,11 +2062,11 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7558:21: ( '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
-            // InternalNavascript.g:7558:23: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+            // InternalNavascript.g:7574:21: ( '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalNavascript.g:7574:23: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
             {
             match('\''); 
-            // InternalNavascript.g:7558:28: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+            // InternalNavascript.g:7574:28: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
             loop2:
             do {
                 int alt2=3;
@@ -2082,7 +2082,7 @@ public class InternalNavascriptLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // InternalNavascript.g:7558:29: '\\\\' .
+            	    // InternalNavascript.g:7574:29: '\\\\' .
             	    {
             	    match('\\'); 
             	    matchAny(); 
@@ -2090,7 +2090,7 @@ public class InternalNavascriptLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // InternalNavascript.g:7558:36: ~ ( ( '\\\\' | '\\'' ) )
+            	    // InternalNavascript.g:7574:36: ~ ( ( '\\\\' | '\\'' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2127,8 +2127,8 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_FORALL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7560:13: ( 'FORALL' )
-            // InternalNavascript.g:7560:15: 'FORALL'
+            // InternalNavascript.g:7576:13: ( 'FORALL' )
+            // InternalNavascript.g:7576:15: 'FORALL'
             {
             match("FORALL"); 
 
@@ -2148,8 +2148,8 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_EXISTS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7562:13: ( 'EXISTS' )
-            // InternalNavascript.g:7562:15: 'EXISTS'
+            // InternalNavascript.g:7578:13: ( 'EXISTS' )
+            // InternalNavascript.g:7578:15: 'EXISTS'
             {
             match("EXISTS"); 
 
@@ -2169,8 +2169,8 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_TRUE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7564:11: ( 'true' )
-            // InternalNavascript.g:7564:13: 'true'
+            // InternalNavascript.g:7580:11: ( 'true' )
+            // InternalNavascript.g:7580:13: 'true'
             {
             match("true"); 
 
@@ -2190,8 +2190,8 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_FALSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7566:12: ( 'false' )
-            // InternalNavascript.g:7566:14: 'false'
+            // InternalNavascript.g:7582:12: ( 'false' )
+            // InternalNavascript.g:7582:14: 'false'
             {
             match("false"); 
 
@@ -2209,8 +2209,8 @@ public class InternalNavascriptLexer extends Lexer {
     // $ANTLR start "RULE_MAPPABLE_ID"
     public final void mRULE_MAPPABLE_ID() throws RecognitionException {
         try {
-            // InternalNavascript.g:7568:27: ( '$' )
-            // InternalNavascript.g:7568:29: '$'
+            // InternalNavascript.g:7584:27: ( '$' )
+            // InternalNavascript.g:7584:29: '$'
             {
             match('$'); 
 
@@ -2227,8 +2227,8 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_NULL_DEF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7570:15: ( 'null' )
-            // InternalNavascript.g:7570:17: 'null'
+            // InternalNavascript.g:7586:15: ( 'null' )
+            // InternalNavascript.g:7586:17: 'null'
             {
             match("null"); 
 
@@ -2248,8 +2248,8 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_TODAY;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7572:12: ( 'TODAY' )
-            // InternalNavascript.g:7572:14: 'TODAY'
+            // InternalNavascript.g:7588:12: ( 'TODAY' )
+            // InternalNavascript.g:7588:14: 'TODAY'
             {
             match("TODAY"); 
 
@@ -2269,12 +2269,12 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_OBJECT_IDENTIFIER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7574:24: ( '\"' RULE_IDENTIFIER ( '.' RULE_IDENTIFIER )+ '\"' )
-            // InternalNavascript.g:7574:26: '\"' RULE_IDENTIFIER ( '.' RULE_IDENTIFIER )+ '\"'
+            // InternalNavascript.g:7590:24: ( '\"' RULE_IDENTIFIER ( '.' RULE_IDENTIFIER )+ '\"' )
+            // InternalNavascript.g:7590:26: '\"' RULE_IDENTIFIER ( '.' RULE_IDENTIFIER )+ '\"'
             {
             match('\"'); 
             mRULE_IDENTIFIER(); 
-            // InternalNavascript.g:7574:46: ( '.' RULE_IDENTIFIER )+
+            // InternalNavascript.g:7590:46: ( '.' RULE_IDENTIFIER )+
             int cnt3=0;
             loop3:
             do {
@@ -2288,7 +2288,7 @@ public class InternalNavascriptLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalNavascript.g:7574:47: '.' RULE_IDENTIFIER
+            	    // InternalNavascript.g:7590:47: '.' RULE_IDENTIFIER
             	    {
             	    match('.'); 
             	    mRULE_IDENTIFIER(); 
@@ -2322,11 +2322,11 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_QUOTED_IDENTIFIER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7576:24: ( '\"' ( RULE_IDENTIFIER | '/' | '../' )+ '\"' )
-            // InternalNavascript.g:7576:26: '\"' ( RULE_IDENTIFIER | '/' | '../' )+ '\"'
+            // InternalNavascript.g:7592:24: ( '\"' ( RULE_IDENTIFIER | '/' | '../' )+ '\"' )
+            // InternalNavascript.g:7592:26: '\"' ( RULE_IDENTIFIER | '/' | '../' )+ '\"'
             {
             match('\"'); 
-            // InternalNavascript.g:7576:30: ( RULE_IDENTIFIER | '/' | '../' )+
+            // InternalNavascript.g:7592:30: ( RULE_IDENTIFIER | '/' | '../' )+
             int cnt4=0;
             loop4:
             do {
@@ -2404,21 +2404,21 @@ public class InternalNavascriptLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // InternalNavascript.g:7576:31: RULE_IDENTIFIER
+            	    // InternalNavascript.g:7592:31: RULE_IDENTIFIER
             	    {
             	    mRULE_IDENTIFIER(); 
 
             	    }
             	    break;
             	case 2 :
-            	    // InternalNavascript.g:7576:47: '/'
+            	    // InternalNavascript.g:7592:47: '/'
             	    {
             	    match('/'); 
 
             	    }
             	    break;
             	case 3 :
-            	    // InternalNavascript.g:7576:51: '../'
+            	    // InternalNavascript.g:7592:51: '../'
             	    {
             	    match("../"); 
 
@@ -2452,11 +2452,11 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_STRING_CONSTANT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7578:22: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' )
-            // InternalNavascript.g:7578:24: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+            // InternalNavascript.g:7594:22: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' )
+            // InternalNavascript.g:7594:24: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
             {
             match('\"'); 
-            // InternalNavascript.g:7578:28: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+            // InternalNavascript.g:7594:28: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
             loop5:
             do {
                 int alt5=3;
@@ -2472,7 +2472,7 @@ public class InternalNavascriptLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // InternalNavascript.g:7578:29: '\\\\' .
+            	    // InternalNavascript.g:7594:29: '\\\\' .
             	    {
             	    match('\\'); 
             	    matchAny(); 
@@ -2480,7 +2480,7 @@ public class InternalNavascriptLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // InternalNavascript.g:7578:36: ~ ( ( '\\\\' | '\"' ) )
+            	    // InternalNavascript.g:7594:36: ~ ( ( '\\\\' | '\"' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2517,11 +2517,11 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_TML_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7580:18: ( '[' ( RULE_IDENTIFIER | '/' | '../' | '/@' )+ ']' )
-            // InternalNavascript.g:7580:20: '[' ( RULE_IDENTIFIER | '/' | '../' | '/@' )+ ']'
+            // InternalNavascript.g:7596:18: ( '[' ( RULE_IDENTIFIER | '/' | '../' | '/@' )+ ']' )
+            // InternalNavascript.g:7596:20: '[' ( RULE_IDENTIFIER | '/' | '../' | '/@' )+ ']'
             {
             match('['); 
-            // InternalNavascript.g:7580:24: ( RULE_IDENTIFIER | '/' | '../' | '/@' )+
+            // InternalNavascript.g:7596:24: ( RULE_IDENTIFIER | '/' | '../' | '/@' )+
             int cnt6=0;
             loop6:
             do {
@@ -2608,21 +2608,21 @@ public class InternalNavascriptLexer extends Lexer {
 
                 switch (alt6) {
             	case 1 :
-            	    // InternalNavascript.g:7580:25: RULE_IDENTIFIER
+            	    // InternalNavascript.g:7596:25: RULE_IDENTIFIER
             	    {
             	    mRULE_IDENTIFIER(); 
 
             	    }
             	    break;
             	case 2 :
-            	    // InternalNavascript.g:7580:41: '/'
+            	    // InternalNavascript.g:7596:41: '/'
             	    {
             	    match('/'); 
 
             	    }
             	    break;
             	case 3 :
-            	    // InternalNavascript.g:7580:45: '../'
+            	    // InternalNavascript.g:7596:45: '../'
             	    {
             	    match("../"); 
 
@@ -2630,7 +2630,7 @@ public class InternalNavascriptLexer extends Lexer {
             	    }
             	    break;
             	case 4 :
-            	    // InternalNavascript.g:7580:51: '/@'
+            	    // InternalNavascript.g:7596:51: '/@'
             	    {
             	    match("/@"); 
 
@@ -2664,8 +2664,8 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_ONE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7582:10: ( '1' )
-            // InternalNavascript.g:7582:12: '1'
+            // InternalNavascript.g:7598:10: ( '1' )
+            // InternalNavascript.g:7598:12: '1'
             {
             match('1'); 
 
@@ -2682,8 +2682,8 @@ public class InternalNavascriptLexer extends Lexer {
     // $ANTLR start "RULE_UNDERSCORE"
     public final void mRULE_UNDERSCORE() throws RecognitionException {
         try {
-            // InternalNavascript.g:7584:26: ( '_' )
-            // InternalNavascript.g:7584:28: '_'
+            // InternalNavascript.g:7600:26: ( '_' )
+            // InternalNavascript.g:7600:28: '_'
             {
             match('_'); 
 
@@ -2700,8 +2700,8 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_IDENTIFIER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7586:17: ( ( RULE_LETTER | RULE_UNDERSCORE ) ( RULE_LETTER | '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | RULE_UNDERSCORE )* )
-            // InternalNavascript.g:7586:19: ( RULE_LETTER | RULE_UNDERSCORE ) ( RULE_LETTER | '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | RULE_UNDERSCORE )*
+            // InternalNavascript.g:7602:17: ( ( RULE_LETTER | RULE_UNDERSCORE ) ( RULE_LETTER | '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | RULE_UNDERSCORE )* )
+            // InternalNavascript.g:7602:19: ( RULE_LETTER | RULE_UNDERSCORE ) ( RULE_LETTER | '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | RULE_UNDERSCORE )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -2712,7 +2712,7 @@ public class InternalNavascriptLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalNavascript.g:7586:49: ( RULE_LETTER | '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | RULE_UNDERSCORE )*
+            // InternalNavascript.g:7602:49: ( RULE_LETTER | '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | RULE_UNDERSCORE )*
             loop7:
             do {
                 int alt7=2;
@@ -2761,10 +2761,10 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7588:14: ( ( '0' | ( RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ) ( '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )* ) )
-            // InternalNavascript.g:7588:16: ( '0' | ( RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ) ( '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )* )
+            // InternalNavascript.g:7604:14: ( ( '0' | ( RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ) ( '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )* ) )
+            // InternalNavascript.g:7604:16: ( '0' | ( RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ) ( '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )* )
             {
-            // InternalNavascript.g:7588:16: ( '0' | ( RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ) ( '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )* )
+            // InternalNavascript.g:7604:16: ( '0' | ( RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ) ( '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )* )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -2782,14 +2782,14 @@ public class InternalNavascriptLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // InternalNavascript.g:7588:17: '0'
+                    // InternalNavascript.g:7604:17: '0'
                     {
                     match('0'); 
 
                     }
                     break;
                 case 2 :
-                    // InternalNavascript.g:7588:21: ( RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ) ( '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )*
+                    // InternalNavascript.g:7604:21: ( RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ) ( '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )*
                     {
                     if ( (input.LA(1)>='1' && input.LA(1)<='9') ) {
                         input.consume();
@@ -2800,7 +2800,7 @@ public class InternalNavascriptLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // InternalNavascript.g:7588:64: ( '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )*
+                    // InternalNavascript.g:7604:64: ( '0' | RULE_ONE | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )*
                     loop8:
                     do {
                         int alt8=2;
@@ -2855,10 +2855,10 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7590:12: ( ( RULE_INTEGER )? '.' RULE_INTEGER )
-            // InternalNavascript.g:7590:14: ( RULE_INTEGER )? '.' RULE_INTEGER
+            // InternalNavascript.g:7606:12: ( ( RULE_INTEGER )? '.' RULE_INTEGER )
+            // InternalNavascript.g:7606:14: ( RULE_INTEGER )? '.' RULE_INTEGER
             {
-            // InternalNavascript.g:7590:14: ( RULE_INTEGER )?
+            // InternalNavascript.g:7606:14: ( RULE_INTEGER )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -2867,7 +2867,7 @@ public class InternalNavascriptLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalNavascript.g:7590:14: RULE_INTEGER
+                    // InternalNavascript.g:7606:14: RULE_INTEGER
                     {
                     mRULE_INTEGER(); 
 
@@ -2892,8 +2892,8 @@ public class InternalNavascriptLexer extends Lexer {
     // $ANTLR start "RULE_LETTER"
     public final void mRULE_LETTER() throws RecognitionException {
         try {
-            // InternalNavascript.g:7592:22: ( ( 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z' | 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z' ) )
-            // InternalNavascript.g:7592:24: ( 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z' | 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z' )
+            // InternalNavascript.g:7608:22: ( ( 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z' | 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z' ) )
+            // InternalNavascript.g:7608:24: ( 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z' | 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z' )
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -2918,12 +2918,12 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7594:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalNavascript.g:7594:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalNavascript.g:7610:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalNavascript.g:7610:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalNavascript.g:7594:24: ( options {greedy=false; } : . )*
+            // InternalNavascript.g:7610:24: ( options {greedy=false; } : . )*
             loop11:
             do {
                 int alt11=2;
@@ -2948,7 +2948,7 @@ public class InternalNavascriptLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // InternalNavascript.g:7594:52: .
+            	    // InternalNavascript.g:7610:52: .
             	    {
             	    matchAny(); 
 
@@ -2978,12 +2978,12 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7596:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalNavascript.g:7596:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalNavascript.g:7612:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalNavascript.g:7612:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalNavascript.g:7596:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalNavascript.g:7612:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop12:
             do {
                 int alt12=2;
@@ -2996,7 +2996,7 @@ public class InternalNavascriptLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // InternalNavascript.g:7596:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalNavascript.g:7612:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3016,7 +3016,7 @@ public class InternalNavascriptLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalNavascript.g:7596:40: ( ( '\\r' )? '\\n' )?
+            // InternalNavascript.g:7612:40: ( ( '\\r' )? '\\n' )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -3025,9 +3025,9 @@ public class InternalNavascriptLexer extends Lexer {
             }
             switch (alt14) {
                 case 1 :
-                    // InternalNavascript.g:7596:41: ( '\\r' )? '\\n'
+                    // InternalNavascript.g:7612:41: ( '\\r' )? '\\n'
                     {
-                    // InternalNavascript.g:7596:41: ( '\\r' )?
+                    // InternalNavascript.g:7612:41: ( '\\r' )?
                     int alt13=2;
                     int LA13_0 = input.LA(1);
 
@@ -3036,7 +3036,7 @@ public class InternalNavascriptLexer extends Lexer {
                     }
                     switch (alt13) {
                         case 1 :
-                            // InternalNavascript.g:7596:41: '\\r'
+                            // InternalNavascript.g:7612:41: '\\r'
                             {
                             match('\r'); 
 
@@ -3068,10 +3068,10 @@ public class InternalNavascriptLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalNavascript.g:7598:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalNavascript.g:7598:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalNavascript.g:7614:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalNavascript.g:7614:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalNavascript.g:7598:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalNavascript.g:7614:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt15=0;
             loop15:
             do {

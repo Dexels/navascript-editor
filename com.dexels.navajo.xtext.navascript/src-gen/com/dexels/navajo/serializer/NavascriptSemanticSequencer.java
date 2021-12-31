@@ -1161,6 +1161,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *             statement=Loop | 
 	 *             statement=Map | 
 	 *             statement=Break | 
+	 *             statement=Synchronized | 
 	 *             statement=BlockStatements
 	 *         )
 	 *     )

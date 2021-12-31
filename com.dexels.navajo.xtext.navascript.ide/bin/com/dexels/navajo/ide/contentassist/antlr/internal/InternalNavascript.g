@@ -2252,9 +2252,15 @@ rule__InnerBody__StatementAlternatives_2_0
 	)
 	|
 	(
-		{ before(grammarAccess.getInnerBodyAccess().getStatementBlockStatementsParserRuleCall_2_0_14()); }
+		{ before(grammarAccess.getInnerBodyAccess().getStatementSynchronizedParserRuleCall_2_0_14()); }
+		ruleSynchronized
+		{ after(grammarAccess.getInnerBodyAccess().getStatementSynchronizedParserRuleCall_2_0_14()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getInnerBodyAccess().getStatementBlockStatementsParserRuleCall_2_0_15()); }
 		ruleBlockStatements
-		{ after(grammarAccess.getInnerBodyAccess().getStatementBlockStatementsParserRuleCall_2_0_14()); }
+		{ after(grammarAccess.getInnerBodyAccess().getStatementBlockStatementsParserRuleCall_2_0_15()); }
 	)
 ;
 finally {

@@ -219,17 +219,18 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final RuleCall cStatementLoopParserRuleCall_2_0_11 = (RuleCall)cStatementAlternatives_2_0.eContents().get(11);
 		private final RuleCall cStatementMapParserRuleCall_2_0_12 = (RuleCall)cStatementAlternatives_2_0.eContents().get(12);
 		private final RuleCall cStatementBreakParserRuleCall_2_0_13 = (RuleCall)cStatementAlternatives_2_0.eContents().get(13);
-		private final RuleCall cStatementBlockStatementsParserRuleCall_2_0_14 = (RuleCall)cStatementAlternatives_2_0.eContents().get(14);
+		private final RuleCall cStatementSynchronizedParserRuleCall_2_0_14 = (RuleCall)cStatementAlternatives_2_0.eContents().get(14);
+		private final RuleCall cStatementBlockStatementsParserRuleCall_2_0_15 = (RuleCall)cStatementAlternatives_2_0.eContents().get(15);
 		
 		//InnerBody:
 		//	{InnerBody} ('if' condition=Expression 'then')?
 		//	statement=(Property | Option | MethodOrSetter | Message | AntiMessage | Include | Methods | Var | Print | Log |
-		//	Define | Loop | Map | Break | BlockStatements);
+		//	Define | Loop | Map | Break | Synchronized | BlockStatements);
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{InnerBody} ('if' condition=Expression 'then')?
 		//statement=(Property | Option | MethodOrSetter | Message | AntiMessage | Include | Methods | Var | Print | Log | Define |
-		//Loop | Map | Break | BlockStatements)
+		//Loop | Map | Break | Synchronized | BlockStatements)
 		public Group getGroup() { return cGroup; }
 		
 		//{InnerBody}
@@ -251,11 +252,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		public Keyword getThenKeyword_1_2() { return cThenKeyword_1_2; }
 		
 		//statement=(Property | Option | MethodOrSetter | Message | AntiMessage | Include | Methods | Var | Print | Log | Define |
-		//Loop | Map | Break | BlockStatements)
+		//Loop | Map | Break | Synchronized | BlockStatements)
 		public Assignment getStatementAssignment_2() { return cStatementAssignment_2; }
 		
 		//(Property | Option | MethodOrSetter | Message | AntiMessage | Include | Methods | Var | Print | Log | Define | Loop |
-		//Map | Break | BlockStatements)
+		//Map | Break | Synchronized | BlockStatements)
 		public Alternatives getStatementAlternatives_2_0() { return cStatementAlternatives_2_0; }
 		
 		//Property
@@ -300,8 +301,11 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//Break
 		public RuleCall getStatementBreakParserRuleCall_2_0_13() { return cStatementBreakParserRuleCall_2_0_13; }
 		
+		//Synchronized
+		public RuleCall getStatementSynchronizedParserRuleCall_2_0_14() { return cStatementSynchronizedParserRuleCall_2_0_14; }
+		
 		//BlockStatements
-		public RuleCall getStatementBlockStatementsParserRuleCall_2_0_14() { return cStatementBlockStatementsParserRuleCall_2_0_14; }
+		public RuleCall getStatementBlockStatementsParserRuleCall_2_0_15() { return cStatementBlockStatementsParserRuleCall_2_0_15; }
 	}
 	public class BlockStatementsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.dexels.navajo.Navascript.BlockStatements");
@@ -4688,7 +4692,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	//InnerBody:
 	//	{InnerBody} ('if' condition=Expression 'then')?
 	//	statement=(Property | Option | MethodOrSetter | Message | AntiMessage | Include | Methods | Var | Print | Log |
-	//	Define | Loop | Map | Break | BlockStatements);
+	//	Define | Loop | Map | Break | Synchronized | BlockStatements);
 	public InnerBodyElements getInnerBodyAccess() {
 		return pInnerBody;
 	}

@@ -773,9 +773,9 @@ ruleInnerBody returns [EObject current=null]
 					}
 					    |
 					{
-						newCompositeNode(grammarAccess.getInnerBodyAccess().getStatementBlockStatementsParserRuleCall_2_0_14());
+						newCompositeNode(grammarAccess.getInnerBodyAccess().getStatementSynchronizedParserRuleCall_2_0_14());
 					}
-					lv_statement_4_15=ruleBlockStatements
+					lv_statement_4_15=ruleSynchronized
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getInnerBodyRule());
@@ -784,6 +784,22 @@ ruleInnerBody returns [EObject current=null]
 							$current,
 							"statement",
 							lv_statement_4_15,
+							"com.dexels.navajo.Navascript.Synchronized");
+						afterParserOrEnumRuleCall();
+					}
+					    |
+					{
+						newCompositeNode(grammarAccess.getInnerBodyAccess().getStatementBlockStatementsParserRuleCall_2_0_15());
+					}
+					lv_statement_4_16=ruleBlockStatements
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getInnerBodyRule());
+						}
+						set(
+							$current,
+							"statement",
+							lv_statement_4_16,
 							"com.dexels.navajo.Navascript.BlockStatements");
 						afterParserOrEnumRuleCall();
 					}

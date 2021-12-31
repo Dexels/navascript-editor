@@ -70,6 +70,7 @@ public abstract class AbstractNavascriptProposalProvider extends AbstractJavaBas
 		completeRuleCall(((RuleCall)((Alternatives)assignment.getTerminal()).getElements().get(12)), context, acceptor);
 		completeRuleCall(((RuleCall)((Alternatives)assignment.getTerminal()).getElements().get(13)), context, acceptor);
 		completeRuleCall(((RuleCall)((Alternatives)assignment.getTerminal()).getElements().get(14)), context, acceptor);
+		completeRuleCall(((RuleCall)((Alternatives)assignment.getTerminal()).getElements().get(15)), context, acceptor);
 	}
 	public void completeBlockStatements_Statements(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);

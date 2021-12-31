@@ -18,7 +18,7 @@ TopLevelStatement : {TopLevelStatement}  ('if' condition=Expression 'then')?
 
 InnerBody:
 	{InnerBody} ('if' condition=Expression 'then')?
-	statement=( Property |  Option | MethodOrSetter|  Message | AntiMessage | Include | Methods | Var | Print | Log | Define | Loop | Map | Break | BlockStatements )
+	statement=( Property |  Option | MethodOrSetter|  Message | AntiMessage | Include | Methods | Var | Print | Log | Define | Loop | Map | Break | Synchronized | BlockStatements )
 ;
 
 /*
