@@ -672,22 +672,13 @@ public interface NavascriptPackage extends EPackage
   int LITERAL_OR_EXPRESSION__DESCRIPTION = SKEY_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Literal</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL_OR_EXPRESSION__LITERAL = SKEY_FEATURE_COUNT + 2;
-
-  /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LITERAL_OR_EXPRESSION__EXPRESSION = SKEY_FEATURE_COUNT + 3;
+  int LITERAL_OR_EXPRESSION__EXPRESSION = SKEY_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Literal Or Expression</em>' class.
@@ -696,7 +687,7 @@ public interface NavascriptPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LITERAL_OR_EXPRESSION_FEATURE_COUNT = SKEY_FEATURE_COUNT + 4;
+  int LITERAL_OR_EXPRESSION_FEATURE_COUNT = SKEY_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link com.dexels.navajo.navascript.impl.PrintImpl <em>Print</em>}' class.
@@ -2404,13 +2395,22 @@ public interface NavascriptPackage extends EPackage
   int TML_IDENTIFIER = 68;
 
   /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TML_IDENTIFIER__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Tml</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TML_IDENTIFIER__TML = 0;
+  int TML_IDENTIFIER__TML = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Tml Identifier</em>' class.
@@ -2419,7 +2419,7 @@ public interface NavascriptPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TML_IDENTIFIER_FEATURE_COUNT = 1;
+  int TML_IDENTIFIER_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link com.dexels.navajo.navascript.impl.PropertyTypeImpl <em>Property Type</em>}' class.
@@ -3862,17 +3862,6 @@ public interface NavascriptPackage extends EPackage
   EClass getLiteralOrExpression();
 
   /**
-   * Returns the meta object for the attribute '{@link com.dexels.navajo.navascript.LiteralOrExpression#getLiteral <em>Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Literal</em>'.
-   * @see com.dexels.navajo.navascript.LiteralOrExpression#getLiteral()
-   * @see #getLiteralOrExpression()
-   * @generated
-   */
-  EAttribute getLiteralOrExpression_Literal();
-
-  /**
    * Returns the meta object for the containment reference '{@link com.dexels.navajo.navascript.LiteralOrExpression#getExpression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5309,6 +5298,17 @@ public interface NavascriptPackage extends EPackage
   EClass getTmlIdentifier();
 
   /**
+   * Returns the meta object for the containment reference '{@link com.dexels.navajo.navascript.TmlIdentifier#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see com.dexels.navajo.navascript.TmlIdentifier#getValue()
+   * @see #getTmlIdentifier()
+   * @generated
+   */
+  EReference getTmlIdentifier_Value();
+
+  /**
    * Returns the meta object for the attribute '{@link com.dexels.navajo.navascript.TmlIdentifier#getTml <em>Tml</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6430,14 +6430,6 @@ public interface NavascriptPackage extends EPackage
      * @generated
      */
     EClass LITERAL_OR_EXPRESSION = eINSTANCE.getLiteralOrExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Literal</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LITERAL_OR_EXPRESSION__LITERAL = eINSTANCE.getLiteralOrExpression_Literal();
 
     /**
      * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
@@ -7616,6 +7608,14 @@ public interface NavascriptPackage extends EPackage
      * @generated
      */
     EClass TML_IDENTIFIER = eINSTANCE.getTmlIdentifier();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TML_IDENTIFIER__VALUE = eINSTANCE.getTmlIdentifier_Value();
 
     /**
      * The meta object literal for the '<em><b>Tml</b></em>' attribute feature.

@@ -1433,20 +1433,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
-  public EAttribute getLiteralOrExpression_Literal()
-  {
-    return (EAttribute)literalOrExpressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getLiteralOrExpression_Expression()
   {
-    return (EReference)literalOrExpressionEClass.getEStructuralFeatures().get(1);
+    return (EReference)literalOrExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2929,9 +2918,20 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
+  public EReference getTmlIdentifier_Value()
+  {
+    return (EReference)tmlIdentifierEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getTmlIdentifier_Tml()
   {
-    return (EAttribute)tmlIdentifierEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)tmlIdentifierEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3755,7 +3755,6 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     createEReference(checkAttributeEClass, CHECK_ATTRIBUTE__VALUE);
 
     literalOrExpressionEClass = createEClass(LITERAL_OR_EXPRESSION);
-    createEAttribute(literalOrExpressionEClass, LITERAL_OR_EXPRESSION__LITERAL);
     createEReference(literalOrExpressionEClass, LITERAL_OR_EXPRESSION__EXPRESSION);
 
     printEClass = createEClass(PRINT);
@@ -3940,6 +3939,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     createEReference(mappableIdentifierEClass, MAPPABLE_IDENTIFIER__ARGS);
 
     tmlIdentifierEClass = createEClass(TML_IDENTIFIER);
+    createEReference(tmlIdentifierEClass, TML_IDENTIFIER__VALUE);
     createEAttribute(tmlIdentifierEClass, TML_IDENTIFIER__TML);
 
     propertyTypeEClass = createEClass(PROPERTY_TYPE);
@@ -4090,6 +4090,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     subTypeArgumentEClass.getESuperTypes().add(this.getPropertyArgument());
     expressionEClass.getESuperTypes().add(this.getSTimeout());
     expressionEClass.getESuperTypes().add(this.getSBreakOnNoLock());
+    tmlIdentifierEClass.getESuperTypes().add(this.getExpression());
     messageTypeEClass.getESuperTypes().add(this.getMessageArgument());
     messageModeEClass.getESuperTypes().add(this.getMessageArgument());
     andOrExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -4192,7 +4193,6 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     initEReference(getCheckAttribute_Value(), this.getLiteralOrExpression(), null, "value", null, 0, 1, CheckAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalOrExpressionEClass, LiteralOrExpression.class, "LiteralOrExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLiteralOrExpression_Literal(), ecorePackage.getEString(), "literal", null, 0, 1, LiteralOrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralOrExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1, LiteralOrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(printEClass, Print.class, "Print", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4377,6 +4377,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     initEReference(getMappableIdentifier_Args(), this.getExpression(), null, "args", null, 0, -1, MappableIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tmlIdentifierEClass, TmlIdentifier.class, "TmlIdentifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTmlIdentifier_Value(), this.getTmlIdentifier(), null, "value", null, 0, 1, TmlIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTmlIdentifier_Tml(), ecorePackage.getEString(), "tml", null, 0, 1, TmlIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyTypeEClass, PropertyType.class, "PropertyType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

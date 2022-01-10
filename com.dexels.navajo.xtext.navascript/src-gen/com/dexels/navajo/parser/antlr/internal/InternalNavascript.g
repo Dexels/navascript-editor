@@ -2002,59 +2002,21 @@ ruleLiteralOrExpression returns [EObject current=null]
 }:
 	(
 		(
-			(
-				{
-					/* */
-				}
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getLiteralOrExpressionAccess().getLiteralOrExpressionAction_0_0(),
-						$current);
-				}
-			)
-			(
-				(
-					(
-						lv_literal_1_1=RULE_QUOTED_IDENTIFIER
-						{
-							newLeafNode(lv_literal_1_1, grammarAccess.getLiteralOrExpressionAccess().getLiteralQUOTED_IDENTIFIERTerminalRuleCall_0_1_0_0());
-						}
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getLiteralOrExpressionRule());
-							}
-							setWithLastConsumed(
-								$current,
-								"literal",
-								lv_literal_1_1,
-								"com.dexels.navajo.Navascript.QUOTED_IDENTIFIER");
-						}
-						    |
-						lv_literal_1_2=RULE_STRING_CONSTANT
-						{
-							newLeafNode(lv_literal_1_2, grammarAccess.getLiteralOrExpressionAccess().getLiteralSTRING_CONSTANTTerminalRuleCall_0_1_0_1());
-						}
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getLiteralOrExpressionRule());
-							}
-							setWithLastConsumed(
-								$current,
-								"literal",
-								lv_literal_1_2,
-								"com.dexels.navajo.Navascript.STRING_CONSTANT");
-						}
-					)
-				)
-			)
+			{
+				/* */
+			}
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getLiteralOrExpressionAccess().getLiteralOrExpressionAction_0(),
+					$current);
+			}
 		)
-		    |
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getLiteralOrExpressionAccess().getExpressionExpressionParserRuleCall_1_0());
 				}
-				lv_expression_2_0=ruleExpression
+				lv_expression_1_0=ruleExpression
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getLiteralOrExpressionRule());
@@ -2062,7 +2024,7 @@ ruleLiteralOrExpression returns [EObject current=null]
 					set(
 						$current,
 						"expression",
-						lv_expression_2_0,
+						lv_expression_1_0,
 						"com.dexels.navajo.Navascript.Expression");
 					afterParserOrEnumRuleCall();
 				}
@@ -2780,16 +2742,23 @@ ruleMessage returns [EObject current=null]
 			}
 			    |
 			(
-				otherlv_12='['
-				{
-					newLeafNode(otherlv_12, grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0());
-				}
+				(
+					otherlv_12='['
+					{
+						newLeafNode(otherlv_12, grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0_0());
+					}
+					    |
+					otherlv_13='"'
+					{
+						newLeafNode(otherlv_13, grammarAccess.getMessageAccess().getQuotationMarkKeyword_4_2_0_1());
+					}
+				)
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getMessageAccess().getMessageArrayMessageArrayParserRuleCall_4_2_1_0());
 						}
-						lv_messageArray_13_0=ruleMessageArray
+						lv_messageArray_14_0=ruleMessageArray
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getMessageRule());
@@ -2797,16 +2766,23 @@ ruleMessage returns [EObject current=null]
 							set(
 								$current,
 								"messageArray",
-								lv_messageArray_13_0,
+								lv_messageArray_14_0,
 								"com.dexels.navajo.Navascript.MessageArray");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)?
-				otherlv_14=']'
-				{
-					newLeafNode(otherlv_14, grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2());
-				}
+				(
+					otherlv_15=']'
+					{
+						newLeafNode(otherlv_15, grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2_0());
+					}
+					    |
+					otherlv_16='"'
+					{
+						newLeafNode(otherlv_16, grammarAccess.getMessageAccess().getQuotationMarkKeyword_4_2_2_1());
+					}
+				)
 			)
 		)
 	)
@@ -3769,20 +3745,37 @@ ruleMappedArrayMessage returns [EObject current=null]
 		)
 		(
 			(
-				lv_message_1_0=RULE_TML_LITERAL
-				{
-					newLeafNode(lv_message_1_0, grammarAccess.getMappedArrayMessageAccess().getMessageTML_LITERALTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+				(
+					lv_message_1_1=RULE_TML_LITERAL
+					{
+						newLeafNode(lv_message_1_1, grammarAccess.getMappedArrayMessageAccess().getMessageTML_LITERALTerminalRuleCall_1_0_0());
 					}
-					setWithLastConsumed(
-						$current,
-						"message",
-						lv_message_1_0,
-						"com.dexels.navajo.Navascript.TML_LITERAL");
-				}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"message",
+							lv_message_1_1,
+							"com.dexels.navajo.Navascript.TML_LITERAL");
+					}
+					    |
+					lv_message_1_2=RULE_QUOTED_IDENTIFIER
+					{
+						newLeafNode(lv_message_1_2, grammarAccess.getMappedArrayMessageAccess().getMessageQUOTED_IDENTIFIERTerminalRuleCall_1_0_1());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"message",
+							lv_message_1_2,
+							"com.dexels.navajo.Navascript.QUOTED_IDENTIFIER");
+					}
+				)
 			)
 		)
 		(
@@ -6742,16 +6735,16 @@ ruleAtomic returns [EObject current=null]
 				}
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getForAllLiteralAction_7_0(),
+						grammarAccess.getAtomicAccess().getTmlIdentifierAction_7_0(),
 						$current);
 				}
 			)
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getAtomicAccess().getValueForAllIdentifierParserRuleCall_7_1_0());
+						newCompositeNode(grammarAccess.getAtomicAccess().getValueTmlIdentifierParserRuleCall_7_1_0());
 					}
-					lv_value_18_0=ruleForAllIdentifier
+					lv_value_18_0=ruleTmlIdentifier
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getAtomicRule());
@@ -6760,6 +6753,38 @@ ruleAtomic returns [EObject current=null]
 							$current,
 							"value",
 							lv_value_18_0,
+							"com.dexels.navajo.Navascript.TmlIdentifier");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicAccess().getForAllLiteralAction_8_0(),
+						$current);
+				}
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getAtomicAccess().getValueForAllIdentifierParserRuleCall_8_1_0());
+					}
+					lv_value_20_0=ruleForAllIdentifier
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getAtomicRule());
+						}
+						set(
+							$current,
+							"value",
+							lv_value_20_0,
 							"com.dexels.navajo.Navascript.ForAllIdentifier");
 						afterParserOrEnumRuleCall();
 					}
@@ -6774,15 +6799,15 @@ ruleAtomic returns [EObject current=null]
 				}
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getNullLiteralAction_8_0(),
+						grammarAccess.getAtomicAccess().getNullLiteralAction_9_0(),
 						$current);
 				}
 			)
 			(
 				(
-					lv_value_20_0=RULE_NULL_DEF
+					lv_value_22_0=RULE_NULL_DEF
 					{
-						newLeafNode(lv_value_20_0, grammarAccess.getAtomicAccess().getValueNULL_DEFTerminalRuleCall_8_1_0());
+						newLeafNode(lv_value_22_0, grammarAccess.getAtomicAccess().getValueNULL_DEFTerminalRuleCall_9_1_0());
 					}
 					{
 						if ($current==null) {
@@ -6791,7 +6816,7 @@ ruleAtomic returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"value",
-							lv_value_20_0,
+							lv_value_22_0,
 							"com.dexels.navajo.Navascript.NULL_DEF");
 					}
 				)
@@ -6805,15 +6830,15 @@ ruleAtomic returns [EObject current=null]
 				}
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getTodayLiteralAction_9_0(),
+						grammarAccess.getAtomicAccess().getTodayLiteralAction_10_0(),
 						$current);
 				}
 			)
 			(
 				(
-					lv_value_22_0=RULE_TODAY
+					lv_value_24_0=RULE_TODAY
 					{
-						newLeafNode(lv_value_22_0, grammarAccess.getAtomicAccess().getValueTODAYTerminalRuleCall_9_1_0());
+						newLeafNode(lv_value_24_0, grammarAccess.getAtomicAccess().getValueTODAYTerminalRuleCall_10_1_0());
 					}
 					{
 						if ($current==null) {
@@ -6822,7 +6847,7 @@ ruleAtomic returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"value",
-							lv_value_22_0,
+							lv_value_24_0,
 							"com.dexels.navajo.Navascript.TODAY");
 					}
 				)
@@ -7186,20 +7211,37 @@ ruleTmlIdentifier returns [EObject current=null]
 		)
 		(
 			(
-				lv_tml_1_0=RULE_TML_LITERAL
-				{
-					newLeafNode(lv_tml_1_0, grammarAccess.getTmlIdentifierAccess().getTmlTML_LITERALTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getTmlIdentifierRule());
+				(
+					lv_tml_1_1=RULE_TML_LITERAL
+					{
+						newLeafNode(lv_tml_1_1, grammarAccess.getTmlIdentifierAccess().getTmlTML_LITERALTerminalRuleCall_1_0_0());
 					}
-					setWithLastConsumed(
-						$current,
-						"tml",
-						lv_tml_1_0,
-						"com.dexels.navajo.Navascript.TML_LITERAL");
-				}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getTmlIdentifierRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"tml",
+							lv_tml_1_1,
+							"com.dexels.navajo.Navascript.TML_LITERAL");
+					}
+					    |
+					lv_tml_1_2=RULE_QUOTED_IDENTIFIER
+					{
+						newLeafNode(lv_tml_1_2, grammarAccess.getTmlIdentifierAccess().getTmlQUOTED_IDENTIFIERTerminalRuleCall_1_0_1());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getTmlIdentifierRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"tml",
+							lv_tml_1_2,
+							"com.dexels.navajo.Navascript.QUOTED_IDENTIFIER");
+					}
+				)
 			)
 		)
 	)
@@ -7587,13 +7629,11 @@ RULE_NULL_DEF : 'null';
 
 RULE_TODAY : 'TODAY';
 
+RULE_TML_LITERAL : '[' (RULE_IDENTIFIER|'/'|'../'|'/@')+ ']';
+
 RULE_OBJECT_IDENTIFIER : '"' RULE_IDENTIFIER ('.' RULE_IDENTIFIER)+ '"';
 
-RULE_QUOTED_IDENTIFIER : '"' (RULE_IDENTIFIER|'/'|'../')+ '"';
-
-RULE_STRING_CONSTANT : '"' ('\\' .|~(('\\'|'"')))* '"';
-
-RULE_TML_LITERAL : '[' (RULE_IDENTIFIER|'/'|'../'|'/@')+ ']';
+RULE_QUOTED_IDENTIFIER : '"' (RULE_IDENTIFIER|'/'|'../'|'/@')+ '"';
 
 RULE_ONE : '1';
 

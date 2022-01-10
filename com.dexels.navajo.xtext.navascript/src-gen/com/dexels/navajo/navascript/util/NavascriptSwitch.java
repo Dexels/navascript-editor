@@ -570,6 +570,10 @@ public class NavascriptSwitch<T> extends Switch<T>
       {
         TmlIdentifier tmlIdentifier = (TmlIdentifier)theEObject;
         T result = caseTmlIdentifier(tmlIdentifier);
+        if (result == null) result = caseExpression(tmlIdentifier);
+        if (result == null) result = caseSTimeout(tmlIdentifier);
+        if (result == null) result = caseSBreakOnNoLock(tmlIdentifier);
+        if (result == null) result = caseSynchronizedArgument(tmlIdentifier);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

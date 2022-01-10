@@ -68,7 +68,7 @@ Check : {Check} ('if' condition=Expression 'then')? 'check' '(' checkAttributes+
 
 CheckAttribute : {CheckAttribute} ('code' ('=' | ':') value=LiteralOrExpression) | ('description' ('=' | ':') value=LiteralOrExpression);
 
-LiteralOrExpression : {LiteralOrExpression} literal=(QUOTED_IDENTIFIER | STRING_CONSTANT) | expression=Expression ;
+LiteralOrExpression : {LiteralOrExpression} expression=Expression ;
 
 Print:
 	{Print} 'print' '(' expression=Expression ')' ';'
@@ -103,7 +103,7 @@ AntiMessage : {AntiMessage} 'antimessage' messageName=QUOTED_IDENTIFIER ';';
 
 Message: 
 	{Message} 'message' messageName=QUOTED_IDENTIFIER ( '(' arguments=MessageArguments ')' )?  ( ( '{' ( statements+=InnerBody* |  arrayField=MappedArrayField | arrayMessage=MappedArrayMessage ) '}' ) | ';' 
-		| '[' messageArray=MessageArray? ']'
+		| ('[' | '"') messageArray=MessageArray? (']' | '"')
 	)
 ;
 
@@ -130,7 +130,7 @@ MappedMessage : {MappedMessage} '{' statements += InnerBody* '}';
 	
 MappedArrayField : {MappedArrayField} field=MAPPABLE_IDENTIFIER ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
 
-MappedArrayMessage : {MappedArrayMessage} message=TML_LITERAL ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
+MappedArrayMessage : {MappedArrayMessage} message=(TML_LITERAL | QUOTED_IDENTIFIER) ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
 
 KeyValueArguments : {KeyValueArguments} keyValueArguments+=KeyValueArgument ( ',' keyValueArguments+=KeyValueArgument )*;
 
@@ -227,6 +227,7 @@ Atomic returns Expression:
     {FunctionCallLiteral} value=FunctionIdentifier |
     {MappableIdentifierLiteral} value=MappableIdentifier |
     {TmlIdentifierLiteral} hasExists?='?'? value=TmlIdentifier |
+    {TmlIdentifier} value=TmlIdentifier |
     {ForAllLiteral} value=ForAllIdentifier |
     {NullLiteral} value=NULL_DEF |
     {TodayLiteral} value=TODAY
@@ -245,7 +246,7 @@ MappableIdentifier:
 ;
 
 TmlIdentifier :
-  {TmlIdentifier} tml=TML_LITERAL
+  {TmlIdentifier} tml=(TML_LITERAL | QUOTED_IDENTIFIER)
 ;
 
 PropertyType:
@@ -284,18 +285,16 @@ terminal MAPPABLE_ID : '$';
 terminal NULL_DEF : 'null';
 terminal TODAY : 'TODAY';
 
+terminal TML_LITERAL:
+	'[' ( IDENTIFIER | '/' | '../' | '/@' )+  ']'
+;
+
 terminal OBJECT_IDENTIFIER:
 	'"' IDENTIFIER ( '.' IDENTIFIER)+ '"'
 ;
 
 terminal QUOTED_IDENTIFIER:
-			'"' ( IDENTIFIER | '/' | '../' )+  '"';
-			
-terminal STRING_CONSTANT:
-			'"' ( '\\' . | !('\\'|'"') )* '"';
-
-terminal TML_LITERAL:
-	'[' ( IDENTIFIER | '/' | '../' | '/@' )+ ']'
+	'"'  ( IDENTIFIER | '/' | '../' | '/@' )+  '"' 	
 ;
 
 terminal ONE:

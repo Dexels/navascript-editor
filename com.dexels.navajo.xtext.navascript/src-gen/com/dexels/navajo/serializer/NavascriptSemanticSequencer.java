@@ -371,8 +371,31 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				sequence_PropertyType(context, (TimestampType) semanticObject); 
 				return; 
 			case NavascriptPackage.TML_IDENTIFIER:
-				sequence_TmlIdentifier(context, (TmlIdentifier) semanticObject); 
-				return; 
+				if (rule == grammarAccess.getSynchronizedArgumentRule()
+						|| rule == grammarAccess.getSTimeoutRule()
+						|| rule == grammarAccess.getSBreakOnNoLockRule()
+						|| rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getBooleanExpressionRule()
+						|| action == grammarAccess.getBooleanExpressionAccess().getAndOrExpressionLeftAction_1_0_0()
+						|| rule == grammarAccess.getComparisonRule()
+						|| action == grammarAccess.getComparisonAccess().getComparisonLeftAction_1_0_0()
+						|| rule == grammarAccess.getEqualsRule()
+						|| action == grammarAccess.getEqualsAccess().getEqualsLeftAction_1_0_0()
+						|| rule == grammarAccess.getAdditionRule()
+						|| action == grammarAccess.getAdditionAccess().getPlusLeftAction_1_0_0_0()
+						|| action == grammarAccess.getAdditionAccess().getMinusLeftAction_1_0_1_0()
+						|| rule == grammarAccess.getMultiplicationRule()
+						|| action == grammarAccess.getMultiplicationAccess().getMultiOrDivLeftAction_1_0_0()
+						|| rule == grammarAccess.getPrefixedRule()
+						|| rule == grammarAccess.getAtomicRule()) {
+					sequence_Atomic(context, (TmlIdentifier) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getTmlIdentifierRule()) {
+					sequence_TmlIdentifier(context, (TmlIdentifier) semanticObject); 
+					return; 
+				}
+				else break;
 			case NavascriptPackage.TML_IDENTIFIER_LITERAL:
 				sequence_Atomic(context, (TmlIdentifierLiteral) semanticObject); 
 				return; 
@@ -608,7 +631,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.FOR_ALL_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueForAllIdentifierParserRuleCall_7_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueForAllIdentifierParserRuleCall_8_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -710,7 +733,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.NULL_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueNULL_DEFTerminalRuleCall_8_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueNULL_DEFTerminalRuleCall_9_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -779,6 +802,40 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     SynchronizedArgument returns TmlIdentifier
+	 *     STimeout returns TmlIdentifier
+	 *     SBreakOnNoLock returns TmlIdentifier
+	 *     Expression returns TmlIdentifier
+	 *     BooleanExpression returns TmlIdentifier
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns TmlIdentifier
+	 *     Comparison returns TmlIdentifier
+	 *     Comparison.Comparison_1_0_0 returns TmlIdentifier
+	 *     Equals returns TmlIdentifier
+	 *     Equals.Equals_1_0_0 returns TmlIdentifier
+	 *     Addition returns TmlIdentifier
+	 *     Addition.Plus_1_0_0_0 returns TmlIdentifier
+	 *     Addition.Minus_1_0_1_0 returns TmlIdentifier
+	 *     Multiplication returns TmlIdentifier
+	 *     Multiplication.MultiOrDiv_1_0_0 returns TmlIdentifier
+	 *     Prefixed returns TmlIdentifier
+	 *     Atomic returns TmlIdentifier
+	 *
+	 * Constraint:
+	 *     value=TmlIdentifier
+	 */
+	protected void sequence_Atomic(ISerializationContext context, TmlIdentifier semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.TML_IDENTIFIER__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.TML_IDENTIFIER__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueTmlIdentifierParserRuleCall_7_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     SynchronizedArgument returns TmlIdentifierLiteral
 	 *     STimeout returns TmlIdentifierLiteral
 	 *     SBreakOnNoLock returns TmlIdentifierLiteral
@@ -834,7 +891,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.TODAY_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueTODAYTerminalRuleCall_9_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueTODAYTerminalRuleCall_10_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -1222,10 +1279,16 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     LiteralOrExpression returns LiteralOrExpression
 	 *
 	 * Constraint:
-	 *     (literal=QUOTED_IDENTIFIER | literal=STRING_CONSTANT | expression=Expression)
+	 *     expression=Expression
 	 */
 	protected void sequence_LiteralOrExpression(ISerializationContext context, LiteralOrExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.LITERAL_OR_EXPRESSION__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.LITERAL_OR_EXPRESSION__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLiteralOrExpressionAccess().getExpressionExpressionParserRuleCall_1_0(), semanticObject.getExpression());
+		feeder.finish();
 	}
 	
 	
@@ -1300,7 +1363,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     MappedArrayMessage returns MappedArrayMessage
 	 *
 	 * Constraint:
-	 *     (message=TML_LITERAL filter=Expression? statements+=InnerBody*)
+	 *     ((message=TML_LITERAL | message=QUOTED_IDENTIFIER) filter=Expression? statements+=InnerBody*)
 	 */
 	protected void sequence_MappedArrayMessage(ISerializationContext context, MappedArrayMessage semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1874,16 +1937,10 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     TmlIdentifier returns TmlIdentifier
 	 *
 	 * Constraint:
-	 *     tml=TML_LITERAL
+	 *     (tml=TML_LITERAL | tml=QUOTED_IDENTIFIER)
 	 */
 	protected void sequence_TmlIdentifier(ISerializationContext context, TmlIdentifier semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.TML_IDENTIFIER__TML) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.TML_IDENTIFIER__TML));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTmlIdentifierAccess().getTmlTML_LITERALTerminalRuleCall_1_0(), semanticObject.getTml());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

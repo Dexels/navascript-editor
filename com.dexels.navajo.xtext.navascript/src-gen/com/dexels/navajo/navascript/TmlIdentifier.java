@@ -3,7 +3,6 @@
  */
 package com.dexels.navajo.navascript;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link com.dexels.navajo.navascript.TmlIdentifier#getValue <em>Value</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.TmlIdentifier#getTml <em>Tml</em>}</li>
  * </ul>
  *
@@ -21,8 +21,30 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface TmlIdentifier extends EObject
+public interface TmlIdentifier extends Expression
 {
+  /**
+   * Returns the value of the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Value</em>' containment reference.
+   * @see #setValue(TmlIdentifier)
+   * @see com.dexels.navajo.navascript.NavascriptPackage#getTmlIdentifier_Value()
+   * @model containment="true"
+   * @generated
+   */
+  TmlIdentifier getValue();
+
+  /**
+   * Sets the value of the '{@link com.dexels.navajo.navascript.TmlIdentifier#getValue <em>Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Value</em>' containment reference.
+   * @see #getValue()
+   * @generated
+   */
+  void setValue(TmlIdentifier value);
+
   /**
    * Returns the value of the '<em><b>Tml</b></em>' attribute.
    * <!-- begin-user-doc -->
