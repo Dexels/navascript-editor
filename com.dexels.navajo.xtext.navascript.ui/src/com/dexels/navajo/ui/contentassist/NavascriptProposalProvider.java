@@ -382,6 +382,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		String prefix = NavigationUtils.getParentPrefix(context.getPrefix(), new StringBuffer());
 		int level = NavigationUtils.countMappableParentLevel(prefix);
 
+		
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
 
 		if ( map != null ) {
@@ -435,7 +436,16 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		String prefix = NavigationUtils.getParentPrefix(context.getPrefix(), new StringBuffer());
 		int level = NavigationUtils.countMappableParentLevel(prefix);
 
-		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
+		EObject map = null;
+		if ( context.getLastCompleteNode().getSemanticElement() instanceof SetterFieldImpl ) {
+			SetterFieldImpl sfi = (SetterFieldImpl) context.getLastCompleteNode().getSemanticElement();
+			if ( sfi.getField() != null ) { // previous node is a simple setter, take parent.
+				map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode().getSemanticElement().eContainer(), level);
+			}
+		} else {
+			map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode().getSemanticElement(), level);
+		}
+		
 		if ( map != null ) {
 			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
 			if ( md != null ) {

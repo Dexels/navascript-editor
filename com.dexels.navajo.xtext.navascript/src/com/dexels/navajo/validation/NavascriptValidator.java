@@ -129,7 +129,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		}		
 		String fieldName = NavigationUtils.getFieldFromMappableIdentifier(prefix);
 		int level = NavigationUtils.countMappableParentLevel(prefix);
-		
+				
 		if ( mai.eContainer() instanceof LoopImpl ) { // If current EOBject is a LoopImpl, move one level up.
 			mai = mai.eContainer();
 		}
@@ -158,6 +158,9 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 			
 			if ( mai instanceof MappableIdentifierImpl) {
 				int numberOfArguments = ((MappableIdentifierImpl) mai).getArgs().size();
+				if ( numberOfArguments == 0 ) {
+					return;
+				}
 				List<List<String>> signatures = mapdef.getGetterTypeSignatures(fieldName);
 				for (List<String> parameters : signatures) {
 					if (parameters.size() == numberOfArguments) {
@@ -167,7 +170,13 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 			}
 			
 			if ( mai instanceof SetterFieldImpl) {
+				if ( isSetter ) {
+					return;
+				}
 				int numberOfArguments = ((SetterFieldImpl) mai).getArguments().getKeyValueArguments().size();
+				if ( numberOfArguments == 0 ) {
+					return;
+				}
 				List<List<String>> signatures = mapdef.getGetterTypeSignatures(fieldName);
 				for (List<String> parameters : signatures) {
 					if (parameters.size() == numberOfArguments) {
@@ -175,7 +184,6 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 					}
 				}
 			}
-			
 			
 			if ( isSetterField ) {
 				error("Invalid number of arguments", NavascriptPackage.Literals.SETTER_FIELD__EXPRESSION_LIST);
@@ -193,6 +201,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 	
 	@Check
 	public void checkSetterField(SetterFieldImpl sfi) {
+		System.err.println("In checkSetterField: " + sfi);
 		fieldValidator(sfi, sfi.getField());	
 	}
 	
@@ -203,6 +212,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 	
 	@Check
 	public void checkMappableIdentifier(MappableIdentifierImpl mai) {
+		System.err.println("In checkMappableIdentifier: " + mai);
 		fieldValidator(mai, mai.getField());
 	}
 
