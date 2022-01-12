@@ -133,8 +133,9 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		if ( mai.eContainer() instanceof LoopImpl ) { // If current EOBject is a LoopImpl, move one level up.
 			mai = mai.eContainer();
 		}
-		EObject parent = NavigationUtils.findFirstMapOrMappedField(mai.eContainer(), level);
 		
+		EObject parent = NavigationUtils.findFirstMapOrMappedField(mai.eContainer(), level);
+	
 		AdapterClassDefinition mapdef = NavigationUtils.findAdapterClass(getNavajoProxyStub(), parent);
 				
 		if (mapdef != null) {

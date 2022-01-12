@@ -134,7 +134,7 @@ public final class NavigationUtils {
 			if ( node instanceof SetterFieldImpl ) {
 				// mappedField
 				SetterFieldImpl sfi = (SetterFieldImpl) node;
-				if ( sfi.getMappedField() != null || sfi.getMappedMessage() != null ) {
+				if ( sfi.getMappedField() != null || sfi.getMappedMessage() != null || sfi.getField() != null ) {
 					isMappedSetterField = true;
 				}
 			}
@@ -171,8 +171,10 @@ public final class NavigationUtils {
 
 		int currentLevel = level;
 		if ( node != null ) {
-			EObject e = node.getSemanticElement();
-			if ( e instanceof SetterFieldImpl && ((SetterFieldImpl) e).getMappedMessage() != null ) { //
+			EObject e = node.getSemanticElement();			
+			if ( e instanceof SetterFieldImpl && ( ((SetterFieldImpl) e).getMappedMessage() != null || 
+					                               ((SetterFieldImpl) e).getField() != null  ||
+												   ((SetterFieldImpl) e).getMappedField() != null )) { //
 				if ( currentLevel == 0 ) {
 					return e;
 				} else {

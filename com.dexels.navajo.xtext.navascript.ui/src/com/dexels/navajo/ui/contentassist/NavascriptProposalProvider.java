@@ -282,8 +282,21 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	@Override
 	public void completeSetterField_Field(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 
-		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), 0);
+		
+		
+		String prefix = NavigationUtils.getParentPrefix(context.getPrefix(), new StringBuffer());
+		int level = NavigationUtils.countMappableParentLevel(prefix);
 
+		EObject map = null;
+		if ( context.getLastCompleteNode().getSemanticElement() instanceof SetterFieldImpl ) {
+			SetterFieldImpl sfi = (SetterFieldImpl) context.getLastCompleteNode().getSemanticElement();
+			if ( sfi.getField() != null ) { // previous node is a simple setter, take parent.
+				map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode().getSemanticElement().eContainer(), level);
+			}
+		} else {
+			map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode().getSemanticElement(), level);
+		}
+		
 		// Check if parent is mapped message.
 		boolean showGetters = false;
 		if (context.getLastCompleteNode().getParent() != null && context.getLastCompleteNode().getParent().getSemanticElement() instanceof MessageImpl) {
@@ -309,7 +322,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 					} catch (Exception e) {
 						logger.warn("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
 					}
-					acceptor.accept(createCompletionProposalFormatted("$" + a, type, 1, context));
+					acceptor.accept(createCompletionProposalFormatted(prefix + a, type, 1, context));
 				}
 				if ( showGetters ) {
 					fields = md.getGetters();
@@ -320,7 +333,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 						} catch (Exception e) {
 							logger.warn("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
 						}
-						acceptor.accept(createCompletionProposalFormatted("$" + a, type, 1, context));
+						acceptor.accept(createCompletionProposalFormatted(prefix + a, type, 1, context));
 					}
 				}
 			} else if ( map instanceof MappedArrayFieldImpl ) {
