@@ -59,6 +59,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_VarMode_ColonKeyword_2_1_or_EqualsSignKeyword_2_0;
 	protected AbstractElementAlias match_VarType_ColonKeyword_2_1_or_EqualsSignKeyword_2_0;
 	protected AbstractElementAlias match_Var_ColonKeyword_4_0_0_1_or_EqualsSignKeyword_4_0_0_0;
+	protected AbstractElementAlias match_Var_FullStopFullStopSolidusKeyword_2_1_0_a;
 	protected AbstractElementAlias match_Var___LeftCurlyBracketKeyword_4_2_0_RightCurlyBracketKeyword_4_2_2___or___LeftSquareBracketKeyword_4_1_0_RightSquareBracketKeyword_4_1_2__;
 	
 	@Inject
@@ -101,14 +102,26 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_VarMode_ColonKeyword_2_1_or_EqualsSignKeyword_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getVarModeAccess().getColonKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getVarModeAccess().getEqualsSignKeyword_2_0()));
 		match_VarType_ColonKeyword_2_1_or_EqualsSignKeyword_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getVarTypeAccess().getColonKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getVarTypeAccess().getEqualsSignKeyword_2_0()));
 		match_Var_ColonKeyword_4_0_0_1_or_EqualsSignKeyword_4_0_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getVarAccess().getColonKeyword_4_0_0_1()), new TokenAlias(false, false, grammarAccess.getVarAccess().getEqualsSignKeyword_4_0_0_0()));
+		match_Var_FullStopFullStopSolidusKeyword_2_1_0_a = new TokenAlias(true, true, grammarAccess.getVarAccess().getFullStopFullStopSolidusKeyword_2_1_0());
 		match_Var___LeftCurlyBracketKeyword_4_2_0_RightCurlyBracketKeyword_4_2_2___or___LeftSquareBracketKeyword_4_1_0_RightSquareBracketKeyword_4_1_2__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_2_0()), new TokenAlias(false, false, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_2_2())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getVarAccess().getLeftSquareBracketKeyword_4_1_0()), new TokenAlias(false, false, grammarAccess.getVarAccess().getRightSquareBracketKeyword_4_1_2())));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getSContextRule())
+		if (ruleCall.getRule() == grammarAccess.getIDENTIFIERRule())
+			return getIDENTIFIERToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getSContextRule())
 			return getSContextToken(semanticObject, ruleCall, node);
 		return "";
+	}
+	
+	/**
+	 * terminal IDENTIFIER : ( LETTER  | UNDERSCORE ) ( LETTER | "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | UNDERSCORE )*;
+	 */
+	protected String getIDENTIFIERToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "A";
 	}
 	
 	/**
@@ -200,6 +213,8 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_VarType_ColonKeyword_2_1_or_EqualsSignKeyword_2_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Var_ColonKeyword_4_0_0_1_or_EqualsSignKeyword_4_0_0_0.equals(syntax))
 				emit_Var_ColonKeyword_4_0_0_1_or_EqualsSignKeyword_4_0_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Var_FullStopFullStopSolidusKeyword_2_1_0_a.equals(syntax))
+				emit_Var_FullStopFullStopSolidusKeyword_2_1_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Var___LeftCurlyBracketKeyword_4_2_0_RightCurlyBracketKeyword_4_2_2___or___LeftSquareBracketKeyword_4_1_0_RightSquareBracketKeyword_4_1_2__.equals(syntax))
 				emit_Var___LeftCurlyBracketKeyword_4_2_0_RightCurlyBracketKeyword_4_2_2___or___LeftSquareBracketKeyword_4_1_0_RightSquareBracketKeyword_4_1_2__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -686,10 +701,28 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '=' | ':'
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     (rule start) 'var' '../'* IDENTIFIER (ambiguity) expressionList=ConditionalExpressions
 	 *     arguments=VarArguments (ambiguity) expressionList=ConditionalExpressions
-	 *     varName=IDENTIFIER (ambiguity) expressionList=ConditionalExpressions
+	 *     varName='/' (ambiguity) expressionList=ConditionalExpressions
 	 */
 	protected void emit_Var_ColonKeyword_4_0_0_1_or_EqualsSignKeyword_4_0_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '../'*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER '[' varArray=VarArray
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER '{' mappedArrayField=MappedArrayField
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER '{' mappedArrayMessage=MappedArrayMessage
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER '{' varElements+=VarElement
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER ('=' | ':') expressionList=ConditionalExpressions
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER (('[' ']') | ('{' '}')) (rule start)
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER arguments=VarArguments
+	 */
+	protected void emit_Var_FullStopFullStopSolidusKeyword_2_1_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -698,8 +731,9 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('[' ']') | ('{' '}')
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     (rule start) 'var' '../'* IDENTIFIER (ambiguity) (rule start)
 	 *     arguments=VarArguments (ambiguity) (rule end)
-	 *     varName=IDENTIFIER (ambiguity) (rule end)
+	 *     varName='/' (ambiguity) (rule end)
 	 */
 	protected void emit_Var___LeftCurlyBracketKeyword_4_2_0_RightCurlyBracketKeyword_4_2_2___or___LeftSquareBracketKeyword_4_1_0_RightSquareBracketKeyword_4_1_2__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

@@ -136,7 +136,7 @@ KeyValueArguments : {KeyValueArguments} keyValueArguments+=KeyValueArgument ( ',
 
 KeyValueArgument : {KeyValueArgument} key=(IDENTIFIER | OPTION_TYPE) ('=' | ':') value=LiteralOrExpression;
 
-Var: {Var} 'var' varName=IDENTIFIER (arguments=VarArguments)? ( ('=' | ':') expressionList=ConditionalExpressions ';' |  '[' varArray=VarArray? ']' | 
+Var: {Var} 'var' (varName=  '/' | '../'* IDENTIFIER ) (arguments=VarArguments)? ( ('=' | ':') expressionList=ConditionalExpressions ';' |  '[' varArray=VarArray? ']' | 
 	'{' varElements+=VarElement* '}'  
  | '{' mappedArrayField=MappedArrayField '}' | '{' mappedArrayMessage=MappedArrayMessage '}' )
 ;
@@ -286,15 +286,14 @@ terminal NULL_DEF : 'null';
 terminal TODAY : 'TODAY';
 
 terminal TML_LITERAL:
-	'[' ( IDENTIFIER | '/' | '../' | '/@' )+  ']'
+	'[' ( '../'+ | '/' )? '@'? IDENTIFIER ( '/' IDENTIFIER)*  ']'
 ;
-
 terminal OBJECT_IDENTIFIER:
 	'"' IDENTIFIER ( '.' IDENTIFIER)+ '"'
 ;
 
 terminal QUOTED_IDENTIFIER:
-	'"'  ( IDENTIFIER | '/' | '../' | '/@' )+  '"' 	
+	'"' ( '../'+ | '/' )?  IDENTIFIER ( '/' IDENTIFIER)* '"' 	
 ;
 
 terminal ONE:
@@ -309,7 +308,7 @@ terminal IDENTIFIER : ( LETTER  | UNDERSCORE ) ( LETTER | "0" | ONE | "2" | "3" 
 		
 terminal INTEGER : "0" | ( ( ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ) ( "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" )* );
 
-terminal FLOAT : INTEGER? "." INTEGER;
+terminal FLOAT : INTEGER? "." "0"* INTEGER;
 
 		
 terminal LETTER : "A" | "B" | "C" | "D" | "E" | "F" | "G"

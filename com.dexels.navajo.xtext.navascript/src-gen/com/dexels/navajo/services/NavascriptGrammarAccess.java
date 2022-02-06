@@ -2327,8 +2327,12 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cVarAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cVarKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cVarNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cVarNameIDENTIFIERTerminalRuleCall_2_0 = (RuleCall)cVarNameAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cVarNameAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final Keyword cVarNameSolidusKeyword_2_0_0 = (Keyword)cVarNameAssignment_2_0.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
+		private final Keyword cFullStopFullStopSolidusKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final RuleCall cIDENTIFIERTerminalRuleCall_2_1_1 = (RuleCall)cGroup_2_1.eContents().get(1);
 		private final Assignment cArgumentsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cArgumentsVarArgumentsParserRuleCall_3_0 = (RuleCall)cArgumentsAssignment_3.eContents().get(0);
 		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
@@ -2361,14 +2365,14 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cRightCurlyBracketKeyword_4_4_2 = (Keyword)cGroup_4_4.eContents().get(2);
 		
 		//Var:
-		//	{Var} 'var' varName=IDENTIFIER arguments=VarArguments? (('=' | ':') expressionList=ConditionalExpressions ';' | '['
-		//	varArray=VarArray? ']' |
+		//	{Var} 'var' (varName='/' | '../'* IDENTIFIER) arguments=VarArguments? (('=' | ':')
+		//	expressionList=ConditionalExpressions ';' | '[' varArray=VarArray? ']' |
 		//	'{' varElements+=VarElement* '}'
 		//	| '{' mappedArrayField=MappedArrayField '}' | '{' mappedArrayMessage=MappedArrayMessage '}');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Var} 'var' varName=IDENTIFIER arguments=VarArguments? (('=' | ':') expressionList=ConditionalExpressions ';' | '['
-		//varArray=VarArray? ']' |
+		//{Var} 'var' (varName='/' | '../'* IDENTIFIER) arguments=VarArguments? (('=' | ':') expressionList=ConditionalExpressions
+		//';' | '[' varArray=VarArray? ']' |
 		//'{' varElements+=VarElement* '}'
 		//| '{' mappedArrayField=MappedArrayField '}' | '{' mappedArrayMessage=MappedArrayMessage '}')
 		public Group getGroup() { return cGroup; }
@@ -2379,11 +2383,23 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//'var'
 		public Keyword getVarKeyword_1() { return cVarKeyword_1; }
 		
-		//varName=IDENTIFIER
-		public Assignment getVarNameAssignment_2() { return cVarNameAssignment_2; }
+		//(varName='/' | '../'* IDENTIFIER)
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//varName='/'
+		public Assignment getVarNameAssignment_2_0() { return cVarNameAssignment_2_0; }
+		
+		//'/'
+		public Keyword getVarNameSolidusKeyword_2_0_0() { return cVarNameSolidusKeyword_2_0_0; }
+		
+		//'../'* IDENTIFIER
+		public Group getGroup_2_1() { return cGroup_2_1; }
+		
+		//'../'*
+		public Keyword getFullStopFullStopSolidusKeyword_2_1_0() { return cFullStopFullStopSolidusKeyword_2_1_0; }
 		
 		//IDENTIFIER
-		public RuleCall getVarNameIDENTIFIERTerminalRuleCall_2_0() { return cVarNameIDENTIFIERTerminalRuleCall_2_0; }
+		public RuleCall getIDENTIFIERTerminalRuleCall_2_1_1() { return cIDENTIFIERTerminalRuleCall_2_1_1; }
 		
 		//arguments=VarArguments?
 		public Assignment getArgumentsAssignment_3() { return cArgumentsAssignment_3; }
@@ -5143,8 +5159,8 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//Var:
-	//	{Var} 'var' varName=IDENTIFIER arguments=VarArguments? (('=' | ':') expressionList=ConditionalExpressions ';' | '['
-	//	varArray=VarArray? ']' |
+	//	{Var} 'var' (varName='/' | '../'* IDENTIFIER) arguments=VarArguments? (('=' | ':')
+	//	expressionList=ConditionalExpressions ';' | '[' varArray=VarArray? ']' |
 	//	'{' varElements+=VarElement* '}'
 	//	| '{' mappedArrayField=MappedArrayField '}' | '{' mappedArrayMessage=MappedArrayMessage '}');
 	public VarElements getVarAccess() {
@@ -5597,7 +5613,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//terminal TML_LITERAL:
-	//	'[' (IDENTIFIER | '/' | '../' | '/@')+ ']';
+	//	'[' ('../'+ | '/')? '@'? IDENTIFIER ('/' IDENTIFIER)*  ']';
 	public TerminalRule getTML_LITERALRule() {
 		return tTML_LITERAL;
 	}
@@ -5609,7 +5625,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//terminal QUOTED_IDENTIFIER:
-	//	'"' (IDENTIFIER | '/' | '../' | '/@')+ '"';
+	//	'"' ('../'+ | '/')? IDENTIFIER ('/' IDENTIFIER)* '"';
 	public TerminalRule getQUOTED_IDENTIFIERRule() {
 		return tQUOTED_IDENTIFIER;
 	}
@@ -5640,7 +5656,7 @@ public class NavascriptGrammarAccess extends AbstractElementFinder.AbstractGramm
 	}
 	
 	//terminal FLOAT:
-	//	INTEGER? "." INTEGER;
+	//	INTEGER? "." "0"* INTEGER;
 	public TerminalRule getFLOATRule() {
 		return tFLOAT;
 	}

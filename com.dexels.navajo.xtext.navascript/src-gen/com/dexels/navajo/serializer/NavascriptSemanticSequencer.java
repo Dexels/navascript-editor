@@ -2112,7 +2112,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *
 	 * Constraint:
 	 *     (
-	 *         varName=IDENTIFIER 
+	 *         varName='/'? 
 	 *         arguments=VarArguments? 
 	 *         (
 	 *             expressionList=ConditionalExpressions | 

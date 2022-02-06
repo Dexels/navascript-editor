@@ -69,6 +69,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMappedArrayMessageAccess().getAlternatives_2_2(), "rule__MappedArrayMessage__Alternatives_2_2");
 			builder.put(grammarAccess.getKeyValueArgumentAccess().getKeyAlternatives_1_0(), "rule__KeyValueArgument__KeyAlternatives_1_0");
 			builder.put(grammarAccess.getKeyValueArgumentAccess().getAlternatives_2(), "rule__KeyValueArgument__Alternatives_2");
+			builder.put(grammarAccess.getVarAccess().getAlternatives_2(), "rule__Var__Alternatives_2");
 			builder.put(grammarAccess.getVarAccess().getAlternatives_4(), "rule__Var__Alternatives_4");
 			builder.put(grammarAccess.getVarAccess().getAlternatives_4_0_0(), "rule__Var__Alternatives_4_0_0");
 			builder.put(grammarAccess.getVarArgumentAccess().getArgumentAlternatives_1_0(), "rule__VarArgument__ArgumentAlternatives_1_0");
@@ -175,6 +176,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getKeyValueArgumentsAccess().getGroup_2(), "rule__KeyValueArguments__Group_2__0");
 			builder.put(grammarAccess.getKeyValueArgumentAccess().getGroup(), "rule__KeyValueArgument__Group__0");
 			builder.put(grammarAccess.getVarAccess().getGroup(), "rule__Var__Group__0");
+			builder.put(grammarAccess.getVarAccess().getGroup_2_1(), "rule__Var__Group_2_1__0");
 			builder.put(grammarAccess.getVarAccess().getGroup_4_0(), "rule__Var__Group_4_0__0");
 			builder.put(grammarAccess.getVarAccess().getGroup_4_1(), "rule__Var__Group_4_1__0");
 			builder.put(grammarAccess.getVarAccess().getGroup_4_2(), "rule__Var__Group_4_2__0");
@@ -341,7 +343,7 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getKeyValueArgumentsAccess().getKeyValueArgumentsAssignment_2_1(), "rule__KeyValueArguments__KeyValueArgumentsAssignment_2_1");
 			builder.put(grammarAccess.getKeyValueArgumentAccess().getKeyAssignment_1(), "rule__KeyValueArgument__KeyAssignment_1");
 			builder.put(grammarAccess.getKeyValueArgumentAccess().getValueAssignment_3(), "rule__KeyValueArgument__ValueAssignment_3");
-			builder.put(grammarAccess.getVarAccess().getVarNameAssignment_2(), "rule__Var__VarNameAssignment_2");
+			builder.put(grammarAccess.getVarAccess().getVarNameAssignment_2_0(), "rule__Var__VarNameAssignment_2_0");
 			builder.put(grammarAccess.getVarAccess().getArgumentsAssignment_3(), "rule__Var__ArgumentsAssignment_3");
 			builder.put(grammarAccess.getVarAccess().getExpressionListAssignment_4_0_1(), "rule__Var__ExpressionListAssignment_4_0_1");
 			builder.put(grammarAccess.getVarAccess().getVarArrayAssignment_4_1_1(), "rule__Var__VarArrayAssignment_4_1_1");
