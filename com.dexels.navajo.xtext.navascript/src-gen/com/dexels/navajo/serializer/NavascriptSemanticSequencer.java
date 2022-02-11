@@ -24,6 +24,9 @@ import com.dexels.navajo.navascript.ClockTimeType;
 import com.dexels.navajo.navascript.Comparison;
 import com.dexels.navajo.navascript.ConditionalExpression;
 import com.dexels.navajo.navascript.ConditionalExpressions;
+import com.dexels.navajo.navascript.CurrentInDoc;
+import com.dexels.navajo.navascript.CurrentOutDoc;
+import com.dexels.navajo.navascript.CurrentVarDoc;
 import com.dexels.navajo.navascript.DateType;
 import com.dexels.navajo.navascript.DebugStatement;
 import com.dexels.navajo.navascript.Define;
@@ -189,6 +192,15 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				return; 
 			case NavascriptPackage.CONDITIONAL_EXPRESSIONS:
 				sequence_ConditionalExpressions(context, (ConditionalExpressions) semanticObject); 
+				return; 
+			case NavascriptPackage.CURRENT_IN_DOC:
+				sequence_Atomic(context, (CurrentInDoc) semanticObject); 
+				return; 
+			case NavascriptPackage.CURRENT_OUT_DOC:
+				sequence_Atomic(context, (CurrentOutDoc) semanticObject); 
+				return; 
+			case NavascriptPackage.CURRENT_VAR_DOC:
+				sequence_Atomic(context, (CurrentVarDoc) semanticObject); 
 				return; 
 			case NavascriptPackage.DATE_TYPE:
 				sequence_PropertyType(context, (DateType) semanticObject); 
@@ -565,6 +577,108 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 */
 	protected void sequence_Atomic(ISerializationContext context, BooleanLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SynchronizedArgument returns CurrentInDoc
+	 *     STimeout returns CurrentInDoc
+	 *     SBreakOnNoLock returns CurrentInDoc
+	 *     Expression returns CurrentInDoc
+	 *     BooleanExpression returns CurrentInDoc
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns CurrentInDoc
+	 *     Comparison returns CurrentInDoc
+	 *     Comparison.Comparison_1_0_0 returns CurrentInDoc
+	 *     Equals returns CurrentInDoc
+	 *     Equals.Equals_1_0_0 returns CurrentInDoc
+	 *     Addition returns CurrentInDoc
+	 *     Addition.Plus_1_0_0_0 returns CurrentInDoc
+	 *     Addition.Minus_1_0_1_0 returns CurrentInDoc
+	 *     Multiplication returns CurrentInDoc
+	 *     Multiplication.MultiOrDiv_1_0_0 returns CurrentInDoc
+	 *     Prefixed returns CurrentInDoc
+	 *     Atomic returns CurrentInDoc
+	 *
+	 * Constraint:
+	 *     value=CURRENT_INDOC
+	 */
+	protected void sequence_Atomic(ISerializationContext context, CurrentInDoc semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.CURRENT_IN_DOC__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.CURRENT_IN_DOC__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueCURRENT_INDOCTerminalRuleCall_12_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SynchronizedArgument returns CurrentOutDoc
+	 *     STimeout returns CurrentOutDoc
+	 *     SBreakOnNoLock returns CurrentOutDoc
+	 *     Expression returns CurrentOutDoc
+	 *     BooleanExpression returns CurrentOutDoc
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns CurrentOutDoc
+	 *     Comparison returns CurrentOutDoc
+	 *     Comparison.Comparison_1_0_0 returns CurrentOutDoc
+	 *     Equals returns CurrentOutDoc
+	 *     Equals.Equals_1_0_0 returns CurrentOutDoc
+	 *     Addition returns CurrentOutDoc
+	 *     Addition.Plus_1_0_0_0 returns CurrentOutDoc
+	 *     Addition.Minus_1_0_1_0 returns CurrentOutDoc
+	 *     Multiplication returns CurrentOutDoc
+	 *     Multiplication.MultiOrDiv_1_0_0 returns CurrentOutDoc
+	 *     Prefixed returns CurrentOutDoc
+	 *     Atomic returns CurrentOutDoc
+	 *
+	 * Constraint:
+	 *     value=CURRENT_OUTDOC
+	 */
+	protected void sequence_Atomic(ISerializationContext context, CurrentOutDoc semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.CURRENT_OUT_DOC__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.CURRENT_OUT_DOC__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueCURRENT_OUTDOCTerminalRuleCall_11_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SynchronizedArgument returns CurrentVarDoc
+	 *     STimeout returns CurrentVarDoc
+	 *     SBreakOnNoLock returns CurrentVarDoc
+	 *     Expression returns CurrentVarDoc
+	 *     BooleanExpression returns CurrentVarDoc
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns CurrentVarDoc
+	 *     Comparison returns CurrentVarDoc
+	 *     Comparison.Comparison_1_0_0 returns CurrentVarDoc
+	 *     Equals returns CurrentVarDoc
+	 *     Equals.Equals_1_0_0 returns CurrentVarDoc
+	 *     Addition returns CurrentVarDoc
+	 *     Addition.Plus_1_0_0_0 returns CurrentVarDoc
+	 *     Addition.Minus_1_0_1_0 returns CurrentVarDoc
+	 *     Multiplication returns CurrentVarDoc
+	 *     Multiplication.MultiOrDiv_1_0_0 returns CurrentVarDoc
+	 *     Prefixed returns CurrentVarDoc
+	 *     Atomic returns CurrentVarDoc
+	 *
+	 * Constraint:
+	 *     value=CURRENT_VARDOC
+	 */
+	protected void sequence_Atomic(ISerializationContext context, CurrentVarDoc semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.CURRENT_VAR_DOC__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.CURRENT_VAR_DOC__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueCURRENT_VARDOCTerminalRuleCall_13_1_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
@@ -1363,7 +1477,11 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     MappedArrayMessage returns MappedArrayMessage
 	 *
 	 * Constraint:
-	 *     ((message=TML_LITERAL | message=QUOTED_IDENTIFIER) filter=Expression? statements+=InnerBody*)
+	 *     (
+	 *         (message=CURRENT_OUTDOC | message=CURRENT_INDOC | message=CURRENT_VARDOC | message=TML_LITERAL | message=QUOTED_IDENTIFIER) 
+	 *         filter=Expression? 
+	 *         statements+=InnerBody*
+	 *     )
 	 */
 	protected void sequence_MappedArrayMessage(ISerializationContext context, MappedArrayMessage semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

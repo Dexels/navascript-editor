@@ -155,6 +155,9 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
       case NavascriptPackage.FOR_ALL_LITERAL: return createForAllLiteral();
       case NavascriptPackage.NULL_LITERAL: return createNullLiteral();
       case NavascriptPackage.TODAY_LITERAL: return createTodayLiteral();
+      case NavascriptPackage.CURRENT_OUT_DOC: return createCurrentOutDoc();
+      case NavascriptPackage.CURRENT_IN_DOC: return createCurrentInDoc();
+      case NavascriptPackage.CURRENT_VAR_DOC: return createCurrentVarDoc();
       case NavascriptPackage.INT_TYPE: return createIntType();
       case NavascriptPackage.STRING_TYPE: return createStringType();
       case NavascriptPackage.BOOLEAN_TYPE: return createBooleanType();
@@ -1254,6 +1257,42 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
   {
     TodayLiteralImpl todayLiteral = new TodayLiteralImpl();
     return todayLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CurrentOutDoc createCurrentOutDoc()
+  {
+    CurrentOutDocImpl currentOutDoc = new CurrentOutDocImpl();
+    return currentOutDoc;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CurrentInDoc createCurrentInDoc()
+  {
+    CurrentInDocImpl currentInDoc = new CurrentInDocImpl();
+    return currentInDoc;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CurrentVarDoc createCurrentVarDoc()
+  {
+    CurrentVarDocImpl currentVarDoc = new CurrentVarDocImpl();
+    return currentVarDoc;
   }
 
   /**

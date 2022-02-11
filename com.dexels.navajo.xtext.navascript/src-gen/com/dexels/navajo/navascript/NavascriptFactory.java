@@ -834,6 +834,33 @@ public interface NavascriptFactory extends EFactory
   TodayLiteral createTodayLiteral();
 
   /**
+   * Returns a new object of class '<em>Current Out Doc</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Current Out Doc</em>'.
+   * @generated
+   */
+  CurrentOutDoc createCurrentOutDoc();
+
+  /**
+   * Returns a new object of class '<em>Current In Doc</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Current In Doc</em>'.
+   * @generated
+   */
+  CurrentInDoc createCurrentInDoc();
+
+  /**
+   * Returns a new object of class '<em>Current Var Doc</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Current Var Doc</em>'.
+   * @generated
+   */
+  CurrentVarDoc createCurrentVarDoc();
+
+  /**
    * Returns a new object of class '<em>Int Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -24,6 +24,9 @@ import com.dexels.navajo.navascript.ClockTimeType;
 import com.dexels.navajo.navascript.Comparison;
 import com.dexels.navajo.navascript.ConditionalExpression;
 import com.dexels.navajo.navascript.ConditionalExpressions;
+import com.dexels.navajo.navascript.CurrentInDoc;
+import com.dexels.navajo.navascript.CurrentOutDoc;
+import com.dexels.navajo.navascript.CurrentVarDoc;
 import com.dexels.navajo.navascript.DateType;
 import com.dexels.navajo.navascript.DebugStatement;
 import com.dexels.navajo.navascript.Define;
@@ -756,6 +759,27 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   private EClass todayLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass currentOutDocEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass currentInDocEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass currentVarDocEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -3490,6 +3514,72 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
+  public EClass getCurrentOutDoc()
+  {
+    return currentOutDocEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCurrentOutDoc_Value()
+  {
+    return (EAttribute)currentOutDocEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCurrentInDoc()
+  {
+    return currentInDocEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCurrentInDoc_Value()
+  {
+    return (EAttribute)currentInDocEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCurrentVarDoc()
+  {
+    return currentVarDocEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCurrentVarDoc_Value()
+  {
+    return (EAttribute)currentVarDocEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getIntType()
   {
     return intTypeEClass;
@@ -4013,6 +4103,15 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     todayLiteralEClass = createEClass(TODAY_LITERAL);
     createEAttribute(todayLiteralEClass, TODAY_LITERAL__VALUE);
 
+    currentOutDocEClass = createEClass(CURRENT_OUT_DOC);
+    createEAttribute(currentOutDocEClass, CURRENT_OUT_DOC__VALUE);
+
+    currentInDocEClass = createEClass(CURRENT_IN_DOC);
+    createEAttribute(currentInDocEClass, CURRENT_IN_DOC__VALUE);
+
+    currentVarDocEClass = createEClass(CURRENT_VAR_DOC);
+    createEAttribute(currentVarDocEClass, CURRENT_VAR_DOC__VALUE);
+
     intTypeEClass = createEClass(INT_TYPE);
 
     stringTypeEClass = createEClass(STRING_TYPE);
@@ -4111,6 +4210,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     forAllLiteralEClass.getESuperTypes().add(this.getExpression());
     nullLiteralEClass.getESuperTypes().add(this.getExpression());
     todayLiteralEClass.getESuperTypes().add(this.getExpression());
+    currentOutDocEClass.getESuperTypes().add(this.getExpression());
+    currentInDocEClass.getESuperTypes().add(this.getExpression());
+    currentVarDocEClass.getESuperTypes().add(this.getExpression());
     intTypeEClass.getESuperTypes().add(this.getPropertyType());
     stringTypeEClass.getESuperTypes().add(this.getPropertyType());
     booleanTypeEClass.getESuperTypes().add(this.getPropertyType());
@@ -4450,6 +4552,15 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     initEClass(todayLiteralEClass, TodayLiteral.class, "TodayLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTodayLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, TodayLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(currentOutDocEClass, CurrentOutDoc.class, "CurrentOutDoc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCurrentOutDoc_Value(), ecorePackage.getEString(), "value", null, 0, 1, CurrentOutDoc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(currentInDocEClass, CurrentInDoc.class, "CurrentInDoc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCurrentInDoc_Value(), ecorePackage.getEString(), "value", null, 0, 1, CurrentInDoc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(currentVarDocEClass, CurrentVarDoc.class, "CurrentVarDoc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCurrentVarDoc_Value(), ecorePackage.getEString(), "value", null, 0, 1, CurrentVarDoc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intTypeEClass, IntType.class, "IntType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

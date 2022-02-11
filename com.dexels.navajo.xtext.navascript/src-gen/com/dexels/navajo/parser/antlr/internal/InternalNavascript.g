@@ -3746,9 +3746,9 @@ ruleMappedArrayMessage returns [EObject current=null]
 		(
 			(
 				(
-					lv_message_1_1=RULE_TML_LITERAL
+					lv_message_1_1=RULE_CURRENT_OUTDOC
 					{
-						newLeafNode(lv_message_1_1, grammarAccess.getMappedArrayMessageAccess().getMessageTML_LITERALTerminalRuleCall_1_0_0());
+						newLeafNode(lv_message_1_1, grammarAccess.getMappedArrayMessageAccess().getMessageCURRENT_OUTDOCTerminalRuleCall_1_0_0());
 					}
 					{
 						if ($current==null) {
@@ -3758,12 +3758,12 @@ ruleMappedArrayMessage returns [EObject current=null]
 							$current,
 							"message",
 							lv_message_1_1,
-							"com.dexels.navajo.Navascript.TML_LITERAL");
+							"com.dexels.navajo.Navascript.CURRENT_OUTDOC");
 					}
 					    |
-					lv_message_1_2=RULE_QUOTED_IDENTIFIER
+					lv_message_1_2=RULE_CURRENT_INDOC
 					{
-						newLeafNode(lv_message_1_2, grammarAccess.getMappedArrayMessageAccess().getMessageQUOTED_IDENTIFIERTerminalRuleCall_1_0_1());
+						newLeafNode(lv_message_1_2, grammarAccess.getMappedArrayMessageAccess().getMessageCURRENT_INDOCTerminalRuleCall_1_0_1());
 					}
 					{
 						if ($current==null) {
@@ -3773,6 +3773,51 @@ ruleMappedArrayMessage returns [EObject current=null]
 							$current,
 							"message",
 							lv_message_1_2,
+							"com.dexels.navajo.Navascript.CURRENT_INDOC");
+					}
+					    |
+					lv_message_1_3=RULE_CURRENT_VARDOC
+					{
+						newLeafNode(lv_message_1_3, grammarAccess.getMappedArrayMessageAccess().getMessageCURRENT_VARDOCTerminalRuleCall_1_0_2());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"message",
+							lv_message_1_3,
+							"com.dexels.navajo.Navascript.CURRENT_VARDOC");
+					}
+					    |
+					lv_message_1_4=RULE_TML_LITERAL
+					{
+						newLeafNode(lv_message_1_4, grammarAccess.getMappedArrayMessageAccess().getMessageTML_LITERALTerminalRuleCall_1_0_3());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"message",
+							lv_message_1_4,
+							"com.dexels.navajo.Navascript.TML_LITERAL");
+					}
+					    |
+					lv_message_1_5=RULE_QUOTED_IDENTIFIER
+					{
+						newLeafNode(lv_message_1_5, grammarAccess.getMappedArrayMessageAccess().getMessageQUOTED_IDENTIFIERTerminalRuleCall_1_0_4());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"message",
+							lv_message_1_5,
 							"com.dexels.navajo.Navascript.QUOTED_IDENTIFIER");
 					}
 				)
@@ -6864,6 +6909,99 @@ ruleAtomic returns [EObject current=null]
 				)
 			)
 		)
+		    |
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicAccess().getCurrentOutDocAction_11_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_26_0=RULE_CURRENT_OUTDOC
+					{
+						newLeafNode(lv_value_26_0, grammarAccess.getAtomicAccess().getValueCURRENT_OUTDOCTerminalRuleCall_11_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_26_0,
+							"com.dexels.navajo.Navascript.CURRENT_OUTDOC");
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicAccess().getCurrentInDocAction_12_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_28_0=RULE_CURRENT_INDOC
+					{
+						newLeafNode(lv_value_28_0, grammarAccess.getAtomicAccess().getValueCURRENT_INDOCTerminalRuleCall_12_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_28_0,
+							"com.dexels.navajo.Navascript.CURRENT_INDOC");
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicAccess().getCurrentVarDocAction_13_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_30_0=RULE_CURRENT_VARDOC
+					{
+						newLeafNode(lv_value_30_0, grammarAccess.getAtomicAccess().getValueCURRENT_VARDOCTerminalRuleCall_13_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_30_0,
+							"com.dexels.navajo.Navascript.CURRENT_VARDOC");
+					}
+				)
+			)
+		)
 	)
 ;
 
@@ -7639,6 +7777,12 @@ fragment RULE_MAPPABLE_ID : '$';
 RULE_NULL_DEF : 'null';
 
 RULE_TODAY : 'TODAY';
+
+RULE_CURRENT_OUTDOC : '"."';
+
+RULE_CURRENT_INDOC : '[.]';
+
+RULE_CURRENT_VARDOC : '[@.]';
 
 RULE_TML_LITERAL : '[' ('../'+|'/')? '@'? RULE_IDENTIFIER ('/' RULE_IDENTIFIER)* ']';
 

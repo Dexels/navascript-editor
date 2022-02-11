@@ -130,7 +130,7 @@ MappedMessage : {MappedMessage} '{' statements += InnerBody* '}';
 	
 MappedArrayField : {MappedArrayField} field=MAPPABLE_IDENTIFIER ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
 
-MappedArrayMessage : {MappedArrayMessage} message=(TML_LITERAL | QUOTED_IDENTIFIER) ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
+MappedArrayMessage : {MappedArrayMessage} message=( CURRENT_OUTDOC | CURRENT_INDOC | CURRENT_VARDOC | TML_LITERAL | QUOTED_IDENTIFIER ) ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
 
 KeyValueArguments : {KeyValueArguments} keyValueArguments+=KeyValueArgument ( ',' keyValueArguments+=KeyValueArgument )*;
 
@@ -230,8 +230,11 @@ Atomic returns Expression:
     {TmlIdentifier} value=TmlIdentifier |
     {ForAllLiteral} value=ForAllIdentifier |
     {NullLiteral} value=NULL_DEF |
-    {TodayLiteral} value=TODAY
-        ;
+    {TodayLiteral} value=TODAY |
+    {CurrentOutDoc} value=CURRENT_OUTDOC |
+    {CurrentInDoc} value=CURRENT_INDOC |
+    {CurrentVarDoc} value=CURRENT_VARDOC
+;
 
 ForAllIdentifier:
 	{ForAllIdentifier} op=( FORALL | EXISTS ) '(' "`" (expression=Expression) "`" ',' (messagedefinition=STRING_LITERAL) ')' 
@@ -285,6 +288,19 @@ terminal MAPPABLE_ID : '$';
 terminal NULL_DEF : 'null';
 terminal TODAY : 'TODAY';
 
+terminal CURRENT_OUTDOC: 
+	 '"."'
+;
+
+terminal CURRENT_INDOC: 
+	 '[.]'
+;
+
+terminal CURRENT_VARDOC: 
+	 '[@.]'
+;
+
+
 terminal TML_LITERAL:
 	'[' ( '../'+ | '/' )? '@'? IDENTIFIER ( '/' IDENTIFIER)*  ']'
 ;
@@ -293,7 +309,7 @@ terminal OBJECT_IDENTIFIER:
 ;
 
 terminal QUOTED_IDENTIFIER:
-	'"' ( '../'+ | '/' )?  IDENTIFIER ( '/' IDENTIFIER)* '"' 	
+	'"' ( ( '../'+ | '/' )?  IDENTIFIER ( '/' IDENTIFIER)* ) '"' 	
 ;
 
 terminal ONE:

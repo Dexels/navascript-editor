@@ -526,6 +526,21 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
         return createTodayLiteralAdapter();
       }
       @Override
+      public Adapter caseCurrentOutDoc(CurrentOutDoc object)
+      {
+        return createCurrentOutDocAdapter();
+      }
+      @Override
+      public Adapter caseCurrentInDoc(CurrentInDoc object)
+      {
+        return createCurrentInDocAdapter();
+      }
+      @Override
+      public Adapter caseCurrentVarDoc(CurrentVarDoc object)
+      {
+        return createCurrentVarDocAdapter();
+      }
+      @Override
       public Adapter caseIntType(IntType object)
       {
         return createIntTypeAdapter();
@@ -1973,6 +1988,51 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTodayLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.CurrentOutDoc <em>Current Out Doc</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.CurrentOutDoc
+   * @generated
+   */
+  public Adapter createCurrentOutDocAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.CurrentInDoc <em>Current In Doc</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.CurrentInDoc
+   * @generated
+   */
+  public Adapter createCurrentInDocAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.CurrentVarDoc <em>Current Var Doc</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.CurrentVarDoc
+   * @generated
+   */
+  public Adapter createCurrentVarDocAdapter()
   {
     return null;
   }

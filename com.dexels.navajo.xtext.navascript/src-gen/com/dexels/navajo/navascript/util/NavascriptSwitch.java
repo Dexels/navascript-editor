@@ -798,6 +798,39 @@ public class NavascriptSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case NavascriptPackage.CURRENT_OUT_DOC:
+      {
+        CurrentOutDoc currentOutDoc = (CurrentOutDoc)theEObject;
+        T result = caseCurrentOutDoc(currentOutDoc);
+        if (result == null) result = caseExpression(currentOutDoc);
+        if (result == null) result = caseSTimeout(currentOutDoc);
+        if (result == null) result = caseSBreakOnNoLock(currentOutDoc);
+        if (result == null) result = caseSynchronizedArgument(currentOutDoc);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case NavascriptPackage.CURRENT_IN_DOC:
+      {
+        CurrentInDoc currentInDoc = (CurrentInDoc)theEObject;
+        T result = caseCurrentInDoc(currentInDoc);
+        if (result == null) result = caseExpression(currentInDoc);
+        if (result == null) result = caseSTimeout(currentInDoc);
+        if (result == null) result = caseSBreakOnNoLock(currentInDoc);
+        if (result == null) result = caseSynchronizedArgument(currentInDoc);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case NavascriptPackage.CURRENT_VAR_DOC:
+      {
+        CurrentVarDoc currentVarDoc = (CurrentVarDoc)theEObject;
+        T result = caseCurrentVarDoc(currentVarDoc);
+        if (result == null) result = caseExpression(currentVarDoc);
+        if (result == null) result = caseSTimeout(currentVarDoc);
+        if (result == null) result = caseSBreakOnNoLock(currentVarDoc);
+        if (result == null) result = caseSynchronizedArgument(currentVarDoc);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case NavascriptPackage.INT_TYPE:
       {
         IntType intType = (IntType)theEObject;
@@ -2371,6 +2404,54 @@ public class NavascriptSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTodayLiteral(TodayLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Current Out Doc</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Current Out Doc</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCurrentOutDoc(CurrentOutDoc object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Current In Doc</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Current In Doc</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCurrentInDoc(CurrentInDoc object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Current Var Doc</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Current Var Doc</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCurrentVarDoc(CurrentVarDoc object)
   {
     return null;
   }

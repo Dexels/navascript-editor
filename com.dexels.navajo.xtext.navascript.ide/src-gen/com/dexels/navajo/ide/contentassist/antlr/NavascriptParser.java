@@ -241,6 +241,9 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAtomicAccess().getGroup_8(), "rule__Atomic__Group_8__0");
 			builder.put(grammarAccess.getAtomicAccess().getGroup_9(), "rule__Atomic__Group_9__0");
 			builder.put(grammarAccess.getAtomicAccess().getGroup_10(), "rule__Atomic__Group_10__0");
+			builder.put(grammarAccess.getAtomicAccess().getGroup_11(), "rule__Atomic__Group_11__0");
+			builder.put(grammarAccess.getAtomicAccess().getGroup_12(), "rule__Atomic__Group_12__0");
+			builder.put(grammarAccess.getAtomicAccess().getGroup_13(), "rule__Atomic__Group_13__0");
 			builder.put(grammarAccess.getForAllIdentifierAccess().getGroup(), "rule__ForAllIdentifier__Group__0");
 			builder.put(grammarAccess.getFunctionIdentifierAccess().getGroup(), "rule__FunctionIdentifier__Group__0");
 			builder.put(grammarAccess.getFunctionIdentifierAccess().getGroup_2(), "rule__FunctionIdentifier__Group_2__0");
@@ -407,6 +410,9 @@ public class NavascriptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_8_1(), "rule__Atomic__ValueAssignment_8_1");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_9_1(), "rule__Atomic__ValueAssignment_9_1");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_10_1(), "rule__Atomic__ValueAssignment_10_1");
+			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_11_1(), "rule__Atomic__ValueAssignment_11_1");
+			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_12_1(), "rule__Atomic__ValueAssignment_12_1");
+			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_13_1(), "rule__Atomic__ValueAssignment_13_1");
 			builder.put(grammarAccess.getForAllIdentifierAccess().getOpAssignment_1(), "rule__ForAllIdentifier__OpAssignment_1");
 			builder.put(grammarAccess.getForAllIdentifierAccess().getExpressionAssignment_4(), "rule__ForAllIdentifier__ExpressionAssignment_4");
 			builder.put(grammarAccess.getForAllIdentifierAccess().getMessagedefinitionAssignment_7(), "rule__ForAllIdentifier__MessagedefinitionAssignment_7");

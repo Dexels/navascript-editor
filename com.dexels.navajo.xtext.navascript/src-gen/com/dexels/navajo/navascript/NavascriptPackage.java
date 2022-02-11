@@ -3082,6 +3082,90 @@ public interface NavascriptPackage extends EPackage
   int TODAY_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link com.dexels.navajo.navascript.impl.CurrentOutDocImpl <em>Current Out Doc</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.dexels.navajo.navascript.impl.CurrentOutDocImpl
+   * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getCurrentOutDoc()
+   * @generated
+   */
+  int CURRENT_OUT_DOC = 90;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CURRENT_OUT_DOC__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Current Out Doc</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CURRENT_OUT_DOC_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link com.dexels.navajo.navascript.impl.CurrentInDocImpl <em>Current In Doc</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.dexels.navajo.navascript.impl.CurrentInDocImpl
+   * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getCurrentInDoc()
+   * @generated
+   */
+  int CURRENT_IN_DOC = 91;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CURRENT_IN_DOC__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Current In Doc</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CURRENT_IN_DOC_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link com.dexels.navajo.navascript.impl.CurrentVarDocImpl <em>Current Var Doc</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.dexels.navajo.navascript.impl.CurrentVarDocImpl
+   * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getCurrentVarDoc()
+   * @generated
+   */
+  int CURRENT_VAR_DOC = 92;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CURRENT_VAR_DOC__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Current Var Doc</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CURRENT_VAR_DOC_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link com.dexels.navajo.navascript.impl.IntTypeImpl <em>Int Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3089,7 +3173,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getIntType()
    * @generated
    */
-  int INT_TYPE = 90;
+  int INT_TYPE = 93;
 
   /**
    * The number of structural features of the '<em>Int Type</em>' class.
@@ -3108,7 +3192,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getStringType()
    * @generated
    */
-  int STRING_TYPE = 91;
+  int STRING_TYPE = 94;
 
   /**
    * The number of structural features of the '<em>String Type</em>' class.
@@ -3127,7 +3211,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getBooleanType()
    * @generated
    */
-  int BOOLEAN_TYPE = 92;
+  int BOOLEAN_TYPE = 95;
 
   /**
    * The number of structural features of the '<em>Boolean Type</em>' class.
@@ -3146,7 +3230,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getDateType()
    * @generated
    */
-  int DATE_TYPE = 93;
+  int DATE_TYPE = 96;
 
   /**
    * The number of structural features of the '<em>Date Type</em>' class.
@@ -3165,7 +3249,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getFloatType()
    * @generated
    */
-  int FLOAT_TYPE = 94;
+  int FLOAT_TYPE = 97;
 
   /**
    * The number of structural features of the '<em>Float Type</em>' class.
@@ -3184,7 +3268,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getBinaryType()
    * @generated
    */
-  int BINARY_TYPE = 95;
+  int BINARY_TYPE = 98;
 
   /**
    * The number of structural features of the '<em>Binary Type</em>' class.
@@ -3203,7 +3287,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getClockTimeType()
    * @generated
    */
-  int CLOCK_TIME_TYPE = 96;
+  int CLOCK_TIME_TYPE = 99;
 
   /**
    * The number of structural features of the '<em>Clock Time Type</em>' class.
@@ -3222,7 +3306,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getMemoType()
    * @generated
    */
-  int MEMO_TYPE = 97;
+  int MEMO_TYPE = 100;
 
   /**
    * The number of structural features of the '<em>Memo Type</em>' class.
@@ -3241,7 +3325,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getTimestampType()
    * @generated
    */
-  int TIMESTAMP_TYPE = 98;
+  int TIMESTAMP_TYPE = 101;
 
   /**
    * The number of structural features of the '<em>Timestamp Type</em>' class.
@@ -3260,7 +3344,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getPercentageType()
    * @generated
    */
-  int PERCENTAGE_TYPE = 99;
+  int PERCENTAGE_TYPE = 102;
 
   /**
    * The number of structural features of the '<em>Percentage Type</em>' class.
@@ -3279,7 +3363,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getSelectionType()
    * @generated
    */
-  int SELECTION_TYPE = 100;
+  int SELECTION_TYPE = 103;
 
   /**
    * The number of structural features of the '<em>Selection Type</em>' class.
@@ -3298,7 +3382,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getArrayType()
    * @generated
    */
-  int ARRAY_TYPE = 101;
+  int ARRAY_TYPE = 104;
 
   /**
    * The number of structural features of the '<em>Array Type</em>' class.
@@ -3317,7 +3401,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getSimpleType()
    * @generated
    */
-  int SIMPLE_TYPE = 102;
+  int SIMPLE_TYPE = 105;
 
   /**
    * The number of structural features of the '<em>Simple Type</em>' class.
@@ -3336,7 +3420,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getArrayElementType()
    * @generated
    */
-  int ARRAY_ELEMENT_TYPE = 103;
+  int ARRAY_ELEMENT_TYPE = 106;
 
   /**
    * The number of structural features of the '<em>Array Element Type</em>' class.
@@ -3355,7 +3439,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getIgnore()
    * @generated
    */
-  int IGNORE = 104;
+  int IGNORE = 107;
 
   /**
    * The number of structural features of the '<em>Ignore</em>' class.
@@ -3374,7 +3458,7 @@ public interface NavascriptPackage extends EPackage
    * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getOverwrite()
    * @generated
    */
-  int OVERWRITE = 105;
+  int OVERWRITE = 108;
 
   /**
    * The number of structural features of the '<em>Overwrite</em>' class.
@@ -5849,6 +5933,69 @@ public interface NavascriptPackage extends EPackage
   EAttribute getTodayLiteral_Value();
 
   /**
+   * Returns the meta object for class '{@link com.dexels.navajo.navascript.CurrentOutDoc <em>Current Out Doc</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Current Out Doc</em>'.
+   * @see com.dexels.navajo.navascript.CurrentOutDoc
+   * @generated
+   */
+  EClass getCurrentOutDoc();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.dexels.navajo.navascript.CurrentOutDoc#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see com.dexels.navajo.navascript.CurrentOutDoc#getValue()
+   * @see #getCurrentOutDoc()
+   * @generated
+   */
+  EAttribute getCurrentOutDoc_Value();
+
+  /**
+   * Returns the meta object for class '{@link com.dexels.navajo.navascript.CurrentInDoc <em>Current In Doc</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Current In Doc</em>'.
+   * @see com.dexels.navajo.navascript.CurrentInDoc
+   * @generated
+   */
+  EClass getCurrentInDoc();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.dexels.navajo.navascript.CurrentInDoc#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see com.dexels.navajo.navascript.CurrentInDoc#getValue()
+   * @see #getCurrentInDoc()
+   * @generated
+   */
+  EAttribute getCurrentInDoc_Value();
+
+  /**
+   * Returns the meta object for class '{@link com.dexels.navajo.navascript.CurrentVarDoc <em>Current Var Doc</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Current Var Doc</em>'.
+   * @see com.dexels.navajo.navascript.CurrentVarDoc
+   * @generated
+   */
+  EClass getCurrentVarDoc();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.dexels.navajo.navascript.CurrentVarDoc#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see com.dexels.navajo.navascript.CurrentVarDoc#getValue()
+   * @see #getCurrentVarDoc()
+   * @generated
+   */
+  EAttribute getCurrentVarDoc_Value();
+
+  /**
    * Returns the meta object for class '{@link com.dexels.navajo.navascript.IntType <em>Int Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -8066,6 +8213,60 @@ public interface NavascriptPackage extends EPackage
      * @generated
      */
     EAttribute TODAY_LITERAL__VALUE = eINSTANCE.getTodayLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link com.dexels.navajo.navascript.impl.CurrentOutDocImpl <em>Current Out Doc</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.dexels.navajo.navascript.impl.CurrentOutDocImpl
+     * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getCurrentOutDoc()
+     * @generated
+     */
+    EClass CURRENT_OUT_DOC = eINSTANCE.getCurrentOutDoc();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CURRENT_OUT_DOC__VALUE = eINSTANCE.getCurrentOutDoc_Value();
+
+    /**
+     * The meta object literal for the '{@link com.dexels.navajo.navascript.impl.CurrentInDocImpl <em>Current In Doc</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.dexels.navajo.navascript.impl.CurrentInDocImpl
+     * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getCurrentInDoc()
+     * @generated
+     */
+    EClass CURRENT_IN_DOC = eINSTANCE.getCurrentInDoc();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CURRENT_IN_DOC__VALUE = eINSTANCE.getCurrentInDoc_Value();
+
+    /**
+     * The meta object literal for the '{@link com.dexels.navajo.navascript.impl.CurrentVarDocImpl <em>Current Var Doc</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.dexels.navajo.navascript.impl.CurrentVarDocImpl
+     * @see com.dexels.navajo.navascript.impl.NavascriptPackageImpl#getCurrentVarDoc()
+     * @generated
+     */
+    EClass CURRENT_VAR_DOC = eINSTANCE.getCurrentVarDoc();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CURRENT_VAR_DOC__VALUE = eINSTANCE.getCurrentVarDoc_Value();
 
     /**
      * The meta object literal for the '{@link com.dexels.navajo.navascript.impl.IntTypeImpl <em>Int Type</em>}' class.

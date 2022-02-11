@@ -443,6 +443,9 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '=' | ':'
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     message=CURRENT_INDOC '(' 'filter' (ambiguity) filter=Expression
+	 *     message=CURRENT_OUTDOC '(' 'filter' (ambiguity) filter=Expression
+	 *     message=CURRENT_VARDOC '(' 'filter' (ambiguity) filter=Expression
 	 *     message=QUOTED_IDENTIFIER '(' 'filter' (ambiguity) filter=Expression
 	 *     message=TML_LITERAL '(' 'filter' (ambiguity) filter=Expression
 	 */
@@ -542,6 +545,9 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) 'breakOnNoLock' (ambiguity) '(' value=Expression
 	 *     (rule start) 'breakOnNoLock' (ambiguity) '-' expression=Atomic
 	 *     (rule start) 'breakOnNoLock' (ambiguity) hasExists?='?'
+	 *     (rule start) 'breakOnNoLock' (ambiguity) value=CURRENT_INDOC
+	 *     (rule start) 'breakOnNoLock' (ambiguity) value=CURRENT_OUTDOC
+	 *     (rule start) 'breakOnNoLock' (ambiguity) value=CURRENT_VARDOC
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=FALSE
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=FLOAT
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=ForAllIdentifier
@@ -574,6 +580,9 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) '(' value=Expression
 	 *     (rule start) (ambiguity) '-' expression=Atomic
 	 *     (rule start) (ambiguity) hasExists?='?'
+	 *     (rule start) (ambiguity) value=CURRENT_INDOC
+	 *     (rule start) (ambiguity) value=CURRENT_OUTDOC
+	 *     (rule start) (ambiguity) value=CURRENT_VARDOC
 	 *     (rule start) (ambiguity) value=FALSE
 	 *     (rule start) (ambiguity) value=FLOAT
 	 *     (rule start) (ambiguity) value=ForAllIdentifier
@@ -617,6 +626,9 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) 'timeout' (ambiguity) '(' value=Expression
 	 *     (rule start) 'timeout' (ambiguity) '-' expression=Atomic
 	 *     (rule start) 'timeout' (ambiguity) hasExists?='?'
+	 *     (rule start) 'timeout' (ambiguity) value=CURRENT_INDOC
+	 *     (rule start) 'timeout' (ambiguity) value=CURRENT_OUTDOC
+	 *     (rule start) 'timeout' (ambiguity) value=CURRENT_VARDOC
 	 *     (rule start) 'timeout' (ambiguity) value=FALSE
 	 *     (rule start) 'timeout' (ambiguity) value=FLOAT
 	 *     (rule start) 'timeout' (ambiguity) value=ForAllIdentifier

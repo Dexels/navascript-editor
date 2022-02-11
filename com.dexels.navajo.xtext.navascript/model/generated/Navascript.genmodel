@@ -318,6 +318,15 @@
     <genClasses ecoreClass="Navascript.ecore#//TodayLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//TodayLiteral/value"/>
     </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//CurrentOutDoc">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//CurrentOutDoc/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//CurrentInDoc">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//CurrentInDoc/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//CurrentVarDoc">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//CurrentVarDoc/value"/>
+    </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//IntType"/>
     <genClasses ecoreClass="Navascript.ecore#//StringType"/>
     <genClasses ecoreClass="Navascript.ecore#//BooleanType"/>
