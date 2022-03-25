@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ServiceLoader;
 import java.util.Vector;
@@ -27,7 +26,6 @@ import org.eclipse.ui.PlatformUI;
 
 import com.dexels.navajo.document.nanoimpl.CaseSensitiveXMLElement;
 import com.dexels.navajo.document.nanoimpl.XMLElement;
-import com.dexels.navajo.expression.api.FunctionDefinition;
 import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
 
 public class JavaProjectIntrospection {

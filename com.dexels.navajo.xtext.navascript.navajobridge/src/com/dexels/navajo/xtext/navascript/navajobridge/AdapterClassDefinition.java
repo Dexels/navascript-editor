@@ -10,15 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.osgi.framework.Bundle;
-
 import com.dexels.navajo.document.NavajoFactory;
 import com.dexels.navajo.document.Property;
-import com.dexels.navajo.document.PropertyTypeChecker;
-import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
-import com.dexels.navajo.mapping.compiler.meta.MethodDefinition;
-import com.dexels.navajo.mapping.compiler.meta.ParameterDefinition;
-import com.dexels.navajo.mapping.compiler.meta.ValueDefinition;
 
 public class AdapterClassDefinition  {
 
