@@ -197,12 +197,14 @@
          install-size="0"
          version="0.0.0"/>
 
+<!--
    <plugin
          id="org.eclipse.core.filesystem.macosx"
          download-size="0"
          install-size="0"
          version="0.0.0"
          fragment="true"/>
+-->
 
    <plugin
          id="org.eclipse.core.jobs"
@@ -366,12 +368,14 @@
          install-size="0"
          version="0.0.0"/>
 
+<!--
    <plugin
          id="org.eclipse.e4.ui.workbench.renderers.swt.cocoa"
          download-size="0"
          install-size="0"
          version="0.0.0"
          fragment="true"/>
+-->
 
    <plugin
          id="org.eclipse.e4.ui.workbench.swt"
@@ -499,12 +503,14 @@
          install-size="0"
          version="0.0.0"/>
 
+<!--
    <plugin
          id="org.eclipse.equinox.security.macosx"
          download-size="0"
          install-size="0"
          version="0.0.0"
          fragment="true"/>
+-->
 
    <plugin
          id="org.eclipse.help"
@@ -591,6 +597,7 @@
          install-size="0"
          version="0.0.0"/>
 
+<!--
    <plugin
          id="org.eclipse.swt.browser.chromium.cocoa.macosx.x86_64"
          download-size="0"
@@ -604,7 +611,7 @@
          install-size="0"
          version="0.0.0"
          fragment="true"/>
-
+-->
    <plugin
          id="org.eclipse.team.core"
          download-size="0"
@@ -629,13 +636,14 @@
          install-size="0"
          version="0.0.0"/>
 
+<!--
    <plugin
          id="org.eclipse.ui.cocoa"
          download-size="0"
          install-size="0"
          version="0.0.0"
          fragment="true"/>
-
+-->
    <plugin
          id="org.eclipse.ui.console"
          download-size="0"
