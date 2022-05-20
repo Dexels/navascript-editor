@@ -69,6 +69,15 @@ public interface NavascriptFactory extends EFactory
   BlockStatements createBlockStatements();
 
   /**
+   * Returns a new object of class '<em>Debug Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Debug Statement</em>'.
+   * @generated
+   */
+  DebugStatement createDebugStatement();
+
+  /**
    * Returns a new object of class '<em>Synchronized</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -346,6 +355,15 @@ public interface NavascriptFactory extends EFactory
    * @generated
    */
   SetterField createSetterField();
+
+  /**
+   * Returns a new object of class '<em>Mapped Message</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Mapped Message</em>'.
+   * @generated
+   */
+  MappedMessage createMappedMessage();
 
   /**
    * Returns a new object of class '<em>Mapped Array Field</em>'.
@@ -805,6 +823,42 @@ public interface NavascriptFactory extends EFactory
    * @generated
    */
   NullLiteral createNullLiteral();
+
+  /**
+   * Returns a new object of class '<em>Today Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Today Literal</em>'.
+   * @generated
+   */
+  TodayLiteral createTodayLiteral();
+
+  /**
+   * Returns a new object of class '<em>Current Out Doc</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Current Out Doc</em>'.
+   * @generated
+   */
+  CurrentOutDoc createCurrentOutDoc();
+
+  /**
+   * Returns a new object of class '<em>Current In Doc</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Current In Doc</em>'.
+   * @generated
+   */
+  CurrentInDoc createCurrentInDoc();
+
+  /**
+   * Returns a new object of class '<em>Current Var Doc</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Current Var Doc</em>'.
+   * @generated
+   */
+  CurrentVarDoc createCurrentVarDoc();
 
   /**
    * Returns a new object of class '<em>Int Type</em>'.

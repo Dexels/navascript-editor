@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link com.dexels.navajo.navascript.Navascript#getDebug <em>Debug</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.Navascript#getValidations <em>Validations</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.Navascript#getToplevelStatements <em>Toplevel Statements</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.Navascript#getFinally <em>Finally</em>}</li>
@@ -25,6 +26,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Navascript extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Debug</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Debug</em>' containment reference.
+   * @see #setDebug(DebugStatement)
+   * @see com.dexels.navajo.navascript.NavascriptPackage#getNavascript_Debug()
+   * @model containment="true"
+   * @generated
+   */
+  DebugStatement getDebug();
+
+  /**
+   * Sets the value of the '{@link com.dexels.navajo.navascript.Navascript#getDebug <em>Debug</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Debug</em>' containment reference.
+   * @see #getDebug()
+   * @generated
+   */
+  void setDebug(DebugStatement value);
+
   /**
    * Returns the value of the '<em><b>Validations</b></em>' containment reference.
    * <!-- begin-user-doc -->

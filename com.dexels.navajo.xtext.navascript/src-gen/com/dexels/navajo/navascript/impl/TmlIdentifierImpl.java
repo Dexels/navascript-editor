@@ -7,11 +7,12 @@ import com.dexels.navajo.navascript.NavascriptPackage;
 import com.dexels.navajo.navascript.TmlIdentifier;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,13 +22,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link com.dexels.navajo.navascript.impl.TmlIdentifierImpl#getValue <em>Value</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.impl.TmlIdentifierImpl#getTml <em>Tml</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class TmlIdentifierImpl extends MinimalEObjectImpl.Container implements TmlIdentifier
+public class TmlIdentifierImpl extends ExpressionImpl implements TmlIdentifier
 {
+  /**
+   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValue()
+   * @generated
+   * @ordered
+   */
+  protected TmlIdentifier value;
+
   /**
    * The default value of the '{@link #getTml() <em>Tml</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -75,6 +87,56 @@ public class TmlIdentifierImpl extends MinimalEObjectImpl.Container implements T
    * @generated
    */
   @Override
+  public TmlIdentifier getValue()
+  {
+    return value;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetValue(TmlIdentifier newValue, NotificationChain msgs)
+  {
+    TmlIdentifier oldValue = value;
+    value = newValue;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NavascriptPackage.TML_IDENTIFIER__VALUE, oldValue, newValue);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setValue(TmlIdentifier newValue)
+  {
+    if (newValue != value)
+    {
+      NotificationChain msgs = null;
+      if (value != null)
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NavascriptPackage.TML_IDENTIFIER__VALUE, null, msgs);
+      if (newValue != null)
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NavascriptPackage.TML_IDENTIFIER__VALUE, null, msgs);
+      msgs = basicSetValue(newValue, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, NavascriptPackage.TML_IDENTIFIER__VALUE, newValue, newValue));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public String getTml()
   {
     return tml;
@@ -100,10 +162,28 @@ public class TmlIdentifierImpl extends MinimalEObjectImpl.Container implements T
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case NavascriptPackage.TML_IDENTIFIER__VALUE:
+        return basicSetValue(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
+      case NavascriptPackage.TML_IDENTIFIER__VALUE:
+        return getValue();
       case NavascriptPackage.TML_IDENTIFIER__TML:
         return getTml();
     }
@@ -120,6 +200,9 @@ public class TmlIdentifierImpl extends MinimalEObjectImpl.Container implements T
   {
     switch (featureID)
     {
+      case NavascriptPackage.TML_IDENTIFIER__VALUE:
+        setValue((TmlIdentifier)newValue);
+        return;
       case NavascriptPackage.TML_IDENTIFIER__TML:
         setTml((String)newValue);
         return;
@@ -137,6 +220,9 @@ public class TmlIdentifierImpl extends MinimalEObjectImpl.Container implements T
   {
     switch (featureID)
     {
+      case NavascriptPackage.TML_IDENTIFIER__VALUE:
+        setValue((TmlIdentifier)null);
+        return;
       case NavascriptPackage.TML_IDENTIFIER__TML:
         setTml(TML_EDEFAULT);
         return;
@@ -154,6 +240,8 @@ public class TmlIdentifierImpl extends MinimalEObjectImpl.Container implements T
   {
     switch (featureID)
     {
+      case NavascriptPackage.TML_IDENTIFIER__VALUE:
+        return value != null;
       case NavascriptPackage.TML_IDENTIFIER__TML:
         return TML_EDEFAULT == null ? tml != null : !TML_EDEFAULT.equals(tml);
     }

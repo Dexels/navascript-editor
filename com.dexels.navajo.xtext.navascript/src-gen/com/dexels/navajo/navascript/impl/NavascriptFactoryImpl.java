@@ -70,6 +70,7 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
       case NavascriptPackage.TOP_LEVEL_STATEMENT: return createTopLevelStatement();
       case NavascriptPackage.INNER_BODY: return createInnerBody();
       case NavascriptPackage.BLOCK_STATEMENTS: return createBlockStatements();
+      case NavascriptPackage.DEBUG_STATEMENT: return createDebugStatement();
       case NavascriptPackage.SYNCHRONIZED: return createSynchronized();
       case NavascriptPackage.SYNCHRONIZED_ARGUMENTS: return createSynchronizedArguments();
       case NavascriptPackage.SYNCHRONIZED_ARGUMENT: return createSynchronizedArgument();
@@ -101,6 +102,7 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
       case NavascriptPackage.METHOD_OR_SETTER: return createMethodOrSetter();
       case NavascriptPackage.ADAPTER_METHOD: return createAdapterMethod();
       case NavascriptPackage.SETTER_FIELD: return createSetterField();
+      case NavascriptPackage.MAPPED_MESSAGE: return createMappedMessage();
       case NavascriptPackage.MAPPED_ARRAY_FIELD: return createMappedArrayField();
       case NavascriptPackage.MAPPED_ARRAY_MESSAGE: return createMappedArrayMessage();
       case NavascriptPackage.KEY_VALUE_ARGUMENTS: return createKeyValueArguments();
@@ -152,6 +154,10 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
       case NavascriptPackage.TML_IDENTIFIER_LITERAL: return createTmlIdentifierLiteral();
       case NavascriptPackage.FOR_ALL_LITERAL: return createForAllLiteral();
       case NavascriptPackage.NULL_LITERAL: return createNullLiteral();
+      case NavascriptPackage.TODAY_LITERAL: return createTodayLiteral();
+      case NavascriptPackage.CURRENT_OUT_DOC: return createCurrentOutDoc();
+      case NavascriptPackage.CURRENT_IN_DOC: return createCurrentInDoc();
+      case NavascriptPackage.CURRENT_VAR_DOC: return createCurrentVarDoc();
       case NavascriptPackage.INT_TYPE: return createIntType();
       case NavascriptPackage.STRING_TYPE: return createStringType();
       case NavascriptPackage.BOOLEAN_TYPE: return createBooleanType();
@@ -231,6 +237,18 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
   {
     BlockStatementsImpl blockStatements = new BlockStatementsImpl();
     return blockStatements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DebugStatement createDebugStatement()
+  {
+    DebugStatementImpl debugStatement = new DebugStatementImpl();
+    return debugStatement;
   }
 
   /**
@@ -603,6 +621,18 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
   {
     SetterFieldImpl setterField = new SetterFieldImpl();
     return setterField;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MappedMessage createMappedMessage()
+  {
+    MappedMessageImpl mappedMessage = new MappedMessageImpl();
+    return mappedMessage;
   }
 
   /**
@@ -1215,6 +1245,54 @@ public class NavascriptFactoryImpl extends EFactoryImpl implements NavascriptFac
   {
     NullLiteralImpl nullLiteral = new NullLiteralImpl();
     return nullLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TodayLiteral createTodayLiteral()
+  {
+    TodayLiteralImpl todayLiteral = new TodayLiteralImpl();
+    return todayLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CurrentOutDoc createCurrentOutDoc()
+  {
+    CurrentOutDocImpl currentOutDoc = new CurrentOutDocImpl();
+    return currentOutDoc;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CurrentInDoc createCurrentInDoc()
+  {
+    CurrentInDocImpl currentInDoc = new CurrentInDocImpl();
+    return currentInDoc;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CurrentVarDoc createCurrentVarDoc()
+  {
+    CurrentVarDocImpl currentVarDoc = new CurrentVarDocImpl();
+    return currentVarDoc;
   }
 
   /**

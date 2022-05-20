@@ -101,6 +101,11 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
         return createBlockStatementsAdapter();
       }
       @Override
+      public Adapter caseDebugStatement(DebugStatement object)
+      {
+        return createDebugStatementAdapter();
+      }
+      @Override
       public Adapter caseSynchronized(Synchronized object)
       {
         return createSynchronizedAdapter();
@@ -254,6 +259,11 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSetterField(SetterField object)
       {
         return createSetterFieldAdapter();
+      }
+      @Override
+      public Adapter caseMappedMessage(MappedMessage object)
+      {
+        return createMappedMessageAdapter();
       }
       @Override
       public Adapter caseMappedArrayField(MappedArrayField object)
@@ -511,6 +521,26 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
         return createNullLiteralAdapter();
       }
       @Override
+      public Adapter caseTodayLiteral(TodayLiteral object)
+      {
+        return createTodayLiteralAdapter();
+      }
+      @Override
+      public Adapter caseCurrentOutDoc(CurrentOutDoc object)
+      {
+        return createCurrentOutDocAdapter();
+      }
+      @Override
+      public Adapter caseCurrentInDoc(CurrentInDoc object)
+      {
+        return createCurrentInDocAdapter();
+      }
+      @Override
+      public Adapter caseCurrentVarDoc(CurrentVarDoc object)
+      {
+        return createCurrentVarDocAdapter();
+      }
+      @Override
       public Adapter caseIntType(IntType object)
       {
         return createIntTypeAdapter();
@@ -683,6 +713,21 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBlockStatementsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.DebugStatement <em>Debug Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.DebugStatement
+   * @generated
+   */
+  public Adapter createDebugStatementAdapter()
   {
     return null;
   }
@@ -1148,6 +1193,21 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSetterFieldAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.MappedMessage <em>Mapped Message</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.MappedMessage
+   * @generated
+   */
+  public Adapter createMappedMessageAdapter()
   {
     return null;
   }
@@ -1913,6 +1973,66 @@ public class NavascriptAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNullLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.TodayLiteral <em>Today Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.TodayLiteral
+   * @generated
+   */
+  public Adapter createTodayLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.CurrentOutDoc <em>Current Out Doc</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.CurrentOutDoc
+   * @generated
+   */
+  public Adapter createCurrentOutDocAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.CurrentInDoc <em>Current In Doc</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.CurrentInDoc
+   * @generated
+   */
+  public Adapter createCurrentInDocAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.dexels.navajo.navascript.CurrentVarDoc <em>Current Var Doc</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.dexels.navajo.navascript.CurrentVarDoc
+   * @generated
+   */
+  public Adapter createCurrentVarDocAdapter()
   {
     return null;
   }

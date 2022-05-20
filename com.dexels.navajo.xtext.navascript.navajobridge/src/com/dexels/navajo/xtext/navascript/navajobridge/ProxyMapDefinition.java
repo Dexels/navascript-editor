@@ -31,6 +31,10 @@ public class ProxyMapDefinition {
 		this.objectClassLoader = objectClassLoader;
 	}
 
+	public ProxyMapDefinition() {
+		// Empty proxymapdefinition.
+	}
+	
 	public ProxyMapDefinition(Object actual, Class mapDefinitionClass) throws InstantiationException {
 		mapDefinition = actual;
 		this.mapDefinitionClass = mapDefinitionClass;

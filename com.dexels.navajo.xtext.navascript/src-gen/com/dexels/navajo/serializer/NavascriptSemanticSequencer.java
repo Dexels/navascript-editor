@@ -24,7 +24,11 @@ import com.dexels.navajo.navascript.ClockTimeType;
 import com.dexels.navajo.navascript.Comparison;
 import com.dexels.navajo.navascript.ConditionalExpression;
 import com.dexels.navajo.navascript.ConditionalExpressions;
+import com.dexels.navajo.navascript.CurrentInDoc;
+import com.dexels.navajo.navascript.CurrentOutDoc;
+import com.dexels.navajo.navascript.CurrentVarDoc;
 import com.dexels.navajo.navascript.DateType;
+import com.dexels.navajo.navascript.DebugStatement;
 import com.dexels.navajo.navascript.Define;
 import com.dexels.navajo.navascript.DescriptionArgument;
 import com.dexels.navajo.navascript.DirectionArgument;
@@ -51,6 +55,7 @@ import com.dexels.navajo.navascript.MappableIdentifier;
 import com.dexels.navajo.navascript.MappableIdentifierLiteral;
 import com.dexels.navajo.navascript.MappedArrayField;
 import com.dexels.navajo.navascript.MappedArrayMessage;
+import com.dexels.navajo.navascript.MappedMessage;
 import com.dexels.navajo.navascript.MemoType;
 import com.dexels.navajo.navascript.Message;
 import com.dexels.navajo.navascript.MessageArguments;
@@ -85,6 +90,7 @@ import com.dexels.navajo.navascript.SynchronizedArguments;
 import com.dexels.navajo.navascript.TimestampType;
 import com.dexels.navajo.navascript.TmlIdentifier;
 import com.dexels.navajo.navascript.TmlIdentifierLiteral;
+import com.dexels.navajo.navascript.TodayLiteral;
 import com.dexels.navajo.navascript.TopLevelStatement;
 import com.dexels.navajo.navascript.TopLevelStatements;
 import com.dexels.navajo.navascript.TypeArgument;
@@ -187,8 +193,20 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 			case NavascriptPackage.CONDITIONAL_EXPRESSIONS:
 				sequence_ConditionalExpressions(context, (ConditionalExpressions) semanticObject); 
 				return; 
+			case NavascriptPackage.CURRENT_IN_DOC:
+				sequence_Atomic(context, (CurrentInDoc) semanticObject); 
+				return; 
+			case NavascriptPackage.CURRENT_OUT_DOC:
+				sequence_Atomic(context, (CurrentOutDoc) semanticObject); 
+				return; 
+			case NavascriptPackage.CURRENT_VAR_DOC:
+				sequence_Atomic(context, (CurrentVarDoc) semanticObject); 
+				return; 
 			case NavascriptPackage.DATE_TYPE:
 				sequence_PropertyType(context, (DateType) semanticObject); 
+				return; 
+			case NavascriptPackage.DEBUG_STATEMENT:
+				sequence_DebugStatement(context, (DebugStatement) semanticObject); 
 				return; 
 			case NavascriptPackage.DEFINE:
 				sequence_Define(context, (Define) semanticObject); 
@@ -267,6 +285,9 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				return; 
 			case NavascriptPackage.MAPPED_ARRAY_MESSAGE:
 				sequence_MappedArrayMessage(context, (MappedArrayMessage) semanticObject); 
+				return; 
+			case NavascriptPackage.MAPPED_MESSAGE:
+				sequence_MappedMessage(context, (MappedMessage) semanticObject); 
 				return; 
 			case NavascriptPackage.MEMO_TYPE:
 				sequence_PropertyType(context, (MemoType) semanticObject); 
@@ -362,10 +383,36 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				sequence_PropertyType(context, (TimestampType) semanticObject); 
 				return; 
 			case NavascriptPackage.TML_IDENTIFIER:
-				sequence_TmlIdentifier(context, (TmlIdentifier) semanticObject); 
-				return; 
+				if (rule == grammarAccess.getSynchronizedArgumentRule()
+						|| rule == grammarAccess.getSTimeoutRule()
+						|| rule == grammarAccess.getSBreakOnNoLockRule()
+						|| rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getBooleanExpressionRule()
+						|| action == grammarAccess.getBooleanExpressionAccess().getAndOrExpressionLeftAction_1_0_0()
+						|| rule == grammarAccess.getComparisonRule()
+						|| action == grammarAccess.getComparisonAccess().getComparisonLeftAction_1_0_0()
+						|| rule == grammarAccess.getEqualsRule()
+						|| action == grammarAccess.getEqualsAccess().getEqualsLeftAction_1_0_0()
+						|| rule == grammarAccess.getAdditionRule()
+						|| action == grammarAccess.getAdditionAccess().getPlusLeftAction_1_0_0_0()
+						|| action == grammarAccess.getAdditionAccess().getMinusLeftAction_1_0_1_0()
+						|| rule == grammarAccess.getMultiplicationRule()
+						|| action == grammarAccess.getMultiplicationAccess().getMultiOrDivLeftAction_1_0_0()
+						|| rule == grammarAccess.getPrefixedRule()
+						|| rule == grammarAccess.getAtomicRule()) {
+					sequence_Atomic(context, (TmlIdentifier) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getTmlIdentifierRule()) {
+					sequence_TmlIdentifier(context, (TmlIdentifier) semanticObject); 
+					return; 
+				}
+				else break;
 			case NavascriptPackage.TML_IDENTIFIER_LITERAL:
 				sequence_Atomic(context, (TmlIdentifierLiteral) semanticObject); 
+				return; 
+			case NavascriptPackage.TODAY_LITERAL:
+				sequence_Atomic(context, (TodayLiteral) semanticObject); 
 				return; 
 			case NavascriptPackage.TOP_LEVEL_STATEMENT:
 				sequence_TopLevelStatement(context, (TopLevelStatement) semanticObject); 
@@ -535,6 +582,108 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     SynchronizedArgument returns CurrentInDoc
+	 *     STimeout returns CurrentInDoc
+	 *     SBreakOnNoLock returns CurrentInDoc
+	 *     Expression returns CurrentInDoc
+	 *     BooleanExpression returns CurrentInDoc
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns CurrentInDoc
+	 *     Comparison returns CurrentInDoc
+	 *     Comparison.Comparison_1_0_0 returns CurrentInDoc
+	 *     Equals returns CurrentInDoc
+	 *     Equals.Equals_1_0_0 returns CurrentInDoc
+	 *     Addition returns CurrentInDoc
+	 *     Addition.Plus_1_0_0_0 returns CurrentInDoc
+	 *     Addition.Minus_1_0_1_0 returns CurrentInDoc
+	 *     Multiplication returns CurrentInDoc
+	 *     Multiplication.MultiOrDiv_1_0_0 returns CurrentInDoc
+	 *     Prefixed returns CurrentInDoc
+	 *     Atomic returns CurrentInDoc
+	 *
+	 * Constraint:
+	 *     value=CURRENT_INDOC
+	 */
+	protected void sequence_Atomic(ISerializationContext context, CurrentInDoc semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.CURRENT_IN_DOC__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.CURRENT_IN_DOC__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueCURRENT_INDOCTerminalRuleCall_12_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SynchronizedArgument returns CurrentOutDoc
+	 *     STimeout returns CurrentOutDoc
+	 *     SBreakOnNoLock returns CurrentOutDoc
+	 *     Expression returns CurrentOutDoc
+	 *     BooleanExpression returns CurrentOutDoc
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns CurrentOutDoc
+	 *     Comparison returns CurrentOutDoc
+	 *     Comparison.Comparison_1_0_0 returns CurrentOutDoc
+	 *     Equals returns CurrentOutDoc
+	 *     Equals.Equals_1_0_0 returns CurrentOutDoc
+	 *     Addition returns CurrentOutDoc
+	 *     Addition.Plus_1_0_0_0 returns CurrentOutDoc
+	 *     Addition.Minus_1_0_1_0 returns CurrentOutDoc
+	 *     Multiplication returns CurrentOutDoc
+	 *     Multiplication.MultiOrDiv_1_0_0 returns CurrentOutDoc
+	 *     Prefixed returns CurrentOutDoc
+	 *     Atomic returns CurrentOutDoc
+	 *
+	 * Constraint:
+	 *     value=CURRENT_OUTDOC
+	 */
+	protected void sequence_Atomic(ISerializationContext context, CurrentOutDoc semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.CURRENT_OUT_DOC__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.CURRENT_OUT_DOC__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueCURRENT_OUTDOCTerminalRuleCall_11_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SynchronizedArgument returns CurrentVarDoc
+	 *     STimeout returns CurrentVarDoc
+	 *     SBreakOnNoLock returns CurrentVarDoc
+	 *     Expression returns CurrentVarDoc
+	 *     BooleanExpression returns CurrentVarDoc
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns CurrentVarDoc
+	 *     Comparison returns CurrentVarDoc
+	 *     Comparison.Comparison_1_0_0 returns CurrentVarDoc
+	 *     Equals returns CurrentVarDoc
+	 *     Equals.Equals_1_0_0 returns CurrentVarDoc
+	 *     Addition returns CurrentVarDoc
+	 *     Addition.Plus_1_0_0_0 returns CurrentVarDoc
+	 *     Addition.Minus_1_0_1_0 returns CurrentVarDoc
+	 *     Multiplication returns CurrentVarDoc
+	 *     Multiplication.MultiOrDiv_1_0_0 returns CurrentVarDoc
+	 *     Prefixed returns CurrentVarDoc
+	 *     Atomic returns CurrentVarDoc
+	 *
+	 * Constraint:
+	 *     value=CURRENT_VARDOC
+	 */
+	protected void sequence_Atomic(ISerializationContext context, CurrentVarDoc semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.CURRENT_VAR_DOC__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.CURRENT_VAR_DOC__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueCURRENT_VARDOCTerminalRuleCall_13_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     SynchronizedArgument returns ExpressionLiteral
 	 *     STimeout returns ExpressionLiteral
 	 *     SBreakOnNoLock returns ExpressionLiteral
@@ -596,7 +745,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.FOR_ALL_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueForAllIdentifierParserRuleCall_7_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueForAllIdentifierParserRuleCall_8_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -698,7 +847,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.NULL_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueNULL_DEFTerminalRuleCall_8_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueNULL_DEFTerminalRuleCall_9_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -724,7 +873,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Atomic returns NumberLiteral
 	 *
 	 * Constraint:
-	 *     (value=INTEGER | value=ONE)
+	 *     (value=INTEGER | value=ONE | value=FLOAT)
 	 */
 	protected void sequence_Atomic(ISerializationContext context, NumberLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -767,6 +916,40 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     SynchronizedArgument returns TmlIdentifier
+	 *     STimeout returns TmlIdentifier
+	 *     SBreakOnNoLock returns TmlIdentifier
+	 *     Expression returns TmlIdentifier
+	 *     BooleanExpression returns TmlIdentifier
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns TmlIdentifier
+	 *     Comparison returns TmlIdentifier
+	 *     Comparison.Comparison_1_0_0 returns TmlIdentifier
+	 *     Equals returns TmlIdentifier
+	 *     Equals.Equals_1_0_0 returns TmlIdentifier
+	 *     Addition returns TmlIdentifier
+	 *     Addition.Plus_1_0_0_0 returns TmlIdentifier
+	 *     Addition.Minus_1_0_1_0 returns TmlIdentifier
+	 *     Multiplication returns TmlIdentifier
+	 *     Multiplication.MultiOrDiv_1_0_0 returns TmlIdentifier
+	 *     Prefixed returns TmlIdentifier
+	 *     Atomic returns TmlIdentifier
+	 *
+	 * Constraint:
+	 *     value=TmlIdentifier
+	 */
+	protected void sequence_Atomic(ISerializationContext context, TmlIdentifier semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.TML_IDENTIFIER__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.TML_IDENTIFIER__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueTmlIdentifierParserRuleCall_7_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     SynchronizedArgument returns TmlIdentifierLiteral
 	 *     STimeout returns TmlIdentifierLiteral
 	 *     SBreakOnNoLock returns TmlIdentifierLiteral
@@ -790,6 +973,40 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 */
 	protected void sequence_Atomic(ISerializationContext context, TmlIdentifierLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SynchronizedArgument returns TodayLiteral
+	 *     STimeout returns TodayLiteral
+	 *     SBreakOnNoLock returns TodayLiteral
+	 *     Expression returns TodayLiteral
+	 *     BooleanExpression returns TodayLiteral
+	 *     BooleanExpression.AndOrExpression_1_0_0 returns TodayLiteral
+	 *     Comparison returns TodayLiteral
+	 *     Comparison.Comparison_1_0_0 returns TodayLiteral
+	 *     Equals returns TodayLiteral
+	 *     Equals.Equals_1_0_0 returns TodayLiteral
+	 *     Addition returns TodayLiteral
+	 *     Addition.Plus_1_0_0_0 returns TodayLiteral
+	 *     Addition.Minus_1_0_1_0 returns TodayLiteral
+	 *     Multiplication returns TodayLiteral
+	 *     Multiplication.MultiOrDiv_1_0_0 returns TodayLiteral
+	 *     Prefixed returns TodayLiteral
+	 *     Atomic returns TodayLiteral
+	 *
+	 * Constraint:
+	 *     value=TODAY
+	 */
+	protected void sequence_Atomic(ISerializationContext context, TodayLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.TODAY_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.TODAY_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueTODAYTerminalRuleCall_10_1_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
@@ -943,6 +1160,18 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     ((conditionalExpressions+=ConditionalExpression+ elseExpresssion=LiteralOrExpression) | singleExpression=LiteralOrExpression)
 	 */
 	protected void sequence_ConditionalExpressions(ISerializationContext context, ConditionalExpressions semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     DebugStatement returns DebugStatement
+	 *
+	 * Constraint:
+	 *     (value='all' | value='request' | value='response')
+	 */
+	protected void sequence_DebugStatement(ISerializationContext context, DebugStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1103,6 +1332,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *             statement=Loop | 
 	 *             statement=Map | 
 	 *             statement=Break | 
+	 *             statement=Synchronized | 
 	 *             statement=BlockStatements
 	 *         )
 	 *     )
@@ -1163,10 +1393,16 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     LiteralOrExpression returns LiteralOrExpression
 	 *
 	 * Constraint:
-	 *     (literal=QUOTED_IDENTIFIER | literal=STRING_CONSTANT | expression=Expression)
+	 *     expression=Expression
 	 */
 	protected void sequence_LiteralOrExpression(ISerializationContext context, LiteralOrExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.LITERAL_OR_EXPRESSION__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.LITERAL_OR_EXPRESSION__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLiteralOrExpressionAccess().getExpressionExpressionParserRuleCall_1_0(), semanticObject.getExpression());
+		feeder.finish();
 	}
 	
 	
@@ -1193,7 +1429,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Loop returns Loop
 	 *
 	 * Constraint:
-	 *     ((mappable=MappableIdentifier | tml=TmlIdentifier) filter=Expression? statements+=InnerBody*)
+	 *     ((mappable=MAPPABLE_IDENTIFIER | tml=TmlIdentifier) filter=Expression? statements+=InnerBody*)
 	 */
 	protected void sequence_Loop(ISerializationContext context, Loop semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1241,9 +1477,25 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     MappedArrayMessage returns MappedArrayMessage
 	 *
 	 * Constraint:
-	 *     (message=TML_LITERAL filter=Expression? statements+=InnerBody*)
+	 *     (
+	 *         (message=CURRENT_OUTDOC | message=CURRENT_INDOC | message=CURRENT_VARDOC | message=TML_LITERAL | message=QUOTED_IDENTIFIER) 
+	 *         filter=Expression? 
+	 *         statements+=InnerBody*
+	 *     )
 	 */
 	protected void sequence_MappedArrayMessage(ISerializationContext context, MappedArrayMessage semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     MappedMessage returns MappedMessage
+	 *
+	 * Constraint:
+	 *     statements+=InnerBody*
+	 */
+	protected void sequence_MappedMessage(ISerializationContext context, MappedMessage semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1426,7 +1678,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Navascript returns Navascript
 	 *
 	 * Constraint:
-	 *     (validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?)
+	 *     (debug=DebugStatement? validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?)
 	 */
 	protected void sequence_Navascript(ISerializationContext context, Navascript semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1730,7 +1982,12 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 * Constraint:
 	 *     (
 	 *         field=MAPPABLE_IDENTIFIER 
-	 *         (expressionList=ConditionalExpressions | (arguments=KeyValueArguments? mappedArray=MappedArrayMessage) | mappedField=MappedArrayField)
+	 *         (
+	 *             expressionList=ConditionalExpressions | 
+	 *             (arguments=KeyValueArguments? mappedArray=MappedArrayMessage) | 
+	 *             mappedField=MappedArrayField | 
+	 *             mappedMessage=MappedMessage
+	 *         )
 	 *     )
 	 */
 	protected void sequence_SetterField(ISerializationContext context, SetterField semanticObject) {
@@ -1798,16 +2055,10 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     TmlIdentifier returns TmlIdentifier
 	 *
 	 * Constraint:
-	 *     tml=TML_LITERAL
+	 *     (tml=TML_LITERAL | tml=QUOTED_IDENTIFIER)
 	 */
 	protected void sequence_TmlIdentifier(ISerializationContext context, TmlIdentifier semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, NavascriptPackage.Literals.TML_IDENTIFIER__TML) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NavascriptPackage.Literals.TML_IDENTIFIER__TML));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTmlIdentifierAccess().getTmlTML_LITERALTerminalRuleCall_1_0(), semanticObject.getTml());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1979,7 +2230,7 @@ public class NavascriptSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *
 	 * Constraint:
 	 *     (
-	 *         varName=IDENTIFIER 
+	 *         varName='/'? 
 	 *         arguments=VarArguments? 
 	 *         (
 	 *             expressionList=ConditionalExpressions | 

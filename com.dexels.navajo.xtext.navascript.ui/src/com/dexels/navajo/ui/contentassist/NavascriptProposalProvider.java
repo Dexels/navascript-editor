@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
@@ -34,8 +35,11 @@ import com.dexels.navajo.navascript.KeyValueArgument;
 import com.dexels.navajo.navascript.impl.AdapterMethodImpl;
 import com.dexels.navajo.navascript.impl.FunctionIdentifierImpl;
 import com.dexels.navajo.navascript.impl.KeyValueArgumentsImpl;
+import com.dexels.navajo.navascript.impl.LoopImpl;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
+import com.dexels.navajo.navascript.impl.MessageImpl;
+import com.dexels.navajo.navascript.impl.SetterFieldImpl;
 import com.dexels.navajo.navigation.NavigationUtils;
 import com.dexels.navajo.services.NavascriptGrammarAccess;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
@@ -71,13 +75,15 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	BundleContext context;
 	NavascriptGrammarAccess grammar;
 
+	private static final Logger logger = Logger.getLogger(NavascriptProposalProvider.class);
+	
 	public NavascriptProposalProvider() {
 		context = OSGIRuntime.getDefaultBundleContext();
 		initGrammar();
 		if ( context != null ) {
 			context.addServiceListener(this);
 		} else {
-			System.err.println("No OSGI environment found");
+			logger.warn("No OSGI environment found");
 		}
 	}
 
@@ -169,7 +175,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				}
 				createParameterList(context, acceptor,  (MapImpl) map, currentParameters);
 			} else {
-				System.err.println(">>>>>>>>>>>>>> Parent is: " + parent);
+				logger.warn("Unknown Parent im processing keyvalue arguments: " + parent);
 			}
 		} else if ( model instanceof AdapterMethodImpl ) {
 			AdapterMethodImpl method = (AdapterMethodImpl) model;
@@ -237,7 +243,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				try {
 					type = md.getType(vd.getField());
 				} catch (Exception e) {
-					//System.err.println("Could not determine type for parameter: " + param);
+					logger.warn("Could not determine type for parameter: " + param);
 				}
 				acceptor.accept(createCompletionProposalFormatted(param + "=", type + " [" + vd.getRequired() + "]", 10, context));
 			}
@@ -249,7 +255,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				try {
 					type = md.getType(vd.getField());
 				} catch (Exception e) {
-					//System.err.println("Could not determine type for parameter: " + param);
+					logger.warn("Could not determine type for parameter: " + param);
 				}
 				acceptor.accept(createCompletionProposalFormatted(param + "=", type, 1, context));
 			}
@@ -276,26 +282,62 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	@Override
 	public void completeSetterField_Field(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 
-		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), 0);
+		
+		
+		String prefix = NavigationUtils.getParentPrefix(context.getPrefix(), new StringBuffer());
+		int level = NavigationUtils.countMappableParentLevel(prefix);
 
+		EObject map = null;
+		if ( context.getLastCompleteNode().getSemanticElement() instanceof SetterFieldImpl ) {
+			SetterFieldImpl sfi = (SetterFieldImpl) context.getLastCompleteNode().getSemanticElement();
+			if ( sfi.getField() != null ) { // previous node is a simple setter, take parent.
+				map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode().getSemanticElement().eContainer(), level);
+			}
+		} else {
+			map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode().getSemanticElement(), level);
+		}
+		
+		// Check if parent is mapped message.
+		boolean showGetters = false;
+		if (context.getLastCompleteNode().getParent() != null && context.getLastCompleteNode().getParent().getSemanticElement() instanceof MessageImpl) {
+			showGetters = true;
+		}
+		
 		if ( map != null ) {
 			String adapterName;
 			Set<String> fields;
-			if ( map instanceof MapImpl ) {
-				adapterName = ((MapImpl) map).getAdapterName();
-				AdapterClassDefinition md = getNavajoProxyStub().getAdapter(adapterName);
+			if ( map instanceof MapImpl ||  map instanceof SetterFieldImpl || map instanceof LoopImpl ) {
+				AdapterClassDefinition md  = null;
+				if (map instanceof MapImpl ) {
+					adapterName = ((MapImpl) map).getAdapterName();
+					md = getNavajoProxyStub().getAdapter(adapterName);
+				} else {
+					md = NavigationUtils.findAdapterClass(adapters, map);
+				}
 				fields = md.getSetters();
 				for ( String a : fields ) {
 					String type = "unknown";
 					try {
 						type = md.getSetterType(a);
 					} catch (Exception e) {
-						System.err.println("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
+						logger.warn("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
 					}
-					acceptor.accept(createCompletionProposalFormatted("$" + a, type, 1, context));
+					acceptor.accept(createCompletionProposalFormatted(prefix + a, type, 1, context));
+				}
+				if ( showGetters ) {
+					fields = md.getGetters();
+					for ( String a : fields ) {
+						String type = "unknown";
+						try {
+							type = md.getGetterType(a);
+						} catch (Exception e) {
+							logger.warn("(1) Could not determine type for field:  " + md.getObjectName() + ":"  + a + ": " + e);
+						}
+						acceptor.accept(createCompletionProposalFormatted(prefix + a, type, 1, context));
+					}
 				}
 			} else if ( map instanceof MappedArrayFieldImpl ) {
-				System.err.println("Closest map is a MappedArrayFieldImpl");
+				logger.warn("Closest map is a MappedArrayFieldImpl: should not happen.");
 			}
 		}
 	}
@@ -330,7 +372,39 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				acceptor.accept(createCompletionProposalFormatted("." + a.getName(), parameters+"", 1, context));
 			}
 		} else {
-			System.err.println("No parent map found");
+			logger.warn("No parent map found");
+		}
+	}
+	
+	@Override
+	public void completeLoop_Mappable(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+
+		String prefix = NavigationUtils.getParentPrefix(context.getPrefix(), new StringBuffer());
+		int level = NavigationUtils.countMappableParentLevel(prefix);
+
+		
+		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
+
+		if ( map != null ) {
+			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
+
+			if ( md != null ) {
+				Set<String> fields = md.getGetters();
+				for ( String a : fields ) {
+					if ( !md.isPrimitiveType(a)) { // Exclude primitive types from being loop-ed.
+						List<List<String>> type = new ArrayList<>();
+						try {
+							type = md.getGetterTypeSignatures(a);
+						} catch (Exception e) {
+							logger.warn("(2) Could not determine type for field: " + a  + ": " + e);
+						}
+						String typeStr = ( ( type != null ) ? type.toString() : "" ) + " -> " + md.getGetterType(a);
+						acceptor.accept(createCompletionProposalFormatted(prefix + a, typeStr, 1, context));
+					}
+				}
+			} else {
+				logger.warn("Could not findAdapterClass for map: " + map);
+			}
 		}
 	}
 
@@ -362,7 +436,16 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		String prefix = NavigationUtils.getParentPrefix(context.getPrefix(), new StringBuffer());
 		int level = NavigationUtils.countMappableParentLevel(prefix);
 
-		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), level);
+		EObject map = null;
+		if ( context.getLastCompleteNode().getSemanticElement() instanceof SetterFieldImpl ) {
+			SetterFieldImpl sfi = (SetterFieldImpl) context.getLastCompleteNode().getSemanticElement();
+			if ( sfi.getField() != null ) { // previous node is a simple setter, take parent.
+				map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode().getSemanticElement().eContainer(), level);
+			}
+		} else {
+			map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode().getSemanticElement(), level);
+		}
+		
 		if ( map != null ) {
 			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
 			if ( md != null ) {
@@ -372,13 +455,13 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 					try {
 						type = md.getGetterTypeSignatures(a);
 					} catch (Exception e) {
-						System.err.println("(2) Could not determine type for field: " + a  + ": " + e);
+						logger.warn("(2) Could not determine type for field: " + a  + ": " + e);
 					}
 					String typeStr = ( ( type != null ) ? type.toString() : "" ) + " -> " + md.getGetterType(a);
 					acceptor.accept(createCompletionProposalFormatted(prefix + a, typeStr, 1, context));
 				}
 			} else {
-				System.err.println("Could not find parent adapter for " + model);
+				logger.warn("**** completeMappableIdentifier_Field: Could not find parent adapter for " + model);
 			}
 		}
 	}
@@ -403,15 +486,23 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 
 		if ( map != null ) {
 			AdapterClassDefinition md = NavigationUtils.findAdapterClass(getNavajoProxyStub(), map);
+
 			if ( md != null ) {
-				List<ProxyValueDefinition> valuedDefs = md.getDeclaredValues();
-				for ( ProxyValueDefinition a : valuedDefs ) {
-					if ( a.getMap() != null && !"".equals(a.getMap() )) {
-						acceptor.accept(createCompletionProposalFormatted(prefix + a.getName(), a.getMapType(), 10, context));
+				Set<String> fields = md.getGetters();
+				for ( String a : fields ) {
+					if ( !md.isPrimitiveType(a)) {
+						List<List<String>> type = new ArrayList<>();
+						try {
+							type = md.getGetterTypeSignatures(a);
+						} catch (Exception e) {
+							logger.warn("(2) Could not determine type for field: " + a  + ": " + e);
+						}
+						String typeStr = ( ( type != null ) ? type.toString() : "" ) + " -> " + md.getGetterType(a);
+						acceptor.accept(createCompletionProposalFormatted(prefix + a, typeStr, 1, context));
 					}
 				}
 			} else {
-				System.err.println("Could not findAdapterClass for map: " + map);
+				logger.warn("Could not findAdapterClass for map: " + map);
 			}
 		}
 	}
@@ -426,7 +517,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				try {
 					description = getNavajoProxyStub().getFunction(a).getDescription();
 				} catch (Exception e) {
-					System.err.println("(3) Could not determine type for field: " + a + ": " + e);
+					logger.warn("(3) Could not determine type for field: " + a + ": " + e);
 				}
 				acceptor.accept(createCompletionProposalFormatted( a + "(", ": " + getNavajoProxyStub().getFunction(a).getResult() + " -- " + description, 1, context));
 			}

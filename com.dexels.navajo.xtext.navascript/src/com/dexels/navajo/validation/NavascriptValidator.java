@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.validation.Check;
@@ -26,11 +27,14 @@ import com.dexels.navajo.navascript.PropertyArgument;
 import com.dexels.navajo.navascript.PropertyArguments;
 import com.dexels.navajo.navascript.impl.AdapterMethodImpl;
 import com.dexels.navajo.navascript.impl.FunctionIdentifierImpl;
+import com.dexels.navajo.navascript.impl.LoopImpl;
 import com.dexels.navajo.navascript.impl.MapImpl;
 import com.dexels.navajo.navascript.impl.MappableIdentifierImpl;
 import com.dexels.navajo.navascript.impl.MappedArrayFieldImpl;
+import com.dexels.navajo.navascript.impl.MappedMessageImpl;
 import com.dexels.navajo.navascript.impl.MessageImpl;
 import com.dexels.navajo.navascript.impl.PropertyImpl;
+import com.dexels.navajo.navascript.impl.SetterFieldImpl;
 import com.dexels.navajo.navigation.NavigationUtils;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
@@ -48,17 +52,19 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 	NavajoProxyStub adapters = null;
 	BundleContext context;
 
+	private static final Logger logger = Logger.getLogger(NavascriptValidator.class);
+	
 	public NavascriptValidator() {
 		context = OSGIRuntime.getDefaultBundleContext();
 		context.addServiceListener(this);
-		System.err.println("In NavascriptValidator: " + context);
+		logger.info("In NavascriptValidator: " + context);
 	}
 
 	public synchronized void init() {
 		if (adapters == null) {
 			ServiceReference<NavajoProxyStub> ref = context.getServiceReference(NavajoProxyStub.class);
 			adapters = context.getService(ref);
-			System.err.println("In NavascriptValidator.init(): " + ref);
+			logger.info("In NavascriptValidator.init(): " + ref);
 		}
 	}
 
@@ -78,9 +84,12 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		if (functionDef == null) {
 			warning("Unknown function: " + functionName, NavascriptPackage.Literals.FUNCTION_IDENTIFIER__FUNC);
 			return;
-		}
+		} 
 
 		List<String> altInputs = functionDef.getInput();
+		if ( altInputs.isEmpty() ) { // If there are no inputs specified, return;
+			return;
+		}
 		for (String alt : altInputs) {
 			int argSize = alt.split(",").length;
 			if (argSize == arguments.size()) {
@@ -97,9 +106,6 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		String adapterName = map.getAdapterName();
 		String objectName = map.getObjectName();
 
-		// System.err.println("In checkMapDefinition. adapterName: " + adapterName + ",
-		// objectName: " + objectName);
-
 		// If an objectName (old style) is used, ignore check.
 		if (objectName != null && !"".equals(objectName)) {
 			return;
@@ -112,35 +118,102 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		}
 	}
 
-	@Check
-	public void checkMappableIdentifier(MappableIdentifierImpl mai) {
-
-		String prefix = mai.getField();
-		String fieldName = NavigationUtils.getFieldFromMappableIdentifier(mai.getField());
+	private void fieldValidator(EObject mai, String prefix) {
+		
+		boolean isSetter = false;
+		boolean isSetterField = ( mai instanceof SetterFieldImpl );
+		if ( mai instanceof SetterFieldImpl ) { // if this is a SetterFieldImpl it can either be a 'setter' or a 'getter'
+			SetterFieldImpl sfi = (SetterFieldImpl) mai;
+			// If nothing is 'mapped', it is a setter.
+			isSetter = sfi.getMappedArray() == null && sfi.getMappedField() == null && sfi.getMappedMessage() == null;
+		}		
+		String fieldName = NavigationUtils.getFieldFromMappableIdentifier(prefix);
 		int level = NavigationUtils.countMappableParentLevel(prefix);
+				
+		if ( mai.eContainer() instanceof LoopImpl ) { // If current EOBject is a LoopImpl, move one level up.
+			mai = mai.eContainer();
+		}
+		
 		EObject parent = NavigationUtils.findFirstMapOrMappedField(mai.eContainer(), level);
+	
 		AdapterClassDefinition mapdef = NavigationUtils.findAdapterClass(getNavajoProxyStub(), parent);
-
+				
 		if (mapdef != null) {
 
-			boolean isValid = mapdef.isGetter(fieldName);
+			boolean isValid = ( isSetter ? mapdef.isSetter(fieldName) : mapdef.isGetter(fieldName) );
 
+			
 			if (!isValid) {
-				warning("Unknown mappable field: " + fieldName, NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__FIELD);
-			}
-
-			int numberOfArguments = mai.getArgs().size();
-			List<List<String>> signatures = mapdef.getGetterTypeSignatures(fieldName);
-			for (List<String> parameters : signatures) {
-				if (parameters.size() == numberOfArguments) {
+				if ( mai instanceof LoopImpl ) {
+					warning("(1) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.LOOP__MAPPABLE);
+					return;
+				} else if ( isSetterField ) {
+					warning("(2) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.SETTER_FIELD__FIELD);
+					return;
+				} else {
+					warning("(3) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__FIELD);
 					return;
 				}
 			}
-
-			error("Invalid number of arguments", NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__ARGS);
+			
+			if ( mai instanceof MappableIdentifierImpl) {
+				int numberOfArguments = ((MappableIdentifierImpl) mai).getArgs().size();
+				if ( numberOfArguments == 0 ) {
+					return;
+				}
+				List<List<String>> signatures = mapdef.getGetterTypeSignatures(fieldName);
+				for (List<String> parameters : signatures) {
+					if (parameters.size() == numberOfArguments) {
+						return;
+					}
+				}
+			}
+			
+			if ( mai instanceof SetterFieldImpl) {
+				if ( isSetter ) {
+					return;
+				}
+				int numberOfArguments = ((SetterFieldImpl) mai).getArguments().getKeyValueArguments().size();
+				if ( numberOfArguments == 0 ) {
+					return;
+				}
+				List<List<String>> signatures = mapdef.getGetterTypeSignatures(fieldName);
+				for (List<String> parameters : signatures) {
+					if (parameters.size() == numberOfArguments) {
+						return;
+					}
+				}
+			}
+			
+			if ( isSetterField ) {
+				error("Invalid number of arguments", NavascriptPackage.Literals.SETTER_FIELD__EXPRESSION_LIST);
+			} else {
+				error("Invalid number of arguments", NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__ARGS);
+			}
 		} else {
-			warning("Invalid mappable field: " + fieldName, NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__ARGS);
+			if ( isSetterField ) {
+				warning("(4) Unknown mappable field: " + fieldName, NavascriptPackage.Literals.SETTER_FIELD__FIELD);
+			} else {
+				warning("(5) Invalid mappable field: " + fieldName, NavascriptPackage.Literals.MAPPABLE_IDENTIFIER__FIELD);
+			}
 		}
+	}
+	
+	@Check
+	public void checkSetterField(SetterFieldImpl sfi) {
+		System.err.println("In checkSetterField: " + sfi);
+		fieldValidator(sfi, sfi.getField());	
+	}
+	
+	@Check
+	public void checkMappedMessage(MappedMessageImpl mmi) {
+		// No checking need for now I guess.
+	}
+	
+	@Check
+	public void checkMappableIdentifier(MappableIdentifierImpl mai) {
+		System.err.println("In checkMappableIdentifier: " + mai);
+		fieldValidator(mai, mai.getField());
 	}
 
 	private int countPropertiesWithName(String name, EList<EObject> children) {
@@ -204,13 +277,12 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		EObject eObject = NavigationUtils.findFirstMapOrMappedField(maf.eContainer(), level);
 		AdapterClassDefinition map = NavigationUtils.findAdapterClass(getNavajoProxyStub(), eObject);
 		if (map != null) {
-
 			boolean isValid = map.isGetter(field);
 			if (!isValid) {
 				error("Cannot find field: " + field, NavascriptPackage.Literals.MAPPED_ARRAY_FIELD__FIELD);
 			}
 		} else {
-			warning("Cannot find adapter for field: " + raw, NavascriptPackage.Literals.MAPPED_ARRAY_FIELD__FIELD);
+			error("Cannot find adapter for field: " + raw, NavascriptPackage.Literals.MAPPED_ARRAY_FIELD__FIELD);
 		}
 	}
 
@@ -264,7 +336,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 
 			}
 		} catch (Throwable t) {
-			t.printStackTrace(System.err);
+			logger.error(t);
 		}
 
 	}

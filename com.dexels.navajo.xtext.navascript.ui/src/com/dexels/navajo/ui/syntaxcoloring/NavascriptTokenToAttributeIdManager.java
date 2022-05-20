@@ -23,6 +23,7 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 	static String [] keywordArray =
 		{
 				"'if'",
+				"'@debug'",
 				"'then'",
 				"'else'",
 				"'map.'",
@@ -53,6 +54,7 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 				"'timeout'",
 				"'breakOnNoLock'",
 				"'key'",
+				"'loop'",
 				"'object'",
 				"RULE_IF",
 				"RULE_THEN",
@@ -111,7 +113,7 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 		if("RULE_QUOTED_IDENTIFIER".equals(tokenName)) {
 			return NavascriptLexicalHighlightingConfiguration.QUOTED_IDENTIFIER_ID;
 		}
-		if ("'message'".equals(tokenName) || "'property'".equals(tokenName) || "'option'".equals(tokenName)) {
+		if ("'message'".equals(tokenName) || "'antimessage'".equals(tokenName) || "'property'".equals(tokenName) || "'option'".equals(tokenName)) {
 			return NavascriptLexicalHighlightingConfiguration.TML_KEYWORD;
 		}
 		if ("RULE_TML_LITERAL".equals(tokenName)) {

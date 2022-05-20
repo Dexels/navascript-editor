@@ -33,14 +33,19 @@ Workflow {
 		language = StandardLanguage {
 			name = "com.dexels.navajo.Navascript"
 			fileExtensions = "ns"
-
+			
 			serializer = {
 				generateStub = false
 			}
 			formatter = {
                 generateStub = true
 			}
-			
+			parserGenerator = {
+				lookaheadThreshold="3"
+  				options = {
+    				backtrack = true
+  				}
+			}
 			validator = {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 				// Generates checks for @Deprecated grammar annotations, an IssueProvider and a corresponding PropertyPage

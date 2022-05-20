@@ -6,7 +6,7 @@ import "http://www.eclipse.org/emf/2002/Ecore"
 
 generate navascript "http://www.dexels.com/navajo/Navascript"
  
-Navascript: {Navascript} validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?;
+Navascript: {Navascript} debug=DebugStatement? validations=Validations? toplevelStatements=TopLevelStatements finally=Finally?;
 
 // TopLevelStatement ::= Include | Message | Var | Break | Map | AntiMessage | Define | ConditionalEmptyMessage | Synchronized | Print | Log | Loop | Methods
 
@@ -18,7 +18,7 @@ TopLevelStatement : {TopLevelStatement}  ('if' condition=Expression 'then')?
 
 InnerBody:
 	{InnerBody} ('if' condition=Expression 'then')?
-	statement=( Property |  Option | MethodOrSetter|  Message | AntiMessage | Include | Methods | Var | Print | Log | Define | Loop | Map | Break | BlockStatements )
+	statement=( Property |  Option | MethodOrSetter|  Message | AntiMessage | Include | Methods | Var | Print | Log | Define | Loop | Map | Break | Synchronized | BlockStatements )
 ;
 
 /*
@@ -31,6 +31,9 @@ BlockStatements : {BlockStatements} '{' statements+=InnerBody* '}' ;
  * 
  * }
  */
+
+DebugStatement:
+	{DebugStatement} '@debug=' ( value=( 'all' | 'request' | 'response') );
 
 Synchronized : 'synchronized' '(' arguments=SynchronizedArguments ')' '{' statements+=TopLevelStatement* '}';
 
@@ -65,7 +68,7 @@ Check : {Check} ('if' condition=Expression 'then')? 'check' '(' checkAttributes+
 
 CheckAttribute : {CheckAttribute} ('code' ('=' | ':') value=LiteralOrExpression) | ('description' ('=' | ':') value=LiteralOrExpression);
 
-LiteralOrExpression : {LiteralOrExpression} literal=(QUOTED_IDENTIFIER | STRING_CONSTANT) | expression=Expression ;
+LiteralOrExpression : {LiteralOrExpression} expression=Expression ;
 
 Print:
 	{Print} 'print' '(' expression=Expression ')' ';'
@@ -88,7 +91,7 @@ Method:
 ;
 
 Loop:
-	{Loop} 'loop' ( mappable=MappableIdentifier | tml=TmlIdentifier ) 
+	{Loop} 'loop' ( mappable=MAPPABLE_IDENTIFIER | tml=TmlIdentifier ) 
 	   ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' 
 ;
 
@@ -100,7 +103,7 @@ AntiMessage : {AntiMessage} 'antimessage' messageName=QUOTED_IDENTIFIER ';';
 
 Message: 
 	{Message} 'message' messageName=QUOTED_IDENTIFIER ( '(' arguments=MessageArguments ')' )?  ( ( '{' ( statements+=InnerBody* |  arrayField=MappedArrayField | arrayMessage=MappedArrayMessage ) '}' ) | ';' 
-		| '[' messageArray=MessageArray ']'
+		| ('[' | '"') messageArray=MessageArray? (']' | '"')
 	)
 ;
 
@@ -113,7 +116,7 @@ MessageArgument : ( 'type' ('=' | ':') MessageType ) | ( 'mode' ('=' | ':') Mess
 MessageArguments : arguments+=MessageArgument ( ',' arguments+=MessageArgument )*;
 
 Map : {Map} ( 'map.' adapterName=IDENTIFIER ('(' arguments=KeyValueArguments? ')')? | 
-	   'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER ( ',' arguments=KeyValueArguments )? ')') '{' statements+=InnerBody* '}'
+	   'map' '(' 'object' ('=' | ':') objectName=OBJECT_IDENTIFIER ( ',' arguments=KeyValueArguments )? ')') (';' | '{' statements+=InnerBody* '}' )
 ;
 
 MethodOrSetter : AdapterMethod | SetterField ;
@@ -121,17 +124,19 @@ MethodOrSetter : AdapterMethod | SetterField ;
 AdapterMethod: {AdapterMethod} method=METHOD_IDENTIFIER '(' arguments=KeyValueArguments? ')' ';';
 
 SetterField: {SetterField} field=MAPPABLE_IDENTIFIER  ( ('=' | ':') expressionList=ConditionalExpressions ';' 
-	  | ('(' arguments=KeyValueArguments ')')? '{' mappedArray=MappedArrayMessage '}' | mappedField=MappedArrayField );
+	  | ('(' arguments=KeyValueArguments ')')? '{' mappedArray=MappedArrayMessage '}' | mappedField=MappedArrayField | mappedMessage=MappedMessage );
 
+MappedMessage : {MappedMessage} '{' statements += InnerBody* '}';
+	
 MappedArrayField : {MappedArrayField} field=MAPPABLE_IDENTIFIER ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
 
-MappedArrayMessage : {MappedArrayMessage} message=TML_LITERAL ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
+MappedArrayMessage : {MappedArrayMessage} message=( CURRENT_OUTDOC | CURRENT_INDOC | CURRENT_VARDOC | TML_LITERAL | QUOTED_IDENTIFIER ) ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
 
 KeyValueArguments : {KeyValueArguments} keyValueArguments+=KeyValueArgument ( ',' keyValueArguments+=KeyValueArgument )*;
 
 KeyValueArgument : {KeyValueArgument} key=(IDENTIFIER | OPTION_TYPE) ('=' | ':') value=LiteralOrExpression;
 
-Var: {Var} 'var' varName=IDENTIFIER (arguments=VarArguments)? ( ('=' | ':') expressionList=ConditionalExpressions ';' |  '[' varArray=VarArray? ']' | 
+Var: {Var} 'var' (varName=  '/' | '../'* IDENTIFIER ) (arguments=VarArguments)? ( ('=' | ':') expressionList=ConditionalExpressions ';' |  '[' varArray=VarArray? ']' | 
 	'{' varElements+=VarElement* '}'  
  | '{' mappedArrayField=MappedArrayField '}' | '{' mappedArrayMessage=MappedArrayMessage '}' )
 ;
@@ -216,15 +221,20 @@ Prefixed returns Expression:
 
 Atomic returns Expression:
     {ExpressionLiteral} '(' value=Expression ')' |
-    {NumberLiteral} value=( INTEGER | ONE ) |
+    {NumberLiteral} value=( INTEGER | ONE | FLOAT ) |
     {StringLiteral} value=STRING_LITERAL |
     {BooleanLiteral} value=( TRUE | FALSE) | 
     {FunctionCallLiteral} value=FunctionIdentifier |
     {MappableIdentifierLiteral} value=MappableIdentifier |
     {TmlIdentifierLiteral} hasExists?='?'? value=TmlIdentifier |
+    {TmlIdentifier} value=TmlIdentifier |
     {ForAllLiteral} value=ForAllIdentifier |
-    {NullLiteral} value=NULL_DEF
-        ;
+    {NullLiteral} value=NULL_DEF |
+    {TodayLiteral} value=TODAY |
+    {CurrentOutDoc} value=CURRENT_OUTDOC |
+    {CurrentInDoc} value=CURRENT_INDOC |
+    {CurrentVarDoc} value=CURRENT_VARDOC
+;
 
 ForAllIdentifier:
 	{ForAllIdentifier} op=( FORALL | EXISTS ) '(' "`" (expression=Expression) "`" ',' (messagedefinition=STRING_LITERAL) ')' 
@@ -239,7 +249,7 @@ MappableIdentifier:
 ;
 
 TmlIdentifier :
-  {TmlIdentifier} tml=TML_LITERAL
+  {TmlIdentifier} tml=(TML_LITERAL | QUOTED_IDENTIFIER)
 ;
 
 PropertyType:
@@ -276,19 +286,30 @@ terminal TRUE : 'true';
 terminal FALSE : 'false';
 terminal MAPPABLE_ID : '$';
 terminal NULL_DEF : 'null';
-	
+terminal TODAY : 'TODAY';
+
+terminal CURRENT_OUTDOC: 
+	 '"."'
+;
+
+terminal CURRENT_INDOC: 
+	 '[.]'
+;
+
+terminal CURRENT_VARDOC: 
+	 '[@.]'
+;
+
+
+terminal TML_LITERAL:
+	'[' ( '../'+ | '/' )? '@'? IDENTIFIER ( '/' IDENTIFIER)*  ']'
+;
 terminal OBJECT_IDENTIFIER:
 	'"' IDENTIFIER ( '.' IDENTIFIER)+ '"'
 ;
 
 terminal QUOTED_IDENTIFIER:
-			'"' ( IDENTIFIER | '/' | '../' )+  '"';
-			
-terminal STRING_CONSTANT:
-			'"' ( '\\' . | !('\\'|'"') )* '"';
-
-terminal TML_LITERAL:
-	'[' ( IDENTIFIER | '/' | '../' | '/@' )+ ']'
+	'"' ( ( '../'+ | '/' )?  IDENTIFIER ( '/' IDENTIFIER)* ) '"' 	
 ;
 
 terminal ONE:
@@ -302,6 +323,8 @@ terminal UNDERSCORE:
 terminal IDENTIFIER : ( LETTER  | UNDERSCORE ) ( LETTER | "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | UNDERSCORE )*;
 		
 terminal INTEGER : "0" | ( ( ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ) ( "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" )* );
+
+terminal FLOAT : INTEGER? "." "0"* INTEGER;
 
 		
 terminal LETTER : "A" | "B" | "C" | "D" | "E" | "F" | "G"

@@ -5,6 +5,7 @@ grammar InternalNavascript;
 
 options {
 	superClass=AbstractInternalAntlrParser;
+	backtrack=true;
 }
 
 @lexer::header {
@@ -32,6 +33,11 @@ import com.dexels.navajo.services.NavascriptGrammarAccess;
 }
 
 @parser::members {
+
+/*
+  This grammar contains a lot of empty actions to work around a bug in ANTLR.
+  Otherwise the ANTLR tool will create synpreds that cannot be compiled in some rare cases.
+*/
 
  	private NavascriptGrammarAccess grammarAccess;
 
@@ -78,6 +84,9 @@ ruleNavascript returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getNavascriptAccess().getNavascriptAction_0(),
 					$current);
@@ -86,9 +95,28 @@ ruleNavascript returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getNavascriptAccess().getValidationsValidationsParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getNavascriptAccess().getDebugDebugStatementParserRuleCall_1_0());
 				}
-				lv_validations_1_0=ruleValidations
+				lv_debug_1_0=ruleDebugStatement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getNavascriptRule());
+					}
+					set(
+						$current,
+						"debug",
+						lv_debug_1_0,
+						"com.dexels.navajo.Navascript.DebugStatement");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getNavascriptAccess().getValidationsValidationsParserRuleCall_2_0());
+				}
+				lv_validations_2_0=ruleValidations
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getNavascriptRule());
@@ -96,7 +124,7 @@ ruleNavascript returns [EObject current=null]
 					set(
 						$current,
 						"validations",
-						lv_validations_1_0,
+						lv_validations_2_0,
 						"com.dexels.navajo.Navascript.Validations");
 					afterParserOrEnumRuleCall();
 				}
@@ -105,9 +133,9 @@ ruleNavascript returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getNavascriptAccess().getToplevelStatementsTopLevelStatementsParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getNavascriptAccess().getToplevelStatementsTopLevelStatementsParserRuleCall_3_0());
 				}
-				lv_toplevelStatements_2_0=ruleTopLevelStatements
+				lv_toplevelStatements_3_0=ruleTopLevelStatements
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getNavascriptRule());
@@ -115,7 +143,7 @@ ruleNavascript returns [EObject current=null]
 					set(
 						$current,
 						"toplevelStatements",
-						lv_toplevelStatements_2_0,
+						lv_toplevelStatements_3_0,
 						"com.dexels.navajo.Navascript.TopLevelStatements");
 					afterParserOrEnumRuleCall();
 				}
@@ -124,9 +152,9 @@ ruleNavascript returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getNavascriptAccess().getFinallyFinallyParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getNavascriptAccess().getFinallyFinallyParserRuleCall_4_0());
 				}
-				lv_finally_3_0=ruleFinally
+				lv_finally_4_0=ruleFinally
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getNavascriptRule());
@@ -134,7 +162,7 @@ ruleNavascript returns [EObject current=null]
 					set(
 						$current,
 						"finally",
-						lv_finally_3_0,
+						lv_finally_4_0,
 						"com.dexels.navajo.Navascript.Finally");
 					afterParserOrEnumRuleCall();
 				}
@@ -160,6 +188,9 @@ ruleTopLevelStatements returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getTopLevelStatementsAccess().getTopLevelStatementsAction_0(),
@@ -205,6 +236,9 @@ ruleTopLevelStatement returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getTopLevelStatementAccess().getTopLevelStatementAction_0(),
@@ -474,6 +508,9 @@ ruleInnerBody returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getInnerBodyAccess().getInnerBodyAction_0(),
 					$current);
@@ -736,9 +773,9 @@ ruleInnerBody returns [EObject current=null]
 					}
 					    |
 					{
-						newCompositeNode(grammarAccess.getInnerBodyAccess().getStatementBlockStatementsParserRuleCall_2_0_14());
+						newCompositeNode(grammarAccess.getInnerBodyAccess().getStatementSynchronizedParserRuleCall_2_0_14());
 					}
-					lv_statement_4_15=ruleBlockStatements
+					lv_statement_4_15=ruleSynchronized
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getInnerBodyRule());
@@ -747,6 +784,22 @@ ruleInnerBody returns [EObject current=null]
 							$current,
 							"statement",
 							lv_statement_4_15,
+							"com.dexels.navajo.Navascript.Synchronized");
+						afterParserOrEnumRuleCall();
+					}
+					    |
+					{
+						newCompositeNode(grammarAccess.getInnerBodyAccess().getStatementBlockStatementsParserRuleCall_2_0_15());
+					}
+					lv_statement_4_16=ruleBlockStatements
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getInnerBodyRule());
+						}
+						set(
+							$current,
+							"statement",
+							lv_statement_4_16,
 							"com.dexels.navajo.Navascript.BlockStatements");
 						afterParserOrEnumRuleCall();
 					}
@@ -773,6 +826,9 @@ ruleBlockStatements returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getBlockStatementsAccess().getBlockStatementsAction_0(),
@@ -806,6 +862,77 @@ ruleBlockStatements returns [EObject current=null]
 		{
 			newLeafNode(otherlv_3, grammarAccess.getBlockStatementsAccess().getRightCurlyBracketKeyword_3());
 		}
+	)
+;
+
+// Entry rule entryRuleDebugStatement
+entryRuleDebugStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDebugStatementRule()); }
+	iv_ruleDebugStatement=ruleDebugStatement
+	{ $current=$iv_ruleDebugStatement.current; }
+	EOF;
+
+// Rule DebugStatement
+ruleDebugStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				/* */
+			}
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getDebugStatementAccess().getDebugStatementAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='@debug='
+		{
+			newLeafNode(otherlv_1, grammarAccess.getDebugStatementAccess().getDebugKeyword_1());
+		}
+		(
+			(
+				(
+					lv_value_2_1='all'
+					{
+						newLeafNode(lv_value_2_1, grammarAccess.getDebugStatementAccess().getValueAllKeyword_2_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getDebugStatementRule());
+						}
+						setWithLastConsumed($current, "value", lv_value_2_1, null);
+					}
+					    |
+					lv_value_2_2='request'
+					{
+						newLeafNode(lv_value_2_2, grammarAccess.getDebugStatementAccess().getValueRequestKeyword_2_0_1());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getDebugStatementRule());
+						}
+						setWithLastConsumed($current, "value", lv_value_2_2, null);
+					}
+					    |
+					lv_value_2_3='response'
+					{
+						newLeafNode(lv_value_2_3, grammarAccess.getDebugStatementAccess().getValueResponseKeyword_2_0_2());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getDebugStatementRule());
+						}
+						setWithLastConsumed($current, "value", lv_value_2_3, null);
+					}
+				)
+			)
+		)
 	)
 ;
 
@@ -968,11 +1095,17 @@ ruleSynchronizedArgument returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getSynchronizedArgumentAccess().getSynchronizedArgumentAction_0_0(),
 						$current);
 				}
 			)
+			{
+				/* */
+			}
 			{
 				newCompositeNode(grammarAccess.getSynchronizedArgumentAccess().getSContextParserRuleCall_0_1());
 			}
@@ -983,6 +1116,9 @@ ruleSynchronizedArgument returns [EObject current=null]
 		)
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getSynchronizedArgumentAccess().getSKeyParserRuleCall_1());
 		}
 		this_SKey_2=ruleSKey
@@ -992,6 +1128,9 @@ ruleSynchronizedArgument returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getSynchronizedArgumentAccess().getSTimeoutParserRuleCall_2());
 		}
 		this_STimeout_3=ruleSTimeout
@@ -1000,6 +1139,9 @@ ruleSynchronizedArgument returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getSynchronizedArgumentAccess().getSBreakOnNoLockParserRuleCall_3());
 		}
@@ -1093,6 +1235,9 @@ ruleSKey returns [EObject current=null]
 			}
 		)
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getSKeyAccess().getLiteralOrExpressionParserRuleCall_2());
 		}
 		this_LiteralOrExpression_3=ruleLiteralOrExpression
@@ -1134,6 +1279,9 @@ ruleSTimeout returns [EObject current=null]
 				newLeafNode(otherlv_2, grammarAccess.getSTimeoutAccess().getColonKeyword_1_1());
 			}
 		)
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getSTimeoutAccess().getExpressionParserRuleCall_2());
 		}
@@ -1177,6 +1325,9 @@ ruleSBreakOnNoLock returns [EObject current=null]
 			}
 		)
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getSBreakOnNoLockAccess().getExpressionParserRuleCall_2());
 		}
 		this_Expression_3=ruleExpression
@@ -1204,6 +1355,9 @@ ruleBreak returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getBreakAccess().getBreakAction_0(),
@@ -1357,6 +1511,9 @@ ruleBreakParameter returns [EObject current=null]
 				}
 			)
 			{
+				/* */
+			}
+			{
 				newCompositeNode(grammarAccess.getBreakParameterAccess().getLiteralOrExpressionParserRuleCall_2_2());
 			}
 			this_LiteralOrExpression_11=ruleLiteralOrExpression
@@ -1449,6 +1606,9 @@ ruleValidations returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getValidationsAccess().getValidationsAction_0(),
 					$current);
@@ -1505,6 +1665,9 @@ ruleDefine returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getDefineAccess().getDefineAction_0(),
@@ -1587,6 +1750,9 @@ ruleCheck returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getCheckAccess().getCheckAction_0(),
@@ -1734,6 +1900,9 @@ ruleCheckAttribute returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getCheckAttributeAccess().getCheckAttributeAction_0_0(),
 						$current);
@@ -1833,56 +2002,21 @@ ruleLiteralOrExpression returns [EObject current=null]
 }:
 	(
 		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getLiteralOrExpressionAccess().getLiteralOrExpressionAction_0_0(),
-						$current);
-				}
-			)
-			(
-				(
-					(
-						lv_literal_1_1=RULE_QUOTED_IDENTIFIER
-						{
-							newLeafNode(lv_literal_1_1, grammarAccess.getLiteralOrExpressionAccess().getLiteralQUOTED_IDENTIFIERTerminalRuleCall_0_1_0_0());
-						}
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getLiteralOrExpressionRule());
-							}
-							setWithLastConsumed(
-								$current,
-								"literal",
-								lv_literal_1_1,
-								"com.dexels.navajo.Navascript.QUOTED_IDENTIFIER");
-						}
-						    |
-						lv_literal_1_2=RULE_STRING_CONSTANT
-						{
-							newLeafNode(lv_literal_1_2, grammarAccess.getLiteralOrExpressionAccess().getLiteralSTRING_CONSTANTTerminalRuleCall_0_1_0_1());
-						}
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getLiteralOrExpressionRule());
-							}
-							setWithLastConsumed(
-								$current,
-								"literal",
-								lv_literal_1_2,
-								"com.dexels.navajo.Navascript.STRING_CONSTANT");
-						}
-					)
-				)
-			)
+			{
+				/* */
+			}
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getLiteralOrExpressionAccess().getLiteralOrExpressionAction_0(),
+					$current);
+			}
 		)
-		    |
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getLiteralOrExpressionAccess().getExpressionExpressionParserRuleCall_1_0());
 				}
-				lv_expression_2_0=ruleExpression
+				lv_expression_1_0=ruleExpression
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getLiteralOrExpressionRule());
@@ -1890,7 +2024,7 @@ ruleLiteralOrExpression returns [EObject current=null]
 					set(
 						$current,
 						"expression",
-						lv_expression_2_0,
+						lv_expression_1_0,
 						"com.dexels.navajo.Navascript.Expression");
 					afterParserOrEnumRuleCall();
 				}
@@ -1916,6 +2050,9 @@ rulePrint returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getPrintAccess().getPrintAction_0(),
@@ -1978,6 +2115,9 @@ ruleLog returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getLogAccess().getLogAction_0(),
 					$current);
@@ -2039,6 +2179,9 @@ ruleFinally returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getFinallyAccess().getFinallyAction_0(),
 					$current);
@@ -2095,6 +2238,9 @@ ruleMethods returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getMethodsAccess().getMethodsAction_0(),
@@ -2153,6 +2299,9 @@ ruleMethod returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getMethodAccess().getMethodAction_0(),
 					$current);
@@ -2201,6 +2350,9 @@ ruleLoop returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getLoopAccess().getLoopAction_0(),
 					$current);
@@ -2213,20 +2365,19 @@ ruleLoop returns [EObject current=null]
 		(
 			(
 				(
+					lv_mappable_2_0=RULE_MAPPABLE_IDENTIFIER
 					{
-						newCompositeNode(grammarAccess.getLoopAccess().getMappableMappableIdentifierParserRuleCall_2_0_0());
+						newLeafNode(lv_mappable_2_0, grammarAccess.getLoopAccess().getMappableMAPPABLE_IDENTIFIERTerminalRuleCall_2_0_0());
 					}
-					lv_mappable_2_0=ruleMappableIdentifier
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getLoopRule());
+							$current = createModelElement(grammarAccess.getLoopRule());
 						}
-						set(
+						setWithLastConsumed(
 							$current,
 							"mappable",
 							lv_mappable_2_0,
-							"com.dexels.navajo.Navascript.MappableIdentifier");
-						afterParserOrEnumRuleCall();
+							"com.dexels.navajo.Navascript.MAPPABLE_IDENTIFIER");
 					}
 				)
 			)
@@ -2343,6 +2494,9 @@ ruleInclude returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getIncludeAccess().getIncludeAction_0(),
 					$current);
@@ -2395,6 +2549,9 @@ ruleAntiMessage returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getAntiMessageAccess().getAntiMessageAction_0(),
 					$current);
@@ -2446,6 +2603,9 @@ ruleMessage returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getMessageAccess().getMessageAction_0(),
@@ -2582,16 +2742,23 @@ ruleMessage returns [EObject current=null]
 			}
 			    |
 			(
-				otherlv_12='['
-				{
-					newLeafNode(otherlv_12, grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0());
-				}
+				(
+					otherlv_12='['
+					{
+						newLeafNode(otherlv_12, grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0_0());
+					}
+					    |
+					otherlv_13='"'
+					{
+						newLeafNode(otherlv_13, grammarAccess.getMessageAccess().getQuotationMarkKeyword_4_2_0_1());
+					}
+				)
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getMessageAccess().getMessageArrayMessageArrayParserRuleCall_4_2_1_0());
 						}
-						lv_messageArray_13_0=ruleMessageArray
+						lv_messageArray_14_0=ruleMessageArray
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getMessageRule());
@@ -2599,16 +2766,23 @@ ruleMessage returns [EObject current=null]
 							set(
 								$current,
 								"messageArray",
-								lv_messageArray_13_0,
+								lv_messageArray_14_0,
 								"com.dexels.navajo.Navascript.MessageArray");
 							afterParserOrEnumRuleCall();
 						}
 					)
+				)?
+				(
+					otherlv_15=']'
+					{
+						newLeafNode(otherlv_15, grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2_0());
+					}
+					    |
+					otherlv_16='"'
+					{
+						newLeafNode(otherlv_16, grammarAccess.getMessageAccess().getQuotationMarkKeyword_4_2_2_1());
+					}
 				)
-				otherlv_14=']'
-				{
-					newLeafNode(otherlv_14, grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2());
-				}
 			)
 		)
 	)
@@ -2695,6 +2869,9 @@ ruleMessageArrayElement returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getMessageArrayElementAccess().getMessageArrayElementAction_0(),
 					$current);
@@ -2763,6 +2940,9 @@ ruleMessageArgument returns [EObject current=null]
 				}
 			)
 			{
+				/* */
+			}
+			{
 				newCompositeNode(grammarAccess.getMessageArgumentAccess().getMessageTypeParserRuleCall_0_2());
 			}
 			this_MessageType_3=ruleMessageType
@@ -2788,6 +2968,9 @@ ruleMessageArgument returns [EObject current=null]
 					newLeafNode(otherlv_6, grammarAccess.getMessageArgumentAccess().getColonKeyword_1_1_1());
 				}
 			)
+			{
+				/* */
+			}
 			{
 				newCompositeNode(grammarAccess.getMessageArgumentAccess().getMessageModeParserRuleCall_1_2());
 			}
@@ -2880,6 +3063,9 @@ ruleMap returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getMapAccess().getMapAction_0(),
@@ -3014,33 +3200,42 @@ ruleMap returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_15='{'
-		{
-			newLeafNode(otherlv_15, grammarAccess.getMapAccess().getLeftCurlyBracketKeyword_2());
-		}
 		(
+			otherlv_15=';'
+			{
+				newLeafNode(otherlv_15, grammarAccess.getMapAccess().getSemicolonKeyword_2_0());
+			}
+			    |
 			(
+				otherlv_16='{'
 				{
-					newCompositeNode(grammarAccess.getMapAccess().getStatementsInnerBodyParserRuleCall_3_0());
+					newLeafNode(otherlv_16, grammarAccess.getMapAccess().getLeftCurlyBracketKeyword_2_1_0());
 				}
-				lv_statements_16_0=ruleInnerBody
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getMapAccess().getStatementsInnerBodyParserRuleCall_2_1_1_0());
+						}
+						lv_statements_17_0=ruleInnerBody
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getMapRule());
+							}
+							add(
+								$current,
+								"statements",
+								lv_statements_17_0,
+								"com.dexels.navajo.Navascript.InnerBody");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)*
+				otherlv_18='}'
 				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getMapRule());
-					}
-					add(
-						$current,
-						"statements",
-						lv_statements_16_0,
-						"com.dexels.navajo.Navascript.InnerBody");
-					afterParserOrEnumRuleCall();
+					newLeafNode(otherlv_18, grammarAccess.getMapAccess().getRightCurlyBracketKeyword_2_1_2());
 				}
 			)
-		)*
-		otherlv_17='}'
-		{
-			newLeafNode(otherlv_17, grammarAccess.getMapAccess().getRightCurlyBracketKeyword_4());
-		}
+		)
 	)
 ;
 
@@ -3061,6 +3256,9 @@ ruleMethodOrSetter returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getMethodOrSetterAccess().getAdapterMethodParserRuleCall_0());
 		}
 		this_AdapterMethod_0=ruleAdapterMethod
@@ -3069,6 +3267,9 @@ ruleMethodOrSetter returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getMethodOrSetterAccess().getSetterFieldParserRuleCall_1());
 		}
@@ -3097,6 +3298,9 @@ ruleAdapterMethod returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getAdapterMethodAccess().getAdapterMethodAction_0(),
@@ -3172,6 +3376,9 @@ ruleSetterField returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getSetterFieldAccess().getSetterFieldAction_0(),
@@ -3312,7 +3519,83 @@ ruleSetterField returns [EObject current=null]
 					}
 				)
 			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getSetterFieldAccess().getMappedMessageMappedMessageParserRuleCall_2_3_0());
+					}
+					lv_mappedMessage_13_0=ruleMappedMessage
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getSetterFieldRule());
+						}
+						set(
+							$current,
+							"mappedMessage",
+							lv_mappedMessage_13_0,
+							"com.dexels.navajo.Navascript.MappedMessage");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
 		)
+	)
+;
+
+// Entry rule entryRuleMappedMessage
+entryRuleMappedMessage returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMappedMessageRule()); }
+	iv_ruleMappedMessage=ruleMappedMessage
+	{ $current=$iv_ruleMappedMessage.current; }
+	EOF;
+
+// Rule MappedMessage
+ruleMappedMessage returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				/* */
+			}
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getMappedMessageAccess().getMappedMessageAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getMappedMessageAccess().getLeftCurlyBracketKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMappedMessageAccess().getStatementsInnerBodyParserRuleCall_2_0());
+				}
+				lv_statements_2_0=ruleInnerBody
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMappedMessageRule());
+					}
+					add(
+						$current,
+						"statements",
+						lv_statements_2_0,
+						"com.dexels.navajo.Navascript.InnerBody");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_3='}'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getMappedMessageAccess().getRightCurlyBracketKeyword_3());
+		}
 	)
 ;
 
@@ -3333,6 +3616,9 @@ ruleMappedArrayField returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getMappedArrayFieldAccess().getMappedArrayFieldAction_0(),
@@ -3449,6 +3735,9 @@ ruleMappedArrayMessage returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getMappedArrayMessageAccess().getMappedArrayMessageAction_0(),
 					$current);
@@ -3456,20 +3745,82 @@ ruleMappedArrayMessage returns [EObject current=null]
 		)
 		(
 			(
-				lv_message_1_0=RULE_TML_LITERAL
-				{
-					newLeafNode(lv_message_1_0, grammarAccess.getMappedArrayMessageAccess().getMessageTML_LITERALTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+				(
+					lv_message_1_1=RULE_CURRENT_OUTDOC
+					{
+						newLeafNode(lv_message_1_1, grammarAccess.getMappedArrayMessageAccess().getMessageCURRENT_OUTDOCTerminalRuleCall_1_0_0());
 					}
-					setWithLastConsumed(
-						$current,
-						"message",
-						lv_message_1_0,
-						"com.dexels.navajo.Navascript.TML_LITERAL");
-				}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"message",
+							lv_message_1_1,
+							"com.dexels.navajo.Navascript.CURRENT_OUTDOC");
+					}
+					    |
+					lv_message_1_2=RULE_CURRENT_INDOC
+					{
+						newLeafNode(lv_message_1_2, grammarAccess.getMappedArrayMessageAccess().getMessageCURRENT_INDOCTerminalRuleCall_1_0_1());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"message",
+							lv_message_1_2,
+							"com.dexels.navajo.Navascript.CURRENT_INDOC");
+					}
+					    |
+					lv_message_1_3=RULE_CURRENT_VARDOC
+					{
+						newLeafNode(lv_message_1_3, grammarAccess.getMappedArrayMessageAccess().getMessageCURRENT_VARDOCTerminalRuleCall_1_0_2());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"message",
+							lv_message_1_3,
+							"com.dexels.navajo.Navascript.CURRENT_VARDOC");
+					}
+					    |
+					lv_message_1_4=RULE_TML_LITERAL
+					{
+						newLeafNode(lv_message_1_4, grammarAccess.getMappedArrayMessageAccess().getMessageTML_LITERALTerminalRuleCall_1_0_3());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"message",
+							lv_message_1_4,
+							"com.dexels.navajo.Navascript.TML_LITERAL");
+					}
+					    |
+					lv_message_1_5=RULE_QUOTED_IDENTIFIER
+					{
+						newLeafNode(lv_message_1_5, grammarAccess.getMappedArrayMessageAccess().getMessageQUOTED_IDENTIFIERTerminalRuleCall_1_0_4());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMappedArrayMessageRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"message",
+							lv_message_1_5,
+							"com.dexels.navajo.Navascript.QUOTED_IDENTIFIER");
+					}
+				)
 			)
 		)
 		(
@@ -3564,6 +3915,9 @@ ruleKeyValueArguments returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getKeyValueArgumentsAccess().getKeyValueArgumentsAction_0(),
 					$current);
@@ -3633,6 +3987,9 @@ ruleKeyValueArgument returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getKeyValueArgumentAccess().getKeyValueArgumentAction_0(),
@@ -3726,6 +4083,9 @@ ruleVar returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getVarAccess().getVarAction_0(),
 					$current);
@@ -3737,19 +4097,30 @@ ruleVar returns [EObject current=null]
 		}
 		(
 			(
-				lv_varName_2_0=RULE_IDENTIFIER
-				{
-					newLeafNode(lv_varName_2_0, grammarAccess.getVarAccess().getVarNameIDENTIFIERTerminalRuleCall_2_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getVarRule());
+				(
+					lv_varName_2_0='/'
+					{
+						newLeafNode(lv_varName_2_0, grammarAccess.getVarAccess().getVarNameSolidusKeyword_2_0_0());
 					}
-					setWithLastConsumed(
-						$current,
-						"varName",
-						lv_varName_2_0,
-						"com.dexels.navajo.Navascript.IDENTIFIER");
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getVarRule());
+						}
+						setWithLastConsumed($current, "varName", lv_varName_2_0, "/");
+					}
+				)
+			)
+			    |
+			(
+				(
+					otherlv_3='../'
+					{
+						newLeafNode(otherlv_3, grammarAccess.getVarAccess().getFullStopFullStopSolidusKeyword_2_1_0());
+					}
+				)*
+				this_IDENTIFIER_4=RULE_IDENTIFIER
+				{
+					newLeafNode(this_IDENTIFIER_4, grammarAccess.getVarAccess().getIDENTIFIERTerminalRuleCall_2_1_1());
 				}
 			)
 		)
@@ -3758,7 +4129,7 @@ ruleVar returns [EObject current=null]
 				{
 					newCompositeNode(grammarAccess.getVarAccess().getArgumentsVarArgumentsParserRuleCall_3_0());
 				}
-				lv_arguments_3_0=ruleVarArguments
+				lv_arguments_5_0=ruleVarArguments
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getVarRule());
@@ -3766,7 +4137,7 @@ ruleVar returns [EObject current=null]
 					set(
 						$current,
 						"arguments",
-						lv_arguments_3_0,
+						lv_arguments_5_0,
 						"com.dexels.navajo.Navascript.VarArguments");
 					afterParserOrEnumRuleCall();
 				}
@@ -3775,14 +4146,14 @@ ruleVar returns [EObject current=null]
 		(
 			(
 				(
-					otherlv_4='='
+					otherlv_6='='
 					{
-						newLeafNode(otherlv_4, grammarAccess.getVarAccess().getEqualsSignKeyword_4_0_0_0());
+						newLeafNode(otherlv_6, grammarAccess.getVarAccess().getEqualsSignKeyword_4_0_0_0());
 					}
 					    |
-					otherlv_5=':'
+					otherlv_7=':'
 					{
-						newLeafNode(otherlv_5, grammarAccess.getVarAccess().getColonKeyword_4_0_0_1());
+						newLeafNode(otherlv_7, grammarAccess.getVarAccess().getColonKeyword_4_0_0_1());
 					}
 				)
 				(
@@ -3790,7 +4161,7 @@ ruleVar returns [EObject current=null]
 						{
 							newCompositeNode(grammarAccess.getVarAccess().getExpressionListConditionalExpressionsParserRuleCall_4_0_1_0());
 						}
-						lv_expressionList_6_0=ruleConditionalExpressions
+						lv_expressionList_8_0=ruleConditionalExpressions
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getVarRule());
@@ -3798,29 +4169,29 @@ ruleVar returns [EObject current=null]
 							set(
 								$current,
 								"expressionList",
-								lv_expressionList_6_0,
+								lv_expressionList_8_0,
 								"com.dexels.navajo.Navascript.ConditionalExpressions");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				otherlv_7=';'
+				otherlv_9=';'
 				{
-					newLeafNode(otherlv_7, grammarAccess.getVarAccess().getSemicolonKeyword_4_0_2());
+					newLeafNode(otherlv_9, grammarAccess.getVarAccess().getSemicolonKeyword_4_0_2());
 				}
 			)
 			    |
 			(
-				otherlv_8='['
+				otherlv_10='['
 				{
-					newLeafNode(otherlv_8, grammarAccess.getVarAccess().getLeftSquareBracketKeyword_4_1_0());
+					newLeafNode(otherlv_10, grammarAccess.getVarAccess().getLeftSquareBracketKeyword_4_1_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getVarAccess().getVarArrayVarArrayParserRuleCall_4_1_1_0());
 						}
-						lv_varArray_9_0=ruleVarArray
+						lv_varArray_11_0=ruleVarArray
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getVarRule());
@@ -3828,29 +4199,29 @@ ruleVar returns [EObject current=null]
 							set(
 								$current,
 								"varArray",
-								lv_varArray_9_0,
+								lv_varArray_11_0,
 								"com.dexels.navajo.Navascript.VarArray");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)?
-				otherlv_10=']'
+				otherlv_12=']'
 				{
-					newLeafNode(otherlv_10, grammarAccess.getVarAccess().getRightSquareBracketKeyword_4_1_2());
+					newLeafNode(otherlv_12, grammarAccess.getVarAccess().getRightSquareBracketKeyword_4_1_2());
 				}
 			)
 			    |
 			(
-				otherlv_11='{'
+				otherlv_13='{'
 				{
-					newLeafNode(otherlv_11, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_2_0());
+					newLeafNode(otherlv_13, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_2_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getVarAccess().getVarElementsVarElementParserRuleCall_4_2_1_0());
 						}
-						lv_varElements_12_0=ruleVarElement
+						lv_varElements_14_0=ruleVarElement
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getVarRule());
@@ -3858,29 +4229,29 @@ ruleVar returns [EObject current=null]
 							add(
 								$current,
 								"varElements",
-								lv_varElements_12_0,
+								lv_varElements_14_0,
 								"com.dexels.navajo.Navascript.VarElement");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)*
-				otherlv_13='}'
+				otherlv_15='}'
 				{
-					newLeafNode(otherlv_13, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_2_2());
+					newLeafNode(otherlv_15, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_2_2());
 				}
 			)
 			    |
 			(
-				otherlv_14='{'
+				otherlv_16='{'
 				{
-					newLeafNode(otherlv_14, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_3_0());
+					newLeafNode(otherlv_16, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_3_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getVarAccess().getMappedArrayFieldMappedArrayFieldParserRuleCall_4_3_1_0());
 						}
-						lv_mappedArrayField_15_0=ruleMappedArrayField
+						lv_mappedArrayField_17_0=ruleMappedArrayField
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getVarRule());
@@ -3888,29 +4259,29 @@ ruleVar returns [EObject current=null]
 							set(
 								$current,
 								"mappedArrayField",
-								lv_mappedArrayField_15_0,
+								lv_mappedArrayField_17_0,
 								"com.dexels.navajo.Navascript.MappedArrayField");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				otherlv_16='}'
+				otherlv_18='}'
 				{
-					newLeafNode(otherlv_16, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_3_2());
+					newLeafNode(otherlv_18, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_3_2());
 				}
 			)
 			    |
 			(
-				otherlv_17='{'
+				otherlv_19='{'
 				{
-					newLeafNode(otherlv_17, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_4_0());
+					newLeafNode(otherlv_19, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_4_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getVarAccess().getMappedArrayMessageMappedArrayMessageParserRuleCall_4_4_1_0());
 						}
-						lv_mappedArrayMessage_18_0=ruleMappedArrayMessage
+						lv_mappedArrayMessage_20_0=ruleMappedArrayMessage
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getVarRule());
@@ -3918,15 +4289,15 @@ ruleVar returns [EObject current=null]
 							set(
 								$current,
 								"mappedArrayMessage",
-								lv_mappedArrayMessage_18_0,
+								lv_mappedArrayMessage_20_0,
 								"com.dexels.navajo.Navascript.MappedArrayMessage");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				otherlv_19='}'
+				otherlv_21='}'
 				{
-					newLeafNode(otherlv_19, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_4_2());
+					newLeafNode(otherlv_21, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_4_2());
 				}
 			)
 		)
@@ -3950,6 +4321,9 @@ ruleVarArray returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getVarArrayAccess().getVarArrayAction_0(),
@@ -4021,6 +4395,9 @@ ruleVarArrayElement returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getVarArrayElementAccess().getVarArrayElementAction_0(),
 					$current);
@@ -4073,6 +4450,9 @@ ruleVarElement returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getVarElementAccess().getVarElementAction_0(),
@@ -4147,6 +4527,9 @@ ruleVarArguments returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getVarArgumentsAccess().getVarArgumentsAction_0(),
@@ -4226,6 +4609,9 @@ ruleVarArgument returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getVarArgumentAccess().getVarArgumentAction_0(),
 					$current);
@@ -4288,6 +4674,9 @@ ruleVarType returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getVarTypeAccess().getVarTypeAction_0(),
@@ -4367,6 +4756,9 @@ ruleVarMode returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getVarModeAccess().getVarModeAction_0(),
 					$current);
@@ -4426,6 +4818,9 @@ ruleProperty returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getPropertyAccess().getPropertyAction_0(),
@@ -4687,6 +5082,9 @@ ruleSelectionArrayElement returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getSelectionArrayElementAccess().getSelectionArrayElementAction_0(),
 					$current);
@@ -4816,6 +5214,9 @@ rulePropertyArguments returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getPropertyArgumentsAccess().getPropertyArgumentsAction_0(),
 					$current);
@@ -4893,6 +5294,9 @@ rulePropertyArgument returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getDirectionArgumentParserRuleCall_0());
 		}
 		this_DirectionArgument_0=ruleDirectionArgument
@@ -4901,6 +5305,9 @@ rulePropertyArgument returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getTypeArgumentParserRuleCall_1());
 		}
@@ -4911,6 +5318,9 @@ rulePropertyArgument returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getSubTypeArgumentParserRuleCall_2());
 		}
 		this_SubTypeArgument_2=ruleSubTypeArgument
@@ -4919,6 +5329,9 @@ rulePropertyArgument returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getDescriptionArgumentParserRuleCall_3());
 		}
@@ -4929,6 +5342,9 @@ rulePropertyArgument returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getCardinalityArgumentParserRuleCall_4());
 		}
 		this_CardinalityArgument_4=ruleCardinalityArgument
@@ -4937,6 +5353,9 @@ rulePropertyArgument returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getPropertyArgumentAccess().getLengthArgumentParserRuleCall_5());
 		}
@@ -5314,6 +5733,9 @@ ruleConditionalExpressions returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getConditionalExpressionsAccess().getConditionalExpressionsAction_0_0(),
 						$current);
@@ -5466,6 +5888,9 @@ ruleExpression returns [EObject current=null]
 	leaveRule();
 }:
 	{
+		/* */
+	}
+	{
 		newCompositeNode(grammarAccess.getExpressionAccess().getBooleanExpressionParserRuleCall());
 	}
 	this_BooleanExpression_0=ruleBooleanExpression
@@ -5492,6 +5917,9 @@ ruleBooleanExpression returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getBooleanExpressionAccess().getComparisonParserRuleCall_0());
 		}
 		this_Comparison_0=ruleComparison
@@ -5502,6 +5930,9 @@ ruleBooleanExpression returns [EObject current=null]
 		(
 			(
 				(
+					{
+						/* */
+					}
 					{
 						$current = forceCreateModelElementAndSet(
 							grammarAccess.getBooleanExpressionAccess().getAndOrExpressionLeftAction_1_0_0(),
@@ -5576,6 +6007,9 @@ ruleComparison returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getComparisonAccess().getEqualsParserRuleCall_0());
 		}
 		this_Equals_0=ruleEquals
@@ -5586,6 +6020,9 @@ ruleComparison returns [EObject current=null]
 		(
 			(
 				(
+					{
+						/* */
+					}
 					{
 						$current = forceCreateModelElementAndSet(
 							grammarAccess.getComparisonAccess().getComparisonLeftAction_1_0_0(),
@@ -5682,6 +6119,9 @@ ruleEquals returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getEqualsAccess().getAdditionParserRuleCall_0());
 		}
 		this_Addition_0=ruleAddition
@@ -5692,6 +6132,9 @@ ruleEquals returns [EObject current=null]
 		(
 			(
 				(
+					{
+						/* */
+					}
 					{
 						$current = forceCreateModelElementAndSet(
 							grammarAccess.getEqualsAccess().getEqualsLeftAction_1_0_0(),
@@ -5766,6 +6209,9 @@ ruleAddition returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getAdditionAccess().getMultiplicationParserRuleCall_0());
 		}
 		this_Multiplication_0=ruleMultiplication
@@ -5777,6 +6223,9 @@ ruleAddition returns [EObject current=null]
 			(
 				(
 					(
+						{
+							/* */
+						}
 						{
 							$current = forceCreateModelElementAndSet(
 								grammarAccess.getAdditionAccess().getPlusLeftAction_1_0_0_0(),
@@ -5791,6 +6240,9 @@ ruleAddition returns [EObject current=null]
 				    |
 				(
 					(
+						{
+							/* */
+						}
 						{
 							$current = forceCreateModelElementAndSet(
 								grammarAccess.getAdditionAccess().getMinusLeftAction_1_0_1_0(),
@@ -5843,6 +6295,9 @@ ruleMultiplication returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getMultiplicationAccess().getPrefixedParserRuleCall_0());
 		}
 		this_Prefixed_0=rulePrefixed
@@ -5853,6 +6308,9 @@ ruleMultiplication returns [EObject current=null]
 		(
 			(
 				(
+					{
+						/* */
+					}
 					{
 						$current = forceCreateModelElementAndSet(
 							grammarAccess.getMultiplicationAccess().getMultiOrDivLeftAction_1_0_0(),
@@ -5929,6 +6387,9 @@ rulePrefixed returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPrefixedAccess().getBooleanNegationAction_0_0(),
 						$current);
@@ -5965,6 +6426,9 @@ rulePrefixed returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPrefixedAccess().getArithmeticSignedAction_1_0(),
 						$current);
@@ -5999,6 +6463,9 @@ rulePrefixed returns [EObject current=null]
 		)
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getPrefixedAccess().getAtomicParserRuleCall_2());
 		}
 		this_Atomic_6=ruleAtomic
@@ -6027,6 +6494,9 @@ ruleAtomic returns [EObject current=null]
 	(
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getExpressionLiteralAction_0_0(),
@@ -6065,6 +6535,9 @@ ruleAtomic returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getNumberLiteralAction_1_0(),
 						$current);
@@ -6102,6 +6575,21 @@ ruleAtomic returns [EObject current=null]
 								lv_value_5_2,
 								"com.dexels.navajo.Navascript.ONE");
 						}
+						    |
+						lv_value_5_3=RULE_FLOAT
+						{
+							newLeafNode(lv_value_5_3, grammarAccess.getAtomicAccess().getValueFLOATTerminalRuleCall_1_1_0_2());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getAtomicRule());
+							}
+							setWithLastConsumed(
+								$current,
+								"value",
+								lv_value_5_3,
+								"com.dexels.navajo.Navascript.FLOAT");
+						}
 					)
 				)
 			)
@@ -6109,6 +6597,9 @@ ruleAtomic returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getStringLiteralAction_2_0(),
@@ -6137,6 +6628,9 @@ ruleAtomic returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getBooleanLiteralAction_3_0(),
@@ -6183,6 +6677,9 @@ ruleAtomic returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getFunctionCallLiteralAction_4_0(),
 						$current);
@@ -6212,6 +6709,9 @@ ruleAtomic returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getMappableIdentifierLiteralAction_5_0(),
 						$current);
@@ -6240,6 +6740,9 @@ ruleAtomic returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getTmlIdentifierLiteralAction_6_0(),
@@ -6284,17 +6787,20 @@ ruleAtomic returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getForAllLiteralAction_7_0(),
+						grammarAccess.getAtomicAccess().getTmlIdentifierAction_7_0(),
 						$current);
 				}
 			)
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getAtomicAccess().getValueForAllIdentifierParserRuleCall_7_1_0());
+						newCompositeNode(grammarAccess.getAtomicAccess().getValueTmlIdentifierParserRuleCall_7_1_0());
 					}
-					lv_value_18_0=ruleForAllIdentifier
+					lv_value_18_0=ruleTmlIdentifier
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getAtomicRule());
@@ -6303,6 +6809,38 @@ ruleAtomic returns [EObject current=null]
 							$current,
 							"value",
 							lv_value_18_0,
+							"com.dexels.navajo.Navascript.TmlIdentifier");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicAccess().getForAllLiteralAction_8_0(),
+						$current);
+				}
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getAtomicAccess().getValueForAllIdentifierParserRuleCall_8_1_0());
+					}
+					lv_value_20_0=ruleForAllIdentifier
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getAtomicRule());
+						}
+						set(
+							$current,
+							"value",
+							lv_value_20_0,
 							"com.dexels.navajo.Navascript.ForAllIdentifier");
 						afterParserOrEnumRuleCall();
 					}
@@ -6313,16 +6851,19 @@ ruleAtomic returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getNullLiteralAction_8_0(),
+						grammarAccess.getAtomicAccess().getNullLiteralAction_9_0(),
 						$current);
 				}
 			)
 			(
 				(
-					lv_value_20_0=RULE_NULL_DEF
+					lv_value_22_0=RULE_NULL_DEF
 					{
-						newLeafNode(lv_value_20_0, grammarAccess.getAtomicAccess().getValueNULL_DEFTerminalRuleCall_8_1_0());
+						newLeafNode(lv_value_22_0, grammarAccess.getAtomicAccess().getValueNULL_DEFTerminalRuleCall_9_1_0());
 					}
 					{
 						if ($current==null) {
@@ -6331,8 +6872,132 @@ ruleAtomic returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"value",
-							lv_value_20_0,
+							lv_value_22_0,
 							"com.dexels.navajo.Navascript.NULL_DEF");
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicAccess().getTodayLiteralAction_10_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_24_0=RULE_TODAY
+					{
+						newLeafNode(lv_value_24_0, grammarAccess.getAtomicAccess().getValueTODAYTerminalRuleCall_10_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_24_0,
+							"com.dexels.navajo.Navascript.TODAY");
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicAccess().getCurrentOutDocAction_11_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_26_0=RULE_CURRENT_OUTDOC
+					{
+						newLeafNode(lv_value_26_0, grammarAccess.getAtomicAccess().getValueCURRENT_OUTDOCTerminalRuleCall_11_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_26_0,
+							"com.dexels.navajo.Navascript.CURRENT_OUTDOC");
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicAccess().getCurrentInDocAction_12_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_28_0=RULE_CURRENT_INDOC
+					{
+						newLeafNode(lv_value_28_0, grammarAccess.getAtomicAccess().getValueCURRENT_INDOCTerminalRuleCall_12_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_28_0,
+							"com.dexels.navajo.Navascript.CURRENT_INDOC");
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					/* */
+				}
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicAccess().getCurrentVarDocAction_13_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_30_0=RULE_CURRENT_VARDOC
+					{
+						newLeafNode(lv_value_30_0, grammarAccess.getAtomicAccess().getValueCURRENT_VARDOCTerminalRuleCall_13_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_30_0,
+							"com.dexels.navajo.Navascript.CURRENT_VARDOC");
 					}
 				)
 			)
@@ -6357,6 +7022,9 @@ ruleForAllIdentifier returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getForAllIdentifierAccess().getForAllIdentifierAction_0(),
@@ -6476,6 +7144,9 @@ ruleFunctionIdentifier returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getFunctionIdentifierAccess().getFunctionIdentifierAction_0(),
 					$current);
@@ -6575,6 +7246,9 @@ ruleMappableIdentifier returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getMappableIdentifierAccess().getMappableIdentifierAction_0(),
@@ -6676,6 +7350,9 @@ ruleTmlIdentifier returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getTmlIdentifierAccess().getTmlIdentifierAction_0(),
 					$current);
@@ -6683,20 +7360,37 @@ ruleTmlIdentifier returns [EObject current=null]
 		)
 		(
 			(
-				lv_tml_1_0=RULE_TML_LITERAL
-				{
-					newLeafNode(lv_tml_1_0, grammarAccess.getTmlIdentifierAccess().getTmlTML_LITERALTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getTmlIdentifierRule());
+				(
+					lv_tml_1_1=RULE_TML_LITERAL
+					{
+						newLeafNode(lv_tml_1_1, grammarAccess.getTmlIdentifierAccess().getTmlTML_LITERALTerminalRuleCall_1_0_0());
 					}
-					setWithLastConsumed(
-						$current,
-						"tml",
-						lv_tml_1_0,
-						"com.dexels.navajo.Navascript.TML_LITERAL");
-				}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getTmlIdentifierRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"tml",
+							lv_tml_1_1,
+							"com.dexels.navajo.Navascript.TML_LITERAL");
+					}
+					    |
+					lv_tml_1_2=RULE_QUOTED_IDENTIFIER
+					{
+						newLeafNode(lv_tml_1_2, grammarAccess.getTmlIdentifierAccess().getTmlQUOTED_IDENTIFIERTerminalRuleCall_1_0_1());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getTmlIdentifierRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"tml",
+							lv_tml_1_2,
+							"com.dexels.navajo.Navascript.QUOTED_IDENTIFIER");
+					}
+				)
 			)
 		)
 	)
@@ -6721,6 +7415,9 @@ rulePropertyType returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPropertyTypeAccess().getIntTypeAction_0_0(),
 						$current);
@@ -6734,6 +7431,9 @@ rulePropertyType returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPropertyTypeAccess().getStringTypeAction_1_0(),
@@ -6749,6 +7449,9 @@ rulePropertyType returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPropertyTypeAccess().getBooleanTypeAction_2_0(),
 						$current);
@@ -6762,6 +7465,9 @@ rulePropertyType returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPropertyTypeAccess().getDateTypeAction_3_0(),
@@ -6777,6 +7483,9 @@ rulePropertyType returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPropertyTypeAccess().getFloatTypeAction_4_0(),
 						$current);
@@ -6790,6 +7499,9 @@ rulePropertyType returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPropertyTypeAccess().getBinaryTypeAction_5_0(),
@@ -6805,6 +7517,9 @@ rulePropertyType returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPropertyTypeAccess().getClockTimeTypeAction_6_0(),
 						$current);
@@ -6818,6 +7533,9 @@ rulePropertyType returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPropertyTypeAccess().getMemoTypeAction_7_0(),
@@ -6833,6 +7551,9 @@ rulePropertyType returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPropertyTypeAccess().getTimestampTypeAction_8_0(),
 						$current);
@@ -6847,6 +7568,9 @@ rulePropertyType returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPropertyTypeAccess().getPercentageTypeAction_9_0(),
 						$current);
@@ -6860,6 +7584,9 @@ rulePropertyType returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getPropertyTypeAccess().getSelectionTypeAction_10_0(),
@@ -6929,6 +7656,9 @@ ruleMessageType returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getMessageTypeAccess().getArrayTypeAction_0_0(),
 						$current);
@@ -6943,6 +7673,9 @@ ruleMessageType returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getMessageTypeAccess().getSimpleTypeAction_1_0(),
 						$current);
@@ -6956,6 +7689,9 @@ ruleMessageType returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getMessageTypeAccess().getArrayElementTypeAction_2_0(),
@@ -6989,6 +7725,9 @@ ruleMessageMode returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getMessageModeAccess().getIgnoreAction_0_0(),
 						$current);
@@ -7002,6 +7741,9 @@ ruleMessageMode returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getMessageModeAccess().getOverwriteAction_1_0(),
@@ -7034,13 +7776,19 @@ fragment RULE_MAPPABLE_ID : '$';
 
 RULE_NULL_DEF : 'null';
 
+RULE_TODAY : 'TODAY';
+
+RULE_CURRENT_OUTDOC : '"."';
+
+RULE_CURRENT_INDOC : '[.]';
+
+RULE_CURRENT_VARDOC : '[@.]';
+
+RULE_TML_LITERAL : '[' ('../'+|'/')? '@'? RULE_IDENTIFIER ('/' RULE_IDENTIFIER)* ']';
+
 RULE_OBJECT_IDENTIFIER : '"' RULE_IDENTIFIER ('.' RULE_IDENTIFIER)+ '"';
 
-RULE_QUOTED_IDENTIFIER : '"' (RULE_IDENTIFIER|'/'|'../')+ '"';
-
-RULE_STRING_CONSTANT : '"' ('\\' .|~(('\\'|'"')))* '"';
-
-RULE_TML_LITERAL : '[' (RULE_IDENTIFIER|'/'|'../'|'/@')+ ']';
+RULE_QUOTED_IDENTIFIER : '"' ('../'+|'/')? RULE_IDENTIFIER ('/' RULE_IDENTIFIER)* '"';
 
 RULE_ONE : '1';
 
@@ -7049,6 +7797,8 @@ fragment RULE_UNDERSCORE : '_';
 RULE_IDENTIFIER : (RULE_LETTER|RULE_UNDERSCORE) (RULE_LETTER|'0'|RULE_ONE|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|RULE_UNDERSCORE)*;
 
 RULE_INTEGER : ('0'|(RULE_ONE|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9') ('0'|RULE_ONE|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9')*);
+
+RULE_FLOAT : RULE_INTEGER? '.' '0'* RULE_INTEGER;
 
 fragment RULE_LETTER : ('A'|'B'|'C'|'D'|'E'|'F'|'G'|'H'|'I'|'J'|'K'|'L'|'M'|'N'|'O'|'P'|'Q'|'R'|'S'|'T'|'U'|'V'|'W'|'X'|'Y'|'Z'|'a'|'b'|'c'|'d'|'e'|'f'|'g'|'h'|'i'|'j'|'k'|'l'|'m'|'n'|'o'|'p'|'q'|'r'|'s'|'t'|'u'|'v'|'w'|'x'|'y'|'z');
 

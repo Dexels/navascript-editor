@@ -29,26 +29,26 @@ import org.eclipse.emf.ecore.EObject;
 public interface Loop extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Mappable</b></em>' containment reference.
+   * Returns the value of the '<em><b>Mappable</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Mappable</em>' containment reference.
-   * @see #setMappable(MappableIdentifier)
+   * @return the value of the '<em>Mappable</em>' attribute.
+   * @see #setMappable(String)
    * @see com.dexels.navajo.navascript.NavascriptPackage#getLoop_Mappable()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  MappableIdentifier getMappable();
+  String getMappable();
 
   /**
-   * Sets the value of the '{@link com.dexels.navajo.navascript.Loop#getMappable <em>Mappable</em>}' containment reference.
+   * Sets the value of the '{@link com.dexels.navajo.navascript.Loop#getMappable <em>Mappable</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Mappable</em>' containment reference.
+   * @param value the new value of the '<em>Mappable</em>' attribute.
    * @see #getMappable()
    * @generated
    */
-  void setMappable(MappableIdentifier value);
+  void setMappable(String value);
 
   /**
    * Returns the value of the '<em><b>Tml</b></em>' containment reference.

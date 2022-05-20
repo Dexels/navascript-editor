@@ -9,11 +9,13 @@ public class ProxyFunctionDefinition {
 	private String description;
 	private List<String> input = new ArrayList<>();
 	private String result;
-	
+
 	public ProxyFunctionDefinition(String name, String description, String inputParameters, String result) {
 		String [] altInputs = inputParameters.split("\\|");
 		for ( String alt : altInputs ) {
-			input.add(alt);
+			if ( alt != null && !alt.trim().equals("")) {
+				input.add(alt);
+			}
 		}
 		this.name = name;
 		this.description = description;
@@ -35,7 +37,7 @@ public class ProxyFunctionDefinition {
 	public String getResult() {
 		return result;
 	}
-	
+
 	public static void main(String [] args) {
 		String input = "string, string, any, string, any";
 		ProxyFunctionDefinition pfd = new ProxyFunctionDefinition("Aap", "", input, "any");

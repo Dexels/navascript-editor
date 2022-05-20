@@ -24,7 +24,11 @@ import com.dexels.navajo.navascript.ClockTimeType;
 import com.dexels.navajo.navascript.Comparison;
 import com.dexels.navajo.navascript.ConditionalExpression;
 import com.dexels.navajo.navascript.ConditionalExpressions;
+import com.dexels.navajo.navascript.CurrentInDoc;
+import com.dexels.navajo.navascript.CurrentOutDoc;
+import com.dexels.navajo.navascript.CurrentVarDoc;
 import com.dexels.navajo.navascript.DateType;
+import com.dexels.navajo.navascript.DebugStatement;
 import com.dexels.navajo.navascript.Define;
 import com.dexels.navajo.navascript.DescriptionArgument;
 import com.dexels.navajo.navascript.DirectionArgument;
@@ -52,6 +56,7 @@ import com.dexels.navajo.navascript.MappableIdentifier;
 import com.dexels.navajo.navascript.MappableIdentifierLiteral;
 import com.dexels.navajo.navascript.MappedArrayField;
 import com.dexels.navajo.navascript.MappedArrayMessage;
+import com.dexels.navajo.navascript.MappedMessage;
 import com.dexels.navajo.navascript.MemoType;
 import com.dexels.navajo.navascript.Message;
 import com.dexels.navajo.navascript.MessageArgument;
@@ -96,6 +101,7 @@ import com.dexels.navajo.navascript.SynchronizedArguments;
 import com.dexels.navajo.navascript.TimestampType;
 import com.dexels.navajo.navascript.TmlIdentifier;
 import com.dexels.navajo.navascript.TmlIdentifierLiteral;
+import com.dexels.navajo.navascript.TodayLiteral;
 import com.dexels.navajo.navascript.TopLevelStatement;
 import com.dexels.navajo.navascript.TopLevelStatements;
 import com.dexels.navajo.navascript.TypeArgument;
@@ -158,6 +164,13 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   private EClass blockStatementsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass debugStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -375,6 +388,13 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   private EClass setterFieldEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mappedMessageEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -738,6 +758,34 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass todayLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass currentOutDocEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass currentInDocEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass currentVarDocEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass intTypeEClass = null;
 
   /**
@@ -925,7 +973,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
-  public EReference getNavascript_Validations()
+  public EReference getNavascript_Debug()
   {
     return (EReference)navascriptEClass.getEStructuralFeatures().get(0);
   }
@@ -936,7 +984,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
-  public EReference getNavascript_ToplevelStatements()
+  public EReference getNavascript_Validations()
   {
     return (EReference)navascriptEClass.getEStructuralFeatures().get(1);
   }
@@ -947,9 +995,20 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
-  public EReference getNavascript_Finally()
+  public EReference getNavascript_ToplevelStatements()
   {
     return (EReference)navascriptEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNavascript_Finally()
+  {
+    return (EReference)navascriptEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1060,6 +1119,28 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
   public EReference getBlockStatements_Statements()
   {
     return (EReference)blockStatementsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDebugStatement()
+  {
+    return debugStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDebugStatement_Value()
+  {
+    return (EAttribute)debugStatementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1376,20 +1457,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
-  public EAttribute getLiteralOrExpression_Literal()
-  {
-    return (EAttribute)literalOrExpressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getLiteralOrExpression_Expression()
   {
-    return (EReference)literalOrExpressionEClass.getEStructuralFeatures().get(1);
+    return (EReference)literalOrExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1519,9 +1589,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
-  public EReference getLoop_Mappable()
+  public EAttribute getLoop_Mappable()
   {
-    return (EReference)loopEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)loopEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1907,6 +1977,39 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
   public EReference getSetterField_MappedField()
   {
     return (EReference)setterFieldEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSetterField_MappedMessage()
+  {
+    return (EReference)setterFieldEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMappedMessage()
+  {
+    return mappedMessageEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMappedMessage_Statements()
+  {
+    return (EReference)mappedMessageEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2839,9 +2942,20 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
+  public EReference getTmlIdentifier_Value()
+  {
+    return (EReference)tmlIdentifierEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getTmlIdentifier_Tml()
   {
-    return (EAttribute)tmlIdentifierEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)tmlIdentifierEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3378,6 +3492,94 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
    * @generated
    */
   @Override
+  public EClass getTodayLiteral()
+  {
+    return todayLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTodayLiteral_Value()
+  {
+    return (EAttribute)todayLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCurrentOutDoc()
+  {
+    return currentOutDocEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCurrentOutDoc_Value()
+  {
+    return (EAttribute)currentOutDocEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCurrentInDoc()
+  {
+    return currentInDocEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCurrentInDoc_Value()
+  {
+    return (EAttribute)currentInDocEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCurrentVarDoc()
+  {
+    return currentVarDocEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCurrentVarDoc_Value()
+  {
+    return (EAttribute)currentVarDocEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getIntType()
   {
     return intTypeEClass;
@@ -3580,6 +3782,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     // Create classes and their features
     navascriptEClass = createEClass(NAVASCRIPT);
+    createEReference(navascriptEClass, NAVASCRIPT__DEBUG);
     createEReference(navascriptEClass, NAVASCRIPT__VALIDATIONS);
     createEReference(navascriptEClass, NAVASCRIPT__TOPLEVEL_STATEMENTS);
     createEReference(navascriptEClass, NAVASCRIPT__FINALLY);
@@ -3597,6 +3800,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     blockStatementsEClass = createEClass(BLOCK_STATEMENTS);
     createEReference(blockStatementsEClass, BLOCK_STATEMENTS__STATEMENTS);
+
+    debugStatementEClass = createEClass(DEBUG_STATEMENT);
+    createEAttribute(debugStatementEClass, DEBUG_STATEMENT__VALUE);
 
     synchronizedEClass = createEClass(SYNCHRONIZED);
     createEReference(synchronizedEClass, SYNCHRONIZED__ARGUMENTS);
@@ -3639,7 +3845,6 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     createEReference(checkAttributeEClass, CHECK_ATTRIBUTE__VALUE);
 
     literalOrExpressionEClass = createEClass(LITERAL_OR_EXPRESSION);
-    createEAttribute(literalOrExpressionEClass, LITERAL_OR_EXPRESSION__LITERAL);
     createEReference(literalOrExpressionEClass, LITERAL_OR_EXPRESSION__EXPRESSION);
 
     printEClass = createEClass(PRINT);
@@ -3658,7 +3863,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     createEAttribute(methodEClass, METHOD__METHOD_NAME);
 
     loopEClass = createEClass(LOOP);
-    createEReference(loopEClass, LOOP__MAPPABLE);
+    createEAttribute(loopEClass, LOOP__MAPPABLE);
     createEReference(loopEClass, LOOP__TML);
     createEReference(loopEClass, LOOP__FILTER);
     createEReference(loopEClass, LOOP__STATEMENTS);
@@ -3705,6 +3910,10 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     createEReference(setterFieldEClass, SETTER_FIELD__EXPRESSION_LIST);
     createEReference(setterFieldEClass, SETTER_FIELD__MAPPED_ARRAY);
     createEReference(setterFieldEClass, SETTER_FIELD__MAPPED_FIELD);
+    createEReference(setterFieldEClass, SETTER_FIELD__MAPPED_MESSAGE);
+
+    mappedMessageEClass = createEClass(MAPPED_MESSAGE);
+    createEReference(mappedMessageEClass, MAPPED_MESSAGE__STATEMENTS);
 
     mappedArrayFieldEClass = createEClass(MAPPED_ARRAY_FIELD);
     createEAttribute(mappedArrayFieldEClass, MAPPED_ARRAY_FIELD__FIELD);
@@ -3820,6 +4029,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     createEReference(mappableIdentifierEClass, MAPPABLE_IDENTIFIER__ARGS);
 
     tmlIdentifierEClass = createEClass(TML_IDENTIFIER);
+    createEReference(tmlIdentifierEClass, TML_IDENTIFIER__VALUE);
     createEAttribute(tmlIdentifierEClass, TML_IDENTIFIER__TML);
 
     propertyTypeEClass = createEClass(PROPERTY_TYPE);
@@ -3889,6 +4099,18 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     nullLiteralEClass = createEClass(NULL_LITERAL);
     createEAttribute(nullLiteralEClass, NULL_LITERAL__VALUE);
+
+    todayLiteralEClass = createEClass(TODAY_LITERAL);
+    createEAttribute(todayLiteralEClass, TODAY_LITERAL__VALUE);
+
+    currentOutDocEClass = createEClass(CURRENT_OUT_DOC);
+    createEAttribute(currentOutDocEClass, CURRENT_OUT_DOC__VALUE);
+
+    currentInDocEClass = createEClass(CURRENT_IN_DOC);
+    createEAttribute(currentInDocEClass, CURRENT_IN_DOC__VALUE);
+
+    currentVarDocEClass = createEClass(CURRENT_VAR_DOC);
+    createEAttribute(currentVarDocEClass, CURRENT_VAR_DOC__VALUE);
 
     intTypeEClass = createEClass(INT_TYPE);
 
@@ -3967,6 +4189,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     subTypeArgumentEClass.getESuperTypes().add(this.getPropertyArgument());
     expressionEClass.getESuperTypes().add(this.getSTimeout());
     expressionEClass.getESuperTypes().add(this.getSBreakOnNoLock());
+    tmlIdentifierEClass.getESuperTypes().add(this.getExpression());
     messageTypeEClass.getESuperTypes().add(this.getMessageArgument());
     messageModeEClass.getESuperTypes().add(this.getMessageArgument());
     andOrExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -3986,6 +4209,10 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     tmlIdentifierLiteralEClass.getESuperTypes().add(this.getExpression());
     forAllLiteralEClass.getESuperTypes().add(this.getExpression());
     nullLiteralEClass.getESuperTypes().add(this.getExpression());
+    todayLiteralEClass.getESuperTypes().add(this.getExpression());
+    currentOutDocEClass.getESuperTypes().add(this.getExpression());
+    currentInDocEClass.getESuperTypes().add(this.getExpression());
+    currentVarDocEClass.getESuperTypes().add(this.getExpression());
     intTypeEClass.getESuperTypes().add(this.getPropertyType());
     stringTypeEClass.getESuperTypes().add(this.getPropertyType());
     booleanTypeEClass.getESuperTypes().add(this.getPropertyType());
@@ -4005,6 +4232,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     // Initialize classes and features; add operations and parameters
     initEClass(navascriptEClass, Navascript.class, "Navascript", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNavascript_Debug(), this.getDebugStatement(), null, "debug", null, 0, 1, Navascript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNavascript_Validations(), this.getValidations(), null, "validations", null, 0, 1, Navascript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNavascript_ToplevelStatements(), this.getTopLevelStatements(), null, "toplevelStatements", null, 0, 1, Navascript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNavascript_Finally(), this.getFinally(), null, "finally", null, 0, 1, Navascript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4022,6 +4250,9 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     initEClass(blockStatementsEClass, BlockStatements.class, "BlockStatements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBlockStatements_Statements(), this.getInnerBody(), null, "statements", null, 0, -1, BlockStatements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(debugStatementEClass, DebugStatement.class, "DebugStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDebugStatement_Value(), ecorePackage.getEString(), "value", null, 0, 1, DebugStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(synchronizedEClass, Synchronized.class, "Synchronized", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSynchronized_Arguments(), this.getSynchronizedArguments(), null, "arguments", null, 0, 1, Synchronized.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4064,7 +4295,6 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     initEReference(getCheckAttribute_Value(), this.getLiteralOrExpression(), null, "value", null, 0, 1, CheckAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalOrExpressionEClass, LiteralOrExpression.class, "LiteralOrExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLiteralOrExpression_Literal(), ecorePackage.getEString(), "literal", null, 0, 1, LiteralOrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLiteralOrExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1, LiteralOrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(printEClass, Print.class, "Print", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4083,7 +4313,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     initEAttribute(getMethod_MethodName(), ecorePackage.getEString(), "methodName", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(loopEClass, Loop.class, "Loop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLoop_Mappable(), this.getMappableIdentifier(), null, "mappable", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLoop_Mappable(), ecorePackage.getEString(), "mappable", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLoop_Tml(), this.getTmlIdentifier(), null, "tml", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLoop_Filter(), this.getExpression(), null, "filter", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLoop_Statements(), this.getInnerBody(), null, "statements", null, 0, -1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4130,6 +4360,10 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     initEReference(getSetterField_ExpressionList(), this.getConditionalExpressions(), null, "expressionList", null, 0, 1, SetterField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSetterField_MappedArray(), this.getMappedArrayMessage(), null, "mappedArray", null, 0, 1, SetterField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSetterField_MappedField(), this.getMappedArrayField(), null, "mappedField", null, 0, 1, SetterField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSetterField_MappedMessage(), this.getMappedMessage(), null, "mappedMessage", null, 0, 1, SetterField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mappedMessageEClass, MappedMessage.class, "MappedMessage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMappedMessage_Statements(), this.getInnerBody(), null, "statements", null, 0, -1, MappedMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mappedArrayFieldEClass, MappedArrayField.class, "MappedArrayField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMappedArrayField_Field(), ecorePackage.getEString(), "field", null, 0, 1, MappedArrayField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4245,6 +4479,7 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
     initEReference(getMappableIdentifier_Args(), this.getExpression(), null, "args", null, 0, -1, MappableIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tmlIdentifierEClass, TmlIdentifier.class, "TmlIdentifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTmlIdentifier_Value(), this.getTmlIdentifier(), null, "value", null, 0, 1, TmlIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTmlIdentifier_Tml(), ecorePackage.getEString(), "tml", null, 0, 1, TmlIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyTypeEClass, PropertyType.class, "PropertyType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4314,6 +4549,18 @@ public class NavascriptPackageImpl extends EPackageImpl implements NavascriptPac
 
     initEClass(nullLiteralEClass, NullLiteral.class, "NullLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNullLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, NullLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(todayLiteralEClass, TodayLiteral.class, "TodayLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTodayLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, TodayLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(currentOutDocEClass, CurrentOutDoc.class, "CurrentOutDoc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCurrentOutDoc_Value(), ecorePackage.getEString(), "value", null, 0, 1, CurrentOutDoc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(currentInDocEClass, CurrentInDoc.class, "CurrentInDoc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCurrentInDoc_Value(), ecorePackage.getEString(), "value", null, 0, 1, CurrentInDoc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(currentVarDocEClass, CurrentVarDoc.class, "CurrentVarDoc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCurrentVarDoc_Value(), ecorePackage.getEString(), "value", null, 0, 1, CurrentVarDoc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intTypeEClass, IntType.class, "IntType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -37,13 +37,16 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_LengthArgument_ColonKeyword_1_1_or_EqualsSignKeyword_1_0;
 	protected AbstractElementAlias match_Loop_ColonKeyword_3_2_1_or_EqualsSignKeyword_3_2_0;
 	protected AbstractElementAlias match_Map_ColonKeyword_1_1_3_1_or_EqualsSignKeyword_1_1_3_0;
+	protected AbstractElementAlias match_Map_SemicolonKeyword_2_0_or___LeftCurlyBracketKeyword_2_1_0_RightCurlyBracketKeyword_2_1_2__;
 	protected AbstractElementAlias match_Map___LeftParenthesisKeyword_1_0_2_0_RightParenthesisKeyword_1_0_2_2__q;
 	protected AbstractElementAlias match_MappableIdentifier___LeftParenthesisKeyword_2_0_RightParenthesisKeyword_2_2__q;
 	protected AbstractElementAlias match_MappedArrayField_ColonKeyword_2_2_1_or_EqualsSignKeyword_2_2_0;
 	protected AbstractElementAlias match_MappedArrayMessage_ColonKeyword_2_2_1_or_EqualsSignKeyword_2_2_0;
 	protected AbstractElementAlias match_MessageArgument_ColonKeyword_0_1_1_or_EqualsSignKeyword_0_1_0;
 	protected AbstractElementAlias match_MessageArgument_ColonKeyword_1_1_1_or_EqualsSignKeyword_1_1_0;
-	protected AbstractElementAlias match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2__;
+	protected AbstractElementAlias match_Message_LeftSquareBracketKeyword_4_2_0_0_or_QuotationMarkKeyword_4_2_0_1;
+	protected AbstractElementAlias match_Message_QuotationMarkKeyword_4_2_2_1_or_RightSquareBracketKeyword_4_2_2_0;
+	protected AbstractElementAlias match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2___or_____LeftSquareBracketKeyword_4_2_0_0_or_QuotationMarkKeyword_4_2_0_1_____QuotationMarkKeyword_4_2_2_1_or_RightSquareBracketKeyword_4_2_2_0____;
 	protected AbstractElementAlias match_Option_ColonKeyword_2_1_or_EqualsSignKeyword_2_0;
 	protected AbstractElementAlias match_Property_ColonKeyword_4_0_0_0_1_or_EqualsSignKeyword_4_0_0_0_0;
 	protected AbstractElementAlias match_SBreakOnNoLock_ColonKeyword_1_1_or_EqualsSignKeyword_1_0;
@@ -56,6 +59,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_VarMode_ColonKeyword_2_1_or_EqualsSignKeyword_2_0;
 	protected AbstractElementAlias match_VarType_ColonKeyword_2_1_or_EqualsSignKeyword_2_0;
 	protected AbstractElementAlias match_Var_ColonKeyword_4_0_0_1_or_EqualsSignKeyword_4_0_0_0;
+	protected AbstractElementAlias match_Var_FullStopFullStopSolidusKeyword_2_1_0_a;
 	protected AbstractElementAlias match_Var___LeftCurlyBracketKeyword_4_2_0_RightCurlyBracketKeyword_4_2_2___or___LeftSquareBracketKeyword_4_1_0_RightSquareBracketKeyword_4_1_2__;
 	
 	@Inject
@@ -76,13 +80,16 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_LengthArgument_ColonKeyword_1_1_or_EqualsSignKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getLengthArgumentAccess().getColonKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getLengthArgumentAccess().getEqualsSignKeyword_1_0()));
 		match_Loop_ColonKeyword_3_2_1_or_EqualsSignKeyword_3_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getLoopAccess().getColonKeyword_3_2_1()), new TokenAlias(false, false, grammarAccess.getLoopAccess().getEqualsSignKeyword_3_2_0()));
 		match_Map_ColonKeyword_1_1_3_1_or_EqualsSignKeyword_1_1_3_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMapAccess().getColonKeyword_1_1_3_1()), new TokenAlias(false, false, grammarAccess.getMapAccess().getEqualsSignKeyword_1_1_3_0()));
+		match_Map_SemicolonKeyword_2_0_or___LeftCurlyBracketKeyword_2_1_0_RightCurlyBracketKeyword_2_1_2__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getMapAccess().getLeftCurlyBracketKeyword_2_1_0()), new TokenAlias(false, false, grammarAccess.getMapAccess().getRightCurlyBracketKeyword_2_1_2())), new TokenAlias(false, false, grammarAccess.getMapAccess().getSemicolonKeyword_2_0()));
 		match_Map___LeftParenthesisKeyword_1_0_2_0_RightParenthesisKeyword_1_0_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getMapAccess().getLeftParenthesisKeyword_1_0_2_0()), new TokenAlias(false, false, grammarAccess.getMapAccess().getRightParenthesisKeyword_1_0_2_2()));
 		match_MappableIdentifier___LeftParenthesisKeyword_2_0_RightParenthesisKeyword_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getMappableIdentifierAccess().getLeftParenthesisKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getMappableIdentifierAccess().getRightParenthesisKeyword_2_2()));
 		match_MappedArrayField_ColonKeyword_2_2_1_or_EqualsSignKeyword_2_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMappedArrayFieldAccess().getColonKeyword_2_2_1()), new TokenAlias(false, false, grammarAccess.getMappedArrayFieldAccess().getEqualsSignKeyword_2_2_0()));
 		match_MappedArrayMessage_ColonKeyword_2_2_1_or_EqualsSignKeyword_2_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMappedArrayMessageAccess().getColonKeyword_2_2_1()), new TokenAlias(false, false, grammarAccess.getMappedArrayMessageAccess().getEqualsSignKeyword_2_2_0()));
 		match_MessageArgument_ColonKeyword_0_1_1_or_EqualsSignKeyword_0_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageArgumentAccess().getColonKeyword_0_1_1()), new TokenAlias(false, false, grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_0_1_0()));
 		match_MessageArgument_ColonKeyword_1_1_1_or_EqualsSignKeyword_1_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageArgumentAccess().getColonKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getMessageArgumentAccess().getEqualsSignKeyword_1_1_0()));
-		match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageAccess().getLeftCurlyBracketKeyword_4_0_0()), new TokenAlias(false, false, grammarAccess.getMessageAccess().getRightCurlyBracketKeyword_4_0_2())), new TokenAlias(false, false, grammarAccess.getMessageAccess().getSemicolonKeyword_4_1()));
+		match_Message_LeftSquareBracketKeyword_4_2_0_0_or_QuotationMarkKeyword_4_2_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0_0()), new TokenAlias(false, false, grammarAccess.getMessageAccess().getQuotationMarkKeyword_4_2_0_1()));
+		match_Message_QuotationMarkKeyword_4_2_2_1_or_RightSquareBracketKeyword_4_2_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageAccess().getQuotationMarkKeyword_4_2_2_1()), new TokenAlias(false, false, grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2_0()));
+		match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2___or_____LeftSquareBracketKeyword_4_2_0_0_or_QuotationMarkKeyword_4_2_0_1_____QuotationMarkKeyword_4_2_2_1_or_RightSquareBracketKeyword_4_2_2_0____ = new AlternativeAlias(false, false, new GroupAlias(false, false, new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageAccess().getLeftSquareBracketKeyword_4_2_0_0()), new TokenAlias(false, false, grammarAccess.getMessageAccess().getQuotationMarkKeyword_4_2_0_1())), new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageAccess().getQuotationMarkKeyword_4_2_2_1()), new TokenAlias(false, false, grammarAccess.getMessageAccess().getRightSquareBracketKeyword_4_2_2_0()))), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getMessageAccess().getLeftCurlyBracketKeyword_4_0_0()), new TokenAlias(false, false, grammarAccess.getMessageAccess().getRightCurlyBracketKeyword_4_0_2())), new TokenAlias(false, false, grammarAccess.getMessageAccess().getSemicolonKeyword_4_1()));
 		match_Option_ColonKeyword_2_1_or_EqualsSignKeyword_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getOptionAccess().getColonKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getOptionAccess().getEqualsSignKeyword_2_0()));
 		match_Property_ColonKeyword_4_0_0_0_1_or_EqualsSignKeyword_4_0_0_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPropertyAccess().getColonKeyword_4_0_0_0_1()), new TokenAlias(false, false, grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_0_0_0_0()));
 		match_SBreakOnNoLock_ColonKeyword_1_1_or_EqualsSignKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getSBreakOnNoLockAccess().getColonKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getSBreakOnNoLockAccess().getEqualsSignKeyword_1_0()));
@@ -95,14 +102,26 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_VarMode_ColonKeyword_2_1_or_EqualsSignKeyword_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getVarModeAccess().getColonKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getVarModeAccess().getEqualsSignKeyword_2_0()));
 		match_VarType_ColonKeyword_2_1_or_EqualsSignKeyword_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getVarTypeAccess().getColonKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getVarTypeAccess().getEqualsSignKeyword_2_0()));
 		match_Var_ColonKeyword_4_0_0_1_or_EqualsSignKeyword_4_0_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getVarAccess().getColonKeyword_4_0_0_1()), new TokenAlias(false, false, grammarAccess.getVarAccess().getEqualsSignKeyword_4_0_0_0()));
+		match_Var_FullStopFullStopSolidusKeyword_2_1_0_a = new TokenAlias(true, true, grammarAccess.getVarAccess().getFullStopFullStopSolidusKeyword_2_1_0());
 		match_Var___LeftCurlyBracketKeyword_4_2_0_RightCurlyBracketKeyword_4_2_2___or___LeftSquareBracketKeyword_4_1_0_RightSquareBracketKeyword_4_1_2__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getVarAccess().getLeftCurlyBracketKeyword_4_2_0()), new TokenAlias(false, false, grammarAccess.getVarAccess().getRightCurlyBracketKeyword_4_2_2())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getVarAccess().getLeftSquareBracketKeyword_4_1_0()), new TokenAlias(false, false, grammarAccess.getVarAccess().getRightSquareBracketKeyword_4_1_2())));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getSContextRule())
+		if (ruleCall.getRule() == grammarAccess.getIDENTIFIERRule())
+			return getIDENTIFIERToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getSContextRule())
 			return getSContextToken(semanticObject, ruleCall, node);
 		return "";
+	}
+	
+	/**
+	 * terminal IDENTIFIER : ( LETTER  | UNDERSCORE ) ( LETTER | "0" | ONE | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | UNDERSCORE )*;
+	 */
+	protected String getIDENTIFIERToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "A";
 	}
 	
 	/**
@@ -150,6 +169,8 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_Loop_ColonKeyword_3_2_1_or_EqualsSignKeyword_3_2_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Map_ColonKeyword_1_1_3_1_or_EqualsSignKeyword_1_1_3_0.equals(syntax))
 				emit_Map_ColonKeyword_1_1_3_1_or_EqualsSignKeyword_1_1_3_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Map_SemicolonKeyword_2_0_or___LeftCurlyBracketKeyword_2_1_0_RightCurlyBracketKeyword_2_1_2__.equals(syntax))
+				emit_Map_SemicolonKeyword_2_0_or___LeftCurlyBracketKeyword_2_1_0_RightCurlyBracketKeyword_2_1_2__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Map___LeftParenthesisKeyword_1_0_2_0_RightParenthesisKeyword_1_0_2_2__q.equals(syntax))
 				emit_Map___LeftParenthesisKeyword_1_0_2_0_RightParenthesisKeyword_1_0_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_MappableIdentifier___LeftParenthesisKeyword_2_0_RightParenthesisKeyword_2_2__q.equals(syntax))
@@ -162,8 +183,12 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_MessageArgument_ColonKeyword_0_1_1_or_EqualsSignKeyword_0_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_MessageArgument_ColonKeyword_1_1_1_or_EqualsSignKeyword_1_1_0.equals(syntax))
 				emit_MessageArgument_ColonKeyword_1_1_1_or_EqualsSignKeyword_1_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2__.equals(syntax))
-				emit_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2__(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Message_LeftSquareBracketKeyword_4_2_0_0_or_QuotationMarkKeyword_4_2_0_1.equals(syntax))
+				emit_Message_LeftSquareBracketKeyword_4_2_0_0_or_QuotationMarkKeyword_4_2_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Message_QuotationMarkKeyword_4_2_2_1_or_RightSquareBracketKeyword_4_2_2_0.equals(syntax))
+				emit_Message_QuotationMarkKeyword_4_2_2_1_or_RightSquareBracketKeyword_4_2_2_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2___or_____LeftSquareBracketKeyword_4_2_0_0_or_QuotationMarkKeyword_4_2_0_1_____QuotationMarkKeyword_4_2_2_1_or_RightSquareBracketKeyword_4_2_2_0____.equals(syntax))
+				emit_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2___or_____LeftSquareBracketKeyword_4_2_0_0_or_QuotationMarkKeyword_4_2_0_1_____QuotationMarkKeyword_4_2_2_1_or_RightSquareBracketKeyword_4_2_2_0____(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Option_ColonKeyword_2_1_or_EqualsSignKeyword_2_0.equals(syntax))
 				emit_Option_ColonKeyword_2_1_or_EqualsSignKeyword_2_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Property_ColonKeyword_4_0_0_0_1_or_EqualsSignKeyword_4_0_0_0_0.equals(syntax))
@@ -188,6 +213,8 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_VarType_ColonKeyword_2_1_or_EqualsSignKeyword_2_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Var_ColonKeyword_4_0_0_1_or_EqualsSignKeyword_4_0_0_0.equals(syntax))
 				emit_Var_ColonKeyword_4_0_0_1_or_EqualsSignKeyword_4_0_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Var_FullStopFullStopSolidusKeyword_2_1_0_a.equals(syntax))
+				emit_Var_FullStopFullStopSolidusKeyword_2_1_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Var___LeftCurlyBracketKeyword_4_2_0_RightCurlyBracketKeyword_4_2_2___or___LeftSquareBracketKeyword_4_1_0_RightSquareBracketKeyword_4_1_2__.equals(syntax))
 				emit_Var___LeftCurlyBracketKeyword_4_2_0_RightCurlyBracketKeyword_4_2_2___or___LeftSquareBracketKeyword_4_1_0_RightSquareBracketKeyword_4_1_2__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -222,8 +249,6 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) 'error' (ambiguity) expression=Expression
-	 *     (rule start) 'error' (ambiguity) literal=QUOTED_IDENTIFIER
-	 *     (rule start) 'error' (ambiguity) literal=STRING_CONSTANT
 	 */
 	protected void emit_BreakParameter_ColonKeyword_2_1_1_or_EqualsSignKeyword_2_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -348,7 +373,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '=' | ':'
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     mappable=MappableIdentifier '(' 'filter' (ambiguity) filter=Expression
+	 *     mappable=MAPPABLE_IDENTIFIER '(' 'filter' (ambiguity) filter=Expression
 	 *     tml=TmlIdentifier '(' 'filter' (ambiguity) filter=Expression
 	 */
 	protected void emit_Loop_ColonKeyword_3_2_1_or_EqualsSignKeyword_3_2_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -368,11 +393,24 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
+	 *     ';' | ('{' '}')
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     adapterName=IDENTIFIER ('(' ')')? (ambiguity) (rule end)
+	 *     arguments=KeyValueArguments ')' (ambiguity) (rule end)
+	 *     objectName=OBJECT_IDENTIFIER ')' (ambiguity) (rule end)
+	 */
+	protected void emit_Map_SemicolonKeyword_2_0_or___LeftCurlyBracketKeyword_2_1_0_RightCurlyBracketKeyword_2_1_2__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
 	 *     ('(' ')')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     adapterName=IDENTIFIER (ambiguity) '{' '}' (rule end)
 	 *     adapterName=IDENTIFIER (ambiguity) '{' statements+=InnerBody
+	 *     adapterName=IDENTIFIER (ambiguity) (';' | ('{' '}')) (rule end)
 	 */
 	protected void emit_Map___LeftParenthesisKeyword_1_0_2_0_RightParenthesisKeyword_1_0_2_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -405,6 +443,10 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '=' | ':'
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     message=CURRENT_INDOC '(' 'filter' (ambiguity) filter=Expression
+	 *     message=CURRENT_OUTDOC '(' 'filter' (ambiguity) filter=Expression
+	 *     message=CURRENT_VARDOC '(' 'filter' (ambiguity) filter=Expression
+	 *     message=QUOTED_IDENTIFIER '(' 'filter' (ambiguity) filter=Expression
 	 *     message=TML_LITERAL '(' 'filter' (ambiguity) filter=Expression
 	 */
 	protected void emit_MappedArrayMessage_ColonKeyword_2_2_1_or_EqualsSignKeyword_2_2_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -438,13 +480,36 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     ('{' '}') | ';'
+	 *     '[' | '"'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     arguments=MessageArguments ')' (ambiguity) messageArray=MessageArray
+	 *     messageName=QUOTED_IDENTIFIER (ambiguity) messageArray=MessageArray
+	 */
+	protected void emit_Message_LeftSquareBracketKeyword_4_2_0_0_or_QuotationMarkKeyword_4_2_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ']' | '"'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     messageArray=MessageArray (ambiguity) (rule end)
+	 */
+	protected void emit_Message_QuotationMarkKeyword_4_2_2_1_or_RightSquareBracketKeyword_4_2_2_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('{' '}') | ';' | (('[' | '"') (']' | '"'))
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     arguments=MessageArguments ')' (ambiguity) (rule end)
 	 *     messageName=QUOTED_IDENTIFIER (ambiguity) (rule end)
 	 */
-	protected void emit_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Message_SemicolonKeyword_4_1_or___LeftCurlyBracketKeyword_4_0_0_RightCurlyBracketKeyword_4_0_2___or_____LeftSquareBracketKeyword_4_2_0_0_or_QuotationMarkKeyword_4_2_0_1_____QuotationMarkKeyword_4_2_2_1_or_RightSquareBracketKeyword_4_2_2_0____(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -480,7 +545,11 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) 'breakOnNoLock' (ambiguity) '(' value=Expression
 	 *     (rule start) 'breakOnNoLock' (ambiguity) '-' expression=Atomic
 	 *     (rule start) 'breakOnNoLock' (ambiguity) hasExists?='?'
+	 *     (rule start) 'breakOnNoLock' (ambiguity) value=CURRENT_INDOC
+	 *     (rule start) 'breakOnNoLock' (ambiguity) value=CURRENT_OUTDOC
+	 *     (rule start) 'breakOnNoLock' (ambiguity) value=CURRENT_VARDOC
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=FALSE
+	 *     (rule start) 'breakOnNoLock' (ambiguity) value=FLOAT
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=ForAllIdentifier
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=FunctionIdentifier
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=INTEGER
@@ -488,6 +557,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=NULL_DEF
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=ONE
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=STRING_LITERAL
+	 *     (rule start) 'breakOnNoLock' (ambiguity) value=TODAY
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=TRUE
 	 *     (rule start) 'breakOnNoLock' (ambiguity) value=TmlIdentifier
 	 *     (rule start) 'breakOnNoLock' (ambiguity) {AndOrExpression.left=}
@@ -510,7 +580,11 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) '(' value=Expression
 	 *     (rule start) (ambiguity) '-' expression=Atomic
 	 *     (rule start) (ambiguity) hasExists?='?'
+	 *     (rule start) (ambiguity) value=CURRENT_INDOC
+	 *     (rule start) (ambiguity) value=CURRENT_OUTDOC
+	 *     (rule start) (ambiguity) value=CURRENT_VARDOC
 	 *     (rule start) (ambiguity) value=FALSE
+	 *     (rule start) (ambiguity) value=FLOAT
 	 *     (rule start) (ambiguity) value=ForAllIdentifier
 	 *     (rule start) (ambiguity) value=FunctionIdentifier
 	 *     (rule start) (ambiguity) value=INTEGER
@@ -518,6 +592,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) value=NULL_DEF
 	 *     (rule start) (ambiguity) value=ONE
 	 *     (rule start) (ambiguity) value=STRING_LITERAL
+	 *     (rule start) (ambiguity) value=TODAY
 	 *     (rule start) (ambiguity) value=TRUE
 	 *     (rule start) (ambiguity) value=TmlIdentifier
 	 *     (rule start) (ambiguity) {AndOrExpression.left=}
@@ -537,8 +612,6 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) 'key' (ambiguity) expression=Expression
-	 *     (rule start) 'key' (ambiguity) literal=QUOTED_IDENTIFIER
-	 *     (rule start) 'key' (ambiguity) literal=STRING_CONSTANT
 	 */
 	protected void emit_SKey_ColonKeyword_1_1_or_EqualsSignKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -553,7 +626,11 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) 'timeout' (ambiguity) '(' value=Expression
 	 *     (rule start) 'timeout' (ambiguity) '-' expression=Atomic
 	 *     (rule start) 'timeout' (ambiguity) hasExists?='?'
+	 *     (rule start) 'timeout' (ambiguity) value=CURRENT_INDOC
+	 *     (rule start) 'timeout' (ambiguity) value=CURRENT_OUTDOC
+	 *     (rule start) 'timeout' (ambiguity) value=CURRENT_VARDOC
 	 *     (rule start) 'timeout' (ambiguity) value=FALSE
+	 *     (rule start) 'timeout' (ambiguity) value=FLOAT
 	 *     (rule start) 'timeout' (ambiguity) value=ForAllIdentifier
 	 *     (rule start) 'timeout' (ambiguity) value=FunctionIdentifier
 	 *     (rule start) 'timeout' (ambiguity) value=INTEGER
@@ -561,6 +638,7 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) 'timeout' (ambiguity) value=NULL_DEF
 	 *     (rule start) 'timeout' (ambiguity) value=ONE
 	 *     (rule start) 'timeout' (ambiguity) value=STRING_LITERAL
+	 *     (rule start) 'timeout' (ambiguity) value=TODAY
 	 *     (rule start) 'timeout' (ambiguity) value=TRUE
 	 *     (rule start) 'timeout' (ambiguity) value=TmlIdentifier
 	 *     (rule start) 'timeout' (ambiguity) {AndOrExpression.left=}
@@ -635,10 +713,28 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '=' | ':'
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     (rule start) 'var' '../'* IDENTIFIER (ambiguity) expressionList=ConditionalExpressions
 	 *     arguments=VarArguments (ambiguity) expressionList=ConditionalExpressions
-	 *     varName=IDENTIFIER (ambiguity) expressionList=ConditionalExpressions
+	 *     varName='/' (ambiguity) expressionList=ConditionalExpressions
 	 */
 	protected void emit_Var_ColonKeyword_4_0_0_1_or_EqualsSignKeyword_4_0_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '../'*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER '[' varArray=VarArray
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER '{' mappedArrayField=MappedArrayField
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER '{' mappedArrayMessage=MappedArrayMessage
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER '{' varElements+=VarElement
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER ('=' | ':') expressionList=ConditionalExpressions
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER (('[' ']') | ('{' '}')) (rule start)
+	 *     (rule start) 'var' (ambiguity) IDENTIFIER arguments=VarArguments
+	 */
+	protected void emit_Var_FullStopFullStopSolidusKeyword_2_1_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -647,8 +743,9 @@ public class NavascriptSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('[' ']') | ('{' '}')
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     (rule start) 'var' '../'* IDENTIFIER (ambiguity) (rule start)
 	 *     arguments=VarArguments (ambiguity) (rule end)
-	 *     varName=IDENTIFIER (ambiguity) (rule end)
+	 *     varName='/' (ambiguity) (rule end)
 	 */
 	protected void emit_Var___LeftCurlyBracketKeyword_4_2_0_RightCurlyBracketKeyword_4_2_2___or___LeftSquareBracketKeyword_4_1_0_RightSquareBracketKeyword_4_1_2__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

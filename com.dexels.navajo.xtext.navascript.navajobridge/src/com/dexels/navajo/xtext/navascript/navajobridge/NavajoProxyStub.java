@@ -8,6 +8,7 @@ import java.util.TreeMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
@@ -22,6 +23,8 @@ public class NavajoProxyStub implements IResourceChangeListener {
 
 	private ThreadPoolExecutor tpe = (ThreadPoolExecutor) Executors.newFixedThreadPool(1);
 
+	private static final Logger logger = Logger.getLogger(NavajoProxyStub.class);
+	
 	public static NavajoProxyStub getInstance() {
 		return instance;
 	}
@@ -47,7 +50,7 @@ public class NavajoProxyStub implements IResourceChangeListener {
 						if ( md != null ) {
 							ProxyMapDefinition pmd = ProxyMetaData.getInstance().getMapDefinition(md);
 							if ( pmd != null && pmd.tagName != null  ) {
-								System.err.println(pmd.tagName + ": " + pmd.objectName);
+								logger.info("Adding accesible adapter: " + pmd.tagName + ": " + pmd.objectName);
 								ClassLoader acl = null;
 								if ( pmd.objectClassLoader != null ) {
 									acl = pmd.objectClassLoader;
@@ -59,7 +62,7 @@ public class NavajoProxyStub implements IResourceChangeListener {
 								AdapterClassDefinition acd = new AdapterClassDefinition(pmd, acl);
 								adapters.put(md, acd);
 							} else {
-								System.err.println("Could not find " + md + " in ProxyMetaData");
+								logger.warn("Could not find " + md + " in ProxyMetaData");
 							}
 						}
 					}
@@ -78,13 +81,13 @@ public class NavajoProxyStub implements IResourceChangeListener {
 			IWorkspace workspace = ResourcesPlugin.getWorkspace();
 			workspace.addResourceChangeListener(this);
 		} catch (Exception e) {
-			e.printStackTrace(System.err);
+			logger.error(e);
 		}
-		System.err.println(">>>>>>>>>>>>>> NavajoProxyStub has been activated()");
+		logger.info(">>>>>>>>>>>>>> NavajoProxyStub has been activated()");
 	}
 
 	public void deactivate() {
-		System.err.println("In NavajoProxyStub.deactivate()");
+		logger.info("In NavajoProxyStub.deactivate()");
 	}
 
 
@@ -93,6 +96,10 @@ public class NavajoProxyStub implements IResourceChangeListener {
 		return acd;
 	}
 
+	public void addAdapter(String name, AdapterClassDefinition adapterClassDefinition) {
+		adapters.put(name, adapterClassDefinition);
+	}
+	
 	public ProxyFunctionDefinition getFunction(String s) {
 		return FunctionDefinitionCache.getInstance().getFunction(s);
 	}
@@ -141,12 +148,12 @@ public class NavajoProxyStub implements IResourceChangeListener {
 			//System.err.println(">>>> changed file: " + f.getName() + " / " + f.getFileExtension());
 			if ( f != null && f.getFileExtension() != null && f.getFileExtension().equals("java")) {
 				hasJavaFile = true;
-				System.err.println("THIS JAVA FILE HAS CHANGED: " + f.getName());
+				logger.info("THIS JAVA FILE HAS CHANGED: " + f.getName());
 				break;
 			}
 		}
 		if ( hasJavaFile ) {
-			System.err.println("CHANGED JAVA FILE. CALL INIT() AGAIN!!!!!!!!!!");
+			logger.info("CHANGED JAVA FILE. CALL INIT() AGAIN!");
 			init();
 		}
 	}

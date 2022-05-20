@@ -6,6 +6,7 @@ package com.dexels.navajo.navascript.impl;
 import com.dexels.navajo.navascript.ConditionalExpressions;
 import com.dexels.navajo.navascript.MappedArrayField;
 import com.dexels.navajo.navascript.MappedArrayMessage;
+import com.dexels.navajo.navascript.MappedMessage;
 import com.dexels.navajo.navascript.NavascriptPackage;
 import com.dexels.navajo.navascript.SetterField;
 
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link com.dexels.navajo.navascript.impl.SetterFieldImpl#getExpressionList <em>Expression List</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.impl.SetterFieldImpl#getMappedArray <em>Mapped Array</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.impl.SetterFieldImpl#getMappedField <em>Mapped Field</em>}</li>
+ *   <li>{@link com.dexels.navajo.navascript.impl.SetterFieldImpl#getMappedMessage <em>Mapped Message</em>}</li>
  * </ul>
  *
  * @generated
@@ -84,6 +86,16 @@ public class SetterFieldImpl extends MethodOrSetterImpl implements SetterField
    * @ordered
    */
   protected MappedArrayField mappedField;
+
+  /**
+   * The cached value of the '{@link #getMappedMessage() <em>Mapped Message</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMappedMessage()
+   * @generated
+   * @ordered
+   */
+  protected MappedMessage mappedMessage;
 
   /**
    * <!-- begin-user-doc -->
@@ -287,6 +299,56 @@ public class SetterFieldImpl extends MethodOrSetterImpl implements SetterField
    * @generated
    */
   @Override
+  public MappedMessage getMappedMessage()
+  {
+    return mappedMessage;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMappedMessage(MappedMessage newMappedMessage, NotificationChain msgs)
+  {
+    MappedMessage oldMappedMessage = mappedMessage;
+    mappedMessage = newMappedMessage;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NavascriptPackage.SETTER_FIELD__MAPPED_MESSAGE, oldMappedMessage, newMappedMessage);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMappedMessage(MappedMessage newMappedMessage)
+  {
+    if (newMappedMessage != mappedMessage)
+    {
+      NotificationChain msgs = null;
+      if (mappedMessage != null)
+        msgs = ((InternalEObject)mappedMessage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NavascriptPackage.SETTER_FIELD__MAPPED_MESSAGE, null, msgs);
+      if (newMappedMessage != null)
+        msgs = ((InternalEObject)newMappedMessage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NavascriptPackage.SETTER_FIELD__MAPPED_MESSAGE, null, msgs);
+      msgs = basicSetMappedMessage(newMappedMessage, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, NavascriptPackage.SETTER_FIELD__MAPPED_MESSAGE, newMappedMessage, newMappedMessage));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -297,6 +359,8 @@ public class SetterFieldImpl extends MethodOrSetterImpl implements SetterField
         return basicSetMappedArray(null, msgs);
       case NavascriptPackage.SETTER_FIELD__MAPPED_FIELD:
         return basicSetMappedField(null, msgs);
+      case NavascriptPackage.SETTER_FIELD__MAPPED_MESSAGE:
+        return basicSetMappedMessage(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -319,6 +383,8 @@ public class SetterFieldImpl extends MethodOrSetterImpl implements SetterField
         return getMappedArray();
       case NavascriptPackage.SETTER_FIELD__MAPPED_FIELD:
         return getMappedField();
+      case NavascriptPackage.SETTER_FIELD__MAPPED_MESSAGE:
+        return getMappedMessage();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -344,6 +410,9 @@ public class SetterFieldImpl extends MethodOrSetterImpl implements SetterField
         return;
       case NavascriptPackage.SETTER_FIELD__MAPPED_FIELD:
         setMappedField((MappedArrayField)newValue);
+        return;
+      case NavascriptPackage.SETTER_FIELD__MAPPED_MESSAGE:
+        setMappedMessage((MappedMessage)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -371,6 +440,9 @@ public class SetterFieldImpl extends MethodOrSetterImpl implements SetterField
       case NavascriptPackage.SETTER_FIELD__MAPPED_FIELD:
         setMappedField((MappedArrayField)null);
         return;
+      case NavascriptPackage.SETTER_FIELD__MAPPED_MESSAGE:
+        setMappedMessage((MappedMessage)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -393,6 +465,8 @@ public class SetterFieldImpl extends MethodOrSetterImpl implements SetterField
         return mappedArray != null;
       case NavascriptPackage.SETTER_FIELD__MAPPED_FIELD:
         return mappedField != null;
+      case NavascriptPackage.SETTER_FIELD__MAPPED_MESSAGE:
+        return mappedMessage != null;
     }
     return super.eIsSet(featureID);
   }

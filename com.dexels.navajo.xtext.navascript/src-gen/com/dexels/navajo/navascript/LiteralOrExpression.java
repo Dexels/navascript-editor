@@ -13,7 +13,6 @@ package com.dexels.navajo.navascript;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.dexels.navajo.navascript.LiteralOrExpression#getLiteral <em>Literal</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.LiteralOrExpression#getExpression <em>Expression</em>}</li>
  * </ul>
  *
@@ -23,28 +22,6 @@ package com.dexels.navajo.navascript;
  */
 public interface LiteralOrExpression extends SKey, BreakParameter
 {
-  /**
-   * Returns the value of the '<em><b>Literal</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Literal</em>' attribute.
-   * @see #setLiteral(String)
-   * @see com.dexels.navajo.navascript.NavascriptPackage#getLiteralOrExpression_Literal()
-   * @model
-   * @generated
-   */
-  String getLiteral();
-
-  /**
-   * Sets the value of the '{@link com.dexels.navajo.navascript.LiteralOrExpression#getLiteral <em>Literal</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Literal</em>' attribute.
-   * @see #getLiteral()
-   * @generated
-   */
-  void setLiteral(String value);
-
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->

@@ -3,6 +3,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="navascript" nsURI="http://www.dexels.com/navajo/Navascript"
     nsPrefix="navascript">
   <eClassifiers xsi:type="ecore:EClass" name="Navascript">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//DebugStatement"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="validations" eType="#//Validations"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="toplevelStatements" eType="#//TopLevelStatements"
@@ -29,6 +31,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="BlockStatements">
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
         eType="#//InnerBody" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DebugStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Synchronized">
     <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" eType="#//SynchronizedArguments"
@@ -80,7 +85,6 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralOrExpression" eSuperTypes="#//SKey #//BreakParameter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
@@ -104,8 +108,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="methodName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Loop">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mappable" eType="#//MappableIdentifier"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tml" eType="#//TmlIdentifier"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="filter" eType="#//Expression"
@@ -168,6 +171,12 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mappedField" eType="#//MappedArrayField"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mappedMessage" eType="#//MappedMessage"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MappedMessage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//InnerBody" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MappedArrayField">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="field" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -318,7 +327,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TmlIdentifier">
+  <eClassifiers xsi:type="ecore:EClass" name="TmlIdentifier" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//TmlIdentifier"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tml" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyType"/>
@@ -403,6 +414,18 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NullLiteral" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TodayLiteral" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CurrentOutDoc" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CurrentInDoc" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CurrentVarDoc" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntType" eSuperTypes="#//PropertyType"/>

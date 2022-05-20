@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link com.dexels.navajo.navascript.impl.LiteralOrExpressionImpl#getCode <em>Code</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.impl.LiteralOrExpressionImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link com.dexels.navajo.navascript.impl.LiteralOrExpressionImpl#getLiteral <em>Literal</em>}</li>
  *   <li>{@link com.dexels.navajo.navascript.impl.LiteralOrExpressionImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
@@ -53,26 +52,6 @@ public class LiteralOrExpressionImpl extends SKeyImpl implements LiteralOrExpres
    * @ordered
    */
   protected LiteralOrExpression description;
-
-  /**
-   * The default value of the '{@link #getLiteral() <em>Literal</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLiteral()
-   * @generated
-   * @ordered
-   */
-  protected static final String LITERAL_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getLiteral() <em>Literal</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLiteral()
-   * @generated
-   * @ordered
-   */
-  protected String literal = LITERAL_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
@@ -211,31 +190,6 @@ public class LiteralOrExpressionImpl extends SKeyImpl implements LiteralOrExpres
    * @generated
    */
   @Override
-  public String getLiteral()
-  {
-    return literal;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setLiteral(String newLiteral)
-  {
-    String oldLiteral = literal;
-    literal = newLiteral;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NavascriptPackage.LITERAL_OR_EXPRESSION__LITERAL, oldLiteral, literal));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Expression getExpression()
   {
     return expression;
@@ -314,8 +268,6 @@ public class LiteralOrExpressionImpl extends SKeyImpl implements LiteralOrExpres
         return getCode();
       case NavascriptPackage.LITERAL_OR_EXPRESSION__DESCRIPTION:
         return getDescription();
-      case NavascriptPackage.LITERAL_OR_EXPRESSION__LITERAL:
-        return getLiteral();
       case NavascriptPackage.LITERAL_OR_EXPRESSION__EXPRESSION:
         return getExpression();
     }
@@ -337,9 +289,6 @@ public class LiteralOrExpressionImpl extends SKeyImpl implements LiteralOrExpres
         return;
       case NavascriptPackage.LITERAL_OR_EXPRESSION__DESCRIPTION:
         setDescription((LiteralOrExpression)newValue);
-        return;
-      case NavascriptPackage.LITERAL_OR_EXPRESSION__LITERAL:
-        setLiteral((String)newValue);
         return;
       case NavascriptPackage.LITERAL_OR_EXPRESSION__EXPRESSION:
         setExpression((Expression)newValue);
@@ -364,9 +313,6 @@ public class LiteralOrExpressionImpl extends SKeyImpl implements LiteralOrExpres
       case NavascriptPackage.LITERAL_OR_EXPRESSION__DESCRIPTION:
         setDescription((LiteralOrExpression)null);
         return;
-      case NavascriptPackage.LITERAL_OR_EXPRESSION__LITERAL:
-        setLiteral(LITERAL_EDEFAULT);
-        return;
       case NavascriptPackage.LITERAL_OR_EXPRESSION__EXPRESSION:
         setExpression((Expression)null);
         return;
@@ -388,8 +334,6 @@ public class LiteralOrExpressionImpl extends SKeyImpl implements LiteralOrExpres
         return code != null;
       case NavascriptPackage.LITERAL_OR_EXPRESSION__DESCRIPTION:
         return description != null;
-      case NavascriptPackage.LITERAL_OR_EXPRESSION__LITERAL:
-        return LITERAL_EDEFAULT == null ? literal != null : !LITERAL_EDEFAULT.equals(literal);
       case NavascriptPackage.LITERAL_OR_EXPRESSION__EXPRESSION:
         return expression != null;
     }
@@ -434,23 +378,6 @@ public class LiteralOrExpressionImpl extends SKeyImpl implements LiteralOrExpres
       }
     }
     return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (literal: ");
-    result.append(literal);
-    result.append(')');
-    return result.toString();
   }
 
 } //LiteralOrExpressionImpl

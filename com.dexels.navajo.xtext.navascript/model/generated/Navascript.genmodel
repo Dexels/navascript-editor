@@ -7,6 +7,7 @@
   <genPackages prefix="Navascript" basePackage="com.dexels.navajo" disposableProviderFactory="true"
       fileExtensions="ns" ecorePackage="Navascript.ecore#/">
     <genClasses ecoreClass="Navascript.ecore#//Navascript">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Navascript/debug"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Navascript/validations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Navascript/toplevelStatements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Navascript/finally"/>
@@ -24,6 +25,9 @@
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//BlockStatements">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//BlockStatements/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//DebugStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//DebugStatement/value"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//Synchronized">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Synchronized/arguments"/>
@@ -62,7 +66,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//CheckAttribute/value"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//LiteralOrExpression">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//LiteralOrExpression/literal"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//LiteralOrExpression/expression"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//Print">
@@ -81,7 +84,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//Method/methodName"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//Loop">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Loop/mappable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//Loop/mappable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Loop/tml"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Loop/filter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//Loop/statements"/>
@@ -127,6 +130,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//SetterField/expressionList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//SetterField/mappedArray"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//SetterField/mappedField"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//SetterField/mappedMessage"/>
+    </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//MappedMessage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//MappedMessage/statements"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//MappedArrayField">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//MappedArrayField/field"/>
@@ -240,6 +247,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//MappableIdentifier/args"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//TmlIdentifier">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Navascript.ecore#//TmlIdentifier/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//TmlIdentifier/tml"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//PropertyType"/>
@@ -306,6 +314,18 @@
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//NullLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//NullLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//TodayLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//TodayLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//CurrentOutDoc">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//CurrentOutDoc/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//CurrentInDoc">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//CurrentInDoc/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Navascript.ecore#//CurrentVarDoc">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Navascript.ecore#//CurrentVarDoc/value"/>
     </genClasses>
     <genClasses ecoreClass="Navascript.ecore#//IntType"/>
     <genClasses ecoreClass="Navascript.ecore#//StringType"/>

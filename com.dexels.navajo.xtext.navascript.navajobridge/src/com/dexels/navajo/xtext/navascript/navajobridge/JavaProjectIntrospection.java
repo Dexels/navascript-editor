@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ServiceLoader;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
@@ -31,7 +32,9 @@ import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
 public class JavaProjectIntrospection {
 
 
-	public static ClassLoader getProjectClassLoader(IJavaProject javaProject) throws Exception {
+	private static final Logger logger = Logger.getLogger(JavaProjectIntrospection.class);
+	
+	public static ClassLoader getProjectClassLoader(IJavaProject javaProject, IProject p) throws Exception {
 
 		IClasspathEntry[] entries = javaProject.getResolvedClasspath(true);
 		String wsPath = javaProject.getProject().getLocation().toPortableString();
@@ -40,9 +43,9 @@ public class JavaProjectIntrospection {
 
 		URL[] urls = null;
 		int i = 0;
-
-		//System.out.println("ClassLoader " + wsPath);
-		//System.out.println("ClassLoader " + firstEntryLocation);
+		
+//		System.err.println("ClassLoader wsPath: " + wsPath);
+//		System.err.println("ClassLoader firstEntryLocation: " + firstEntryLocation);
 
 		List<URL> tpurls = getTargetPlatformURLs();
 
@@ -61,15 +64,18 @@ public class JavaProjectIntrospection {
 		}
 		urls[i++] = new File(wsPath + output).toURL();
 
-		//System.out.println("ClassLoader " + output);
+		//System.err.println("ClassLoader url: " + wsPath + output);
 
 		String fullPath = null;
 
 		for (IClasspathEntry entry : entries) {
 			if (entry.getEntryKind() == IClasspathEntry.CPE_PROJECT) {
 				IResource project = ResourcesPlugin.getWorkspace().getRoot().findMember(entry.getPath());
-				String projectPath = JavaCore.create(project.getProject()).getOutputLocation().toPortableString();
-				fullPath = wsPath + projectPath;
+				String outputPath = JavaCore.create(project.getProject()).getOutputLocation().toPortableString();
+				String projectLocation = project.getLocation().toPortableString();
+				String lastPath = projectLocation.substring(projectLocation.lastIndexOf("/"), projectLocation.length());
+				outputPath = outputPath.replaceAll(lastPath, "");
+				fullPath = project.getLocation() +  outputPath;
 			} else {
 				Object resource = JavaModel.getTarget(entry.getPath(), true);
 
@@ -88,8 +94,6 @@ public class JavaProjectIntrospection {
 			urls[i++] = new File(fullPath).toURL();
 		}
 
-
-		System.err.println("Added total of " + urls.length + " entries to classloader...");
 		URLClassLoader classLoader = new URLClassLoader(urls, java.sql.SQLException.class.getClassLoader());
 
 		return classLoader;
@@ -187,38 +191,10 @@ public class JavaProjectIntrospection {
 				urls.add(u);
 			}
 		} catch (Throwable t) {
-			t.printStackTrace(System.err);
+			logger.warn(t.getLocalizedMessage());
 		}
 
 		return urls;
-
-	}
-
-	private static void addAdditionalAdapters(String adapterClassName, ClassLoader cl) {
-		// getDefinitionAsStream
-
-		try {
-			Class foundClass = Class.forName(adapterClassName, true, cl);
-			Object adapterObject = foundClass.getDeclaredConstructor().newInstance();
-			System.err.println("LOADED " + adapterClassName + " OBJECT: " + adapterObject);
-			readAdaptersFromDefinitionFile(adapterObject, cl);
-		} catch (Throwable t) {
-			System.err.println("could not load MONGO lib: " + t);
-		}
-
-	}
-	
-	private static void addAdditionalFunctions(String adapterClassName, ClassLoader cl) {
-		// getDefinitionAsStream
-
-		try {
-			Class foundClass = Class.forName(adapterClassName, true, cl);
-			Object adapterObject = foundClass.getDeclaredConstructor().newInstance();
-			System.err.println("LOADED " + adapterClassName + " OBJECT: " + adapterObject);
-			readFunctionsFromDefinitionFile(adapterObject);
-		} catch (Throwable t) {
-			System.err.println("could not load MONGO lib: " + t);
-		}
 
 	}
 
@@ -235,15 +211,15 @@ public class JavaProjectIntrospection {
 
 				IJavaProject jp = JavaCore.create(p);
 
-				//System.err.println("Java project: jp");
-				ClassLoader cl = getProjectClassLoader(jp);
+				//System.err.println("Java project: " + jp.get);
+				ClassLoader cl = getProjectClassLoader(jp, p);
 				
 				try {
 
 					Class slc = Class.forName("navajo.ExtensionDefinition", true, cl);
 					ServiceLoader extensionLoaders = ServiceLoader.load(slc, cl);
 					for (Object loader : extensionLoaders ) {
-						System.err.println(">>>>>>>>>> Found service: " + loader);
+						//System.err.println(">>>>>>>>>> Found service: " + loader);
 						readFunctionsFromDefinitionFile(loader);
 
 					}
@@ -266,7 +242,7 @@ public class JavaProjectIntrospection {
 
 				} catch (Throwable e) {
 					//e.printStackTrace(System.err);
-					System.err.println("Could not find MapMetaData in project: " + p.getName() + ": " + e.getMessage());
+					logger.warn("Could not find MapMetaData in project: " + p.getName() + ": " + e.getMessage());
 				}
 				
 				//addAdditionalAdapters("com.dexels.navajo.mongo.adapter.MongoAdapterLibrary", cl);
