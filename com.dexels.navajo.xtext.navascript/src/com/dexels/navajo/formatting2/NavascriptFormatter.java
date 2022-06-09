@@ -7,14 +7,9 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.formatting2.AbstractJavaFormatter;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
-import org.eclipse.xtext.ui.codetemplates.templates.Codetemplate;
-import org.eclipse.xtext.ui.codetemplates.templates.Codetemplates;
-
 import com.dexels.navajo.NavascriptStandaloneSetup;
 import com.dexels.navajo.navascript.AntiMessage;
 import com.dexels.navajo.navascript.BlockStatements;
@@ -47,7 +42,6 @@ import com.dexels.navajo.navascript.TopLevelStatements;
 import com.dexels.navajo.navascript.Validations;
 import com.dexels.navajo.navascript.Var;
 import com.dexels.navajo.services.NavascriptGrammarAccess;
-import com.google.inject.Inject;
 import com.google.inject.Injector;
 
 public class NavascriptFormatter extends AbstractJavaFormatter {

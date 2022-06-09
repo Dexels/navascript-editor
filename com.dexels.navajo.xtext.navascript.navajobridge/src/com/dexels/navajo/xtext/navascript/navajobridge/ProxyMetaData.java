@@ -33,17 +33,17 @@ public class ProxyMetaData {
 		}
 	}
 
-	public void addMapMetaData(Object o, Class c) {
+	public void addMapMetaData(Object o, Class<?> c) {
 		try {			
 			Method m = c.getDeclaredMethod("getMapDefinitions");
 			Set<String> rMapDefinitions = (Set<String>) m.invoke(o);
-			Set<String> newMaps = new TreeSet(rMapDefinitions);
+			Set<String> newMaps = new TreeSet<String>(rMapDefinitions);
 			for ( String s : newMaps ) {
 				if ( !mapDefinitions.containsKey(s)) {
 					try {
 						Method m2 = c.getDeclaredMethod("getMapDefinition", String.class);
 						Object rMapDefinition = m2.invoke(o, s);
-						Class cMapDefinition = rMapDefinition.getClass();
+						Class<? extends Object> cMapDefinition = rMapDefinition.getClass();
 						ProxyMapDefinition pmd = new ProxyMapDefinition(rMapDefinition, cMapDefinition);
 						mapDefinitions.put(s, pmd);
 						//System.err.println("@@@@@@@@@@ Added adapter " + s + " with ProxyMapDefinition: " + pmd);

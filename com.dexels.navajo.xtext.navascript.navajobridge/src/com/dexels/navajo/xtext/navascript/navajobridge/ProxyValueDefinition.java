@@ -2,13 +2,10 @@ package com.dexels.navajo.xtext.navascript.navajobridge;
 
 import java.lang.reflect.Method;
 
-import com.dexels.navajo.mapping.compiler.meta.ParameterDefinition;
-import com.dexels.navajo.mapping.compiler.meta.ValueDefinition;
-
 public class ProxyValueDefinition {
 
 	private Object realObject;
-	private Class realClass;
+	private Class<?> realClass;
 
 	private String direction;
 	private String map;
@@ -17,7 +14,7 @@ public class ProxyValueDefinition {
 	private String required;
 	private String value;
 
-	public ProxyValueDefinition(Object real, Class realClass) {
+	public ProxyValueDefinition(Object real, Class<?> realClass) {
 		this.realObject = real;
 		this.realClass = realClass;
 		init();

@@ -4,8 +4,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import com.dexels.navajo.expression.api.FunctionDefinition;
-
 public class FunctionDefinitionCache {
 
 	static FunctionDefinitionCache instance = new FunctionDefinitionCache();

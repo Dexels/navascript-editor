@@ -1,238 +1,220 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE xml>
 <?pde version="3.8.0"?>
 <target name="com.dexels.navajo.xtext.navascript.target" sequenceNumber="1">
-	<locations>
-		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-		 <unit id="org.eclipse.equinox.compendium.sdk.feature.group" version="0.0.0"/>
+    <locations>
+        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+            <repository location="https://download.eclipse.org/releases/2022-03"/>
+
+            <unit id="org.eclipse.equinox.compendium.sdk.feature.group" version="0.0.0"/>
             <unit id="org.eclipse.equinox.core.feature.feature.group" version="0.0.0"/>
-			<unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
-			<unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
-			<unit id="org.eclipse.pde.feature.group" version="0.0.0"/>
-			<unit id="org.eclipse.draw2d.feature.group" version="0.0.0"/>
-			<unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
-			<repository location="https://download.eclipse.org/releases/2020-12"/>
-		</location>
-		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
-			<repository location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.12.0/"/>
-		</location>
-		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-			<repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.24.0/"/>
-		</location>
-		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<unit id="com.google.gson" version="0.0.0"/>
-			<unit id="org.antlr.runtime" version="0.0.0"/>
-			<unit id="org.junit" version="0.0.0"/>
-			<unit id="org.junit.jupiter.api" version="0.0.0"/>
-			<unit id="org.junit.jupiter.engine" version="0.0.0"/>
-			<unit id="org.junit.platform.commons" version="0.0.0"/>
-			<unit id="org.junit.platform.engine" version="0.0.0"/>
-			<unit id="org.junit.platform.launcher" version="0.0.0"/>
-			<unit id="org.junit.platform.runner" version="0.0.0"/>
-			<unit id="org.opentest4j" version="0.0.0"/>
-			<unit id="org.objectweb.asm" version="0.0.0"/>
-			<unit id="org.objectweb.asm.tree" version="0.0.0"/>
-			<unit id="io.github.classgraph" version="0.0.0"/>
-			<repository location="https://download.eclipse.org/tools/orbit/downloads/2020-12"/>
-		</location>
-    	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-        	<repository location="http://p2.dexels.com/eclipse/navajo_1.0.1329"/>
-        	<unit id="com.dexels.navajo.core.feature.feature.group" version="0.0.0"/>
-        	 <unit id="com.dexels.navajo.resource.feature.feature.group" version="0.0.0"/>
-            <unit id="com.dexels.navajo.server.feature.feature.group" version="0.0.0"/>
-    	</location>
-        <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-            <repository location="https://p2.dexels.com/eclipse/enterprise_3.3.1159/"/>
-            <unit id="com.dexels.navajo.enterprise.feature.feature.group" version="0.0.0"/>
-            <unit id="com.dexels.navajo.enterprise.reactive.feature.feature.group" version="0.0.0"/>
-            <unit id="com.dexels.navajo.mongo.feature.feature.group" version="0.0.0"/>
+            <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
+            <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
+            <unit id="org.eclipse.pde.feature.group" version="0.0.0"/>
+            <unit id="org.eclipse.draw2d.feature.group" version="0.0.0"/>
+            <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
         </location>
-    	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-        	<repository location="http://p2.dexels.com/eclipse/3rdparty_3.3.872"/>
-        	<unit id="bcpg" version="0.0.0"/>
-        	<unit id="bcpkix" version="0.0.0"/>
-        	<unit id="bcprov" version="0.0.0"/>
-        	
-        	<unit id="com.dexels.immutable.api" version="0.0.0"/>
-        	<unit id="com.dexels.immutable.impl" version="0.0.0"/>
-        	<unit id="com.dexels.index.api" version="0.0.0"/>
-        	<unit id="com.dexels.kafka.impl.rx2" version="0.0.0"/>
-        	<unit id="com.dexels.kafka.streams" version="0.0.0"/>
-        	<unit id="com.dexels.kafka.streams.api" version="0.0.0"/>
-        	<unit id="com.dexels.kafka.streams.sink.mongo" version="0.0.0"/>
-        	<unit id="com.dexels.kafka.webapi" version="0.0.0"/>
-        	<unit id="com.dexels.keystoreprovider" version="0.0.0"/>
-        	<unit id="com.dexels.log4j.server" version="0.0.0"/>
-        	
-        	<unit id="com.dexels.navajo.webconsole.branding" version="0.0.0"/>
-        	
-        	<unit id="com.dexels.osgi.bundlesync" version="0.0.0"/>
-        	<unit id="com.dexels.prometheus.api" version="0.0.0"/>
-        	<unit id="com.dexels.prometheus.impl" version="0.0.0"/>
-        	<unit id="com.dexels.pubsub.rx2.api" version="0.0.0"/>
-        	
-        	
-        	<unit id="com.dexels.resourcebundle" version="0.0.0"/>
-        	<unit id="com.dexels.server.mgmt.api" version="0.0.0"/>
-        	<unit id="com.dexels.server.mgmt.impl" version="0.0.0"/>
-        	<unit id="com.fasterxml.aalto-xml" version="0.0.0"/>
-        	<unit id="com.fasterxml.jackson.core.jackson-annotations" version="0.0.0"/>
-        	<unit id="com.fasterxml.jackson.core.jackson-core" version="0.0.0"/>
-        	<unit id="com.fasterxml.jackson.core.jackson-databind" version="0.0.0"/>
-        	<unit id="com.fasterxml.jackson.dataformat.jackson-dataformat-xml" version="0.0.0"/>
-        	<unit id="com.fasterxml.jackson.dataformat.jackson-dataformat-yaml" version="0.0.0"/>
-        	<unit id="com.fasterxml.jackson.module.jackson-module-jaxb-annotations" version="0.0.0"/>
-        	<unit id="com.google.code.findbugs.jsr305" version="0.0.0"/>
-        	<unit id="com.google.errorprone.error_prone_annotations" version="0.0.0"/>
-        	<unit id="com.google.gson" version="0.0.0"/>
-        	<unit id="com.google.guava" version="0.0.0"/>
-        	<unit id="com.google.j2objc.annotations" version="0.0.0"/>
-        	<unit id="com.google.protobuf" version="0.0.0"/>
-        	<unit id="com.googlecode.javaewah.JavaEWAH" version="0.0.0"/>
-        	<unit id="com.hazelcast" version="0.0.0"/>
-        	<unit id="com.ibm.icu" version="0.0.0"/>
-        	<unit id="com.microsoft.sqlserver.mssql-jdbc" version="0.0.0"/>
-        	<unit id="com.mysql.cj" version="0.0.0"/>
-        	<unit id="com.mysql.jdbc" version="0.0.0"/>
-        	<unit id="com.nimbusds.nimbus-jose-jwt" version="0.0.0"/>
-        	
-        	<unit id="com.sun.activation.javax.activation" version="0.0.0"/>
-        	<unit id="com.sun.mail.javax.mail" version="0.0.0"/>
-        	<unit id="com.vaadin" version="0.0.0"/>
-        	<unit id="io.swagger.annotations" version="0.0.0"/>
-        	<unit id="javax.annotation-api" version="0.0.0"/>
-        	<unit id="javax.el-api" version="0.0.0"/>
-        	<unit id="javax.enterprise.cdi-api" version="0.0.0"/>
-        	<unit id="javax.interceptor-api" version="0.0.0"/>
-        	<unit id="javax.servlet-api" version="0.0.0"/>
-        	<unit id="javax.transaction-api" version="0.0.0"/>
-        	<unit id="javax.vecmath" version="0.0.0"/>
-        	<unit id="javax.websocket-api" version="0.0.0"/>
-        	<unit id="javax.websocket.javax.websocket-client-api" version="0.0.0"/>
-        	<unit id="javax.ws.rs-api" version="0.0.0"/>
-        	<unit id="javax.xml.soap-api" version="0.0.0"/>
-        	<unit id="jaxb-api" version="0.0.0"/>
-        	<unit id="joda-time" version="0.0.0"/>
-        	<unit id="json" version="0.0.0"/>
-        	<unit id="junit" version="0.0.0"/>
-        	<unit id="lz4-java" version="0.0.0"/>
-        	<unit id="net.bytebuddy.byte-buddy" version="0.0.0"/>
-        	<unit id="net.bytebuddy.byte-buddy-agent" version="0.0.0"/>
-        	<unit id="net.minidev.accessors-smart" version="0.0.0"/>
-        	<unit id="net.minidev.json-smart" version="0.0.0"/>
-        	<unit id="org.apache.aries.spifly.dynamic.bundle" version="0.0.0"/>
-        	<unit id="org.apache.aries.util" version="0.0.0"/>
-        	<unit id="org.apache.commons.codec" version="0.0.0"/>
-        	<unit id="org.apache.commons.commons-fileupload" version="0.0.0"/>
-        	<unit id="org.apache.commons.dbcp" version="0.0.0"/>
-        	<unit id="org.apache.commons.email" version="0.0.0"/>
-        	<unit id="org.apache.commons.io" version="0.0.0"/>
-        	<unit id="org.apache.commons.lang" version="0.0.0"/>
-        	<unit id="org.apache.commons.lang3" version="0.0.0"/>
-        	<unit id="org.apache.commons.logging" version="0.0.0"/>
-        	<unit id="org.apache.commons.math3" version="0.0.0"/>
-        	<unit id="org.apache.commons.net" version="0.0.0"/>
-        	<unit id="org.apache.commons.pool" version="0.0.0"/>
-        	<unit id="org.apache.commons.pool2" version="0.0.0"/>
-        	<unit id="org.apache.commons.text" version="0.0.0"/>
-        	<unit id="org.apache.felix.configadmin" version="0.0.0"/>
-        	<unit id="org.apache.felix.eventadmin" version="0.0.0"/>
-        	<unit id="org.apache.felix.fileinstall" version="0.0.0"/>
-        	<unit id="org.apache.felix.inventory" version="0.0.0"/>
-        	<unit id="org.apache.felix.log" version="0.0.0"/>
-        	<unit id="org.apache.felix.metatype" version="0.0.0"/>
-        	<unit id="org.apache.felix.scr" version="0.0.0"/>
-        	<unit id="org.apache.felix.webconsole" version="0.0.0"/>
-        	<unit id="org.apache.felix.webconsole.plugins.ds" version="0.0.0"/>
-        	<unit id="org.apache.felix.webconsole.plugins.event" version="0.0.0"/>
-        	<unit id="org.apache.felix.webconsole.plugins.memoryusage" version="0.0.0"/>
-        	<unit id="org.apache.felix.webconsole.plugins.obr" version="0.0.0"/>
-        	<unit id="org.apache.felix.webconsole.plugins.packageadmin" version="0.0.0"/>
-        	<unit id="org.apache.httpcomponents.httpasyncclient" version="0.0.0"/>
-        	<unit id="org.apache.httpcomponents.httpclient" version="0.0.0"/>
-        	<unit id="org.apache.httpcomponents.httpcore" version="0.0.0"/>
-        	<unit id="org.apache.pdfbox" version="0.0.0"/>
-        	<unit id="org.apache.pdfbox.fontbox" version="0.0.0"/>
-        	<unit id="org.apache.pdfbox.jempbox" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.bundles.ant" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.bundles.batik" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.bundles.bcel" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.bundles.javax-inject" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.bundles.jcip-annotations" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.bundles.jsch" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.bundles.jzlib" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.bundles.saaj-impl" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.bundles.xalan" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.bundles.xerces" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.bundles.xmlresolver" version="0.0.0"/>
-        	<unit id="org.apache.servicemix.specs.saaj-api-1.3" version="0.0.0"/>
-        	<unit id="org.apache.xbean.asm-util" version="0.0.0"/>
-        	<unit id="org.apache.xbean.bundleutils" version="0.0.0"/>
-        	<unit id="org.apache.xbean.finder" version="0.0.0"/>
-        	<unit id="org.codehaus.mojo.animal-sniffer-annotations" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.client" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.continuation" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.http" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.io" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.proxy" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.reactive.client" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.security" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.server" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.servlet" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.servlets" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.util" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.websocket.api" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.websocket.client" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.websocket.common" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.websocket.javax.websocket" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.websocket.javax.websocket.server" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.websocket.server" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.websocket.servlet" version="0.0.0"/>
-        	<unit id="org.eclipse.jetty.xml" version="0.0.0"/>
-        	<unit id="org.eclipse.jgit" version="0.0.0"/>
-        	<unit id="org.eclipse.jgit.archive" version="0.0.0"/>
-        	<unit id="org.eclipse.jgit.http.apache" version="0.0.0"/>
-        	<unit id="org.eclipse.jgit.http.server" version="0.0.0"/>
-        	<unit id="org.eclipse.jgit.lfs" version="0.0.0"/>
-        	<unit id="org.eclipse.jgit.lfs.server" version="0.0.0"/>
-        	<unit id="org.hamcrest.all" version="0.0.0"/>
-        	<unit id="org.jvnet.mimepull" version="0.0.0"/>
-        	<unit id="org.jvnet.staxex.stax-ex" version="0.0.0"/>
-        	<unit id="org.mockito.mockito-core" version="0.0.0"/>
-        	<unit id="org.mongodb.bson" version="0.0.0"/>
-        	<unit id="org.mongodb.driver-async" version="0.0.0"/>
-        	<unit id="org.mongodb.driver-reactivestreams" version="0.0.0"/>
-        	<unit id="org.mongodb.mongo-java-driver" version="0.0.0"/>
-        	<unit id="org.objectweb.asm" version="0.0.0"/>
-        	<unit id="org.objectweb.asm.all" version="0.0.0"/>
-        	<unit id="org.objectweb.asm.commons" version="0.0.0"/>
-        	<unit id="org.objectweb.asm.tree" version="0.0.0"/>
-        	<unit id="org.objectweb.asm.tree.analysis" version="0.0.0"/>
-        	<unit id="org.objectweb.asm.util" version="0.0.0"/>
-        	<unit id="org.objenesis" version="0.0.0"/>
-        	<unit id="org.openstreetmap.jmapviewer" version="0.0.0"/>
-        	<unit id="org.ops4j.pax.logging.pax-logging-api" version="0.0.0"/>
-        	<unit id="org.ops4j.pax.logging.pax-logging-service" version="0.0.0"/>
-        	<unit id="org.ops4j.pax.url.mvn" version="0.0.0"/>
-        	<unit id="org.ops4j.pax.web.pax-web-api" version="0.0.0"/>
-        	<unit id="org.ops4j.pax.web.pax-web-extender-whiteboard" version="0.0.0"/>
-        	<unit id="org.ops4j.pax.web.pax-web-jetty" version="0.0.0"/>
-        	<unit id="org.ops4j.pax.web.pax-web-runtime" version="0.0.0"/>
-        	<unit id="org.ops4j.pax.web.pax-web-spi" version="0.0.0"/>
-        	<unit id="org.osgi.service.jdbc" version="0.0.0"/>
-        	<unit id="org.osgi.util.function" version="0.0.0"/>
-        	<unit id="org.osgi.util.promise" version="0.0.0"/>
-        	<unit id="org.postgresql.jdbc42" version="0.0.0"/>
-        	<unit id="org.reactivestreams.reactive-streams" version="0.0.0"/>
-        	
-        	<unit id="org.yaml.snakeyaml" version="0.0.0"/>
-        	<unit id="osgi.extension.sun.misc" version="0.0.0"/>
-        	<unit id="osgi.promise" version="0.0.0"/>
-        	<unit id="redis.clients.jedis" version="0.0.0"/>
-        	<unit id="slf4j.api" version="0.0.0"/>
-        	<unit id="slf4j.simple" version="0.0.0"/>
-        	<unit id="stax2-api" version="0.0.0"/>
-    	</location>
-	</locations>
+
+        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+            <repository location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.13.0/"/>
+
+            <unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
+        </location>
+
+        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+            <repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.27.0/"/>
+
+            <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
+        </location>
+
+        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+            <repository location="https://download.eclipse.org/tools/orbit/downloads/2022-03"/>
+
+            <unit id="com.google.gson" version="0.0.0"/>
+            <unit id="org.antlr.runtime" version="0.0.0"/>
+            <unit id="org.junit" version="0.0.0"/>
+            <unit id="org.junit.jupiter.api" version="0.0.0"/>
+            <unit id="org.junit.jupiter.engine" version="0.0.0"/>
+            <unit id="org.junit.platform.commons" version="0.0.0"/>
+            <unit id="org.junit.platform.engine" version="0.0.0"/>
+            <unit id="org.junit.platform.launcher" version="0.0.0"/>
+            <unit id="org.junit.platform.runner" version="0.0.0"/>
+            <unit id="org.opentest4j" version="0.0.0"/>
+            <unit id="org.objectweb.asm" version="0.0.0"/>
+            <unit id="org.objectweb.asm.tree" version="0.0.0"/>
+            <unit id="io.github.classgraph" version="0.0.0"/>
+        </location>
+
+        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+            <repository location="http://p2.dexels.com/eclipse/navajo_2.0.649"/>
+
+	        <unit id="com.dexels.navajo.core.feature.feature.group" version="1.0.0.202206081049"/>
+        </location>
+
+        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+            <repository location="http://p2.dexels.com/eclipse/3rdparty_3.3.1171"/>
+
+            <unit id="bcpg" version="0.0.0"/>
+            <unit id="bcpkix" version="0.0.0"/>
+            <unit id="bcprov" version="0.0.0"/>
+
+            <unit id="com.dexels.immutable.api" version="0.0.0"/>
+            <unit id="com.dexels.immutable.impl" version="0.0.0"/>
+            <unit id="com.dexels.index.api" version="0.0.0"/>
+            <unit id="com.dexels.keystoreprovider" version="0.0.0"/>
+            <unit id="com.dexels.log4j.server" version="0.0.0"/>
+            <unit id="com.dexels.osgi.bundlesync" version="0.0.0"/>
+            
+            <unit id="com.fasterxml.aalto-xml" version="0.0.0"/>
+            <unit id="com.fasterxml.jackson.core.jackson-annotations" version="0.0.0"/>
+            <unit id="com.fasterxml.jackson.core.jackson-core" version="0.0.0"/>
+            <unit id="com.fasterxml.jackson.core.jackson-databind" version="0.0.0"/>
+            <unit id="com.fasterxml.jackson.dataformat.jackson-dataformat-xml" version="0.0.0"/>
+            <unit id="com.fasterxml.jackson.dataformat.jackson-dataformat-yaml" version="0.0.0"/>
+            <unit id="com.fasterxml.jackson.module.jackson-module-jaxb-annotations" version="0.0.0"/>
+            <unit id="com.google.code.findbugs.jsr305" version="0.0.0"/>
+            <unit id="com.google.errorprone.error_prone_annotations" version="0.0.0"/>
+            <unit id="com.google.gson" version="0.0.0"/>
+            <unit id="com.google.guava" version="0.0.0"/>
+            <unit id="com.google.j2objc.annotations" version="0.0.0"/>
+            <unit id="com.google.protobuf" version="0.0.0"/>
+            <unit id="com.googlecode.javaewah.JavaEWAH" version="0.0.0"/>
+            <unit id="com.hazelcast" version="0.0.0"/>
+            <unit id="com.ibm.icu" version="0.0.0"/>
+            <unit id="com.microsoft.sqlserver.mssql-jdbc" version="0.0.0"/>
+            <unit id="com.nimbusds.nimbus-jose-jwt" version="0.0.0"/>
+
+            <unit id="com.sun.activation.javax.activation" version="0.0.0"/>
+            <unit id="com.sun.mail.javax.mail" version="0.0.0"/>
+            <unit id="com.vaadin" version="0.0.0"/>
+            <unit id="io.swagger.annotations" version="0.0.0"/>
+            <unit id="javax.annotation-api" version="0.0.0"/>
+            <unit id="javax.el-api" version="0.0.0"/>
+            <unit id="javax.enterprise.cdi-api" version="0.0.0"/>
+            <unit id="javax.interceptor-api" version="0.0.0"/>
+            <unit id="javax.servlet-api" version="0.0.0"/>
+            <unit id="javax.transaction-api" version="0.0.0"/>
+            <unit id="javax.vecmath" version="0.0.0"/>
+            <unit id="javax.websocket-api" version="0.0.0"/>
+            <unit id="javax.websocket.javax.websocket-client-api" version="0.0.0"/>
+            <unit id="javax.ws.rs-api" version="0.0.0"/>
+            <unit id="javax.xml.soap-api" version="0.0.0"/>
+            <unit id="jaxb-api" version="0.0.0"/>
+            <unit id="joda-time" version="0.0.0"/>
+            <unit id="json" version="0.0.0"/>
+            <unit id="junit" version="0.0.0"/>
+            <unit id="lz4-java" version="0.0.0"/>
+            <unit id="net.bytebuddy.byte-buddy" version="0.0.0"/>
+            <unit id="net.bytebuddy.byte-buddy-agent" version="0.0.0"/>
+            <unit id="net.minidev.accessors-smart" version="0.0.0"/>
+            <unit id="net.minidev.json-smart" version="0.0.0"/>
+            <unit id="org.apache.aries.spifly.dynamic.bundle" version="0.0.0"/>
+            <unit id="org.apache.aries.util" version="0.0.0"/>
+            <unit id="org.apache.commons.codec" version="0.0.0"/>
+            <unit id="org.apache.commons.commons-fileupload" version="0.0.0"/>
+            <unit id="org.apache.commons.dbcp" version="0.0.0"/>
+            <unit id="org.apache.commons.email" version="0.0.0"/>
+            <unit id="org.apache.commons.io" version="0.0.0"/>
+            <unit id="org.apache.commons.lang" version="0.0.0"/>
+            <unit id="org.apache.commons.lang3" version="0.0.0"/>
+            <unit id="org.apache.commons.logging" version="0.0.0"/>
+            <unit id="org.apache.commons.math3" version="0.0.0"/>
+            <unit id="org.apache.commons.net" version="0.0.0"/>
+            <unit id="org.apache.commons.pool" version="0.0.0"/>
+            <unit id="org.apache.commons.pool2" version="0.0.0"/>
+            <unit id="org.apache.commons.text" version="0.0.0"/>
+            <unit id="org.apache.felix.configadmin" version="0.0.0"/>
+            <unit id="org.apache.felix.eventadmin" version="0.0.0"/>
+            <unit id="org.apache.felix.fileinstall" version="0.0.0"/>
+            <unit id="org.apache.felix.inventory" version="0.0.0"/>
+            <unit id="org.apache.felix.log" version="0.0.0"/>
+            <unit id="org.apache.felix.metatype" version="0.0.0"/>
+            <unit id="org.apache.felix.scr" version="0.0.0"/>
+            <unit id="org.apache.felix.webconsole" version="0.0.0"/>
+            <unit id="org.apache.felix.webconsole.plugins.ds" version="0.0.0"/>
+            <unit id="org.apache.felix.webconsole.plugins.event" version="0.0.0"/>
+            <unit id="org.apache.felix.webconsole.plugins.memoryusage" version="0.0.0"/>
+            <unit id="org.apache.felix.webconsole.plugins.obr" version="0.0.0"/>
+            <unit id="org.apache.felix.webconsole.plugins.packageadmin" version="0.0.0"/>
+            <unit id="org.apache.httpcomponents.httpasyncclient" version="0.0.0"/>
+            <unit id="org.apache.httpcomponents.httpclient" version="0.0.0"/>
+            <unit id="org.apache.httpcomponents.httpcore" version="0.0.0"/>
+            <unit id="org.apache.pdfbox" version="0.0.0"/>
+            <unit id="org.apache.pdfbox.fontbox" version="0.0.0"/>
+            <unit id="org.apache.pdfbox.jempbox" version="0.0.0"/>
+            <unit id="org.apache.servicemix.bundles.ant" version="0.0.0"/>
+            <unit id="org.apache.servicemix.bundles.batik" version="0.0.0"/>
+            <unit id="org.apache.servicemix.bundles.bcel" version="0.0.0"/>
+            <unit id="org.apache.servicemix.bundles.javax-inject" version="0.0.0"/>
+            <unit id="org.apache.servicemix.bundles.jcip-annotations" version="0.0.0"/>
+            <unit id="org.apache.servicemix.bundles.jsch" version="0.0.0"/>
+            <unit id="org.apache.servicemix.bundles.jzlib" version="0.0.0"/>
+            <unit id="org.apache.servicemix.bundles.saaj-impl" version="0.0.0"/>
+            <unit id="org.apache.servicemix.bundles.xalan" version="0.0.0"/>
+            <unit id="org.apache.servicemix.bundles.xerces" version="0.0.0"/>
+            <unit id="org.apache.servicemix.bundles.xmlresolver" version="0.0.0"/>
+            <unit id="org.apache.servicemix.specs.saaj-api-1.3" version="0.0.0"/>
+            <unit id="org.apache.xbean.asm-util" version="0.0.0"/>
+            <unit id="org.apache.xbean.bundleutils" version="0.0.0"/>
+            <unit id="org.apache.xbean.finder" version="0.0.0"/>
+            <unit id="org.codehaus.mojo.animal-sniffer-annotations" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.client" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.continuation" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.http" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.io" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.proxy" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.reactive.client" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.security" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.server" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.servlet" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.servlets" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.util" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.websocket.api" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.websocket.client" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.websocket.common" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.websocket.javax.websocket" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.websocket.javax.websocket.server" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.websocket.server" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.websocket.servlet" version="0.0.0"/>
+            <unit id="org.eclipse.jetty.xml" version="0.0.0"/>
+            <unit id="org.eclipse.jgit" version="0.0.0"/>
+            <unit id="org.eclipse.jgit.archive" version="0.0.0"/>
+            <unit id="org.eclipse.jgit.http.apache" version="0.0.0"/>
+            <unit id="org.eclipse.jgit.http.server" version="0.0.0"/>
+            <unit id="org.eclipse.jgit.lfs" version="0.0.0"/>
+            <unit id="org.eclipse.jgit.lfs.server" version="0.0.0"/>
+            <unit id="org.hamcrest.all" version="0.0.0"/>
+            <unit id="org.jvnet.mimepull" version="0.0.0"/>
+            <unit id="org.jvnet.staxex.stax-ex" version="0.0.0"/>
+            <unit id="org.mockito.mockito-core" version="0.0.0"/>
+            <unit id="org.mongodb.bson" version="0.0.0"/>
+            <unit id="org.objectweb.asm" version="0.0.0"/>
+            <unit id="org.objectweb.asm.all" version="0.0.0"/>
+            <unit id="org.objectweb.asm.commons" version="0.0.0"/>
+            <unit id="org.objectweb.asm.tree" version="0.0.0"/>
+            <unit id="org.objectweb.asm.tree.analysis" version="0.0.0"/>
+            <unit id="org.objectweb.asm.util" version="0.0.0"/>
+            <unit id="org.objenesis" version="0.0.0"/>
+            <unit id="org.openstreetmap.jmapviewer" version="0.0.0"/>
+            <unit id="org.ops4j.pax.logging.pax-logging-api" version="0.0.0"/>
+            <unit id="org.ops4j.pax.logging.pax-logging-service" version="0.0.0"/>
+            <unit id="org.ops4j.pax.url.mvn" version="0.0.0"/>
+            <unit id="org.ops4j.pax.web.pax-web-api" version="0.0.0"/>
+            <unit id="org.ops4j.pax.web.pax-web-extender-whiteboard" version="0.0.0"/>
+            <unit id="org.ops4j.pax.web.pax-web-jetty" version="0.0.0"/>
+            <unit id="org.ops4j.pax.web.pax-web-runtime" version="0.0.0"/>
+            <unit id="org.ops4j.pax.web.pax-web-spi" version="0.0.0"/>
+            <unit id="org.osgi.service.jdbc" version="0.0.0"/>
+            <unit id="org.osgi.util.function" version="0.0.0"/>
+            <unit id="org.osgi.util.promise" version="0.0.0"/>
+            <unit id="org.postgresql.jdbc42" version="0.0.0"/>
+            <unit id="org.yaml.snakeyaml" version="0.0.0"/>
+            <unit id="osgi.extension.sun.misc" version="0.0.0"/>
+            <unit id="osgi.promise" version="0.0.0"/>
+            <unit id="redis.clients.jedis" version="0.0.0"/>
+            <unit id="slf4j.api" version="0.0.0"/>
+            <unit id="slf4j.simple" version="0.0.0"/>
+            <unit id="stax2-api" version="0.0.0"/>
+         </location>
+    </locations>
 </target>

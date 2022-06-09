@@ -4,7 +4,7 @@ public class ProxyParameterDefinition extends ProxyValueDefinition {
 
 	private String field;
 
-	public ProxyParameterDefinition(Object real, Class realClass) {
+	public ProxyParameterDefinition(Object real, Class<?> realClass) {
 		super(real, realClass);
 		init();
 	}

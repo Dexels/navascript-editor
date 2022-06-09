@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
 <feature
       id="com.dexels.navajo.xtext.navascript.platform.feature"
       label="XText platform"
@@ -10,7 +11,7 @@
    </description>
 
    <copyright url="http://www.example.com/copyright">
-      Copyright (c) 2021 Dexels BV
+      Copyright (c) 2022 Dexels BV
    </copyright>
 
    <license url="https://www.gnu.org/licenses/gpl-3.0.html">
@@ -198,13 +199,6 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.core.filesystem.macosx"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"/>
-
-   <plugin
          id="org.eclipse.core.jobs"
          download-size="0"
          install-size="0"
@@ -367,13 +361,6 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.e4.ui.workbench.renderers.swt.cocoa"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"/>
-
-   <plugin
          id="org.eclipse.e4.ui.workbench.swt"
          download-size="0"
          install-size="0"
@@ -500,13 +487,6 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.equinox.security.macosx"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"/>
-
-   <plugin
          id="org.eclipse.help"
          download-size="0"
          install-size="0"
@@ -592,20 +572,6 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.swt.browser.chromium.cocoa.macosx.x86_64"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"/>
-
-   <plugin
-         id="org.eclipse.swt.cocoa.macosx.x86_64"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"/>
-
-   <plugin
          id="org.eclipse.team.core"
          download-size="0"
          install-size="0"
@@ -628,13 +594,6 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
-
-   <plugin
-         id="org.eclipse.ui.cocoa"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"/>
 
    <plugin
          id="org.eclipse.ui.console"
@@ -848,20 +807,6 @@
          unpack="false"/>
 
    <plugin
-         id="io.reactivex.rxjava2.rxjava"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.reactivestreams.reactive-streams"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="com.fasterxml.jackson.core.jackson-annotations"
          download-size="0"
          install-size="0"
@@ -905,6 +850,13 @@
 
    <plugin
          id="stax2-api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.commons.lang3"
          download-size="0"
          install-size="0"
          version="0.0.0"

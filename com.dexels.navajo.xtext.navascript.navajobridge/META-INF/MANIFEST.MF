@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Navajobridge
 Bundle-SymbolicName: com.dexels.navajo.xtext.navascript.navajobridge;singleton:=true
-Bundle-Version: 0.9.40
+Bundle-Version: 0.9.42
 Bundle-Vendor: Dexels BV
 Automatic-Module-Name: com.dexels.navajo.xtext.navascript.navajobridge
 Bundle-RequiredExecutionEnvironment: JavaSE-11
@@ -33,7 +33,6 @@ Service-Component: OSGI-INF/*.xml
 Import-Package: com.dexels.navajo.document,
  com.dexels.navajo.document.nanoimpl,
  com.dexels.navajo.expression.api,
- com.dexels.navajo.mapping.compiler,
  com.dexels.navajo.mapping.compiler.meta,
  com.dexels.navajo.version,
  navajo,

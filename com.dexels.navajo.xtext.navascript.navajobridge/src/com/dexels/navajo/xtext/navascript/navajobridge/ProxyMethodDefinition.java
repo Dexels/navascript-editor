@@ -9,7 +9,7 @@ import java.util.TreeSet;
 public class ProxyMethodDefinition {
 
 	private Object realObject;
-	private Class realClass;
+	private Class<?> realClass;
 
 	private Set<String> parameters = new TreeSet<>();
 	private Map<String,ProxyParameterDefinition> parameterDefinitions = new TreeMap<>();
@@ -17,7 +17,7 @@ public class ProxyMethodDefinition {
 	public String name;
 	
 
-	public ProxyMethodDefinition(Object real, Class realClass) {
+	public ProxyMethodDefinition(Object real, Class<?> realClass) {
 		this.realObject = real;
 		this.realClass = realClass;
 		init();
@@ -35,7 +35,7 @@ public class ProxyMethodDefinition {
 			Method pdMethod = realClass.getDeclaredMethod("getParameterDefinition", String.class);
 			for ( String p : pResult ) {
 				Object pdObject = pdMethod.invoke(realObject, p);
-				Class pdClass = pdObject.getClass();
+				Class<? extends Object> pdClass = pdObject.getClass();
 				ProxyParameterDefinition ppd = new ProxyParameterDefinition(pdObject, pdClass);
 				parameterDefinitions.put(p, ppd);
 			}

@@ -7,8 +7,6 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
-
 public class ProxyMapDefinition {
 
 	private Set<String> methods = new TreeSet<>();
@@ -18,8 +16,8 @@ public class ProxyMapDefinition {
 	private Map<String, ProxyValueDefinition> valueDefinitions = new TreeMap<>();
 
 	public Object mapDefinition;
-	public Class mapDefinitionClass;
-	public Class objectClass;
+	public Class<?> mapDefinitionClass;
+	public Class<?> objectClass;
 	public String objectName;
 	public String description;
 	public String tagName;
@@ -35,7 +33,7 @@ public class ProxyMapDefinition {
 		// Empty proxymapdefinition.
 	}
 	
-	public ProxyMapDefinition(Object actual, Class mapDefinitionClass) throws InstantiationException {
+	public ProxyMapDefinition(Object actual, Class<?> mapDefinitionClass) throws InstantiationException {
 		mapDefinition = actual;
 		this.mapDefinitionClass = mapDefinitionClass;
 		init();
@@ -67,7 +65,7 @@ public class ProxyMapDefinition {
 			for ( String mString : methods ) {
 				try {
 					Object mdObject = mdMethod.invoke(mapDefinition, mString);
-					Class mdClass = mdObject.getClass();
+					Class<? extends Object> mdClass = mdObject.getClass();
 					ProxyMethodDefinition pmd = new ProxyMethodDefinition(mdObject, mdClass);
 					methodDefinitions.put(mString, pmd);
 					//System.err.println("&&&&& added method " + mString + ": " + pmd);
@@ -94,7 +92,7 @@ public class ProxyMapDefinition {
 				try {
 
 					Object vdObject = vdMethod.invoke(mapDefinition, vString);
-					Class mdClass = vdObject.getClass();
+					Class<? extends Object> mdClass = vdObject.getClass();
 					ProxyValueDefinition pvd = new ProxyValueDefinition(vdObject, mdClass);
 					valueDefinitions.put(vString, pvd);
 				} catch (Exception e) {

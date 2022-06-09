@@ -5,7 +5,6 @@ package com.dexels.navajo.ui.labeling;
 
 import com.google.inject.Inject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.xtext.resource.IResourceDescription.Event;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
 /**

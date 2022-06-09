@@ -23,8 +23,6 @@ import org.eclipse.jdt.internal.core.JavaProject;
 import org.eclipse.pde.core.target.ITargetPlatformService;
 import org.eclipse.pde.core.target.TargetBundle;
 import org.eclipse.pde.internal.core.target.TargetPlatformService;
-import org.eclipse.ui.PlatformUI;
-
 import com.dexels.navajo.document.nanoimpl.CaseSensitiveXMLElement;
 import com.dexels.navajo.document.nanoimpl.XMLElement;
 import com.dexels.navajo.mapping.compiler.meta.MapDefinition;
@@ -62,7 +60,7 @@ public class JavaProjectIntrospection {
 		} else {
 			output = output.substring(firstEntryLocation.length());
 		}
-		urls[i++] = new File(wsPath + output).toURL();
+		urls[i++] = new File(wsPath + output).toURI().toURL();
 
 		//System.err.println("ClassLoader url: " + wsPath + output);
 
@@ -91,32 +89,12 @@ public class JavaProjectIntrospection {
 
 			//System.err.println("cp: " + entry + " / " + fullPath + " / " + entry.getEntryKind());
 
-			urls[i++] = new File(fullPath).toURL();
+			urls[i++] = new File(fullPath).toURI().toURL();
 		}
 
 		URLClassLoader classLoader = new URLClassLoader(urls, java.sql.SQLException.class.getClassLoader());
 
 		return classLoader;
-	}
-
-
-	private static void readAdaptersFromDefinitionFile(Object fd, ClassLoader cl) {
-
-		CaseSensitiveXMLElement xml = new CaseSensitiveXMLElement();
-
-		try {
-			Method mStream = fd.getClass().getMethod("getDefinitionAsStream");
-			InputStream fis = (InputStream) mStream.invoke(fd);
-			xml.parseFromStream(fis);
-			fis.close();
-			Vector<XMLElement> children = xml.getChildren();
-			for (XMLElement element: children) {
-				addMapDefinition(element, cl);
-			}
-
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
 	}
 
 	public static MapDefinition addMapDefinition(XMLElement map, ClassLoader cl) throws Exception {
@@ -200,9 +178,6 @@ public class JavaProjectIntrospection {
 
 	public static synchronized void findVersionClasses() throws Exception {
 
-
-		PlatformUI u;
-
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 
 		IProject [] ips = workspace.getRoot().getProjects();
@@ -216,8 +191,8 @@ public class JavaProjectIntrospection {
 				
 				try {
 
-					Class slc = Class.forName("navajo.ExtensionDefinition", true, cl);
-					ServiceLoader extensionLoaders = ServiceLoader.load(slc, cl);
+					Class<?> slc = Class.forName("navajo.ExtensionDefinition", true, cl);
+					ServiceLoader<?> extensionLoaders = ServiceLoader.load(slc, cl);
 					for (Object loader : extensionLoaders ) {
 						//System.err.println(">>>>>>>>>> Found service: " + loader);
 						readFunctionsFromDefinitionFile(loader);
@@ -225,7 +200,7 @@ public class JavaProjectIntrospection {
 					}
 
 					Class.forName("com.dexels.navajo.mapping.compiler.meta.KeywordException", true, cl);
-					Class foundClass = Class.forName("com.dexels.navajo.mapping.compiler.meta.MapMetaData", true, cl);
+					Class<?> foundClass = Class.forName("com.dexels.navajo.mapping.compiler.meta.MapMetaData", true, cl);
 					//System.err.println("found class: " + foundClass);
 					Method m = foundClass.getDeclaredMethod("getInstance");
 					//System.err.println("found getInstance method: " + m);
@@ -233,7 +208,7 @@ public class JavaProjectIntrospection {
 					//System.err.println(">>>>>>>>> mmd: " + o);
 					Method m2 = foundClass.getDeclaredMethod("getMapDefinitions");
 					//System.err.println("found getMapDefinitions method: " + m2);
-					Object o2 = m2.invoke(o, null);
+					m2.invoke(o);
 					//System.err.println("Map definitions: " + o2);
 					//System.err.println("Found MapMetaData class in project: " + p.getName());
 					ProxyMetaData pmd = ProxyMetaData.getInstance();

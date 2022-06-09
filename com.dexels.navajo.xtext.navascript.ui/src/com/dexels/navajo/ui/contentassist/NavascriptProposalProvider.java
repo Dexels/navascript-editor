@@ -224,10 +224,8 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		String adapterName = "";
 		if ( map instanceof MapImpl ) {
 			adapterName = ((MapImpl) map).getAdapterName();
-		} else if ( map instanceof MappedArrayFieldImpl ) { // It's a mapped field. Find it
-			MappedArrayFieldImpl maf = (MappedArrayFieldImpl) map;
-			String field = maf.getField();
-
+		} else if ( map instanceof MappedArrayFieldImpl ) { // It's a mapped field. Find it (and use it!)
+			// MappedArrayFieldImpl maf = (MappedArrayFieldImpl) map;
 		}
 		AdapterClassDefinition md = getNavajoProxyStub().getAdapter(adapterName);
 		ProxyMethodDefinition mdm = md.getMapDefinition().getMethodDefinition(method.getMethod().substring(1));
@@ -366,7 +364,6 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 				return;
 			}
 			Set<ProxyMethodDefinition> methods = getNavajoProxyStub().getAdapter(adapterName).getMethods();
-			ProxyMapDefinition md = getNavajoProxyStub().getAdapter(adapterName).getMapDefinition();
 			for ( ProxyMethodDefinition a : methods) {
 				Set<String> parameters = a.getParameters();
 				acceptor.accept(createCompletionProposalFormatted("." + a.getName(), parameters+"", 1, context));

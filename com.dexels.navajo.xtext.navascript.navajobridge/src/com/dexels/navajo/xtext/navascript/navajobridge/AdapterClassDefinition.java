@@ -13,13 +13,12 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import com.dexels.navajo.document.NavajoFactory;
 import com.dexels.navajo.document.Property;
 
 public class AdapterClassDefinition  {
 
 	private ProxyMapDefinition myDefinition;
-	private Class classDefinition;
+	private Class<?> classDefinition;
 	private ClassLoader classLoader;
 	private Map<String,String> setterTypes = new HashMap<>();
 	private Set<String> setters = new HashSet<>();
@@ -78,7 +77,7 @@ public class AdapterClassDefinition  {
 
 	private static final Logger logger = Logger.getLogger(AdapterClassDefinition.class);
 
-	public static boolean isPrimitiveType(Class source) {
+	public static boolean isPrimitiveType(Class<?> source) {
 		return WRAPPER_TYPE_MAP.contains(source);
 	}
 
@@ -94,7 +93,7 @@ public class AdapterClassDefinition  {
 		}
 	}
 
-	public AdapterClassDefinition(Class m, ClassLoader cl) throws Exception {
+	public AdapterClassDefinition(Class<?> m, ClassLoader cl) throws Exception {
 		classLoader = cl;
 		classDefinition = m;
 		myDefinition = new ProxyMapDefinition();
@@ -113,7 +112,7 @@ public class AdapterClassDefinition  {
 	public AdapterClassDefinition getMappedFieldType(String name, Class<?>...parameterTypes) throws Exception {
 
 
-		Class returntype = null;
+		Class<?> returntype = null;
 		try {
 			String getMethod = constructGetMethod(name);
 			Method method = classDefinition.getMethod(getMethod, parameterTypes);
@@ -122,7 +121,7 @@ public class AdapterClassDefinition  {
 				returntype = returntype.getComponentType();
 			} else if ( isIterableClass(returntype) ) {
 				ParameterizedType pt = (ParameterizedType) method.getGenericReturnType();
-				returntype = (Class) pt.getActualTypeArguments()[0];
+				returntype = (Class<?>) pt.getActualTypeArguments()[0];
 			}
 		} catch (Exception e) {
 			try {
@@ -133,7 +132,7 @@ public class AdapterClassDefinition  {
 					returntype = returntype.getComponentType();
 				} else if ( isIterableClass(returntype) ) {
 					ParameterizedType pt = (ParameterizedType) classDefinition.getField(name).getGenericType();
-					returntype = (Class) pt.getActualTypeArguments()[0];
+					returntype = (Class<?>) pt.getActualTypeArguments()[0];
 				}
 			} catch (Exception e2 ) {
 				throw new Exception("Could not find field: " + name);
@@ -158,12 +157,12 @@ public class AdapterClassDefinition  {
 	}
 
 	private static void computeClassHierarchy(Class<?> clazz, List<Class<?>> classes) {
-		for ( Class current = clazz; current != null; current = current.getSuperclass() ) {
+		for ( Class<?> current = clazz; current != null; current = current.getSuperclass() ) {
 			if ( classes.contains( current ) ) {
 				return;
 			}
 			classes.add( current );
-			for ( Class currentInterface : current.getInterfaces() ) {
+			for ( Class<?> currentInterface : current.getInterfaces() ) {
 				computeClassHierarchy( currentInterface, classes );
 			}
 		}
@@ -253,13 +252,6 @@ public class AdapterClassDefinition  {
 		}
 	}
 
-	private String getType(Class c) throws Exception {
-		Property p = NavajoFactory.getInstance().createProperty(NavajoFactory.getInstance().createNavajo(), "aap", "", "", "");
-		Object object = c.getDeclaredConstructor().newInstance();
-		p.setAnyValue(object);
-		return p.getType();
-	}
-
 	public String getType(String field)  {
 		if ( !checkClassDefinition()) {
 			return null;
@@ -288,7 +280,7 @@ public class AdapterClassDefinition  {
 		}
 	}
 
-	public Class getClassDefinition() {
+	public Class<?> getClassDefinition() {
 		return classDefinition;
 	}
 
