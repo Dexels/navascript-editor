@@ -1,4 +1,5 @@
 /bin
 /src-gen
 /xtend-gen
+!/xtend-gen/README
 plugin.xml_gen
