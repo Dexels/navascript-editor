@@ -3,7 +3,7 @@
 <feature
       id="com.dexels.navajo.xtext.navascript.platform.feature"
       label="XText platform"
-      version="1.0.3"
+      version="1.0.4"
       provider-name="Dexels BV">
 
    <description url="http://www.example.com/description">
