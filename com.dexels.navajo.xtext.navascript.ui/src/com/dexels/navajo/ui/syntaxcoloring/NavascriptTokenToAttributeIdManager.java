@@ -16,7 +16,7 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 	private static final Pattern PUNCTUATION = Pattern.compile("\\p{Punct}*");
 
 	static String [] typesArray = {
-			"'binary'","'boolean'","'clocktime'","'date'","'float'","'integer'","'memo'","'percentage'","'string'","'timestamp'","'money'","'array'","'overwrite'",
+			"'binary'","'boolean'","'clocktime'","'date'","'float'","'coordinate'","'integer'","'memo'","'percentage'","'string'","'timestamp'","'money'","'array'","'overwrite'",
 			"'ignore'","'simple'","'arrayelement'","'selection'"
 	};
 	
@@ -39,6 +39,7 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 				"'methods'",
 				"'include'",
 				"'type'",
+				"'subtype'",
 				"'mode'",
 				"'direction'",
 				"'length'",

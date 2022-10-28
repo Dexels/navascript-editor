@@ -184,7 +184,7 @@ CardinalityArgument : 'cardinality' ('=' | ':') value=('+' | ONE );
 
 TypeArgument : 'type' ('=' | ':') (value=PropertyType);
 
-SubTypeArgument : 'subtype' ('=' | ':') value=IDENTIFIER;
+SubTypeArgument : 'subtype' ('=' | ':') value=STRING_LITERAL;
 
 ConditionalExpressions : {ConditionalExpressions} conditionalExpressions+=ConditionalExpression+ 'else' elseExpresssion=LiteralOrExpression | singleExpression=LiteralOrExpression;
 
@@ -204,11 +204,11 @@ Comparison returns Expression:
 
 Equals returns Expression:
        Addition 
-       (({Equals.left=current} op=("=="|'!=') ) right=Addition)*;
+       (({Equals.left=current} op=("=="|'!='|'~=') ) right=Addition)*;
  
 Addition returns Expression:
     Multiplication
-    (({Plus.left=current} '+' | {Minus.left=current} '-')
+   (({Plus.left=current} '+' | {Minus.left=current} '-' | {Modulo.left=current} '%')
         right=Multiplication)*; 
 
 Multiplication returns Expression:
@@ -230,7 +230,7 @@ Atomic returns Expression:
     {TmlIdentifier} value=TmlIdentifier |
     {ForAllLiteral} value=ForAllIdentifier |
     {NullLiteral} value=NULL_DEF |
-    {TodayLiteral} value=TODAY |
+    {TodayLiteral} value="TODAY" |
     {CurrentOutDoc} value=CURRENT_OUTDOC |
     {CurrentInDoc} value=CURRENT_INDOC |
     {CurrentVarDoc} value=CURRENT_VARDOC
@@ -259,6 +259,7 @@ PropertyType:
     {DateType} 'date' |
     {FloatType} 'float' |
     {BinaryType} 'binary' |
+    {CoordinateType} 'coordinate' |
     {ClockTimeType} 'clocktime' |
     {MemoType} 'memo' |
     {TimestampType} 'timestamp' |
@@ -286,7 +287,6 @@ terminal TRUE : 'true';
 terminal FALSE : 'false';
 terminal MAPPABLE_ID : '$';
 terminal NULL_DEF : 'null';
-terminal TODAY : 'TODAY';
 
 terminal CURRENT_OUTDOC: 
 	 '"."'

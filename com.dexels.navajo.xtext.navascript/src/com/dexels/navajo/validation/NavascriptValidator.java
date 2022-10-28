@@ -90,14 +90,11 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		if ( altInputs.isEmpty() ) { // If there are no inputs specified, return;
 			return;
 		}
-		for (String alt : altInputs) {
-			int argSize = alt.split(",").length;
-			if (argSize == arguments.size()) {
-				return;
-			}
+		if ( functionDef.isValidNrInputParameters(arguments.size()) ) {
+			return;
 		}
 
-		error("Invalid number of parameters", NavascriptPackage.Literals.FUNCTION_IDENTIFIER__ARGS);
+		error("Invalid number of input parameters. Valid input: " + functionDef.getInput() , NavascriptPackage.Literals.FUNCTION_IDENTIFIER__ARGS);
 	}
 
 	@Check
