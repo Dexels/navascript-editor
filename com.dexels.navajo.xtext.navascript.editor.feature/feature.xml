@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xml>
 <feature
       id="com.dexels.navajo.xtext.navascript.editor.feature"
       label="Navascript 3 Editor"
-      version="1.0.72"
+      version="1.0.74"
       provider-name="Dexels BV">
 
    <description url="http://www.example.com/description">
