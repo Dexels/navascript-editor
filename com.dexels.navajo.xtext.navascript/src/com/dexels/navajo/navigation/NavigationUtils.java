@@ -54,7 +54,7 @@ public final class NavigationUtils {
 					AdapterClassDefinition acd = parentMde.getMappedFieldType(fieldName);
 					return acd;
 				} catch (Exception e) {
-					e.printStackTrace(System.err);
+					logger.error("Could not find adapter field: " + fieldName + "[" + e.getLocalizedMessage() + "]");
 					return null;
 				}
 			}
@@ -70,7 +70,7 @@ public final class NavigationUtils {
 				AdapterClassDefinition acd = parentMde.getMappedFieldType(fieldName);
 				return acd;
 			} catch (Exception e) {
-				e.printStackTrace(System.err);
+				logger.error("Could not find adapter field: " + fieldName + "[" + e.getLocalizedMessage() + "]");
 				return null;
 			}
 		} 
@@ -85,7 +85,7 @@ public final class NavigationUtils {
 				AdapterClassDefinition acd = parentMde.getMappedFieldType(fieldName);
 				return acd;
 			} catch (Exception e) {
-				e.printStackTrace(System.err);
+				logger.error("Could not find adapter field: " + fieldName + "[" + e.getLocalizedMessage() + "]");
 				return null;
 			}
 

@@ -15,7 +15,6 @@ import org.eclipse.xtext.validation.Check;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
-import org.osgi.framework.ServiceReference;
 
 import com.dexels.navajo.navascript.Expression;
 import com.dexels.navajo.navascript.InnerBody;
@@ -49,7 +48,6 @@ import com.dexels.navajo.xtext.navascript.navajobridge.ProxyFunctionDefinition;
  */
 public class NavascriptValidator extends AbstractNavascriptValidator implements ServiceListener {
 
-	NavajoProxyStub adapters = null;
 	BundleContext context;
 
 	private static final Logger logger = Logger.getLogger(NavascriptValidator.class);
@@ -60,17 +58,11 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		logger.info("In NavascriptValidator: " + context);
 	}
 
-	public synchronized void init() {
-		if (adapters == null) {
-			ServiceReference<NavajoProxyStub> ref = context.getServiceReference(NavajoProxyStub.class);
-			adapters = context.getService(ref);
-			logger.info("In NavascriptValidator.init(): " + ref);
-		}
-	}
-
 	private NavajoProxyStub getNavajoProxyStub() {
-		init();
-		return adapters;
+		if (  NavajoProxyStub.getInstance() == null ) {
+			throw new RuntimeException("NavajoProxyStub not yet activated");
+		}
+		return  NavajoProxyStub.getInstance();
 	}
 
 	@Check
@@ -340,6 +332,6 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 
 	@Override
 	public void serviceChanged(ServiceEvent event) {
-		init();
+		//
 	}
 }
