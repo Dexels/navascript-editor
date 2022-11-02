@@ -136,10 +136,12 @@ KeyValueArguments : {KeyValueArguments} keyValueArguments+=KeyValueArgument ( ',
 
 KeyValueArgument : {KeyValueArgument} key=(IDENTIFIER | OPTION_TYPE) ('=' | ':') value=LiteralOrExpression;
 
-Var: {Var} 'var' (varName=  '/' | '../'* IDENTIFIER ) (arguments=VarArguments)? ( ('=' | ':') expressionList=ConditionalExpressions ';' |  '[' varArray=VarArray? ']' | 
+Var: {Var} 'var' (  varName=VarName)  (arguments=VarArguments)? ( ('=' | ':') expressionList=ConditionalExpressions ';' |  '[' varArray=VarArray? ']' | 
 	'{' varElements+=VarElement* '}'  
  | '{' mappedArrayField=MappedArrayField '}' | '{' mappedArrayMessage=MappedArrayMessage '}' )
 ;
+
+VarName : '/' | '../'* IDENTIFIER;
 
 VarArray : {VarArray} vararrayelement+=VarArrayElement (',' vararrayelement+=VarArrayElement)*;
 

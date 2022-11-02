@@ -11,6 +11,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.validation.Check;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceEvent;
@@ -24,6 +25,8 @@ import com.dexels.navajo.navascript.Message;
 import com.dexels.navajo.navascript.NavascriptPackage;
 import com.dexels.navajo.navascript.PropertyArgument;
 import com.dexels.navajo.navascript.PropertyArguments;
+import com.dexels.navajo.navascript.TmlIdentifierLiteral;
+import com.dexels.navajo.navascript.Var;
 import com.dexels.navajo.navascript.impl.AdapterMethodImpl;
 import com.dexels.navajo.navascript.impl.FunctionIdentifierImpl;
 import com.dexels.navajo.navascript.impl.LoopImpl;
@@ -34,6 +37,7 @@ import com.dexels.navajo.navascript.impl.MappedMessageImpl;
 import com.dexels.navajo.navascript.impl.MessageImpl;
 import com.dexels.navajo.navascript.impl.PropertyImpl;
 import com.dexels.navajo.navascript.impl.SetterFieldImpl;
+import com.dexels.navajo.navascript.impl.VarImpl;
 import com.dexels.navajo.navigation.NavigationUtils;
 import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
@@ -190,7 +194,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 	
 	@Check
 	public void checkSetterField(SetterFieldImpl sfi) {
-		System.err.println("In checkSetterField: " + sfi);
+		//System.err.println("In checkSetterField: " + sfi);
 		fieldValidator(sfi, sfi.getField());	
 	}
 	
@@ -201,7 +205,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 	
 	@Check
 	public void checkMappableIdentifier(MappableIdentifierImpl mai) {
-		System.err.println("In checkMappableIdentifier: " + mai);
+		//System.err.println("In checkMappableIdentifier: " + mai);
 		fieldValidator(mai, mai.getField());
 	}
 
@@ -258,6 +262,43 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		}
 	}
 
+//	private boolean findVarDeclaration(EObject root, VarImpl varImpl, TmlIdentifierLiteral tmlLiteral) {
+//		
+//		
+//	}
+	
+	@Check
+	public void checkParameterNameExistence(TmlIdentifierLiteral property) {
+	
+		EObject rootElement = EcoreUtil2.getRootContainer(property.eContainer());
+		EList<EObject> list = rootElement.eContents();
+		//System.err.println("List size: " + list.size() + ", rootElement: " + rootElement);
+		for ( EObject eo : list ) {
+			//System.err.println("eo: " + eo);
+			for ( EObject child: eo.eContents() ) {
+				//System.err.println("child: " + child);
+			}
+		}
+		Set<String> validVariables = new HashSet<>();
+		
+		List<VarImpl> candidates = EcoreUtil2.getAllContentsOfType(rootElement, VarImpl.class);
+		for ( VarImpl v : candidates) {
+			validVariables.add(v.getVarName());
+		}
+		
+		
+		String name =  property.getValue().getTml();
+		//System.err.println("In checkParameterNameExistence: " + property.getValue().getTml());
+		if ( name.startsWith("[/@") ) {
+			//System.err.println("In checkParameterNameExistence: " + property.getValue() + " [" + validVariables.size() + ": " + validVariables + "]");
+			String stripped = name.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("/@", "");
+			if ( !validVariables.contains(stripped) ) {
+				//System.err.println("Unknown variable: " + stripped);
+				warning("Parameter is not declared", NavascriptPackage.Literals.TML_IDENTIFIER_LITERAL__VALUE);
+			}
+		}
+	}
+	
 	@Check
 	public void checkMappedMappedArrayFieldImpl(MappedArrayFieldImpl maf) {
 		String raw = maf.getField();

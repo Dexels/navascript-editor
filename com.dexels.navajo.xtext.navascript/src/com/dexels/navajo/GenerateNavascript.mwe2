@@ -40,6 +40,10 @@ Workflow {
 			formatter = {
                 generateStub = true
 			}
+			scopeProvider = {
+      			ignoreCase = false
+      			generateStub = true
+    		}
 			parserGenerator = {
 				lookaheadThreshold="3"
   				options = {
