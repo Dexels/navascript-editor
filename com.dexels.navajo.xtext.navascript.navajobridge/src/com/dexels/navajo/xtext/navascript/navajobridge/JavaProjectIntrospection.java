@@ -176,9 +176,7 @@ public class JavaProjectIntrospection {
 
 	}
 
-	public static synchronized void findVersionClasses() throws Exception {
-
-		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+	public static synchronized void findVersionClasses(IWorkspace workspace) throws Exception {
 
 		IProject [] ips = workspace.getRoot().getProjects();
 		for ( IProject p : ips) {

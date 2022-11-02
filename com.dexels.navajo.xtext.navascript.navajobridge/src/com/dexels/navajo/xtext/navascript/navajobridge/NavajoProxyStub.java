@@ -25,6 +25,8 @@ public class NavajoProxyStub implements IResourceChangeListener {
 
 	private static final Logger logger = Logger.getLogger(NavajoProxyStub.class);
 	
+	private IWorkspace myWorkspace;
+	
 	public static NavajoProxyStub getInstance() {
 		return instance;
 	}
@@ -37,7 +39,7 @@ public class NavajoProxyStub implements IResourceChangeListener {
 				adapters.clear();
 				
 				try {
-					JavaProjectIntrospection.findVersionClasses();
+					JavaProjectIntrospection.findVersionClasses(myWorkspace);
 				} catch (Exception e) {
 
 				}
@@ -73,13 +75,20 @@ public class NavajoProxyStub implements IResourceChangeListener {
 			}
 		});
 	}
+	
+	public void clearMyWorkspace(IWorkspace myWorkspace) {
+		this.myWorkspace = null;
+	}
+	
+	public void setMyWorkspace(IWorkspace myWorkspace) {
+		this.myWorkspace = myWorkspace;
+	}
 
 	public void activate() {
 		try {
 			instance = this;
 			init();
-			IWorkspace workspace = ResourcesPlugin.getWorkspace();
-			workspace.addResourceChangeListener(this);
+			myWorkspace.addResourceChangeListener(this);
 		} catch (Exception e) {
 			logger.error(e);
 		}
