@@ -41,6 +41,7 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 				"'type'",
 				"'subtype'",
 				"'mode'",
+				"'orderby'",
 				"'direction'",
 				"'length'",
 				"'cardinality'",

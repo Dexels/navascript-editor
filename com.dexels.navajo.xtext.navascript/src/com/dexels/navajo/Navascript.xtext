@@ -111,7 +111,7 @@ MessageArray : arrayMessageElements+=MessageArrayElement (',' arrayMessageElemen
 
 MessageArrayElement : {MessageArrayElement} '{' statements+=InnerBody* '}';
 
-MessageArgument : ( 'type' ('=' | ':') MessageType ) | ( 'mode' ('=' | ':') MessageMode );
+MessageArgument : ( 'type' ('=' | ':') MessageType ) | ( 'mode' ('=' | ':') MessageMode ) | ('orderby' ( '=' | ':') MessageOrderBy );
 
 MessageArguments : arguments+=MessageArgument ( ',' arguments+=MessageArgument )*;
 
@@ -275,6 +275,8 @@ OPTION_TYPE :
 MessageType : {ArrayType} "array" | {SimpleType} "simple" | {ArrayElementType} "arrayelement";
 
 MessageMode : {Ignore} "ignore" | {Overwrite} "overwrite";
+
+MessageOrderBy : {OrderBy} orderby=IDENTIFIER ('ASC' | 'asc' | 'DESC' | 'desc')? (',' IDENTIFIER ('ASC' | 'asc' | 'DESC' | 'desc')? )*;
 
 terminal METHOD_IDENTIFIER: '.' IDENTIFIER;
 
