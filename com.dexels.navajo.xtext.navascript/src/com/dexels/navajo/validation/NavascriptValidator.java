@@ -278,10 +278,6 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		}
 	}
 
-//	private boolean findVarDeclaration(EObject root, VarImpl varImpl, TmlIdentifierLiteral tmlLiteral) {
-//		
-//		
-//	}
 	@Check 
 	public void checkScriptReference(ScriptIdentifier scriptUrl) {
 		String name = scriptUrl.getValue().getScript();

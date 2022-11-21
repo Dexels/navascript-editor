@@ -64,7 +64,6 @@ public class NavajoProxyStub implements IResourceChangeListener {
 						if ( md != null ) {
 							ProxyMapDefinition pmd = ProxyMetaData.getInstance().getMapDefinition(md);
 							if ( pmd != null && pmd.tagName != null  ) {
-								logger.info("Adding accesible adapter: " + pmd.tagName + ": " + pmd.objectName);
 								ClassLoader acl = null;
 								if ( pmd.objectClassLoader != null ) {
 									acl = pmd.objectClassLoader;
@@ -111,7 +110,6 @@ public class NavajoProxyStub implements IResourceChangeListener {
 		} catch (Exception e) {
 			logger.error(e);
 		}
-		logger.info(">>>>>>>>>>>>>> NavajoProxyStub has been activated()");
 	}
 
 	private void findScripts(File f, String scriptPath) {
@@ -131,7 +129,6 @@ public class NavajoProxyStub implements IResourceChangeListener {
 	
 	private void scanProjectsWithScripts() {
 		tpe.execute(() -> {
-			logger.info("** In scanProjectsWithScripts");
 			IProject [] projects =  myWorkspace.getRoot().getProjects();
 			for ( IProject project : projects ) {
 				IFolder scriptsFolder = project.getFolder("scripts");
@@ -142,7 +139,6 @@ public class NavajoProxyStub implements IResourceChangeListener {
 	}
 
 	public void deactivate() {
-		logger.info("In NavajoProxyStub.deactivate()");
 	}
 
 
@@ -197,30 +193,24 @@ public class NavajoProxyStub implements IResourceChangeListener {
 
 	@Override
 	public void resourceChanged(IResourceChangeEvent event) {
-		logger.warn("CHANGE: In resourceChanged {} :" + event);
 		IResourceDelta delta = event.getDelta();
 		List<IFile> changedFiles = findChangedFiles(delta);
 		boolean hasJavaFile = false;
 		boolean hasScriptFile = false;
 		for ( IFile f : changedFiles ) {
-			//System.err.println(">>>> changed file: " + f.getName() + " / " + f.getFileExtension());
 			if ( f != null && f.getFileExtension() != null && f.getFileExtension().equals("java")) {
 				hasJavaFile = true;
-				logger.warn("CHANGE: THIS JAVA FILE HAS CHANGED: " + f.getName());
 				break;
 			}
 			if ( f != null && f.getFileExtension() != null &&  ( f.getFileExtension().equals("ns") || f.getFileExtension().equals("xml") )  ) {
 				hasScriptFile = true;
-				logger.warn("CHANGE: THIS SCRIPT FILE HAS CHANGED: " + f.getName());
 				break;
 			}
 		}
 		if ( hasJavaFile ) {
-			logger.warn("CHANGE: CHANGED JAVA FILE. CALL INIT() AGAIN!");
 			init();
 		}
 		if ( hasScriptFile || hasJavaFile ) {
-			logger.warn("CHANGE: CHANGED SCRIPT FILE. SCANNING PROJECT");
 			scanProjectsWithScripts();
 		}
 	}
