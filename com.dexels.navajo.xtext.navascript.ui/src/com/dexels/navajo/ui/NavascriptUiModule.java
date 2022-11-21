@@ -3,17 +3,24 @@
  */
 package com.dexels.navajo.ui;
 
+import org.eclipse.jface.text.hyperlink.IHyperlinkDetector;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ide.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.parser.antlr.ISyntaxErrorMessageProvider;
 import org.eclipse.xtext.resource.containers.IAllContainersState;
+import org.eclipse.xtext.ui.editor.hover.DispatchingEObjectTextHover;
+import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
+import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
 import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
 import org.eclipse.xtext.ui.editor.model.ResourceForIEditorInputFactory;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.eclipse.xtext.ui.resource.SimpleResourceSetProvider;
 
+import com.dexels.navajo.ui.hover.NavascriptHoverProvider;
+import com.dexels.navajo.ui.hyperlink.HyperlinkProvider;
+import com.dexels.navajo.ui.hyperlink.MyHyperlinkHelper;
 import com.dexels.navajo.ui.syntaxcoloring.NavascriptLexicalHighlightingConfiguration;
 import com.dexels.navajo.ui.syntaxcoloring.NavascriptSemanticHighlighting;
 import com.dexels.navajo.ui.syntaxcoloring.NavascriptTokenToAttributeIdManager;
@@ -28,6 +35,14 @@ public class NavascriptUiModule extends AbstractNavascriptUiModule {
 	public NavascriptUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 
+	}
+	
+//	public Class<? extends IHyperlinkDetector> bindIHyperlinkDetector() {
+//		return HyperlinkProvider.class;
+//	}
+	
+	public Class<? extends IHyperlinkHelper> bindIHyperlinkHelper() {
+	    return MyHyperlinkHelper.class;
 	}
 	
     public Class<? extends ISyntaxErrorMessageProvider> bindISyntaxErrorMessageProvider() {
@@ -46,13 +61,13 @@ public class NavascriptUiModule extends AbstractNavascriptUiModule {
 		return NavascriptTokenToAttributeIdManager.class;
 	}
 
-//	public Class<? extends IEObjectHover> bindIEObjectHover() {
-//		return NavascriptHoverProvider.class;
-//	}
+	public Class<? extends IEObjectHover> bindIEObjectHover() {
+		return NavascriptHoverProvider.class;
+	}
 //	
-//	public Class<? extends DispatchingEObjectTextHover> bindDispatchingEObjectTextHover() {
-//		return NavascriptHoverProvider.class;
-//	}
+	public Class<? extends DispatchingEObjectTextHover> bindDispatchingEObjectTextHover() {
+		return NavascriptHoverProvider.class;
+	}
 //	
 //	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProviderr() {
 //        return NavascriptDocumentationProvider.class;

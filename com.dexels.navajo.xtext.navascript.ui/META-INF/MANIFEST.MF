@@ -21,14 +21,18 @@ Require-Bundle: org.eclipse.xtext.ui,
  org.eclipse.xtext.xbase.ui
 Export-Package: com.dexels.navajo.ui,
  com.dexels.navajo.ui.contentassist,
+ com.dexels.navajo.ui.hover,
+ com.dexels.navajo.ui.hyperlink,
  com.dexels.navajo.ui.labeling,
  com.dexels.navajo.ui.outline,
  com.dexels.navajo.ui.quickfix,
  com.dexels.navajo.ui.syntaxcoloring,
+ com.dexels.navajo.ui.validator,
  com.dexels.navajo.validation,
  com.dexels.navajo.xtext.navascript.ui.internal
 Bundle-Activator: com.dexels.navajo.xtext.navascript.ui.internal.NavascriptActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Import-Package: com.dexels.navajo.expression.api,
  com.dexels.navajo.mapping.compiler.meta,
- org.apache.log4j
+ org.apache.log4j,
+ org.eclipse.jdt.internal.core

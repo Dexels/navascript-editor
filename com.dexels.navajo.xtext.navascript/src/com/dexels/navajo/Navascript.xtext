@@ -229,13 +229,19 @@ Atomic returns Expression:
     {FunctionCallLiteral} value=FunctionIdentifier |
     {MappableIdentifierLiteral} value=MappableIdentifier |
     {TmlIdentifierLiteral} hasExists?='?'? value=TmlIdentifier |
+    {ScriptIdentifier} value=ScriptIdentifier |
     {TmlIdentifier} value=TmlIdentifier |
     {ForAllLiteral} value=ForAllIdentifier |
     {NullLiteral} value=NULL_DEF |
     {TodayLiteral} value="TODAY" |
     {CurrentOutDoc} value=CURRENT_OUTDOC |
     {CurrentInDoc} value=CURRENT_INDOC |
-    {CurrentVarDoc} value=CURRENT_VARDOC
+    {CurrentVarDoc} value=CURRENT_VARDOC |
+    {VariableIdentifier} value=IDENTIFIER
+;
+
+ScriptIdentifier:
+	{ScriptIdentifier} scriptUrl= SCRIPT_PREFIX  (script= SCRIPT_REFERENCE ) 
 ;
 
 ForAllIdentifier:
@@ -269,6 +275,10 @@ PropertyType:
     {SelectionType} 'selection'
 ;
 
+SCRIPT_PREFIX :
+	'script:'
+;
+
 OPTION_TYPE : 
    'name' | 'value' | 'selected';
 
@@ -291,6 +301,10 @@ terminal TRUE : 'true';
 terminal FALSE : 'false';
 terminal MAPPABLE_ID : '$';
 terminal NULL_DEF : 'null';
+
+terminal SCRIPT_REFERENCE:
+	'/'IDENTIFIER ('/' IDENTIFIER)*
+;
 
 terminal CURRENT_OUTDOC: 
 	 '"."'

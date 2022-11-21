@@ -1,6 +1,9 @@
 package com.dexels.navajo.xtext.navascript.navajobridge;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -10,11 +13,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.ResourcesPlugin;
 
 public class NavajoProxyStub implements IResourceChangeListener {
 
@@ -26,12 +30,20 @@ public class NavajoProxyStub implements IResourceChangeListener {
 	private static final Logger logger = Logger.getLogger(NavajoProxyStub.class);
 	
 	private IWorkspace myWorkspace;
+	private Set<String> allScripts = new HashSet<>();
+	private boolean resourceChangeListenerActive = false;
+	private boolean initRunning = false;
 	
 	public static NavajoProxyStub getInstance() {
 		return instance;
 	}
 
-	public void init()  {
+	public synchronized void init()  {
+		if ( initRunning ) {
+			return;
+		}
+		initRunning = true;
+		final NavajoProxyStub instance = this;
 		tpe.execute(new Runnable() {
 			@Override
 			public void run() {
@@ -72,6 +84,13 @@ public class NavajoProxyStub implements IResourceChangeListener {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
+				
+				if (!resourceChangeListenerActive) {
+					myWorkspace.addResourceChangeListener(instance);
+					resourceChangeListenerActive = true;
+				}
+				
+				initRunning = false;
 			}
 		});
 	}
@@ -88,11 +107,38 @@ public class NavajoProxyStub implements IResourceChangeListener {
 		try {
 			instance = this;
 			init();
-			myWorkspace.addResourceChangeListener(this);
+			scanProjectsWithScripts();
 		} catch (Exception e) {
 			logger.error(e);
 		}
 		logger.info(">>>>>>>>>>>>>> NavajoProxyStub has been activated()");
+	}
+
+	private void findScripts(File f, String scriptPath) {
+		if ( f.isDirectory() ) {
+			for ( File child : f.listFiles() ) {
+				findScripts(child, scriptPath);
+			}
+		}
+		if ( f.getName().endsWith(".ns") || f.getName().endsWith(".xml") || f.getName().endsWith(".java") ) {
+			String name = f.getAbsolutePath();
+			int extensionStart =  name.lastIndexOf(".");
+			name = name.substring(0, extensionStart);
+			name = name.replaceAll(scriptPath, "");
+			allScripts.add(name);
+		}
+	}
+	
+	private void scanProjectsWithScripts() {
+		tpe.execute(() -> {
+			logger.info("** In scanProjectsWithScripts");
+			IProject [] projects =  myWorkspace.getRoot().getProjects();
+			for ( IProject project : projects ) {
+				IFolder scriptsFolder = project.getFolder("scripts");
+				File scripts = scriptsFolder.getRawLocation().makeAbsolute().toFile();
+				findScripts(scripts, scripts.getAbsolutePath());
+			}
+		});
 	}
 
 	public void deactivate() {
@@ -131,6 +177,10 @@ public class NavajoProxyStub implements IResourceChangeListener {
 		return fArray;
 	}
 
+	public Set<String> getScripts() throws IOException {
+		return allScripts;
+	}
+	
 	private List<IFile> findChangedFiles(IResourceDelta delta) {
 		IResourceDelta [] children = delta.getAffectedChildren();
 		List<IFile> changedFiles = new ArrayList<>();
@@ -147,23 +197,31 @@ public class NavajoProxyStub implements IResourceChangeListener {
 
 	@Override
 	public void resourceChanged(IResourceChangeEvent event) {
-		if ( tpe.getQueue().size() > 0 ) { // Existing init() is running. Skip this one.
-			return;
-		}
+		logger.warn("CHANGE: In resourceChanged {} :" + event);
 		IResourceDelta delta = event.getDelta();
 		List<IFile> changedFiles = findChangedFiles(delta);
 		boolean hasJavaFile = false;
+		boolean hasScriptFile = false;
 		for ( IFile f : changedFiles ) {
 			//System.err.println(">>>> changed file: " + f.getName() + " / " + f.getFileExtension());
 			if ( f != null && f.getFileExtension() != null && f.getFileExtension().equals("java")) {
 				hasJavaFile = true;
-				logger.info("THIS JAVA FILE HAS CHANGED: " + f.getName());
+				logger.warn("CHANGE: THIS JAVA FILE HAS CHANGED: " + f.getName());
+				break;
+			}
+			if ( f != null && f.getFileExtension() != null &&  ( f.getFileExtension().equals("ns") || f.getFileExtension().equals("xml") )  ) {
+				hasScriptFile = true;
+				logger.warn("CHANGE: THIS SCRIPT FILE HAS CHANGED: " + f.getName());
 				break;
 			}
 		}
 		if ( hasJavaFile ) {
-			logger.info("CHANGED JAVA FILE. CALL INIT() AGAIN!");
+			logger.warn("CHANGE: CHANGED JAVA FILE. CALL INIT() AGAIN!");
 			init();
+		}
+		if ( hasScriptFile || hasJavaFile ) {
+			logger.warn("CHANGE: CHANGED SCRIPT FILE. SCANNING PROJECT");
+			scanProjectsWithScripts();
 		}
 	}
 

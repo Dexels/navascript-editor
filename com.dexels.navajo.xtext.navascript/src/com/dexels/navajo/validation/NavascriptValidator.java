@@ -3,10 +3,12 @@
  */
 package com.dexels.navajo.validation;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
@@ -25,8 +27,11 @@ import com.dexels.navajo.navascript.Message;
 import com.dexels.navajo.navascript.NavascriptPackage;
 import com.dexels.navajo.navascript.PropertyArgument;
 import com.dexels.navajo.navascript.PropertyArguments;
+import com.dexels.navajo.navascript.ScriptIdentifier;
 import com.dexels.navajo.navascript.TmlIdentifierLiteral;
-import com.dexels.navajo.navascript.Var;
+import com.dexels.navajo.navascript.TopLevelStatement;
+import com.dexels.navajo.navascript.VarElement;
+import com.dexels.navajo.navascript.VariableIdentifier;
 import com.dexels.navajo.navascript.impl.AdapterMethodImpl;
 import com.dexels.navajo.navascript.impl.FunctionIdentifierImpl;
 import com.dexels.navajo.navascript.impl.LoopImpl;
@@ -43,6 +48,17 @@ import com.dexels.navajo.xtext.navascript.navajobridge.AdapterClassDefinition;
 import com.dexels.navajo.xtext.navascript.navajobridge.NavajoProxyStub;
 import com.dexels.navajo.xtext.navascript.navajobridge.OSGIRuntime;
 import com.dexels.navajo.xtext.navascript.navajobridge.ProxyFunctionDefinition;
+
+class FindElementOrder {
+
+	public FindElementOrder(EObject e) {
+		this.element = e;
+	}
+	
+	public EObject element;
+	public int order = 0;
+	
+}
 
 /**
  * This class contains custom validation rules.
@@ -266,35 +282,145 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 //		
 //		
 //	}
+	@Check 
+	public void checkScriptReference(ScriptIdentifier scriptUrl) {
+		String name = scriptUrl.getValue().getScript();
+		
+		try {
+			if ( !NavajoProxyStub.getInstance().getScripts().contains(name) ) {
+				error("Cannot find script: " + name, NavascriptPackage.Literals.SCRIPT_IDENTIFIER__SCRIPT);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void checkElementOrder(EObject currentElement, FindElementOrder first, FindElementOrder second, AtomicInteger count) {
+
+		if ( first.order > 0 && second.order > 0  ) {
+			return;
+		}
+		
+		if ( currentElement.equals(first.element) ) {
+			first.order = count.get();
+			return;
+		}
+		
+		if ( currentElement.equals(second.element) ) {
+			second.order = count.get();
+			return;
+		}
+		
+		count.incrementAndGet();
+
+		EList<EObject> list = currentElement.eContents();
+		for ( EObject child : list ) {
+			checkElementOrder(child, first, second, count);
+		}
+
+	}
+	
+	private boolean checkParent(EObject child, EObject parent) {
+	
+		if ( child == null ) {
+			return false;
+		}		
+		EObject currentParent = child.eContainer();
+		if ( currentParent != null && currentParent.equals(parent) ) {
+			return true;
+		} else {
+			return checkParent(currentParent, parent);
+		}
+			
+	}
+	
+	private boolean checkDeclaredBefore(VarImpl var, EObject currentElement) {
+	
+		EObject rootElement = EcoreUtil2.getRootContainer(currentElement.eContainer());
+		
+		FindElementOrder firstElt = new FindElementOrder(var);
+		FindElementOrder secondElt = new FindElementOrder(currentElement);
+		
+		checkElementOrder(rootElement, firstElt, secondElt, new AtomicInteger());
+		
+		EObject conditionBlock = checkVariableInConditionBlock(var);
+		
+		if ( conditionBlock != null ) {
+			// check if currentElement has the same parent. If so, all is fine.
+			if ( !checkParent(currentElement, conditionBlock) ) {
+				return false;
+			} else {
+				// no problem, reference in same condition block
+			}
+		} 
+		
+		return firstElt.order < secondElt.order;
+		
+	}
+	
+	private EObject checkVariableInConditionBlock(VarImpl var) {
+
+		EObject parent = var.eContainer();
+		while ( parent != null ) {
+			if ( parent instanceof VarElement) {
+				VarElement varElement = (VarElement) parent;
+				if ( varElement.getCondition() != null ) {
+					return varElement;
+				}
+			}
+			if ( parent instanceof InnerBody ) {
+				InnerBody innerBody = (InnerBody) parent;
+				if ( innerBody.getCondition() != null ) {
+					return innerBody;
+				}
+			}
+			if ( parent instanceof TopLevelStatement ) {
+				TopLevelStatement topLevel = (TopLevelStatement) parent;
+				if ( topLevel.getCondition() != null ) {
+					return topLevel;
+				}
+			}
+			parent = parent.eContainer();
+		}
+
+		return null;
+	}
+	
+	@Check
+	public void checkVariableNameExistence(VariableIdentifier property) {
+		if ( !isValidVariable(property, property.getValue()) ) {
+			error("Parameter " + property.getValue() + " is not declared (yet)", NavascriptPackage.Literals.VARIABLE_IDENTIFIER__VALUE);
+		}
+	}
+	
+	private boolean isValidVariable(EObject eObject, String variableName) {
+	
+		EObject rootElement = EcoreUtil2.getRootContainer(eObject.eContainer());
+		
+		List<VarImpl> candidates = EcoreUtil2.getAllContentsOfType(rootElement, VarImpl.class);
+		
+		if ( candidates.size() == 0 ) {
+			return false;
+		}
+		boolean check = false;
+		for ( VarImpl v : candidates) {	
+			if ( v.getVarName().equals(variableName) ) {
+				check = check || checkDeclaredBefore(v, eObject);
+			}
+		}
+		
+		return check;
+	}
 	
 	@Check
 	public void checkParameterNameExistence(TmlIdentifierLiteral property) {
 	
-		EObject rootElement = EcoreUtil2.getRootContainer(property.eContainer());
-		EList<EObject> list = rootElement.eContents();
-		//System.err.println("List size: " + list.size() + ", rootElement: " + rootElement);
-		for ( EObject eo : list ) {
-			//System.err.println("eo: " + eo);
-			for ( EObject child: eo.eContents() ) {
-				//System.err.println("child: " + child);
-			}
-		}
-		Set<String> validVariables = new HashSet<>();
-		
-		List<VarImpl> candidates = EcoreUtil2.getAllContentsOfType(rootElement, VarImpl.class);
-		for ( VarImpl v : candidates) {
-			validVariables.add(v.getVarName());
-		}
-		
-		
 		String name =  property.getValue().getTml();
-		//System.err.println("In checkParameterNameExistence: " + property.getValue().getTml());
 		if ( name.startsWith("[/@") ) {
-			//System.err.println("In checkParameterNameExistence: " + property.getValue() + " [" + validVariables.size() + ": " + validVariables + "]");
 			String stripped = name.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("/@", "");
-			if ( !validVariables.contains(stripped) ) {
-				//System.err.println("Unknown variable: " + stripped);
-				warning("Parameter is not declared", NavascriptPackage.Literals.TML_IDENTIFIER_LITERAL__VALUE);
+			if ( !isValidVariable(property, stripped) ) {
+				error("Parameter " + stripped + " is not declared (yet)", NavascriptPackage.Literals.TML_IDENTIFIER_LITERAL__VALUE);
 			}
 		}
 	}
