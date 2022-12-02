@@ -416,7 +416,7 @@ public class NavascriptValidator extends AbstractNavascriptValidator implements 
 		if ( name.startsWith("[/@") ) {
 			String stripped = name.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("/@", "");
 			if ( !isValidVariable(property, stripped) ) {
-				error("Parameter " + stripped + " is not declared (yet)", NavascriptPackage.Literals.TML_IDENTIFIER_LITERAL__VALUE);
+				error("Parameter " + stripped + " is not declared or in other conditional scope only", NavascriptPackage.Literals.TML_IDENTIFIER_LITERAL__VALUE);
 			}
 		}
 	}
