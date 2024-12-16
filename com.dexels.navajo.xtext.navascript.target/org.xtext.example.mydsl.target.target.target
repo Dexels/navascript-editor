@@ -1,34 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE xml>
 <?pde version="3.8.0"?>
 <target name="com.dexels.navajo.xtext.navascript.target" sequenceNumber="1">
     <locations>
-        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <repository location="https://download.eclipse.org/releases/2022-09"/>
-
-            <unit id="org.eclipse.equinox.compendium.sdk.feature.group" version="0.0.0"/>
+        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+    		<unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
+    		<repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.36.0/"/>
+  		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+		    <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
+		    <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
+		    <unit id="org.eclipse.pde.feature.group" version="0.0.0"/>
+		    <unit id="org.eclipse.draw2d.feature.group" version="0.0.0"/>
+		    <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
+		    <unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
+		    <unit id="org.eclipse.equinox.compendium.sdk.feature.group" version="0.0.0"/>
             <unit id="org.eclipse.equinox.core.feature.feature.group" version="0.0.0"/>
-            <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
-            <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
-            <unit id="org.eclipse.pde.feature.group" version="0.0.0"/>
-            <unit id="org.eclipse.draw2d.feature.group" version="0.0.0"/>
-            <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
-        </location>
+		    <repository location="https://download.eclipse.org/releases/2024-09/"/>
+		 </location>
 
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <repository location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.13.0/"/>
-
-            <unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
-        </location>
-
-        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.28.0/"/>
-
-            <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-        </location>
-
-        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <repository location="https://download.eclipse.org/tools/orbit/downloads/2022-09"/>
+            <repository location="https://download.eclipse.org/tools/orbit/downloads/2023-06"/>
 
             <unit id="com.google.gson" version="0.0.0"/>
             <unit id="org.antlr.runtime" version="0.0.0"/>
@@ -46,13 +37,13 @@
         </location>
 
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <repository location="http://p2.dexels.com/eclipse/navajo_2.0.649"/>
+            <repository location="http://p2.dexels.com/eclipse/navajo_2.0.1397/"/>
 
-	        <unit id="com.dexels.navajo.core.feature.feature.group" version="1.0.0.202206081049"/>
+	        <unit id="com.dexels.navajo.core.feature.feature.group" version="0.0.0"/>
         </location>
 
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <repository location="http://p2.dexels.com/eclipse/3rdparty_3.3.1171"/>
+            <repository location="http://p2.dexels.com/eclipse/3rdparty_3.3.1339-test/"/>
 
             <unit id="bcpg" version="0.0.0"/>
             <unit id="bcpkix" version="0.0.0"/>
@@ -62,7 +53,6 @@
             <unit id="com.dexels.immutable.impl" version="0.0.0"/>
             <unit id="com.dexels.index.api" version="0.0.0"/>
             <unit id="com.dexels.keystoreprovider" version="0.0.0"/>
-            <unit id="com.dexels.log4j.server" version="0.0.0"/>
             <unit id="com.dexels.osgi.bundlesync" version="0.0.0"/>
             
             <unit id="com.fasterxml.aalto-xml" version="0.0.0"/>
@@ -159,7 +149,6 @@
             <unit id="org.apache.xbean.finder" version="0.0.0"/>
             <unit id="org.codehaus.mojo.animal-sniffer-annotations" version="0.0.0"/>
             <unit id="org.eclipse.jetty.client" version="0.0.0"/>
-            <unit id="org.eclipse.jetty.continuation" version="0.0.0"/>
             <unit id="org.eclipse.jetty.http" version="0.0.0"/>
             <unit id="org.eclipse.jetty.io" version="0.0.0"/>
             <unit id="org.eclipse.jetty.proxy" version="0.0.0"/>
@@ -167,43 +156,19 @@
             <unit id="org.eclipse.jetty.security" version="0.0.0"/>
             <unit id="org.eclipse.jetty.server" version="0.0.0"/>
             <unit id="org.eclipse.jetty.servlet" version="0.0.0"/>
-            <unit id="org.eclipse.jetty.servlets" version="0.0.0"/>
             <unit id="org.eclipse.jetty.util" version="0.0.0"/>
-            <unit id="org.eclipse.jetty.websocket.api" version="0.0.0"/>
-            <unit id="org.eclipse.jetty.websocket.client" version="0.0.0"/>
-            <unit id="org.eclipse.jetty.websocket.common" version="0.0.0"/>
-            <unit id="org.eclipse.jetty.websocket.javax.websocket" version="0.0.0"/>
-            <unit id="org.eclipse.jetty.websocket.javax.websocket.server" version="0.0.0"/>
-            <unit id="org.eclipse.jetty.websocket.server" version="0.0.0"/>
-            <unit id="org.eclipse.jetty.websocket.servlet" version="0.0.0"/>
             <unit id="org.eclipse.jetty.xml" version="0.0.0"/>
-            <unit id="org.eclipse.jgit" version="0.0.0"/>
-            <unit id="org.eclipse.jgit.archive" version="0.0.0"/>
-            <unit id="org.eclipse.jgit.http.apache" version="0.0.0"/>
-            <unit id="org.eclipse.jgit.http.server" version="0.0.0"/>
-            <unit id="org.eclipse.jgit.lfs" version="0.0.0"/>
-            <unit id="org.eclipse.jgit.lfs.server" version="0.0.0"/>
             <unit id="org.hamcrest.all" version="0.0.0"/>
             <unit id="org.jvnet.mimepull" version="0.0.0"/>
             <unit id="org.jvnet.staxex.stax-ex" version="0.0.0"/>
             <unit id="org.mockito.mockito-core" version="0.0.0"/>
             <unit id="org.mongodb.bson" version="0.0.0"/>
-            <unit id="org.objectweb.asm" version="0.0.0"/>
-            <unit id="org.objectweb.asm.all" version="0.0.0"/>
             <unit id="org.objectweb.asm.commons" version="0.0.0"/>
             <unit id="org.objectweb.asm.tree" version="0.0.0"/>
             <unit id="org.objectweb.asm.tree.analysis" version="0.0.0"/>
             <unit id="org.objectweb.asm.util" version="0.0.0"/>
             <unit id="org.objenesis" version="0.0.0"/>
             <unit id="org.openstreetmap.jmapviewer" version="0.0.0"/>
-            <unit id="org.ops4j.pax.logging.pax-logging-api" version="0.0.0"/>
-            <unit id="org.ops4j.pax.logging.pax-logging-service" version="0.0.0"/>
-            <unit id="org.ops4j.pax.url.mvn" version="0.0.0"/>
-            <unit id="org.ops4j.pax.web.pax-web-api" version="0.0.0"/>
-            <unit id="org.ops4j.pax.web.pax-web-extender-whiteboard" version="0.0.0"/>
-            <unit id="org.ops4j.pax.web.pax-web-jetty" version="0.0.0"/>
-            <unit id="org.ops4j.pax.web.pax-web-runtime" version="0.0.0"/>
-            <unit id="org.ops4j.pax.web.pax-web-spi" version="0.0.0"/>
             <unit id="org.osgi.service.jdbc" version="0.0.0"/>
             <unit id="org.osgi.util.function" version="0.0.0"/>
             <unit id="org.osgi.util.promise" version="0.0.0"/>

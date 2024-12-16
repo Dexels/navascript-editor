@@ -13,4 +13,3 @@ Require-Bundle: org.eclipse.xtext.ide,
 Export-Package: com.dexels.navajo.ide,
  com.dexels.navajo.ide.contentassist.antlr,
  com.dexels.navajo.ide.contentassist.antlr.internal
-Bundle-RequiredExecutionEnvironment: JavaSE-11

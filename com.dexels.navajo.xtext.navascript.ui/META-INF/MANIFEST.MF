@@ -28,7 +28,6 @@ Export-Package: com.dexels.navajo.ui,
  com.dexels.navajo.validation,
  com.dexels.navajo.xtext.navascript.ui.internal
 Bundle-Activator: com.dexels.navajo.xtext.navascript.ui.internal.NavascriptActivator
-Bundle-RequiredExecutionEnvironment: JavaSE-11
 Import-Package: com.dexels.navajo.expression.api,
  com.dexels.navajo.mapping.compiler.meta,
  org.apache.log4j
