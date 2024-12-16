@@ -2,3 +2,4 @@
 /test-bin/
 /xtend-gen/
 !/xtend-gen/README
+/bin/
