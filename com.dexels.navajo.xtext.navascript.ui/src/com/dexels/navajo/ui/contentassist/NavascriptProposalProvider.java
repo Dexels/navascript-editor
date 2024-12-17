@@ -340,6 +340,20 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 		}
 	}
 
+	@Override
+	public void completeScriptIdentifier_Script(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		
+		try {
+			Set<String> allScripts = getNavajoProxyStub().getScripts();
+			for ( String name : allScripts ) {
+				acceptor.accept(createCompletionProposalFormatted(name, null, 500, context));
+			}
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
+		
+	}
+
 	/**
 	 * For the construction of a "method" inside an adapter.
 	 * Shows list of available method names based on  nearest map.
@@ -352,8 +366,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 	 */
 	@Override
 	public void completeAdapterMethod_Method(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-
-
+		
 		EObject map = NavigationUtils.findFirstMapOrMappedField(context.getLastCompleteNode(), 0);
 		if ( map != null ) {
 			String adapterName = null;
@@ -366,7 +379,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 			Set<ProxyMethodDefinition> methods = getNavajoProxyStub().getAdapter(adapterName).getMethods();
 			for ( ProxyMethodDefinition a : methods) {
 				Set<String> parameters = a.getParameters();
-				acceptor.accept(createCompletionProposalFormatted("." + a.getName(), parameters+"", 1, context));
+				acceptor.accept(createCompletionProposalFormatted("." + a.getName(), parameters+"", 500, context));
 			}
 		} else {
 			logger.warn("No parent map found");
@@ -543,7 +556,7 @@ public class NavascriptProposalProvider extends AbstractNavascriptProposalProvid
 						tbd.append(allParams[i]);
 					}
 				}
-				acceptor.accept(createCompletionProposalFormatted("", done.toString(), tbd.toString(), 10, context));
+				acceptor.accept(createCompletionProposalFormatted("", done.toString(), tbd.toString(), 400, context));
 			}
 
 		}

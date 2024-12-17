@@ -91,7 +91,7 @@ Method:
 ;
 
 Loop:
-	{Loop} 'loop' ( mappable=MAPPABLE_IDENTIFIER | tml=TmlIdentifier ) 
+	{Loop} 'loop' ( mappable=MAPPABLE_IDENTIFIER | tml=TmlIdentifier | ref=IDENTIFIER ) 
 	   ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' 
 ;
 
@@ -102,7 +102,7 @@ Include:
 AntiMessage : {AntiMessage} 'antimessage' messageName=QUOTED_IDENTIFIER ';';
 
 Message: 
-	{Message} 'message' messageName=QUOTED_IDENTIFIER ( '(' arguments=MessageArguments ')' )?  ( ( '{' ( statements+=InnerBody* |  arrayField=MappedArrayField | arrayMessage=MappedArrayMessage ) '}' ) | ';' 
+	{Message} 'message' messageName=QUOTED_IDENTIFIER ( '(' arguments=MessageArguments ')' )?  ( ( '{' ( statements+=InnerBody* |  arrayField=MappedArrayField | arrayMessage=MappedArrayMessage | arrayMessageRef=MappedArrayMessageRef ) '}' ) | ';' 
 		| ('[' | '"') messageArray=MessageArray? (']' | '"')
 	)
 ;
@@ -131,6 +131,8 @@ MappedMessage : {MappedMessage} '{' statements += InnerBody* '}';
 MappedArrayField : {MappedArrayField} field=MAPPABLE_IDENTIFIER ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
 
 MappedArrayMessage : {MappedArrayMessage} message=( CURRENT_OUTDOC | CURRENT_INDOC | CURRENT_VARDOC | TML_LITERAL | QUOTED_IDENTIFIER ) ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
+
+MappedArrayMessageRef : {MappedArrayMessageRef} ref=IDENTIFIER ( '(' 'filter' ('=' | ':') filter=Expression ')' )? '{' statements+=InnerBody* '}' ;
 
 KeyValueArguments : {KeyValueArguments} keyValueArguments+=KeyValueArgument ( ',' keyValueArguments+=KeyValueArgument )*;
 
@@ -229,13 +231,19 @@ Atomic returns Expression:
     {FunctionCallLiteral} value=FunctionIdentifier |
     {MappableIdentifierLiteral} value=MappableIdentifier |
     {TmlIdentifierLiteral} hasExists?='?'? value=TmlIdentifier |
+    {ScriptIdentifier} value=ScriptIdentifier |
     {TmlIdentifier} value=TmlIdentifier |
     {ForAllLiteral} value=ForAllIdentifier |
     {NullLiteral} value=NULL_DEF |
     {TodayLiteral} value="TODAY" |
     {CurrentOutDoc} value=CURRENT_OUTDOC |
     {CurrentInDoc} value=CURRENT_INDOC |
-    {CurrentVarDoc} value=CURRENT_VARDOC
+    {CurrentVarDoc} value=CURRENT_VARDOC |
+    {VariableIdentifier} value=IDENTIFIER
+;
+
+ScriptIdentifier:
+	{ScriptIdentifier} scriptUrl= SCRIPT_PREFIX  (script= SCRIPT_REFERENCE ) 
 ;
 
 ForAllIdentifier:
@@ -269,6 +277,10 @@ PropertyType:
     {SelectionType} 'selection'
 ;
 
+SCRIPT_PREFIX :
+	'script:'
+;
+
 OPTION_TYPE : 
    'name' | 'value' | 'selected';
 
@@ -292,6 +304,10 @@ terminal FALSE : 'false';
 terminal MAPPABLE_ID : '$';
 terminal NULL_DEF : 'null';
 
+terminal SCRIPT_REFERENCE:
+	'/'IDENTIFIER ('/' IDENTIFIER)*
+;
+
 terminal CURRENT_OUTDOC: 
 	 '"."'
 ;
@@ -306,14 +322,14 @@ terminal CURRENT_VARDOC:
 
 
 terminal TML_LITERAL:
-	'[' ( '../'+ | '/' )? '@'? IDENTIFIER ( '/' IDENTIFIER)*  ']'
+	'[' ( '../'+ | '/' )? '@'? ( IDENTIFIER ( "@" INTEGER )? ) ( '/' ( IDENTIFIER ( "@" INTEGER )? ))*  ']'
 ;
 terminal OBJECT_IDENTIFIER:
 	'"' IDENTIFIER ( '.' IDENTIFIER)+ '"'
 ;
 
 terminal QUOTED_IDENTIFIER:
-	'"' ( ( '../'+ | '/' )?  IDENTIFIER ( '/' IDENTIFIER)* ) '"' 	
+	'"'  ( '../'+ | '/' )? ( IDENTIFIER ( "@" INTEGER )? ) ( '/' ( IDENTIFIER ( "@" INTEGER )? ))*  '"' 	
 ;
 
 terminal ONE:

@@ -99,7 +99,7 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 	
 	@Override
 	protected String calculateId(String tokenName, int tokenType) {
-		
+				
 		if ( "RULE_METHOD_IDENTIFIER".equals(tokenName) || "RULE_MAPPABLE_IDENTIFIER".equals(tokenName)) {
 			return NavascriptLexicalHighlightingConfiguration.METHOD_NAME;
 		}
@@ -115,8 +115,14 @@ public class NavascriptTokenToAttributeIdManager extends AbstractAntlrTokenToAtt
 		if("RULE_QUOTED_IDENTIFIER".equals(tokenName)) {
 			return NavascriptLexicalHighlightingConfiguration.QUOTED_IDENTIFIER_ID;
 		}
+		if ( "'script:'".equals(tokenName) ) {
+			return NavascriptLexicalHighlightingConfiguration.SCRIPT_REFERENCE;
+		}
 		if ("'message'".equals(tokenName) || "'antimessage'".equals(tokenName) || "'property'".equals(tokenName) || "'option'".equals(tokenName)) {
 			return NavascriptLexicalHighlightingConfiguration.TML_KEYWORD;
+		}
+		if ("RULE_SCRIPT_REFERENCE".equals(tokenName)) {
+			return NavascriptLexicalHighlightingConfiguration.TML_LITERAL;
 		}
 		if ("RULE_TML_LITERAL".equals(tokenName)) {
 			return NavascriptLexicalHighlightingConfiguration.TML_LITERAL;

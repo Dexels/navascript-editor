@@ -2,7 +2,7 @@
 <feature
       id="com.dexels.navajo.xtext.navascript.editor.feature"
       label="Navascript 3 Editor"
-      version="1.0.80"
+      version="1.0.84"
       provider-name="Dexels BV">
 
    <description url="http://www.example.com/description">

@@ -37,7 +37,7 @@
         </location>
 
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <repository location="http://p2.dexels.com/eclipse/navajo_2.0.1397/"/>
+            <repository location="http://p2.dexels.com/eclipse/navajo_2.0.1396-test/"/>
 
 	        <unit id="com.dexels.navajo.core.feature.feature.group" version="0.0.0"/>
         </location>

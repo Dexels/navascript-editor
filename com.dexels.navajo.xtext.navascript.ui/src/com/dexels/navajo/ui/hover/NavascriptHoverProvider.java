@@ -16,24 +16,18 @@ import com.google.inject.Inject;
 
 public class NavascriptHoverProvider extends DispatchingEObjectTextHover  {
 
-	public NavascriptHoverProvider() {
-		System.err.println("In NavascriptHoverProvider...................");
-	}
-
 	@Inject 
 	private IResourceServiceProvider thisLanguageServiceProvider;
 
 	private IInformationControlCreatorProvider lastCreatorProvider;
 
 	@Override
-	public Object getHoverInfo(EObject first, ITextViewer textViewer, IRegion hoverRegion) {
-		System.err.println("In getHoverInfo(" + first + ")");
-		
+	public Object getHoverInfo(EObject first, ITextViewer textViewer, IRegion hoverRegion) {		
 		if ( first instanceof MapImpl ) {
 			MapImpl map = (MapImpl) first;
 			return map.getAdapterName();
 		} else {
-			return "Unknown";
+			return "Nothing to tell about this element...";
 		}
 		
 //		IEObjectHoverProvider hoverProvider = findService(getURI(first));

@@ -23,6 +23,7 @@ public class NavascriptLexicalHighlightingConfiguration implements IHighlighting
 	public static final String TML_LITERAL = "tmlLiteral";
 	public static final String METHOD_NAME = "Method name";
 	public static final String MISSING_PARAMETERS = "Missing Parameters";
+	public static final String SCRIPT_REFERENCE = "Script reference";
 	
 	/**
 	 * @since 2.6
@@ -50,8 +51,16 @@ public class NavascriptLexicalHighlightingConfiguration implements IHighlighting
 		acceptor.acceptDefaultHighlighting(TML_LITERAL, "TML literal", tmlLiteralTextStyle());
 		acceptor.acceptDefaultHighlighting(METHOD_NAME, "Method Name", methodTextStyle());
 		acceptor.acceptDefaultHighlighting(MISSING_PARAMETERS, "Missing Parameters", errorTextStyle());
+		acceptor.acceptDefaultHighlighting(SCRIPT_REFERENCE, "Script reference", scriptReferenceTextStyle());
 	}
 	
+	private TextStyle scriptReferenceTextStyle() {
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setColor(new RGB(127, 159, 191));
+		textStyle.setStyle(SWT.ITALIC);
+		return textStyle;
+	}
+
 	public TextStyle defaultTextStyle() {
 		TextStyle textStyle = new TextStyle();
 		return textStyle;
