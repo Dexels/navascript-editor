@@ -46,6 +46,8 @@ project in the Project Explorer followed by selecting the menu Run As -> Eclipse
 Before generating a new export increase the version number of the plugin in the files _feature.xml_ and _category.xml_
 that are located in the com.dexels.navajo.xtext.navascript.editor.feature project.
 
+Make sure category.xml and feature.xml in the editor.feature bundle have same versions!
+
 To create a new Navascript 3 Editor plugin use File -> Export and then choose
 
 ![alt text](https://github.com/Dexels/navascript-editor/blob/main/blob/export_feature_0.png?raw=true)
